@@ -1,0 +1,15 @@
+Undefined types
+---------------
+
+The definition of the following types where not found. Use the extra_headers configuration parameters to specify the header files that defines.
+
+The auto_veto parameter is set to true, generation of the wrappers that would have needed theses types were skipped.
+
+
+OpenSim::Array<std::string>
+std::ostream
+
+Class(es) from vetoed_finalizer_classes configuration parameter that were not found:
+-------------------------------------------------------------------------------------
+
+None
