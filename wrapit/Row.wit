@@ -1,0 +1,28 @@
+namespace = "jlosimCommon"
+module_name = "osimCommon_Row"
+
+veto_list = "Row_veto.h"
+auto_veto = true
+
+cxx-std="c++11"
+
+export = "none"
+
+input = [
+    "SimTKcommon/internal/Row.h",
+    "Row_instances.h",
+]
+
+include_dirs = [
+    ".",
+    "/opt/opensim-core-fullrelease/sdk/include/simbody"
+    ]
+
+extra_headers = [
+    "SimTKcommon/internal/CompositeNumericalTypes.h",
+    "SimTKcommon/internal/ResultType.h",
+    "SimTKcommon/Scalar.h",
+    "SimTKcommon/internal/negator.h",
+    "SimTKcommon/internal/conjugate.h",
+    "SimTKcommon/internal/NTraits.h",
+]

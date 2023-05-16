@@ -1,0 +1,24 @@
+namespace = "jlosimCommon"
+module_name = "osimCommon_Decorations"
+
+veto_list = "Decorations_veto.h"
+auto_veto = true
+
+cxx-std="c++11"
+
+export = "none"
+
+input = [
+    "SimTKcommon/internal/DecorativeGeometry.h",
+    "SimTKcommon/internal/PolygonalMesh.h",
+]
+
+propagation_mode = "methods"
+
+include_dirs = [
+    ".",
+    "/opt/opensim-core-fullrelease/sdk/include/simbody"
+    ]
+
+extra_headers = []
+

@@ -1,0 +1,47 @@
+namespace = "jlosimCommon"
+module_name = "osimCommon_MassProperties"
+
+# veto_list = "MassProperties_veto.h"
+auto_veto = false
+
+cxx-std="c++11"
+
+export = "none"
+
+input = [
+    "MassProperties_instances.h",
+    "SimTKcommon/internal/MassProperties.h",
+]
+
+propagation_mode    = "methods"
+
+include_dirs = [
+    ".",
+    "/opt/opensim-core-fullrelease/sdk/include/simbody"
+    ]
+
+extra_headers = [
+    # "SimTKcommon/internal/CompositeNumericalTypes.h",
+    # "SimTKcommon/internal/ResultType.h",
+    "SimTKcommon/Scalar.h",
+    # "SimTKcommon/internal/NTraits.h",
+    "SimTKcommon/SmallMatrix.h",
+    "SimTKcommon/Orientation.h",
+    "SimTKcommon/internal/Rotation.h",
+    "SimTKcommon/internal/Transform.h",
+    # # "SimTKcommon/internal/MatrixHelper.h",
+    # # "SimTKcommon/internal/MatrixCharacteristics.h",
+    # # "SimTKcommon/internal/RowVectorBase.h",
+
+    # # "SimTKcommon/internal/VectorBase.h",
+    # # "SimTKcommon/internal/MatrixBase.h",
+    # # "SimTKcommon/internal/negator.h",
+    # # "SimTKcommon/internal/conjugate.h",
+    # # "SimTKcommon/internal/common.h",
+    "SimTKcommon/internal/Vec.h",
+    # "SimTKcommon/internal/UnitVec.h",
+    "SimTKcommon/internal/Mat.h",
+    # "Vec_instances.h",
+    "Mat_instances.h",
+]
+

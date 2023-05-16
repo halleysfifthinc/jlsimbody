@@ -1,0 +1,24 @@
+namespace = "jlosimCommon"
+module_name = "osimCommon_Function"
+
+# veto_list = "Function_veto.h"
+auto_veto = false
+
+cxx-std="c++11"
+
+export = "none"
+
+propagation_mode = "types"
+
+input = [
+    "SimTKcommon/internal/Function.h",
+    "Function_instances.h",
+]
+
+include_dirs = [
+    ".",
+    "/opt/opensim-core-fullrelease/sdk/include/simbody"
+    ]
+
+extra_headers = []
+

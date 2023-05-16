@@ -1,0 +1,24 @@
+namespace = "jlosimCommon"
+module_name = "osimCommon_Measure"
+
+veto_list = "Measure_veto.h"
+auto_veto = false
+
+cxx-std="c++11"
+
+export = "none"
+
+input = [
+    "SimTKcommon/internal/Measure.h",
+    "Measure_instances.h"
+]
+
+propagation_mode = "types"
+
+include_dirs = [
+    ".",
+    "/opt/opensim-core-fullrelease/sdk/include/simbody"
+    ]
+
+extra_headers = []
+
