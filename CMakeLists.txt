@@ -38,6 +38,8 @@ add_library(jlsimbody SHARED
   src/jlSimTKcommon/Measure.cxx
   src/jlSimTKcommon/String.cxx
   src/jlSimTKcommon/Function.cxx
+  src/jlsimmath/Geo.cxx
+  src/jlsimmath/Contact_related.cxx
   src/jlsimbody.cxx)
 
 target_include_directories(jlsimbody PRIVATE
@@ -53,9 +55,9 @@ target_link_options(jlsimbody PRIVATE
   --for-linker=-flto
   --for-linker=--gc-sections
   --for-linker=--icf=safe
-  )
+)
 
-target_link_libraries(jlsimbody SimTKcommon SimTKsimbody JlCxx::cxxwrap_julia JlCxx::cxxwrap_julia_stl)
+target_link_libraries(jlsimbody SimTKcommon SimTKmath SimTKsimbody JlCxx::cxxwrap_julia JlCxx::cxxwrap_julia_stl)
 
 include(GNUInstallDirs)
 

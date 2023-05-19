@@ -4,6 +4,7 @@
 #include "jlcxx/functions.hpp"
 #include "jlcxx/stl.hpp"
 
+#include "jlSimTKcommon/Array.h"
 #include "jlSimTKcommon/Vec.h"
 
 #ifdef VERBOSE_IMPORT
@@ -19,7 +20,7 @@
 
 namespace jlsimbody {
 
-void define_SimTKcommon_Vec(jlcxx::Module& types){
+void define_SimTKcommon_Vec(jlcxx::Module& types, const ArrayWrapper& array_wrapper){
 
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Vec.h:184:7
   auto t0 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>, jlcxx::TypeVar<2>, jlcxx::TypeVar<3>>>("SimTK!Vec");
@@ -76,6 +77,10 @@ void define_SimTKcommon_Vec(jlcxx::Module& types){
 
   /* End of SimTK::Vec class method wrappers
    **********************************************************************/
+
+  using array_types = jlcxx::ParameterList<SimTK::Vec<2,double>, SimTK::Vec<3,double>>;
+  jlcxx::for_each_parameter_type<array_types>(array_wrapper);
+
   DEBUG_MSG("End of wrapper definitions");
   CLEAR_DEBUG_MSG();
 

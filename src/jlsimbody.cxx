@@ -23,6 +23,10 @@
 #include "jlSimTKcommon/SystemSubsystem.h"
 #include "jlSimTKcommon/Function.h"
 
+#include "jlsimmath/Geo.h"
+#include "jlsimmath/Contact_related.h"
+
+
 using namespace jlsimbody;
 
 JLCXX_MODULE define_julia_module(jlcxx::Module& types){
@@ -39,12 +43,12 @@ JLCXX_MODULE define_julia_module(jlcxx::Module& types){
 
   define_SimTKcommon_String(types, array_wrapper);
   define_SimTKcommon_Row(types);
-  define_SimTKcommon_Vec(types);
+  define_SimTKcommon_Vec(types, array_wrapper);
   define_SimTKcommon_Mat(types);
   define_SimTKcommon_CoordinateAxis(types);
   define_SimTKcommon_UnitVec(types);
   define_SimTKcommon_Orientations(types, array_wrapper);
-  define_SimTKcommon_Transform(types);
+  define_SimTKcommon_Transform(types, array_wrapper);
   define_SimTKcommon_SpatialAlgebra(types);
   define_SimTKcommon_MassProperties(types);
   define_SimTKcommon_MatrixVector(types);
@@ -66,4 +70,7 @@ JLCXX_MODULE define_julia_module(jlcxx::Module& types){
   define_SimTKcommon_SystemSubsystem(types);
   define_SimTKcommon_Measure(types, meas_ind, abs_meas, array_wrapper);
   define_SimTKcommon_Function(types);
+
+  define_simbody_Geo(types);
+  define_simbody_Contact_related(types);
 }

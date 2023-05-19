@@ -1,0 +1,40 @@
+namespace = "jlsimbody"
+module_name = "simbody_Geo"
+
+veto_list = "../../wrapit/Geo_veto.h"
+auto_veto = false
+
+cxx-std="c++11"
+
+export = "none"
+
+input = [
+    "simmath/internal/Geo.h",
+    "simmath/internal/Geo_BicubicBezierPatch.h",
+    "simmath/internal/Geo_BicubicHermitePatch.h",
+    "simmath/internal/Geo_Box.h",
+    "simmath/internal/Geo_CubicBezierCurve.h",
+    "simmath/internal/Geo_CubicHermiteCurve.h",
+    "simmath/internal/Geo_LineSeg.h",
+    "simmath/internal/Geo_Point.h",
+    "simmath/internal/Geo_Sphere.h",
+    "simmath/internal/Geo_Triangle.h",
+    "../../wrapit/Geo_instances.h",
+]
+
+propagation_mode = "types"
+
+include_dirs = [
+    ".",
+    "/opt/opensim-core-fullrelease/sdk/include/simbody"
+    ]
+
+extra_headers = [
+    "SimTKcommon/internal/Vec.h",
+    "SimTKcommon/internal/Transform.h",
+    "SimTKcommon/internal/UnitVec.h",
+    "SimTKcommon/internal/CoordinateAxis.h",
+    "SimTKcommon/internal/Rotation.h",
+    "SimTKcommon/internal/Mat.h",
+]
+

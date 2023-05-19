@@ -4,6 +4,7 @@
 #include "jlcxx/functions.hpp"
 #include "jlcxx/stl.hpp"
 
+#include "jlSimTKcommon/Array.h"
 #include "jlSimTKcommon/Transform.h"
 
 #ifdef VERBOSE_IMPORT
@@ -19,7 +20,7 @@
 
 namespace jlsimbody {
 
-void define_SimTKcommon_Transform(jlcxx::Module& types){
+void define_SimTKcommon_Transform(jlcxx::Module& types, const ArrayWrapper& array_wrapper){
 
   auto t1 = types.add_type<SimTK::Transform_<double>>("SimTK!Transform");
   typedef SimTK::Transform_<double> Transform;
@@ -115,6 +116,9 @@ void define_SimTKcommon_Transform(jlcxx::Module& types){
 
   /* End of SimTK::Transform_ class method wrappers
    **********************************************************************/
+
+  using array_types = jlcxx::ParameterList<Transform>;
+  jlcxx::for_each_parameter_type<array_types>(array_wrapper);
 
   DEBUG_MSG("End of wrapper definitions");
 

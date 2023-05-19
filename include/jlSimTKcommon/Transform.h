@@ -6,6 +6,8 @@
 #include "SimTKcommon/internal/Vec.h"
 #include "SimTKcommon/internal/Transform.h"
 
+#include "jlSimTKcommon/Array.h"
+
 namespace jlcxx {
 
   template<typename P>
@@ -29,5 +31,5 @@ namespace jlcxx {
 }
 
 namespace jlsimbody {
-  void define_SimTKcommon_Transform(jlcxx::Module& types);
+  void define_SimTKcommon_Transform(jlcxx::Module& types, const ArrayWrapper& array_wrapper);
 }
