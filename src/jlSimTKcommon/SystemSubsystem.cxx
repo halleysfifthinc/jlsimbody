@@ -46,12 +46,12 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
   DEBUG_MSG("Adding wrapper for type SimTK::Subsystem (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Subsystem.h:55:32
   auto t0 = types.add_type<SimTK::Subsystem>("SimTK!Subsystem");
-  t0.template constructor<>(/*finalize=*/true);
+  t0.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::System (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/System.h:97:32
   auto t22 = types.add_type<SimTK::System>("SimTK!System");
-  t22.template constructor<>(/*finalize=*/true);
+  t22.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::Subsystem::Guts (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:47:43
@@ -60,12 +60,12 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
   DEBUG_MSG("Adding wrapper for type SimTK::ProjectOptions (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/System.h:950:7
   auto t32 = types.add_type<SimTK::ProjectOptions>("SimTK!ProjectOptions");
-  t32.template constructor<>(/*finalize=*/true);
+  t32.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::ProjectResults (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/System.h:1067:7
   auto t33 = types.add_type<SimTK::ProjectResults>("SimTK!ProjectResults");
-  t33.template constructor<>(/*finalize=*/true);
+  t33.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::DefaultSystemSubsystem (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/System.h:910:32
@@ -74,17 +74,17 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
   DEBUG_MSG("Adding wrapper for type SimTK::RealizeOptions (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/System.h:1137:7
   auto t41 = types.add_type<SimTK::RealizeOptions>("SimTK!RealizeOptions");
-  t41.template constructor<>(/*finalize=*/true);
+  t41.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::RealizeResults (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/System.h:1171:7
   auto t43 = types.add_type<SimTK::RealizeResults>("SimTK!RealizeResults");
-  t43.template constructor<>(/*finalize=*/true);
+  t43.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::CacheEntryInfo (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/StateImpl.h:259:32
   auto t50 = types.add_type<SimTK::CacheEntryInfo>("SimTK!CacheEntryInfo");
-  t50.template constructor<>(/*finalize=*/true);
+  t50.template constructor<>();
 
   /**********************************************************************/
   /* Wrappers for the methods of class SimTK::Subsystem
@@ -93,7 +93,7 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Subsystem(const SimTK::Subsystem &) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Subsystem.h:67:1
-  t0.constructor<const SimTK::Subsystem &>(/*finalize=*/true);
+  t0.constructor<const SimTK::Subsystem &>();
 
   DEBUG_MSG("Adding wrapper for SimTK::Subsystem & SimTK::Subsystem::operator=(const SimTK::Subsystem &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Subsystem & SimTK::Subsystem::operator=(const SimTK::Subsystem &)
@@ -563,7 +563,7 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Subsystem(SimTK::Subsystem::Guts *) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Subsystem.h:361:10
-  t0.constructor<SimTK::Subsystem::Guts *>(/*finalize=*/true);
+  t0.constructor<SimTK::Subsystem::Guts *>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::Subsystem::hasGuts() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::Subsystem::hasGuts()
@@ -859,7 +859,7 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   DEBUG_MSG("Adding wrapper for void SimTK::System::System(const SimTK::System &) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/System.h:782:1
-  t22.constructor<const SimTK::System &>(/*finalize=*/true);
+  t22.constructor<const SimTK::System &>();
 
   DEBUG_MSG("Adding wrapper for SimTK::System & SimTK::System::operator=(const SimTK::System &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::System & SimTK::System::operator=(const SimTK::System &)
@@ -1512,12 +1512,12 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   DEBUG_MSG("Adding wrapper for void SimTK::ProjectOptions::ProjectOptions(SimTK::Real) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/System.h:982:14
-  t32.constructor<SimTK::Real>(/*finalize=*/true);
+  t32.constructor<SimTK::Real>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::ProjectOptions::ProjectOptions(SimTK::ProjectOptions::Option) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/System.h:986:14
-  t32.constructor<SimTK::ProjectOptions::Option>(/*finalize=*/true);
+  t32.constructor<SimTK::ProjectOptions::Option>();
 
   DEBUG_MSG("Adding wrapper for SimTK::ProjectOptions & SimTK::ProjectOptions::clear() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ProjectOptions & SimTK::ProjectOptions::clear()
@@ -1698,7 +1698,7 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   DEBUG_MSG("Adding wrapper for void SimTK::DefaultSystemSubsystem::DefaultSystemSubsystem(SimTK::System &) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/System.h:912:14
-  t37.constructor<SimTK::System &>(/*finalize=*/true);
+  t37.constructor<SimTK::System &>();
 
   DEBUG_MSG("Adding wrapper for void SimTK::DefaultSystemSubsystem::addEventHandler(SimTK::ScheduledEventHandler *) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::DefaultSystemSubsystem::addEventHandler(SimTK::ScheduledEventHandler *)
@@ -1741,7 +1741,7 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   DEBUG_MSG("Adding wrapper for void SimTK::RealizeOptions::RealizeOptions(SimTK::RealizeOptions::Option) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/System.h:1151:5
-  t41.constructor<SimTK::RealizeOptions::Option>(/*finalize=*/true);
+  t41.constructor<SimTK::RealizeOptions::Option>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::RealizeOptions::isEmpty() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::RealizeOptions::isEmpty()

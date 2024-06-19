@@ -31,12 +31,12 @@ void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("Adding wrapper for type SimTK::PolygonalMesh (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/PolygonalMesh.h:70:32
   auto t1 = types.add_type<SimTK::PolygonalMesh>("SimTK!PolygonalMesh");
-  t1.template constructor<>(/*finalize=*/true);
+  t1.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::DecorativeGeometry (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/DecorativeGeometry.h:86:32
   auto t3 = types.add_type<SimTK::DecorativeGeometry>("SimTK!DecorativeGeometry");
-  t3.template constructor<>(/*finalize=*/true);
+  t3.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::DecorativeGeometryImplementation (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/DecorativeGeometry.h:782:32
@@ -45,47 +45,47 @@ void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("Adding wrapper for type SimTK::DecorativePoint (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/DecorativeGeometry.h:269:32
   auto t6 = types.add_type<SimTK::DecorativePoint>("SimTK!DecorativePoint", jlcxx::julia_base_type<SimTK::DecorativeGeometry>());
-  t6.template constructor<>(/*finalize=*/true);
+  t6.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::DecorativeLine (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/DecorativeGeometry.h:306:32
   auto t7 = types.add_type<SimTK::DecorativeLine>("SimTK!DecorativeLine", jlcxx::julia_base_type<SimTK::DecorativeGeometry>());
-  t7.template constructor<>(/*finalize=*/true);
+  t7.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::DecorativeCircle (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/DecorativeGeometry.h:339:32
   auto t8 = types.add_type<SimTK::DecorativeCircle>("SimTK!DecorativeCircle", jlcxx::julia_base_type<SimTK::DecorativeGeometry>());
-  t8.template constructor<>(/*finalize=*/true);
+  t8.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::DecorativeSphere (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/DecorativeGeometry.h:367:32
   auto t9 = types.add_type<SimTK::DecorativeSphere>("SimTK!DecorativeSphere", jlcxx::julia_base_type<SimTK::DecorativeGeometry>());
-  t9.template constructor<>(/*finalize=*/true);
+  t9.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::DecorativeEllipsoid (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/DecorativeGeometry.h:396:32
   auto t10 = types.add_type<SimTK::DecorativeEllipsoid>("SimTK!DecorativeEllipsoid", jlcxx::julia_base_type<SimTK::DecorativeGeometry>());
-  t10.template constructor<>(/*finalize=*/true);
+  t10.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::DecorativeBrick (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/DecorativeGeometry.h:426:32
   auto t11 = types.add_type<SimTK::DecorativeBrick>("SimTK!DecorativeBrick", jlcxx::julia_base_type<SimTK::DecorativeGeometry>());
-  t11.template constructor<>(/*finalize=*/true);
+  t11.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::DecorativeCylinder (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/DecorativeGeometry.h:455:32
   auto t12 = types.add_type<SimTK::DecorativeCylinder>("SimTK!DecorativeCylinder", jlcxx::julia_base_type<SimTK::DecorativeGeometry>());
-  t12.template constructor<>(/*finalize=*/true);
+  t12.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::DecorativeFrame (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/DecorativeGeometry.h:486:32
   auto t13 = types.add_type<SimTK::DecorativeFrame>("SimTK!DecorativeFrame", jlcxx::julia_base_type<SimTK::DecorativeGeometry>());
-  t13.template constructor<>(/*finalize=*/true);
+  t13.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::DecorativeText (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/DecorativeGeometry.h:514:32
   auto t14 = types.add_type<SimTK::DecorativeText>("SimTK!DecorativeText", jlcxx::julia_base_type<SimTK::DecorativeGeometry>());
-  t14.template constructor<>(/*finalize=*/true);
+  t14.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::DecorativeMesh (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/DecorativeGeometry.h:549:32
@@ -98,22 +98,22 @@ void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("Adding wrapper for type SimTK::DecorativeTorus (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/DecorativeGeometry.h:612:32
   auto t17 = types.add_type<SimTK::DecorativeTorus>("SimTK!DecorativeTorus", jlcxx::julia_base_type<SimTK::DecorativeGeometry>());
-  t17.template constructor<>(/*finalize=*/true);
+  t17.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::DecorativeArrow (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/DecorativeGeometry.h:654:32
   auto t18 = types.add_type<SimTK::DecorativeArrow>("SimTK!DecorativeArrow", jlcxx::julia_base_type<SimTK::DecorativeGeometry>());
-  t18.template constructor<>(/*finalize=*/true);
+  t18.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::DecorativeCone (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/DecorativeGeometry.h:696:32
   auto t19 = types.add_type<SimTK::DecorativeCone>("SimTK!DecorativeCone", jlcxx::julia_base_type<SimTK::DecorativeGeometry>());
-  t19.template constructor<>(/*finalize=*/true);
+  t19.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::Decorations (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/DecorativeGeometry.h:740:32
   auto t20 = types.add_type<SimTK::Decorations>("SimTK!Decorations", jlcxx::julia_base_type<SimTK::DecorativeGeometry>());
-  t20.template constructor<>(/*finalize=*/true);
+  t20.template constructor<>();
 
   /**********************************************************************/
   /* Wrappers for the methods of class SimTK::PolygonalMesh
@@ -186,7 +186,7 @@ void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::DecorativeGeometry::DecorativeGeometry(const SimTK::DecorativeGeometry &) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/DecorativeGeometry.h:93:1
-  t3.constructor<const SimTK::DecorativeGeometry &>(/*finalize=*/true);
+  t3.constructor<const SimTK::DecorativeGeometry &>();
 
   DEBUG_MSG("Adding wrapper for SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::operator=(const SimTK::DecorativeGeometry &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::operator=(const SimTK::DecorativeGeometry &)
@@ -473,7 +473,7 @@ void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::DecorativeCircle::DecorativeCircle(SimTK::Real) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/DecorativeGeometry.h:341:14
-  t8.constructor<SimTK::Real>(/*finalize=*/true);
+  t8.constructor<SimTK::Real>();
 
   DEBUG_MSG("Adding wrapper for SimTK::DecorativeCircle & SimTK::DecorativeCircle::setRadius(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeCircle & SimTK::DecorativeCircle::setRadius(SimTK::Real)
@@ -531,7 +531,7 @@ void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::DecorativeSphere::DecorativeSphere(SimTK::Real) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/DecorativeGeometry.h:369:14
-  t9.constructor<SimTK::Real>(/*finalize=*/true);
+  t9.constructor<SimTK::Real>();
 
   DEBUG_MSG("Adding wrapper for SimTK::DecorativeSphere & SimTK::DecorativeSphere::setRadius(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeSphere & SimTK::DecorativeSphere::setRadius(SimTK::Real)
@@ -675,8 +675,8 @@ void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::DecorativeCylinder::DecorativeCylinder(SimTK::Real, SimTK::Real) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/DecorativeGeometry.h:457:14
-  t12.constructor<SimTK::Real>(/*finalize=*/true);
-  t12.constructor<SimTK::Real, SimTK::Real>(/*finalize=*/true);
+  t12.constructor<SimTK::Real>();
+  t12.constructor<SimTK::Real, SimTK::Real>();
 
   DEBUG_MSG("Adding wrapper for SimTK::DecorativeCylinder & SimTK::DecorativeCylinder::setRadius(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeCylinder & SimTK::DecorativeCylinder::setRadius(SimTK::Real)
@@ -744,7 +744,7 @@ void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::DecorativeFrame::DecorativeFrame(SimTK::Real) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/DecorativeGeometry.h:488:14
-  t13.constructor<SimTK::Real>(/*finalize=*/true);
+  t13.constructor<SimTK::Real>();
 
   DEBUG_MSG("Adding wrapper for SimTK::DecorativeFrame & SimTK::DecorativeFrame::setAxisLength(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeFrame & SimTK::DecorativeFrame::setAxisLength(SimTK::Real)
@@ -802,7 +802,7 @@ void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::DecorativeText::DecorativeText(const std::string &) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/DecorativeGeometry.h:516:14
-  t14.constructor<const std::string &>(/*finalize=*/true);
+  t14.constructor<const std::string &>();
 
   DEBUG_MSG("Adding wrapper for SimTK::DecorativeText & SimTK::DecorativeText::setText(const std::string &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeText & SimTK::DecorativeText::setText(const std::string &)
@@ -875,7 +875,7 @@ void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::DecorativeMesh::DecorativeMesh(const SimTK::PolygonalMesh &) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/DecorativeGeometry.h:551:14
-  t15.constructor<const SimTK::PolygonalMesh &>(/*finalize=*/true);
+  t15.constructor<const SimTK::PolygonalMesh &>();
 
   DEBUG_MSG("Adding wrapper for const SimTK::PolygonalMesh & SimTK::DecorativeMesh::getMesh() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::PolygonalMesh & SimTK::DecorativeMesh::getMesh()
@@ -928,7 +928,7 @@ void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::DecorativeMeshFile::DecorativeMeshFile(const std::string &) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/DecorativeGeometry.h:581:14
-  t16.constructor<const std::string &>(/*finalize=*/true);
+  t16.constructor<const std::string &>();
 
   DEBUG_MSG("Adding wrapper for const std::string & SimTK::DecorativeMeshFile::getMeshFile() (" __HERE__ ")");
   // signature to use in the veto list: const std::string & SimTK::DecorativeMeshFile::getMeshFile()
@@ -986,8 +986,8 @@ void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::DecorativeTorus::DecorativeTorus(SimTK::Real, SimTK::Real) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/DecorativeGeometry.h:614:14
-  t17.constructor<SimTK::Real>(/*finalize=*/true);
-  t17.constructor<SimTK::Real, SimTK::Real>(/*finalize=*/true);
+  t17.constructor<SimTK::Real>();
+  t17.constructor<SimTK::Real, SimTK::Real>();
 
   DEBUG_MSG("Adding wrapper for SimTK::DecorativeTorus & SimTK::DecorativeTorus::setTorusRadius(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeTorus & SimTK::DecorativeTorus::setTorusRadius(SimTK::Real)
@@ -1171,7 +1171,7 @@ void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::Decorations::Decorations(const SimTK::DecorativeGeometry &) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/DecorativeGeometry.h:746:14
-  t20.constructor<const SimTK::DecorativeGeometry &>(/*finalize=*/true);
+  t20.constructor<const SimTK::DecorativeGeometry &>();
 
   DEBUG_MSG("Adding wrapper for SimTK::Decorations & SimTK::Decorations::addDecoration(const SimTK::DecorativeGeometry &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Decorations & SimTK::Decorations::addDecoration(const SimTK::DecorativeGeometry &)

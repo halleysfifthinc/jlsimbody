@@ -23,7 +23,7 @@ void define_SimTKcommon_String(jlcxx::Module& types, const ArrayWrapper& array_w
   DEBUG_MSG("Adding wrapper for type SimTK::String (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/String.h:62:7
   auto t2 = types.add_type<SimTK::String>("SimTK!String", jlcxx::julia_base_type<std::string>());
-  t2.template constructor<>(/*finalize=*/true);
+  t2.template constructor<>();
 
   /**********************************************************************/
   /* Wrappers for the methods of class SimTK::String
@@ -31,22 +31,22 @@ void define_SimTKcommon_String(jlcxx::Module& types, const ArrayWrapper& array_w
 
   DEBUG_MSG("Adding wrapper for void SimTK::String::String(const char *) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/String.h:71:1
-  t2.constructor<const char *>(/*finalize=*/true);
+  t2.constructor<const char *>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::String::String(char) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/String.h:74:10
-  t2.constructor<char>(/*finalize=*/true);
+  t2.constructor<char>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::String::String(const std::string &) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/String.h:77:1
-  t2.constructor<const std::string &>(/*finalize=*/true);
+  t2.constructor<const std::string &>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::String::String(const SimTK::String &, int, int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/String.h:81:1
-  t2.constructor<const SimTK::String &, int, int>(/*finalize=*/true);
+  t2.constructor<const SimTK::String &, int, int>();
 
   types.set_override_module(jl_base_module);
   DEBUG_MSG("Adding setindex! method  to wrap char & SimTK::String::operator[](int) (" __HERE__ ")");

@@ -22,7 +22,7 @@ void define_simbody_Geo(jlcxx::Module& types){
   // DEBUG_MSG("Adding wrapper for type SimTK::Geo (" __HERE__ ")");
   // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geo.h:53:28
   // auto t0 = types.add_type<SimTK::Geo>("SimTK!Geo");
-  // t0.template constructor<>(/*finalize=*/true);
+  // t0.template constructor<>();
 
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geo.h:55:26
   auto t1 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Geo!Point_");
@@ -62,8 +62,8 @@ void define_simbody_Geo(jlcxx::Module& types){
    */
   auto t2_decl_methods = []<typename P> (jlcxx::TypeWrapper<SimTK::Geo::Sphere_<P>> wrapped){
     typedef SimTK::Geo::Sphere_<P> WrappedType;
-    wrapped.template constructor<>(/*finalize=*/true);
-    wrapped.template constructor<const SimTK::Vec<3,P>&, P>(/*finalize=*/true);
+    wrapped.template constructor<>();
+    wrapped.template constructor<const SimTK::Vec<3,P>&, P>();
 
     wrapped.method("setRadius", static_cast<WrappedType& (WrappedType::*)(P)>(&WrappedType::setRadius));
     wrapped.method("getRadius", static_cast<P (WrappedType::*)() const>(&WrappedType::getRadius));
@@ -91,8 +91,8 @@ void define_simbody_Geo(jlcxx::Module& types){
    */
   auto t3_decl_methods = []<typename P> (jlcxx::TypeWrapper<SimTK::Geo::LineSeg_<P>> wrapped){
     typedef SimTK::Geo::LineSeg_<P> WrappedType;
-    wrapped.template constructor<>(/*finalize=*/true);
-    wrapped.template constructor<const SimTK::Vec<3,P>&, const SimTK::Vec<3,P>&>(/*finalize=*/true);
+    wrapped.template constructor<>();
+    wrapped.template constructor<const SimTK::Vec<3,P>&, const SimTK::Vec<3,P>&>();
 
     wrapped.method("setEndpoints", static_cast<WrappedType& (WrappedType::*)(const SimTK::Vec<3,P>&, const SimTK::Vec<3,P>&)>(&WrappedType::setEndpoints));
     wrapped.method("setEndpoint", static_cast<WrappedType& (WrappedType::*)(int, const SimTK::Vec<3,P>&)>(&WrappedType::setEndpoint));
@@ -124,8 +124,8 @@ void define_simbody_Geo(jlcxx::Module& types){
    */
   auto t7_decl_methods = []<typename P> (jlcxx::TypeWrapper<SimTK::Geo::Box_<P>> wrapped){
     typedef SimTK::Geo::Box_<P> WrappedType;
-    wrapped.template constructor<>(/*finalize=*/true);
-    wrapped.template constructor<const SimTK::Vec<3,P>&>(/*finalize=*/true);
+    wrapped.template constructor<>();
+    wrapped.template constructor<const SimTK::Vec<3,P>&>();
 
     wrapped.method("setHalfLengths", static_cast<WrappedType& (WrappedType::*)(const SimTK::Vec<3,P>&)>(&WrappedType::setHalfLengths));
     wrapped.method("addToHalfLengths", static_cast<WrappedType& (WrappedType::*)(const SimTK::Vec<3,P>&)>(&WrappedType::addToHalfLengths));
@@ -179,9 +179,9 @@ void define_simbody_Geo(jlcxx::Module& types){
    */
   auto t8_decl_methods = []<typename P> (jlcxx::TypeWrapper<SimTK::Geo::AlignedBox_<P>> wrapped){
     typedef SimTK::Geo::AlignedBox_<P> WrappedType;
-    wrapped.template constructor<>(/*finalize=*/true);
-    wrapped.template constructor<const SimTK::Vec<3,P>&, const SimTK::Geo::Box_<P>&>(/*finalize=*/true);
-    wrapped.template constructor<const SimTK::Vec<3,P>&, const SimTK::Vec<3,P>&>(/*finalize=*/true);
+    wrapped.template constructor<>();
+    wrapped.template constructor<const SimTK::Vec<3,P>&, const SimTK::Geo::Box_<P>&>();
+    wrapped.template constructor<const SimTK::Vec<3,P>&, const SimTK::Vec<3,P>&>();
 
     wrapped.method("setCenter", static_cast<WrappedType& (WrappedType::*)(const SimTK::Vec<3,P>&)>(&WrappedType::setCenter));
     wrapped.method("setHalfLengths", static_cast<WrappedType& (WrappedType::*)(const SimTK::Vec<3,P>&)>(&WrappedType::setHalfLengths));
@@ -212,9 +212,9 @@ void define_simbody_Geo(jlcxx::Module& types){
    */
   auto t9_decl_methods = []<typename P> (jlcxx::TypeWrapper<SimTK::Geo::OrientedBox_<P>> wrapped){
     typedef SimTK::Geo::OrientedBox_<P> WrappedType;
-    wrapped.template constructor<>(/*finalize=*/true);
-    wrapped.template constructor<const SimTK::Transform_<P>&, const SimTK::Geo::Box_<P>&>(/*finalize=*/true);
-    wrapped.template constructor<const SimTK::Transform_<P>&, const SimTK::Vec<3,P>&>(/*finalize=*/true);
+    wrapped.template constructor<>();
+    wrapped.template constructor<const SimTK::Transform_<P>&, const SimTK::Geo::Box_<P>&>();
+    wrapped.template constructor<const SimTK::Transform_<P>&, const SimTK::Vec<3,P>&>();
 
     wrapped.method("setTransform", static_cast<WrappedType& (WrappedType::*)(const SimTK::Transform_<P>&)>(&WrappedType::setTransform));
     wrapped.method("setHalfLengths", static_cast<WrappedType& (WrappedType::*)(const SimTK::Vec<3,P>&)>(&WrappedType::setHalfLengths));
@@ -249,7 +249,7 @@ void define_simbody_Geo(jlcxx::Module& types){
    */
   auto t1_decl_methods = []<typename P> (jlcxx::TypeWrapper<SimTK::Geo::Point_<P>> wrapped){
     typedef SimTK::Geo::Point_<P> WrappedType;
-    wrapped.template constructor<>(/*finalize=*/true);
+    wrapped.template constructor<>();
 
     wrapped.method("setLocation", static_cast<WrappedType& (WrappedType::*)(const SimTK::Vec<3,P>&)>(&WrappedType::setLocation));
     wrapped.method("getLocation", static_cast<const SimTK::Vec<3,P>& (WrappedType::*)() const>(&WrappedType::getLocation));
@@ -303,9 +303,9 @@ void define_simbody_Geo(jlcxx::Module& types){
    */
   auto t10_decl_methods = []<typename P> (jlcxx::TypeWrapper<SimTK::Geo::Triangle_<P>> wrapped){
     typedef SimTK::Geo::Triangle_<P> WrappedType;
-    wrapped.template constructor<>(/*finalize=*/true);
-    wrapped.template constructor<const SimTK::Vec<3,P>&, const SimTK::Vec<3,P>&, const SimTK::Vec<3,P>&>(/*finalize=*/true);
-    wrapped.template constructor<const SimTK::Vec<3,P>* >(/*finalize=*/true);
+    wrapped.template constructor<>();
+    wrapped.template constructor<const SimTK::Vec<3,P>&, const SimTK::Vec<3,P>&, const SimTK::Vec<3,P>&>();
+    wrapped.template constructor<const SimTK::Vec<3,P>* >();
 
     wrapped.method("setVertex", static_cast<WrappedType& (WrappedType::*)(int, const SimTK::Vec<3,P>&)>(&WrappedType::setVertex));
     wrapped.method("setVertices", static_cast<WrappedType& (WrappedType::*)(const SimTK::Vec<3,P>&, const SimTK::Vec<3,P>&, const SimTK::Vec<3,P>&)>(&WrappedType::setVertices));
@@ -335,8 +335,8 @@ void define_simbody_Geo(jlcxx::Module& types){
    */
   auto t11_decl_methods = []<typename P> (jlcxx::TypeWrapper<SimTK::Geo::CubicHermiteCurve_<P>> wrapped){
     typedef SimTK::Geo::CubicHermiteCurve_<P> WrappedType;
-    wrapped.template constructor<>(/*finalize=*/true);
-    wrapped.template constructor<const SimTK::Vec<4, SimTK::Vec<3,P>> &>(/*finalize=*/true);
+    wrapped.template constructor<>();
+    wrapped.template constructor<const SimTK::Vec<4, SimTK::Vec<3,P>> &>();
 
     wrapped.method("getAlgebraicCoefficients", static_cast<const SimTK::Vec<4, SimTK::Vec<3,P>> & (WrappedType::*)() const>(&WrappedType::getAlgebraicCoefficients));
     wrapped.method("calcGeometricCoefficients", static_cast<SimTK::Vec<4, SimTK::Vec<3,P>> (WrappedType::*)() const>(&WrappedType::calcGeometricCoefficients));
@@ -376,8 +376,8 @@ void define_simbody_Geo(jlcxx::Module& types){
    */
   auto t12_decl_methods = []<typename P> (jlcxx::TypeWrapper<SimTK::Geo::BicubicHermitePatch_<P>> wrapped){
     typedef SimTK::Geo::BicubicHermitePatch_<P> WrappedType;
-    wrapped.template constructor<>(/*finalize=*/true);
-    wrapped.template constructor<const SimTK::Mat<4,4,SimTK::Vec<3,P>> &>(/*finalize=*/true);
+    wrapped.template constructor<>();
+    wrapped.template constructor<const SimTK::Mat<4,4,SimTK::Vec<3,P>> &>();
 
     wrapped.method("getAlgebraicCoefficients", static_cast<const SimTK::Mat<4,4, SimTK::Vec<3,P>> & (WrappedType::*)() const>(&WrappedType::getAlgebraicCoefficients));
     wrapped.method("calcHermiteCoefficients", static_cast<SimTK::Mat<4,4, SimTK::Vec<3,P>> (WrappedType::*)() const>(&WrappedType::calcHermiteCoefficients));
@@ -403,8 +403,8 @@ void define_simbody_Geo(jlcxx::Module& types){
    */
   auto t13_decl_methods = []<typename P> (jlcxx::TypeWrapper<SimTK::Geo::CubicBezierCurve_<P>> wrapped){
     typedef SimTK::Geo::CubicBezierCurve_<P> WrappedType;
-    wrapped.template constructor<>(/*finalize=*/true);
-    wrapped.template constructor<const SimTK::Vec<4, SimTK::Vec<3,P>> &>(/*finalize=*/true);
+    wrapped.template constructor<>();
+    wrapped.template constructor<const SimTK::Vec<4, SimTK::Vec<3,P>> &>();
 
     wrapped.method("getControlPoints", static_cast<const SimTK::Vec<4, SimTK::Vec<3,P>> & (WrappedType::*)() const>(&WrappedType::getControlPoints));
     wrapped.method("calcAlgebraicCoefficients", static_cast<SimTK::Vec<4, SimTK::Vec<3,P>> (WrappedType::*)() const>(&WrappedType::calcAlgebraicCoefficients));
@@ -457,8 +457,8 @@ void define_simbody_Geo(jlcxx::Module& types){
    */
   auto t14_decl_methods = []<typename P> (jlcxx::TypeWrapper<SimTK::Geo::BicubicBezierPatch_<P>> wrapped){
     typedef SimTK::Geo::BicubicBezierPatch_<P> WrappedType;
-    wrapped.template constructor<>(/*finalize=*/true);
-    wrapped.template constructor<const SimTK::Mat<4,4, SimTK::Vec<3,P>> &>(/*finalize=*/true);
+    wrapped.template constructor<>();
+    wrapped.template constructor<const SimTK::Mat<4,4, SimTK::Vec<3,P>> &>();
 
     wrapped.method("evalP", static_cast<SimTK::Vec<3,P> (WrappedType::*)(P, P) const>(&WrappedType::evalP));
     wrapped.method("evalP1", static_cast<void (WrappedType::*)(P, P, SimTK::Vec<3,P>&, SimTK::Vec<3,P>&) const>(&WrappedType::evalP1));

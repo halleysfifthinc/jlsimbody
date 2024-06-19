@@ -27,12 +27,12 @@ void define_SimTKcommon_Row(jlcxx::Module& types){
    */
   auto t0_decl_methods = []<int N, typename ELT, int STRIDE> (jlcxx::TypeWrapper<SimTK::Row<N, ELT, STRIDE>> wrapped){
     typedef SimTK::Row<N, ELT, STRIDE> WrappedType;
-    wrapped.template constructor<>(/*finalize=*/true);
+    wrapped.template constructor<>();
 
 
     DEBUG_MSG("Adding wrapper for void SimTK::Row::Row<N, ELT, STRIDE>(int) (" __HERE__ ")");
     // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Row.h:352:14
-    wrapped.template constructor<int>(/*finalize=*/true);
+    wrapped.template constructor<int>();
 
     DEBUG_MSG("Adding wrapper for void SimTK::Row::setToNaN() (" __HERE__ ")");
     // signature to use in the veto list: void SimTK::Row::setToNaN()

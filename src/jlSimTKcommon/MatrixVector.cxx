@@ -30,30 +30,30 @@ void define_SimTKcommon_MatrixVector(jlcxx::Module& types){
    */
   auto t2_decl_methods = []<typename ELT> (jlcxx::TypeWrapper<SimTK::Vector_<ELT>> wrapped){
     typedef SimTK::Vector_<ELT> WrappedType;
-    wrapped.template constructor<>(/*finalize=*/true);
+    wrapped.template constructor<>();
 
     DEBUG_MSG("Adding wrapper for void SimTK::Vector_::Vector_<ELT>(const WrappedType &) (" __HERE__ ")");
     // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Vector_.h:71:5
-    wrapped.template constructor<const WrappedType &>(/*finalize=*/true);
+    wrapped.template constructor<const WrappedType &>();
 
     DEBUG_MSG("Adding wrapper for void SimTK::Vector_::Vector_<ELT>(int) (" __HERE__ ")");
     // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Vector_.h:87:14
-    wrapped.template constructor<int>(/*finalize=*/true);
+    wrapped.template constructor<int>();
 
 
     DEBUG_MSG("Adding wrapper for void SimTK::Vector_::Vector_<ELT>(int, const ELT *) (" __HERE__ ")");
     // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Vector_.h:92:5
-    wrapped.template constructor<int, const ELT *>(/*finalize=*/true);
+    wrapped.template constructor<int, const ELT *>();
 
 
     DEBUG_MSG("Adding wrapper for void SimTK::Vector_::Vector_<ELT>(int, const ELT &) (" __HERE__ ")");
     // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Vector_.h:95:5
-    wrapped.template constructor<int, const ELT &>(/*finalize=*/true);
+    wrapped.template constructor<int, const ELT &>();
 
     // TODO:
     // If kept, expand to match the instantiated Vec templates
     // If not kept, similar functionality could be implemented from the Julia side
-    // wrapped.template constructor<const SimTK::Vec<3,ELT> &>(/*finalize=*/true);
+    // wrapped.template constructor<const SimTK::Vec<3,ELT> &>();
 
     DEBUG_MSG("Adding wrapper for Vector_<ELT> & SimTK::Vector_::operator=(const WrappedType &) (" __HERE__ ")");
     // signature to use in the veto list: Vector_<ELT> & SimTK::Vector_::operator=(const WrappedType &)
@@ -124,11 +124,11 @@ void define_SimTKcommon_MatrixVector(jlcxx::Module& types){
    */
   auto t1_decl_methods = []<typename ELT> (jlcxx::TypeWrapper<SimTK::Matrix_<ELT>> wrapped){
     typedef SimTK::Matrix_<ELT> WrappedType;
-    wrapped.template constructor<>(/*finalize=*/true);
+    wrapped.template constructor<>();
 
     DEBUG_MSG("Adding wrapper for void SimTK::Matrix_::Matrix_<ELT>(const WrappedType &) (" __HERE__ ")");
     // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Matrix_.h:71:5
-    wrapped.template constructor<const WrappedType &>(/*finalize=*/true);
+    wrapped.template constructor<const WrappedType &>();
 
     DEBUG_MSG("Adding wrapper for Matrix_<ELT> & SimTK::Matrix_::operator=(const WrappedType &) (" __HERE__ ")");
     // signature to use in the veto list: Matrix_<ELT> & SimTK::Matrix_::operator=(const WrappedType &)
@@ -137,15 +137,15 @@ void define_SimTKcommon_MatrixVector(jlcxx::Module& types){
 
     DEBUG_MSG("Adding wrapper for void SimTK::Matrix_::Matrix_<ELT>(int, int) (" __HERE__ ")");
     // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Matrix_.h:91:5
-    wrapped.template constructor<int, int>(/*finalize=*/true);
+    wrapped.template constructor<int, int>();
 
     DEBUG_MSG("Adding wrapper for void SimTK::Matrix_::Matrix_<ELT>(int, int, const ELT *) (" __HERE__ ")");
     // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Matrix_.h:93:5
-    wrapped.template constructor<int, int, const ELT *>(/*finalize=*/true);
+    wrapped.template constructor<int, int, const ELT *>();
 
     DEBUG_MSG("Adding wrapper for void SimTK::Matrix_::Matrix_<ELT>(int, int, const ELT &) (" __HERE__ ")");
     // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Matrix_.h:95:5
-    wrapped.template constructor<int, int, const ELT &>(/*finalize=*/true);
+    wrapped.template constructor<int, int, const ELT &>();
 
     DEBUG_MSG("Adding wrapper for Matrix_<ELT> & SimTK::Matrix_::operator=(const ELT &) (" __HERE__ ")");
     // signature to use in the veto list: Matrix_<ELT> & SimTK::Matrix_::operator=(const ELT &)

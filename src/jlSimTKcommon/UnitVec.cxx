@@ -30,14 +30,14 @@ void define_SimTKcommon_UnitVec(jlcxx::Module& types){
   auto t1_decl_methods = []<typename P, int S> (jlcxx::TypeWrapper<SimTK::UnitVec<P, S>> wrapped){
     typedef SimTK::UnitVec<P,S> WrappedType;
     
-    wrapped.template constructor<>(/*finalize=*/true);
-    wrapped.template constructor<const WrappedType &>(/*finalize=*/true);
-    wrapped.template constructor<const typename WrappedType::BaseVec &>(/*finalize=*/true);
-    wrapped.template constructor<const typename WrappedType::BaseVec &, bool>(/*finalize=*/true);
-    wrapped.template constructor<const P &, const P &, const P &>(/*finalize=*/true);
-    wrapped.template constructor<const SimTK::CoordinateAxis &>(/*finalize=*/true);
-    wrapped.template constructor<const SimTK::CoordinateDirection &>(/*finalize=*/true);
-    wrapped.template constructor<int>(/*finalize=*/true);
+    wrapped.template constructor<>();
+    wrapped.template constructor<const WrappedType &>();
+    wrapped.template constructor<const typename WrappedType::BaseVec &>();
+    wrapped.template constructor<const typename WrappedType::BaseVec &, bool>();
+    wrapped.template constructor<const P &, const P &, const P &>();
+    wrapped.template constructor<const SimTK::CoordinateAxis &>();
+    wrapped.template constructor<const SimTK::CoordinateDirection &>();
+    wrapped.template constructor<int>();
 
     wrapped.method("assign", static_cast<WrappedType & (WrappedType::*)(const WrappedType &) >(&WrappedType::operator=));
     wrapped.method("asVec3", static_cast<const typename WrappedType::BaseVec & (WrappedType::*)() const>(&WrappedType::asVec3));

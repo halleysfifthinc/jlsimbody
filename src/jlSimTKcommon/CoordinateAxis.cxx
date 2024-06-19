@@ -26,17 +26,17 @@ void define_SimTKcommon_CoordinateAxis(jlcxx::Module& types){
   DEBUG_MSG("Adding wrapper for type SimTK::CoordinateAxis::XCoordinateAxis (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:194:23
   auto t1 = types.add_type<SimTK::CoordinateAxis::XCoordinateAxis>("SimTK!CoordinateAxis!XCoordinateAxis", jlcxx::julia_base_type<SimTK::CoordinateAxis>());
-  t1.template constructor<>(/*finalize=*/true);
+  t1.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::CoordinateAxis::YCoordinateAxis (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:197:23
   auto t2 = types.add_type<SimTK::CoordinateAxis::YCoordinateAxis>("SimTK!CoordinateAxis!YCoordinateAxis", jlcxx::julia_base_type<SimTK::CoordinateAxis>());
-  t2.template constructor<>(/*finalize=*/true);
+  t2.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::CoordinateAxis::ZCoordinateAxis (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:200:23
   auto t3 = types.add_type<SimTK::CoordinateAxis::ZCoordinateAxis>("SimTK!CoordinateAxis!ZCoordinateAxis", jlcxx::julia_base_type<SimTK::CoordinateAxis>());
-  t3.template constructor<>(/*finalize=*/true);
+  t3.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::CoordinateDirection (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:244:7
@@ -45,22 +45,22 @@ void define_SimTKcommon_CoordinateAxis(jlcxx::Module& types){
   DEBUG_MSG("Adding wrapper for type SimTK::CoordinateDirection::Negative (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:248:11
   auto t5 = types.add_type<SimTK::CoordinateDirection::Negative>("SimTK!CoordinateDirection!Negative");
-  t5.template constructor<>(/*finalize=*/true);
+  t5.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::CoordinateDirection::NegXDirection (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:338:28
   auto t6 = types.add_type<SimTK::CoordinateDirection::NegXDirection>("SimTK!CoordinateDirection!NegXDirection", jlcxx::julia_base_type<SimTK::CoordinateDirection>());
-  t6.template constructor<>(/*finalize=*/true);
+  t6.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::CoordinateDirection::NegYDirection (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:341:28
   auto t7 = types.add_type<SimTK::CoordinateDirection::NegYDirection>("SimTK!CoordinateDirection!NegYDirection", jlcxx::julia_base_type<SimTK::CoordinateDirection>());
-  t7.template constructor<>(/*finalize=*/true);
+  t7.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::CoordinateDirection::NegZDirection (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:344:28
   auto t8 = types.add_type<SimTK::CoordinateDirection::NegZDirection>("SimTK!CoordinateDirection!NegZDirection", jlcxx::julia_base_type<SimTK::CoordinateDirection>());
-  t8.template constructor<>(/*finalize=*/true);
+  t8.template constructor<>();
 
   /**********************************************************************/
   /* Wrappers for the methods of class SimTK::CoordinateAxis
@@ -69,7 +69,7 @@ void define_SimTKcommon_CoordinateAxis(jlcxx::Module& types){
 
   DEBUG_MSG("Adding wrapper for void SimTK::CoordinateAxis::CoordinateAxis(int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:57:14
-  t0.constructor<int>(/*finalize=*/true);
+  t0.constructor<int>();
 
   DEBUG_MSG("Adding wrapper for SimTK::CoordinateAxis SimTK::CoordinateAxis::getNextAxis() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::CoordinateAxis SimTK::CoordinateAxis::getNextAxis()
@@ -182,17 +182,17 @@ void define_SimTKcommon_CoordinateAxis(jlcxx::Module& types){
 
   DEBUG_MSG("Adding wrapper for void SimTK::CoordinateDirection::CoordinateDirection(const SimTK::CoordinateAxis &) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:252:5
-  t4.constructor<const SimTK::CoordinateAxis &>(/*finalize=*/true);
+  t4.constructor<const SimTK::CoordinateAxis &>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::CoordinateDirection::CoordinateDirection(const SimTK::CoordinateAxis &, SimTK::CoordinateDirection::Negative) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:257:5
-  t4.constructor<const SimTK::CoordinateAxis &, SimTK::CoordinateDirection::Negative>(/*finalize=*/true);
+  t4.constructor<const SimTK::CoordinateAxis &, SimTK::CoordinateDirection::Negative>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::CoordinateDirection::CoordinateDirection(const SimTK::CoordinateAxis &, int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:267:5
-  t4.constructor<const SimTK::CoordinateAxis &, int>(/*finalize=*/true);
+  t4.constructor<const SimTK::CoordinateAxis &, int>();
 
   DEBUG_MSG("Adding wrapper for SimTK::CoordinateAxis SimTK::CoordinateDirection::getAxis() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::CoordinateAxis SimTK::CoordinateDirection::getAxis()

@@ -59,147 +59,147 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
   DEBUG_MSG("Adding wrapper for type SimTK::EventId (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:39:32
   auto t0 = types.add_type<SimTK::EventId>("SimTK!EventId");
-  t0.template constructor<>(/*finalize=*/true);
+  t0.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::SystemEventTriggerIndex (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:47:32
   auto t1 = types.add_type<SimTK::SystemEventTriggerIndex>("SimTK!SystemEventTriggerIndex");
-  t1.template constructor<>(/*finalize=*/true);
+  t1.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::SystemEventTriggerByStageIndex (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:57:32
   auto t2 = types.add_type<SimTK::SystemEventTriggerByStageIndex>("SimTK!SystemEventTriggerByStageIndex");
-  t2.template constructor<>(/*finalize=*/true);
+  t2.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::EventTriggerByStageIndex (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:62:32
   auto t3 = types.add_type<SimTK::EventTriggerByStageIndex>("SimTK!EventTriggerByStageIndex");
-  t3.template constructor<>(/*finalize=*/true);
+  t3.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::Event (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:76:7
   auto t4 = types.add_type<SimTK::Event>("SimTK!Event");
-  t4.template constructor<>(/*finalize=*/true);
+  t4.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::Event::Cause (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:126:11
   auto t5 = types.add_type<SimTK::Event::Cause>("SimTK!Event!Cause");
-  t5.template constructor<>(/*finalize=*/true);
+  t5.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::EventTriggerInfo (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:209:32
   auto t8 = types.add_type<SimTK::EventTriggerInfo>("SimTK!EventTriggerInfo");
-  t8.template constructor<>(/*finalize=*/true);
+  t8.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::HandleEventsOptions (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:269:7
   auto t9 = types.add_type<SimTK::HandleEventsOptions>("SimTK!HandleEventsOptions");
-  t9.template constructor<>(/*finalize=*/true);
+  t9.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::HandleEventsResults (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:345:7
   auto t11 = types.add_type<SimTK::HandleEventsResults>("SimTK!HandleEventsResults");
-  t11.template constructor<>(/*finalize=*/true);
+  t11.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::SubsystemIndex (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:48:32
   auto t15 = types.add_type<SimTK::SubsystemIndex>("SimTK!SubsystemIndex");
-  t15.template constructor<>(/*finalize=*/true);
+  t15.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::SystemYIndex (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:56:32
   auto t16 = types.add_type<SimTK::SystemYIndex>("SimTK!SystemYIndex");
-  t16.template constructor<>(/*finalize=*/true);
+  t16.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::SystemQIndex (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:65:32
   auto t17 = types.add_type<SimTK::SystemQIndex>("SimTK!SystemQIndex");
-  t17.template constructor<>(/*finalize=*/true);
+  t17.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::QIndex (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:69:32
   auto t18 = types.add_type<SimTK::QIndex>("SimTK!QIndex");
-  t18.template constructor<>(/*finalize=*/true);
+  t18.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::SystemUIndex (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:77:32
   auto t19 = types.add_type<SimTK::SystemUIndex>("SimTK!SystemUIndex");
-  t19.template constructor<>(/*finalize=*/true);
+  t19.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::UIndex (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:81:32
   auto t20 = types.add_type<SimTK::UIndex>("SimTK!UIndex");
-  t20.template constructor<>(/*finalize=*/true);
+  t20.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::SystemZIndex (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:89:32
   auto t21 = types.add_type<SimTK::SystemZIndex>("SimTK!SystemZIndex");
-  t21.template constructor<>(/*finalize=*/true);
+  t21.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::ZIndex (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:93:32
   auto t22 = types.add_type<SimTK::ZIndex>("SimTK!ZIndex");
-  t22.template constructor<>(/*finalize=*/true);
+  t22.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::DiscreteVariableIndex (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:99:32
   auto t23 = types.add_type<SimTK::DiscreteVariableIndex>("SimTK!DiscreteVariableIndex");
-  t23.template constructor<>(/*finalize=*/true);
+  t23.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::CacheEntryIndex (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:105:32
   auto t24 = types.add_type<SimTK::CacheEntryIndex>("SimTK!CacheEntryIndex");
-  t24.template constructor<>(/*finalize=*/true);
+  t24.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::SystemYErrIndex (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:112:32
   auto t25 = types.add_type<SimTK::SystemYErrIndex>("SimTK!SystemYErrIndex");
-  t25.template constructor<>(/*finalize=*/true);
+  t25.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::SystemQErrIndex (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:119:32
   auto t26 = types.add_type<SimTK::SystemQErrIndex>("SimTK!SystemQErrIndex");
-  t26.template constructor<>(/*finalize=*/true);
+  t26.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::QErrIndex (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:123:32
   auto t27 = types.add_type<SimTK::QErrIndex>("SimTK!QErrIndex");
-  t27.template constructor<>(/*finalize=*/true);
+  t27.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::SystemUErrIndex (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:130:32
   auto t28 = types.add_type<SimTK::SystemUErrIndex>("SimTK!SystemUErrIndex");
-  t28.template constructor<>(/*finalize=*/true);
+  t28.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::UErrIndex (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:134:32
   auto t29 = types.add_type<SimTK::UErrIndex>("SimTK!UErrIndex");
-  t29.template constructor<>(/*finalize=*/true);
+  t29.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::SystemUDotErrIndex (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:141:32
   auto t30 = types.add_type<SimTK::SystemUDotErrIndex>("SimTK!SystemUDotErrIndex");
-  t30.template constructor<>(/*finalize=*/true);
+  t30.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::UDotErrIndex (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:145:32
   auto t31 = types.add_type<SimTK::UDotErrIndex>("SimTK!UDotErrIndex");
-  t31.template constructor<>(/*finalize=*/true);
+  t31.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::SystemMultiplierIndex (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:152:32
   auto t32 = types.add_type<SimTK::SystemMultiplierIndex>("SimTK!SystemMultiplierIndex");
-  t32.template constructor<>(/*finalize=*/true);
+  t32.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::MultiplierIndex (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:156:32
   auto t33 = types.add_type<SimTK::MultiplierIndex>("SimTK!MultiplierIndex");
-  t33.template constructor<>(/*finalize=*/true);
+  t33.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::State (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:280:32
   auto t34 = types.add_type<SimTK::State>("SimTK!State");
-  t34.template constructor<>(/*finalize=*/true);
+  t34.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::AbstractValue (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Value.h:49:7
@@ -208,12 +208,12 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
   DEBUG_MSG("Adding wrapper for type SimTK::ListOfDependents (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/StateImpl.h:62:7
   auto t36 = types.add_type<SimTK::ListOfDependents>("SimTK!ListOfDependents");
-  t36.template constructor<>(/*finalize=*/true);
+  t36.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::DiscreteVarInfo (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/StateImpl.h:155:7
   auto t37 = types.add_type<SimTK::DiscreteVarInfo>("SimTK!DiscreteVarInfo");
-  t37.template constructor<>(/*finalize=*/true);
+  t37.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::PerSubsystemInfo (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/StateImpl.h:611:32
@@ -226,32 +226,32 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
 
   DEBUG_MSG("Adding wrapper for void SimTK::EventId::EventId(int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:39:32
-  t0.constructor<int>(/*finalize=*/true);
+  t0.constructor<int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::EventId::EventId(long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:39:32
-  t0.constructor<long>(/*finalize=*/true);
+  t0.constructor<long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::EventId::EventId(long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:39:32
-  t0.constructor<long long>(/*finalize=*/true);
+  t0.constructor<long long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::EventId::EventId(unsigned int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:39:32
-  t0.constructor<unsigned int>(/*finalize=*/true);
+  t0.constructor<unsigned int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::EventId::EventId(unsigned long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:39:32
-  t0.constructor<unsigned long>(/*finalize=*/true);
+  t0.constructor<unsigned long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::EventId::EventId(unsigned long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:39:32
-  t0.constructor<unsigned long long>(/*finalize=*/true);
+  t0.constructor<unsigned long long>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::EventId::isValid() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::EventId::isValid()
@@ -706,32 +706,32 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemEventTriggerIndex::SystemEventTriggerIndex(int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:47:32
-  t1.constructor<int>(/*finalize=*/true);
+  t1.constructor<int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemEventTriggerIndex::SystemEventTriggerIndex(long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:47:32
-  t1.constructor<long>(/*finalize=*/true);
+  t1.constructor<long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemEventTriggerIndex::SystemEventTriggerIndex(long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:47:32
-  t1.constructor<long long>(/*finalize=*/true);
+  t1.constructor<long long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemEventTriggerIndex::SystemEventTriggerIndex(unsigned int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:47:32
-  t1.constructor<unsigned int>(/*finalize=*/true);
+  t1.constructor<unsigned int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemEventTriggerIndex::SystemEventTriggerIndex(unsigned long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:47:32
-  t1.constructor<unsigned long>(/*finalize=*/true);
+  t1.constructor<unsigned long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemEventTriggerIndex::SystemEventTriggerIndex(unsigned long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:47:32
-  t1.constructor<unsigned long long>(/*finalize=*/true);
+  t1.constructor<unsigned long long>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::SystemEventTriggerIndex::isValid() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::SystemEventTriggerIndex::isValid()
@@ -1186,32 +1186,32 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemEventTriggerByStageIndex::SystemEventTriggerByStageIndex(int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:57:32
-  t2.constructor<int>(/*finalize=*/true);
+  t2.constructor<int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemEventTriggerByStageIndex::SystemEventTriggerByStageIndex(long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:57:32
-  t2.constructor<long>(/*finalize=*/true);
+  t2.constructor<long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemEventTriggerByStageIndex::SystemEventTriggerByStageIndex(long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:57:32
-  t2.constructor<long long>(/*finalize=*/true);
+  t2.constructor<long long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemEventTriggerByStageIndex::SystemEventTriggerByStageIndex(unsigned int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:57:32
-  t2.constructor<unsigned int>(/*finalize=*/true);
+  t2.constructor<unsigned int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemEventTriggerByStageIndex::SystemEventTriggerByStageIndex(unsigned long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:57:32
-  t2.constructor<unsigned long>(/*finalize=*/true);
+  t2.constructor<unsigned long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemEventTriggerByStageIndex::SystemEventTriggerByStageIndex(unsigned long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:57:32
-  t2.constructor<unsigned long long>(/*finalize=*/true);
+  t2.constructor<unsigned long long>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::SystemEventTriggerByStageIndex::isValid() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::SystemEventTriggerByStageIndex::isValid()
@@ -1666,32 +1666,32 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
 
   DEBUG_MSG("Adding wrapper for void SimTK::EventTriggerByStageIndex::EventTriggerByStageIndex(int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:62:32
-  t3.constructor<int>(/*finalize=*/true);
+  t3.constructor<int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::EventTriggerByStageIndex::EventTriggerByStageIndex(long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:62:32
-  t3.constructor<long>(/*finalize=*/true);
+  t3.constructor<long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::EventTriggerByStageIndex::EventTriggerByStageIndex(long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:62:32
-  t3.constructor<long long>(/*finalize=*/true);
+  t3.constructor<long long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::EventTriggerByStageIndex::EventTriggerByStageIndex(unsigned int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:62:32
-  t3.constructor<unsigned int>(/*finalize=*/true);
+  t3.constructor<unsigned int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::EventTriggerByStageIndex::EventTriggerByStageIndex(unsigned long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:62:32
-  t3.constructor<unsigned long>(/*finalize=*/true);
+  t3.constructor<unsigned long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::EventTriggerByStageIndex::EventTriggerByStageIndex(unsigned long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:62:32
-  t3.constructor<unsigned long long>(/*finalize=*/true);
+  t3.constructor<unsigned long long>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::EventTriggerByStageIndex::isValid() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::EventTriggerByStageIndex::isValid()
@@ -2174,7 +2174,7 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
 
   DEBUG_MSG("Adding wrapper for void SimTK::Event::Cause::Cause(SimTK::Event::Cause::Num) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:139:9
-  t5.constructor<SimTK::Event::Cause::Num>(/*finalize=*/true);
+  t5.constructor<SimTK::Event::Cause::Num>();
 
   DEBUG_MSG("Adding wrapper for SimTK::Event::Cause & SimTK::Event::Cause::operator=(SimTK::Event::Cause::Num) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Event::Cause & SimTK::Event::Cause::operator=(SimTK::Event::Cause::Num)
@@ -2197,12 +2197,12 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
 
   DEBUG_MSG("Adding wrapper for void SimTK::EventTriggerInfo::EventTriggerInfo(SimTK::EventId) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:212:14
-  t8.constructor<SimTK::EventId>(/*finalize=*/true);
+  t8.constructor<SimTK::EventId>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::EventTriggerInfo::EventTriggerInfo(const SimTK::EventTriggerInfo &) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:214:5
-  t8.constructor<const SimTK::EventTriggerInfo &>(/*finalize=*/true);
+  t8.constructor<const SimTK::EventTriggerInfo &>();
 
   DEBUG_MSG("Adding wrapper for SimTK::EventTriggerInfo & SimTK::EventTriggerInfo::operator=(const SimTK::EventTriggerInfo &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::EventTriggerInfo & SimTK::EventTriggerInfo::operator=(const SimTK::EventTriggerInfo &)
@@ -2270,12 +2270,12 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
 
   DEBUG_MSG("Adding wrapper for void SimTK::HandleEventsOptions::HandleEventsOptions(SimTK::Real) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:285:14
-  t9.constructor<SimTK::Real>(/*finalize=*/true);
+  t9.constructor<SimTK::Real>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::HandleEventsOptions::HandleEventsOptions(SimTK::HandleEventsOptions::Option) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:287:14
-  t9.constructor<SimTK::HandleEventsOptions::Option>(/*finalize=*/true);
+  t9.constructor<SimTK::HandleEventsOptions::Option>();
 
   DEBUG_MSG("Adding wrapper for SimTK::HandleEventsOptions & SimTK::HandleEventsOptions::clear() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::HandleEventsOptions & SimTK::HandleEventsOptions::clear()
@@ -2406,32 +2406,32 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
 
   DEBUG_MSG("Adding wrapper for void SimTK::SubsystemIndex::SubsystemIndex(int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:48:32
-  t15.constructor<int>(/*finalize=*/true);
+  t15.constructor<int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SubsystemIndex::SubsystemIndex(long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:48:32
-  t15.constructor<long>(/*finalize=*/true);
+  t15.constructor<long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SubsystemIndex::SubsystemIndex(long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:48:32
-  t15.constructor<long long>(/*finalize=*/true);
+  t15.constructor<long long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SubsystemIndex::SubsystemIndex(unsigned int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:48:32
-  t15.constructor<unsigned int>(/*finalize=*/true);
+  t15.constructor<unsigned int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SubsystemIndex::SubsystemIndex(unsigned long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:48:32
-  t15.constructor<unsigned long>(/*finalize=*/true);
+  t15.constructor<unsigned long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SubsystemIndex::SubsystemIndex(unsigned long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:48:32
-  t15.constructor<unsigned long long>(/*finalize=*/true);
+  t15.constructor<unsigned long long>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::SubsystemIndex::isValid() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::SubsystemIndex::isValid()
@@ -2886,32 +2886,32 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemYIndex::SystemYIndex(int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:56:32
-  t16.constructor<int>(/*finalize=*/true);
+  t16.constructor<int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemYIndex::SystemYIndex(long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:56:32
-  t16.constructor<long>(/*finalize=*/true);
+  t16.constructor<long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemYIndex::SystemYIndex(long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:56:32
-  t16.constructor<long long>(/*finalize=*/true);
+  t16.constructor<long long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemYIndex::SystemYIndex(unsigned int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:56:32
-  t16.constructor<unsigned int>(/*finalize=*/true);
+  t16.constructor<unsigned int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemYIndex::SystemYIndex(unsigned long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:56:32
-  t16.constructor<unsigned long>(/*finalize=*/true);
+  t16.constructor<unsigned long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemYIndex::SystemYIndex(unsigned long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:56:32
-  t16.constructor<unsigned long long>(/*finalize=*/true);
+  t16.constructor<unsigned long long>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::SystemYIndex::isValid() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::SystemYIndex::isValid()
@@ -3366,32 +3366,32 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemQIndex::SystemQIndex(int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:65:32
-  t17.constructor<int>(/*finalize=*/true);
+  t17.constructor<int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemQIndex::SystemQIndex(long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:65:32
-  t17.constructor<long>(/*finalize=*/true);
+  t17.constructor<long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemQIndex::SystemQIndex(long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:65:32
-  t17.constructor<long long>(/*finalize=*/true);
+  t17.constructor<long long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemQIndex::SystemQIndex(unsigned int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:65:32
-  t17.constructor<unsigned int>(/*finalize=*/true);
+  t17.constructor<unsigned int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemQIndex::SystemQIndex(unsigned long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:65:32
-  t17.constructor<unsigned long>(/*finalize=*/true);
+  t17.constructor<unsigned long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemQIndex::SystemQIndex(unsigned long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:65:32
-  t17.constructor<unsigned long long>(/*finalize=*/true);
+  t17.constructor<unsigned long long>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::SystemQIndex::isValid() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::SystemQIndex::isValid()
@@ -3846,32 +3846,32 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
 
   DEBUG_MSG("Adding wrapper for void SimTK::QIndex::QIndex(int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:69:32
-  t18.constructor<int>(/*finalize=*/true);
+  t18.constructor<int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::QIndex::QIndex(long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:69:32
-  t18.constructor<long>(/*finalize=*/true);
+  t18.constructor<long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::QIndex::QIndex(long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:69:32
-  t18.constructor<long long>(/*finalize=*/true);
+  t18.constructor<long long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::QIndex::QIndex(unsigned int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:69:32
-  t18.constructor<unsigned int>(/*finalize=*/true);
+  t18.constructor<unsigned int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::QIndex::QIndex(unsigned long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:69:32
-  t18.constructor<unsigned long>(/*finalize=*/true);
+  t18.constructor<unsigned long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::QIndex::QIndex(unsigned long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:69:32
-  t18.constructor<unsigned long long>(/*finalize=*/true);
+  t18.constructor<unsigned long long>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::QIndex::isValid() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::QIndex::isValid()
@@ -4326,32 +4326,32 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemUIndex::SystemUIndex(int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:77:32
-  t19.constructor<int>(/*finalize=*/true);
+  t19.constructor<int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemUIndex::SystemUIndex(long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:77:32
-  t19.constructor<long>(/*finalize=*/true);
+  t19.constructor<long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemUIndex::SystemUIndex(long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:77:32
-  t19.constructor<long long>(/*finalize=*/true);
+  t19.constructor<long long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemUIndex::SystemUIndex(unsigned int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:77:32
-  t19.constructor<unsigned int>(/*finalize=*/true);
+  t19.constructor<unsigned int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemUIndex::SystemUIndex(unsigned long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:77:32
-  t19.constructor<unsigned long>(/*finalize=*/true);
+  t19.constructor<unsigned long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemUIndex::SystemUIndex(unsigned long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:77:32
-  t19.constructor<unsigned long long>(/*finalize=*/true);
+  t19.constructor<unsigned long long>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::SystemUIndex::isValid() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::SystemUIndex::isValid()
@@ -4806,32 +4806,32 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
 
   DEBUG_MSG("Adding wrapper for void SimTK::UIndex::UIndex(int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:81:32
-  t20.constructor<int>(/*finalize=*/true);
+  t20.constructor<int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::UIndex::UIndex(long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:81:32
-  t20.constructor<long>(/*finalize=*/true);
+  t20.constructor<long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::UIndex::UIndex(long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:81:32
-  t20.constructor<long long>(/*finalize=*/true);
+  t20.constructor<long long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::UIndex::UIndex(unsigned int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:81:32
-  t20.constructor<unsigned int>(/*finalize=*/true);
+  t20.constructor<unsigned int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::UIndex::UIndex(unsigned long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:81:32
-  t20.constructor<unsigned long>(/*finalize=*/true);
+  t20.constructor<unsigned long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::UIndex::UIndex(unsigned long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:81:32
-  t20.constructor<unsigned long long>(/*finalize=*/true);
+  t20.constructor<unsigned long long>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::UIndex::isValid() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::UIndex::isValid()
@@ -5286,32 +5286,32 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemZIndex::SystemZIndex(int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:89:32
-  t21.constructor<int>(/*finalize=*/true);
+  t21.constructor<int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemZIndex::SystemZIndex(long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:89:32
-  t21.constructor<long>(/*finalize=*/true);
+  t21.constructor<long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemZIndex::SystemZIndex(long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:89:32
-  t21.constructor<long long>(/*finalize=*/true);
+  t21.constructor<long long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemZIndex::SystemZIndex(unsigned int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:89:32
-  t21.constructor<unsigned int>(/*finalize=*/true);
+  t21.constructor<unsigned int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemZIndex::SystemZIndex(unsigned long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:89:32
-  t21.constructor<unsigned long>(/*finalize=*/true);
+  t21.constructor<unsigned long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemZIndex::SystemZIndex(unsigned long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:89:32
-  t21.constructor<unsigned long long>(/*finalize=*/true);
+  t21.constructor<unsigned long long>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::SystemZIndex::isValid() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::SystemZIndex::isValid()
@@ -5766,32 +5766,32 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
 
   DEBUG_MSG("Adding wrapper for void SimTK::ZIndex::ZIndex(int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:93:32
-  t22.constructor<int>(/*finalize=*/true);
+  t22.constructor<int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::ZIndex::ZIndex(long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:93:32
-  t22.constructor<long>(/*finalize=*/true);
+  t22.constructor<long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::ZIndex::ZIndex(long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:93:32
-  t22.constructor<long long>(/*finalize=*/true);
+  t22.constructor<long long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::ZIndex::ZIndex(unsigned int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:93:32
-  t22.constructor<unsigned int>(/*finalize=*/true);
+  t22.constructor<unsigned int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::ZIndex::ZIndex(unsigned long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:93:32
-  t22.constructor<unsigned long>(/*finalize=*/true);
+  t22.constructor<unsigned long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::ZIndex::ZIndex(unsigned long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:93:32
-  t22.constructor<unsigned long long>(/*finalize=*/true);
+  t22.constructor<unsigned long long>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::ZIndex::isValid() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::ZIndex::isValid()
@@ -6246,32 +6246,32 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
 
   DEBUG_MSG("Adding wrapper for void SimTK::DiscreteVariableIndex::DiscreteVariableIndex(int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:99:32
-  t23.constructor<int>(/*finalize=*/true);
+  t23.constructor<int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::DiscreteVariableIndex::DiscreteVariableIndex(long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:99:32
-  t23.constructor<long>(/*finalize=*/true);
+  t23.constructor<long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::DiscreteVariableIndex::DiscreteVariableIndex(long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:99:32
-  t23.constructor<long long>(/*finalize=*/true);
+  t23.constructor<long long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::DiscreteVariableIndex::DiscreteVariableIndex(unsigned int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:99:32
-  t23.constructor<unsigned int>(/*finalize=*/true);
+  t23.constructor<unsigned int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::DiscreteVariableIndex::DiscreteVariableIndex(unsigned long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:99:32
-  t23.constructor<unsigned long>(/*finalize=*/true);
+  t23.constructor<unsigned long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::DiscreteVariableIndex::DiscreteVariableIndex(unsigned long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:99:32
-  t23.constructor<unsigned long long>(/*finalize=*/true);
+  t23.constructor<unsigned long long>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::DiscreteVariableIndex::isValid() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::DiscreteVariableIndex::isValid()
@@ -6726,32 +6726,32 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
 
   DEBUG_MSG("Adding wrapper for void SimTK::CacheEntryIndex::CacheEntryIndex(int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:105:32
-  t24.constructor<int>(/*finalize=*/true);
+  t24.constructor<int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::CacheEntryIndex::CacheEntryIndex(long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:105:32
-  t24.constructor<long>(/*finalize=*/true);
+  t24.constructor<long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::CacheEntryIndex::CacheEntryIndex(long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:105:32
-  t24.constructor<long long>(/*finalize=*/true);
+  t24.constructor<long long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::CacheEntryIndex::CacheEntryIndex(unsigned int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:105:32
-  t24.constructor<unsigned int>(/*finalize=*/true);
+  t24.constructor<unsigned int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::CacheEntryIndex::CacheEntryIndex(unsigned long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:105:32
-  t24.constructor<unsigned long>(/*finalize=*/true);
+  t24.constructor<unsigned long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::CacheEntryIndex::CacheEntryIndex(unsigned long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:105:32
-  t24.constructor<unsigned long long>(/*finalize=*/true);
+  t24.constructor<unsigned long long>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::CacheEntryIndex::isValid() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::CacheEntryIndex::isValid()
@@ -7206,32 +7206,32 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemYErrIndex::SystemYErrIndex(int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:112:32
-  t25.constructor<int>(/*finalize=*/true);
+  t25.constructor<int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemYErrIndex::SystemYErrIndex(long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:112:32
-  t25.constructor<long>(/*finalize=*/true);
+  t25.constructor<long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemYErrIndex::SystemYErrIndex(long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:112:32
-  t25.constructor<long long>(/*finalize=*/true);
+  t25.constructor<long long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemYErrIndex::SystemYErrIndex(unsigned int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:112:32
-  t25.constructor<unsigned int>(/*finalize=*/true);
+  t25.constructor<unsigned int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemYErrIndex::SystemYErrIndex(unsigned long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:112:32
-  t25.constructor<unsigned long>(/*finalize=*/true);
+  t25.constructor<unsigned long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemYErrIndex::SystemYErrIndex(unsigned long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:112:32
-  t25.constructor<unsigned long long>(/*finalize=*/true);
+  t25.constructor<unsigned long long>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::SystemYErrIndex::isValid() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::SystemYErrIndex::isValid()
@@ -7686,32 +7686,32 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemQErrIndex::SystemQErrIndex(int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:119:32
-  t26.constructor<int>(/*finalize=*/true);
+  t26.constructor<int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemQErrIndex::SystemQErrIndex(long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:119:32
-  t26.constructor<long>(/*finalize=*/true);
+  t26.constructor<long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemQErrIndex::SystemQErrIndex(long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:119:32
-  t26.constructor<long long>(/*finalize=*/true);
+  t26.constructor<long long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemQErrIndex::SystemQErrIndex(unsigned int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:119:32
-  t26.constructor<unsigned int>(/*finalize=*/true);
+  t26.constructor<unsigned int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemQErrIndex::SystemQErrIndex(unsigned long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:119:32
-  t26.constructor<unsigned long>(/*finalize=*/true);
+  t26.constructor<unsigned long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemQErrIndex::SystemQErrIndex(unsigned long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:119:32
-  t26.constructor<unsigned long long>(/*finalize=*/true);
+  t26.constructor<unsigned long long>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::SystemQErrIndex::isValid() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::SystemQErrIndex::isValid()
@@ -8166,32 +8166,32 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
 
   DEBUG_MSG("Adding wrapper for void SimTK::QErrIndex::QErrIndex(int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:123:32
-  t27.constructor<int>(/*finalize=*/true);
+  t27.constructor<int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::QErrIndex::QErrIndex(long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:123:32
-  t27.constructor<long>(/*finalize=*/true);
+  t27.constructor<long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::QErrIndex::QErrIndex(long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:123:32
-  t27.constructor<long long>(/*finalize=*/true);
+  t27.constructor<long long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::QErrIndex::QErrIndex(unsigned int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:123:32
-  t27.constructor<unsigned int>(/*finalize=*/true);
+  t27.constructor<unsigned int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::QErrIndex::QErrIndex(unsigned long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:123:32
-  t27.constructor<unsigned long>(/*finalize=*/true);
+  t27.constructor<unsigned long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::QErrIndex::QErrIndex(unsigned long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:123:32
-  t27.constructor<unsigned long long>(/*finalize=*/true);
+  t27.constructor<unsigned long long>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::QErrIndex::isValid() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::QErrIndex::isValid()
@@ -8646,32 +8646,32 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemUErrIndex::SystemUErrIndex(int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:130:32
-  t28.constructor<int>(/*finalize=*/true);
+  t28.constructor<int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemUErrIndex::SystemUErrIndex(long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:130:32
-  t28.constructor<long>(/*finalize=*/true);
+  t28.constructor<long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemUErrIndex::SystemUErrIndex(long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:130:32
-  t28.constructor<long long>(/*finalize=*/true);
+  t28.constructor<long long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemUErrIndex::SystemUErrIndex(unsigned int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:130:32
-  t28.constructor<unsigned int>(/*finalize=*/true);
+  t28.constructor<unsigned int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemUErrIndex::SystemUErrIndex(unsigned long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:130:32
-  t28.constructor<unsigned long>(/*finalize=*/true);
+  t28.constructor<unsigned long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemUErrIndex::SystemUErrIndex(unsigned long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:130:32
-  t28.constructor<unsigned long long>(/*finalize=*/true);
+  t28.constructor<unsigned long long>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::SystemUErrIndex::isValid() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::SystemUErrIndex::isValid()
@@ -9126,32 +9126,32 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
 
   DEBUG_MSG("Adding wrapper for void SimTK::UErrIndex::UErrIndex(int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:134:32
-  t29.constructor<int>(/*finalize=*/true);
+  t29.constructor<int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::UErrIndex::UErrIndex(long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:134:32
-  t29.constructor<long>(/*finalize=*/true);
+  t29.constructor<long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::UErrIndex::UErrIndex(long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:134:32
-  t29.constructor<long long>(/*finalize=*/true);
+  t29.constructor<long long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::UErrIndex::UErrIndex(unsigned int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:134:32
-  t29.constructor<unsigned int>(/*finalize=*/true);
+  t29.constructor<unsigned int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::UErrIndex::UErrIndex(unsigned long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:134:32
-  t29.constructor<unsigned long>(/*finalize=*/true);
+  t29.constructor<unsigned long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::UErrIndex::UErrIndex(unsigned long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:134:32
-  t29.constructor<unsigned long long>(/*finalize=*/true);
+  t29.constructor<unsigned long long>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::UErrIndex::isValid() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::UErrIndex::isValid()
@@ -9606,32 +9606,32 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemUDotErrIndex::SystemUDotErrIndex(int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:141:32
-  t30.constructor<int>(/*finalize=*/true);
+  t30.constructor<int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemUDotErrIndex::SystemUDotErrIndex(long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:141:32
-  t30.constructor<long>(/*finalize=*/true);
+  t30.constructor<long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemUDotErrIndex::SystemUDotErrIndex(long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:141:32
-  t30.constructor<long long>(/*finalize=*/true);
+  t30.constructor<long long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemUDotErrIndex::SystemUDotErrIndex(unsigned int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:141:32
-  t30.constructor<unsigned int>(/*finalize=*/true);
+  t30.constructor<unsigned int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemUDotErrIndex::SystemUDotErrIndex(unsigned long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:141:32
-  t30.constructor<unsigned long>(/*finalize=*/true);
+  t30.constructor<unsigned long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemUDotErrIndex::SystemUDotErrIndex(unsigned long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:141:32
-  t30.constructor<unsigned long long>(/*finalize=*/true);
+  t30.constructor<unsigned long long>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::SystemUDotErrIndex::isValid() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::SystemUDotErrIndex::isValid()
@@ -10086,32 +10086,32 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
 
   DEBUG_MSG("Adding wrapper for void SimTK::UDotErrIndex::UDotErrIndex(int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:145:32
-  t31.constructor<int>(/*finalize=*/true);
+  t31.constructor<int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::UDotErrIndex::UDotErrIndex(long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:145:32
-  t31.constructor<long>(/*finalize=*/true);
+  t31.constructor<long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::UDotErrIndex::UDotErrIndex(long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:145:32
-  t31.constructor<long long>(/*finalize=*/true);
+  t31.constructor<long long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::UDotErrIndex::UDotErrIndex(unsigned int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:145:32
-  t31.constructor<unsigned int>(/*finalize=*/true);
+  t31.constructor<unsigned int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::UDotErrIndex::UDotErrIndex(unsigned long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:145:32
-  t31.constructor<unsigned long>(/*finalize=*/true);
+  t31.constructor<unsigned long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::UDotErrIndex::UDotErrIndex(unsigned long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:145:32
-  t31.constructor<unsigned long long>(/*finalize=*/true);
+  t31.constructor<unsigned long long>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::UDotErrIndex::isValid() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::UDotErrIndex::isValid()
@@ -10566,32 +10566,32 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemMultiplierIndex::SystemMultiplierIndex(int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:152:32
-  t32.constructor<int>(/*finalize=*/true);
+  t32.constructor<int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemMultiplierIndex::SystemMultiplierIndex(long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:152:32
-  t32.constructor<long>(/*finalize=*/true);
+  t32.constructor<long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemMultiplierIndex::SystemMultiplierIndex(long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:152:32
-  t32.constructor<long long>(/*finalize=*/true);
+  t32.constructor<long long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemMultiplierIndex::SystemMultiplierIndex(unsigned int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:152:32
-  t32.constructor<unsigned int>(/*finalize=*/true);
+  t32.constructor<unsigned int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemMultiplierIndex::SystemMultiplierIndex(unsigned long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:152:32
-  t32.constructor<unsigned long>(/*finalize=*/true);
+  t32.constructor<unsigned long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::SystemMultiplierIndex::SystemMultiplierIndex(unsigned long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:152:32
-  t32.constructor<unsigned long long>(/*finalize=*/true);
+  t32.constructor<unsigned long long>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::SystemMultiplierIndex::isValid() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::SystemMultiplierIndex::isValid()
@@ -11046,32 +11046,32 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
 
   DEBUG_MSG("Adding wrapper for void SimTK::MultiplierIndex::MultiplierIndex(int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:156:32
-  t33.constructor<int>(/*finalize=*/true);
+  t33.constructor<int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::MultiplierIndex::MultiplierIndex(long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:156:32
-  t33.constructor<long>(/*finalize=*/true);
+  t33.constructor<long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::MultiplierIndex::MultiplierIndex(long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:156:32
-  t33.constructor<long long>(/*finalize=*/true);
+  t33.constructor<long long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::MultiplierIndex::MultiplierIndex(unsigned int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:156:32
-  t33.constructor<unsigned int>(/*finalize=*/true);
+  t33.constructor<unsigned int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::MultiplierIndex::MultiplierIndex(unsigned long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:156:32
-  t33.constructor<unsigned long>(/*finalize=*/true);
+  t33.constructor<unsigned long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::MultiplierIndex::MultiplierIndex(unsigned long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:156:32
-  t33.constructor<unsigned long long>(/*finalize=*/true);
+  t33.constructor<unsigned long long>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::MultiplierIndex::isValid() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::MultiplierIndex::isValid()
@@ -11526,7 +11526,7 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
 
   DEBUG_MSG("Adding wrapper for void SimTK::State::State(const SimTK::State &) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/State.h:291:1
-  t34.constructor<const SimTK::State &>(/*finalize=*/true);
+  t34.constructor<const SimTK::State &>();
 
 
   DEBUG_MSG("Adding wrapper for SimTK::State & SimTK::State::operator=(const SimTK::State &) (" __HERE__ ")");

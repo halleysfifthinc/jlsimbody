@@ -27,12 +27,12 @@ void define_SimTKcommon_Mat(jlcxx::Module& types){
    */
   auto t0_decl_methods = []<int M, int N, typename ELT, int CS, int RS> (jlcxx::TypeWrapper<SimTK::Mat<M, N, ELT, CS, RS>> wrapped){
     typedef SimTK::Mat<M, N, ELT, CS, RS> WrappedType;
-    wrapped.template constructor<>(/*finalize=*/true);
+    wrapped.template constructor<>();
 
 
     DEBUG_MSG("Adding wrapper for void SimTK::Mat::Mat<M, N, ELT, CS, RS>(int) (" __HERE__ ")");
     // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Mat.h:376:14
-    wrapped.template constructor<int>(/*finalize=*/true);
+    wrapped.template constructor<int>();
 
     DEBUG_MSG("Adding wrapper for void SimTK::Mat::setToNaN() (" __HERE__ ")");
     // signature to use in the veto list: void SimTK::Mat::setToNaN()

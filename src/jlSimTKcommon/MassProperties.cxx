@@ -32,14 +32,14 @@ void define_SimTKcommon_MassProperties(jlcxx::Module& types, const ArrayWrapper&
     typedef SimTK::Inertia_<P> WrappedType;
     typedef SimTK::Rotation_<P> Rotation;
     typedef SimTK::InverseRotation_<P> InverseRotation;
-    wrapped.template constructor<>(/*finalize=*/true);
-    wrapped.template constructor<const P &>(/*finalize=*/true);
-    wrapped.template constructor<const SimTK::Vec<3,P>, const P &>(/*finalize=*/true);
-    wrapped.template constructor<const SimTK::Vec<3,P>, const SimTK::Vec<3,P>>(/*finalize=*/true);
-    // wrapped.template constructor<const SimTK::Vec<3,P>>(/*finalize=*/true); // Second argument has a default
-    wrapped.template constructor<const P &, const P &, const P &>(/*finalize=*/true);
-    wrapped.template constructor<const P &, const P &, const P &, const P &, const P &, const P &>(/*finalize=*/true);
-    wrapped.template constructor<const SimTK::Mat<3,3,P> &>(/*finalize=*/true);
+    wrapped.template constructor<>();
+    wrapped.template constructor<const P &>();
+    wrapped.template constructor<const SimTK::Vec<3,P>, const P &>();
+    wrapped.template constructor<const SimTK::Vec<3,P>, const SimTK::Vec<3,P>>();
+    // wrapped.template constructor<const SimTK::Vec<3,P>>(); // Second argument has a default
+    wrapped.template constructor<const P &, const P &, const P &>();
+    wrapped.template constructor<const P &, const P &, const P &, const P &, const P &, const P &>();
+    wrapped.template constructor<const SimTK::Mat<3,3,P> &>();
 
     wrapped.method("setInertia", static_cast<WrappedType & (WrappedType::*)(const SimTK::Vec<3,P> &, const SimTK::Vec<3,P> &) >(&WrappedType::setInertia));
     wrapped.method("setInertia", static_cast<WrappedType & (WrappedType::*)(const P &, const P &, const P &) >(&WrappedType::setInertia));
@@ -117,8 +117,8 @@ void define_SimTKcommon_MassProperties(jlcxx::Module& types, const ArrayWrapper&
     typedef SimTK::Transform_<P> Transform;
     typedef SimTK::Rotation_<P> Rotation;
     typedef SimTK::Vec<3,P> Vec3P;
-    wrapped.template constructor<>(/*finalize=*/true);
-    wrapped.template constructor<const P &, const Vec3P &, const Inertia &>(/*finalize=*/true);
+    wrapped.template constructor<>();
+    wrapped.template constructor<const P &, const Vec3P &, const Inertia &>();
 
     wrapped.method("setMassProperties", static_cast<WrappedType & (WrappedType::*)(const P &, const Vec3P &, const Inertia &) >(&WrappedType::setMassProperties));
     wrapped.method("getMass", static_cast<const P & (WrappedType::*)() const>(&WrappedType::getMass));

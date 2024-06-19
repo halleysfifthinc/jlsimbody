@@ -30,11 +30,11 @@ void define_SimTKcommon_Vec(jlcxx::Module& types, const ArrayWrapper& array_wrap
    */
   auto t0_decl_methods = []<int M, typename ELT, int STRIDE> (jlcxx::TypeWrapper<SimTK::Vec<M, ELT, STRIDE>> wrapped){
     typedef SimTK::Vec<M, ELT, STRIDE> WrappedType;
-    wrapped.template constructor<>(/*finalize=*/true);
+    wrapped.template constructor<>();
 
     DEBUG_MSG("Adding wrapper for void SimTK::Vec::Vec<M, ELT, STRIDE>(int) (" __HERE__ ")");
     // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Vec.h:485:14
-    wrapped.template constructor<int>(/*finalize=*/true);
+    wrapped.template constructor<int>();
     CLEAR_DEBUG_MSG();
 
     DEBUG_MSG("Adding wrapper for void SimTK::Vec::setToNaN() (" __HERE__ ")");

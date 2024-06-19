@@ -48,7 +48,7 @@ void define_SimTKcommon_Function(jlcxx::Module& types, const ArrayWrapper & arra
    */
   auto t0_decl_methods = []<typename T> (jlcxx::TypeWrapper<SimTK::Function_<T>> wrapped){
     typedef SimTK::Function_<T> WrappedType;
-    // wrapped.template constructor<>(/*finalize=*/true);
+    // wrapped.template constructor<>();
 
     // DEBUG_MSG("Adding wrapper for T SimTK::Function_::calcValue(const SimTK::Vector &) (" __HERE__ ")");
     // // signature to use in the veto list: T SimTK::Function_::calcValue(const SimTK::Vector &)
@@ -95,8 +95,8 @@ void define_SimTKcommon_Function(jlcxx::Module& types, const ArrayWrapper & arra
 
     DEBUG_MSG("Adding wrapper for void SimTK::Function_::Constant::Constant(T, int) (" __HERE__ ")");
     // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Function.h:135:14
-    // wrapped.template constructor<T>(/*finalize=*/true);
-    // wrapped.template constructor<T, int>(/*finalize=*/true);
+    // wrapped.template constructor<T>();
+    // wrapped.template constructor<T, int>();
     wrapped.constructor([] (T t) {
       return reinterpret_cast<WrappedType*>(new typename SimTK::Function_<T>::Constant(t));
     });
@@ -149,7 +149,7 @@ void define_SimTKcommon_Function(jlcxx::Module& types, const ArrayWrapper & arra
 
     DEBUG_MSG("Adding wrapper for void SimTK::Function_::Linear::Linear(const Vector_<T> &) (" __HERE__ ")");
     // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Function.h:182:14
-    // wrapped.template constructor<const SimTK::Vector_<T> &>(/*finalize=*/true);
+    // wrapped.template constructor<const SimTK::Vector_<T> &>();
     wrapped.constructor([] (const SimTK::Vector_<T>& coef) {
       return reinterpret_cast<WrappedType*>(new typename SimTK::Function_<T>::Linear(coef));
     });
@@ -199,7 +199,7 @@ void define_SimTKcommon_Function(jlcxx::Module& types, const ArrayWrapper & arra
 
     DEBUG_MSG("Adding wrapper for void SimTK::Function_::Polynomial::Polynomial(const Vector_<T> &) (" __HERE__ ")");
     // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Function.h:231:5
-    // wrapped.template constructor<const SimTK::Vector_<T> &>(/*finalize=*/true);
+    // wrapped.template constructor<const SimTK::Vector_<T> &>();
     wrapped.constructor([] (const SimTK::Vector_<T>& coef) {
       return reinterpret_cast<WrappedType*>(new typename SimTK::Function_<T>::Polynomial(coef));
     });
@@ -248,7 +248,7 @@ void define_SimTKcommon_Function(jlcxx::Module& types, const ArrayWrapper & arra
 
     DEBUG_MSG("Adding wrapper for void SimTK::Function_::Sinusoid::Sinusoid(const Vector_<T> &) (" __HERE__ ")");
     // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Function.h:231:5
-    // wrapped.template constructor<SimTK::Real, SimTK::Real, SimTK::Real>(/*finalize=*/true);
+    // wrapped.template constructor<SimTK::Real, SimTK::Real, SimTK::Real>();
     wrapped.constructor([] (SimTK::Real ampl, SimTK::Real freq, SimTK::Real phase) {
       return reinterpret_cast<WrappedType*>(new typename SimTK::Function_<T>::Sinusoid(ampl, freq, phase));
     });
@@ -304,7 +304,7 @@ void define_SimTKcommon_Function(jlcxx::Module& types, const ArrayWrapper & arra
     typedef typename SimTK::Function_Step_<T> WrappedType;
     DEBUG_MSG("Adding wrapper for void SimTK::Function_::Step::Step(const T &, const T &, SimTK::Real, SimTK::Real) (" __HERE__ ")");
     // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Function.h:374:5
-    // wrapped.template constructor<const T &, const T &, SimTK::Real, SimTK::Real>(/*finalize=*/true);
+    // wrapped.template constructor<const T &, const T &, SimTK::Real, SimTK::Real>();
     wrapped.constructor([] (const T& y0, const T& y1, SimTK::Real x0, SimTK::Real x1) {
       return reinterpret_cast<WrappedType*>(new typename SimTK::Function_<T>::Step(y0, y1, x0, x1));
     });

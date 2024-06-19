@@ -105,13 +105,13 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
 
   DEBUG_MSG("Adding wrapper for void SimTK::AbstractMeasure::AbstractMeasure(SimTK::AbstractMeasure::Implementation *) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Measure.h:164:14
-  // t1.constructor<SimTK::AbstractMeasure::Implementation *>(/*finalize=*/true);
+  // t1.constructor<SimTK::AbstractMeasure::Implementation *>();
 
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::AbstractMeasure::AbstractMeasure(const SimTK::AbstractMeasure &) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Measure.h:174:5
-  t1.constructor<const SimTK::AbstractMeasure &>(/*finalize=*/true);
+  t1.constructor<const SimTK::AbstractMeasure &>();
 
   DEBUG_MSG("Adding wrapper for SimTK::AbstractMeasure & SimTK::AbstractMeasure::operator=(const SimTK::AbstractMeasure &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::AbstractMeasure & SimTK::AbstractMeasure::operator=(const SimTK::AbstractMeasure &)
@@ -201,7 +201,7 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
 
     DEBUG_MSG("Adding wrapper for void SimTK::Measure_::Measure_<T>(typename WrappedType::Implementation *) (" __HERE__ ")");
     // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Measure.h:267:44
-    // wrapped.template constructor<typename WrappedType::Implementation *>(/*finalize=*/true);
+    // wrapped.template constructor<typename WrappedType::Implementation *>();
 
     DEBUG_MSG("Adding wrapper for Measure_<T> & SimTK::Measure_::operator=(const WrappedType &) (" __HERE__ ")");
     // signature to use in the veto list: Measure_<T> & SimTK::Measure_::operator=(const WrappedType &)
@@ -280,13 +280,13 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
 
   auto t4_decl_methods = []<typename T> (jlcxx::TypeWrapper<SimTK::Measure_Constant_<T>> wrapped){
     typedef SimTK::Measure_Constant_<T> WrappedType;
-    // wrapped.template constructor<>(/*finalize=*/true);
+    // wrapped.template constructor<>();
     wrapped.constructor([] () {
       return reinterpret_cast<WrappedType*>(new typename SimTK::Measure_<T>::Constant());
     });
     DEBUG_MSG("Adding wrapper for void SimTK::Measure_::Constant::Constant(SimTK::Measure_::Constant::Implementation *) (" __HERE__ ")");
     // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Measure.h:343:35
-    // wrapped.template constructor<typename WrappedType::Implementation *>(/*finalize=*/true);
+    // wrapped.template constructor<typename WrappedType::Implementation *>();
 
 
     DEBUG_MSG("Adding wrapper for SimTK::Measure_::Constant & SimTK::Measure_::Constant::operator=(const SimTK::Measure_::Constant &) (" __HERE__ ")");
@@ -312,21 +312,21 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
 
     DEBUG_MSG("Adding wrapper for void SimTK::Measure_::Constant::Constant(SimTK::Subsystem &) (" __HERE__ ")");
     // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Measure.h:343:35
-    // wrapped.template constructor<SimTK::Subsystem &>(/*finalize=*/true);
+    // wrapped.template constructor<SimTK::Subsystem &>();
     wrapped.constructor([] (SimTK::Subsystem& sub) {
       return reinterpret_cast<WrappedType*>(new typename SimTK::Measure_<T>::Constant(sub));
     });
 
     DEBUG_MSG("Adding wrapper for void SimTK::Measure_::Constant::Constant(const T &) (" __HERE__ ")");
     // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Measure.h:347:14
-    // wrapped.template constructor<const T &>(/*finalize=*/true);
+    // wrapped.template constructor<const T &>();
     wrapped.constructor([] (const T& val) {
       return reinterpret_cast<WrappedType*>(new typename SimTK::Measure_<T>::Constant(val));
     });
 
     DEBUG_MSG("Adding wrapper for void SimTK::Measure_::Constant::Constant(SimTK::Subsystem &, const T &) (" __HERE__ ")");
     // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Measure.h:352:5
-    // wrapped.template constructor<SimTK::Subsystem &, const T &>(/*finalize=*/true);
+    // wrapped.template constructor<SimTK::Subsystem &, const T &>();
     wrapped.constructor([] (SimTK::Subsystem& sub, const T& val) {
       return reinterpret_cast<WrappedType*>(new typename SimTK::Measure_<T>::Constant(sub, val));
     });

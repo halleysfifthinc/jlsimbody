@@ -46,7 +46,7 @@ void define_SimTKcommon_Stage(jlcxx::Module& types){
   DEBUG_MSG("Adding wrapper for type SimTK::Stage (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Stage.h:66:7
   auto t0 = types.add_type<SimTK::Stage>("SimTK!Stage");
-  t0.template constructor<>(/*finalize=*/true);
+  t0.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::Exception::RealizeTopologyMustBeCalledFirst (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Stage.h:189:7
@@ -87,12 +87,12 @@ void define_SimTKcommon_Stage(jlcxx::Module& types){
 
   DEBUG_MSG("Adding wrapper for void SimTK::Stage::Stage(SimTK::Stage::Level) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Stage.h:95:5
-  t0.constructor<SimTK::Stage::Level>(/*finalize=*/true);
+  t0.constructor<SimTK::Stage::Level>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::Stage::Stage(int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Stage.h:100:14
-  t0.constructor<int>(/*finalize=*/true);
+  t0.constructor<int>();
   types.set_override_module(jl_base_module);
 
   DEBUG_MSG("Adding wrapper for bool SimTK::Stage::operator==(SimTK::Stage::Level) (" __HERE__ ")");
@@ -212,7 +212,7 @@ void define_SimTKcommon_Stage(jlcxx::Module& types){
 
   DEBUG_MSG("Adding wrapper for void SimTK::Exception::RealizeTopologyMustBeCalledFirst::RealizeTopologyMustBeCalledFirst(const char *, int, const char *, const char *, const char *) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Stage.h:191:5
-  t4.constructor<const char *, int, const char *, const char *, const char *>(/*finalize=*/true);
+  t4.constructor<const char *, int, const char *, const char *, const char *>();
 
   /* End of SimTK::Exception::RealizeTopologyMustBeCalledFirst class method wrappers
    **********************************************************************/
@@ -225,7 +225,7 @@ void define_SimTKcommon_Stage(jlcxx::Module& types){
 
   DEBUG_MSG("Adding wrapper for void SimTK::Exception::StateAndSystemTopologyVersionsMustMatch::StateAndSystemTopologyVersionsMustMatch(const char *, int, const char *, const char *, const char *, int, int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Stage.h:204:5
-  t5.constructor<const char *, int, const char *, const char *, const char *, int, int>(/*finalize=*/true);
+  t5.constructor<const char *, int, const char *, const char *, const char *, int, int>();
 
   /* End of SimTK::Exception::StateAndSystemTopologyVersionsMustMatch class method wrappers
    **********************************************************************/
@@ -238,7 +238,7 @@ void define_SimTKcommon_Stage(jlcxx::Module& types){
 
   DEBUG_MSG("Adding wrapper for void SimTK::Exception::StageTooLow::StageTooLow(const char *, int, SimTK::Stage, SimTK::Stage, const char *) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Stage.h:228:5
-  t6.constructor<const char *, int, SimTK::Stage, SimTK::Stage, const char *>(/*finalize=*/true);
+  t6.constructor<const char *, int, SimTK::Stage, SimTK::Stage, const char *>();
 
   /* End of SimTK::Exception::StageTooLow class method wrappers
    **********************************************************************/
@@ -251,7 +251,7 @@ void define_SimTKcommon_Stage(jlcxx::Module& types){
 
   DEBUG_MSG("Adding wrapper for void SimTK::Exception::StageIsWrong::StageIsWrong(const char *, int, SimTK::Stage, SimTK::Stage, const char *) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Stage.h:239:5
-  t7.constructor<const char *, int, SimTK::Stage, SimTK::Stage, const char *>(/*finalize=*/true);
+  t7.constructor<const char *, int, SimTK::Stage, SimTK::Stage, const char *>();
 
   /* End of SimTK::Exception::StageIsWrong class method wrappers
    **********************************************************************/
@@ -264,7 +264,7 @@ void define_SimTKcommon_Stage(jlcxx::Module& types){
 
   DEBUG_MSG("Adding wrapper for void SimTK::Exception::StageTooHigh::StageTooHigh(const char *, int, SimTK::Stage, SimTK::Stage, const char *) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Stage.h:250:5
-  t8.constructor<const char *, int, SimTK::Stage, SimTK::Stage, const char *>(/*finalize=*/true);
+  t8.constructor<const char *, int, SimTK::Stage, SimTK::Stage, const char *>();
 
   /* End of SimTK::Exception::StageTooHigh class method wrappers
    **********************************************************************/
@@ -277,7 +277,7 @@ void define_SimTKcommon_Stage(jlcxx::Module& types){
 
   DEBUG_MSG("Adding wrapper for void SimTK::Exception::StageOutOfRange::StageOutOfRange(const char *, int, SimTK::Stage, SimTK::Stage, SimTK::Stage, const char *) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Stage.h:261:5
-  t9.constructor<const char *, int, SimTK::Stage, SimTK::Stage, SimTK::Stage, const char *>(/*finalize=*/true);
+  t9.constructor<const char *, int, SimTK::Stage, SimTK::Stage, SimTK::Stage, const char *>();
 
   /* End of SimTK::Exception::StageOutOfRange class method wrappers
    **********************************************************************/
@@ -290,7 +290,7 @@ void define_SimTKcommon_Stage(jlcxx::Module& types){
 
   DEBUG_MSG("Adding wrapper for void SimTK::Exception::CacheEntryOutOfDate::CacheEntryOutOfDate(const char *, int, SimTK::Stage, SimTK::Stage, SimTK::StageVersion, SimTK::StageVersion) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Stage.h:272:5
-  t10.constructor<const char *, int, SimTK::Stage, SimTK::Stage, SimTK::StageVersion, SimTK::StageVersion>(/*finalize=*/true);
+  t10.constructor<const char *, int, SimTK::Stage, SimTK::Stage, SimTK::StageVersion, SimTK::StageVersion>();
 
   /* End of SimTK::Exception::CacheEntryOutOfDate class method wrappers
    **********************************************************************/

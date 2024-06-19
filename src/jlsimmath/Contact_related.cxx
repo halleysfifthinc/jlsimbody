@@ -32,27 +32,27 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("Adding wrapper for type SimTK::ContactSurfaceIndex (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:39:32
   auto t0 = types.add_type<SimTK::ContactSurfaceIndex>("SimTK!ContactSurfaceIndex");
-  t0.template constructor<>(/*finalize=*/true);
+  t0.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::ContactId (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:50:32
   auto t1 = types.add_type<SimTK::ContactId>("SimTK!ContactId");
-  t1.template constructor<>(/*finalize=*/true);
+  t1.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::ContactTypeId (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:58:32
   auto t2 = types.add_type<SimTK::ContactTypeId>("SimTK!ContactTypeId");
-  t2.template constructor<>(/*finalize=*/true);
+  t2.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::Contact (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:85:28
   auto t3 = types.add_type<SimTK::Contact>("SimTK!Contact");
-  t3.template constructor<>(/*finalize=*/true);
+  t3.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::UntrackedContact (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:182:28
   auto t5 = types.add_type<SimTK::UntrackedContact>("SimTK!UntrackedContact", jlcxx::julia_base_type<SimTK::Contact>());
-  t5.template constructor<>(/*finalize=*/true);
+  t5.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::BrokenContact (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:216:28
@@ -81,7 +81,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("Adding wrapper for type SimTK::Geodesic (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:51:28
   auto t12 = types.add_type<SimTK::Geodesic>("SimTK!Geodesic");
-  t12.template constructor<>(/*finalize=*/true);
+  t12.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::GeodesicDecorator (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:274:7
@@ -90,27 +90,27 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("Adding wrapper for type SimTK::GeodesicOptions (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:311:7
   auto t15 = types.add_type<SimTK::GeodesicOptions>("SimTK!GeodesicOptions");
-  t15.template constructor<>(/*finalize=*/true);
+  t15.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::ContactGeometryTypeId (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:44:32
   auto t16 = types.add_type<SimTK::ContactGeometryTypeId>("SimTK!ContactGeometryTypeId");
-  t16.template constructor<>(/*finalize=*/true);
+  t16.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::ContactGeometry (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:110:28
   auto t17 = types.add_type<SimTK::ContactGeometry>("SimTK!ContactGeometry");
-  t17.template constructor<>(/*finalize=*/true);
+  t17.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::Plane (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1414:7
   auto t19 = types.add_type<SimTK::Plane>("SimTK!Plane");
-  t19.template constructor<>(/*finalize=*/true);
+  t19.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::ContactGeometry::HalfSpace (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:826:45
   auto t21 = types.add_type<SimTK::ContactGeometry::HalfSpace>("SimTK!ContactGeometry!HalfSpace", jlcxx::julia_base_type<SimTK::ContactGeometry>());
-  t21.template constructor<>(/*finalize=*/true);
+  t21.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::ContactGeometry::Cylinder (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:864:45
@@ -134,7 +134,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("Adding wrapper for type SimTK::BicubicSurface (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/BicubicSurface.h:158:28
   auto t26 = types.add_type<SimTK::BicubicSurface>("SimTK!BicubicSurface");
-  t26.template constructor<>(/*finalize=*/true);
+  t26.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::ContactGeometry::Brick (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1106:45
@@ -151,7 +151,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("Adding wrapper for type SimTK::OrientedBoundingBox (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/OrientedBoundingBox.h:42:28
   auto t31 = types.add_type<SimTK::OrientedBoundingBox>("SimTK!OrientedBoundingBox");
-  t31.template constructor<>(/*finalize=*/true);
+  t31.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::ContactGeometry::Torus (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1377:45
@@ -160,7 +160,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("Adding wrapper for type SimTK::GeodHitPlaneEvent (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1442:7
   auto t33 = types.add_type<SimTK::GeodHitPlaneEvent>("SimTK!GeodHitPlaneEvent");
-  t33.template constructor<>(/*finalize=*/true);
+  t33.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::PathDecorator (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1501:7
@@ -177,37 +177,37 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("Adding wrapper for type SimTK::ContactTracker::HalfSpaceSphere (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactTracker.h:181:44
   auto t38 = types.add_type<SimTK::ContactTracker::HalfSpaceSphere>("SimTK!ContactTracker!HalfSpaceSphere", jlcxx::julia_base_type<SimTK::ContactTracker>());
-  t38.template constructor<>(/*finalize=*/true);
+  t38.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::ContactTracker::HalfSpaceEllipsoid (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactTracker.h:205:44
   auto t39 = types.add_type<SimTK::ContactTracker::HalfSpaceEllipsoid>("SimTK!ContactTracker!HalfSpaceEllipsoid", jlcxx::julia_base_type<SimTK::ContactTracker>());
-  t39.template constructor<>(/*finalize=*/true);
+  t39.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::ContactTracker::HalfSpaceBrick (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactTracker.h:229:44
   auto t40 = types.add_type<SimTK::ContactTracker::HalfSpaceBrick>("SimTK!ContactTracker!HalfSpaceBrick", jlcxx::julia_base_type<SimTK::ContactTracker>());
-  t40.template constructor<>(/*finalize=*/true);
+  t40.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::ContactTracker::SphereSphere (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactTracker.h:253:44
   auto t41 = types.add_type<SimTK::ContactTracker::SphereSphere>("SimTK!ContactTracker!SphereSphere", jlcxx::julia_base_type<SimTK::ContactTracker>());
-  t41.template constructor<>(/*finalize=*/true);
+  t41.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::ContactTracker::HalfSpaceTriangleMesh (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactTracker.h:277:44
   auto t42 = types.add_type<SimTK::ContactTracker::HalfSpaceTriangleMesh>("SimTK!ContactTracker!HalfSpaceTriangleMesh", jlcxx::julia_base_type<SimTK::ContactTracker>());
-  t42.template constructor<>(/*finalize=*/true);
+  t42.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::ContactTracker::SphereTriangleMesh (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactTracker.h:309:44
   auto t43 = types.add_type<SimTK::ContactTracker::SphereTriangleMesh>("SimTK!ContactTracker!SphereTriangleMesh", jlcxx::julia_base_type<SimTK::ContactTracker>());
-  t43.template constructor<>(/*finalize=*/true);
+  t43.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::ContactTracker::TriangleMeshTriangleMesh (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactTracker.h:340:44
   auto t44 = types.add_type<SimTK::ContactTracker::TriangleMeshTriangleMesh>("SimTK!ContactTracker!TriangleMeshTriangleMesh", jlcxx::julia_base_type<SimTK::ContactTracker>());
-  t44.template constructor<>(/*finalize=*/true);
+  t44.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::ContactTracker::HalfSpaceConvexImplicit (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactTracker.h:390:44
@@ -224,17 +224,17 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("Adding wrapper for type SimTK::ContactCliqueId (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simbody/internal/ContactSurface.h:40:32
   auto t48 = types.add_type<SimTK::ContactCliqueId>("SimTK!ContactCliqueId");
-  t48.template constructor<>(/*finalize=*/true);
+  t48.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::ContactMaterial (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simbody/internal/ContactSurface.h:89:28
   auto t49 = types.add_type<SimTK::ContactMaterial>("SimTK!ContactMaterial");
-  t49.template constructor<>(/*finalize=*/true);
+  t49.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::ContactSurface (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simbody/internal/ContactSurface.h:342:28
   auto t50 = types.add_type<SimTK::ContactSurface>("SimTK!ContactSurface");
-  t50.template constructor<>(/*finalize=*/true);
+  t50.template constructor<>();
 
   /**********************************************************************/
   /* Wrappers for the methods of class SimTK::ContactSurfaceIndex
@@ -243,32 +243,32 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactSurfaceIndex::ContactSurfaceIndex(int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:39:32
-  t0.constructor<int>(/*finalize=*/true);
+  t0.constructor<int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactSurfaceIndex::ContactSurfaceIndex(long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:39:32
-  t0.constructor<long>(/*finalize=*/true);
+  t0.constructor<long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactSurfaceIndex::ContactSurfaceIndex(long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:39:32
-  t0.constructor<long long>(/*finalize=*/true);
+  t0.constructor<long long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactSurfaceIndex::ContactSurfaceIndex(unsigned int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:39:32
-  t0.constructor<unsigned int>(/*finalize=*/true);
+  t0.constructor<unsigned int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactSurfaceIndex::ContactSurfaceIndex(unsigned long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:39:32
-  t0.constructor<unsigned long>(/*finalize=*/true);
+  t0.constructor<unsigned long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactSurfaceIndex::ContactSurfaceIndex(unsigned long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:39:32
-  t0.constructor<unsigned long long>(/*finalize=*/true);
+  t0.constructor<unsigned long long>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::ContactSurfaceIndex::isValid() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::ContactSurfaceIndex::isValid()
@@ -723,32 +723,32 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactId::ContactId(int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:50:32
-  t1.constructor<int>(/*finalize=*/true);
+  t1.constructor<int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactId::ContactId(long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:50:32
-  t1.constructor<long>(/*finalize=*/true);
+  t1.constructor<long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactId::ContactId(long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:50:32
-  t1.constructor<long long>(/*finalize=*/true);
+  t1.constructor<long long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactId::ContactId(unsigned int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:50:32
-  t1.constructor<unsigned int>(/*finalize=*/true);
+  t1.constructor<unsigned int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactId::ContactId(unsigned long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:50:32
-  t1.constructor<unsigned long>(/*finalize=*/true);
+  t1.constructor<unsigned long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactId::ContactId(unsigned long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:50:32
-  t1.constructor<unsigned long long>(/*finalize=*/true);
+  t1.constructor<unsigned long long>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::ContactId::isValid() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::ContactId::isValid()
@@ -1203,32 +1203,32 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactTypeId::ContactTypeId(int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:58:32
-  t2.constructor<int>(/*finalize=*/true);
+  t2.constructor<int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactTypeId::ContactTypeId(long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:58:32
-  t2.constructor<long>(/*finalize=*/true);
+  t2.constructor<long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactTypeId::ContactTypeId(long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:58:32
-  t2.constructor<long long>(/*finalize=*/true);
+  t2.constructor<long long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactTypeId::ContactTypeId(unsigned int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:58:32
-  t2.constructor<unsigned int>(/*finalize=*/true);
+  t2.constructor<unsigned int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactTypeId::ContactTypeId(unsigned long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:58:32
-  t2.constructor<unsigned long>(/*finalize=*/true);
+  t2.constructor<unsigned long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactTypeId::ContactTypeId(unsigned long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:58:32
-  t2.constructor<unsigned long long>(/*finalize=*/true);
+  t2.constructor<unsigned long long>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::ContactTypeId::isValid() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::ContactTypeId::isValid()
@@ -1688,7 +1688,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::Contact::Contact(const SimTK::Contact &) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:106:5
-  t3.constructor<const SimTK::Contact &>(/*finalize=*/true);
+  t3.constructor<const SimTK::Contact &>();
 
   DEBUG_MSG("Adding wrapper for SimTK::Contact & SimTK::Contact::operator=(const SimTK::Contact &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Contact & SimTK::Contact::operator=(const SimTK::Contact &)
@@ -1771,7 +1771,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::UntrackedContact::UntrackedContact(SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:191:5
-  t5.constructor<SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex>(/*finalize=*/true);
+  t5.constructor<SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::UntrackedContact::isInstance(const SimTK::Contact &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::UntrackedContact::isInstance(const SimTK::Contact &)
@@ -1794,7 +1794,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::BrokenContact::BrokenContact(SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex, const SimTK::Transform &, SimTK::Real) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:224:5
-  t6.constructor<SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex, const SimTK::Transform &, SimTK::Real>(/*finalize=*/true);
+  t6.constructor<SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex, const SimTK::Transform &, SimTK::Real>();
 
   DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::BrokenContact::getSeparation() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::BrokenContact::getSeparation()
@@ -1822,7 +1822,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::CircularPointContact::CircularPointContact(SimTK::ContactSurfaceIndex, SimTK::Real, SimTK::ContactSurfaceIndex, SimTK::Real, const SimTK::Transform &, SimTK::Real, SimTK::Real, const SimTK::Vec3 &, const SimTK::UnitVec3 &) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:276:5
-  t7.constructor<SimTK::ContactSurfaceIndex, SimTK::Real, SimTK::ContactSurfaceIndex, SimTK::Real, const SimTK::Transform &, SimTK::Real, SimTK::Real, const SimTK::Vec3 &, const SimTK::UnitVec3 &>(/*finalize=*/true);
+  t7.constructor<SimTK::ContactSurfaceIndex, SimTK::Real, SimTK::ContactSurfaceIndex, SimTK::Real, const SimTK::Transform &, SimTK::Real, SimTK::Real, const SimTK::Vec3 &, const SimTK::UnitVec3 &>();
 
   DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::CircularPointContact::getRadius1() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::CircularPointContact::getRadius1()
@@ -1885,7 +1885,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::EllipticalPointContact::EllipticalPointContact(SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex, const SimTK::Transform &, const SimTK::Transform &, const SimTK::Vec2 &, SimTK::Real) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:370:5
-  t8.constructor<SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex, const SimTK::Transform &, const SimTK::Transform &, const SimTK::Vec2 &, SimTK::Real>(/*finalize=*/true);
+  t8.constructor<SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex, const SimTK::Transform &, const SimTK::Transform &, const SimTK::Vec2 &, SimTK::Real>();
 
   DEBUG_MSG("Adding wrapper for const SimTK::Vec2 & SimTK::EllipticalPointContact::getCurvatures() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Vec2 & SimTK::EllipticalPointContact::getCurvatures()
@@ -1933,7 +1933,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::BrickHalfSpaceContact::BrickHalfSpaceContact(SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex, const SimTK::Transform &, int, SimTK::Real) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:430:5
-  t9.constructor<SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex, const SimTK::Transform &, int, SimTK::Real>(/*finalize=*/true);
+  t9.constructor<SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex, const SimTK::Transform &, int, SimTK::Real>();
 
   DEBUG_MSG("Adding wrapper for int SimTK::BrickHalfSpaceContact::getLowestVertex() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::BrickHalfSpaceContact::getLowestVertex()
@@ -1976,7 +1976,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::TriangleMeshContact::TriangleMeshContact(SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex, const SimTK::Transform &, const std::set<int> &, const std::set<int> &) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:491:5
-  // t10.constructor<SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex, const SimTK::Transform &, const std::set<int> &, const std::set<int> &>(/*finalize=*/true);
+  // t10.constructor<SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex, const SimTK::Transform &, const std::set<int> &, const std::set<int> &>();
   t10.constructor([] (SimTK::ContactSurfaceIndex surf1, SimTK::ContactSurfaceIndex surf2, const SimTK::Transform& X_S1S2, const jlcxx::ArrayRef<int>& faces1, const jlcxx::ArrayRef<int>& faces2) {
     std::set<int> faces1_set(faces1.begin(), faces1.end());
     std::set<int> faces2_set(faces2.begin(), faces2.end());
@@ -2035,12 +2035,12 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::PointContact::PointContact(SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex, SimTK::Vec3 &, SimTK::Vec3 &, SimTK::Real, SimTK::Real, SimTK::Real) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:560:5
-  t11.constructor<SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex, SimTK::Vec3 &, SimTK::Vec3 &, SimTK::Real, SimTK::Real, SimTK::Real>(/*finalize=*/true);
+  t11.constructor<SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex, SimTK::Vec3 &, SimTK::Vec3 &, SimTK::Real, SimTK::Real, SimTK::Real>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::PointContact::PointContact(SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex, SimTK::Vec3 &, SimTK::Vec3 &, SimTK::Real, SimTK::Real) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:577:5
-  t11.constructor<SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex, SimTK::Vec3 &, SimTK::Vec3 &, SimTK::Real, SimTK::Real>(/*finalize=*/true);
+  t11.constructor<SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex, SimTK::Vec3 &, SimTK::Vec3 &, SimTK::Real, SimTK::Real>();
 
   DEBUG_MSG("Adding wrapper for SimTK::Vec3 SimTK::PointContact::getLocation() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Vec3 SimTK::PointContact::getLocation()
@@ -2396,7 +2396,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::GeodesicDecorator::GeodesicDecorator(const SimTK::Geodesic &, const SimTK::Vec3 &) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:276:5
-  t13.constructor<const SimTK::Geodesic &, const SimTK::Vec3 &>(/*finalize=*/true);
+  t13.constructor<const SimTK::Geodesic &, const SimTK::Vec3 &>();
 
   DEBUG_MSG("Adding wrapper for void SimTK::GeodesicDecorator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::GeodesicDecorator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &)
@@ -2414,32 +2414,32 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactGeometryTypeId::ContactGeometryTypeId(int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:44:32
-  t16.constructor<int>(/*finalize=*/true);
+  t16.constructor<int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactGeometryTypeId::ContactGeometryTypeId(long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:44:32
-  t16.constructor<long>(/*finalize=*/true);
+  t16.constructor<long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactGeometryTypeId::ContactGeometryTypeId(long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:44:32
-  t16.constructor<long long>(/*finalize=*/true);
+  t16.constructor<long long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactGeometryTypeId::ContactGeometryTypeId(unsigned int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:44:32
-  t16.constructor<unsigned int>(/*finalize=*/true);
+  t16.constructor<unsigned int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactGeometryTypeId::ContactGeometryTypeId(unsigned long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:44:32
-  t16.constructor<unsigned long>(/*finalize=*/true);
+  t16.constructor<unsigned long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactGeometryTypeId::ContactGeometryTypeId(unsigned long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:44:32
-  t16.constructor<unsigned long long>(/*finalize=*/true);
+  t16.constructor<unsigned long long>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::ContactGeometryTypeId::isValid() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::ContactGeometryTypeId::isValid()
@@ -2894,7 +2894,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactGeometry::ContactGeometry(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:127:1
-  t17.constructor<const SimTK::ContactGeometry &>(/*finalize=*/true);
+  t17.constructor<const SimTK::ContactGeometry &>();
 
   DEBUG_MSG("Adding wrapper for SimTK::ContactGeometry & SimTK::ContactGeometry::operator=(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactGeometry & SimTK::ContactGeometry::operator=(const SimTK::ContactGeometry &)
@@ -3125,7 +3125,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   // DEBUG_MSG("Adding wrapper for void SimTK::ContactGeometry::ContactGeometry(SimTK::ContactGeometryImpl *) (" __HERE__ ")");
   // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:805:10
-  // t17.constructor<SimTK::ContactGeometryImpl *>(/*finalize=*/true);
+  // t17.constructor<SimTK::ContactGeometryImpl *>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::ContactGeometry::isOwnerHandle() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::ContactGeometry::isOwnerHandle()
@@ -3153,7 +3153,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::Plane::Plane(const SimTK::Vec3 &, const SimTK::Real &) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1417:5
-  t19.constructor<const SimTK::Vec3 &, const SimTK::Real &>(/*finalize=*/true);
+  t19.constructor<const SimTK::Vec3 &, const SimTK::Real &>();
 
   DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::Plane::getDistance(const SimTK::Vec3 &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::Plane::getDistance(const SimTK::Vec3 &)
@@ -3214,7 +3214,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactGeometry::Cylinder::Cylinder(SimTK::Real) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:866:10
-  t22.constructor<SimTK::Real>(/*finalize=*/true);
+  t22.constructor<SimTK::Real>();
 
   DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::ContactGeometry::Cylinder::getRadius() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::ContactGeometry::Cylinder::getRadius()
@@ -3257,7 +3257,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactGeometry::Sphere::Sphere(SimTK::Real) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:897:10
-  t23.constructor<SimTK::Real>(/*finalize=*/true);
+  t23.constructor<SimTK::Real>();
 
   DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::ContactGeometry::Sphere::getRadius() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::ContactGeometry::Sphere::getRadius()
@@ -3300,7 +3300,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactGeometry::Ellipsoid::Ellipsoid(const SimTK::Vec3 &) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:950:10
-  t24.constructor<const SimTK::Vec3 &>(/*finalize=*/true);
+  t24.constructor<const SimTK::Vec3 &>();
 
   DEBUG_MSG("Adding wrapper for const SimTK::Vec3 & SimTK::ContactGeometry::Ellipsoid::getRadii() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Vec3 & SimTK::ContactGeometry::Ellipsoid::getRadii()
@@ -3373,7 +3373,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactGeometry::SmoothHeightMap::SmoothHeightMap(const SimTK::BicubicSurface &) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1072:10
-  t25.constructor<const SimTK::BicubicSurface &>(/*finalize=*/true);
+  t25.constructor<const SimTK::BicubicSurface &>();
 
   DEBUG_MSG("Adding wrapper for const SimTK::BicubicSurface & SimTK::ContactGeometry::SmoothHeightMap::getBicubicSurface() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::BicubicSurface & SimTK::ContactGeometry::SmoothHeightMap::getBicubicSurface()
@@ -3425,7 +3425,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactGeometry::Brick::Brick(const SimTK::Vec3 &) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1110:10
-  t27.constructor<const SimTK::Vec3 &>(/*finalize=*/true);
+  t27.constructor<const SimTK::Vec3 &>();
 
   DEBUG_MSG("Adding wrapper for const SimTK::Vec3 & SimTK::ContactGeometry::Brick::getHalfLengths() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Vec3 & SimTK::ContactGeometry::Brick::getHalfLengths()
@@ -3473,14 +3473,14 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   // DEBUG_MSG("Adding wrapper for void SimTK::ContactGeometry::TriangleMesh::TriangleMesh(const SimTK::ArrayViewConst_<SimTK::Vec3> &, const SimTK::ArrayViewConst_<int> &, bool) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1177:1
-  // t28.constructor<const SimTK::ArrayViewConst_<SimTK::Vec3> &, const SimTK::ArrayViewConst_<int> &>(/*finalize=*/true);
-  // t28.constructor<const SimTK::ArrayViewConst_<SimTK::Vec3> &, const SimTK::ArrayViewConst_<int> &, bool>(/*finalize=*/true);
+  // t28.constructor<const SimTK::ArrayViewConst_<SimTK::Vec3> &, const SimTK::ArrayViewConst_<int> &>();
+  // t28.constructor<const SimTK::ArrayViewConst_<SimTK::Vec3> &, const SimTK::ArrayViewConst_<int> &, bool>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactGeometry::TriangleMesh::TriangleMesh(const SimTK::PolygonalMesh &, bool) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1186:10
-  t28.constructor<const SimTK::PolygonalMesh &>(/*finalize=*/true);
-  t28.constructor<const SimTK::PolygonalMesh &, bool>(/*finalize=*/true);
+  t28.constructor<const SimTK::PolygonalMesh &>();
+  t28.constructor<const SimTK::PolygonalMesh &, bool>();
 
   DEBUG_MSG("Adding wrapper for int SimTK::ContactGeometry::TriangleMesh::getNumEdges() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::ContactGeometry::TriangleMesh::getNumEdges()
@@ -3618,7 +3618,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   // DEBUG_MSG("Adding wrapper for void SimTK::ContactGeometry::TriangleMesh::OBBTreeNode::OBBTreeNode(const SimTK::OBBTreeNodeImpl &) (" __HERE__ ")");
   // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1345:1
-  // t30.constructor<const SimTK::OBBTreeNodeImpl &>(/*finalize=*/true);
+  // t30.constructor<const SimTK::OBBTreeNodeImpl &>();
 
   DEBUG_MSG("Adding wrapper for const SimTK::OrientedBoundingBox & SimTK::ContactGeometry::TriangleMesh::OBBTreeNode::getBounds() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::OrientedBoundingBox & SimTK::ContactGeometry::TriangleMesh::OBBTreeNode::getBounds()
@@ -3661,7 +3661,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactGeometry::Torus::Torus(SimTK::Real, SimTK::Real) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1379:1
-  t32.constructor<SimTK::Real, SimTK::Real>(/*finalize=*/true);
+  t32.constructor<SimTK::Real, SimTK::Real>();
 
   DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::ContactGeometry::Torus::getTorusRadius() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::ContactGeometry::Torus::getTorusRadius()
@@ -3714,7 +3714,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::GeodHitPlaneEvent::GeodHitPlaneEvent(const SimTK::Plane &) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1447:14
-  t33.constructor<const SimTK::Plane &>(/*finalize=*/true);
+  t33.constructor<const SimTK::Plane &>();
 
   DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::GeodHitPlaneEvent::getValue(const SimTK::State &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::GeodHitPlaneEvent::getValue(const SimTK::State &)
@@ -3757,7 +3757,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::PathDecorator::PathDecorator(const SimTK::Vector &, const SimTK::Vec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1503:5
-  t34.constructor<const SimTK::Vector &, const SimTK::Vec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &>(/*finalize=*/true);
+  t34.constructor<const SimTK::Vector &, const SimTK::Vec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &>();
 
   DEBUG_MSG("Adding wrapper for void SimTK::PathDecorator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::PathDecorator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &)
@@ -3775,7 +3775,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::PlaneDecorator::PlaneDecorator(const SimTK::Plane &, const SimTK::Vec3 &) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1543:5
-  t35.constructor<const SimTK::Plane &, const SimTK::Vec3 &>(/*finalize=*/true);
+  t35.constructor<const SimTK::Plane &, const SimTK::Vec3 &>();
 
   DEBUG_MSG("Adding wrapper for void SimTK::PlaneDecorator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::PlaneDecorator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &)
@@ -3923,7 +3923,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactTracker::HalfSpaceConvexImplicit::HalfSpaceConvexImplicit(SimTK::ContactGeometryTypeId) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactTracker.h:393:10
-  t45.constructor<SimTK::ContactGeometryTypeId>(/*finalize=*/true);
+  t45.constructor<SimTK::ContactGeometryTypeId>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::ContactTracker::HalfSpaceConvexImplicit::trackContact(const SimTK::Contact &, const SimTK::Transform &, const SimTK::ContactGeometry &, const SimTK::Transform &, const SimTK::ContactGeometry &, SimTK::Real, SimTK::Contact &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::ContactTracker::HalfSpaceConvexImplicit::trackContact(const SimTK::Contact &, const SimTK::Transform &, const SimTK::ContactGeometry &, const SimTK::Transform &, const SimTK::ContactGeometry &, SimTK::Real, SimTK::Contact &)
@@ -3941,7 +3941,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactTracker::ConvexImplicitPair::ConvexImplicitPair(SimTK::ContactGeometryTypeId, SimTK::ContactGeometryTypeId) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactTracker.h:418:1
-  t46.constructor<SimTK::ContactGeometryTypeId, SimTK::ContactGeometryTypeId>(/*finalize=*/true);
+  t46.constructor<SimTK::ContactGeometryTypeId, SimTK::ContactGeometryTypeId>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::ContactTracker::ConvexImplicitPair::trackContact(const SimTK::Contact &, const SimTK::Transform &, const SimTK::ContactGeometry &, const SimTK::Transform &, const SimTK::ContactGeometry &, SimTK::Real, SimTK::Contact &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::ContactTracker::ConvexImplicitPair::trackContact(const SimTK::Contact &, const SimTK::Transform &, const SimTK::ContactGeometry &, const SimTK::Transform &, const SimTK::ContactGeometry &, SimTK::Real, SimTK::Contact &)
@@ -3959,7 +3959,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactTracker::GeneralImplicitPair::GeneralImplicitPair(SimTK::ContactGeometryTypeId, SimTK::ContactGeometryTypeId) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactTracker.h:445:1
-  t47.constructor<SimTK::ContactGeometryTypeId, SimTK::ContactGeometryTypeId>(/*finalize=*/true);
+  t47.constructor<SimTK::ContactGeometryTypeId, SimTK::ContactGeometryTypeId>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::ContactTracker::GeneralImplicitPair::trackContact(const SimTK::Contact &, const SimTK::Transform &, const SimTK::ContactGeometry &, const SimTK::Transform &, const SimTK::ContactGeometry &, SimTK::Real, SimTK::Contact &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::ContactTracker::GeneralImplicitPair::trackContact(const SimTK::Contact &, const SimTK::Transform &, const SimTK::ContactGeometry &, const SimTK::Transform &, const SimTK::ContactGeometry &, SimTK::Real, SimTK::Contact &)
@@ -3977,32 +3977,32 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactCliqueId::ContactCliqueId(int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simbody/internal/ContactSurface.h:40:32
-  t48.constructor<int>(/*finalize=*/true);
+  t48.constructor<int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactCliqueId::ContactCliqueId(long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simbody/internal/ContactSurface.h:40:32
-  t48.constructor<long>(/*finalize=*/true);
+  t48.constructor<long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactCliqueId::ContactCliqueId(long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simbody/internal/ContactSurface.h:40:32
-  t48.constructor<long long>(/*finalize=*/true);
+  t48.constructor<long long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactCliqueId::ContactCliqueId(unsigned int) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simbody/internal/ContactSurface.h:40:32
-  t48.constructor<unsigned int>(/*finalize=*/true);
+  t48.constructor<unsigned int>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactCliqueId::ContactCliqueId(unsigned long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simbody/internal/ContactSurface.h:40:32
-  t48.constructor<unsigned long>(/*finalize=*/true);
+  t48.constructor<unsigned long>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactCliqueId::ContactCliqueId(unsigned long long) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simbody/internal/ContactSurface.h:40:32
-  t48.constructor<unsigned long long>(/*finalize=*/true);
+  t48.constructor<unsigned long long>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::ContactCliqueId::isValid() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::ContactCliqueId::isValid()
@@ -4457,8 +4457,8 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactMaterial::ContactMaterial(SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simbody/internal/ContactSurface.h:136:1
-  t49.constructor<SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real>(/*finalize=*/true);
-  t49.constructor<SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real>(/*finalize=*/true);
+  t49.constructor<SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real>();
+  t49.constructor<SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real>();
 
   DEBUG_MSG("Adding wrapper for bool SimTK::ContactMaterial::isValid() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::ContactMaterial::isValid()
@@ -4543,8 +4543,8 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactSurface::ContactSurface(const SimTK::ContactGeometry &, const SimTK::ContactMaterial &, SimTK::Real) (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simbody/internal/ContactSurface.h:347:1
-  t50.constructor<const SimTK::ContactGeometry &, const SimTK::ContactMaterial &>(/*finalize=*/true);
-  t50.constructor<const SimTK::ContactGeometry &, const SimTK::ContactMaterial &, SimTK::Real>(/*finalize=*/true);
+  t50.constructor<const SimTK::ContactGeometry &, const SimTK::ContactMaterial &>();
+  t50.constructor<const SimTK::ContactGeometry &, const SimTK::ContactMaterial &, SimTK::Real>();
 
   DEBUG_MSG("Adding wrapper for SimTK::ContactSurface & SimTK::ContactSurface::setShape(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactSurface & SimTK::ContactSurface::setShape(const SimTK::ContactGeometry &)

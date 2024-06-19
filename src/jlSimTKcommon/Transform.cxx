@@ -31,7 +31,7 @@ void define_SimTKcommon_Transform(jlcxx::Module& types, const ArrayWrapper& arra
   /**********************************************************************/
   /* Wrappers for the methods of class SimTK::InverseTransform_
    */
-  t2.constructor<>(/*finalize=*/true);
+  t2.constructor<>();
 
   // t2.method("getAsTransform", static_cast<Transform & (InverseTransform::*)() const>(&InverseTransform::operator Transform()));
   t2.method("assign", static_cast<InverseTransform & (InverseTransform::*)(const InverseTransform &) >(&InverseTransform::operator=));
@@ -71,10 +71,10 @@ void define_SimTKcommon_Transform(jlcxx::Module& types, const ArrayWrapper& arra
   /**********************************************************************/
   /* Wrappers for the methods of class SimTK::Transform_
    */
-  t1.constructor<>(/*finalize=*/true);
-  t1.constructor<const SimTK::Rotation_<double> &, const SimTK::Vec<3,double> &>(/*finalize=*/true);
-  t1.constructor<const SimTK::Rotation_<double> &>(/*finalize=*/true);
-  t1.constructor<const SimTK::Vec<3,double> &>(/*finalize=*/true);
+  t1.constructor<>();
+  t1.constructor<const SimTK::Rotation_<double> &, const SimTK::Vec<3,double> &>();
+  t1.constructor<const SimTK::Rotation_<double> &>();
+  t1.constructor<const SimTK::Vec<3,double> &>();
 
   t1.method("assign", static_cast<Transform & (Transform::*)(const InverseTransform &) >(&Transform::operator=));
   t1.method("add!", static_cast<Transform & (Transform::*)(const SimTK::Vec<3,double> &) >(&Transform::operator+=));
