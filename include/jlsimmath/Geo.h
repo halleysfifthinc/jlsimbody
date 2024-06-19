@@ -1,16 +1,9 @@
-// #include "SimTKcommon/internal/CompositeNumericalTypes.h"
-// #include "SimTKcommon/internal/negator.h"
-// #include "SimTKcommon/internal/conjugate.h"
-// #include "SimTKcommon/Scalar.h"
-
-// #include "SimTKcommon/internal/Vec.h"
-// #include "SimTKcommon/internal/Mat.h"
-
 #include "SimTKcommon/SmallMatrix.h"
 #include "SimTKcommon/internal/UnitVec.h"
 #include "SimTKcommon/internal/Transform.h"
 #include "SimTKcommon/internal/CoordinateAxis.h"
 #include "SimTKcommon/internal/Rotation.h"
+#include "simmath/internal/Geodesic.h"
 #include "simmath/internal/Geo.h"
 #include "simmath/internal/Geo_BicubicBezierPatch.h"
 #include "simmath/internal/Geo_BicubicHermitePatch.h"
@@ -124,8 +117,13 @@ namespace jlcxx {
 
   template<typename P> struct IsMirroredType<SimTK::Geo::BicubicBezierPatch_<P>> : std::false_type { };
   template<typename P> struct DefaultConstructible<SimTK::Geo::BicubicBezierPatch_<P>> : std::false_type { };
+
+  template<> struct IsMirroredType<SimTK::Geodesic> : std::false_type { };
+  template<> struct DefaultConstructible<SimTK::Geodesic> : std::false_type { };
+  template<> struct IsMirroredType<SimTK::GeodesicOptions> : std::false_type { };
+  template<> struct DefaultConstructible<SimTK::GeodesicOptions> : std::false_type { };
 }
 
 namespace jlsimbody{
-  void define_simbody_Geo(jlcxx::Module& types);
+  void define_simmath_Geo(jlcxx::Module& types);
 }
