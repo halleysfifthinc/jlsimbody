@@ -20,7 +20,7 @@ namespace jlsimbody{
 void define_simmath_DecoratorGenerators(jlcxx::Module& types){
 
   DEBUG_MSG("Adding wrapper for type SimTK::GeodesicDecorator (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:274:7
+  // defined in simmath/internal/Geodesic.h:274:7
   auto t1 = types.add_type<SimTK::GeodesicDecorator>("SimTK!GeodesicDecorator", jlcxx::julia_type("DecorationGenerator"));
 
   /**********************************************************************/
@@ -29,12 +29,12 @@ void define_simmath_DecoratorGenerators(jlcxx::Module& types){
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::GeodesicDecorator::GeodesicDecorator(const SimTK::Geodesic &, const SimTK::Vec3 &) (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:276:5
+  // defined in simmath/internal/Geodesic.h:276:5
   t1.constructor<const SimTK::Geodesic &, const SimTK::Vec3 &>();
 
   DEBUG_MSG("Adding wrapper for void SimTK::GeodesicDecorator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::GeodesicDecorator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:279:18
+  // defined in simmath/internal/Geodesic.h:279:18
   t1.method("generateDecorations", static_cast<void (SimTK::GeodesicDecorator::*)(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &) >(&SimTK::GeodesicDecorator::generateDecorations));
 
   /* End of SimTK::GeodesicDecorator class method wrappers
@@ -48,12 +48,12 @@ void define_simmath_DecoratorGenerators(jlcxx::Module& types){
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::PathDecorator::PathDecorator(const SimTK::Vector &, const SimTK::Vec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &) (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1503:5
+  // defined in simmath/internal/ContactGeometry.h:1503:5
   t34.constructor<const SimTK::Vector &, const SimTK::Vec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &>();
 
   DEBUG_MSG("Adding wrapper for void SimTK::PathDecorator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::PathDecorator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1506:18
+  // defined in simmath/internal/ContactGeometry.h:1506:18
   t34.method("generateDecorations", static_cast<void (SimTK::PathDecorator::*)(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &) >(&SimTK::PathDecorator::generateDecorations));
 
   /* End of SimTK::PathDecorator class method wrappers
@@ -66,12 +66,12 @@ void define_simmath_DecoratorGenerators(jlcxx::Module& types){
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::PlaneDecorator::PlaneDecorator(const SimTK::Plane &, const SimTK::Vec3 &) (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1543:5
+  // defined in simmath/internal/ContactGeometry.h:1543:5
   t35.constructor<const SimTK::Plane &, const SimTK::Vec3 &>();
 
   DEBUG_MSG("Adding wrapper for void SimTK::PlaneDecorator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::PlaneDecorator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1546:18
+  // defined in simmath/internal/ContactGeometry.h:1546:18
   t35.method("generateDecorations", static_cast<void (SimTK::PlaneDecorator::*)(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &) >(&SimTK::PlaneDecorator::generateDecorations));
 
   /* End of SimTK::PlaneDecorator class method wrappers

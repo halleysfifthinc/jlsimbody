@@ -20,45 +20,45 @@ namespace jlsimbody {
 void define_SimTKcommon_CoordinateAxis(jlcxx::Module& types){
 
   DEBUG_MSG("Adding wrapper for type SimTK::CoordinateAxis (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:53:7
+  // defined in SimTKcommon/internal/CoordinateAxis.h:53:7
   auto t0 = types.add_type<SimTK::CoordinateAxis>("SimTK!CoordinateAxis");
 
   DEBUG_MSG("Adding wrapper for type SimTK::CoordinateAxis::XCoordinateAxis (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:194:23
+  // defined in SimTKcommon/internal/CoordinateAxis.h:194:23
   auto t1 = types.add_type<SimTK::CoordinateAxis::XCoordinateAxis>("SimTK!CoordinateAxis!XCoordinateAxis", jlcxx::julia_base_type<SimTK::CoordinateAxis>());
   t1.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::CoordinateAxis::YCoordinateAxis (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:197:23
+  // defined in SimTKcommon/internal/CoordinateAxis.h:197:23
   auto t2 = types.add_type<SimTK::CoordinateAxis::YCoordinateAxis>("SimTK!CoordinateAxis!YCoordinateAxis", jlcxx::julia_base_type<SimTK::CoordinateAxis>());
   t2.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::CoordinateAxis::ZCoordinateAxis (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:200:23
+  // defined in SimTKcommon/internal/CoordinateAxis.h:200:23
   auto t3 = types.add_type<SimTK::CoordinateAxis::ZCoordinateAxis>("SimTK!CoordinateAxis!ZCoordinateAxis", jlcxx::julia_base_type<SimTK::CoordinateAxis>());
   t3.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::CoordinateDirection (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:244:7
+  // defined in SimTKcommon/internal/CoordinateAxis.h:244:7
   auto t4 = types.add_type<SimTK::CoordinateDirection>("SimTK!CoordinateDirection");
 
   DEBUG_MSG("Adding wrapper for type SimTK::CoordinateDirection::Negative (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:248:11
+  // defined in SimTKcommon/internal/CoordinateAxis.h:248:11
   auto t5 = types.add_type<SimTK::CoordinateDirection::Negative>("SimTK!CoordinateDirection!Negative");
   t5.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::CoordinateDirection::NegXDirection (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:338:28
+  // defined in SimTKcommon/internal/CoordinateAxis.h:338:28
   auto t6 = types.add_type<SimTK::CoordinateDirection::NegXDirection>("SimTK!CoordinateDirection!NegXDirection", jlcxx::julia_base_type<SimTK::CoordinateDirection>());
   t6.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::CoordinateDirection::NegYDirection (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:341:28
+  // defined in SimTKcommon/internal/CoordinateAxis.h:341:28
   auto t7 = types.add_type<SimTK::CoordinateDirection::NegYDirection>("SimTK!CoordinateDirection!NegYDirection", jlcxx::julia_base_type<SimTK::CoordinateDirection>());
   t7.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::CoordinateDirection::NegZDirection (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:344:28
+  // defined in SimTKcommon/internal/CoordinateAxis.h:344:28
   auto t8 = types.add_type<SimTK::CoordinateDirection::NegZDirection>("SimTK!CoordinateDirection!NegZDirection", jlcxx::julia_base_type<SimTK::CoordinateDirection>());
   t8.template constructor<>();
 
@@ -68,107 +68,107 @@ void define_SimTKcommon_CoordinateAxis(jlcxx::Module& types){
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::CoordinateAxis::CoordinateAxis(int) (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:57:14
+  // defined in SimTKcommon/internal/CoordinateAxis.h:57:14
   t0.constructor<int>();
 
   DEBUG_MSG("Adding wrapper for SimTK::CoordinateAxis SimTK::CoordinateAxis::getNextAxis() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::CoordinateAxis SimTK::CoordinateAxis::getNextAxis()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:67:20
+  // defined in SimTKcommon/internal/CoordinateAxis.h:67:20
   t0.method("getNextAxis", static_cast<SimTK::CoordinateAxis (SimTK::CoordinateAxis::*)()  const>(&SimTK::CoordinateAxis::getNextAxis));
 
   DEBUG_MSG("Adding wrapper for SimTK::CoordinateAxis SimTK::CoordinateAxis::getPreviousAxis() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::CoordinateAxis SimTK::CoordinateAxis::getPreviousAxis()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:74:20
+  // defined in SimTKcommon/internal/CoordinateAxis.h:74:20
   t0.method("getPreviousAxis", static_cast<SimTK::CoordinateAxis (SimTK::CoordinateAxis::*)()  const>(&SimTK::CoordinateAxis::getPreviousAxis));
 
   DEBUG_MSG("Adding wrapper for SimTK::CoordinateAxis SimTK::CoordinateAxis::getThirdAxis(const SimTK::CoordinateAxis &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::CoordinateAxis SimTK::CoordinateAxis::getThirdAxis(const SimTK::CoordinateAxis &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:84:20
+  // defined in SimTKcommon/internal/CoordinateAxis.h:84:20
   t0.method("getThirdAxis", static_cast<SimTK::CoordinateAxis (SimTK::CoordinateAxis::*)(const SimTK::CoordinateAxis &)  const>(&SimTK::CoordinateAxis::getThirdAxis));
 
   DEBUG_MSG("Adding wrapper for bool SimTK::CoordinateAxis::isXAxis() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::CoordinateAxis::isXAxis()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:91:10
+  // defined in SimTKcommon/internal/CoordinateAxis.h:91:10
   t0.method("isXAxis", static_cast<bool (SimTK::CoordinateAxis::*)()  const>(&SimTK::CoordinateAxis::isXAxis));
 
   DEBUG_MSG("Adding wrapper for bool SimTK::CoordinateAxis::isYAxis() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::CoordinateAxis::isYAxis()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:93:10
+  // defined in SimTKcommon/internal/CoordinateAxis.h:93:10
   t0.method("isYAxis", static_cast<bool (SimTK::CoordinateAxis::*)()  const>(&SimTK::CoordinateAxis::isYAxis));
 
   DEBUG_MSG("Adding wrapper for bool SimTK::CoordinateAxis::isZAxis() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::CoordinateAxis::isZAxis()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:95:10
+  // defined in SimTKcommon/internal/CoordinateAxis.h:95:10
   t0.method("isZAxis", static_cast<bool (SimTK::CoordinateAxis::*)()  const>(&SimTK::CoordinateAxis::isZAxis));
 
   DEBUG_MSG("Adding wrapper for bool SimTK::CoordinateAxis::isNextAxis(const SimTK::CoordinateAxis &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::CoordinateAxis::isNextAxis(const SimTK::CoordinateAxis &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:98:10
+  // defined in SimTKcommon/internal/CoordinateAxis.h:98:10
   t0.method("isNextAxis", static_cast<bool (SimTK::CoordinateAxis::*)(const SimTK::CoordinateAxis &)  const>(&SimTK::CoordinateAxis::isNextAxis));
 
   DEBUG_MSG("Adding wrapper for bool SimTK::CoordinateAxis::isPreviousAxis(const SimTK::CoordinateAxis &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::CoordinateAxis::isPreviousAxis(const SimTK::CoordinateAxis &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:102:10
+  // defined in SimTKcommon/internal/CoordinateAxis.h:102:10
   t0.method("isPreviousAxis", static_cast<bool (SimTK::CoordinateAxis::*)(const SimTK::CoordinateAxis &)  const>(&SimTK::CoordinateAxis::isPreviousAxis));
 
   DEBUG_MSG("Adding wrapper for bool SimTK::CoordinateAxis::isSameAxis(const SimTK::CoordinateAxis &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::CoordinateAxis::isSameAxis(const SimTK::CoordinateAxis &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:106:10
+  // defined in SimTKcommon/internal/CoordinateAxis.h:106:10
   t0.method("isSameAxis", static_cast<bool (SimTK::CoordinateAxis::*)(const SimTK::CoordinateAxis &)  const>(&SimTK::CoordinateAxis::isSameAxis));
 
   DEBUG_MSG("Adding wrapper for bool SimTK::CoordinateAxis::areAllSameAxes(const SimTK::CoordinateAxis &, const SimTK::CoordinateAxis &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::CoordinateAxis::areAllSameAxes(const SimTK::CoordinateAxis &, const SimTK::CoordinateAxis &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:109:10
+  // defined in SimTKcommon/internal/CoordinateAxis.h:109:10
   t0.method("areAllSameAxes", static_cast<bool (SimTK::CoordinateAxis::*)(const SimTK::CoordinateAxis &, const SimTK::CoordinateAxis &)  const>(&SimTK::CoordinateAxis::areAllSameAxes));
 
   DEBUG_MSG("Adding wrapper for bool SimTK::CoordinateAxis::isDifferentAxis(const SimTK::CoordinateAxis &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::CoordinateAxis::isDifferentAxis(const SimTK::CoordinateAxis &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:114:10
+  // defined in SimTKcommon/internal/CoordinateAxis.h:114:10
   t0.method("isDifferentAxis", static_cast<bool (SimTK::CoordinateAxis::*)(const SimTK::CoordinateAxis &)  const>(&SimTK::CoordinateAxis::isDifferentAxis));
 
   DEBUG_MSG("Adding wrapper for bool SimTK::CoordinateAxis::areAllDifferentAxes(const SimTK::CoordinateAxis &, const SimTK::CoordinateAxis &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::CoordinateAxis::areAllDifferentAxes(const SimTK::CoordinateAxis &, const SimTK::CoordinateAxis &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:119:10
+  // defined in SimTKcommon/internal/CoordinateAxis.h:119:10
   t0.method("areAllDifferentAxes", static_cast<bool (SimTK::CoordinateAxis::*)(const SimTK::CoordinateAxis &, const SimTK::CoordinateAxis &)  const>(&SimTK::CoordinateAxis::areAllDifferentAxes));
 
   DEBUG_MSG("Adding wrapper for bool SimTK::CoordinateAxis::isForwardCyclical(const SimTK::CoordinateAxis &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::CoordinateAxis::isForwardCyclical(const SimTK::CoordinateAxis &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:126:10
+  // defined in SimTKcommon/internal/CoordinateAxis.h:126:10
   t0.method("isForwardCyclical", static_cast<bool (SimTK::CoordinateAxis::*)(const SimTK::CoordinateAxis &)  const>(&SimTK::CoordinateAxis::isForwardCyclical));
 
   DEBUG_MSG("Adding wrapper for bool SimTK::CoordinateAxis::isReverseCyclical(const SimTK::CoordinateAxis &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::CoordinateAxis::isReverseCyclical(const SimTK::CoordinateAxis &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:131:10
+  // defined in SimTKcommon/internal/CoordinateAxis.h:131:10
   t0.method("isReverseCyclical", static_cast<bool (SimTK::CoordinateAxis::*)(const SimTK::CoordinateAxis &)  const>(&SimTK::CoordinateAxis::isReverseCyclical));
 
   DEBUG_MSG("Adding wrapper for int SimTK::CoordinateAxis::dotProduct(const SimTK::CoordinateAxis &) (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::CoordinateAxis::dotProduct(const SimTK::CoordinateAxis &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:137:9
+  // defined in SimTKcommon/internal/CoordinateAxis.h:137:9
   t0.method("dotProduct", static_cast<int (SimTK::CoordinateAxis::*)(const SimTK::CoordinateAxis &)  const>(&SimTK::CoordinateAxis::dotProduct));
 
   DEBUG_MSG("Adding wrapper for int SimTK::CoordinateAxis::crossProductSign(const SimTK::CoordinateAxis &) (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::CoordinateAxis::crossProductSign(const SimTK::CoordinateAxis &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:144:9
+  // defined in SimTKcommon/internal/CoordinateAxis.h:144:9
   t0.method("crossProductSign", static_cast<int (SimTK::CoordinateAxis::*)(const SimTK::CoordinateAxis &)  const>(&SimTK::CoordinateAxis::crossProductSign));
 
   DEBUG_MSG("Adding wrapper for SimTK::CoordinateAxis SimTK::CoordinateAxis::crossProductAxis(const SimTK::CoordinateAxis &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::CoordinateAxis SimTK::CoordinateAxis::crossProductAxis(const SimTK::CoordinateAxis &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:153:20
+  // defined in SimTKcommon/internal/CoordinateAxis.h:153:20
   t0.method("crossProductAxis", static_cast<SimTK::CoordinateAxis (SimTK::CoordinateAxis::*)(const SimTK::CoordinateAxis &)  const>(&SimTK::CoordinateAxis::crossProductAxis));
 
   DEBUG_MSG("Adding wrapper for SimTK::CoordinateAxis SimTK::CoordinateAxis::crossProduct(const SimTK::CoordinateAxis &, int &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::CoordinateAxis SimTK::CoordinateAxis::crossProduct(const SimTK::CoordinateAxis &, int &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:163:20
+  // defined in SimTKcommon/internal/CoordinateAxis.h:163:20
   t0.method("crossProduct", static_cast<SimTK::CoordinateAxis (SimTK::CoordinateAxis::*)(const SimTK::CoordinateAxis &, int &)  const>(&SimTK::CoordinateAxis::crossProduct));
 
   DEBUG_MSG("Adding wrapper for const SimTK::CoordinateAxis & SimTK::CoordinateAxis::getCoordinateAxis(int) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::CoordinateAxis & SimTK::CoordinateAxis::getCoordinateAxis(int)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:168:34
+  // defined in SimTKcommon/internal/CoordinateAxis.h:168:34
   types.method("SimTK!CoordinateAxis!getCoordinateAxis", static_cast<const SimTK::CoordinateAxis & (*)(int) >(&SimTK::CoordinateAxis::getCoordinateAxis));
 
   DEBUG_MSG("Adding wrapper for bool SimTK::CoordinateAxis::isIndexInRange(int) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::CoordinateAxis::isIndexInRange(int)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:173:18
+  // defined in SimTKcommon/internal/CoordinateAxis.h:173:18
   types.method("SimTK!CoordinateAxis!isIndexInRange", static_cast<bool (*)(int) >(&SimTK::CoordinateAxis::isIndexInRange));
 
   /* End of SimTK::CoordinateAxis class method wrappers
@@ -181,57 +181,57 @@ void define_SimTKcommon_CoordinateAxis(jlcxx::Module& types){
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::CoordinateDirection::CoordinateDirection(const SimTK::CoordinateAxis &) (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:252:5
+  // defined in SimTKcommon/internal/CoordinateAxis.h:252:5
   t4.constructor<const SimTK::CoordinateAxis &>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::CoordinateDirection::CoordinateDirection(const SimTK::CoordinateAxis &, SimTK::CoordinateDirection::Negative) (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:257:5
+  // defined in SimTKcommon/internal/CoordinateAxis.h:257:5
   t4.constructor<const SimTK::CoordinateAxis &, SimTK::CoordinateDirection::Negative>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::CoordinateDirection::CoordinateDirection(const SimTK::CoordinateAxis &, int) (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:267:5
+  // defined in SimTKcommon/internal/CoordinateAxis.h:267:5
   t4.constructor<const SimTK::CoordinateAxis &, int>();
 
   DEBUG_MSG("Adding wrapper for SimTK::CoordinateAxis SimTK::CoordinateDirection::getAxis() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::CoordinateAxis SimTK::CoordinateDirection::getAxis()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:274:20
+  // defined in SimTKcommon/internal/CoordinateAxis.h:274:20
   t4.method("getAxis", static_cast<SimTK::CoordinateAxis (SimTK::CoordinateDirection::*)()  const>(&SimTK::CoordinateDirection::getAxis));
 
   DEBUG_MSG("Adding wrapper for int SimTK::CoordinateDirection::getDirection() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::CoordinateDirection::getDirection()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:277:9
+  // defined in SimTKcommon/internal/CoordinateAxis.h:277:9
   t4.method("getDirection", static_cast<int (SimTK::CoordinateDirection::*)()  const>(&SimTK::CoordinateDirection::getDirection));
 
   DEBUG_MSG("Adding wrapper for bool SimTK::CoordinateDirection::hasSameAxis(const SimTK::CoordinateDirection &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::CoordinateDirection::hasSameAxis(const SimTK::CoordinateDirection &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:281:10
+  // defined in SimTKcommon/internal/CoordinateAxis.h:281:10
   t4.method("hasSameAxis", static_cast<bool (SimTK::CoordinateDirection::*)(const SimTK::CoordinateDirection &)  const>(&SimTK::CoordinateDirection::hasSameAxis));
 
   DEBUG_MSG("Adding wrapper for bool SimTK::CoordinateDirection::isSameAxisAndDirection(const SimTK::CoordinateDirection &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::CoordinateDirection::isSameAxisAndDirection(const SimTK::CoordinateDirection &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:287:10
+  // defined in SimTKcommon/internal/CoordinateAxis.h:287:10
   t4.method("isSameAxisAndDirection", static_cast<bool (SimTK::CoordinateDirection::*)(const SimTK::CoordinateDirection &)  const>(&SimTK::CoordinateDirection::isSameAxisAndDirection));
 
   DEBUG_MSG("Adding wrapper for int SimTK::CoordinateDirection::dotProduct(const SimTK::CoordinateDirection &) (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::CoordinateDirection::dotProduct(const SimTK::CoordinateDirection &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:293:9
+  // defined in SimTKcommon/internal/CoordinateAxis.h:293:9
   t4.method("dotProduct", static_cast<int (SimTK::CoordinateDirection::*)(const SimTK::CoordinateDirection &)  const>(&SimTK::CoordinateDirection::dotProduct));
 
   DEBUG_MSG("Adding wrapper for int SimTK::CoordinateDirection::crossProductSign(const SimTK::CoordinateDirection &) (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::CoordinateDirection::crossProductSign(const SimTK::CoordinateDirection &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:302:9
+  // defined in SimTKcommon/internal/CoordinateAxis.h:302:9
   t4.method("crossProductSign", static_cast<int (SimTK::CoordinateDirection::*)(const SimTK::CoordinateDirection &)  const>(&SimTK::CoordinateDirection::crossProductSign));
 
   DEBUG_MSG("Adding wrapper for SimTK::CoordinateAxis SimTK::CoordinateDirection::crossProductAxis(const SimTK::CoordinateDirection &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::CoordinateAxis SimTK::CoordinateDirection::crossProductAxis(const SimTK::CoordinateDirection &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:314:20
+  // defined in SimTKcommon/internal/CoordinateAxis.h:314:20
   t4.method("crossProductAxis", static_cast<SimTK::CoordinateAxis (SimTK::CoordinateDirection::*)(const SimTK::CoordinateDirection &)  const>(&SimTK::CoordinateDirection::crossProductAxis));
 
   DEBUG_MSG("Adding wrapper for SimTK::CoordinateAxis SimTK::CoordinateDirection::crossProduct(const SimTK::CoordinateDirection &, int &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::CoordinateAxis SimTK::CoordinateDirection::crossProduct(const SimTK::CoordinateDirection &, int &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:324:20
+  // defined in SimTKcommon/internal/CoordinateAxis.h:324:20
   t4.method("crossProduct", static_cast<SimTK::CoordinateAxis (SimTK::CoordinateDirection::*)(const SimTK::CoordinateDirection &, int &)  const>(&SimTK::CoordinateDirection::crossProduct));
 
   /* End of SimTK::CoordinateDirection class method wrappers
@@ -246,92 +246,92 @@ void define_SimTKcommon_CoordinateAxis(jlcxx::Module& types){
 
   DEBUG_MSG("Adding wrapper for bool SimTK::operator==(const SimTK::CoordinateAxis &, const SimTK::CoordinateAxis &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::operator==(const SimTK::CoordinateAxis &, const SimTK::CoordinateAxis &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:222:13
+  // defined in SimTKcommon/internal/CoordinateAxis.h:222:13
   types.method("==", static_cast<bool (*)(const SimTK::CoordinateAxis &, const SimTK::CoordinateAxis &) >(&SimTK::operator==));
 
   DEBUG_MSG("Adding wrapper for bool SimTK::operator!=(const SimTK::CoordinateAxis &, const SimTK::CoordinateAxis &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::operator!=(const SimTK::CoordinateAxis &, const SimTK::CoordinateAxis &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:226:13
+  // defined in SimTKcommon/internal/CoordinateAxis.h:226:13
   types.method("!=", static_cast<bool (*)(const SimTK::CoordinateAxis &, const SimTK::CoordinateAxis &) >(&SimTK::operator!=));
 
   DEBUG_MSG("Adding wrapper for bool SimTK::operator==(const SimTK::CoordinateDirection &, const SimTK::CoordinateDirection &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::operator==(const SimTK::CoordinateDirection &, const SimTK::CoordinateDirection &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:357:13
+  // defined in SimTKcommon/internal/CoordinateAxis.h:357:13
   types.method("==", static_cast<bool (*)(const SimTK::CoordinateDirection &, const SimTK::CoordinateDirection &) >(&SimTK::operator==));
 
   DEBUG_MSG("Adding wrapper for bool SimTK::operator!=(const SimTK::CoordinateDirection &, const SimTK::CoordinateDirection &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::operator!=(const SimTK::CoordinateDirection &, const SimTK::CoordinateDirection &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:362:13
+  // defined in SimTKcommon/internal/CoordinateAxis.h:362:13
   types.method("!=", static_cast<bool (*)(const SimTK::CoordinateDirection &, const SimTK::CoordinateDirection &) >(&SimTK::operator!=));
 
   DEBUG_MSG("Adding wrapper for const SimTK::CoordinateDirection::NegXDirection & SimTK::operator-(const SimTK::CoordinateAxis::XCoordinateAxis &) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::CoordinateDirection::NegXDirection & SimTK::operator-(const SimTK::CoordinateAxis::XCoordinateAxis &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:369:1
+  // defined in SimTKcommon/internal/CoordinateAxis.h:369:1
   types.method("-", static_cast<const SimTK::CoordinateDirection::NegXDirection & (*)(const SimTK::CoordinateAxis::XCoordinateAxis &) >(&SimTK::operator-));
 
   DEBUG_MSG("Adding wrapper for const SimTK::CoordinateDirection::NegYDirection & SimTK::operator-(const SimTK::CoordinateAxis::YCoordinateAxis &) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::CoordinateDirection::NegYDirection & SimTK::operator-(const SimTK::CoordinateAxis::YCoordinateAxis &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:373:1
+  // defined in SimTKcommon/internal/CoordinateAxis.h:373:1
   types.method("-", static_cast<const SimTK::CoordinateDirection::NegYDirection & (*)(const SimTK::CoordinateAxis::YCoordinateAxis &) >(&SimTK::operator-));
 
   DEBUG_MSG("Adding wrapper for const SimTK::CoordinateDirection::NegZDirection & SimTK::operator-(const SimTK::CoordinateAxis::ZCoordinateAxis &) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::CoordinateDirection::NegZDirection & SimTK::operator-(const SimTK::CoordinateAxis::ZCoordinateAxis &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:377:1
+  // defined in SimTKcommon/internal/CoordinateAxis.h:377:1
   types.method("-", static_cast<const SimTK::CoordinateDirection::NegZDirection & (*)(const SimTK::CoordinateAxis::ZCoordinateAxis &) >(&SimTK::operator-));
 
   DEBUG_MSG("Adding wrapper for SimTK::CoordinateDirection SimTK::operator-(const SimTK::CoordinateAxis &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::CoordinateDirection SimTK::operator-(const SimTK::CoordinateAxis &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:382:1
+  // defined in SimTKcommon/internal/CoordinateAxis.h:382:1
   types.method("-", static_cast<SimTK::CoordinateDirection (*)(const SimTK::CoordinateAxis &) >(&SimTK::operator-));
 
   DEBUG_MSG("Adding wrapper for SimTK::CoordinateDirection SimTK::operator+(const SimTK::CoordinateAxis &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::CoordinateDirection SimTK::operator+(const SimTK::CoordinateAxis &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:388:1
+  // defined in SimTKcommon/internal/CoordinateAxis.h:388:1
   types.method("+", static_cast<SimTK::CoordinateDirection (*)(const SimTK::CoordinateAxis &) >(&SimTK::operator+));
 
   DEBUG_MSG("Adding wrapper for const SimTK::CoordinateAxis::XCoordinateAxis & SimTK::operator-(const SimTK::CoordinateDirection::NegXDirection &) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::CoordinateAxis::XCoordinateAxis & SimTK::operator-(const SimTK::CoordinateDirection::NegXDirection &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:394:1
+  // defined in SimTKcommon/internal/CoordinateAxis.h:394:1
   types.method("-", static_cast<const SimTK::CoordinateAxis::XCoordinateAxis & (*)(const SimTK::CoordinateDirection::NegXDirection &) >(&SimTK::operator-));
 
   DEBUG_MSG("Adding wrapper for const SimTK::CoordinateAxis::YCoordinateAxis & SimTK::operator-(const SimTK::CoordinateDirection::NegYDirection &) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::CoordinateAxis::YCoordinateAxis & SimTK::operator-(const SimTK::CoordinateDirection::NegYDirection &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:398:1
+  // defined in SimTKcommon/internal/CoordinateAxis.h:398:1
   types.method("-", static_cast<const SimTK::CoordinateAxis::YCoordinateAxis & (*)(const SimTK::CoordinateDirection::NegYDirection &) >(&SimTK::operator-));
 
   DEBUG_MSG("Adding wrapper for const SimTK::CoordinateAxis::ZCoordinateAxis & SimTK::operator-(const SimTK::CoordinateDirection::NegZDirection &) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::CoordinateAxis::ZCoordinateAxis & SimTK::operator-(const SimTK::CoordinateDirection::NegZDirection &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:402:1
+  // defined in SimTKcommon/internal/CoordinateAxis.h:402:1
   types.method("-", static_cast<const SimTK::CoordinateAxis::ZCoordinateAxis & (*)(const SimTK::CoordinateDirection::NegZDirection &) >(&SimTK::operator-));
 
   DEBUG_MSG("Adding wrapper for SimTK::CoordinateDirection SimTK::operator-(const SimTK::CoordinateDirection &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::CoordinateDirection SimTK::operator-(const SimTK::CoordinateDirection &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:407:1
+  // defined in SimTKcommon/internal/CoordinateAxis.h:407:1
   types.method("-", static_cast<SimTK::CoordinateDirection (*)(const SimTK::CoordinateDirection &) >(&SimTK::operator-));
   types.unset_override_module();
 
   DEBUG_MSG("Adding SimTK!XAxis methods to provide access to the global variable SimTK::XAxis (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:206:72
+  // defined in SimTKcommon/internal/CoordinateAxis.h:206:72
   types.method("SimTK!XAxis", []()-> const SimTK::CoordinateAxis::XCoordinateAxis& { return SimTK::XAxis; });
 
   DEBUG_MSG("Adding SimTK!YAxis methods to provide access to the global variable SimTK::YAxis (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:209:72
+  // defined in SimTKcommon/internal/CoordinateAxis.h:209:72
   types.method("SimTK!YAxis", []()-> const SimTK::CoordinateAxis::YCoordinateAxis& { return SimTK::YAxis; });
 
   DEBUG_MSG("Adding SimTK!ZAxis methods to provide access to the global variable SimTK::ZAxis (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:212:72
+  // defined in SimTKcommon/internal/CoordinateAxis.h:212:72
   types.method("SimTK!ZAxis", []()-> const SimTK::CoordinateAxis::ZCoordinateAxis& { return SimTK::ZAxis; });
 
   DEBUG_MSG("Adding SimTK!NegXAxis methods to provide access to the global variable SimTK::NegXAxis (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:350:5
+  // defined in SimTKcommon/internal/CoordinateAxis.h:350:5
   types.method("SimTK!NegXAxis", []()-> const SimTK::CoordinateDirection::NegXDirection& { return SimTK::NegXAxis; });
 
   DEBUG_MSG("Adding SimTK!NegYAxis methods to provide access to the global variable SimTK::NegYAxis (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:352:5
+  // defined in SimTKcommon/internal/CoordinateAxis.h:352:5
   types.method("SimTK!NegYAxis", []()-> const SimTK::CoordinateDirection::NegYDirection& { return SimTK::NegYAxis; });
 
   DEBUG_MSG("Adding SimTK!NegZAxis methods to provide access to the global variable SimTK::NegZAxis (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:354:5
+  // defined in SimTKcommon/internal/CoordinateAxis.h:354:5
   types.method("SimTK!NegZAxis", []()-> const SimTK::CoordinateDirection::NegZDirection& { return SimTK::NegZAxis; });
 
   /* End of global function wrappers

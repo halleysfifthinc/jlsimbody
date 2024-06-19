@@ -23,20 +23,20 @@ namespace jlsimbody {
 void define_SimTKcommon_Orientations(jlcxx::Module& types, const ArrayWrapper& array_wrapper){
 
   DEBUG_MSG("Adding wrapper for enum SimTK::BodyOrSpaceType (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Rotation.h:42:6
+  // defined in SimTKcommon/internal/Rotation.h:42:6
   types.add_bits<SimTK::BodyOrSpaceType>("SimTK!BodyOrSpaceType", jlcxx::julia_type("CppEnum"));
   types.set_const("SimTK!BodyRotationSequence", SimTK::BodyRotationSequence);
   types.set_const("SimTK!SpaceRotationSequence", SimTK::SpaceRotationSequence);
 
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Quaternion.h:41:26
+  // defined in SimTKcommon/internal/Quaternion.h:41:26
   auto t1 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Quaternion_");
 
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Rotation.h:46:26
+  // defined in SimTKcommon/internal/Rotation.h:46:26
   // auto t4 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Rotation_");
   auto t4 = types.add_type<SimTK::Rotation_<double>>("SimTK!Rotation");
   typedef SimTK::Rotation_<double> Rotation;
 
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Rotation.h:47:26
+  // defined in SimTKcommon/internal/Rotation.h:47:26
   // auto t5 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!InverseRotation_");
   auto t5 = types.add_type<SimTK::InverseRotation_<double>>("SimTK!InverseRotation");
   typedef SimTK::InverseRotation_<double> InverseRotation;

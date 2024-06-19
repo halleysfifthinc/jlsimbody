@@ -22,7 +22,7 @@ namespace jlsimbody {
 
 void define_SimTKcommon_Vec(jlcxx::Module& types, const ArrayWrapper& array_wrapper){
 
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Vec.h:184:7
+  // defined in SimTKcommon/internal/Vec.h:184:7
   auto t0 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>, jlcxx::TypeVar<2>, jlcxx::TypeVar<3>>, 
     jlcxx::ParameterList<jlcxx::TypeVar<2>>>("SimTKVec", jlcxx::julia_type("AbstractVector"));
 
@@ -49,20 +49,20 @@ void define_SimTKcommon_Vec(jlcxx::Module& types, const ArrayWrapper& array_wrap
     //   wrapped.method("elementwiseDivide", static_cast<SimTK::Vec<M, typename SimTK::CNT<ELT>::template Result<ELT>::Dvd> (WrappedType::*)(const WrappedType &) const>(&WrappedType::elementwiseDivide));
     // }
 
-    // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Vec.h:812:10
+    // defined in SimTKcommon/internal/Vec.h:812:10
     wrapped.method("setToNaN", static_cast<void (WrappedType::*)() >(&WrappedType::setToNaN));
 
-    // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Vec.h:817:10
+    // defined in SimTKcommon/internal/Vec.h:817:10
     wrapped.method("setToZero", static_cast<void (WrappedType::*)() >(&WrappedType::setToZero));
 
     wrapped.module().set_override_module(jl_base_module);
-    // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Vec.h:918:10
+    // defined in SimTKcommon/internal/Vec.h:918:10
     wrapped.method("isnan", static_cast<bool (WrappedType::*)()  const>(&WrappedType::isNaN));
 
-    // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Vec.h:927:10
+    // defined in SimTKcommon/internal/Vec.h:927:10
     wrapped.method("isinf", static_cast<bool (WrappedType::*)()  const>(&WrappedType::isInf));
 
-    // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Vec.h:942:10
+    // defined in SimTKcommon/internal/Vec.h:942:10
     wrapped.method("isfinite", static_cast<bool (WrappedType::*)()  const>(&WrappedType::isFinite));
     wrapped.module().unset_override_module();
 

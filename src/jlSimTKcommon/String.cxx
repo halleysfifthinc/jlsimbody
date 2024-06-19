@@ -21,7 +21,7 @@ namespace jlsimbody {
 void define_SimTKcommon_String(jlcxx::Module& types, const ArrayWrapper& array_wrapper){
 
   DEBUG_MSG("Adding wrapper for type SimTK::String (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/String.h:62:7
+  // defined in SimTKcommon/internal/String.h:62:7
   auto t2 = types.add_type<SimTK::String>("SimTK!String", jlcxx::julia_base_type<std::string>());
   t2.template constructor<>();
 
@@ -30,33 +30,33 @@ void define_SimTKcommon_String(jlcxx::Module& types, const ArrayWrapper& array_w
    */
 
   DEBUG_MSG("Adding wrapper for void SimTK::String::String(const char *) (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/String.h:71:1
+  // defined in SimTKcommon/internal/String.h:71:1
   t2.constructor<const char *>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::String::String(char) (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/String.h:74:10
+  // defined in SimTKcommon/internal/String.h:74:10
   t2.constructor<char>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::String::String(const std::string &) (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/String.h:77:1
+  // defined in SimTKcommon/internal/String.h:77:1
   t2.constructor<const std::string &>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::String::String(const SimTK::String &, int, int) (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/String.h:81:1
+  // defined in SimTKcommon/internal/String.h:81:1
   t2.constructor<const SimTK::String &, int, int>();
 
   DEBUG_MSG("Adding setindex! method  to wrap char & SimTK::String::operator[](int) (" __HERE__ ")");
-// defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/String.h:88:7
+// defined in SimTKcommon/internal/String.h:88:7
   t2.method("cppsetindex!",
     [](SimTK::String& a, int i, char const & val){
     return a[i] = val;
   });
 
   DEBUG_MSG("Adding getindex method to wrap char & SimTK::String::operator[](int) (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/String.h:88:7
+  // defined in SimTKcommon/internal/String.h:88:7
   t2.method("cppgetindex",
     [](SimTK::String& a, int i){
     return a[i];
@@ -65,33 +65,33 @@ void define_SimTKcommon_String(jlcxx::Module& types, const ArrayWrapper& array_w
   types.set_override_module(jl_base_module);
   DEBUG_MSG("Adding wrapper for int SimTK::String::length() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::String::length()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/String.h:110:5
+  // defined in SimTKcommon/internal/String.h:110:5
   t2.method("length", static_cast<int (SimTK::String::*)()  const>(&SimTK::String::length));
   types.unset_override_module();
 
   DEBUG_MSG("Adding wrapper for int SimTK::String::size() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::String::size()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/String.h:106:5
+  // defined in SimTKcommon/internal/String.h:106:5
   t2.method("size", static_cast<int (SimTK::String::*)()  const>(&SimTK::String::size));
 
   DEBUG_MSG("Adding wrapper for SimTK::String & SimTK::String::toUpper() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::String & SimTK::String::toUpper()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/String.h:276:34
+  // defined in SimTKcommon/internal/String.h:276:34
   t2.method("toUpper", static_cast<SimTK::String & (SimTK::String::*)() >(&SimTK::String::toUpper));
 
   DEBUG_MSG("Adding wrapper for SimTK::String & SimTK::String::toLower() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::String & SimTK::String::toLower()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/String.h:279:34
+  // defined in SimTKcommon/internal/String.h:279:34
   t2.method("toLower", static_cast<SimTK::String & (SimTK::String::*)() >(&SimTK::String::toLower));
 
   DEBUG_MSG("Adding wrapper for SimTK::String & SimTK::String::trimWhiteSpace() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::String & SimTK::String::trimWhiteSpace()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/String.h:283:34
+  // defined in SimTKcommon/internal/String.h:283:34
   t2.method("trimWhiteSpace", static_cast<SimTK::String & (SimTK::String::*)() >(&SimTK::String::trimWhiteSpace));
 
   DEBUG_MSG("Adding wrapper for SimTK::String & SimTK::String::replaceAllChar(char, char) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::String & SimTK::String::replaceAllChar(char, char)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/String.h:286:34
+  // defined in SimTKcommon/internal/String.h:286:34
   t2.method("replaceAllChar", static_cast<SimTK::String & (SimTK::String::*)(char, char) >(&SimTK::String::replaceAllChar));
 
   /* End of SimTK::String class method wrappers

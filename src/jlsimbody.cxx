@@ -41,11 +41,11 @@
 using namespace jlsimbody;
 
 JLCXX_MODULE define_julia_module(jlcxx::Module& types){
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Array.h:845:35
+  // defined in SimTKcommon/internal/Array.h:845:35
   auto arrview = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>,jlcxx::TypeVar<2>>,
     jlcxx::ParameterList<jlcxx::TypeVar<1>>>("SimTKArrayView", jlcxx::julia_type("AbstractVector"));
 
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Array.h:1520:35
+  // defined in SimTKcommon/internal/Array.h:1520:35
   auto arr = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>,jlcxx::TypeVar<2>>,
     jlcxx::ParameterList<jlcxx::TypeVar<1>>>("SimTKArray", jlcxx::julia_type("AbstractVector"));
 
@@ -72,7 +72,7 @@ JLCXX_MODULE define_julia_module(jlcxx::Module& types){
 
   wrap_SimTK_UniqueIndexType<SimTK::MeasureIndex>(types, "SimTK!MeasureIndex");
 
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Measure.h:151:32
+  // defined in SimTKcommon/internal/Measure.h:151:32
   auto abs_meas = types.add_type<SimTK::AbstractMeasure>("SimTK!AbstractMeasure");
   abs_meas.template constructor<>();
 

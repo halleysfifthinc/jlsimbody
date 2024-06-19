@@ -19,7 +19,7 @@ namespace jlsimbody {
 
 void define_SimTKcommon_MassProperties(jlcxx::Module& types, const ArrayWrapper& array_wrapper){
 
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/MassProperties.h:82:26
+  // defined in SimTKcommon/internal/MassProperties.h:82:26
   auto t1 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Inertia_");
 
   auto t15 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!UnitInertia_");
@@ -28,7 +28,7 @@ void define_SimTKcommon_MassProperties(jlcxx::Module& types, const ArrayWrapper&
 
   auto t3 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!ArticulatedInerta_");
 
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/MassProperties.h:85:26
+  // defined in SimTKcommon/internal/MassProperties.h:85:26
   auto t4 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!MassProperties_");
 
   /**********************************************************************/

@@ -21,7 +21,7 @@ namespace jlsimbody {
 
 void define_SimTKcommon_UnitVec(jlcxx::Module& types){
 
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/UnitVec.h:40:33
+  // defined in SimTKcommon/internal/UnitVec.h:40:33
   auto t1 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>, jlcxx::TypeVar<2>>>("SimTK!UnitVec");
 
   /**********************************************************************/

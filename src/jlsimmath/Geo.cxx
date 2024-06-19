@@ -20,51 +20,51 @@ namespace jlsimbody{
 void define_simmath_Geo(jlcxx::Module& types){
 
   // DEBUG_MSG("Adding wrapper for type SimTK::Geo (" __HERE__ ")");
-  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geo.h:53:28
+  // // defined in simmath/internal/Geo.h:53:28
   // auto t0 = types.add_type<SimTK::Geo>("SimTK!Geo");
   // t0.template constructor<>();
 
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geo.h:55:26
+  // defined in simmath/internal/Geo.h:55:26
   auto t1 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Geo!Point_");
 
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geo.h:56:26
+  // defined in simmath/internal/Geo.h:56:26
   auto t2 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Geo!Sphere_");
 
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geo.h:57:26
+  // defined in simmath/internal/Geo.h:57:26
   auto t3 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Geo!LineSeg_");
 
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geo.h:61:26
+  // defined in simmath/internal/Geo.h:61:26
   auto t7 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Geo!Box_");
 
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geo.h:62:26
+  // defined in simmath/internal/Geo.h:62:26
   auto t8 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Geo!AlignedBox_");
 
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geo.h:63:26
+  // defined in simmath/internal/Geo.h:63:26
   auto t9 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Geo!OrientedBox_");
 
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geo.h:64:26
+  // defined in simmath/internal/Geo.h:64:26
   auto t10 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Geo!Triangle_");
 
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geo.h:65:26
+  // defined in simmath/internal/Geo.h:65:26
   auto t11 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Geo!CubicHermiteCurve_");
 
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geo.h:66:26
+  // defined in simmath/internal/Geo.h:66:26
   auto t12 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Geo!BicubicHermitePatch_");
 
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geo.h:67:26
+  // defined in simmath/internal/Geo.h:67:26
   auto t13 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Geo!CubicBezierCurve_");
 
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geo.h:68:26
+  // defined in simmath/internal/Geo.h:68:26
   auto t14 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Geo!BicubicBezierPatch_");
 
 
   DEBUG_MSG("Adding wrapper for type SimTK::Geodesic (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:51:28
+  // defined in simmath/internal/Geodesic.h:51:28
   auto t15 = types.add_type<SimTK::Geodesic>("SimTK!Geodesic");
   t15.template constructor<>();
 
   DEBUG_MSG("Adding wrapper for type SimTK::GeodesicOptions (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:311:7
+  // defined in simmath/internal/Geodesic.h:311:7
   auto t16 = types.add_type<SimTK::GeodesicOptions>("SimTK!GeodesicOptions");
   t16.template constructor<>();
 
@@ -515,297 +515,297 @@ void define_simmath_Geo(jlcxx::Module& types){
 
   DEBUG_MSG("Adding wrapper for int SimTK::Geodesic::getNumPoints() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::Geodesic::getNumPoints()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:56:9
+  // defined in simmath/internal/Geodesic.h:56:9
   t15.method("getNumPoints", static_cast<int (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getNumPoints));
 
   DEBUG_MSG("Adding wrapper for const SimTK::Array_<SimTK::Transform> & SimTK::Geodesic::getFrenetFrames() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Array_<SimTK::Transform> & SimTK::Geodesic::getFrenetFrames()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:66:30
+  // defined in simmath/internal/Geodesic.h:66:30
   t15.method("getFrenetFrames", static_cast<const SimTK::Array_<SimTK::Transform> & (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getFrenetFrames));
 
   DEBUG_MSG("Adding wrapper for SimTK::Array_<SimTK::Transform> & SimTK::Geodesic::updFrenetFrames() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Array_<SimTK::Transform> & SimTK::Geodesic::updFrenetFrames()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:67:30
+  // defined in simmath/internal/Geodesic.h:67:30
   t15.method("updFrenetFrames", static_cast<SimTK::Array_<SimTK::Transform> & (SimTK::Geodesic::*)() >(&SimTK::Geodesic::updFrenetFrames));
 
   DEBUG_MSG("Adding wrapper for void SimTK::Geodesic::addFrenetFrame(const SimTK::Transform &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::Geodesic::addFrenetFrame(const SimTK::Transform &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:68:10
+  // defined in simmath/internal/Geodesic.h:68:10
   t15.method("addFrenetFrame", static_cast<void (SimTK::Geodesic::*)(const SimTK::Transform &) >(&SimTK::Geodesic::addFrenetFrame));
 
   DEBUG_MSG("Adding wrapper for SimTK::Array_<SimTK::Real> & SimTK::Geodesic::updArcLengths() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Array_<SimTK::Real> & SimTK::Geodesic::updArcLengths()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:70:19
+  // defined in simmath/internal/Geodesic.h:70:19
   t15.method("updArcLengths", static_cast<SimTK::Array_<SimTK::Real> & (SimTK::Geodesic::*)() >(&SimTK::Geodesic::updArcLengths));
 
   DEBUG_MSG("Adding wrapper for const SimTK::Array_<SimTK::Real> & SimTK::Geodesic::getArcLengths() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Array_<SimTK::Real> & SimTK::Geodesic::getArcLengths()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:71:25
+  // defined in simmath/internal/Geodesic.h:71:25
   t15.method("getArcLengths", static_cast<const SimTK::Array_<SimTK::Real> & (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getArcLengths));
 
   DEBUG_MSG("Adding wrapper for void SimTK::Geodesic::addArcLength(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::Geodesic::addArcLength(SimTK::Real)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:72:10
+  // defined in simmath/internal/Geodesic.h:72:10
   t15.method("addArcLength", static_cast<void (SimTK::Geodesic::*)(SimTK::Real) >(&SimTK::Geodesic::addArcLength));
 
   DEBUG_MSG("Adding wrapper for SimTK::Array_<SimTK::Real> & SimTK::Geodesic::updCurvatures() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Array_<SimTK::Real> & SimTK::Geodesic::updCurvatures()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:74:19
+  // defined in simmath/internal/Geodesic.h:74:19
   t15.method("updCurvatures", static_cast<SimTK::Array_<SimTK::Real> & (SimTK::Geodesic::*)() >(&SimTK::Geodesic::updCurvatures));
 
   DEBUG_MSG("Adding wrapper for const SimTK::Array_<SimTK::Real> & SimTK::Geodesic::getCurvatures() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Array_<SimTK::Real> & SimTK::Geodesic::getCurvatures()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:75:25
+  // defined in simmath/internal/Geodesic.h:75:25
   t15.method("getCurvatures", static_cast<const SimTK::Array_<SimTK::Real> & (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getCurvatures));
 
   DEBUG_MSG("Adding wrapper for void SimTK::Geodesic::addCurvature(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::Geodesic::addCurvature(SimTK::Real)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:76:10
+  // defined in simmath/internal/Geodesic.h:76:10
   t15.method("addCurvature", static_cast<void (SimTK::Geodesic::*)(SimTK::Real) >(&SimTK::Geodesic::addCurvature));
 
   DEBUG_MSG("Adding wrapper for SimTK::Array_<SimTK::Vec2> & SimTK::Geodesic::updDirectionalSensitivityPtoQ() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Array_<SimTK::Vec2> & SimTK::Geodesic::updDirectionalSensitivityPtoQ()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:78:19
+  // defined in simmath/internal/Geodesic.h:78:19
   t15.method("updDirectionalSensitivityPtoQ", static_cast<SimTK::Array_<SimTK::Vec2> & (SimTK::Geodesic::*)() >(&SimTK::Geodesic::updDirectionalSensitivityPtoQ));
 
   DEBUG_MSG("Adding wrapper for const SimTK::Array_<SimTK::Vec2> & SimTK::Geodesic::getDirectionalSensitivityPtoQ() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Array_<SimTK::Vec2> & SimTK::Geodesic::getDirectionalSensitivityPtoQ()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:80:25
+  // defined in simmath/internal/Geodesic.h:80:25
   t15.method("getDirectionalSensitivityPtoQ", static_cast<const SimTK::Array_<SimTK::Vec2> & (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getDirectionalSensitivityPtoQ));
 
   DEBUG_MSG("Adding wrapper for void SimTK::Geodesic::addDirectionalSensitivityPtoQ(const SimTK::Vec2 &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::Geodesic::addDirectionalSensitivityPtoQ(const SimTK::Vec2 &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:82:10
+  // defined in simmath/internal/Geodesic.h:82:10
   t15.method("addDirectionalSensitivityPtoQ", static_cast<void (SimTK::Geodesic::*)(const SimTK::Vec2 &) >(&SimTK::Geodesic::addDirectionalSensitivityPtoQ));
 
   DEBUG_MSG("Adding wrapper for SimTK::Array_<SimTK::Vec2> & SimTK::Geodesic::updDirectionalSensitivityQtoP() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Array_<SimTK::Vec2> & SimTK::Geodesic::updDirectionalSensitivityQtoP()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:86:19
+  // defined in simmath/internal/Geodesic.h:86:19
   t15.method("updDirectionalSensitivityQtoP", static_cast<SimTK::Array_<SimTK::Vec2> & (SimTK::Geodesic::*)() >(&SimTK::Geodesic::updDirectionalSensitivityQtoP));
 
   DEBUG_MSG("Adding wrapper for const SimTK::Array_<SimTK::Vec2> & SimTK::Geodesic::getDirectionalSensitivityQtoP() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Array_<SimTK::Vec2> & SimTK::Geodesic::getDirectionalSensitivityQtoP()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:88:25
+  // defined in simmath/internal/Geodesic.h:88:25
   t15.method("getDirectionalSensitivityQtoP", static_cast<const SimTK::Array_<SimTK::Vec2> & (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getDirectionalSensitivityQtoP));
 
   DEBUG_MSG("Adding wrapper for void SimTK::Geodesic::addDirectionalSensitivityQtoP(const SimTK::Vec2 &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::Geodesic::addDirectionalSensitivityQtoP(const SimTK::Vec2 &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:90:10
+  // defined in simmath/internal/Geodesic.h:90:10
   t15.method("addDirectionalSensitivityQtoP", static_cast<void (SimTK::Geodesic::*)(const SimTK::Vec2 &) >(&SimTK::Geodesic::addDirectionalSensitivityQtoP));
 
   DEBUG_MSG("Adding wrapper for SimTK::Array_<SimTK::Vec2> & SimTK::Geodesic::updPositionalSensitivityPtoQ() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Array_<SimTK::Vec2> & SimTK::Geodesic::updPositionalSensitivityPtoQ()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:94:19
+  // defined in simmath/internal/Geodesic.h:94:19
   t15.method("updPositionalSensitivityPtoQ", static_cast<SimTK::Array_<SimTK::Vec2> & (SimTK::Geodesic::*)() >(&SimTK::Geodesic::updPositionalSensitivityPtoQ));
 
   DEBUG_MSG("Adding wrapper for const SimTK::Array_<SimTK::Vec2> & SimTK::Geodesic::getPositionalSensitivityPtoQ() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Array_<SimTK::Vec2> & SimTK::Geodesic::getPositionalSensitivityPtoQ()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:96:25
+  // defined in simmath/internal/Geodesic.h:96:25
   t15.method("getPositionalSensitivityPtoQ", static_cast<const SimTK::Array_<SimTK::Vec2> & (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getPositionalSensitivityPtoQ));
 
   DEBUG_MSG("Adding wrapper for void SimTK::Geodesic::addPositionalSensitivityPtoQ(const SimTK::Vec2 &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::Geodesic::addPositionalSensitivityPtoQ(const SimTK::Vec2 &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:98:10
+  // defined in simmath/internal/Geodesic.h:98:10
   t15.method("addPositionalSensitivityPtoQ", static_cast<void (SimTK::Geodesic::*)(const SimTK::Vec2 &) >(&SimTK::Geodesic::addPositionalSensitivityPtoQ));
 
   DEBUG_MSG("Adding wrapper for SimTK::Array_<SimTK::Vec2> & SimTK::Geodesic::updPositionalSensitivityQtoP() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Array_<SimTK::Vec2> & SimTK::Geodesic::updPositionalSensitivityQtoP()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:102:19
+  // defined in simmath/internal/Geodesic.h:102:19
   t15.method("updPositionalSensitivityQtoP", static_cast<SimTK::Array_<SimTK::Vec2> & (SimTK::Geodesic::*)() >(&SimTK::Geodesic::updPositionalSensitivityQtoP));
 
   DEBUG_MSG("Adding wrapper for const SimTK::Array_<SimTK::Vec2> & SimTK::Geodesic::getPositionalSensitivityQtoP() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Array_<SimTK::Vec2> & SimTK::Geodesic::getPositionalSensitivityQtoP()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:104:25
+  // defined in simmath/internal/Geodesic.h:104:25
   t15.method("getPositionalSensitivityQtoP", static_cast<const SimTK::Array_<SimTK::Vec2> & (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getPositionalSensitivityQtoP));
 
   DEBUG_MSG("Adding wrapper for void SimTK::Geodesic::addPositionalSensitivityQtoP(const SimTK::Vec2 &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::Geodesic::addPositionalSensitivityQtoP(const SimTK::Vec2 &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:106:10
+  // defined in simmath/internal/Geodesic.h:106:10
   t15.method("addPositionalSensitivityQtoP", static_cast<void (SimTK::Geodesic::*)(const SimTK::Vec2 &) >(&SimTK::Geodesic::addPositionalSensitivityQtoP));
 
   DEBUG_MSG("Adding wrapper for void SimTK::Geodesic::setTorsionAtP(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::Geodesic::setTorsionAtP(SimTK::Real)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:110:10
+  // defined in simmath/internal/Geodesic.h:110:10
   t15.method("setTorsionAtP", static_cast<void (SimTK::Geodesic::*)(SimTK::Real) >(&SimTK::Geodesic::setTorsionAtP));
 
   DEBUG_MSG("Adding wrapper for void SimTK::Geodesic::setTorsionAtQ(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::Geodesic::setTorsionAtQ(SimTK::Real)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:111:10
+  // defined in simmath/internal/Geodesic.h:111:10
   t15.method("setTorsionAtQ", static_cast<void (SimTK::Geodesic::*)(SimTK::Real) >(&SimTK::Geodesic::setTorsionAtQ));
 
   DEBUG_MSG("Adding wrapper for void SimTK::Geodesic::setBinormalCurvatureAtP(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::Geodesic::setBinormalCurvatureAtP(SimTK::Real)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:112:10
+  // defined in simmath/internal/Geodesic.h:112:10
   t15.method("setBinormalCurvatureAtP", static_cast<void (SimTK::Geodesic::*)(SimTK::Real) >(&SimTK::Geodesic::setBinormalCurvatureAtP));
 
   DEBUG_MSG("Adding wrapper for void SimTK::Geodesic::setBinormalCurvatureAtQ(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::Geodesic::setBinormalCurvatureAtQ(SimTK::Real)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:113:10
+  // defined in simmath/internal/Geodesic.h:113:10
   t15.method("setBinormalCurvatureAtQ", static_cast<void (SimTK::Geodesic::*)(SimTK::Real) >(&SimTK::Geodesic::setBinormalCurvatureAtQ));
 
   DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::Geodesic::getLength() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::Geodesic::getLength()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:117:10
+  // defined in simmath/internal/Geodesic.h:117:10
   t15.method("getLength", static_cast<SimTK::Real (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getLength));
 
   DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::Geodesic::calcLengthDot(const SimTK::Vec3 &, const SimTK::Vec3 &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::Geodesic::calcLengthDot(const SimTK::Vec3 &, const SimTK::Vec3 &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:124:10
+  // defined in simmath/internal/Geodesic.h:124:10
   t15.method("calcLengthDot", static_cast<SimTK::Real (SimTK::Geodesic::*)(const SimTK::Vec3 &, const SimTK::Vec3 &)  const>(&SimTK::Geodesic::calcLengthDot));
 
   DEBUG_MSG("Adding wrapper for const SimTK::Vec3 & SimTK::Geodesic::getPointP() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Vec3 & SimTK::Geodesic::getPointP()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:129:17
+  // defined in simmath/internal/Geodesic.h:129:17
   t15.method("getPointP", static_cast<const SimTK::Vec3 & (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getPointP));
 
   DEBUG_MSG("Adding wrapper for const SimTK::Vec3 & SimTK::Geodesic::getPointQ() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Vec3 & SimTK::Geodesic::getPointQ()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:132:17
+  // defined in simmath/internal/Geodesic.h:132:17
   t15.method("getPointQ", static_cast<const SimTK::Vec3 & (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getPointQ));
 
   DEBUG_MSG("Adding wrapper for const SimTK::UnitVec3 & SimTK::Geodesic::getNormalP() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::UnitVec3 & SimTK::Geodesic::getNormalP()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:137:21
+  // defined in simmath/internal/Geodesic.h:137:21
   t15.method("getNormalP", static_cast<const SimTK::UnitVec3 & (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getNormalP));
 
   DEBUG_MSG("Adding wrapper for const SimTK::UnitVec3 & SimTK::Geodesic::getNormalQ() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::UnitVec3 & SimTK::Geodesic::getNormalQ()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:141:21
+  // defined in simmath/internal/Geodesic.h:141:21
   t15.method("getNormalQ", static_cast<const SimTK::UnitVec3 & (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getNormalQ));
 
   DEBUG_MSG("Adding wrapper for const SimTK::UnitVec3 & SimTK::Geodesic::getTangentP() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::UnitVec3 & SimTK::Geodesic::getTangentP()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:145:21
+  // defined in simmath/internal/Geodesic.h:145:21
   t15.method("getTangentP", static_cast<const SimTK::UnitVec3 & (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getTangentP));
 
   DEBUG_MSG("Adding wrapper for const SimTK::UnitVec3 & SimTK::Geodesic::getTangentQ() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::UnitVec3 & SimTK::Geodesic::getTangentQ()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:148:21
+  // defined in simmath/internal/Geodesic.h:148:21
   t15.method("getTangentQ", static_cast<const SimTK::UnitVec3 & (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getTangentQ));
 
   DEBUG_MSG("Adding wrapper for const SimTK::UnitVec3 & SimTK::Geodesic::getBinormalP() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::UnitVec3 & SimTK::Geodesic::getBinormalP()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:152:21
+  // defined in simmath/internal/Geodesic.h:152:21
   t15.method("getBinormalP", static_cast<const SimTK::UnitVec3 & (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getBinormalP));
 
   DEBUG_MSG("Adding wrapper for const SimTK::UnitVec3 & SimTK::Geodesic::getBinormalQ() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::UnitVec3 & SimTK::Geodesic::getBinormalQ()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:155:21
+  // defined in simmath/internal/Geodesic.h:155:21
   t15.method("getBinormalQ", static_cast<const SimTK::UnitVec3 & (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getBinormalQ));
 
   DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::Geodesic::getCurvatureP() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::Geodesic::getCurvatureP()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:162:10
+  // defined in simmath/internal/Geodesic.h:162:10
   t15.method("getCurvatureP", static_cast<SimTK::Real (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getCurvatureP));
 
   DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::Geodesic::getCurvatureQ() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::Geodesic::getCurvatureQ()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:170:10
+  // defined in simmath/internal/Geodesic.h:170:10
   t15.method("getCurvatureQ", static_cast<SimTK::Real (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getCurvatureQ));
 
   DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::Geodesic::getTorsionP() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::Geodesic::getTorsionP()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:176:10
+  // defined in simmath/internal/Geodesic.h:176:10
   t15.method("getTorsionP", static_cast<SimTK::Real (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getTorsionP));
 
   DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::Geodesic::getTorsionQ() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::Geodesic::getTorsionQ()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:181:10
+  // defined in simmath/internal/Geodesic.h:181:10
   t15.method("getTorsionQ", static_cast<SimTK::Real (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getTorsionQ));
 
   DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::Geodesic::getBinormalCurvatureP() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::Geodesic::getBinormalCurvatureP()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:186:10
+  // defined in simmath/internal/Geodesic.h:186:10
   t15.method("getBinormalCurvatureP", static_cast<SimTK::Real (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getBinormalCurvatureP));
 
   DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::Geodesic::getBinormalCurvatureQ() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::Geodesic::getBinormalCurvatureQ()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:190:10
+  // defined in simmath/internal/Geodesic.h:190:10
   t15.method("getBinormalCurvatureQ", static_cast<SimTK::Real (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getBinormalCurvatureQ));
 
   DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::Geodesic::getJacobiP() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::Geodesic::getJacobiP()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:197:10
+  // defined in simmath/internal/Geodesic.h:197:10
   t15.method("getJacobiP", static_cast<SimTK::Real (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getJacobiP));
 
   DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::Geodesic::getJacobiQ() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::Geodesic::getJacobiQ()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:203:10
+  // defined in simmath/internal/Geodesic.h:203:10
   t15.method("getJacobiQ", static_cast<SimTK::Real (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getJacobiQ));
 
   DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::Geodesic::getJacobiPDot() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::Geodesic::getJacobiPDot()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:210:10
+  // defined in simmath/internal/Geodesic.h:210:10
   t15.method("getJacobiPDot", static_cast<SimTK::Real (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getJacobiPDot));
 
   DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::Geodesic::getJacobiQDot() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::Geodesic::getJacobiQDot()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:213:10
+  // defined in simmath/internal/Geodesic.h:213:10
   t15.method("getJacobiQDot", static_cast<SimTK::Real (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getJacobiQDot));
 
   DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::Geodesic::getJacobiTransP() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::Geodesic::getJacobiTransP()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:216:10
+  // defined in simmath/internal/Geodesic.h:216:10
   t15.method("getJacobiTransP", static_cast<SimTK::Real (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getJacobiTransP));
 
   DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::Geodesic::getJacobiTransQ() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::Geodesic::getJacobiTransQ()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:217:10
+  // defined in simmath/internal/Geodesic.h:217:10
   t15.method("getJacobiTransQ", static_cast<SimTK::Real (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getJacobiTransQ));
 
   DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::Geodesic::getJacobiTransPDot() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::Geodesic::getJacobiTransPDot()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:218:10
+  // defined in simmath/internal/Geodesic.h:218:10
   t15.method("getJacobiTransPDot", static_cast<SimTK::Real (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getJacobiTransPDot));
 
   DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::Geodesic::getJacobiTransQDot() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::Geodesic::getJacobiTransQDot()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:219:10
+  // defined in simmath/internal/Geodesic.h:219:10
   t15.method("getJacobiTransQDot", static_cast<SimTK::Real (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getJacobiTransQDot));
 
   DEBUG_MSG("Adding wrapper for void SimTK::Geodesic::clear() (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::Geodesic::clear()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:223:10
+  // defined in simmath/internal/Geodesic.h:223:10
   t15.method("clear", static_cast<void (SimTK::Geodesic::*)() >(&SimTK::Geodesic::clear));
 
   DEBUG_MSG("Adding wrapper for void SimTK::Geodesic::setIsConvex(bool) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::Geodesic::setIsConvex(bool)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:237:10
+  // defined in simmath/internal/Geodesic.h:237:10
   t15.method("setIsConvex", static_cast<void (SimTK::Geodesic::*)(bool) >(&SimTK::Geodesic::setIsConvex));
 
   DEBUG_MSG("Adding wrapper for void SimTK::Geodesic::setIsShortest(bool) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::Geodesic::setIsShortest(bool)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:238:10
+  // defined in simmath/internal/Geodesic.h:238:10
   t15.method("setIsShortest", static_cast<void (SimTK::Geodesic::*)(bool) >(&SimTK::Geodesic::setIsShortest));
 
   DEBUG_MSG("Adding wrapper for void SimTK::Geodesic::setInitialStepSizeHint(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::Geodesic::setInitialStepSizeHint(SimTK::Real)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:239:10
+  // defined in simmath/internal/Geodesic.h:239:10
   t15.method("setInitialStepSizeHint", static_cast<void (SimTK::Geodesic::*)(SimTK::Real) >(&SimTK::Geodesic::setInitialStepSizeHint));
 
   DEBUG_MSG("Adding wrapper for void SimTK::Geodesic::setAchievedAccuracy(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::Geodesic::setAchievedAccuracy(SimTK::Real)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:240:10
+  // defined in simmath/internal/Geodesic.h:240:10
   t15.method("setAchievedAccuracy", static_cast<void (SimTK::Geodesic::*)(SimTK::Real) >(&SimTK::Geodesic::setAchievedAccuracy));
 
   DEBUG_MSG("Adding wrapper for bool SimTK::Geodesic::isConvex() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::Geodesic::isConvex()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:242:10
+  // defined in simmath/internal/Geodesic.h:242:10
   t15.method("isConvex", static_cast<bool (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::isConvex));
 
   DEBUG_MSG("Adding wrapper for bool SimTK::Geodesic::isShortest() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::Geodesic::isShortest()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:243:10
+  // defined in simmath/internal/Geodesic.h:243:10
   t15.method("isShortest", static_cast<bool (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::isShortest));
 
   DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::Geodesic::getInitialStepSizeHint() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::Geodesic::getInitialStepSizeHint()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:244:10
+  // defined in simmath/internal/Geodesic.h:244:10
   t15.method("getInitialStepSizeHint", static_cast<SimTK::Real (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getInitialStepSizeHint));
 
   DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::Geodesic::getAchievedAccuracy() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::Geodesic::getAchievedAccuracy()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Geodesic.h:245:10
+  // defined in simmath/internal/Geodesic.h:245:10
   t15.method("getAchievedAccuracy", static_cast<SimTK::Real (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getAchievedAccuracy));
 
   /* End of SimTK::Geodesic class method wrappers
