@@ -85,9 +85,9 @@ void define_SimTKcommon_Stage(jlcxx::Module& types){
    */
 
 
-  DEBUG_MSG("Adding wrapper for void SimTK::Stage::Stage(SimTK::Stage::Level) (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Stage.h:95:5
-  t0.constructor<SimTK::Stage::Level>();
+  // DEBUG_MSG("Adding wrapper for void SimTK::Stage::Stage(SimTK::Stage::Level) (" __HERE__ ")");
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Stage.h:95:5
+  // t0.constructor<SimTK::Stage::Level>();
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::Stage::Stage(int) (" __HERE__ ")");

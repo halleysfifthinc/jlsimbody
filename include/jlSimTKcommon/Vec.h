@@ -15,14 +15,14 @@
 
 namespace jlcxx {
 
-  template<int M, typename ELT, int STRIDE>
+  template<long M, typename ELT, long STRIDE>
   struct BuildParameterList<SimTK::Vec<M, ELT, STRIDE>>
   {
-    typedef ParameterList<std::integral_constant<int, M>, ELT, std::integral_constant<int, STRIDE>> type;
+    typedef ParameterList<std::integral_constant<long, M>, ELT, std::integral_constant<long, STRIDE>> type;
   };
 
-  template<int M, typename ELT, int STRIDE> struct IsMirroredType<SimTK::Vec<M, ELT, STRIDE>> : std::false_type { };
-  template<int M, typename ELT, int STRIDE> struct DefaultConstructible<SimTK::Vec<M, ELT, STRIDE>> : std::false_type { };
+  template<long M, typename ELT, long STRIDE> struct IsMirroredType<SimTK::Vec<M, ELT, STRIDE>> : std::false_type { };
+  template<long M, typename ELT, long STRIDE> struct DefaultConstructible<SimTK::Vec<M, ELT, STRIDE>> : std::false_type { };
 }
 
 namespace jlsimbody {

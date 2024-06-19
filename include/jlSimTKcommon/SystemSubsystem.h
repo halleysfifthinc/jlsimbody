@@ -9,8 +9,8 @@ namespace jlcxx {
   template<> struct DefaultConstructible<SimTK::Subsystem> : std::false_type { };
   template<> struct IsMirroredType<SimTK::System> : std::false_type { };
   template<> struct DefaultConstructible<SimTK::System> : std::false_type { };
-  template<> struct IsMirroredType<SimTK::Subsystem::Guts> : std::false_type { };
-  template<> struct DefaultConstructible<SimTK::Subsystem::Guts> : std::false_type { };
+  // template<> struct IsMirroredType<SimTK::Subsystem::Guts> : std::false_type { };
+  // template<> struct DefaultConstructible<SimTK::Subsystem::Guts> : std::false_type { };
   template<> struct IsMirroredType<SimTK::ProjectOptions> : std::false_type { };
   template<> struct DefaultConstructible<SimTK::ProjectOptions> : std::false_type { };
   template<> struct IsMirroredType<SimTK::ProjectResults> : std::false_type { };

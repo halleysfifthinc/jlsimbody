@@ -25,8 +25,18 @@
 #include "jlSimTKcommon/Function.h"
 
 #include "jlsimmath/Geo.h"
+#include "jlSimTKcommon/DecorationGenerator.h"
 #include "jlsimmath/Contact_related.h"
 
+#include "jlsimbody/Body.h"
+#include "jlsimbody/SimbodyMatterSubsystem.h"
+#include "jlsimbody/DecorationSubsystem.h"
+#include "jlsimbody/ContactTrackerSubsystem.h"
+#include "jlsimbody/CableTrackerSubsystem.h"
+#include "jlsimbody/Force.h"
+#include "jlsimbody/ForceSubsystems.h"
+#include "jlsimbody/MultibodySystem.h"
+#include "jlsimbody/Assembler_and_related.h"
 
 using namespace jlsimbody;
 
@@ -70,6 +80,16 @@ JLCXX_MODULE define_julia_module(jlcxx::Module& types){
   define_SimTKcommon_Measure(types, abs_meas, array_wrapper);
   define_SimTKcommon_Function(types, array_wrapper);
 
-  define_simbody_Geo(types);
-  define_simbody_Contact_related(types);
+  define_simmath_Geo(types);
+  define_SimTKcommon_DecorationGenerator(types);
+  define_simmath_Contact_related(types, array_wrapper);
+  define_simbody_Body(types);
+  define_simbody_SimbodyMatterSubsystem(types, array_wrapper);
+  define_simbody_DecorationSubsystem(types);
+  define_simbody_ContactTrackerSubsystem(types);
+  define_simbody_CableTrackerSubsystem(types);
+  define_simbody_Force(types);
+  define_simbody_ForceSubsystems(types, array_wrapper);
+  define_simbody_MultibodySystem(types);
+  define_simbody_Assembler_and_related(types, array_wrapper);
 }

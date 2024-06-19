@@ -53,9 +53,9 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
   auto t22 = types.add_type<SimTK::System>("SimTK!System");
   t22.template constructor<>();
 
-  DEBUG_MSG("Adding wrapper for type SimTK::Subsystem::Guts (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:47:43
-  auto t26 = types.add_type<SimTK::Subsystem::Guts>("SimTK!Subsystem!Guts");
+  // DEBUG_MSG("Adding wrapper for type SimTK::Subsystem::Guts (" __HERE__ ")");
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:47:43
+  // auto t26 = types.add_type<SimTK::Subsystem::Guts>("SimTK!Subsystem!Guts");
 
   DEBUG_MSG("Adding wrapper for type SimTK::ProjectOptions (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/System.h:950:7
@@ -545,30 +545,29 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Subsystem.h:347:24
   t0.method("getMeasure", static_cast<SimTK::AbstractMeasure (SimTK::Subsystem::*)(SimTK::MeasureIndex)  const>(&SimTK::Subsystem::getMeasure));
 
-  DEBUG_MSG("Adding wrapper for const SimTK::Subsystem::Guts & SimTK::Subsystem::getSubsystemGuts() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Subsystem::Guts & SimTK::Subsystem::getSubsystemGuts()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Subsystem.h:353:24
-  t0.method("getSubsystemGuts", static_cast<const SimTK::Subsystem::Guts & (SimTK::Subsystem::*)()  const>(&SimTK::Subsystem::getSubsystemGuts));
+  // DEBUG_MSG("Adding wrapper for const SimTK::Subsystem::Guts & SimTK::Subsystem::getSubsystemGuts() (" __HERE__ ")");
+  // // signature to use in the veto list: const SimTK::Subsystem::Guts & SimTK::Subsystem::getSubsystemGuts()
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Subsystem.h:353:24
+  // t0.method("getSubsystemGuts", static_cast<const SimTK::Subsystem::Guts & (SimTK::Subsystem::*)()  const>(&SimTK::Subsystem::getSubsystemGuts));
 
-  DEBUG_MSG("Adding wrapper for SimTK::Subsystem::Guts & SimTK::Subsystem::updSubsystemGuts() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Subsystem::Guts & SimTK::Subsystem::updSubsystemGuts()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Subsystem.h:354:24
-  t0.method("updSubsystemGuts", static_cast<SimTK::Subsystem::Guts & (SimTK::Subsystem::*)() >(&SimTK::Subsystem::updSubsystemGuts));
+  // DEBUG_MSG("Adding wrapper for SimTK::Subsystem::Guts & SimTK::Subsystem::updSubsystemGuts() (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::Subsystem::Guts & SimTK::Subsystem::updSubsystemGuts()
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Subsystem.h:354:24
+  // t0.method("updSubsystemGuts", static_cast<SimTK::Subsystem::Guts & (SimTK::Subsystem::*)() >(&SimTK::Subsystem::updSubsystemGuts));
 
-  DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::adoptSubsystemGuts(SimTK::Subsystem::Guts *) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::adoptSubsystemGuts(SimTK::Subsystem::Guts *)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Subsystem.h:359:6
-  t0.method("adoptSubsystemGuts", static_cast<void (SimTK::Subsystem::*)(SimTK::Subsystem::Guts *) >(&SimTK::Subsystem::adoptSubsystemGuts));
+  // DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::adoptSubsystemGuts(SimTK::Subsystem::Guts *) (" __HERE__ ")");
+  // // signature to use in the veto list: void SimTK::Subsystem::adoptSubsystemGuts(SimTK::Subsystem::Guts *)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Subsystem.h:359:6
+  // t0.method("adoptSubsystemGuts", static_cast<void (SimTK::Subsystem::*)(SimTK::Subsystem::Guts *) >(&SimTK::Subsystem::adoptSubsystemGuts));
 
+  // DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Subsystem(SimTK::Subsystem::Guts *) (" __HERE__ ")");
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Subsystem.h:361:10
+  // t0.constructor<SimTK::Subsystem::Guts *>();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Subsystem(SimTK::Subsystem::Guts *) (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Subsystem.h:361:10
-  t0.constructor<SimTK::Subsystem::Guts *>();
-
-  DEBUG_MSG("Adding wrapper for bool SimTK::Subsystem::hasGuts() (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::Subsystem::hasGuts()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Subsystem.h:362:6
-  t0.method("hasGuts", static_cast<bool (SimTK::Subsystem::*)()  const>(&SimTK::Subsystem::hasGuts));
+  // DEBUG_MSG("Adding wrapper for bool SimTK::Subsystem::hasGuts() (" __HERE__ ")");
+  // // signature to use in the veto list: bool SimTK::Subsystem::hasGuts()
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Subsystem.h:362:6
+  // t0.method("hasGuts", static_cast<bool (SimTK::Subsystem::*)()  const>(&SimTK::Subsystem::hasGuts));
 
   /* End of SimTK::Subsystem class method wrappers
    **********************************************************************/
@@ -954,555 +953,552 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
   /* End of SimTK::System class method wrappers
    **********************************************************************/
 
-
-  /**********************************************************************/
-  /* Wrappers for the methods of class SimTK::Subsystem::Guts
-   */
-
-
-
-  DEBUG_MSG("Adding wrapper for const SimTK::String & SimTK::Subsystem::Guts::getName() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::String & SimTK::Subsystem::Guts::getName()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:65:15
-  t26.method("getName", static_cast<const SimTK::String & (SimTK::Subsystem::Guts::*)()  const>(&SimTK::Subsystem::Guts::getName));
-
-  DEBUG_MSG("Adding wrapper for const SimTK::String & SimTK::Subsystem::Guts::getVersion() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::String & SimTK::Subsystem::Guts::getVersion()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:68:15
-  t26.method("getVersion", static_cast<const SimTK::String & (SimTK::Subsystem::Guts::*)()  const>(&SimTK::Subsystem::Guts::getVersion));
-
-  DEBUG_MSG("Adding wrapper for SimTK::QIndex SimTK::Subsystem::Guts::allocateQ(SimTK::State &, const SimTK::Vector &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::QIndex SimTK::Subsystem::Guts::allocateQ(SimTK::State &, const SimTK::Vector &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:83:8
-  t26.method("allocateQ", static_cast<SimTK::QIndex (SimTK::Subsystem::Guts::*)(SimTK::State &, const SimTK::Vector &)  const>(&SimTK::Subsystem::Guts::allocateQ));
-
-  DEBUG_MSG("Adding wrapper for SimTK::UIndex SimTK::Subsystem::Guts::allocateU(SimTK::State &, const SimTK::Vector &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::UIndex SimTK::Subsystem::Guts::allocateU(SimTK::State &, const SimTK::Vector &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:85:8
-  t26.method("allocateU", static_cast<SimTK::UIndex (SimTK::Subsystem::Guts::*)(SimTK::State &, const SimTK::Vector &)  const>(&SimTK::Subsystem::Guts::allocateU));
-
-  DEBUG_MSG("Adding wrapper for SimTK::ZIndex SimTK::Subsystem::Guts::allocateZ(SimTK::State &, const SimTK::Vector &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::ZIndex SimTK::Subsystem::Guts::allocateZ(SimTK::State &, const SimTK::Vector &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:87:8
-  t26.method("allocateZ", static_cast<SimTK::ZIndex (SimTK::Subsystem::Guts::*)(SimTK::State &, const SimTK::Vector &)  const>(&SimTK::Subsystem::Guts::allocateZ));
-
-  DEBUG_MSG("Adding wrapper for SimTK::DiscreteVariableIndex SimTK::Subsystem::Guts::allocateDiscreteVariable(SimTK::State &, SimTK::Stage, SimTK::AbstractValue *) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::DiscreteVariableIndex SimTK::Subsystem::Guts::allocateDiscreteVariable(SimTK::State &, SimTK::Stage, SimTK::AbstractValue *)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:91:1
-  t26.method("allocateDiscreteVariable", static_cast<SimTK::DiscreteVariableIndex (SimTK::Subsystem::Guts::*)(SimTK::State &, SimTK::Stage, SimTK::AbstractValue *)  const>(&SimTK::Subsystem::Guts::allocateDiscreteVariable));
-
-  DEBUG_MSG("Adding wrapper for SimTK::DiscreteVariableIndex SimTK::Subsystem::Guts::allocateAutoUpdateDiscreteVariable(SimTK::State &, SimTK::Stage, SimTK::AbstractValue *, SimTK::Stage) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::DiscreteVariableIndex SimTK::Subsystem::Guts::allocateAutoUpdateDiscreteVariable(SimTK::State &, SimTK::Stage, SimTK::AbstractValue *, SimTK::Stage)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:93:23
-  t26.method("allocateAutoUpdateDiscreteVariable", static_cast<SimTK::DiscreteVariableIndex (SimTK::Subsystem::Guts::*)(SimTK::State &, SimTK::Stage, SimTK::AbstractValue *, SimTK::Stage)  const>(&SimTK::Subsystem::Guts::allocateAutoUpdateDiscreteVariable));
-
-  DEBUG_MSG("Adding wrapper for SimTK::CacheEntryIndex SimTK::Subsystem::Guts::allocateCacheEntry(const SimTK::State &, SimTK::Stage, SimTK::Stage, SimTK::AbstractValue *) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::CacheEntryIndex SimTK::Subsystem::Guts::allocateCacheEntry(const SimTK::State &, SimTK::Stage, SimTK::Stage, SimTK::AbstractValue *)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:98:17
-  t26.method("allocateCacheEntry", static_cast<SimTK::CacheEntryIndex (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::Stage, SimTK::Stage, SimTK::AbstractValue *)  const>(&SimTK::Subsystem::Guts::allocateCacheEntry));
-
-  DEBUG_MSG("Adding wrapper for SimTK::CacheEntryIndex SimTK::Subsystem::Guts::allocateCacheEntry(const SimTK::State &, SimTK::Stage, SimTK::AbstractValue *) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::CacheEntryIndex SimTK::Subsystem::Guts::allocateCacheEntry(const SimTK::State &, SimTK::Stage, SimTK::AbstractValue *)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:102:17
-  t26.method("allocateCacheEntry", static_cast<SimTK::CacheEntryIndex (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::Stage, SimTK::AbstractValue *)  const>(&SimTK::Subsystem::Guts::allocateCacheEntry));
-
-  DEBUG_MSG("Adding wrapper for SimTK::CacheEntryIndex SimTK::Subsystem::Guts::allocateLazyCacheEntry(const SimTK::State &, SimTK::Stage, SimTK::AbstractValue *) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::CacheEntryIndex SimTK::Subsystem::Guts::allocateLazyCacheEntry(const SimTK::State &, SimTK::Stage, SimTK::AbstractValue *)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:105:17
-  t26.method("allocateLazyCacheEntry", static_cast<SimTK::CacheEntryIndex (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::Stage, SimTK::AbstractValue *)  const>(&SimTK::Subsystem::Guts::allocateLazyCacheEntry));
-
-  DEBUG_MSG("Adding wrapper for SimTK::QErrIndex SimTK::Subsystem::Guts::allocateQErr(const SimTK::State &, int) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::QErrIndex SimTK::Subsystem::Guts::allocateQErr(const SimTK::State &, int)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:109:11
-  t26.method("allocateQErr", static_cast<SimTK::QErrIndex (SimTK::Subsystem::Guts::*)(const SimTK::State &, int)  const>(&SimTK::Subsystem::Guts::allocateQErr));
-
-  DEBUG_MSG("Adding wrapper for SimTK::UErrIndex SimTK::Subsystem::Guts::allocateUErr(const SimTK::State &, int) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::UErrIndex SimTK::Subsystem::Guts::allocateUErr(const SimTK::State &, int)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:111:11
-  t26.method("allocateUErr", static_cast<SimTK::UErrIndex (SimTK::Subsystem::Guts::*)(const SimTK::State &, int)  const>(&SimTK::Subsystem::Guts::allocateUErr));
-
-  DEBUG_MSG("Adding wrapper for SimTK::UDotErrIndex SimTK::Subsystem::Guts::allocateUDotErr(const SimTK::State &, int) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::UDotErrIndex SimTK::Subsystem::Guts::allocateUDotErr(const SimTK::State &, int)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:113:14
-  t26.method("allocateUDotErr", static_cast<SimTK::UDotErrIndex (SimTK::Subsystem::Guts::*)(const SimTK::State &, int)  const>(&SimTK::Subsystem::Guts::allocateUDotErr));
-
-  DEBUG_MSG("Adding wrapper for SimTK::EventTriggerByStageIndex SimTK::Subsystem::Guts::allocateEventTriggersByStage(const SimTK::State &, SimTK::Stage, int) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::EventTriggerByStageIndex SimTK::Subsystem::Guts::allocateEventTriggersByStage(const SimTK::State &, SimTK::Stage, int)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:116:1
-  t26.method("allocateEventTriggersByStage", static_cast<SimTK::EventTriggerByStageIndex (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::Stage, int)  const>(&SimTK::Subsystem::Guts::allocateEventTriggersByStage));
-
-  DEBUG_MSG("Adding wrapper for const SimTK::Vector & SimTK::Subsystem::Guts::getQ(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::Guts::getQ(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:119:15
-  t26.method("getQ", static_cast<const SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getQ));
-
-  DEBUG_MSG("Adding wrapper for const SimTK::Vector & SimTK::Subsystem::Guts::getU(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::Guts::getU(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:121:15
-  t26.method("getU", static_cast<const SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getU));
-
-  DEBUG_MSG("Adding wrapper for const SimTK::Vector & SimTK::Subsystem::Guts::getZ(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::Guts::getZ(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:123:15
-  t26.method("getZ", static_cast<const SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getZ));
-
-  DEBUG_MSG("Adding wrapper for const SimTK::Vector & SimTK::Subsystem::Guts::getUWeights(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::Guts::getUWeights(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:125:15
-  t26.method("getUWeights", static_cast<const SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getUWeights));
-
-  DEBUG_MSG("Adding wrapper for const SimTK::Vector & SimTK::Subsystem::Guts::getZWeights(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::Guts::getZWeights(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:127:15
-  t26.method("getZWeights", static_cast<const SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getZWeights));
-
-  DEBUG_MSG("Adding wrapper for SimTK::Vector & SimTK::Subsystem::Guts::updQ(SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::Guts::updQ(SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:130:9
-  t26.method("updQ", static_cast<SimTK::Vector & (SimTK::Subsystem::Guts::*)(SimTK::State &)  const>(&SimTK::Subsystem::Guts::updQ));
-
-  DEBUG_MSG("Adding wrapper for SimTK::Vector & SimTK::Subsystem::Guts::updU(SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::Guts::updU(SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:131:9
-  t26.method("updU", static_cast<SimTK::Vector & (SimTK::Subsystem::Guts::*)(SimTK::State &)  const>(&SimTK::Subsystem::Guts::updU));
-
-  DEBUG_MSG("Adding wrapper for SimTK::Vector & SimTK::Subsystem::Guts::updZ(SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::Guts::updZ(SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:132:9
-  t26.method("updZ", static_cast<SimTK::Vector & (SimTK::Subsystem::Guts::*)(SimTK::State &)  const>(&SimTK::Subsystem::Guts::updZ));
-
-  DEBUG_MSG("Adding wrapper for const SimTK::Vector & SimTK::Subsystem::Guts::getQDot(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::Guts::getQDot(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:134:15
-  t26.method("getQDot", static_cast<const SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getQDot));
-
-  DEBUG_MSG("Adding wrapper for const SimTK::Vector & SimTK::Subsystem::Guts::getUDot(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::Guts::getUDot(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:136:15
-  t26.method("getUDot", static_cast<const SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getUDot));
-
-  DEBUG_MSG("Adding wrapper for const SimTK::Vector & SimTK::Subsystem::Guts::getZDot(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::Guts::getZDot(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:138:15
-  t26.method("getZDot", static_cast<const SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getZDot));
-
-  DEBUG_MSG("Adding wrapper for const SimTK::Vector & SimTK::Subsystem::Guts::getQDotDot(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::Guts::getQDotDot(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:140:15
-  t26.method("getQDotDot", static_cast<const SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getQDotDot));
-
-  DEBUG_MSG("Adding wrapper for SimTK::Vector & SimTK::Subsystem::Guts::updQDot(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::Guts::updQDot(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:143:9
-  t26.method("updQDot", static_cast<SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::updQDot));
-
-  DEBUG_MSG("Adding wrapper for SimTK::Vector & SimTK::Subsystem::Guts::updUDot(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::Guts::updUDot(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:145:9
-  t26.method("updUDot", static_cast<SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::updUDot));
-
-  DEBUG_MSG("Adding wrapper for SimTK::Vector & SimTK::Subsystem::Guts::updZDot(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::Guts::updZDot(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:147:9
-  t26.method("updZDot", static_cast<SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::updZDot));
-
-  DEBUG_MSG("Adding wrapper for SimTK::Vector & SimTK::Subsystem::Guts::updQDotDot(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::Guts::updQDotDot(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:149:9
-  t26.method("updQDotDot", static_cast<SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::updQDotDot));
-
-  DEBUG_MSG("Adding wrapper for const SimTK::Vector & SimTK::Subsystem::Guts::getQErr(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::Guts::getQErr(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:152:15
-  t26.method("getQErr", static_cast<const SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getQErr));
-
-  DEBUG_MSG("Adding wrapper for const SimTK::Vector & SimTK::Subsystem::Guts::getUErr(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::Guts::getUErr(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:154:15
-  t26.method("getUErr", static_cast<const SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getUErr));
-
-  DEBUG_MSG("Adding wrapper for const SimTK::Vector & SimTK::Subsystem::Guts::getQErrWeights(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::Guts::getQErrWeights(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:156:15
-  t26.method("getQErrWeights", static_cast<const SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getQErrWeights));
-
-  DEBUG_MSG("Adding wrapper for const SimTK::Vector & SimTK::Subsystem::Guts::getUErrWeights(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::Guts::getUErrWeights(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:158:15
-  t26.method("getUErrWeights", static_cast<const SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getUErrWeights));
-
-  DEBUG_MSG("Adding wrapper for const SimTK::Vector & SimTK::Subsystem::Guts::getUDotErr(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::Guts::getUDotErr(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:161:15
-  t26.method("getUDotErr", static_cast<const SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getUDotErr));
-
-  DEBUG_MSG("Adding wrapper for const SimTK::Vector & SimTK::Subsystem::Guts::getMultipliers(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::Guts::getMultipliers(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:163:15
-  t26.method("getMultipliers", static_cast<const SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getMultipliers));
-
-  DEBUG_MSG("Adding wrapper for const SimTK::Vector & SimTK::Subsystem::Guts::getEventTriggersByStage(const SimTK::State &, SimTK::Stage) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::Guts::getEventTriggersByStage(const SimTK::State &, SimTK::Stage)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:165:15
-  t26.method("getEventTriggersByStage", static_cast<const SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::Stage)  const>(&SimTK::Subsystem::Guts::getEventTriggersByStage));
-
-  DEBUG_MSG("Adding wrapper for SimTK::Vector & SimTK::Subsystem::Guts::updQErr(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::Guts::updQErr(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:168:9
-  t26.method("updQErr", static_cast<SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::updQErr));
-
-  DEBUG_MSG("Adding wrapper for SimTK::Vector & SimTK::Subsystem::Guts::updUErr(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::Guts::updUErr(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:170:9
-  t26.method("updUErr", static_cast<SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::updUErr));
-
-  DEBUG_MSG("Adding wrapper for SimTK::Vector & SimTK::Subsystem::Guts::updUDotErr(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::Guts::updUDotErr(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:172:9
-  t26.method("updUDotErr", static_cast<SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::updUDotErr));
-
-  DEBUG_MSG("Adding wrapper for SimTK::Vector & SimTK::Subsystem::Guts::updMultipliers(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::Guts::updMultipliers(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:174:9
-  t26.method("updMultipliers", static_cast<SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::updMultipliers));
-
-  DEBUG_MSG("Adding wrapper for SimTK::Vector & SimTK::Subsystem::Guts::updEventTriggersByStage(const SimTK::State &, SimTK::Stage) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::Guts::updEventTriggersByStage(const SimTK::State &, SimTK::Stage)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:176:9
-  t26.method("updEventTriggersByStage", static_cast<SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::Stage)  const>(&SimTK::Subsystem::Guts::updEventTriggersByStage));
-
-  DEBUG_MSG("Adding wrapper for SimTK::SystemQIndex SimTK::Subsystem::Guts::getQStart(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::SystemQIndex SimTK::Subsystem::Guts::getQStart(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:179:14
-  t26.method("getQStart", static_cast<SimTK::SystemQIndex (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getQStart));
-
-  DEBUG_MSG("Adding wrapper for int SimTK::Subsystem::Guts::getNQ(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::Subsystem::Guts::getNQ(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:181:5
-  t26.method("getNQ", static_cast<int (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getNQ));
-
-  DEBUG_MSG("Adding wrapper for SimTK::SystemUIndex SimTK::Subsystem::Guts::getUStart(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::SystemUIndex SimTK::Subsystem::Guts::getUStart(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:184:14
-  t26.method("getUStart", static_cast<SimTK::SystemUIndex (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getUStart));
-
-  DEBUG_MSG("Adding wrapper for int SimTK::Subsystem::Guts::getNU(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::Subsystem::Guts::getNU(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:186:5
-  t26.method("getNU", static_cast<int (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getNU));
-
-  DEBUG_MSG("Adding wrapper for SimTK::SystemZIndex SimTK::Subsystem::Guts::getZStart(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::SystemZIndex SimTK::Subsystem::Guts::getZStart(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:189:14
-  t26.method("getZStart", static_cast<SimTK::SystemZIndex (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getZStart));
-
-  DEBUG_MSG("Adding wrapper for int SimTK::Subsystem::Guts::getNZ(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::Subsystem::Guts::getNZ(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:191:5
-  t26.method("getNZ", static_cast<int (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getNZ));
-
-  DEBUG_MSG("Adding wrapper for SimTK::SystemQErrIndex SimTK::Subsystem::Guts::getQErrStart(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::SystemQErrIndex SimTK::Subsystem::Guts::getQErrStart(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:194:17
-  t26.method("getQErrStart", static_cast<SimTK::SystemQErrIndex (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getQErrStart));
-
-  DEBUG_MSG("Adding wrapper for int SimTK::Subsystem::Guts::getNQErr(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::Subsystem::Guts::getNQErr(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:196:5
-  t26.method("getNQErr", static_cast<int (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getNQErr));
-
-  DEBUG_MSG("Adding wrapper for SimTK::SystemUErrIndex SimTK::Subsystem::Guts::getUErrStart(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::SystemUErrIndex SimTK::Subsystem::Guts::getUErrStart(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:199:17
-  t26.method("getUErrStart", static_cast<SimTK::SystemUErrIndex (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getUErrStart));
-
-  DEBUG_MSG("Adding wrapper for int SimTK::Subsystem::Guts::getNUErr(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::Subsystem::Guts::getNUErr(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:201:5
-  t26.method("getNUErr", static_cast<int (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getNUErr));
-
-  DEBUG_MSG("Adding wrapper for SimTK::SystemUDotErrIndex SimTK::Subsystem::Guts::getUDotErrStart(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::SystemUDotErrIndex SimTK::Subsystem::Guts::getUDotErrStart(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:204:20
-  t26.method("getUDotErrStart", static_cast<SimTK::SystemUDotErrIndex (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getUDotErrStart));
-
-  DEBUG_MSG("Adding wrapper for int SimTK::Subsystem::Guts::getNUDotErr(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::Subsystem::Guts::getNUDotErr(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:206:5
-  t26.method("getNUDotErr", static_cast<int (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getNUDotErr));
-
-  DEBUG_MSG("Adding wrapper for SimTK::SystemMultiplierIndex SimTK::Subsystem::Guts::getMultipliersStart(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::SystemMultiplierIndex SimTK::Subsystem::Guts::getMultipliersStart(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:209:23
-  t26.method("getMultipliersStart", static_cast<SimTK::SystemMultiplierIndex (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getMultipliersStart));
-
-  DEBUG_MSG("Adding wrapper for int SimTK::Subsystem::Guts::getNMultipliers(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::Subsystem::Guts::getNMultipliers(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:211:5
-  t26.method("getNMultipliers", static_cast<int (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getNMultipliers));
-
-  DEBUG_MSG("Adding wrapper for SimTK::SystemEventTriggerByStageIndex SimTK::Subsystem::Guts::getEventTriggerStartByStage(const SimTK::State &, SimTK::Stage) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::SystemEventTriggerByStageIndex SimTK::Subsystem::Guts::getEventTriggerStartByStage(const SimTK::State &, SimTK::Stage)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:214:32
-  t26.method("getEventTriggerStartByStage", static_cast<SimTK::SystemEventTriggerByStageIndex (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::Stage)  const>(&SimTK::Subsystem::Guts::getEventTriggerStartByStage));
-
-  DEBUG_MSG("Adding wrapper for int SimTK::Subsystem::Guts::getNEventTriggersByStage(const SimTK::State &, SimTK::Stage) (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::Subsystem::Guts::getNEventTriggersByStage(const SimTK::State &, SimTK::Stage)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:216:5
-  t26.method("getNEventTriggersByStage", static_cast<int (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::Stage)  const>(&SimTK::Subsystem::Guts::getNEventTriggersByStage));
-
-  DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::setQ(SimTK::State &, const SimTK::Vector &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::Guts::setQ(SimTK::State &, const SimTK::Vector &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:221:6
-  t26.method("setQ", static_cast<void (SimTK::Subsystem::Guts::*)(SimTK::State &, const SimTK::Vector &)  const>(&SimTK::Subsystem::Guts::setQ));
-
-  DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::setU(SimTK::State &, const SimTK::Vector &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::Guts::setU(SimTK::State &, const SimTK::Vector &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:225:6
-  t26.method("setU", static_cast<void (SimTK::Subsystem::Guts::*)(SimTK::State &, const SimTK::Vector &)  const>(&SimTK::Subsystem::Guts::setU));
-
-  DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::setZ(SimTK::State &, const SimTK::Vector &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::Guts::setZ(SimTK::State &, const SimTK::Vector &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:229:6
-  t26.method("setZ", static_cast<void (SimTK::Subsystem::Guts::*)(SimTK::State &, const SimTK::Vector &)  const>(&SimTK::Subsystem::Guts::setZ));
-
-  DEBUG_MSG("Adding wrapper for SimTK::Stage SimTK::Subsystem::Guts::getStage(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Stage SimTK::Subsystem::Guts::getStage(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:234:7
-  t26.method("getStage", static_cast<SimTK::Stage (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getStage));
-
-  DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::advanceToStage(const SimTK::State &, SimTK::Stage) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::Guts::advanceToStage(const SimTK::State &, SimTK::Stage)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:236:6
-  t26.method("advanceToStage", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::Stage)  const>(&SimTK::Subsystem::Guts::advanceToStage));
-
-  DEBUG_MSG("Adding wrapper for const SimTK::AbstractValue & SimTK::Subsystem::Guts::getDiscreteVariable(const SimTK::State &, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::AbstractValue & SimTK::Subsystem::Guts::getDiscreteVariable(const SimTK::State &, SimTK::DiscreteVariableIndex)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:240:1
-  t26.method("getDiscreteVariable", static_cast<const SimTK::AbstractValue & (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::DiscreteVariableIndex)  const>(&SimTK::Subsystem::Guts::getDiscreteVariable));
-
-  DEBUG_MSG("Adding wrapper for SimTK::AbstractValue & SimTK::Subsystem::Guts::updDiscreteVariable(SimTK::State &, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::AbstractValue & SimTK::Subsystem::Guts::updDiscreteVariable(SimTK::State &, SimTK::DiscreteVariableIndex)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:242:16
-  t26.method("updDiscreteVariable", static_cast<SimTK::AbstractValue & (SimTK::Subsystem::Guts::*)(SimTK::State &, SimTK::DiscreteVariableIndex)  const>(&SimTK::Subsystem::Guts::updDiscreteVariable));
-
-  DEBUG_MSG("Adding wrapper for const SimTK::AbstractValue & SimTK::Subsystem::Guts::getCacheEntry(const SimTK::State &, SimTK::CacheEntryIndex) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::AbstractValue & SimTK::Subsystem::Guts::getCacheEntry(const SimTK::State &, SimTK::CacheEntryIndex)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:244:22
-  t26.method("getCacheEntry", static_cast<const SimTK::AbstractValue & (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::CacheEntryIndex)  const>(&SimTK::Subsystem::Guts::getCacheEntry));
-
-  DEBUG_MSG("Adding wrapper for SimTK::AbstractValue & SimTK::Subsystem::Guts::updCacheEntry(const SimTK::State &, SimTK::CacheEntryIndex) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::AbstractValue & SimTK::Subsystem::Guts::updCacheEntry(const SimTK::State &, SimTK::CacheEntryIndex)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:246:16
-  t26.method("updCacheEntry", static_cast<SimTK::AbstractValue & (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::CacheEntryIndex)  const>(&SimTK::Subsystem::Guts::updCacheEntry));
-
-  DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::Subsystem::Guts::getDiscreteVarLastUpdateTime(const SimTK::State &, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Real SimTK::Subsystem::Guts::getDiscreteVarLastUpdateTime(const SimTK::State &, SimTK::DiscreteVariableIndex)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:248:6
-  t26.method("getDiscreteVarLastUpdateTime", static_cast<SimTK::Real (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::DiscreteVariableIndex)  const>(&SimTK::Subsystem::Guts::getDiscreteVarLastUpdateTime));
-
-  DEBUG_MSG("Adding wrapper for SimTK::CacheEntryIndex SimTK::Subsystem::Guts::getDiscreteVarUpdateIndex(const SimTK::State &, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::CacheEntryIndex SimTK::Subsystem::Guts::getDiscreteVarUpdateIndex(const SimTK::State &, SimTK::DiscreteVariableIndex)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:251:1
-  t26.method("getDiscreteVarUpdateIndex", static_cast<SimTK::CacheEntryIndex (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::DiscreteVariableIndex)  const>(&SimTK::Subsystem::Guts::getDiscreteVarUpdateIndex));
-
-  DEBUG_MSG("Adding wrapper for const SimTK::AbstractValue & SimTK::Subsystem::Guts::getDiscreteVarUpdateValue(const SimTK::State &, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::AbstractValue & SimTK::Subsystem::Guts::getDiscreteVarUpdateValue(const SimTK::State &, SimTK::DiscreteVariableIndex)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:254:1
-  t26.method("getDiscreteVarUpdateValue", static_cast<const SimTK::AbstractValue & (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::DiscreteVariableIndex)  const>(&SimTK::Subsystem::Guts::getDiscreteVarUpdateValue));
-
-  DEBUG_MSG("Adding wrapper for SimTK::AbstractValue & SimTK::Subsystem::Guts::updDiscreteVarUpdateValue(const SimTK::State &, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::AbstractValue & SimTK::Subsystem::Guts::updDiscreteVarUpdateValue(const SimTK::State &, SimTK::DiscreteVariableIndex)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:257:1
-  t26.method("updDiscreteVarUpdateValue", static_cast<SimTK::AbstractValue & (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::DiscreteVariableIndex)  const>(&SimTK::Subsystem::Guts::updDiscreteVarUpdateValue));
-
-  DEBUG_MSG("Adding wrapper for bool SimTK::Subsystem::Guts::isDiscreteVarUpdateValueRealized(const SimTK::State &, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::Subsystem::Guts::isDiscreteVarUpdateValueRealized(const SimTK::State &, SimTK::DiscreteVariableIndex)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:259:6
-  t26.method("isDiscreteVarUpdateValueRealized", static_cast<bool (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::DiscreteVariableIndex)  const>(&SimTK::Subsystem::Guts::isDiscreteVarUpdateValueRealized));
-
-  DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::markDiscreteVarUpdateValueRealized(const SimTK::State &, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::Guts::markDiscreteVarUpdateValueRealized(const SimTK::State &, SimTK::DiscreteVariableIndex)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:262:6
-  t26.method("markDiscreteVarUpdateValueRealized", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::DiscreteVariableIndex)  const>(&SimTK::Subsystem::Guts::markDiscreteVarUpdateValueRealized));
-
-  DEBUG_MSG("Adding wrapper for bool SimTK::Subsystem::Guts::isCacheValueRealized(const SimTK::State &, SimTK::CacheEntryIndex) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::Subsystem::Guts::isCacheValueRealized(const SimTK::State &, SimTK::CacheEntryIndex)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:266:6
-  t26.method("isCacheValueRealized", static_cast<bool (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::CacheEntryIndex)  const>(&SimTK::Subsystem::Guts::isCacheValueRealized));
-
-  DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::markCacheValueRealized(const SimTK::State &, SimTK::CacheEntryIndex) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::Guts::markCacheValueRealized(const SimTK::State &, SimTK::CacheEntryIndex)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:269:6
-  t26.method("markCacheValueRealized", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::CacheEntryIndex)  const>(&SimTK::Subsystem::Guts::markCacheValueRealized));
-
-  DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::markCacheValueNotRealized(const SimTK::State &, SimTK::CacheEntryIndex) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::Guts::markCacheValueNotRealized(const SimTK::State &, SimTK::CacheEntryIndex)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:272:6
-  t26.method("markCacheValueNotRealized", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::CacheEntryIndex)  const>(&SimTK::Subsystem::Guts::markCacheValueNotRealized));
-
-  DEBUG_MSG("Adding wrapper for SimTK::MeasureIndex SimTK::Subsystem::Guts::adoptMeasure(SimTK::AbstractMeasure &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::MeasureIndex SimTK::Subsystem::Guts::adoptMeasure(SimTK::AbstractMeasure &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:278:14
-  t26.method("adoptMeasure", static_cast<SimTK::MeasureIndex (SimTK::Subsystem::Guts::*)(SimTK::AbstractMeasure &) >(&SimTK::Subsystem::Guts::adoptMeasure));
-
-  DEBUG_MSG("Adding wrapper for SimTK::AbstractMeasure SimTK::Subsystem::Guts::getMeasure(SimTK::MeasureIndex) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::AbstractMeasure SimTK::Subsystem::Guts::getMeasure(SimTK::MeasureIndex)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:293:17
-  t26.method("getMeasure", static_cast<SimTK::AbstractMeasure (SimTK::Subsystem::Guts::*)(SimTK::MeasureIndex)  const>(&SimTK::Subsystem::Guts::getMeasure));
-
-  DEBUG_MSG("Adding wrapper for bool SimTK::Subsystem::Guts::isInSystem() (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::Subsystem::Guts::isInSystem()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:299:6
-  t26.method("isInSystem", static_cast<bool (SimTK::Subsystem::Guts::*)()  const>(&SimTK::Subsystem::Guts::isInSystem));
-
-  DEBUG_MSG("Adding wrapper for bool SimTK::Subsystem::Guts::isInSameSystem(const SimTK::Subsystem &) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::Subsystem::Guts::isInSameSystem(const SimTK::Subsystem &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:300:6
-  t26.method("isInSameSystem", static_cast<bool (SimTK::Subsystem::Guts::*)(const SimTK::Subsystem &)  const>(&SimTK::Subsystem::Guts::isInSameSystem));
-
-  DEBUG_MSG("Adding wrapper for const SimTK::System & SimTK::Subsystem::Guts::getSystem() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::System & SimTK::Subsystem::Guts::getSystem()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:302:15
-  t26.method("getSystem", static_cast<const SimTK::System & (SimTK::Subsystem::Guts::*)()  const>(&SimTK::Subsystem::Guts::getSystem));
-
-  DEBUG_MSG("Adding wrapper for SimTK::System & SimTK::Subsystem::Guts::updSystem() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::System & SimTK::Subsystem::Guts::updSystem()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:306:9
-  t26.method("updSystem", static_cast<SimTK::System & (SimTK::Subsystem::Guts::*)() >(&SimTK::Subsystem::Guts::updSystem));
-
-  DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::setSystem(SimTK::System &, SimTK::SubsystemIndex) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::Guts::setSystem(SimTK::System &, SimTK::SubsystemIndex)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:310:6
-  t26.method("setSystem", static_cast<void (SimTK::Subsystem::Guts::*)(SimTK::System &, SimTK::SubsystemIndex) >(&SimTK::Subsystem::Guts::setSystem));
-
-  DEBUG_MSG("Adding wrapper for SimTK::SubsystemIndex SimTK::Subsystem::Guts::getMySubsystemIndex() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::SubsystemIndex SimTK::Subsystem::Guts::getMySubsystemIndex()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:316:16
-  t26.method("getMySubsystemIndex", static_cast<SimTK::SubsystemIndex (SimTK::Subsystem::Guts::*)()  const>(&SimTK::Subsystem::Guts::getMySubsystemIndex));
-
-  DEBUG_MSG("Adding wrapper for bool SimTK::Subsystem::Guts::subsystemTopologyHasBeenRealized() (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::Subsystem::Guts::subsystemTopologyHasBeenRealized()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:325:6
-  t26.method("subsystemTopologyHasBeenRealized", static_cast<bool (SimTK::Subsystem::Guts::*)()  const>(&SimTK::Subsystem::Guts::subsystemTopologyHasBeenRealized));
-
-  DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::invalidateSubsystemTopologyCache() (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::Guts::invalidateSubsystemTopologyCache()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:336:6
-  t26.method("invalidateSubsystemTopologyCache", static_cast<void (SimTK::Subsystem::Guts::*)()  const>(&SimTK::Subsystem::Guts::invalidateSubsystemTopologyCache));
-
-  DEBUG_MSG("Adding wrapper for SimTK::Subsystem::Guts * SimTK::Subsystem::Guts::clone() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Subsystem::Guts * SimTK::Subsystem::Guts::clone()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:343:18
-  t26.method("clone", static_cast<SimTK::Subsystem::Guts * (SimTK::Subsystem::Guts::*)()  const>(&SimTK::Subsystem::Guts::clone));
-
-  DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::realizeSubsystemTopology(SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::Guts::realizeSubsystemTopology(SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:351:6
-  t26.method("realizeSubsystemTopology", static_cast<void (SimTK::Subsystem::Guts::*)(SimTK::State &)  const>(&SimTK::Subsystem::Guts::realizeSubsystemTopology));
-
-  DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::realizeSubsystemModel(SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::Guts::realizeSubsystemModel(SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:352:6
-  t26.method("realizeSubsystemModel", static_cast<void (SimTK::Subsystem::Guts::*)(SimTK::State &)  const>(&SimTK::Subsystem::Guts::realizeSubsystemModel));
-
-  DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::realizeSubsystemInstance(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::Guts::realizeSubsystemInstance(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:353:6
-  t26.method("realizeSubsystemInstance", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::realizeSubsystemInstance));
-
-  DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::realizeSubsystemTime(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::Guts::realizeSubsystemTime(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:354:6
-  t26.method("realizeSubsystemTime", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::realizeSubsystemTime));
-
-  DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::realizeSubsystemPosition(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::Guts::realizeSubsystemPosition(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:355:6
-  t26.method("realizeSubsystemPosition", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::realizeSubsystemPosition));
-
-  DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::realizeSubsystemVelocity(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::Guts::realizeSubsystemVelocity(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:356:6
-  t26.method("realizeSubsystemVelocity", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::realizeSubsystemVelocity));
-
-  DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::realizeSubsystemDynamics(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::Guts::realizeSubsystemDynamics(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:357:6
-  t26.method("realizeSubsystemDynamics", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::realizeSubsystemDynamics));
-
-  DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::realizeSubsystemAcceleration(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::Guts::realizeSubsystemAcceleration(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:358:6
-  t26.method("realizeSubsystemAcceleration", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::realizeSubsystemAcceleration));
-
-  DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::realizeSubsystemReport(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::Guts::realizeSubsystemReport(const SimTK::State &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:359:6
-  t26.method("realizeSubsystemReport", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::realizeSubsystemReport));
-
-  DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::calcDecorativeGeometryAndAppend(const SimTK::State &, SimTK::Stage, SimTK::Array_<SimTK::DecorativeGeometry> &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::Guts::calcDecorativeGeometryAndAppend(const SimTK::State &, SimTK::Stage, SimTK::Array_<SimTK::DecorativeGeometry> &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:366:6
-  // t26.method("calcDecorativeGeometryAndAppend", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::Stage, SimTK::Array_<SimTK::DecorativeGeometry> &)  const>(&SimTK::Subsystem::Guts::calcDecorativeGeometryAndAppend));
-
-  DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::createScheduledEvent(const SimTK::State &, SimTK::EventId &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::Guts::createScheduledEvent(const SimTK::State &, SimTK::EventId &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:369:6
-  t26.method("createScheduledEvent", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::EventId &)  const>(&SimTK::Subsystem::Guts::createScheduledEvent));
-
-  DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::createTriggeredEvent(const SimTK::State &, SimTK::EventId &, SimTK::EventTriggerByStageIndex &, SimTK::Stage) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::Guts::createTriggeredEvent(const SimTK::State &, SimTK::EventId &, SimTK::EventTriggerByStageIndex &, SimTK::Stage)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:370:6
-  t26.method("createTriggeredEvent", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::EventId &, SimTK::EventTriggerByStageIndex &, SimTK::Stage)  const>(&SimTK::Subsystem::Guts::createTriggeredEvent));
-
-  DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::calcEventTriggerInfo(const SimTK::State &, SimTK::Array_<SimTK::EventTriggerInfo> &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::Guts::calcEventTriggerInfo(const SimTK::State &, SimTK::Array_<SimTK::EventTriggerInfo> &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:378:6
-  // t26.method("calcEventTriggerInfo", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::Array_<SimTK::EventTriggerInfo> &)  const>(&SimTK::Subsystem::Guts::calcEventTriggerInfo));
-
-  DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::calcTimeOfNextScheduledEvent(const SimTK::State &, SimTK::Real &, SimTK::Array_<SimTK::EventId> &, bool) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::Guts::calcTimeOfNextScheduledEvent(const SimTK::State &, SimTK::Real &, SimTK::Array_<SimTK::EventId> &, bool)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:380:6
-  // t26.method("calcTimeOfNextScheduledEvent", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::Real &, SimTK::Array_<SimTK::EventId> &, bool)  const>(&SimTK::Subsystem::Guts::calcTimeOfNextScheduledEvent));
-
-  DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::calcTimeOfNextScheduledReport(const SimTK::State &, SimTK::Real &, SimTK::Array_<SimTK::EventId> &, bool) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::Guts::calcTimeOfNextScheduledReport(const SimTK::State &, SimTK::Real &, SimTK::Array_<SimTK::EventId> &, bool)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:383:6
-  // t26.method("calcTimeOfNextScheduledReport", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::Real &, SimTK::Array_<SimTK::EventId> &, bool)  const>(&SimTK::Subsystem::Guts::calcTimeOfNextScheduledReport));
-
-  DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::handleEvents(SimTK::State &, SimTK::Event::Cause, const SimTK::Array_<SimTK::EventId> &, const SimTK::HandleEventsOptions &, SimTK::HandleEventsResults &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::Guts::handleEvents(SimTK::State &, SimTK::Event::Cause, const SimTK::Array_<SimTK::EventId> &, const SimTK::HandleEventsOptions &, SimTK::HandleEventsResults &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:386:6
-  // t26.method("handleEvents", static_cast<void (SimTK::Subsystem::Guts::*)(SimTK::State &, SimTK::Event::Cause, const SimTK::Array_<SimTK::EventId> &, const SimTK::HandleEventsOptions &, SimTK::HandleEventsResults &)  const>(&SimTK::Subsystem::Guts::handleEvents));
-
-  DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::reportEvents(const SimTK::State &, SimTK::Event::Cause, const SimTK::Array_<SimTK::EventId> &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::Guts::reportEvents(const SimTK::State &, SimTK::Event::Cause, const SimTK::Array_<SimTK::EventId> &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:389:6
-  // t26.method("reportEvents", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::Event::Cause, const SimTK::Array_<SimTK::EventId> &)  const>(&SimTK::Subsystem::Guts::reportEvents));
-
-  DEBUG_MSG("Adding wrapper for const SimTK::Subsystem & SimTK::Subsystem::Guts::getOwnerSubsystemHandle() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Subsystem & SimTK::Subsystem::Guts::getOwnerSubsystemHandle()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:444:18
-  t26.method("getOwnerSubsystemHandle", static_cast<const SimTK::Subsystem & (SimTK::Subsystem::Guts::*)()  const>(&SimTK::Subsystem::Guts::getOwnerSubsystemHandle));
-
-  DEBUG_MSG("Adding wrapper for SimTK::Subsystem & SimTK::Subsystem::Guts::updOwnerSubsystemHandle() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Subsystem & SimTK::Subsystem::Guts::updOwnerSubsystemHandle()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:450:12
-  t26.method("updOwnerSubsystemHandle", static_cast<SimTK::Subsystem & (SimTK::Subsystem::Guts::*)() >(&SimTK::Subsystem::Guts::updOwnerSubsystemHandle));
-
-  DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::setOwnerSubsystemHandle(SimTK::Subsystem &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::Guts::setOwnerSubsystemHandle(SimTK::Subsystem &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:459:6
-  t26.method("setOwnerSubsystemHandle", static_cast<void (SimTK::Subsystem::Guts::*)(SimTK::Subsystem &) >(&SimTK::Subsystem::Guts::setOwnerSubsystemHandle));
-
-  DEBUG_MSG("Adding wrapper for bool SimTK::Subsystem::Guts::hasOwnerSubsystemHandle() (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::Subsystem::Guts::hasOwnerSubsystemHandle()
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:463:6
-  t26.method("hasOwnerSubsystemHandle", static_cast<bool (SimTK::Subsystem::Guts::*)()  const>(&SimTK::Subsystem::Guts::hasOwnerSubsystemHandle));
-
-  /* End of SimTK::Subsystem::Guts class method wrappers
-   **********************************************************************/
+  // /**********************************************************************/
+  // /* Wrappers for the methods of class SimTK::Subsystem::Guts
+  //  */
+
+  // DEBUG_MSG("Adding wrapper for const SimTK::String & SimTK::Subsystem::Guts::getName() (" __HERE__ ")");
+  // // signature to use in the veto list: const SimTK::String & SimTK::Subsystem::Guts::getName()
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:65:15
+  // t26.method("getName", static_cast<const SimTK::String & (SimTK::Subsystem::Guts::*)()  const>(&SimTK::Subsystem::Guts::getName));
+
+  // DEBUG_MSG("Adding wrapper for const SimTK::String & SimTK::Subsystem::Guts::getVersion() (" __HERE__ ")");
+  // // signature to use in the veto list: const SimTK::String & SimTK::Subsystem::Guts::getVersion()
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:68:15
+  // t26.method("getVersion", static_cast<const SimTK::String & (SimTK::Subsystem::Guts::*)()  const>(&SimTK::Subsystem::Guts::getVersion));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::QIndex SimTK::Subsystem::Guts::allocateQ(SimTK::State &, const SimTK::Vector &) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::QIndex SimTK::Subsystem::Guts::allocateQ(SimTK::State &, const SimTK::Vector &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:83:8
+  // t26.method("allocateQ", static_cast<SimTK::QIndex (SimTK::Subsystem::Guts::*)(SimTK::State &, const SimTK::Vector &)  const>(&SimTK::Subsystem::Guts::allocateQ));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::UIndex SimTK::Subsystem::Guts::allocateU(SimTK::State &, const SimTK::Vector &) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::UIndex SimTK::Subsystem::Guts::allocateU(SimTK::State &, const SimTK::Vector &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:85:8
+  // t26.method("allocateU", static_cast<SimTK::UIndex (SimTK::Subsystem::Guts::*)(SimTK::State &, const SimTK::Vector &)  const>(&SimTK::Subsystem::Guts::allocateU));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::ZIndex SimTK::Subsystem::Guts::allocateZ(SimTK::State &, const SimTK::Vector &) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::ZIndex SimTK::Subsystem::Guts::allocateZ(SimTK::State &, const SimTK::Vector &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:87:8
+  // t26.method("allocateZ", static_cast<SimTK::ZIndex (SimTK::Subsystem::Guts::*)(SimTK::State &, const SimTK::Vector &)  const>(&SimTK::Subsystem::Guts::allocateZ));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::DiscreteVariableIndex SimTK::Subsystem::Guts::allocateDiscreteVariable(SimTK::State &, SimTK::Stage, SimTK::AbstractValue *) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::DiscreteVariableIndex SimTK::Subsystem::Guts::allocateDiscreteVariable(SimTK::State &, SimTK::Stage, SimTK::AbstractValue *)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:91:1
+  // t26.method("allocateDiscreteVariable", static_cast<SimTK::DiscreteVariableIndex (SimTK::Subsystem::Guts::*)(SimTK::State &, SimTK::Stage, SimTK::AbstractValue *)  const>(&SimTK::Subsystem::Guts::allocateDiscreteVariable));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::DiscreteVariableIndex SimTK::Subsystem::Guts::allocateAutoUpdateDiscreteVariable(SimTK::State &, SimTK::Stage, SimTK::AbstractValue *, SimTK::Stage) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::DiscreteVariableIndex SimTK::Subsystem::Guts::allocateAutoUpdateDiscreteVariable(SimTK::State &, SimTK::Stage, SimTK::AbstractValue *, SimTK::Stage)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:93:23
+  // t26.method("allocateAutoUpdateDiscreteVariable", static_cast<SimTK::DiscreteVariableIndex (SimTK::Subsystem::Guts::*)(SimTK::State &, SimTK::Stage, SimTK::AbstractValue *, SimTK::Stage)  const>(&SimTK::Subsystem::Guts::allocateAutoUpdateDiscreteVariable));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::CacheEntryIndex SimTK::Subsystem::Guts::allocateCacheEntry(const SimTK::State &, SimTK::Stage, SimTK::Stage, SimTK::AbstractValue *) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::CacheEntryIndex SimTK::Subsystem::Guts::allocateCacheEntry(const SimTK::State &, SimTK::Stage, SimTK::Stage, SimTK::AbstractValue *)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:98:17
+  // t26.method("allocateCacheEntry", static_cast<SimTK::CacheEntryIndex (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::Stage, SimTK::Stage, SimTK::AbstractValue *)  const>(&SimTK::Subsystem::Guts::allocateCacheEntry));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::CacheEntryIndex SimTK::Subsystem::Guts::allocateCacheEntry(const SimTK::State &, SimTK::Stage, SimTK::AbstractValue *) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::CacheEntryIndex SimTK::Subsystem::Guts::allocateCacheEntry(const SimTK::State &, SimTK::Stage, SimTK::AbstractValue *)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:102:17
+  // t26.method("allocateCacheEntry", static_cast<SimTK::CacheEntryIndex (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::Stage, SimTK::AbstractValue *)  const>(&SimTK::Subsystem::Guts::allocateCacheEntry));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::CacheEntryIndex SimTK::Subsystem::Guts::allocateLazyCacheEntry(const SimTK::State &, SimTK::Stage, SimTK::AbstractValue *) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::CacheEntryIndex SimTK::Subsystem::Guts::allocateLazyCacheEntry(const SimTK::State &, SimTK::Stage, SimTK::AbstractValue *)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:105:17
+  // t26.method("allocateLazyCacheEntry", static_cast<SimTK::CacheEntryIndex (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::Stage, SimTK::AbstractValue *)  const>(&SimTK::Subsystem::Guts::allocateLazyCacheEntry));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::QErrIndex SimTK::Subsystem::Guts::allocateQErr(const SimTK::State &, int) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::QErrIndex SimTK::Subsystem::Guts::allocateQErr(const SimTK::State &, int)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:109:11
+  // t26.method("allocateQErr", static_cast<SimTK::QErrIndex (SimTK::Subsystem::Guts::*)(const SimTK::State &, int)  const>(&SimTK::Subsystem::Guts::allocateQErr));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::UErrIndex SimTK::Subsystem::Guts::allocateUErr(const SimTK::State &, int) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::UErrIndex SimTK::Subsystem::Guts::allocateUErr(const SimTK::State &, int)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:111:11
+  // t26.method("allocateUErr", static_cast<SimTK::UErrIndex (SimTK::Subsystem::Guts::*)(const SimTK::State &, int)  const>(&SimTK::Subsystem::Guts::allocateUErr));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::UDotErrIndex SimTK::Subsystem::Guts::allocateUDotErr(const SimTK::State &, int) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::UDotErrIndex SimTK::Subsystem::Guts::allocateUDotErr(const SimTK::State &, int)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:113:14
+  // t26.method("allocateUDotErr", static_cast<SimTK::UDotErrIndex (SimTK::Subsystem::Guts::*)(const SimTK::State &, int)  const>(&SimTK::Subsystem::Guts::allocateUDotErr));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::EventTriggerByStageIndex SimTK::Subsystem::Guts::allocateEventTriggersByStage(const SimTK::State &, SimTK::Stage, int) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::EventTriggerByStageIndex SimTK::Subsystem::Guts::allocateEventTriggersByStage(const SimTK::State &, SimTK::Stage, int)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:116:1
+  // t26.method("allocateEventTriggersByStage", static_cast<SimTK::EventTriggerByStageIndex (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::Stage, int)  const>(&SimTK::Subsystem::Guts::allocateEventTriggersByStage));
+
+  // DEBUG_MSG("Adding wrapper for const SimTK::Vector & SimTK::Subsystem::Guts::getQ(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::Guts::getQ(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:119:15
+  // t26.method("getQ", static_cast<const SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getQ));
+
+  // DEBUG_MSG("Adding wrapper for const SimTK::Vector & SimTK::Subsystem::Guts::getU(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::Guts::getU(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:121:15
+  // t26.method("getU", static_cast<const SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getU));
+
+  // DEBUG_MSG("Adding wrapper for const SimTK::Vector & SimTK::Subsystem::Guts::getZ(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::Guts::getZ(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:123:15
+  // t26.method("getZ", static_cast<const SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getZ));
+
+  // DEBUG_MSG("Adding wrapper for const SimTK::Vector & SimTK::Subsystem::Guts::getUWeights(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::Guts::getUWeights(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:125:15
+  // t26.method("getUWeights", static_cast<const SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getUWeights));
+
+  // DEBUG_MSG("Adding wrapper for const SimTK::Vector & SimTK::Subsystem::Guts::getZWeights(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::Guts::getZWeights(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:127:15
+  // t26.method("getZWeights", static_cast<const SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getZWeights));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::Vector & SimTK::Subsystem::Guts::updQ(SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::Guts::updQ(SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:130:9
+  // t26.method("updQ", static_cast<SimTK::Vector & (SimTK::Subsystem::Guts::*)(SimTK::State &)  const>(&SimTK::Subsystem::Guts::updQ));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::Vector & SimTK::Subsystem::Guts::updU(SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::Guts::updU(SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:131:9
+  // t26.method("updU", static_cast<SimTK::Vector & (SimTK::Subsystem::Guts::*)(SimTK::State &)  const>(&SimTK::Subsystem::Guts::updU));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::Vector & SimTK::Subsystem::Guts::updZ(SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::Guts::updZ(SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:132:9
+  // t26.method("updZ", static_cast<SimTK::Vector & (SimTK::Subsystem::Guts::*)(SimTK::State &)  const>(&SimTK::Subsystem::Guts::updZ));
+
+  // DEBUG_MSG("Adding wrapper for const SimTK::Vector & SimTK::Subsystem::Guts::getQDot(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::Guts::getQDot(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:134:15
+  // t26.method("getQDot", static_cast<const SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getQDot));
+
+  // DEBUG_MSG("Adding wrapper for const SimTK::Vector & SimTK::Subsystem::Guts::getUDot(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::Guts::getUDot(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:136:15
+  // t26.method("getUDot", static_cast<const SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getUDot));
+
+  // DEBUG_MSG("Adding wrapper for const SimTK::Vector & SimTK::Subsystem::Guts::getZDot(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::Guts::getZDot(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:138:15
+  // t26.method("getZDot", static_cast<const SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getZDot));
+
+  // DEBUG_MSG("Adding wrapper for const SimTK::Vector & SimTK::Subsystem::Guts::getQDotDot(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::Guts::getQDotDot(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:140:15
+  // t26.method("getQDotDot", static_cast<const SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getQDotDot));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::Vector & SimTK::Subsystem::Guts::updQDot(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::Guts::updQDot(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:143:9
+  // t26.method("updQDot", static_cast<SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::updQDot));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::Vector & SimTK::Subsystem::Guts::updUDot(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::Guts::updUDot(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:145:9
+  // t26.method("updUDot", static_cast<SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::updUDot));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::Vector & SimTK::Subsystem::Guts::updZDot(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::Guts::updZDot(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:147:9
+  // t26.method("updZDot", static_cast<SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::updZDot));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::Vector & SimTK::Subsystem::Guts::updQDotDot(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::Guts::updQDotDot(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:149:9
+  // t26.method("updQDotDot", static_cast<SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::updQDotDot));
+
+  // DEBUG_MSG("Adding wrapper for const SimTK::Vector & SimTK::Subsystem::Guts::getQErr(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::Guts::getQErr(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:152:15
+  // t26.method("getQErr", static_cast<const SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getQErr));
+
+  // DEBUG_MSG("Adding wrapper for const SimTK::Vector & SimTK::Subsystem::Guts::getUErr(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::Guts::getUErr(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:154:15
+  // t26.method("getUErr", static_cast<const SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getUErr));
+
+  // DEBUG_MSG("Adding wrapper for const SimTK::Vector & SimTK::Subsystem::Guts::getQErrWeights(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::Guts::getQErrWeights(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:156:15
+  // t26.method("getQErrWeights", static_cast<const SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getQErrWeights));
+
+  // DEBUG_MSG("Adding wrapper for const SimTK::Vector & SimTK::Subsystem::Guts::getUErrWeights(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::Guts::getUErrWeights(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:158:15
+  // t26.method("getUErrWeights", static_cast<const SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getUErrWeights));
+
+  // DEBUG_MSG("Adding wrapper for const SimTK::Vector & SimTK::Subsystem::Guts::getUDotErr(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::Guts::getUDotErr(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:161:15
+  // t26.method("getUDotErr", static_cast<const SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getUDotErr));
+
+  // DEBUG_MSG("Adding wrapper for const SimTK::Vector & SimTK::Subsystem::Guts::getMultipliers(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::Guts::getMultipliers(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:163:15
+  // t26.method("getMultipliers", static_cast<const SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getMultipliers));
+
+  // DEBUG_MSG("Adding wrapper for const SimTK::Vector & SimTK::Subsystem::Guts::getEventTriggersByStage(const SimTK::State &, SimTK::Stage) (" __HERE__ ")");
+  // // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::Guts::getEventTriggersByStage(const SimTK::State &, SimTK::Stage)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:165:15
+  // t26.method("getEventTriggersByStage", static_cast<const SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::Stage)  const>(&SimTK::Subsystem::Guts::getEventTriggersByStage));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::Vector & SimTK::Subsystem::Guts::updQErr(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::Guts::updQErr(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:168:9
+  // t26.method("updQErr", static_cast<SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::updQErr));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::Vector & SimTK::Subsystem::Guts::updUErr(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::Guts::updUErr(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:170:9
+  // t26.method("updUErr", static_cast<SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::updUErr));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::Vector & SimTK::Subsystem::Guts::updUDotErr(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::Guts::updUDotErr(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:172:9
+  // t26.method("updUDotErr", static_cast<SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::updUDotErr));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::Vector & SimTK::Subsystem::Guts::updMultipliers(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::Guts::updMultipliers(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:174:9
+  // t26.method("updMultipliers", static_cast<SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::updMultipliers));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::Vector & SimTK::Subsystem::Guts::updEventTriggersByStage(const SimTK::State &, SimTK::Stage) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::Guts::updEventTriggersByStage(const SimTK::State &, SimTK::Stage)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:176:9
+  // t26.method("updEventTriggersByStage", static_cast<SimTK::Vector & (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::Stage)  const>(&SimTK::Subsystem::Guts::updEventTriggersByStage));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::SystemQIndex SimTK::Subsystem::Guts::getQStart(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::SystemQIndex SimTK::Subsystem::Guts::getQStart(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:179:14
+  // t26.method("getQStart", static_cast<SimTK::SystemQIndex (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getQStart));
+
+  // DEBUG_MSG("Adding wrapper for int SimTK::Subsystem::Guts::getNQ(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: int SimTK::Subsystem::Guts::getNQ(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:181:5
+  // t26.method("getNQ", static_cast<int (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getNQ));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::SystemUIndex SimTK::Subsystem::Guts::getUStart(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::SystemUIndex SimTK::Subsystem::Guts::getUStart(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:184:14
+  // t26.method("getUStart", static_cast<SimTK::SystemUIndex (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getUStart));
+
+  // DEBUG_MSG("Adding wrapper for int SimTK::Subsystem::Guts::getNU(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: int SimTK::Subsystem::Guts::getNU(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:186:5
+  // t26.method("getNU", static_cast<int (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getNU));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::SystemZIndex SimTK::Subsystem::Guts::getZStart(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::SystemZIndex SimTK::Subsystem::Guts::getZStart(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:189:14
+  // t26.method("getZStart", static_cast<SimTK::SystemZIndex (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getZStart));
+
+  // DEBUG_MSG("Adding wrapper for int SimTK::Subsystem::Guts::getNZ(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: int SimTK::Subsystem::Guts::getNZ(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:191:5
+  // t26.method("getNZ", static_cast<int (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getNZ));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::SystemQErrIndex SimTK::Subsystem::Guts::getQErrStart(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::SystemQErrIndex SimTK::Subsystem::Guts::getQErrStart(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:194:17
+  // t26.method("getQErrStart", static_cast<SimTK::SystemQErrIndex (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getQErrStart));
+
+  // DEBUG_MSG("Adding wrapper for int SimTK::Subsystem::Guts::getNQErr(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: int SimTK::Subsystem::Guts::getNQErr(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:196:5
+  // t26.method("getNQErr", static_cast<int (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getNQErr));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::SystemUErrIndex SimTK::Subsystem::Guts::getUErrStart(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::SystemUErrIndex SimTK::Subsystem::Guts::getUErrStart(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:199:17
+  // t26.method("getUErrStart", static_cast<SimTK::SystemUErrIndex (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getUErrStart));
+
+  // DEBUG_MSG("Adding wrapper for int SimTK::Subsystem::Guts::getNUErr(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: int SimTK::Subsystem::Guts::getNUErr(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:201:5
+  // t26.method("getNUErr", static_cast<int (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getNUErr));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::SystemUDotErrIndex SimTK::Subsystem::Guts::getUDotErrStart(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::SystemUDotErrIndex SimTK::Subsystem::Guts::getUDotErrStart(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:204:20
+  // t26.method("getUDotErrStart", static_cast<SimTK::SystemUDotErrIndex (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getUDotErrStart));
+
+  // DEBUG_MSG("Adding wrapper for int SimTK::Subsystem::Guts::getNUDotErr(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: int SimTK::Subsystem::Guts::getNUDotErr(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:206:5
+  // t26.method("getNUDotErr", static_cast<int (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getNUDotErr));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::SystemMultiplierIndex SimTK::Subsystem::Guts::getMultipliersStart(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::SystemMultiplierIndex SimTK::Subsystem::Guts::getMultipliersStart(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:209:23
+  // t26.method("getMultipliersStart", static_cast<SimTK::SystemMultiplierIndex (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getMultipliersStart));
+
+  // DEBUG_MSG("Adding wrapper for int SimTK::Subsystem::Guts::getNMultipliers(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: int SimTK::Subsystem::Guts::getNMultipliers(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:211:5
+  // t26.method("getNMultipliers", static_cast<int (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getNMultipliers));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::SystemEventTriggerByStageIndex SimTK::Subsystem::Guts::getEventTriggerStartByStage(const SimTK::State &, SimTK::Stage) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::SystemEventTriggerByStageIndex SimTK::Subsystem::Guts::getEventTriggerStartByStage(const SimTK::State &, SimTK::Stage)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:214:32
+  // t26.method("getEventTriggerStartByStage", static_cast<SimTK::SystemEventTriggerByStageIndex (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::Stage)  const>(&SimTK::Subsystem::Guts::getEventTriggerStartByStage));
+
+  // DEBUG_MSG("Adding wrapper for int SimTK::Subsystem::Guts::getNEventTriggersByStage(const SimTK::State &, SimTK::Stage) (" __HERE__ ")");
+  // // signature to use in the veto list: int SimTK::Subsystem::Guts::getNEventTriggersByStage(const SimTK::State &, SimTK::Stage)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:216:5
+  // t26.method("getNEventTriggersByStage", static_cast<int (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::Stage)  const>(&SimTK::Subsystem::Guts::getNEventTriggersByStage));
+
+  // DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::setQ(SimTK::State &, const SimTK::Vector &) (" __HERE__ ")");
+  // // signature to use in the veto list: void SimTK::Subsystem::Guts::setQ(SimTK::State &, const SimTK::Vector &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:221:6
+  // t26.method("setQ", static_cast<void (SimTK::Subsystem::Guts::*)(SimTK::State &, const SimTK::Vector &)  const>(&SimTK::Subsystem::Guts::setQ));
+
+  // DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::setU(SimTK::State &, const SimTK::Vector &) (" __HERE__ ")");
+  // // signature to use in the veto list: void SimTK::Subsystem::Guts::setU(SimTK::State &, const SimTK::Vector &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:225:6
+  // t26.method("setU", static_cast<void (SimTK::Subsystem::Guts::*)(SimTK::State &, const SimTK::Vector &)  const>(&SimTK::Subsystem::Guts::setU));
+
+  // DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::setZ(SimTK::State &, const SimTK::Vector &) (" __HERE__ ")");
+  // // signature to use in the veto list: void SimTK::Subsystem::Guts::setZ(SimTK::State &, const SimTK::Vector &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:229:6
+  // t26.method("setZ", static_cast<void (SimTK::Subsystem::Guts::*)(SimTK::State &, const SimTK::Vector &)  const>(&SimTK::Subsystem::Guts::setZ));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::Stage SimTK::Subsystem::Guts::getStage(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::Stage SimTK::Subsystem::Guts::getStage(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:234:7
+  // t26.method("getStage", static_cast<SimTK::Stage (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::getStage));
+
+  // DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::advanceToStage(const SimTK::State &, SimTK::Stage) (" __HERE__ ")");
+  // // signature to use in the veto list: void SimTK::Subsystem::Guts::advanceToStage(const SimTK::State &, SimTK::Stage)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:236:6
+  // t26.method("advanceToStage", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::Stage)  const>(&SimTK::Subsystem::Guts::advanceToStage));
+
+  // DEBUG_MSG("Adding wrapper for const SimTK::AbstractValue & SimTK::Subsystem::Guts::getDiscreteVariable(const SimTK::State &, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
+  // // signature to use in the veto list: const SimTK::AbstractValue & SimTK::Subsystem::Guts::getDiscreteVariable(const SimTK::State &, SimTK::DiscreteVariableIndex)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:240:1
+  // t26.method("getDiscreteVariable", static_cast<const SimTK::AbstractValue & (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::DiscreteVariableIndex)  const>(&SimTK::Subsystem::Guts::getDiscreteVariable));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::AbstractValue & SimTK::Subsystem::Guts::updDiscreteVariable(SimTK::State &, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::AbstractValue & SimTK::Subsystem::Guts::updDiscreteVariable(SimTK::State &, SimTK::DiscreteVariableIndex)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:242:16
+  // t26.method("updDiscreteVariable", static_cast<SimTK::AbstractValue & (SimTK::Subsystem::Guts::*)(SimTK::State &, SimTK::DiscreteVariableIndex)  const>(&SimTK::Subsystem::Guts::updDiscreteVariable));
+
+  // DEBUG_MSG("Adding wrapper for const SimTK::AbstractValue & SimTK::Subsystem::Guts::getCacheEntry(const SimTK::State &, SimTK::CacheEntryIndex) (" __HERE__ ")");
+  // // signature to use in the veto list: const SimTK::AbstractValue & SimTK::Subsystem::Guts::getCacheEntry(const SimTK::State &, SimTK::CacheEntryIndex)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:244:22
+  // t26.method("getCacheEntry", static_cast<const SimTK::AbstractValue & (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::CacheEntryIndex)  const>(&SimTK::Subsystem::Guts::getCacheEntry));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::AbstractValue & SimTK::Subsystem::Guts::updCacheEntry(const SimTK::State &, SimTK::CacheEntryIndex) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::AbstractValue & SimTK::Subsystem::Guts::updCacheEntry(const SimTK::State &, SimTK::CacheEntryIndex)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:246:16
+  // t26.method("updCacheEntry", static_cast<SimTK::AbstractValue & (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::CacheEntryIndex)  const>(&SimTK::Subsystem::Guts::updCacheEntry));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::Subsystem::Guts::getDiscreteVarLastUpdateTime(const SimTK::State &, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::Real SimTK::Subsystem::Guts::getDiscreteVarLastUpdateTime(const SimTK::State &, SimTK::DiscreteVariableIndex)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:248:6
+  // t26.method("getDiscreteVarLastUpdateTime", static_cast<SimTK::Real (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::DiscreteVariableIndex)  const>(&SimTK::Subsystem::Guts::getDiscreteVarLastUpdateTime));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::CacheEntryIndex SimTK::Subsystem::Guts::getDiscreteVarUpdateIndex(const SimTK::State &, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::CacheEntryIndex SimTK::Subsystem::Guts::getDiscreteVarUpdateIndex(const SimTK::State &, SimTK::DiscreteVariableIndex)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:251:1
+  // t26.method("getDiscreteVarUpdateIndex", static_cast<SimTK::CacheEntryIndex (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::DiscreteVariableIndex)  const>(&SimTK::Subsystem::Guts::getDiscreteVarUpdateIndex));
+
+  // DEBUG_MSG("Adding wrapper for const SimTK::AbstractValue & SimTK::Subsystem::Guts::getDiscreteVarUpdateValue(const SimTK::State &, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
+  // // signature to use in the veto list: const SimTK::AbstractValue & SimTK::Subsystem::Guts::getDiscreteVarUpdateValue(const SimTK::State &, SimTK::DiscreteVariableIndex)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:254:1
+  // t26.method("getDiscreteVarUpdateValue", static_cast<const SimTK::AbstractValue & (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::DiscreteVariableIndex)  const>(&SimTK::Subsystem::Guts::getDiscreteVarUpdateValue));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::AbstractValue & SimTK::Subsystem::Guts::updDiscreteVarUpdateValue(const SimTK::State &, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::AbstractValue & SimTK::Subsystem::Guts::updDiscreteVarUpdateValue(const SimTK::State &, SimTK::DiscreteVariableIndex)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:257:1
+  // t26.method("updDiscreteVarUpdateValue", static_cast<SimTK::AbstractValue & (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::DiscreteVariableIndex)  const>(&SimTK::Subsystem::Guts::updDiscreteVarUpdateValue));
+
+  // DEBUG_MSG("Adding wrapper for bool SimTK::Subsystem::Guts::isDiscreteVarUpdateValueRealized(const SimTK::State &, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
+  // // signature to use in the veto list: bool SimTK::Subsystem::Guts::isDiscreteVarUpdateValueRealized(const SimTK::State &, SimTK::DiscreteVariableIndex)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:259:6
+  // t26.method("isDiscreteVarUpdateValueRealized", static_cast<bool (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::DiscreteVariableIndex)  const>(&SimTK::Subsystem::Guts::isDiscreteVarUpdateValueRealized));
+
+  // DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::markDiscreteVarUpdateValueRealized(const SimTK::State &, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
+  // // signature to use in the veto list: void SimTK::Subsystem::Guts::markDiscreteVarUpdateValueRealized(const SimTK::State &, SimTK::DiscreteVariableIndex)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:262:6
+  // t26.method("markDiscreteVarUpdateValueRealized", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::DiscreteVariableIndex)  const>(&SimTK::Subsystem::Guts::markDiscreteVarUpdateValueRealized));
+
+  // DEBUG_MSG("Adding wrapper for bool SimTK::Subsystem::Guts::isCacheValueRealized(const SimTK::State &, SimTK::CacheEntryIndex) (" __HERE__ ")");
+  // // signature to use in the veto list: bool SimTK::Subsystem::Guts::isCacheValueRealized(const SimTK::State &, SimTK::CacheEntryIndex)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:266:6
+  // t26.method("isCacheValueRealized", static_cast<bool (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::CacheEntryIndex)  const>(&SimTK::Subsystem::Guts::isCacheValueRealized));
+
+  // DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::markCacheValueRealized(const SimTK::State &, SimTK::CacheEntryIndex) (" __HERE__ ")");
+  // // signature to use in the veto list: void SimTK::Subsystem::Guts::markCacheValueRealized(const SimTK::State &, SimTK::CacheEntryIndex)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:269:6
+  // t26.method("markCacheValueRealized", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::CacheEntryIndex)  const>(&SimTK::Subsystem::Guts::markCacheValueRealized));
+
+  // DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::markCacheValueNotRealized(const SimTK::State &, SimTK::CacheEntryIndex) (" __HERE__ ")");
+  // // signature to use in the veto list: void SimTK::Subsystem::Guts::markCacheValueNotRealized(const SimTK::State &, SimTK::CacheEntryIndex)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:272:6
+  // t26.method("markCacheValueNotRealized", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::CacheEntryIndex)  const>(&SimTK::Subsystem::Guts::markCacheValueNotRealized));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::MeasureIndex SimTK::Subsystem::Guts::adoptMeasure(SimTK::AbstractMeasure &) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::MeasureIndex SimTK::Subsystem::Guts::adoptMeasure(SimTK::AbstractMeasure &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:278:14
+  // t26.method("adoptMeasure", static_cast<SimTK::MeasureIndex (SimTK::Subsystem::Guts::*)(SimTK::AbstractMeasure &) >(&SimTK::Subsystem::Guts::adoptMeasure));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::AbstractMeasure SimTK::Subsystem::Guts::getMeasure(SimTK::MeasureIndex) (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::AbstractMeasure SimTK::Subsystem::Guts::getMeasure(SimTK::MeasureIndex)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:293:17
+  // t26.method("getMeasure", static_cast<SimTK::AbstractMeasure (SimTK::Subsystem::Guts::*)(SimTK::MeasureIndex)  const>(&SimTK::Subsystem::Guts::getMeasure));
+
+  // DEBUG_MSG("Adding wrapper for bool SimTK::Subsystem::Guts::isInSystem() (" __HERE__ ")");
+  // // signature to use in the veto list: bool SimTK::Subsystem::Guts::isInSystem()
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:299:6
+  // t26.method("isInSystem", static_cast<bool (SimTK::Subsystem::Guts::*)()  const>(&SimTK::Subsystem::Guts::isInSystem));
+
+  // DEBUG_MSG("Adding wrapper for bool SimTK::Subsystem::Guts::isInSameSystem(const SimTK::Subsystem &) (" __HERE__ ")");
+  // // signature to use in the veto list: bool SimTK::Subsystem::Guts::isInSameSystem(const SimTK::Subsystem &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:300:6
+  // t26.method("isInSameSystem", static_cast<bool (SimTK::Subsystem::Guts::*)(const SimTK::Subsystem &)  const>(&SimTK::Subsystem::Guts::isInSameSystem));
+
+  // DEBUG_MSG("Adding wrapper for const SimTK::System & SimTK::Subsystem::Guts::getSystem() (" __HERE__ ")");
+  // // signature to use in the veto list: const SimTK::System & SimTK::Subsystem::Guts::getSystem()
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:302:15
+  // t26.method("getSystem", static_cast<const SimTK::System & (SimTK::Subsystem::Guts::*)()  const>(&SimTK::Subsystem::Guts::getSystem));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::System & SimTK::Subsystem::Guts::updSystem() (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::System & SimTK::Subsystem::Guts::updSystem()
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:306:9
+  // t26.method("updSystem", static_cast<SimTK::System & (SimTK::Subsystem::Guts::*)() >(&SimTK::Subsystem::Guts::updSystem));
+
+  // DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::setSystem(SimTK::System &, SimTK::SubsystemIndex) (" __HERE__ ")");
+  // // signature to use in the veto list: void SimTK::Subsystem::Guts::setSystem(SimTK::System &, SimTK::SubsystemIndex)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:310:6
+  // t26.method("setSystem", static_cast<void (SimTK::Subsystem::Guts::*)(SimTK::System &, SimTK::SubsystemIndex) >(&SimTK::Subsystem::Guts::setSystem));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::SubsystemIndex SimTK::Subsystem::Guts::getMySubsystemIndex() (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::SubsystemIndex SimTK::Subsystem::Guts::getMySubsystemIndex()
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:316:16
+  // t26.method("getMySubsystemIndex", static_cast<SimTK::SubsystemIndex (SimTK::Subsystem::Guts::*)()  const>(&SimTK::Subsystem::Guts::getMySubsystemIndex));
+
+  // DEBUG_MSG("Adding wrapper for bool SimTK::Subsystem::Guts::subsystemTopologyHasBeenRealized() (" __HERE__ ")");
+  // // signature to use in the veto list: bool SimTK::Subsystem::Guts::subsystemTopologyHasBeenRealized()
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:325:6
+  // t26.method("subsystemTopologyHasBeenRealized", static_cast<bool (SimTK::Subsystem::Guts::*)()  const>(&SimTK::Subsystem::Guts::subsystemTopologyHasBeenRealized));
+
+  // DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::invalidateSubsystemTopologyCache() (" __HERE__ ")");
+  // // signature to use in the veto list: void SimTK::Subsystem::Guts::invalidateSubsystemTopologyCache()
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:336:6
+  // t26.method("invalidateSubsystemTopologyCache", static_cast<void (SimTK::Subsystem::Guts::*)()  const>(&SimTK::Subsystem::Guts::invalidateSubsystemTopologyCache));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::Subsystem::Guts * SimTK::Subsystem::Guts::clone() (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::Subsystem::Guts * SimTK::Subsystem::Guts::clone()
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:343:18
+  // t26.method("clone", static_cast<SimTK::Subsystem::Guts * (SimTK::Subsystem::Guts::*)()  const>(&SimTK::Subsystem::Guts::clone));
+
+  // DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::realizeSubsystemTopology(SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: void SimTK::Subsystem::Guts::realizeSubsystemTopology(SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:351:6
+  // t26.method("realizeSubsystemTopology", static_cast<void (SimTK::Subsystem::Guts::*)(SimTK::State &)  const>(&SimTK::Subsystem::Guts::realizeSubsystemTopology));
+
+  // DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::realizeSubsystemModel(SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: void SimTK::Subsystem::Guts::realizeSubsystemModel(SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:352:6
+  // t26.method("realizeSubsystemModel", static_cast<void (SimTK::Subsystem::Guts::*)(SimTK::State &)  const>(&SimTK::Subsystem::Guts::realizeSubsystemModel));
+
+  // DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::realizeSubsystemInstance(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: void SimTK::Subsystem::Guts::realizeSubsystemInstance(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:353:6
+  // t26.method("realizeSubsystemInstance", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::realizeSubsystemInstance));
+
+  // DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::realizeSubsystemTime(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: void SimTK::Subsystem::Guts::realizeSubsystemTime(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:354:6
+  // t26.method("realizeSubsystemTime", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::realizeSubsystemTime));
+
+  // DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::realizeSubsystemPosition(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: void SimTK::Subsystem::Guts::realizeSubsystemPosition(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:355:6
+  // t26.method("realizeSubsystemPosition", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::realizeSubsystemPosition));
+
+  // DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::realizeSubsystemVelocity(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: void SimTK::Subsystem::Guts::realizeSubsystemVelocity(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:356:6
+  // t26.method("realizeSubsystemVelocity", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::realizeSubsystemVelocity));
+
+  // DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::realizeSubsystemDynamics(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: void SimTK::Subsystem::Guts::realizeSubsystemDynamics(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:357:6
+  // t26.method("realizeSubsystemDynamics", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::realizeSubsystemDynamics));
+
+  // DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::realizeSubsystemAcceleration(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: void SimTK::Subsystem::Guts::realizeSubsystemAcceleration(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:358:6
+  // t26.method("realizeSubsystemAcceleration", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::realizeSubsystemAcceleration));
+
+  // DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::realizeSubsystemReport(const SimTK::State &) (" __HERE__ ")");
+  // // signature to use in the veto list: void SimTK::Subsystem::Guts::realizeSubsystemReport(const SimTK::State &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:359:6
+  // t26.method("realizeSubsystemReport", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &)  const>(&SimTK::Subsystem::Guts::realizeSubsystemReport));
+
+  // DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::calcDecorativeGeometryAndAppend(const SimTK::State &, SimTK::Stage, SimTK::Array_<SimTK::DecorativeGeometry> &) (" __HERE__ ")");
+  // // signature to use in the veto list: void SimTK::Subsystem::Guts::calcDecorativeGeometryAndAppend(const SimTK::State &, SimTK::Stage, SimTK::Array_<SimTK::DecorativeGeometry> &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:366:6
+  // // t26.method("calcDecorativeGeometryAndAppend", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::Stage, SimTK::Array_<SimTK::DecorativeGeometry> &)  const>(&SimTK::Subsystem::Guts::calcDecorativeGeometryAndAppend));
+
+  // DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::createScheduledEvent(const SimTK::State &, SimTK::EventId &) (" __HERE__ ")");
+  // // signature to use in the veto list: void SimTK::Subsystem::Guts::createScheduledEvent(const SimTK::State &, SimTK::EventId &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:369:6
+  // t26.method("createScheduledEvent", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::EventId &)  const>(&SimTK::Subsystem::Guts::createScheduledEvent));
+
+  // DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::createTriggeredEvent(const SimTK::State &, SimTK::EventId &, SimTK::EventTriggerByStageIndex &, SimTK::Stage) (" __HERE__ ")");
+  // // signature to use in the veto list: void SimTK::Subsystem::Guts::createTriggeredEvent(const SimTK::State &, SimTK::EventId &, SimTK::EventTriggerByStageIndex &, SimTK::Stage)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:370:6
+  // t26.method("createTriggeredEvent", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::EventId &, SimTK::EventTriggerByStageIndex &, SimTK::Stage)  const>(&SimTK::Subsystem::Guts::createTriggeredEvent));
+
+  // DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::calcEventTriggerInfo(const SimTK::State &, SimTK::Array_<SimTK::EventTriggerInfo> &) (" __HERE__ ")");
+  // // signature to use in the veto list: void SimTK::Subsystem::Guts::calcEventTriggerInfo(const SimTK::State &, SimTK::Array_<SimTK::EventTriggerInfo> &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:378:6
+  // // t26.method("calcEventTriggerInfo", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::Array_<SimTK::EventTriggerInfo> &)  const>(&SimTK::Subsystem::Guts::calcEventTriggerInfo));
+
+  // DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::calcTimeOfNextScheduledEvent(const SimTK::State &, SimTK::Real &, SimTK::Array_<SimTK::EventId> &, bool) (" __HERE__ ")");
+  // // signature to use in the veto list: void SimTK::Subsystem::Guts::calcTimeOfNextScheduledEvent(const SimTK::State &, SimTK::Real &, SimTK::Array_<SimTK::EventId> &, bool)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:380:6
+  // // t26.method("calcTimeOfNextScheduledEvent", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::Real &, SimTK::Array_<SimTK::EventId> &, bool)  const>(&SimTK::Subsystem::Guts::calcTimeOfNextScheduledEvent));
+
+  // DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::calcTimeOfNextScheduledReport(const SimTK::State &, SimTK::Real &, SimTK::Array_<SimTK::EventId> &, bool) (" __HERE__ ")");
+  // // signature to use in the veto list: void SimTK::Subsystem::Guts::calcTimeOfNextScheduledReport(const SimTK::State &, SimTK::Real &, SimTK::Array_<SimTK::EventId> &, bool)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:383:6
+  // // t26.method("calcTimeOfNextScheduledReport", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::Real &, SimTK::Array_<SimTK::EventId> &, bool)  const>(&SimTK::Subsystem::Guts::calcTimeOfNextScheduledReport));
+
+  // DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::handleEvents(SimTK::State &, SimTK::Event::Cause, const SimTK::Array_<SimTK::EventId> &, const SimTK::HandleEventsOptions &, SimTK::HandleEventsResults &) (" __HERE__ ")");
+  // // signature to use in the veto list: void SimTK::Subsystem::Guts::handleEvents(SimTK::State &, SimTK::Event::Cause, const SimTK::Array_<SimTK::EventId> &, const SimTK::HandleEventsOptions &, SimTK::HandleEventsResults &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:386:6
+  // // t26.method("handleEvents", static_cast<void (SimTK::Subsystem::Guts::*)(SimTK::State &, SimTK::Event::Cause, const SimTK::Array_<SimTK::EventId> &, const SimTK::HandleEventsOptions &, SimTK::HandleEventsResults &)  const>(&SimTK::Subsystem::Guts::handleEvents));
+
+  // DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::reportEvents(const SimTK::State &, SimTK::Event::Cause, const SimTK::Array_<SimTK::EventId> &) (" __HERE__ ")");
+  // // signature to use in the veto list: void SimTK::Subsystem::Guts::reportEvents(const SimTK::State &, SimTK::Event::Cause, const SimTK::Array_<SimTK::EventId> &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:389:6
+  // // t26.method("reportEvents", static_cast<void (SimTK::Subsystem::Guts::*)(const SimTK::State &, SimTK::Event::Cause, const SimTK::Array_<SimTK::EventId> &)  const>(&SimTK::Subsystem::Guts::reportEvents));
+
+  // DEBUG_MSG("Adding wrapper for const SimTK::Subsystem & SimTK::Subsystem::Guts::getOwnerSubsystemHandle() (" __HERE__ ")");
+  // // signature to use in the veto list: const SimTK::Subsystem & SimTK::Subsystem::Guts::getOwnerSubsystemHandle()
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:444:18
+  // t26.method("getOwnerSubsystemHandle", static_cast<const SimTK::Subsystem & (SimTK::Subsystem::Guts::*)()  const>(&SimTK::Subsystem::Guts::getOwnerSubsystemHandle));
+
+  // DEBUG_MSG("Adding wrapper for SimTK::Subsystem & SimTK::Subsystem::Guts::updOwnerSubsystemHandle() (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::Subsystem & SimTK::Subsystem::Guts::updOwnerSubsystemHandle()
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:450:12
+  // t26.method("updOwnerSubsystemHandle", static_cast<SimTK::Subsystem & (SimTK::Subsystem::Guts::*)() >(&SimTK::Subsystem::Guts::updOwnerSubsystemHandle));
+
+  // DEBUG_MSG("Adding wrapper for void SimTK::Subsystem::Guts::setOwnerSubsystemHandle(SimTK::Subsystem &) (" __HERE__ ")");
+  // // signature to use in the veto list: void SimTK::Subsystem::Guts::setOwnerSubsystemHandle(SimTK::Subsystem &)
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:459:6
+  // t26.method("setOwnerSubsystemHandle", static_cast<void (SimTK::Subsystem::Guts::*)(SimTK::Subsystem &) >(&SimTK::Subsystem::Guts::setOwnerSubsystemHandle));
+
+  // DEBUG_MSG("Adding wrapper for bool SimTK::Subsystem::Guts::hasOwnerSubsystemHandle() (" __HERE__ ")");
+  // // signature to use in the veto list: bool SimTK::Subsystem::Guts::hasOwnerSubsystemHandle()
+  // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/SubsystemGuts.h:463:6
+  // t26.method("hasOwnerSubsystemHandle", static_cast<bool (SimTK::Subsystem::Guts::*)()  const>(&SimTK::Subsystem::Guts::hasOwnerSubsystemHandle));
+
+  // /* End of SimTK::Subsystem::Guts class method wrappers
+  //  **********************************************************************/
 
 
   /**********************************************************************/
@@ -1572,12 +1568,12 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
   DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::ProjectOptions::getDefaultRequiredAccuracy() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::ProjectOptions::getDefaultRequiredAccuracy()
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/System.h:1039:17
-  t32.method("SimTK!ProjectOptions!getDefaultRequiredAccuracy", static_cast<SimTK::Real (*)() >(&SimTK::ProjectOptions::getDefaultRequiredAccuracy));
+  types.method("SimTK!ProjectOptions!getDefaultRequiredAccuracy", static_cast<SimTK::Real (*)() >(&SimTK::ProjectOptions::getDefaultRequiredAccuracy));
 
   DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::ProjectOptions::getDefaultOvershootFactor() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::ProjectOptions::getDefaultOvershootFactor()
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/System.h:1040:17
-  t32.method("SimTK!ProjectOptions!getDefaultOvershootFactor", static_cast<SimTK::Real (*)() >(&SimTK::ProjectOptions::getDefaultOvershootFactor));
+  types.method("SimTK!ProjectOptions!getDefaultOvershootFactor", static_cast<SimTK::Real (*)() >(&SimTK::ProjectOptions::getDefaultOvershootFactor));
 
   DEBUG_MSG("Adding wrapper for SimTK::ProjectOptions & SimTK::ProjectOptions::operator|=(const SimTK::ProjectOptions &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ProjectOptions & SimTK::ProjectOptions::operator|=(const SimTK::ProjectOptions &)

@@ -134,14 +134,10 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1442:7
   auto t33 = types.add_type<SimTK::GeodHitPlaneEvent>("SimTK!GeodHitPlaneEvent");
   t33.template constructor<>();
-
-  DEBUG_MSG("Adding wrapper for type SimTK::PathDecorator (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1501:7
-  auto t34 = types.add_type<SimTK::PathDecorator>("SimTK!PathDecorator");
-
+ 
   DEBUG_MSG("Adding wrapper for type SimTK::PlaneDecorator (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1541:7
-  auto t35 = types.add_type<SimTK::PlaneDecorator>("SimTK!PlaneDecorator");
+  auto t35 = types.add_type<SimTK::PlaneDecorator>("SimTK!PlaneDecorator", jlcxx::julia_base_type<SimTK::DecorationGenerator>());
 
   DEBUG_MSG("Adding wrapper for type SimTK::ContactTracker (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactTracker.h:62:28
@@ -213,7 +209,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("Adding wrapper for const char * SimTK::Contact::nameOfCondition(SimTK::Contact::Condition) (" __HERE__ ")");
   // signature to use in the veto list: const char * SimTK::Contact::nameOfCondition(SimTK::Contact::Condition)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:100:24
-  t3.method("SimTK!Contact!nameOfCondition", static_cast<const char * (*)(SimTK::Contact::Condition) >(&SimTK::Contact::nameOfCondition));
+  types.method("SimTK!Contact!nameOfCondition", static_cast<const char * (*)(SimTK::Contact::Condition) >(&SimTK::Contact::nameOfCondition));
 
 
   DEBUG_MSG("Adding wrapper for void SimTK::Contact::Contact(const SimTK::Contact &) (" __HERE__ ")");
@@ -288,7 +284,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("Adding wrapper for SimTK::ContactId SimTK::Contact::createNewContactId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactId SimTK::Contact::createNewContactId()
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:153:22
-  t3.method("SimTK!Contact!createNewContactId", static_cast<SimTK::ContactId (*)() >(&SimTK::Contact::createNewContactId));
+  types.method("SimTK!Contact!createNewContactId", static_cast<SimTK::ContactId (*)() >(&SimTK::Contact::createNewContactId));
 
   /* End of SimTK::Contact class method wrappers
    **********************************************************************/
@@ -306,12 +302,12 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("Adding wrapper for bool SimTK::UntrackedContact::isInstance(const SimTK::Contact &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::UntrackedContact::isInstance(const SimTK::Contact &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:194:17
-  t5.method("SimTK!UntrackedContact!isInstance", static_cast<bool (*)(const SimTK::Contact &) >(&SimTK::UntrackedContact::isInstance));
+  types.method("SimTK!UntrackedContact!isInstance", static_cast<bool (*)(const SimTK::Contact &) >(&SimTK::UntrackedContact::isInstance));
 
   DEBUG_MSG("Adding wrapper for SimTK::ContactTypeId SimTK::UntrackedContact::classTypeId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactTypeId SimTK::UntrackedContact::classTypeId()
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:196:26
-  t5.method("SimTK!UntrackedContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::UntrackedContact::classTypeId));
+  types.method("SimTK!UntrackedContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::UntrackedContact::classTypeId));
 
   /* End of SimTK::UntrackedContact class method wrappers
    **********************************************************************/
@@ -334,12 +330,12 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("Adding wrapper for bool SimTK::BrokenContact::isInstance(const SimTK::Contact &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::BrokenContact::isInstance(const SimTK::Contact &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:233:17
-  t6.method("SimTK!BrokenContact!isInstance", static_cast<bool (*)(const SimTK::Contact &) >(&SimTK::BrokenContact::isInstance));
+  types.method("SimTK!BrokenContact!isInstance", static_cast<bool (*)(const SimTK::Contact &) >(&SimTK::BrokenContact::isInstance));
 
   DEBUG_MSG("Adding wrapper for SimTK::ContactTypeId SimTK::BrokenContact::classTypeId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactTypeId SimTK::BrokenContact::classTypeId()
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:235:26
-  t6.method("SimTK!BrokenContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::BrokenContact::classTypeId));
+  types.method("SimTK!BrokenContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::BrokenContact::classTypeId));
 
   /* End of SimTK::BrokenContact class method wrappers
    **********************************************************************/
@@ -387,22 +383,22 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("Adding wrapper for bool SimTK::CircularPointContact::isInstance(const SimTK::Contact &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::CircularPointContact::isInstance(const SimTK::Contact &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:302:17
-  t7.method("SimTK!CircularPointContact!isInstance", static_cast<bool (*)(const SimTK::Contact &) >(&SimTK::CircularPointContact::isInstance));
+  types.method("SimTK!CircularPointContact!isInstance", static_cast<bool (*)(const SimTK::Contact &) >(&SimTK::CircularPointContact::isInstance));
 
   DEBUG_MSG("Adding wrapper for const SimTK::CircularPointContact & SimTK::CircularPointContact::getAs(const SimTK::Contact &) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::CircularPointContact & SimTK::CircularPointContact::getAs(const SimTK::Contact &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:303:40
-  t7.method("SimTK!CircularPointContact!getAs", static_cast<const SimTK::CircularPointContact & (*)(const SimTK::Contact &) >(&SimTK::CircularPointContact::getAs));
+  types.method("SimTK!CircularPointContact!getAs", static_cast<const SimTK::CircularPointContact & (*)(const SimTK::Contact &) >(&SimTK::CircularPointContact::getAs));
 
   DEBUG_MSG("Adding wrapper for SimTK::CircularPointContact & SimTK::CircularPointContact::updAs(SimTK::Contact &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::CircularPointContact & SimTK::CircularPointContact::updAs(SimTK::Contact &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:306:34
-  t7.method("SimTK!CircularPointContact!updAs", static_cast<SimTK::CircularPointContact & (*)(SimTK::Contact &) >(&SimTK::CircularPointContact::updAs));
+  types.method("SimTK!CircularPointContact!updAs", static_cast<SimTK::CircularPointContact & (*)(SimTK::Contact &) >(&SimTK::CircularPointContact::updAs));
 
   DEBUG_MSG("Adding wrapper for SimTK::ContactTypeId SimTK::CircularPointContact::classTypeId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactTypeId SimTK::CircularPointContact::classTypeId()
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:311:26
-  t7.method("SimTK!CircularPointContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::CircularPointContact::classTypeId));
+  types.method("SimTK!CircularPointContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::CircularPointContact::classTypeId));
 
   /* End of SimTK::CircularPointContact class method wrappers
    **********************************************************************/
@@ -435,22 +431,22 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("Adding wrapper for bool SimTK::EllipticalPointContact::isInstance(const SimTK::Contact &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::EllipticalPointContact::isInstance(const SimTK::Contact &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:392:17
-  t8.method("SimTK!EllipticalPointContact!isInstance", static_cast<bool (*)(const SimTK::Contact &) >(&SimTK::EllipticalPointContact::isInstance));
+  types.method("SimTK!EllipticalPointContact!isInstance", static_cast<bool (*)(const SimTK::Contact &) >(&SimTK::EllipticalPointContact::isInstance));
 
   DEBUG_MSG("Adding wrapper for const SimTK::EllipticalPointContact & SimTK::EllipticalPointContact::getAs(const SimTK::Contact &) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::EllipticalPointContact & SimTK::EllipticalPointContact::getAs(const SimTK::Contact &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:393:42
-  t8.method("SimTK!EllipticalPointContact!getAs", static_cast<const SimTK::EllipticalPointContact & (*)(const SimTK::Contact &) >(&SimTK::EllipticalPointContact::getAs));
+  types.method("SimTK!EllipticalPointContact!getAs", static_cast<const SimTK::EllipticalPointContact & (*)(const SimTK::Contact &) >(&SimTK::EllipticalPointContact::getAs));
 
   DEBUG_MSG("Adding wrapper for SimTK::EllipticalPointContact & SimTK::EllipticalPointContact::updAs(SimTK::Contact &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::EllipticalPointContact & SimTK::EllipticalPointContact::updAs(SimTK::Contact &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:396:36
-  t8.method("SimTK!EllipticalPointContact!updAs", static_cast<SimTK::EllipticalPointContact & (*)(SimTK::Contact &) >(&SimTK::EllipticalPointContact::updAs));
+  types.method("SimTK!EllipticalPointContact!updAs", static_cast<SimTK::EllipticalPointContact & (*)(SimTK::Contact &) >(&SimTK::EllipticalPointContact::updAs));
 
   DEBUG_MSG("Adding wrapper for SimTK::ContactTypeId SimTK::EllipticalPointContact::classTypeId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactTypeId SimTK::EllipticalPointContact::classTypeId()
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:401:26
-  t8.method("SimTK!EllipticalPointContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::EllipticalPointContact::classTypeId));
+  types.method("SimTK!EllipticalPointContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::EllipticalPointContact::classTypeId));
 
   /* End of SimTK::EllipticalPointContact class method wrappers
    **********************************************************************/
@@ -478,22 +474,22 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("Adding wrapper for bool SimTK::BrickHalfSpaceContact::isInstance(const SimTK::Contact &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::BrickHalfSpaceContact::isInstance(const SimTK::Contact &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:445:17
-  t9.method("SimTK!BrickHalfSpaceContact!isInstance", static_cast<bool (*)(const SimTK::Contact &) >(&SimTK::BrickHalfSpaceContact::isInstance));
+  types.method("SimTK!BrickHalfSpaceContact!isInstance", static_cast<bool (*)(const SimTK::Contact &) >(&SimTK::BrickHalfSpaceContact::isInstance));
 
   DEBUG_MSG("Adding wrapper for const SimTK::BrickHalfSpaceContact & SimTK::BrickHalfSpaceContact::getAs(const SimTK::Contact &) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::BrickHalfSpaceContact & SimTK::BrickHalfSpaceContact::getAs(const SimTK::Contact &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:449:41
-  t9.method("SimTK!BrickHalfSpaceContact!getAs", static_cast<const SimTK::BrickHalfSpaceContact & (*)(const SimTK::Contact &) >(&SimTK::BrickHalfSpaceContact::getAs));
+  types.method("SimTK!BrickHalfSpaceContact!getAs", static_cast<const SimTK::BrickHalfSpaceContact & (*)(const SimTK::Contact &) >(&SimTK::BrickHalfSpaceContact::getAs));
 
   DEBUG_MSG("Adding wrapper for SimTK::BrickHalfSpaceContact & SimTK::BrickHalfSpaceContact::updAs(SimTK::Contact &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::BrickHalfSpaceContact & SimTK::BrickHalfSpaceContact::updAs(SimTK::Contact &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:455:35
-  t9.method("SimTK!BrickHalfSpaceContact!updAs", static_cast<SimTK::BrickHalfSpaceContact & (*)(SimTK::Contact &) >(&SimTK::BrickHalfSpaceContact::updAs));
+  types.method("SimTK!BrickHalfSpaceContact!updAs", static_cast<SimTK::BrickHalfSpaceContact & (*)(SimTK::Contact &) >(&SimTK::BrickHalfSpaceContact::updAs));
 
   DEBUG_MSG("Adding wrapper for SimTK::ContactTypeId SimTK::BrickHalfSpaceContact::classTypeId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactTypeId SimTK::BrickHalfSpaceContact::classTypeId()
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:461:26
-  t9.method("SimTK!BrickHalfSpaceContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::BrickHalfSpaceContact::classTypeId));
+  types.method("SimTK!BrickHalfSpaceContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::BrickHalfSpaceContact::classTypeId));
 
   /* End of SimTK::BrickHalfSpaceContact class method wrappers
    **********************************************************************/
@@ -537,22 +533,22 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("Adding wrapper for bool SimTK::TriangleMeshContact::isInstance(const SimTK::Contact &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::TriangleMeshContact::isInstance(const SimTK::Contact &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:507:17
-  t10.method("SimTK!TriangleMeshContact!isInstance", static_cast<bool (*)(const SimTK::Contact &) >(&SimTK::TriangleMeshContact::isInstance));
+  types.method("SimTK!TriangleMeshContact!isInstance", static_cast<bool (*)(const SimTK::Contact &) >(&SimTK::TriangleMeshContact::isInstance));
 
   DEBUG_MSG("Adding wrapper for const SimTK::TriangleMeshContact & SimTK::TriangleMeshContact::getAs(const SimTK::Contact &) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::TriangleMeshContact & SimTK::TriangleMeshContact::getAs(const SimTK::Contact &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:510:39
-  t10.method("SimTK!TriangleMeshContact!getAs", static_cast<const SimTK::TriangleMeshContact & (*)(const SimTK::Contact &) >(&SimTK::TriangleMeshContact::getAs));
+  types.method("SimTK!TriangleMeshContact!getAs", static_cast<const SimTK::TriangleMeshContact & (*)(const SimTK::Contact &) >(&SimTK::TriangleMeshContact::getAs));
 
   DEBUG_MSG("Adding wrapper for SimTK::TriangleMeshContact & SimTK::TriangleMeshContact::updAs(SimTK::Contact &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::TriangleMeshContact & SimTK::TriangleMeshContact::updAs(SimTK::Contact &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:515:33
-  t10.method("SimTK!TriangleMeshContact!updAs", static_cast<SimTK::TriangleMeshContact & (*)(SimTK::Contact &) >(&SimTK::TriangleMeshContact::updAs));
+  types.method("SimTK!TriangleMeshContact!updAs", static_cast<SimTK::TriangleMeshContact & (*)(SimTK::Contact &) >(&SimTK::TriangleMeshContact::updAs));
 
   DEBUG_MSG("Adding wrapper for SimTK::ContactTypeId SimTK::TriangleMeshContact::classTypeId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactTypeId SimTK::TriangleMeshContact::classTypeId()
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:521:26
-  t10.method("SimTK!TriangleMeshContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::TriangleMeshContact::classTypeId));
+  types.method("SimTK!TriangleMeshContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::TriangleMeshContact::classTypeId));
 
   /* End of SimTK::TriangleMeshContact class method wrappers
    **********************************************************************/
@@ -605,12 +601,12 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("Adding wrapper for bool SimTK::PointContact::isInstance(const SimTK::Contact &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::PointContact::isInstance(const SimTK::Contact &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:612:17
-  t11.method("SimTK!PointContact!isInstance", static_cast<bool (*)(const SimTK::Contact &) >(&SimTK::PointContact::isInstance));
+  types.method("SimTK!PointContact!isInstance", static_cast<bool (*)(const SimTK::Contact &) >(&SimTK::PointContact::isInstance));
 
   DEBUG_MSG("Adding wrapper for SimTK::ContactTypeId SimTK::PointContact::classTypeId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactTypeId SimTK::PointContact::classTypeId()
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:616:26
-  t11.method("SimTK!PointContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::PointContact::classTypeId));
+  types.method("SimTK!PointContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::PointContact::classTypeId));
 
   /* End of SimTK::PointContact class method wrappers
    **********************************************************************/
@@ -733,17 +729,17 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("Adding wrapper for SimTK::Vec2 SimTK::ContactGeometry::evalParametricCurvature(const SimTK::Vec3 &, const SimTK::UnitVec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &, SimTK::Transform &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Vec2 SimTK::ContactGeometry::evalParametricCurvature(const SimTK::Vec3 &, const SimTK::UnitVec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &, SimTK::Transform &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:454:13
-  t17.method("SimTK!ContactGeometry!evalParametricCurvature", static_cast<SimTK::Vec2 (*)(const SimTK::Vec3 &, const SimTK::UnitVec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &, SimTK::Transform &) >(&SimTK::ContactGeometry::evalParametricCurvature));
+  types.method("SimTK!ContactGeometry!evalParametricCurvature", static_cast<SimTK::Vec2 (*)(const SimTK::Vec3 &, const SimTK::UnitVec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &, SimTK::Transform &) >(&SimTK::ContactGeometry::evalParametricCurvature));
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactGeometry::combineParaboloids(const SimTK::Rotation &, const SimTK::Vec2 &, const SimTK::UnitVec3 &, const SimTK::Vec2 &, SimTK::Rotation &, SimTK::Vec2 &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::ContactGeometry::combineParaboloids(const SimTK::Rotation &, const SimTK::Vec2 &, const SimTK::UnitVec3 &, const SimTK::Vec2 &, SimTK::Rotation &, SimTK::Vec2 &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:533:13
-  t17.method("SimTK!ContactGeometry!combineParaboloids", static_cast<void (*)(const SimTK::Rotation &, const SimTK::Vec2 &, const SimTK::UnitVec3 &, const SimTK::Vec2 &, SimTK::Rotation &, SimTK::Vec2 &) >(&SimTK::ContactGeometry::combineParaboloids));
+  types.method("SimTK!ContactGeometry!combineParaboloids", static_cast<void (*)(const SimTK::Rotation &, const SimTK::Vec2 &, const SimTK::UnitVec3 &, const SimTK::Vec2 &, SimTK::Rotation &, SimTK::Vec2 &) >(&SimTK::ContactGeometry::combineParaboloids));
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactGeometry::combineParaboloids(const SimTK::Rotation &, const SimTK::Vec2 &, const SimTK::UnitVec3 &, const SimTK::Vec2 &, SimTK::Vec2 &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::ContactGeometry::combineParaboloids(const SimTK::Rotation &, const SimTK::Vec2 &, const SimTK::UnitVec3 &, const SimTK::Vec2 &, SimTK::Vec2 &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:541:13
-  t17.method("SimTK!ContactGeometry!combineParaboloids", static_cast<void (*)(const SimTK::Rotation &, const SimTK::Vec2 &, const SimTK::UnitVec3 &, const SimTK::Vec2 &, SimTK::Vec2 &) >(&SimTK::ContactGeometry::combineParaboloids));
+  types.method("SimTK!ContactGeometry!combineParaboloids", static_cast<void (*)(const SimTK::Rotation &, const SimTK::Vec2 &, const SimTK::UnitVec3 &, const SimTK::Vec2 &, SimTK::Vec2 &) >(&SimTK::ContactGeometry::combineParaboloids));
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactGeometry::initGeodesic(const SimTK::Vec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &, const SimTK::GeodesicOptions &, SimTK::Geodesic &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::ContactGeometry::initGeodesic(const SimTK::Vec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &, const SimTK::GeodesicOptions &, SimTK::Geodesic &)
@@ -915,22 +911,22 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("Adding wrapper for bool SimTK::ContactGeometry::HalfSpace::isInstance(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::ContactGeometry::HalfSpace::isInstance(const SimTK::ContactGeometry &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:839:13
-  t21.method("SimTK!ContactGeometry!HalfSpace!isInstance", static_cast<bool (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::HalfSpace::isInstance));
+  types.method("SimTK!ContactGeometry!HalfSpace!isInstance", static_cast<bool (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::HalfSpace::isInstance));
 
   DEBUG_MSG("Adding wrapper for const SimTK::ContactGeometry::HalfSpace & SimTK::ContactGeometry::HalfSpace::getAs(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::ContactGeometry::HalfSpace & SimTK::ContactGeometry::HalfSpace::getAs(const SimTK::ContactGeometry &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:842:25
-  t21.method("SimTK!ContactGeometry!HalfSpace!getAs", static_cast<const SimTK::ContactGeometry::HalfSpace & (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::HalfSpace::getAs));
+  types.method("SimTK!ContactGeometry!HalfSpace!getAs", static_cast<const SimTK::ContactGeometry::HalfSpace & (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::HalfSpace::getAs));
 
   DEBUG_MSG("Adding wrapper for SimTK::ContactGeometry::HalfSpace & SimTK::ContactGeometry::HalfSpace::updAs(SimTK::ContactGeometry &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactGeometry::HalfSpace & SimTK::ContactGeometry::HalfSpace::updAs(SimTK::ContactGeometry &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:845:19
-  t21.method("SimTK!ContactGeometry!HalfSpace!updAs", static_cast<SimTK::ContactGeometry::HalfSpace & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::HalfSpace::updAs));
+  types.method("SimTK!ContactGeometry!HalfSpace!updAs", static_cast<SimTK::ContactGeometry::HalfSpace & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::HalfSpace::updAs));
 
   DEBUG_MSG("Adding wrapper for SimTK::ContactGeometryTypeId SimTK::ContactGeometry::HalfSpace::classTypeId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactGeometryTypeId SimTK::ContactGeometry::HalfSpace::classTypeId()
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:849:30
-  t21.method("SimTK!ContactGeometry!HalfSpace!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::HalfSpace::classTypeId));
+  types.method("SimTK!ContactGeometry!HalfSpace!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::HalfSpace::classTypeId));
 
   /* End of SimTK::ContactGeometry::HalfSpace class method wrappers
    **********************************************************************/
@@ -958,22 +954,22 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("Adding wrapper for bool SimTK::ContactGeometry::Cylinder::isInstance(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::ContactGeometry::Cylinder::isInstance(const SimTK::ContactGeometry &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:871:13
-  t22.method("SimTK!ContactGeometry!Cylinder!isInstance", static_cast<bool (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Cylinder::isInstance));
+  types.method("SimTK!ContactGeometry!Cylinder!isInstance", static_cast<bool (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Cylinder::isInstance));
 
   DEBUG_MSG("Adding wrapper for const SimTK::ContactGeometry::Cylinder & SimTK::ContactGeometry::Cylinder::getAs(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::ContactGeometry::Cylinder & SimTK::ContactGeometry::Cylinder::getAs(const SimTK::ContactGeometry &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:874:24
-  t22.method("SimTK!ContactGeometry!Cylinder!getAs", static_cast<const SimTK::ContactGeometry::Cylinder & (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Cylinder::getAs));
+  types.method("SimTK!ContactGeometry!Cylinder!getAs", static_cast<const SimTK::ContactGeometry::Cylinder & (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Cylinder::getAs));
 
   DEBUG_MSG("Adding wrapper for SimTK::ContactGeometry::Cylinder & SimTK::ContactGeometry::Cylinder::updAs(SimTK::ContactGeometry &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactGeometry::Cylinder & SimTK::ContactGeometry::Cylinder::updAs(SimTK::ContactGeometry &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:877:18
-  t22.method("SimTK!ContactGeometry!Cylinder!updAs", static_cast<SimTK::ContactGeometry::Cylinder & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Cylinder::updAs));
+  types.method("SimTK!ContactGeometry!Cylinder!updAs", static_cast<SimTK::ContactGeometry::Cylinder & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Cylinder::updAs));
 
   DEBUG_MSG("Adding wrapper for SimTK::ContactGeometryTypeId SimTK::ContactGeometry::Cylinder::classTypeId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactGeometryTypeId SimTK::ContactGeometry::Cylinder::classTypeId()
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:881:30
-  t22.method("SimTK!ContactGeometry!Cylinder!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::Cylinder::classTypeId));
+  types.method("SimTK!ContactGeometry!Cylinder!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::Cylinder::classTypeId));
 
   /* End of SimTK::ContactGeometry::Cylinder class method wrappers
    **********************************************************************/
@@ -1001,22 +997,22 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("Adding wrapper for bool SimTK::ContactGeometry::Sphere::isInstance(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::ContactGeometry::Sphere::isInstance(const SimTK::ContactGeometry &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:902:13
-  t23.method("SimTK!ContactGeometry!Sphere!isInstance", static_cast<bool (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Sphere::isInstance));
+  types.method("SimTK!ContactGeometry!Sphere!isInstance", static_cast<bool (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Sphere::isInstance));
 
   DEBUG_MSG("Adding wrapper for const SimTK::ContactGeometry::Sphere & SimTK::ContactGeometry::Sphere::getAs(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::ContactGeometry::Sphere & SimTK::ContactGeometry::Sphere::getAs(const SimTK::ContactGeometry &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:905:22
-  t23.method("SimTK!ContactGeometry!Sphere!getAs", static_cast<const SimTK::ContactGeometry::Sphere & (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Sphere::getAs));
+  types.method("SimTK!ContactGeometry!Sphere!getAs", static_cast<const SimTK::ContactGeometry::Sphere & (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Sphere::getAs));
 
   DEBUG_MSG("Adding wrapper for SimTK::ContactGeometry::Sphere & SimTK::ContactGeometry::Sphere::updAs(SimTK::ContactGeometry &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactGeometry::Sphere & SimTK::ContactGeometry::Sphere::updAs(SimTK::ContactGeometry &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:908:16
-  t23.method("SimTK!ContactGeometry!Sphere!updAs", static_cast<SimTK::ContactGeometry::Sphere & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Sphere::updAs));
+  types.method("SimTK!ContactGeometry!Sphere!updAs", static_cast<SimTK::ContactGeometry::Sphere & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Sphere::updAs));
 
   DEBUG_MSG("Adding wrapper for SimTK::ContactGeometryTypeId SimTK::ContactGeometry::Sphere::classTypeId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactGeometryTypeId SimTK::ContactGeometry::Sphere::classTypeId()
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:912:30
-  t23.method("SimTK!ContactGeometry!Sphere!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::Sphere::classTypeId));
+  types.method("SimTK!ContactGeometry!Sphere!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::Sphere::classTypeId));
 
   /* End of SimTK::ContactGeometry::Sphere class method wrappers
    **********************************************************************/
@@ -1074,22 +1070,22 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("Adding wrapper for bool SimTK::ContactGeometry::Ellipsoid::isInstance(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::ContactGeometry::Ellipsoid::isInstance(const SimTK::ContactGeometry &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1034:13
-  t24.method("SimTK!ContactGeometry!Ellipsoid!isInstance", static_cast<bool (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Ellipsoid::isInstance));
+  types.method("SimTK!ContactGeometry!Ellipsoid!isInstance", static_cast<bool (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Ellipsoid::isInstance));
 
   DEBUG_MSG("Adding wrapper for const SimTK::ContactGeometry::Ellipsoid & SimTK::ContactGeometry::Ellipsoid::getAs(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::ContactGeometry::Ellipsoid & SimTK::ContactGeometry::Ellipsoid::getAs(const SimTK::ContactGeometry &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1037:25
-  t24.method("SimTK!ContactGeometry!Ellipsoid!getAs", static_cast<const SimTK::ContactGeometry::Ellipsoid & (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Ellipsoid::getAs));
+  types.method("SimTK!ContactGeometry!Ellipsoid!getAs", static_cast<const SimTK::ContactGeometry::Ellipsoid & (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Ellipsoid::getAs));
 
   DEBUG_MSG("Adding wrapper for SimTK::ContactGeometry::Ellipsoid & SimTK::ContactGeometry::Ellipsoid::updAs(SimTK::ContactGeometry &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactGeometry::Ellipsoid & SimTK::ContactGeometry::Ellipsoid::updAs(SimTK::ContactGeometry &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1040:19
-  t24.method("SimTK!ContactGeometry!Ellipsoid!updAs", static_cast<SimTK::ContactGeometry::Ellipsoid & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Ellipsoid::updAs));
+  types.method("SimTK!ContactGeometry!Ellipsoid!updAs", static_cast<SimTK::ContactGeometry::Ellipsoid & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Ellipsoid::updAs));
 
   DEBUG_MSG("Adding wrapper for SimTK::ContactGeometryTypeId SimTK::ContactGeometry::Ellipsoid::classTypeId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactGeometryTypeId SimTK::ContactGeometry::Ellipsoid::classTypeId()
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1044:30
-  t24.method("SimTK!ContactGeometry!Ellipsoid!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::Ellipsoid::classTypeId));
+  types.method("SimTK!ContactGeometry!Ellipsoid!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::Ellipsoid::classTypeId));
 
   /* End of SimTK::ContactGeometry::Ellipsoid class method wrappers
    **********************************************************************/
@@ -1117,22 +1113,22 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("Adding wrapper for bool SimTK::ContactGeometry::SmoothHeightMap::isInstance(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::ContactGeometry::SmoothHeightMap::isInstance(const SimTK::ContactGeometry &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1083:13
-  t25.method("SimTK!ContactGeometry!SmoothHeightMap!isInstance", static_cast<bool (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::SmoothHeightMap::isInstance));
+  types.method("SimTK!ContactGeometry!SmoothHeightMap!isInstance", static_cast<bool (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::SmoothHeightMap::isInstance));
 
   DEBUG_MSG("Adding wrapper for const SimTK::ContactGeometry::SmoothHeightMap & SimTK::ContactGeometry::SmoothHeightMap::getAs(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::ContactGeometry::SmoothHeightMap & SimTK::ContactGeometry::SmoothHeightMap::getAs(const SimTK::ContactGeometry &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1086:31
-  t25.method("SimTK!ContactGeometry!SmoothHeightMap!getAs", static_cast<const SimTK::ContactGeometry::SmoothHeightMap & (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::SmoothHeightMap::getAs));
+  types.method("SimTK!ContactGeometry!SmoothHeightMap!getAs", static_cast<const SimTK::ContactGeometry::SmoothHeightMap & (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::SmoothHeightMap::getAs));
 
   DEBUG_MSG("Adding wrapper for SimTK::ContactGeometry::SmoothHeightMap & SimTK::ContactGeometry::SmoothHeightMap::updAs(SimTK::ContactGeometry &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactGeometry::SmoothHeightMap & SimTK::ContactGeometry::SmoothHeightMap::updAs(SimTK::ContactGeometry &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1089:25
-  t25.method("SimTK!ContactGeometry!SmoothHeightMap!updAs", static_cast<SimTK::ContactGeometry::SmoothHeightMap & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::SmoothHeightMap::updAs));
+  types.method("SimTK!ContactGeometry!SmoothHeightMap!updAs", static_cast<SimTK::ContactGeometry::SmoothHeightMap & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::SmoothHeightMap::updAs));
 
   DEBUG_MSG("Adding wrapper for SimTK::ContactGeometryTypeId SimTK::ContactGeometry::SmoothHeightMap::classTypeId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactGeometryTypeId SimTK::ContactGeometry::SmoothHeightMap::classTypeId()
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1093:30
-  t25.method("SimTK!ContactGeometry!SmoothHeightMap!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::SmoothHeightMap::classTypeId));
+  types.method("SimTK!ContactGeometry!SmoothHeightMap!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::SmoothHeightMap::classTypeId));
 
   /* End of SimTK::ContactGeometry::SmoothHeightMap class method wrappers
    **********************************************************************/
@@ -1174,22 +1170,22 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("Adding wrapper for bool SimTK::ContactGeometry::Brick::isInstance(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::ContactGeometry::Brick::isInstance(const SimTK::ContactGeometry &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1122:13
-  t27.method("SimTK!ContactGeometry!Brick!isInstance", static_cast<bool (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Brick::isInstance));
+  types.method("SimTK!ContactGeometry!Brick!isInstance", static_cast<bool (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Brick::isInstance));
 
   DEBUG_MSG("Adding wrapper for const SimTK::ContactGeometry::Brick & SimTK::ContactGeometry::Brick::getAs(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::ContactGeometry::Brick & SimTK::ContactGeometry::Brick::getAs(const SimTK::ContactGeometry &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1125:21
-  t27.method("SimTK!ContactGeometry!Brick!getAs", static_cast<const SimTK::ContactGeometry::Brick & (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Brick::getAs));
+  types.method("SimTK!ContactGeometry!Brick!getAs", static_cast<const SimTK::ContactGeometry::Brick & (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Brick::getAs));
 
   DEBUG_MSG("Adding wrapper for SimTK::ContactGeometry::Brick & SimTK::ContactGeometry::Brick::updAs(SimTK::ContactGeometry &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactGeometry::Brick & SimTK::ContactGeometry::Brick::updAs(SimTK::ContactGeometry &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1128:15
-  t27.method("SimTK!ContactGeometry!Brick!updAs", static_cast<SimTK::ContactGeometry::Brick & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Brick::updAs));
+  types.method("SimTK!ContactGeometry!Brick!updAs", static_cast<SimTK::ContactGeometry::Brick & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Brick::updAs));
 
   DEBUG_MSG("Adding wrapper for SimTK::ContactGeometryTypeId SimTK::ContactGeometry::Brick::classTypeId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactGeometryTypeId SimTK::ContactGeometry::Brick::classTypeId()
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1132:30
-  t27.method("SimTK!ContactGeometry!Brick!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::Brick::classTypeId));
+  types.method("SimTK!ContactGeometry!Brick!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::Brick::classTypeId));
 
   /* End of SimTK::ContactGeometry::Brick class method wrappers
    **********************************************************************/
@@ -1319,22 +1315,22 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("Adding wrapper for bool SimTK::ContactGeometry::TriangleMesh::isInstance(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::ContactGeometry::TriangleMesh::isInstance(const SimTK::ContactGeometry &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1317:13
-  t28.method("SimTK!ContactGeometry!TriangleMesh!isInstance", static_cast<bool (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::TriangleMesh::isInstance));
+  types.method("SimTK!ContactGeometry!TriangleMesh!isInstance", static_cast<bool (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::TriangleMesh::isInstance));
 
   DEBUG_MSG("Adding wrapper for const SimTK::ContactGeometry::TriangleMesh & SimTK::ContactGeometry::TriangleMesh::getAs(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::ContactGeometry::TriangleMesh & SimTK::ContactGeometry::TriangleMesh::getAs(const SimTK::ContactGeometry &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1320:28
-  t28.method("SimTK!ContactGeometry!TriangleMesh!getAs", static_cast<const SimTK::ContactGeometry::TriangleMesh & (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::TriangleMesh::getAs));
+  types.method("SimTK!ContactGeometry!TriangleMesh!getAs", static_cast<const SimTK::ContactGeometry::TriangleMesh & (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::TriangleMesh::getAs));
 
   DEBUG_MSG("Adding wrapper for SimTK::ContactGeometry::TriangleMesh & SimTK::ContactGeometry::TriangleMesh::updAs(SimTK::ContactGeometry &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactGeometry::TriangleMesh & SimTK::ContactGeometry::TriangleMesh::updAs(SimTK::ContactGeometry &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1323:22
-  t28.method("SimTK!ContactGeometry!TriangleMesh!updAs", static_cast<SimTK::ContactGeometry::TriangleMesh & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::TriangleMesh::updAs));
+  types.method("SimTK!ContactGeometry!TriangleMesh!updAs", static_cast<SimTK::ContactGeometry::TriangleMesh & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::TriangleMesh::updAs));
 
   DEBUG_MSG("Adding wrapper for SimTK::ContactGeometryTypeId SimTK::ContactGeometry::TriangleMesh::classTypeId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactGeometryTypeId SimTK::ContactGeometry::TriangleMesh::classTypeId()
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1327:30
-  t28.method("SimTK!ContactGeometry!TriangleMesh!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::TriangleMesh::classTypeId));
+  types.method("SimTK!ContactGeometry!TriangleMesh!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::TriangleMesh::classTypeId));
 
   /* End of SimTK::ContactGeometry::TriangleMesh class method wrappers
    **********************************************************************/
@@ -1415,22 +1411,22 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("Adding wrapper for bool SimTK::ContactGeometry::Torus::isInstance(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::ContactGeometry::Torus::isInstance(const SimTK::ContactGeometry &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1386:13
-  t32.method("SimTK!ContactGeometry!Torus!isInstance", static_cast<bool (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Torus::isInstance));
+  types.method("SimTK!ContactGeometry!Torus!isInstance", static_cast<bool (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Torus::isInstance));
 
   DEBUG_MSG("Adding wrapper for const SimTK::ContactGeometry::Torus & SimTK::ContactGeometry::Torus::getAs(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::ContactGeometry::Torus & SimTK::ContactGeometry::Torus::getAs(const SimTK::ContactGeometry &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1389:21
-  t32.method("SimTK!ContactGeometry!Torus!getAs", static_cast<const SimTK::ContactGeometry::Torus & (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Torus::getAs));
+  types.method("SimTK!ContactGeometry!Torus!getAs", static_cast<const SimTK::ContactGeometry::Torus & (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Torus::getAs));
 
   DEBUG_MSG("Adding wrapper for SimTK::ContactGeometry::Torus & SimTK::ContactGeometry::Torus::updAs(SimTK::ContactGeometry &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactGeometry::Torus & SimTK::ContactGeometry::Torus::updAs(SimTK::ContactGeometry &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1392:15
-  t32.method("SimTK!ContactGeometry!Torus!updAs", static_cast<SimTK::ContactGeometry::Torus & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Torus::updAs));
+  types.method("SimTK!ContactGeometry!Torus!updAs", static_cast<SimTK::ContactGeometry::Torus & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Torus::updAs));
 
   DEBUG_MSG("Adding wrapper for SimTK::ContactGeometryTypeId SimTK::ContactGeometry::Torus::classTypeId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactGeometryTypeId SimTK::ContactGeometry::Torus::classTypeId()
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1396:30
-  t32.method("SimTK!ContactGeometry!Torus!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::Torus::classTypeId));
+  types.method("SimTK!ContactGeometry!Torus!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::Torus::classTypeId));
 
   /* End of SimTK::ContactGeometry::Torus class method wrappers
    **********************************************************************/
@@ -1480,24 +1476,6 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
 
   /**********************************************************************/
-  /* Wrappers for the methods of class SimTK::PathDecorator
-   */
-
-
-  DEBUG_MSG("Adding wrapper for void SimTK::PathDecorator::PathDecorator(const SimTK::Vector &, const SimTK::Vec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &) (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1503:5
-  t34.constructor<const SimTK::Vector &, const SimTK::Vec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &>();
-
-  DEBUG_MSG("Adding wrapper for void SimTK::PathDecorator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::PathDecorator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &)
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactGeometry.h:1506:18
-  t34.method("generateDecorations", static_cast<void (SimTK::PathDecorator::*)(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &) >(&SimTK::PathDecorator::generateDecorations));
-
-  /* End of SimTK::PathDecorator class method wrappers
-   **********************************************************************/
-
-
-  /**********************************************************************/
   /* Wrappers for the methods of class SimTK::PlaneDecorator
    */
 
@@ -1533,22 +1511,22 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("Adding wrapper for bool SimTK::ContactTracker::refineImplicitPair(const SimTK::ContactGeometry &, SimTK::Vec3 &, const SimTK::ContactGeometry &, SimTK::Vec3 &, const SimTK::Transform &, SimTK::Real, SimTK::Real &, int &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::ContactTracker::refineImplicitPair(const SimTK::ContactGeometry &, SimTK::Vec3 &, const SimTK::ContactGeometry &, SimTK::Vec3 &, const SimTK::Transform &, SimTK::Real, SimTK::Real &, int &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactTracker.h:129:13
-  t36.method("SimTK!ContactTracker!refineImplicitPair", static_cast<bool (*)(const SimTK::ContactGeometry &, SimTK::Vec3 &, const SimTK::ContactGeometry &, SimTK::Vec3 &, const SimTK::Transform &, SimTK::Real, SimTK::Real &, int &) >(&SimTK::ContactTracker::refineImplicitPair));
+  types.method("SimTK!ContactTracker!refineImplicitPair", static_cast<bool (*)(const SimTK::ContactGeometry &, SimTK::Vec3 &, const SimTK::ContactGeometry &, SimTK::Vec3 &, const SimTK::Transform &, SimTK::Real, SimTK::Real &, int &) >(&SimTK::ContactTracker::refineImplicitPair));
 
   DEBUG_MSG("Adding wrapper for SimTK::Vec6 SimTK::ContactTracker::findImplicitPairError(const SimTK::ContactGeometry &, const SimTK::Vec3 &, const SimTK::ContactGeometry &, const SimTK::Vec3 &, const SimTK::Transform &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Vec6 SimTK::ContactTracker::findImplicitPairError(const SimTK::ContactGeometry &, const SimTK::Vec3 &, const SimTK::ContactGeometry &, const SimTK::Vec3 &, const SimTK::Transform &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactTracker.h:136:13
-  t36.method("SimTK!ContactTracker!findImplicitPairError", static_cast<SimTK::Vec6 (*)(const SimTK::ContactGeometry &, const SimTK::Vec3 &, const SimTK::ContactGeometry &, const SimTK::Vec3 &, const SimTK::Transform &) >(&SimTK::ContactTracker::findImplicitPairError));
+  types.method("SimTK!ContactTracker!findImplicitPairError", static_cast<SimTK::Vec6 (*)(const SimTK::ContactGeometry &, const SimTK::Vec3 &, const SimTK::ContactGeometry &, const SimTK::Vec3 &, const SimTK::Transform &) >(&SimTK::ContactTracker::findImplicitPairError));
 
   DEBUG_MSG("Adding wrapper for SimTK::Mat66 SimTK::ContactTracker::calcImplicitPairJacobian(const SimTK::ContactGeometry &, const SimTK::Vec3 &, const SimTK::ContactGeometry &, const SimTK::Vec3 &, const SimTK::Transform &, const SimTK::Vec6 &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Mat66 SimTK::ContactTracker::calcImplicitPairJacobian(const SimTK::ContactGeometry &, const SimTK::Vec3 &, const SimTK::ContactGeometry &, const SimTK::Vec3 &, const SimTK::Transform &, const SimTK::Vec6 &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactTracker.h:145:14
-  t36.method("SimTK!ContactTracker!calcImplicitPairJacobian", static_cast<SimTK::Mat66 (*)(const SimTK::ContactGeometry &, const SimTK::Vec3 &, const SimTK::ContactGeometry &, const SimTK::Vec3 &, const SimTK::Transform &, const SimTK::Vec6 &) >(&SimTK::ContactTracker::calcImplicitPairJacobian));
+  types.method("SimTK!ContactTracker!calcImplicitPairJacobian", static_cast<SimTK::Mat66 (*)(const SimTK::ContactGeometry &, const SimTK::Vec3 &, const SimTK::ContactGeometry &, const SimTK::Vec3 &, const SimTK::Transform &, const SimTK::Vec6 &) >(&SimTK::ContactTracker::calcImplicitPairJacobian));
 
   DEBUG_MSG("Adding wrapper for bool SimTK::ContactTracker::estimateConvexImplicitPairContactUsingMPR(const SimTK::ContactGeometry &, const SimTK::ContactGeometry &, const SimTK::Transform &, SimTK::Vec3 &, SimTK::Vec3 &, SimTK::UnitVec3 &, int &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::ContactTracker::estimateConvexImplicitPairContactUsingMPR(const SimTK::ContactGeometry &, const SimTK::ContactGeometry &, const SimTK::Transform &, SimTK::Vec3 &, SimTK::Vec3 &, SimTK::UnitVec3 &, int &)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/ContactTracker.h:160:13
-  t36.method("SimTK!ContactTracker!estimateConvexImplicitPairContactUsingMPR", static_cast<bool (*)(const SimTK::ContactGeometry &, const SimTK::ContactGeometry &, const SimTK::Transform &, SimTK::Vec3 &, SimTK::Vec3 &, SimTK::UnitVec3 &, int &) >(&SimTK::ContactTracker::estimateConvexImplicitPairContactUsingMPR));
+  types.method("SimTK!ContactTracker!estimateConvexImplicitPairContactUsingMPR", static_cast<bool (*)(const SimTK::ContactGeometry &, const SimTK::ContactGeometry &, const SimTK::Transform &, SimTK::Vec3 &, SimTK::Vec3 &, SimTK::UnitVec3 &, int &) >(&SimTK::ContactTracker::estimateConvexImplicitPairContactUsingMPR));
 
   /* End of SimTK::ContactTracker class method wrappers
    **********************************************************************/
@@ -1763,17 +1741,17 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::ContactMaterial::calcPlaneStrainStiffness(SimTK::Real, SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::ContactMaterial::calcPlaneStrainStiffness(SimTK::Real, SimTK::Real)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simbody/internal/ContactSurface.h:229:13
-  t49.method("SimTK!ContactMaterial!calcPlaneStrainStiffness", static_cast<SimTK::Real (*)(SimTK::Real, SimTK::Real) >(&SimTK::ContactMaterial::calcPlaneStrainStiffness));
+  types.method("SimTK!ContactMaterial!calcPlaneStrainStiffness", static_cast<SimTK::Real (*)(SimTK::Real, SimTK::Real) >(&SimTK::ContactMaterial::calcPlaneStrainStiffness));
 
   DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::ContactMaterial::calcConfinedCompressionStiffness(SimTK::Real, SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::ContactMaterial::calcConfinedCompressionStiffness(SimTK::Real, SimTK::Real)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simbody/internal/ContactSurface.h:250:13
-  t49.method("SimTK!ContactMaterial!calcConfinedCompressionStiffness", static_cast<SimTK::Real (*)(SimTK::Real, SimTK::Real) >(&SimTK::ContactMaterial::calcConfinedCompressionStiffness));
+  types.method("SimTK!ContactMaterial!calcConfinedCompressionStiffness", static_cast<SimTK::Real (*)(SimTK::Real, SimTK::Real) >(&SimTK::ContactMaterial::calcConfinedCompressionStiffness));
 
   DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::ContactMaterial::calcDissipationFromObservedRestitution(SimTK::Real, SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::ContactMaterial::calcDissipationFromObservedRestitution(SimTK::Real, SimTK::Real)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simbody/internal/ContactSurface.h:274:13
-  t49.method("SimTK!ContactMaterial!calcDissipationFromObservedRestitution", static_cast<SimTK::Real (*)(SimTK::Real, SimTK::Real) >(&SimTK::ContactMaterial::calcDissipationFromObservedRestitution));
+  types.method("SimTK!ContactMaterial!calcDissipationFromObservedRestitution", static_cast<SimTK::Real (*)(SimTK::Real, SimTK::Real) >(&SimTK::ContactMaterial::calcDissipationFromObservedRestitution));
 
   DEBUG_MSG("Adding wrapper for void SimTK::ContactMaterial::clear() (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::ContactMaterial::clear()
@@ -1864,7 +1842,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("Adding wrapper for SimTK::ContactCliqueId SimTK::ContactSurface::createNewContactClique() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactCliqueId SimTK::ContactSurface::createNewContactClique()
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simbody/internal/ContactSurface.h:456:24
-  t50.method("SimTK!ContactSurface!createNewContactClique", static_cast<SimTK::ContactCliqueId (*)() >(&SimTK::ContactSurface::createNewContactClique));
+  types.method("SimTK!ContactSurface!createNewContactClique", static_cast<SimTK::ContactCliqueId (*)() >(&SimTK::ContactSurface::createNewContactClique));
 
   DEBUG_MSG("Adding wrapper for SimTK::ContactSurface & SimTK::ContactSurface::setIndexOnBody(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactSurface & SimTK::ContactSurface::setIndexOnBody(int)

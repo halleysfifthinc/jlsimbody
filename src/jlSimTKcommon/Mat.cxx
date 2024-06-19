@@ -3,6 +3,7 @@
 #include "jlcxx/jlcxx.hpp"
 #include "jlcxx/functions.hpp"
 #include "jlcxx/stl.hpp"
+#include "jlcxx/tuple.hpp"
 
 #include "jlSimTKcommon/Mat.h"
 
@@ -22,13 +23,14 @@ void define_SimTKcommon_Mat(jlcxx::Module& types){
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Mat.h:97:58
   auto t0 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>, jlcxx::TypeVar<2>, jlcxx::TypeVar<3>, jlcxx::TypeVar<4>, jlcxx::TypeVar<5>>>("SimTK!Mat");
 
+  auto t1 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>, jlcxx::TypeVar<2>, jlcxx::TypeVar<3>>>("SimTK!SymMat");
+
   /**********************************************************************/
   /* Wrappers for the methods of class SimTK::Mat
    */
   auto t0_decl_methods = []<int M, int N, typename ELT, int CS, int RS> (jlcxx::TypeWrapper<SimTK::Mat<M, N, ELT, CS, RS>> wrapped){
     typedef SimTK::Mat<M, N, ELT, CS, RS> WrappedType;
     wrapped.template constructor<>();
-
 
     DEBUG_MSG("Adding wrapper for void SimTK::Mat::Mat<M, N, ELT, CS, RS>(int) (" __HERE__ ")");
     // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Mat.h:376:14
@@ -68,6 +70,36 @@ void define_SimTKcommon_Mat(jlcxx::Module& types){
 
   /* End of SimTK::Mat class method wrappers
    **********************************************************************/
+
+  /* Begin adding SimTK::SymMat class method wrappers
+   **********************************************************************/
+
+  auto t1_decl_methods = []<int M, typename ELT, int RS> (jlcxx::TypeWrapper<SimTK::SymMat<M, ELT, RS>> wrapped){
+    typedef SimTK::SymMat<M, ELT, RS> WrappedType;
+    wrapped.template constructor<>();
+    wrapped.template constructor<const WrappedType &>();
+    wrapped.template constructor<const SimTK::Mat<M,M,ELT,M,RS> &>();
+    wrapped.template constructor<const ELT &>();
+
+    wrapped.method("setFromLower", static_cast<WrappedType & (WrappedType::*)(const SimTK::Mat<M,M,ELT,M,RS> &)>(&WrappedType::setFromLower));
+    wrapped.method("setFromUpper", static_cast<WrappedType & (WrappedType::*)(const SimTK::Mat<M,M,ELT,M,RS> &)>(&WrappedType::setFromUpper));
+    wrapped.method("setFromSymmetric", static_cast<WrappedType & (WrappedType::*)(const SimTK::Mat<M,M,ELT,M,RS> &)>(&WrappedType::setFromSymmetric));
+
+    wrapped.method("cppgetindex", static_cast<ELT & (WrappedType::*)(int, int)>(&WrappedType::operator()));
+    wrapped.method("slice_row", static_cast<SimTK::Row<M,ELT,RS> (WrappedType::*)(int) const>(&WrappedType::row));
+    wrapped.method("slice_col", static_cast<SimTK::Vec<M,ELT,RS> (WrappedType::*)(int) const>(&WrappedType::col));
+    
+    wrapped.module().set_override_module(jl_base_module);
+    wrapped.method("size", []() { std::make_tuple(M, M); });
+    wrapped.module().unset_override_module();
+  };
+  t1.apply<SimTK::SymMat<3,double,1>>(t1_decl_methods);
+
+  /* End of SimTK::SymMat class method wrappers
+   **********************************************************************/
+
+  // wrapped.template constructor<const SimTK::SymMat<M,ELT,RS> &>();
+
   DEBUG_MSG("End of wrapper definitions");
 
 }

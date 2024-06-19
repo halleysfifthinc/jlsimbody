@@ -286,6 +286,8 @@ void define_SimTKcommon_Orientations(jlcxx::Module& types, const ArrayWrapper& a
   t5.method("toMat33", static_cast<typename InverseRotation::BaseMat (InverseRotation::*)() const>(&InverseRotation::toMat33));
 
   array_wrapper.template apply<SimTK::Rotation_<double>>();
+  array_wrapper.template apply<SimTK::Rotation_<double>, int>();
+
 
   DEBUG_MSG("End of wrapper definitions");
 }

@@ -137,22 +137,22 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
   DEBUG_MSG("Adding wrapper for const char * SimTK::Event::getCauseName(SimTK::Event::Cause) (" __HERE__ ")");
   // signature to use in the veto list: const char * SimTK::Event::getCauseName(SimTK::Event::Cause)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:151:49
-  t4.method("SimTK!Event!getCauseName", static_cast<const char * (*)(SimTK::Event::Cause) >(&SimTK::Event::getCauseName));
+  types.method("SimTK!Event!getCauseName", static_cast<const char * (*)(SimTK::Event::Cause) >(&SimTK::Event::getCauseName));
 
   DEBUG_MSG("Adding wrapper for std::string SimTK::Event::eventTriggerString(SimTK::Event::Trigger) (" __HERE__ ")");
   // signature to use in the veto list: std::string SimTK::Event::eventTriggerString(SimTK::Event::Trigger)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:171:49
-  t4.method("SimTK!Event!eventTriggerString", static_cast<std::string (*)(SimTK::Event::Trigger) >(&SimTK::Event::eventTriggerString));
+  types.method("SimTK!Event!eventTriggerString", static_cast<std::string (*)(SimTK::Event::Trigger) >(&SimTK::Event::eventTriggerString));
 
   DEBUG_MSG("Adding wrapper for SimTK::Event::Trigger SimTK::Event::classifyTransition(int, int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Event::Trigger SimTK::Event::classifyTransition(int, int)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:177:20
-  t4.method("SimTK!Event!classifyTransition", static_cast<SimTK::Event::Trigger (*)(int, int) >(&SimTK::Event::classifyTransition));
+  types.method("SimTK!Event!classifyTransition", static_cast<SimTK::Event::Trigger (*)(int, int) >(&SimTK::Event::classifyTransition));
 
   DEBUG_MSG("Adding wrapper for SimTK::Event::Trigger SimTK::Event::maskTransition(SimTK::Event::Trigger, SimTK::Event::Trigger) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Event::Trigger SimTK::Event::maskTransition(SimTK::Event::Trigger, SimTK::Event::Trigger)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:191:20
-  t4.method("SimTK!Event!maskTransition", static_cast<SimTK::Event::Trigger (*)(SimTK::Event::Trigger, SimTK::Event::Trigger) >(&SimTK::Event::maskTransition));
+  types.method("SimTK!Event!maskTransition", static_cast<SimTK::Event::Trigger (*)(SimTK::Event::Trigger, SimTK::Event::Trigger) >(&SimTK::Event::maskTransition));
 
   /* End of SimTK::Event class method wrappers
    **********************************************************************/
@@ -301,7 +301,7 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
   DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::HandleEventsOptions::getDefaultAccuracy() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::HandleEventsOptions::getDefaultAccuracy()
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Event.h:319:17
-  t9.method("SimTK!HandleEventsOptions!getDefaultAccuracy", static_cast<SimTK::Real (*)() >(&SimTK::HandleEventsOptions::getDefaultAccuracy));
+  types.method("SimTK!HandleEventsOptions!getDefaultAccuracy", static_cast<SimTK::Real (*)() >(&SimTK::HandleEventsOptions::getDefaultAccuracy));
 
   DEBUG_MSG("Adding wrapper for SimTK::HandleEventsOptions & SimTK::HandleEventsOptions::operator|=(const SimTK::HandleEventsOptions &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::HandleEventsOptions & SimTK::HandleEventsOptions::operator|=(const SimTK::HandleEventsOptions &)

@@ -96,7 +96,7 @@ void define_SimTKcommon_MatrixVector(jlcxx::Module& types){
     DEBUG_MSG("Adding wrapper for const ELT & SimTK::Vector_::get(int) (" __HERE__ ")");
     // signature to use in the veto list: const ELT & SimTK::Vector_::get(int)
     // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Vector_.h:197:16
-    wrapped.method("get", static_cast<const ELT & (WrappedType::*)(int)  const>(&WrappedType::get));
+    wrapped.method("cppgetindex", static_cast<ELT & (WrappedType::*)(int) >(&WrappedType::operator[]));
 
     DEBUG_MSG("Adding wrapper for void SimTK::Vector_::set(int, const ELT &) (" __HERE__ ")");
     // signature to use in the veto list: void SimTK::Vector_::set(int, const ELT &)
@@ -172,7 +172,7 @@ void define_SimTKcommon_MatrixVector(jlcxx::Module& types){
     DEBUG_MSG("Adding wrapper for const ELT & SimTK::Matrix_::get(int, int) (" __HERE__ ")");
     // signature to use in the veto list: const ELT & SimTK::Matrix_::get(int, int)
     // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Matrix_.h:141:16
-    wrapped.method("get", static_cast<const ELT & (WrappedType::*)(int, int)  const>(&WrappedType::get));
+    wrapped.method("cppgetindex", static_cast<ELT & (WrappedType::*)(int, int) >(&WrappedType::operator()));
 
     DEBUG_MSG("Adding wrapper for void SimTK::Matrix_::set(int, int, const ELT &) (" __HERE__ ")");
     // signature to use in the veto list: void SimTK::Matrix_::set(int, int, const ELT &)

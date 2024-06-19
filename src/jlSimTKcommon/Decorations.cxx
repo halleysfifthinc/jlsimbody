@@ -122,7 +122,7 @@ void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("Adding wrapper for SimTK::PolygonalMesh SimTK::PolygonalMesh::createSphereMesh(SimTK::Real, int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::PolygonalMesh SimTK::PolygonalMesh::createSphereMesh(SimTK::Real, int)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/PolygonalMesh.h:87:26
-  t1.method("SimTK!PolygonalMesh!createSphereMesh", static_cast<SimTK::PolygonalMesh (*)(SimTK::Real, int) >(&SimTK::PolygonalMesh::createSphereMesh));
+  types.method("SimTK!PolygonalMesh!createSphereMesh", static_cast<SimTK::PolygonalMesh (*)(SimTK::Real, int) >(&SimTK::PolygonalMesh::createSphereMesh));
   t1.method("SimTK!PolygonalMesh!createSphereMesh", [](SimTK::Real arg0) -> SimTK::PolygonalMesh { return SimTK::PolygonalMesh::createSphereMesh(arg0); });
 
   DEBUG_MSG("Adding wrapper for void SimTK::PolygonalMesh::clear() (" __HERE__ ")");

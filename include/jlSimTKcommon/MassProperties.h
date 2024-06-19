@@ -7,23 +7,18 @@
 
 namespace jlcxx {
 
-  template<typename P>
-  struct BuildParameterList<SimTK::Inertia_<P>>
-  {
-    typedef ParameterList<P> type;
-  };
-
   template<typename P> struct IsMirroredType<SimTK::Inertia_<P>> : std::false_type { };
   template<typename P> struct DefaultConstructible<SimTK::Inertia_<P>> : std::false_type { };
-
-  template<typename P>
-  struct BuildParameterList<SimTK::MassProperties_<P>>
-  {
-    typedef ParameterList<P> type;
-  };
-
+  template<typename P> struct IsMirroredType<SimTK::UnitInertia_<P>> : std::false_type { };
+  template<typename P> struct DefaultConstructible<SimTK::UnitInertia_<P>> : std::false_type { };
+  template<typename P> struct IsMirroredType<SimTK::SpatialInertia_<P>> : std::false_type { };
+  template<typename P> struct DefaultConstructible<SimTK::SpatialInertia_<P>> : std::false_type { };
+  template<typename P> struct IsMirroredType<SimTK::ArticulatedInertia_<P>> : std::false_type { };
+  template<typename P> struct DefaultConstructible<SimTK::ArticulatedInertia_<P>> : std::false_type { };
   template<typename P> struct IsMirroredType<SimTK::MassProperties_<P>> : std::false_type { };
   template<typename P> struct DefaultConstructible<SimTK::MassProperties_<P>> : std::false_type { };
+
+  template<typename P> struct SuperType<SimTK::UnitInertia_<P>> { typedef SimTK::Inertia_<P> type; };
 }
 
 namespace jlsimbody {

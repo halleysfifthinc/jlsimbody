@@ -48,32 +48,6 @@ void define_SimTKcommon_Function(jlcxx::Module& types, const ArrayWrapper & arra
    */
   auto t0_decl_methods = []<typename T> (jlcxx::TypeWrapper<SimTK::Function_<T>> wrapped){
     typedef SimTK::Function_<T> WrappedType;
-    // wrapped.template constructor<>();
-
-    // DEBUG_MSG("Adding wrapper for T SimTK::Function_::calcValue(const SimTK::Vector &) (" __HERE__ ")");
-    // // signature to use in the veto list: T SimTK::Function_::calcValue(const SimTK::Vector &)
-    // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Function.h:66:15
-    // wrapped.method("calcValue", static_cast<T (WrappedType::*)(const SimTK::Vector &)  const>(&WrappedType::calcValue));
-
-    // DEBUG_MSG("Adding wrapper for T SimTK::Function_::calcDerivative(const SimTK::Array_<int> &, const SimTK::Vector &) (" __HERE__ ")");
-    // // signature to use in the veto list: T SimTK::Function_::calcDerivative(const SimTK::Array_<int> &, const SimTK::Vector &)
-    // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Function.h:86:15
-    // wrapped.method("calcDerivative", static_cast<T (WrappedType::*)(const SimTK::Array_<int> &, const SimTK::Vector &)  const>(&WrappedType::calcDerivative));
-
-    // DEBUG_MSG("Adding wrapper for T SimTK::Function_::calcDerivative(const std::vector<int> &, const SimTK::Vector &) (" __HERE__ ")");
-    // // signature to use in the veto list: T SimTK::Function_::calcDerivative(const std::vector<int> &, const SimTK::Vector &)
-    // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Function.h:91:7
-    // wrapped.method("calcDerivative", static_cast<T (WrappedType::*)(const std::vector<int> &, const SimTK::Vector &)  const>(&WrappedType::calcDerivative));
-
-    // DEBUG_MSG("Adding wrapper for int SimTK::Function_::getArgumentSize() (" __HERE__ ")");
-    // // signature to use in the veto list: int SimTK::Function_::getArgumentSize()
-    // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Function.h:97:17
-    // wrapped.method("getArgumentSize", static_cast<int (WrappedType::*)()  const>(&WrappedType::getArgumentSize));
-
-    // DEBUG_MSG("Adding wrapper for int SimTK::Function_::getMaxDerivativeOrder() (" __HERE__ ")");
-    // // signature to use in the veto list: int SimTK::Function_::getMaxDerivativeOrder()
-    // // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Function.h:101:17
-    // wrapped.method("getMaxDerivativeOrder", static_cast<int (WrappedType::*)()  const>(&WrappedType::getMaxDerivativeOrder));
 
     DEBUG_MSG("Adding wrapper for Function_<T> * SimTK::Function_::clone() (" __HERE__ ")");
     // signature to use in the veto list: Function_<T> * SimTK::Function_::clone()

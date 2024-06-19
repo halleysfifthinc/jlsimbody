@@ -164,12 +164,12 @@ void define_SimTKcommon_CoordinateAxis(jlcxx::Module& types){
   DEBUG_MSG("Adding wrapper for const SimTK::CoordinateAxis & SimTK::CoordinateAxis::getCoordinateAxis(int) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::CoordinateAxis & SimTK::CoordinateAxis::getCoordinateAxis(int)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:168:34
-  t0.method("SimTK!CoordinateAxis!getCoordinateAxis", static_cast<const SimTK::CoordinateAxis & (*)(int) >(&SimTK::CoordinateAxis::getCoordinateAxis));
+  types.method("SimTK!CoordinateAxis!getCoordinateAxis", static_cast<const SimTK::CoordinateAxis & (*)(int) >(&SimTK::CoordinateAxis::getCoordinateAxis));
 
   DEBUG_MSG("Adding wrapper for bool SimTK::CoordinateAxis::isIndexInRange(int) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::CoordinateAxis::isIndexInRange(int)
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/CoordinateAxis.h:173:18
-  t0.method("SimTK!CoordinateAxis!isIndexInRange", static_cast<bool (*)(int) >(&SimTK::CoordinateAxis::isIndexInRange));
+  types.method("SimTK!CoordinateAxis!isIndexInRange", static_cast<bool (*)(int) >(&SimTK::CoordinateAxis::isIndexInRange));
 
   /* End of SimTK::CoordinateAxis class method wrappers
    **********************************************************************/

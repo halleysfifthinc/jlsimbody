@@ -41,7 +41,7 @@ void define_SimTKcommon_UnitVec(jlcxx::Module& types){
 
     wrapped.method("assign", static_cast<WrappedType & (WrappedType::*)(const WrappedType &) >(&WrappedType::operator=));
     wrapped.method("asVec3", static_cast<const typename WrappedType::BaseVec & (WrappedType::*)() const>(&WrappedType::asVec3));
-    wrapped.method("get", static_cast<const P & (WrappedType::*)(int) const>(&WrappedType::operator[]));
+    wrapped.method("cppgetindex", static_cast<const P & (WrappedType::*)(int) const>(&WrappedType::operator[]));
     wrapped.method("perp", static_cast<SimTK::UnitVec<P,1> (WrappedType::*)() const>(&WrappedType::perp));
 
     wrapped.module().set_override_module(jl_base_module);
