@@ -3,6 +3,7 @@
 #include "jlcxx/functions.hpp"
 #include "jlcxx/stl.hpp"
 
+#include "jlSimTKcommon/SimTK_UniqueIndex.h"
 #include "jlSimTKcommon/Array.h"
 #include "jlSimTKcommon/String.h"
 #include "jlSimTKcommon/Row.h"
@@ -59,18 +60,14 @@ JLCXX_MODULE define_julia_module(jlcxx::Module& types){
   define_SimTKcommon_State(types, array_wrapper);
   define_SimTKcommon_Events(types, array_wrapper);
 
-  // DEBUG_MSG("Adding wrapper for type SimTK::MeasureIndex (" __HERE__ ")");
-  // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Measure.h:133:32
-  auto meas_ind = types.add_type<SimTK::MeasureIndex>("SimTK!MeasureIndex");
-  meas_ind.template constructor<>(/*finalize=*/true);
+  wrap_SimTK_UniqueIndexType<SimTK::MeasureIndex>(types, "SimTK!MeasureIndex");
 
-  // DEBUG_MSG("Adding wrapper for type SimTK::AbstractMeasure (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Measure.h:151:32
   auto abs_meas = types.add_type<SimTK::AbstractMeasure>("SimTK!AbstractMeasure");
-  abs_meas.template constructor<>(/*finalize=*/true);
+  abs_meas.template constructor<>();
 
   define_SimTKcommon_SystemSubsystem(types);
-  define_SimTKcommon_Measure(types, meas_ind, abs_meas, array_wrapper);
+  define_SimTKcommon_Measure(types, abs_meas, array_wrapper);
   define_SimTKcommon_Function(types, array_wrapper);
 
   define_simbody_Geo(types);

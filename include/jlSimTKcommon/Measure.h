@@ -126,5 +126,5 @@ namespace jlcxx {
 }
 
 namespace jlsimbody {
-  void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::MeasureIndex>& t0, jlcxx::TypeWrapper<SimTK::AbstractMeasure>& t1, const ArrayWrapper& array_wrapper);
+  void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::AbstractMeasure>& t1, const ArrayWrapper& array_wrapper);
 }
