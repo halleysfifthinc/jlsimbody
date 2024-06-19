@@ -11,7 +11,7 @@
 #include "simmath/internal/ContactTracker.h"
 #include "simmath/internal/OBBTree.h"
 
-
+#include "jlSimTKcommon/Array.h"
 namespace jlcxx {
   template<> struct IsMirroredType<SimTK::ContactSurfaceIndex> : std::false_type { };
   template<> struct DefaultConstructible<SimTK::ContactSurfaceIndex> : std::false_type { };
@@ -135,5 +135,5 @@ namespace jlcxx {
 }
 
 namespace jlsimbody{
-  void define_simbody_Contact_related(jlcxx::Module& types);
+  void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& array_wrapper);
 }

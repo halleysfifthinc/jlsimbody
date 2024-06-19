@@ -31,15 +31,17 @@ using namespace jlsimbody;
 
 JLCXX_MODULE define_julia_module(jlcxx::Module& types){
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Array.h:845:35
-  auto t8 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>,jlcxx::TypeVar<2>>>("SimTK!ArrayView_");
+  auto arrview = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>,jlcxx::TypeVar<2>>,
+    jlcxx::ParameterList<jlcxx::TypeVar<1>>>("SimTKArrayView", jlcxx::julia_type("AbstractVector"));
 
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Array.h:1520:35
-  auto t9 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>,jlcxx::TypeVar<2>>>("SimTK!Array_");
+  auto arr = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>,jlcxx::TypeVar<2>>,
+    jlcxx::ParameterList<jlcxx::TypeVar<1>>>("SimTKArray", jlcxx::julia_type("AbstractVector"));
 
-  auto array_wrapper = ArrayWrapper(t9, t8);
-
+  auto array_wrapper = ArrayWrapper(arr, arrview);
   using array_types = jlcxx::ParameterList<bool, double, int, SimTK::Array_<int>>;
   jlcxx::for_each_parameter_type<array_types>(array_wrapper);
+  array_wrapper.template apply<double, int>();
 
   define_SimTKcommon_String(types, array_wrapper);
   define_SimTKcommon_Row(types);
@@ -50,7 +52,7 @@ JLCXX_MODULE define_julia_module(jlcxx::Module& types){
   define_SimTKcommon_Orientations(types, array_wrapper);
   define_SimTKcommon_Transform(types, array_wrapper);
   define_SimTKcommon_SpatialAlgebra(types);
-  define_SimTKcommon_MassProperties(types);
+  define_SimTKcommon_MassProperties(types, array_wrapper);
   define_SimTKcommon_MatrixVector(types);
   define_SimTKcommon_Decorations(types, array_wrapper);
   define_SimTKcommon_Stage(types);
@@ -69,7 +71,7 @@ JLCXX_MODULE define_julia_module(jlcxx::Module& types){
 
   define_SimTKcommon_SystemSubsystem(types);
   define_SimTKcommon_Measure(types, meas_ind, abs_meas, array_wrapper);
-  define_SimTKcommon_Function(types);
+  define_SimTKcommon_Function(types, array_wrapper);
 
   define_simbody_Geo(types);
   define_simbody_Contact_related(types);

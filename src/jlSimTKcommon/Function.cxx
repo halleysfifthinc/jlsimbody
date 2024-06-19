@@ -17,7 +17,7 @@
 
 namespace jlsimbody {
 
-void define_SimTKcommon_Function(jlcxx::Module& types){
+void define_SimTKcommon_Function(jlcxx::Module& types, const ArrayWrapper & array_wrapper){
 
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/SimTKcommon/internal/Function.h:51:7
   auto t0 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Function_");
@@ -348,6 +348,8 @@ void define_SimTKcommon_Function(jlcxx::Module& types){
 
   /* End of SimTK::Function_::Step class method wrappers
    **********************************************************************/
+
+  array_wrapper.template apply<const SimTK::Function *>();
 
   DEBUG_MSG("End of wrapper definitions");
 

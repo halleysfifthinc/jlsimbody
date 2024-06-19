@@ -3,6 +3,8 @@
 #include "SimTKcommon/Orientation.h"
 #include "SimTKcommon/internal/MassProperties.h"
 
+#include "jlSimTKcommon/Array.h"
+
 namespace jlcxx {
 
   template<typename P>
@@ -25,5 +27,5 @@ namespace jlcxx {
 }
 
 namespace jlsimbody {
-  void define_SimTKcommon_MassProperties(jlcxx::Module& types);
+  void define_SimTKcommon_MassProperties(jlcxx::Module& types, const ArrayWrapper& array_wrapper);
 }

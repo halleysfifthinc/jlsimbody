@@ -1,5 +1,7 @@
 #include "simbody/internal/SimbodyMatterSubsystem.h"
 
+#include "jlSimTKcommon/Array.h"
+
 namespace jlcxx {
   template<> struct IsMirroredType<SimTK::Subsystem> : std::false_type { };
   template<> struct DefaultConstructible<SimTK::Subsystem> : std::false_type { };
@@ -25,5 +27,5 @@ namespace jlcxx {
 }
 
 namespace jlsimbody{
-  void define_simbody_SimbodyMatterSubsystem(jlcxx::Module& types);
+  void define_simbody_SimbodyMatterSubsystem(jlcxx::Module& types, const ArrayWrapper & array_wrapper);
 }

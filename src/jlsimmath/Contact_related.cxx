@@ -17,7 +17,7 @@
 
 namespace jlsimbody{
 
-void define_simbody_Contact_related(jlcxx::Module& types){
+void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& array_wrapper){
 
   DEBUG_MSG("Adding wrapper for enum SimTK::Contact::Condition (" __HERE__ ")");
   // defined in /opt/opensim-core-fullrelease/sdk/include/simbody/simmath/internal/Contact.h:89:10
@@ -4641,6 +4641,7 @@ void define_simbody_Contact_related(jlcxx::Module& types){
   /* End of SimTK::ContactSurface class method wrappers
    **********************************************************************/
 
+  array_wrapper.template apply<SimTK::Contact>();
 
   /**********************************************************************
    * Wrappers for global functions and variables including

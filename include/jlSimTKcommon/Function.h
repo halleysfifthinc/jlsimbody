@@ -1,4 +1,5 @@
 #include "SimTKcommon/internal/Function.h"
+#include "jlSimTKcommon/Array.h"
 
 namespace SimTK {
   template<typename T>
@@ -30,5 +31,5 @@ namespace jlcxx {
 }
 
 namespace jlsimbody {
-  void define_SimTKcommon_Function(jlcxx::Module& types);
+  void define_SimTKcommon_Function(jlcxx::Module& types, const ArrayWrapper & array_wrapper);
 }
