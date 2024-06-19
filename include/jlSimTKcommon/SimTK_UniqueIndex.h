@@ -1,8 +1,5 @@
 // #include "SimTKcommon/internal/common.h"
-#include <type_traits>
-#include "jlcxx/jlcxx.hpp"
-#include "jlcxx/functions.hpp"
-#include "jlcxx/stl.hpp"
+#include "jlsimbody/common.h"
 
 #ifndef JLSIMTKCOMMON_UNIQUEINDEX_H
 #define JLSIMTKCOMMON_UNIQUEINDEX_H

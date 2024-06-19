@@ -101,6 +101,10 @@ add_library(jlsimbody SHARED
   src/jlsimbody/Assembler_and_related.cxx
   src/jlsimbody.cxx)
 
+target_precompile_headers(jlsimbody PRIVATE
+  include/jlsimbody/common.h
+  )
+
 target_include_directories(jlsimbody PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
