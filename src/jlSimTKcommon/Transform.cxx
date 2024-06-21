@@ -4,17 +4,6 @@
 #include "jlSimTKcommon/Array.h"
 #include "jlSimTKcommon/Transform.h"
 
-#ifdef VERBOSE_IMPORT
-#  define DEBUG_MSG(a) std::cerr << a << "\n"
-#  define CLEAR_DEBUG_MSG() std::cerr << "\33[2K\33[1F\33[0K\r"
-#else
-#  define DEBUG_MSG(a)
-#  define CLEAR_DEBUG_MSG()
-#endif
-#define __HERE__  __FILE__ ":" QUOTE2(__LINE__)
-#define QUOTE(arg) #arg
-#define QUOTE2(arg) QUOTE(arg)
-
 namespace jlsimbody {
 
 void define_SimTKcommon_Transform(jlcxx::Module& types, const ArrayWrapper& array_wrapper){
