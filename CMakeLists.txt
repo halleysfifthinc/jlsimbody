@@ -1,5 +1,9 @@
 cmake_minimum_required(VERSION 3.24)
-project(jlopensim VERSION 0.1.0)
+project(jlSimbody VERSION 0.1.0)
+
+option(JLSIMBODY_CXXWRAPJL_VERSION
+  "Target CxxWrap.jl version (implicitly sets libcxxwrap-julia version)"
+  "0.16")
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -13,7 +17,8 @@ if(NOT DEFINED ENV{bb_full_target})
 
   find_program(JULIA_EXECUTABLE julia REQUIRED)
   if(DEFINED JULIA_EXECUTABLE)
-    execute_process(COMMAND ${JULIA_EXECUTABLE} --project=@. -e "using CxxWrap; print(CxxWrap.prefix_path())"
+    execute_process(COMMAND
+      ${JULIA_EXECUTABLE} --project=@. -e "using Pkg; Pkg.add(name=\"CxxWrap\", version=\"${JLSIMBODY_CXXWRAPJL_VERSION}\"); using CxxWrap; print(CxxWrap.prefix_path())"
       WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
       OUTPUT_VARIABLE JLCXX_PREFIX_PATH
       )
@@ -30,13 +35,13 @@ if(NOT DEFINED ENV{bb_full_target})
   find_package(Patch)
 endif()
 
-find_package(JlCxx 0.13...<0.14 QUIET REQUIRED
+find_package(JlCxx QUIET REQUIRED
   HINTS ${JLCXX_PREFIX_PATH})
 get_target_property(JlCxx_location JlCxx::cxxwrap_julia LOCATION)
 get_filename_component(JlCxx_location ${JlCxx_location} DIRECTORY)
 set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib;${JlCxx_location}")
 
-message(STATUS "Found JlCxx at ${JlCxx_location}")
+message(STATUS "Found JlCxx@v${JlCxx_VERSION} at ${JlCxx_location}")
 
 include(FetchContent)
 
