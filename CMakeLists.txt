@@ -1,12 +1,25 @@
 cmake_minimum_required(VERSION 3.24)
 project(jlSimbody VERSION 0.1.0)
 
-option(JLSIMBODY_CXXWRAPJL_VERSION
+set(JLSIMBODY_CXXWRAPJL_VERSION
+  "0.16" CACHE STRING
   "Target CxxWrap.jl version (implicitly sets libcxxwrap-julia version)"
-  "0.16")
+  )
 
-set(CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
+# From google/bloaty
+# When using Ninja, compiler output won't be colorized without this.
+include(CheckCXXCompilerFlag)
+CHECK_CXX_COMPILER_FLAG(-fdiagnostics-color=always SUPPORTS_COLOR_ALWAYS)
+if(SUPPORTS_COLOR_ALWAYS)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fdiagnostics-color=always")
+endif()
+
+if(${CMAKE_CXX_COMPILER_ID} MATCHES "Clang" AND CMAKE_CXX_COMPILER_VERSION VERSION_LESS 9)
+  message(FATAL_ERROR "jlSimbody requires Clang-9 or later")
+  # needed for -ffile-prefix-map
+endif()
+
+set(CMAKE_CXX_STANDARD 20)
 
 set(CMAKE_MACOSX_RPATH 1)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
@@ -72,7 +85,7 @@ if(TARGET SimTKsimbody AND NOT TARGET Simbody::SimTKsimbody)
   add_library(Simbody::SimTKsimbody ALIAS SimTKsimbody)
 endif()
 
-add_library(jlsimbody SHARED
+set(CXX_FILES
   src/jlSimTKcommon/Row.cxx
   src/jlSimTKcommon/Vec.cxx
   src/jlSimTKcommon/Mat.cxx
@@ -106,6 +119,51 @@ add_library(jlsimbody SHARED
   src/jlsimbody/Assembler_and_related.cxx
   src/jlsimbody.cxx)
 
+set(HEADER_FILES
+  include/jlsimbody/common.h
+  include/jlSimTKcommon/Array.h
+  include/jlSimTKcommon/CoordinateAxis.h
+  include/jlSimTKcommon/DecorationGenerator.h
+  include/jlSimTKcommon/Decorations.h
+  include/jlSimTKcommon/Events.h
+  include/jlSimTKcommon/Function.h
+  include/jlSimTKcommon/MassProperties.h
+  include/jlSimTKcommon/Mat.h
+  include/jlSimTKcommon/MatrixVector.h
+  include/jlSimTKcommon/Measure.h
+  include/jlSimTKcommon/Orientations.h
+  include/jlSimTKcommon/Row.h
+  include/jlSimTKcommon/SimTK_UniqueIndex.h
+  include/jlSimTKcommon/SpatialAlgebra.h
+  include/jlSimTKcommon/Stage.h
+  include/jlSimTKcommon/State.h
+  include/jlSimTKcommon/SystemSubsystem.h
+  include/jlSimTKcommon/String.h
+  include/jlSimTKcommon/Transform.h
+  include/jlSimTKcommon/UnitVec.h
+  include/jlSimTKcommon/Vec.h
+  include/jlsimmath/Geo.h
+  include/jlsimmath/Contact_related.h
+  include/jlsimbody/Assembler_and_related.h
+  include/jlsimbody/Body.h
+  include/jlsimbody/CableTrackerSubsystem.h
+  include/jlsimbody/ContactTrackerSubsystem.h
+  include/jlsimbody/DecorationSubsystem.h
+  include/jlsimbody/Force.h
+  include/jlsimbody/ForceSubsystems.h
+  include/jlsimbody/MultibodySystem.h
+  include/jlsimbody/SimbodyMatterSubsystem.h
+)
+
+list(SORT CXX_FILES)
+list(SORT HEADER_FILES)
+
+# set(CMAKE_CXX_VISIBILITY_PRESET hidden)
+# set(CMAKE_VISIBILITY_INLINES_HIDDEN 1)
+
+add_library(jlsimbody SHARED
+  ${CXX_FILES} ${HEADER_FILES})
+
 target_precompile_headers(jlsimbody PRIVATE
   include/jlsimbody/common.h
   )
@@ -113,9 +171,20 @@ target_precompile_headers(jlsimbody PRIVATE
 target_include_directories(jlsimbody PRIVATE
   ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
-target_compile_features(jlsimbody PRIVATE cxx_generic_lambdas)
+target_compile_features(jlsimbody
+  PUBLIC cxx_std_20
+  PRIVATE cxx_generic_lambdas
+  )
 
-target_compile_options(jlsimbody PRIVATE -fvisibility=hidden -Wno-c++20-extensions)
+target_compile_options(jlsimbody
+  PRIVATE
+    -no-canonical-prefixes
+    -gno-record-gcc-switches
+    -fno-record-gcc-switches
+    -ffile-prefix-map=${CMAKE_CURRENT_SOURCE_DIR}=jlsimbody
+    -Wno-builtin-macro-redefined
+    -Wdate-time
+  )
 
 target_compile_definitions(jlsimbody PRIVATE 
   $<$<CONFIG:DEBUG>:VERBOSE_IMPORT>)
@@ -124,12 +193,12 @@ target_link_libraries(jlsimbody PUBLIC
   Simbody::SimTKcommon Simbody::SimTKmath Simbody::SimTKsimbody
   JlCxx::cxxwrap_julia JlCxx::cxxwrap_julia_stl)
 
-target_link_options(jlsimbody PRIVATE
-  # --for-linker=--compress-debug-sections=zstd
-  --for-linker=-flto
-  --for-linker=--gc-sections
-  --for-linker=--icf=safe
-)
+# target_link_options(jlsimbody PRIVATE
+#   # --for-linker=--compress-debug-sections=zstd
+#   # --for-linker=-flto
+#   --for-linker=--gc-sections
+#   --for-linker=--icf=safe
+# )
 
 include(GNUInstallDirs)
 
