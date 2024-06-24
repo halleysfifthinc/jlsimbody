@@ -106,7 +106,5 @@ void define_SimTKcommon_Transform(jlcxx::Module& types, const ArrayWrapper& arra
   using array_types = jlcxx::ParameterList<Transform>;
   jlcxx::for_each_parameter_type<array_types>(array_wrapper);
 
-  DEBUG_MSG("End of wrapper definitions");
-
 }
 }

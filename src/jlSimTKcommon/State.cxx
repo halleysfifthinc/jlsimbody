@@ -9,7 +9,7 @@ namespace jlsimbody {
 
 void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wrapper){
 
-  DEBUG_MSG("Adding wrapper for enum SimTK::Event::Cause::Num (" __HERE__ ")");
+  DEBUG_MSG("enum SimTK::Event::Cause::Num (" __HERE__ ")");
   // defined in SimTKcommon/internal/Event.h:128:14
   types.add_bits<SimTK::Event::Cause::Num>("SimTK!Event!Cause!Num", jlcxx::julia_type("CppEnum"));
   types.set_const("SimTK!Event!Cause!Initialization", SimTK::Event::Cause::Initialization);
@@ -19,8 +19,9 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
   types.set_const("SimTK!Event!Cause!Signaled", SimTK::Event::Cause::Signaled);
   types.set_const("SimTK!Event!Cause!Termination", SimTK::Event::Cause::Termination);
   types.set_const("SimTK!Event!Cause!Invalid", SimTK::Event::Cause::Invalid);
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for enum SimTK::Event::Trigger (" __HERE__ ")");
+  DEBUG_MSG("enum SimTK::Event::Trigger (" __HERE__ ")");
   // defined in SimTKcommon/internal/Event.h:158:10
   types.add_bits<SimTK::Event::Trigger>("SimTK!Event!Trigger", jlcxx::julia_type("CppEnum"));
   types.set_const("SimTK!Event!NoEventTrigger", SimTK::Event::NoEventTrigger);
@@ -29,51 +30,59 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
   types.set_const("SimTK!Event!Falling", SimTK::Event::Falling);
   types.set_const("SimTK!Event!Rising", SimTK::Event::Rising);
   types.set_const("SimTK!Event!AnySignChange", SimTK::Event::AnySignChange);
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for enum SimTK::HandleEventsOptions::Option (" __HERE__ ")");
+  DEBUG_MSG("enum SimTK::HandleEventsOptions::Option (" __HERE__ ")");
   // defined in SimTKcommon/internal/Event.h:271:10
   types.add_bits<SimTK::HandleEventsOptions::Option>("SimTK!HandleEventsOptions!Option", jlcxx::julia_type("CppEnum"));
   types.set_const("SimTK!HandleEventsOptions!None", SimTK::HandleEventsOptions::None);
   types.set_const("SimTK!HandleEventsOptions!DontThrow", SimTK::HandleEventsOptions::DontThrow);
   types.set_const("SimTK!HandleEventsOptions!UseInfinityNorm", SimTK::HandleEventsOptions::UseInfinityNorm);
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for enum SimTK::HandleEventsResults::Status (" __HERE__ ")");
+  DEBUG_MSG("enum SimTK::HandleEventsResults::Status (" __HERE__ ")");
   // defined in SimTKcommon/internal/Event.h:349:10
   types.add_bits<SimTK::HandleEventsResults::Status>("SimTK!HandleEventsResults!Status", jlcxx::julia_type("CppEnum"));
   types.set_const("SimTK!HandleEventsResults!Invalid", SimTK::HandleEventsResults::Invalid);
   types.set_const("SimTK!HandleEventsResults!Succeeded", SimTK::HandleEventsResults::Succeeded);
   types.set_const("SimTK!HandleEventsResults!ShouldTerminate", SimTK::HandleEventsResults::ShouldTerminate);
   types.set_const("SimTK!HandleEventsResults!Failed", SimTK::HandleEventsResults::Failed);
+  CLEAR_DEBUG_MSG();
 
   wrap_SimTK_UniqueIndexType<SimTK::EventId>(types, "SimTK!EventId");
   wrap_SimTK_UniqueIndexType<SimTK::SystemEventTriggerIndex>(types, "SimTK!SystemEventTriggerIndex");
   wrap_SimTK_UniqueIndexType<SimTK::SystemEventTriggerByStageIndex>(types, "SimTK!SystemEventTriggerByStageIndex");
   wrap_SimTK_UniqueIndexType<SimTK::EventTriggerByStageIndex>(types, "SimTK!EventTriggerByStageIndex");
 
-  DEBUG_MSG("Adding wrapper for type SimTK::Event (" __HERE__ ")");
+  DEBUG_MSG("type SimTK::Event (" __HERE__ ")");
   // defined in SimTKcommon/internal/Event.h:76:7
   auto t4 = types.add_type<SimTK::Event>("SimTK!Event");
   t4.template constructor<>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for type SimTK::Event::Cause (" __HERE__ ")");
+  DEBUG_MSG("type SimTK::Event::Cause (" __HERE__ ")");
   // defined in SimTKcommon/internal/Event.h:126:11
   auto t5 = types.add_type<SimTK::Event::Cause>("SimTK!Event!Cause");
   t5.template constructor<>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for type SimTK::EventTriggerInfo (" __HERE__ ")");
+  DEBUG_MSG("type SimTK::EventTriggerInfo (" __HERE__ ")");
   // defined in SimTKcommon/internal/Event.h:209:32
   auto t8 = types.add_type<SimTK::EventTriggerInfo>("SimTK!EventTriggerInfo");
   t8.template constructor<>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for type SimTK::HandleEventsOptions (" __HERE__ ")");
+  DEBUG_MSG("type SimTK::HandleEventsOptions (" __HERE__ ")");
   // defined in SimTKcommon/internal/Event.h:269:7
   auto t9 = types.add_type<SimTK::HandleEventsOptions>("SimTK!HandleEventsOptions");
   t9.template constructor<>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for type SimTK::HandleEventsResults (" __HERE__ ")");
+  DEBUG_MSG("type SimTK::HandleEventsResults (" __HERE__ ")");
   // defined in SimTKcommon/internal/Event.h:345:7
   auto t11 = types.add_type<SimTK::HandleEventsResults>("SimTK!HandleEventsResults");
   t11.template constructor<>();
+  CLEAR_DEBUG_MSG();
 
   wrap_SimTK_UniqueIndexType<SimTK::SubsystemIndex>(types, "SimTK!SubsystemIndex");
   wrap_SimTK_UniqueIndexType<SimTK::SystemYIndex>(types, "SimTK!SystemYIndex");
@@ -95,52 +104,61 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
   wrap_SimTK_UniqueIndexType<SimTK::SystemMultiplierIndex>(types, "SimTK!SystemMultiplierIndex");
   wrap_SimTK_UniqueIndexType<SimTK::MultiplierIndex>(types, "SimTK!MultiplierIndex");
 
-  DEBUG_MSG("Adding wrapper for type SimTK::State (" __HERE__ ")");
+  DEBUG_MSG("type SimTK::State (" __HERE__ ")");
   // defined in SimTKcommon/internal/State.h:280:32
   auto t34 = types.add_type<SimTK::State>("SimTK!State");
   t34.template constructor<>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for type SimTK::AbstractValue (" __HERE__ ")");
+  DEBUG_MSG("type SimTK::AbstractValue (" __HERE__ ")");
   // defined in SimTKcommon/internal/Value.h:49:7
   types.add_type<SimTK::AbstractValue>("SimTK!AbstractValue");
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for type SimTK::ListOfDependents (" __HERE__ ")");
+  DEBUG_MSG("type SimTK::ListOfDependents (" __HERE__ ")");
   // defined in SimTKcommon/internal/StateImpl.h:62:7
   auto t36 = types.add_type<SimTK::ListOfDependents>("SimTK!ListOfDependents");
   t36.template constructor<>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for type SimTK::DiscreteVarInfo (" __HERE__ ")");
+  DEBUG_MSG("type SimTK::DiscreteVarInfo (" __HERE__ ")");
   // defined in SimTKcommon/internal/StateImpl.h:155:7
   auto t37 = types.add_type<SimTK::DiscreteVarInfo>("SimTK!DiscreteVarInfo");
   t37.template constructor<>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for type SimTK::PerSubsystemInfo (" __HERE__ ")");
+  DEBUG_MSG("type SimTK::PerSubsystemInfo (" __HERE__ ")");
   // defined in SimTKcommon/internal/StateImpl.h:611:32
   types.add_type<SimTK::PerSubsystemInfo>("SimTK!PerSubsystemInfo");
+  CLEAR_DEBUG_MSG();
 
   /**********************************************************************/
   /* Wrappers for the methods of class SimTK::Event
    */
 
-  DEBUG_MSG("Adding wrapper for const char * SimTK::Event::getCauseName(SimTK::Event::Cause) (" __HERE__ ")");
+  DEBUG_MSG("const char * SimTK::Event::getCauseName(SimTK::Event::Cause) (" __HERE__ ")");
   // signature to use in the veto list: const char * SimTK::Event::getCauseName(SimTK::Event::Cause)
   // defined in SimTKcommon/internal/Event.h:151:49
   types.method("SimTK!Event!getCauseName", static_cast<const char * (*)(SimTK::Event::Cause) >(&SimTK::Event::getCauseName));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for std::string SimTK::Event::eventTriggerString(SimTK::Event::Trigger) (" __HERE__ ")");
+  DEBUG_MSG("std::string SimTK::Event::eventTriggerString(SimTK::Event::Trigger) (" __HERE__ ")");
   // signature to use in the veto list: std::string SimTK::Event::eventTriggerString(SimTK::Event::Trigger)
   // defined in SimTKcommon/internal/Event.h:171:49
   types.method("SimTK!Event!eventTriggerString", static_cast<std::string (*)(SimTK::Event::Trigger) >(&SimTK::Event::eventTriggerString));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::Event::Trigger SimTK::Event::classifyTransition(int, int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::Event::Trigger SimTK::Event::classifyTransition(int, int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Event::Trigger SimTK::Event::classifyTransition(int, int)
   // defined in SimTKcommon/internal/Event.h:177:20
   types.method("SimTK!Event!classifyTransition", static_cast<SimTK::Event::Trigger (*)(int, int) >(&SimTK::Event::classifyTransition));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::Event::Trigger SimTK::Event::maskTransition(SimTK::Event::Trigger, SimTK::Event::Trigger) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::Event::Trigger SimTK::Event::maskTransition(SimTK::Event::Trigger, SimTK::Event::Trigger) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Event::Trigger SimTK::Event::maskTransition(SimTK::Event::Trigger, SimTK::Event::Trigger)
   // defined in SimTKcommon/internal/Event.h:191:20
   types.method("SimTK!Event!maskTransition", static_cast<SimTK::Event::Trigger (*)(SimTK::Event::Trigger, SimTK::Event::Trigger) >(&SimTK::Event::maskTransition));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::Event class method wrappers
    **********************************************************************/
@@ -151,19 +169,22 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
    */
 
 
-  DEBUG_MSG("Adding wrapper for void SimTK::Event::Cause::Cause(SimTK::Event::Cause::Num) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::Event::Cause::Cause(SimTK::Event::Cause::Num) (" __HERE__ ")");
   // defined in SimTKcommon/internal/Event.h:139:9
   t5.constructor<SimTK::Event::Cause::Num>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::Event::Cause & SimTK::Event::Cause::operator=(SimTK::Event::Cause::Num) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::Event::Cause & SimTK::Event::Cause::operator=(SimTK::Event::Cause::Num) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Event::Cause & SimTK::Event::Cause::operator=(SimTK::Event::Cause::Num)
   // defined in SimTKcommon/internal/Event.h:141:16
   t5.method("assign", static_cast<SimTK::Event::Cause & (SimTK::Event::Cause::*)(SimTK::Event::Cause::Num) >(&SimTK::Event::Cause::operator=));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for bool SimTK::Event::Cause::isValid() (" __HERE__ ")");
+  DEBUG_MSG("bool SimTK::Event::Cause::isValid() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::Event::Cause::isValid()
   // defined in SimTKcommon/internal/Event.h:143:14
   t5.method("isValid", static_cast<bool (SimTK::Event::Cause::*)()  const>(&SimTK::Event::Cause::isValid));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::Event::Cause class method wrappers
    **********************************************************************/
@@ -174,69 +195,82 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
    */
 
 
-  DEBUG_MSG("Adding wrapper for void SimTK::EventTriggerInfo::EventTriggerInfo(SimTK::EventId) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::EventTriggerInfo::EventTriggerInfo(SimTK::EventId) (" __HERE__ ")");
   // defined in SimTKcommon/internal/Event.h:212:14
   t8.constructor<SimTK::EventId>();
+  CLEAR_DEBUG_MSG();
 
 
-  DEBUG_MSG("Adding wrapper for void SimTK::EventTriggerInfo::EventTriggerInfo(const SimTK::EventTriggerInfo &) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::EventTriggerInfo::EventTriggerInfo(const SimTK::EventTriggerInfo &) (" __HERE__ ")");
   // defined in SimTKcommon/internal/Event.h:214:5
   t8.constructor<const SimTK::EventTriggerInfo &>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::EventTriggerInfo & SimTK::EventTriggerInfo::operator=(const SimTK::EventTriggerInfo &) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::EventTriggerInfo & SimTK::EventTriggerInfo::operator=(const SimTK::EventTriggerInfo &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::EventTriggerInfo & SimTK::EventTriggerInfo::operator=(const SimTK::EventTriggerInfo &)
   // defined in SimTKcommon/internal/Event.h:215:23
   t8.method("assign", static_cast<SimTK::EventTriggerInfo & (SimTK::EventTriggerInfo::*)(const SimTK::EventTriggerInfo &) >(&SimTK::EventTriggerInfo::operator=));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::EventId SimTK::EventTriggerInfo::getEventId() (" __HERE__ ")");
+  DEBUG_MSG("SimTK::EventId SimTK::EventTriggerInfo::getEventId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::EventId SimTK::EventTriggerInfo::getEventId()
   // defined in SimTKcommon/internal/Event.h:217:13
   t8.method("getEventId", static_cast<SimTK::EventId (SimTK::EventTriggerInfo::*)()  const>(&SimTK::EventTriggerInfo::getEventId));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for bool SimTK::EventTriggerInfo::shouldTriggerOnRisingSignTransition() (" __HERE__ ")");
+  DEBUG_MSG("bool SimTK::EventTriggerInfo::shouldTriggerOnRisingSignTransition() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::EventTriggerInfo::shouldTriggerOnRisingSignTransition()
   // defined in SimTKcommon/internal/Event.h:218:10
   t8.method("shouldTriggerOnRisingSignTransition", static_cast<bool (SimTK::EventTriggerInfo::*)()  const>(&SimTK::EventTriggerInfo::shouldTriggerOnRisingSignTransition));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for bool SimTK::EventTriggerInfo::shouldTriggerOnFallingSignTransition() (" __HERE__ ")");
+  DEBUG_MSG("bool SimTK::EventTriggerInfo::shouldTriggerOnFallingSignTransition() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::EventTriggerInfo::shouldTriggerOnFallingSignTransition()
   // defined in SimTKcommon/internal/Event.h:219:10
   t8.method("shouldTriggerOnFallingSignTransition", static_cast<bool (SimTK::EventTriggerInfo::*)()  const>(&SimTK::EventTriggerInfo::shouldTriggerOnFallingSignTransition));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::EventTriggerInfo::getRequiredLocalizationTimeWindow() (" __HERE__ ")");
+  DEBUG_MSG("SimTK::Real SimTK::EventTriggerInfo::getRequiredLocalizationTimeWindow() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::EventTriggerInfo::getRequiredLocalizationTimeWindow()
   // defined in SimTKcommon/internal/Event.h:220:10
   t8.method("getRequiredLocalizationTimeWindow", static_cast<SimTK::Real (SimTK::EventTriggerInfo::*)()  const>(&SimTK::EventTriggerInfo::getRequiredLocalizationTimeWindow));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::EventTriggerInfo & SimTK::EventTriggerInfo::setEventId(SimTK::EventId) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::EventTriggerInfo & SimTK::EventTriggerInfo::setEventId(SimTK::EventId) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::EventTriggerInfo & SimTK::EventTriggerInfo::setEventId(SimTK::EventId)
   // defined in SimTKcommon/internal/Event.h:223:23
   t8.method("setEventId", static_cast<SimTK::EventTriggerInfo & (SimTK::EventTriggerInfo::*)(SimTK::EventId) >(&SimTK::EventTriggerInfo::setEventId));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::EventTriggerInfo & SimTK::EventTriggerInfo::setTriggerOnRisingSignTransition(bool) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::EventTriggerInfo & SimTK::EventTriggerInfo::setTriggerOnRisingSignTransition(bool) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::EventTriggerInfo & SimTK::EventTriggerInfo::setTriggerOnRisingSignTransition(bool)
   // defined in SimTKcommon/internal/Event.h:224:23
   t8.method("setTriggerOnRisingSignTransition", static_cast<SimTK::EventTriggerInfo & (SimTK::EventTriggerInfo::*)(bool) >(&SimTK::EventTriggerInfo::setTriggerOnRisingSignTransition));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::EventTriggerInfo & SimTK::EventTriggerInfo::setTriggerOnFallingSignTransition(bool) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::EventTriggerInfo & SimTK::EventTriggerInfo::setTriggerOnFallingSignTransition(bool) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::EventTriggerInfo & SimTK::EventTriggerInfo::setTriggerOnFallingSignTransition(bool)
   // defined in SimTKcommon/internal/Event.h:225:23
   t8.method("setTriggerOnFallingSignTransition", static_cast<SimTK::EventTriggerInfo & (SimTK::EventTriggerInfo::*)(bool) >(&SimTK::EventTriggerInfo::setTriggerOnFallingSignTransition));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::EventTriggerInfo & SimTK::EventTriggerInfo::setRequiredLocalizationTimeWindow(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::EventTriggerInfo & SimTK::EventTriggerInfo::setRequiredLocalizationTimeWindow(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::EventTriggerInfo & SimTK::EventTriggerInfo::setRequiredLocalizationTimeWindow(SimTK::Real)
   // defined in SimTKcommon/internal/Event.h:226:23
   t8.method("setRequiredLocalizationTimeWindow", static_cast<SimTK::EventTriggerInfo & (SimTK::EventTriggerInfo::*)(SimTK::Real) >(&SimTK::EventTriggerInfo::setRequiredLocalizationTimeWindow));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::Event::Trigger SimTK::EventTriggerInfo::calcTransitionMask() (" __HERE__ ")");
+  DEBUG_MSG("SimTK::Event::Trigger SimTK::EventTriggerInfo::calcTransitionMask() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Event::Trigger SimTK::EventTriggerInfo::calcTransitionMask()
   // defined in SimTKcommon/internal/Event.h:228:20
   t8.method("calcTransitionMask", static_cast<SimTK::Event::Trigger (SimTK::EventTriggerInfo::*)()  const>(&SimTK::EventTriggerInfo::calcTransitionMask));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::Event::Trigger SimTK::EventTriggerInfo::calcTransitionToReport(SimTK::Event::Trigger) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::Event::Trigger SimTK::EventTriggerInfo::calcTransitionToReport(SimTK::Event::Trigger) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Event::Trigger SimTK::EventTriggerInfo::calcTransitionToReport(SimTK::Event::Trigger)
   // defined in SimTKcommon/internal/Event.h:239:20
   t8.method("calcTransitionToReport", static_cast<SimTK::Event::Trigger (SimTK::EventTriggerInfo::*)(SimTK::Event::Trigger)  const>(&SimTK::EventTriggerInfo::calcTransitionToReport));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::EventTriggerInfo class method wrappers
    **********************************************************************/
@@ -247,74 +281,88 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
    */
 
 
-  DEBUG_MSG("Adding wrapper for void SimTK::HandleEventsOptions::HandleEventsOptions(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::HandleEventsOptions::HandleEventsOptions(SimTK::Real) (" __HERE__ ")");
   // defined in SimTKcommon/internal/Event.h:285:14
   t9.constructor<SimTK::Real>();
+  CLEAR_DEBUG_MSG();
 
 
-  DEBUG_MSG("Adding wrapper for void SimTK::HandleEventsOptions::HandleEventsOptions(SimTK::HandleEventsOptions::Option) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::HandleEventsOptions::HandleEventsOptions(SimTK::HandleEventsOptions::Option) (" __HERE__ ")");
   // defined in SimTKcommon/internal/Event.h:287:14
   t9.constructor<SimTK::HandleEventsOptions::Option>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::HandleEventsOptions & SimTK::HandleEventsOptions::clear() (" __HERE__ ")");
+  DEBUG_MSG("SimTK::HandleEventsOptions & SimTK::HandleEventsOptions::clear() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::HandleEventsOptions & SimTK::HandleEventsOptions::clear()
   // defined in SimTKcommon/internal/Event.h:293:26
   t9.method("clear", static_cast<SimTK::HandleEventsOptions & (SimTK::HandleEventsOptions::*)() >(&SimTK::HandleEventsOptions::clear));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::HandleEventsOptions & SimTK::HandleEventsOptions::setAccuracy(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::HandleEventsOptions & SimTK::HandleEventsOptions::setAccuracy(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::HandleEventsOptions & SimTK::HandleEventsOptions::setAccuracy(SimTK::Real)
   // defined in SimTKcommon/internal/Event.h:299:26
   t9.method("setAccuracy", static_cast<SimTK::HandleEventsOptions & (SimTK::HandleEventsOptions::*)(SimTK::Real) >(&SimTK::HandleEventsOptions::setAccuracy));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::HandleEventsOptions & SimTK::HandleEventsOptions::clearOption(SimTK::HandleEventsOptions::Option) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::HandleEventsOptions & SimTK::HandleEventsOptions::clearOption(SimTK::HandleEventsOptions::Option) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::HandleEventsOptions & SimTK::HandleEventsOptions::clearOption(SimTK::HandleEventsOptions::Option)
   // defined in SimTKcommon/internal/Event.h:307:26
   t9.method("clearOption", static_cast<SimTK::HandleEventsOptions & (SimTK::HandleEventsOptions::*)(SimTK::HandleEventsOptions::Option) >(&SimTK::HandleEventsOptions::clearOption));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::HandleEventsOptions & SimTK::HandleEventsOptions::setOption(SimTK::HandleEventsOptions::Option) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::HandleEventsOptions & SimTK::HandleEventsOptions::setOption(SimTK::HandleEventsOptions::Option) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::HandleEventsOptions & SimTK::HandleEventsOptions::setOption(SimTK::HandleEventsOptions::Option)
   // defined in SimTKcommon/internal/Event.h:311:26
   t9.method("setOption", static_cast<SimTK::HandleEventsOptions & (SimTK::HandleEventsOptions::*)(SimTK::HandleEventsOptions::Option) >(&SimTK::HandleEventsOptions::setOption));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::HandleEventsOptions::getAccuracy() (" __HERE__ ")");
+  DEBUG_MSG("SimTK::Real SimTK::HandleEventsOptions::getAccuracy() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::HandleEventsOptions::getAccuracy()
   // defined in SimTKcommon/internal/Event.h:315:10
   t9.method("getAccuracy", static_cast<SimTK::Real (SimTK::HandleEventsOptions::*)()  const>(&SimTK::HandleEventsOptions::getAccuracy));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for bool SimTK::HandleEventsOptions::isOptionSet(SimTK::HandleEventsOptions::Option) (" __HERE__ ")");
+  DEBUG_MSG("bool SimTK::HandleEventsOptions::isOptionSet(SimTK::HandleEventsOptions::Option) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::HandleEventsOptions::isOptionSet(SimTK::HandleEventsOptions::Option)
   // defined in SimTKcommon/internal/Event.h:317:10
   t9.method("isOptionSet", static_cast<bool (SimTK::HandleEventsOptions::*)(SimTK::HandleEventsOptions::Option)  const>(&SimTK::HandleEventsOptions::isOptionSet));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::HandleEventsOptions::getDefaultAccuracy() (" __HERE__ ")");
+  DEBUG_MSG("SimTK::Real SimTK::HandleEventsOptions::getDefaultAccuracy() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::HandleEventsOptions::getDefaultAccuracy()
   // defined in SimTKcommon/internal/Event.h:319:17
   types.method("SimTK!HandleEventsOptions!getDefaultAccuracy", static_cast<SimTK::Real (*)() >(&SimTK::HandleEventsOptions::getDefaultAccuracy));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::HandleEventsOptions & SimTK::HandleEventsOptions::operator|=(const SimTK::HandleEventsOptions &) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::HandleEventsOptions & SimTK::HandleEventsOptions::operator|=(const SimTK::HandleEventsOptions &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::HandleEventsOptions & SimTK::HandleEventsOptions::operator|=(const SimTK::HandleEventsOptions &)
   // defined in SimTKcommon/internal/Event.h:322:26
   t9.method("bwor!", static_cast<SimTK::HandleEventsOptions & (SimTK::HandleEventsOptions::*)(const SimTK::HandleEventsOptions &) >(&SimTK::HandleEventsOptions::operator|=));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::HandleEventsOptions & SimTK::HandleEventsOptions::operator&=(const SimTK::HandleEventsOptions &) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::HandleEventsOptions & SimTK::HandleEventsOptions::operator&=(const SimTK::HandleEventsOptions &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::HandleEventsOptions & SimTK::HandleEventsOptions::operator&=(const SimTK::HandleEventsOptions &)
   // defined in SimTKcommon/internal/Event.h:324:26
   t9.method("bwand!", static_cast<SimTK::HandleEventsOptions & (SimTK::HandleEventsOptions::*)(const SimTK::HandleEventsOptions &) >(&SimTK::HandleEventsOptions::operator&=));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::HandleEventsOptions & SimTK::HandleEventsOptions::operator-=(const SimTK::HandleEventsOptions &) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::HandleEventsOptions & SimTK::HandleEventsOptions::operator-=(const SimTK::HandleEventsOptions &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::HandleEventsOptions & SimTK::HandleEventsOptions::operator-=(const SimTK::HandleEventsOptions &)
   // defined in SimTKcommon/internal/Event.h:326:26
   t9.method("sub!", static_cast<SimTK::HandleEventsOptions & (SimTK::HandleEventsOptions::*)(const SimTK::HandleEventsOptions &) >(&SimTK::HandleEventsOptions::operator-=));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::HandleEventsOptions & SimTK::HandleEventsOptions::operator|=(SimTK::HandleEventsOptions::Option) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::HandleEventsOptions & SimTK::HandleEventsOptions::operator|=(SimTK::HandleEventsOptions::Option) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::HandleEventsOptions & SimTK::HandleEventsOptions::operator|=(SimTK::HandleEventsOptions::Option)
   // defined in SimTKcommon/internal/Event.h:329:26
   t9.method("bwor!", static_cast<SimTK::HandleEventsOptions & (SimTK::HandleEventsOptions::*)(SimTK::HandleEventsOptions::Option) >(&SimTK::HandleEventsOptions::operator|=));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::HandleEventsOptions & SimTK::HandleEventsOptions::operator-=(SimTK::HandleEventsOptions::Option) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::HandleEventsOptions & SimTK::HandleEventsOptions::operator-=(SimTK::HandleEventsOptions::Option) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::HandleEventsOptions & SimTK::HandleEventsOptions::operator-=(SimTK::HandleEventsOptions::Option)
   // defined in SimTKcommon/internal/Event.h:330:26
   t9.method("sub!", static_cast<SimTK::HandleEventsOptions & (SimTK::HandleEventsOptions::*)(SimTK::HandleEventsOptions::Option) >(&SimTK::HandleEventsOptions::operator-=));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::HandleEventsOptions class method wrappers
    **********************************************************************/
@@ -324,55 +372,65 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
   /* Wrappers for the methods of class SimTK::HandleEventsResults
    */
 
-  DEBUG_MSG("Adding wrapper for SimTK::HandleEventsResults & SimTK::HandleEventsResults::clear() (" __HERE__ ")");
+  DEBUG_MSG("SimTK::HandleEventsResults & SimTK::HandleEventsResults::clear() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::HandleEventsResults & SimTK::HandleEventsResults::clear()
   // defined in SimTKcommon/internal/Event.h:367:26
   t11.method("clear", static_cast<SimTK::HandleEventsResults & (SimTK::HandleEventsResults::*)() >(&SimTK::HandleEventsResults::clear));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for bool SimTK::HandleEventsResults::isValid() (" __HERE__ ")");
+  DEBUG_MSG("bool SimTK::HandleEventsResults::isValid() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::HandleEventsResults::isValid()
   // defined in SimTKcommon/internal/Event.h:374:13
   t11.method("isValid", static_cast<bool (SimTK::HandleEventsResults::*)()  const>(&SimTK::HandleEventsResults::isValid));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::HandleEventsResults::Status SimTK::HandleEventsResults::getExitStatus() (" __HERE__ ")");
+  DEBUG_MSG("SimTK::HandleEventsResults::Status SimTK::HandleEventsResults::getExitStatus() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::HandleEventsResults::Status SimTK::HandleEventsResults::getExitStatus()
   // defined in SimTKcommon/internal/Event.h:375:13
   t11.method("getExitStatus", static_cast<SimTK::HandleEventsResults::Status (SimTK::HandleEventsResults::*)()  const>(&SimTK::HandleEventsResults::getExitStatus));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for bool SimTK::HandleEventsResults::getAnyChangeMade() (" __HERE__ ")");
+  DEBUG_MSG("bool SimTK::HandleEventsResults::getAnyChangeMade() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::HandleEventsResults::getAnyChangeMade()
   // defined in SimTKcommon/internal/Event.h:377:10
   t11.method("getAnyChangeMade", static_cast<bool (SimTK::HandleEventsResults::*)()  const>(&SimTK::HandleEventsResults::getAnyChangeMade));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::Stage SimTK::HandleEventsResults::getLowestModifiedStage() (" __HERE__ ")");
+  DEBUG_MSG("SimTK::Stage SimTK::HandleEventsResults::getLowestModifiedStage() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Stage SimTK::HandleEventsResults::getLowestModifiedStage()
   // defined in SimTKcommon/internal/Event.h:379:11
   t11.method("getLowestModifiedStage", static_cast<SimTK::Stage (SimTK::HandleEventsResults::*)()  const>(&SimTK::HandleEventsResults::getLowestModifiedStage));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for const SimTK::String & SimTK::HandleEventsResults::getMessage() (" __HERE__ ")");
+  DEBUG_MSG("const SimTK::String & SimTK::HandleEventsResults::getMessage() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::String & SimTK::HandleEventsResults::getMessage()
   // defined in SimTKcommon/internal/Event.h:381:19
   t11.method("getMessage", static_cast<const SimTK::String & (SimTK::HandleEventsResults::*)()  const>(&SimTK::HandleEventsResults::getMessage));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::HandleEventsResults & SimTK::HandleEventsResults::setExitStatus(SimTK::HandleEventsResults::Status) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::HandleEventsResults & SimTK::HandleEventsResults::setExitStatus(SimTK::HandleEventsResults::Status) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::HandleEventsResults & SimTK::HandleEventsResults::setExitStatus(SimTK::HandleEventsResults::Status)
   // defined in SimTKcommon/internal/Event.h:384:26
   t11.method("setExitStatus", static_cast<SimTK::HandleEventsResults & (SimTK::HandleEventsResults::*)(SimTK::HandleEventsResults::Status) >(&SimTK::HandleEventsResults::setExitStatus));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::HandleEventsResults & SimTK::HandleEventsResults::setAnyChangeMade(bool) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::HandleEventsResults & SimTK::HandleEventsResults::setAnyChangeMade(bool) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::HandleEventsResults & SimTK::HandleEventsResults::setAnyChangeMade(bool)
   // defined in SimTKcommon/internal/Event.h:386:26
   t11.method("setAnyChangeMade", static_cast<SimTK::HandleEventsResults & (SimTK::HandleEventsResults::*)(bool) >(&SimTK::HandleEventsResults::setAnyChangeMade));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::HandleEventsResults & SimTK::HandleEventsResults::setLowestModifiedStage(SimTK::Stage) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::HandleEventsResults & SimTK::HandleEventsResults::setLowestModifiedStage(SimTK::Stage) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::HandleEventsResults & SimTK::HandleEventsResults::setLowestModifiedStage(SimTK::Stage)
   // defined in SimTKcommon/internal/Event.h:388:26
   t11.method("setLowestModifiedStage", static_cast<SimTK::HandleEventsResults & (SimTK::HandleEventsResults::*)(SimTK::Stage) >(&SimTK::HandleEventsResults::setLowestModifiedStage));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::HandleEventsResults & SimTK::HandleEventsResults::setMessage(const SimTK::String &) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::HandleEventsResults & SimTK::HandleEventsResults::setMessage(const SimTK::String &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::HandleEventsResults & SimTK::HandleEventsResults::setMessage(const SimTK::String &)
   // defined in SimTKcommon/internal/Event.h:390:26
   t11.method("setMessage", static_cast<SimTK::HandleEventsResults & (SimTK::HandleEventsResults::*)(const SimTK::String &) >(&SimTK::HandleEventsResults::setMessage));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::HandleEventsResults class method wrappers
    **********************************************************************/
@@ -382,456 +440,546 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
    */
 
 
-  DEBUG_MSG("Adding wrapper for void SimTK::State::State(const SimTK::State &) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::State::State(const SimTK::State &) (" __HERE__ ")");
   // defined in SimTKcommon/internal/State.h:291:1
   t34.constructor<const SimTK::State &>();
+  CLEAR_DEBUG_MSG();
 
 
-  DEBUG_MSG("Adding wrapper for SimTK::State & SimTK::State::operator=(const SimTK::State &) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::State & SimTK::State::operator=(const SimTK::State &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::State & SimTK::State::operator=(const SimTK::State &)
   // defined in SimTKcommon/internal/State.h:302:8
   t34.method("assign", static_cast<SimTK::State & (SimTK::State::*)(const SimTK::State &) >(&SimTK::State::operator=));
+  CLEAR_DEBUG_MSG();
 
 
-  DEBUG_MSG("Adding wrapper for void SimTK::State::clear() (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::State::clear() (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::State::clear()
   // defined in SimTKcommon/internal/State.h:312:6
   t34.method("clear", static_cast<void (SimTK::State::*)() >(&SimTK::State::clear));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for bool SimTK::State::isConsistent(const SimTK::State &) (" __HERE__ ")");
+  DEBUG_MSG("bool SimTK::State::isConsistent(const SimTK::State &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::State::isConsistent(const SimTK::State &)
   // defined in SimTKcommon/internal/State.h:337:6
   t34.method("isConsistent", static_cast<bool (SimTK::State::*)(const SimTK::State &)  const>(&SimTK::State::isConsistent));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::State::setNumSubsystems(int) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::State::setNumSubsystems(int) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::State::setNumSubsystems(int)
   // defined in SimTKcommon/internal/State.h:342:13
   t34.method("setNumSubsystems", static_cast<void (SimTK::State::*)(int) >(&SimTK::State::setNumSubsystems));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::State::initializeSubsystem(SimTK::SubsystemIndex, const SimTK::String &, const SimTK::String &) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::State::initializeSubsystem(SimTK::SubsystemIndex, const SimTK::String &, const SimTK::String &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::State::initializeSubsystem(SimTK::SubsystemIndex, const SimTK::String &, const SimTK::String &)
   // defined in SimTKcommon/internal/State.h:346:13
   t34.method("initializeSubsystem", static_cast<void (SimTK::State::*)(SimTK::SubsystemIndex, const SimTK::String &, const SimTK::String &) >(&SimTK::State::initializeSubsystem));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::SubsystemIndex SimTK::State::addSubsystem(const SimTK::String &, const SimTK::String &) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::SubsystemIndex SimTK::State::addSubsystem(const SimTK::String &, const SimTK::String &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::SubsystemIndex SimTK::State::addSubsystem(const SimTK::String &, const SimTK::String &)
   // defined in SimTKcommon/internal/State.h:355:23
   t34.method("addSubsystem", static_cast<SimTK::SubsystemIndex (SimTK::State::*)(const SimTK::String &, const SimTK::String &) >(&SimTK::State::addSubsystem));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for int SimTK::State::getNumSubsystems() (" __HERE__ ")");
+  DEBUG_MSG("int SimTK::State::getNumSubsystems() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::State::getNumSubsystems()
   // defined in SimTKcommon/internal/State.h:358:12
   t34.method("getNumSubsystems", static_cast<int (SimTK::State::*)()  const>(&SimTK::State::getNumSubsystems));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for const SimTK::String & SimTK::State::getSubsystemName(SimTK::SubsystemIndex) (" __HERE__ ")");
+  DEBUG_MSG("const SimTK::String & SimTK::State::getSubsystemName(SimTK::SubsystemIndex) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::String & SimTK::State::getSubsystemName(SimTK::SubsystemIndex)
   // defined in SimTKcommon/internal/State.h:359:22
   t34.method("getSubsystemName", static_cast<const SimTK::String & (SimTK::State::*)(SimTK::SubsystemIndex)  const>(&SimTK::State::getSubsystemName));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for const SimTK::String & SimTK::State::getSubsystemVersion(SimTK::SubsystemIndex) (" __HERE__ ")");
+  DEBUG_MSG("const SimTK::String & SimTK::State::getSubsystemVersion(SimTK::SubsystemIndex) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::String & SimTK::State::getSubsystemVersion(SimTK::SubsystemIndex)
   // defined in SimTKcommon/internal/State.h:360:22
   t34.method("getSubsystemVersion", static_cast<const SimTK::String & (SimTK::State::*)(SimTK::SubsystemIndex)  const>(&SimTK::State::getSubsystemVersion));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for const SimTK::Stage & SimTK::State::getSubsystemStage(SimTK::SubsystemIndex) (" __HERE__ ")");
+  DEBUG_MSG("const SimTK::Stage & SimTK::State::getSubsystemStage(SimTK::SubsystemIndex) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Stage & SimTK::State::getSubsystemStage(SimTK::SubsystemIndex)
   // defined in SimTKcommon/internal/State.h:361:22
   t34.method("getSubsystemStage", static_cast<const SimTK::Stage & (SimTK::State::*)(SimTK::SubsystemIndex)  const>(&SimTK::State::getSubsystemStage));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for const SimTK::Stage & SimTK::State::getSystemStage() (" __HERE__ ")");
+  DEBUG_MSG("const SimTK::Stage & SimTK::State::getSystemStage() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Stage & SimTK::State::getSystemStage()
   // defined in SimTKcommon/internal/State.h:364:21
   t34.method("getSystemStage", static_cast<const SimTK::Stage & (SimTK::State::*)()  const>(&SimTK::State::getSystemStage));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::State::invalidateAll(SimTK::Stage) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::State::invalidateAll(SimTK::Stage) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::State::invalidateAll(SimTK::Stage)
   // defined in SimTKcommon/internal/State.h:372:13
   t34.method("invalidateAll", static_cast<void (SimTK::State::*)(SimTK::Stage) >(&SimTK::State::invalidateAll));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::State::invalidateAllCacheAtOrAbove(SimTK::Stage) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::State::invalidateAllCacheAtOrAbove(SimTK::Stage) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::State::invalidateAllCacheAtOrAbove(SimTK::Stage)
   // defined in SimTKcommon/internal/State.h:381:13
   t34.method("invalidateAllCacheAtOrAbove", static_cast<void (SimTK::State::*)(SimTK::Stage)  const>(&SimTK::State::invalidateAllCacheAtOrAbove));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::State::advanceSubsystemToStage(SimTK::SubsystemIndex, SimTK::Stage) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::State::advanceSubsystemToStage(SimTK::SubsystemIndex, SimTK::Stage) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::State::advanceSubsystemToStage(SimTK::SubsystemIndex, SimTK::Stage)
   // defined in SimTKcommon/internal/State.h:389:13
   t34.method("advanceSubsystemToStage", static_cast<void (SimTK::State::*)(SimTK::SubsystemIndex, SimTK::Stage)  const>(&SimTK::State::advanceSubsystemToStage));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::State::advanceSystemToStage(SimTK::Stage) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::State::advanceSystemToStage(SimTK::Stage) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::State::advanceSystemToStage(SimTK::Stage)
   // defined in SimTKcommon/internal/State.h:394:13
   t34.method("advanceSystemToStage", static_cast<void (SimTK::State::*)(SimTK::Stage)  const>(&SimTK::State::advanceSystemToStage));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::StageVersion SimTK::State::getSystemTopologyStageVersion() (" __HERE__ ")");
+  DEBUG_MSG("SimTK::StageVersion SimTK::State::getSystemTopologyStageVersion() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::StageVersion SimTK::State::getSystemTopologyStageVersion()
   // defined in SimTKcommon/internal/State.h:400:21
   t34.method("getSystemTopologyStageVersion", static_cast<SimTK::StageVersion (SimTK::State::*)()  const>(&SimTK::State::getSystemTopologyStageVersion));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::QErrIndex SimTK::State::allocateQErr(SimTK::SubsystemIndex, int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::QErrIndex SimTK::State::allocateQErr(SimTK::SubsystemIndex, int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::QErrIndex SimTK::State::allocateQErr(SimTK::SubsystemIndex, int)
   // defined in SimTKcommon/internal/State.h:449:21
   t34.method("allocateQErr", static_cast<SimTK::QErrIndex (SimTK::State::*)(SimTK::SubsystemIndex, int)  const>(&SimTK::State::allocateQErr));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::UErrIndex SimTK::State::allocateUErr(SimTK::SubsystemIndex, int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::UErrIndex SimTK::State::allocateUErr(SimTK::SubsystemIndex, int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::UErrIndex SimTK::State::allocateUErr(SimTK::SubsystemIndex, int)
   // defined in SimTKcommon/internal/State.h:452:21
   t34.method("allocateUErr", static_cast<SimTK::UErrIndex (SimTK::State::*)(SimTK::SubsystemIndex, int)  const>(&SimTK::State::allocateUErr));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::UDotErrIndex SimTK::State::allocateUDotErr(SimTK::SubsystemIndex, int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::UDotErrIndex SimTK::State::allocateUDotErr(SimTK::SubsystemIndex, int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::UDotErrIndex SimTK::State::allocateUDotErr(SimTK::SubsystemIndex, int)
   // defined in SimTKcommon/internal/State.h:457:21
   t34.method("allocateUDotErr", static_cast<SimTK::UDotErrIndex (SimTK::State::*)(SimTK::SubsystemIndex, int)  const>(&SimTK::State::allocateUDotErr));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::EventTriggerByStageIndex SimTK::State::allocateEventTrigger(SimTK::SubsystemIndex, SimTK::Stage, int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::EventTriggerByStageIndex SimTK::State::allocateEventTrigger(SimTK::SubsystemIndex, SimTK::Stage, int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::EventTriggerByStageIndex SimTK::State::allocateEventTrigger(SimTK::SubsystemIndex, SimTK::Stage, int)
   // defined in SimTKcommon/internal/State.h:477:1
   t34.method("allocateEventTrigger", static_cast<SimTK::EventTriggerByStageIndex (SimTK::State::*)(SimTK::SubsystemIndex, SimTK::Stage, int)  const>(&SimTK::State::allocateEventTrigger));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DiscreteVariableIndex SimTK::State::allocateDiscreteVariable(SimTK::SubsystemIndex, SimTK::Stage, SimTK::AbstractValue *) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DiscreteVariableIndex SimTK::State::allocateDiscreteVariable(SimTK::SubsystemIndex, SimTK::Stage, SimTK::AbstractValue *) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DiscreteVariableIndex SimTK::State::allocateDiscreteVariable(SimTK::SubsystemIndex, SimTK::Stage, SimTK::AbstractValue *)
   // defined in SimTKcommon/internal/State.h:505:1
   t34.method("allocateDiscreteVariable", static_cast<SimTK::DiscreteVariableIndex (SimTK::State::*)(SimTK::SubsystemIndex, SimTK::Stage, SimTK::AbstractValue *) >(&SimTK::State::allocateDiscreteVariable));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DiscreteVariableIndex SimTK::State::allocateAutoUpdateDiscreteVariable(SimTK::SubsystemIndex, SimTK::Stage, SimTK::AbstractValue *, SimTK::Stage) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DiscreteVariableIndex SimTK::State::allocateAutoUpdateDiscreteVariable(SimTK::SubsystemIndex, SimTK::Stage, SimTK::AbstractValue *, SimTK::Stage) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DiscreteVariableIndex SimTK::State::allocateAutoUpdateDiscreteVariable(SimTK::SubsystemIndex, SimTK::Stage, SimTK::AbstractValue *, SimTK::Stage)
   // defined in SimTKcommon/internal/State.h:558:1
   t34.method("allocateAutoUpdateDiscreteVariable", static_cast<SimTK::DiscreteVariableIndex (SimTK::State::*)(SimTK::SubsystemIndex, SimTK::Stage, SimTK::AbstractValue *, SimTK::Stage) >(&SimTK::State::allocateAutoUpdateDiscreteVariable));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::CacheEntryIndex SimTK::State::getDiscreteVarUpdateIndex(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::CacheEntryIndex SimTK::State::getDiscreteVarUpdateIndex(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::CacheEntryIndex SimTK::State::getDiscreteVarUpdateIndex(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex)
   // defined in SimTKcommon/internal/State.h:563:1
   t34.method("getDiscreteVarUpdateIndex", static_cast<SimTK::CacheEntryIndex (SimTK::State::*)(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex)  const>(&SimTK::State::getDiscreteVarUpdateIndex));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::Stage SimTK::State::getDiscreteVarAllocationStage(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::Stage SimTK::State::getDiscreteVarAllocationStage(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Stage SimTK::State::getDiscreteVarAllocationStage(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex)
   // defined in SimTKcommon/internal/State.h:567:1
   t34.method("getDiscreteVarAllocationStage", static_cast<SimTK::Stage (SimTK::State::*)(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex)  const>(&SimTK::State::getDiscreteVarAllocationStage));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::Stage SimTK::State::getDiscreteVarInvalidatesStage(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::Stage SimTK::State::getDiscreteVarInvalidatesStage(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Stage SimTK::State::getDiscreteVarInvalidatesStage(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex)
   // defined in SimTKcommon/internal/State.h:573:1
   t34.method("getDiscreteVarInvalidatesStage", static_cast<SimTK::Stage (SimTK::State::*)(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex)  const>(&SimTK::State::getDiscreteVarInvalidatesStage));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for const SimTK::AbstractValue & SimTK::State::getDiscreteVariable(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
+  DEBUG_MSG("const SimTK::AbstractValue & SimTK::State::getDiscreteVariable(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::AbstractValue & SimTK::State::getDiscreteVariable(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex)
   // defined in SimTKcommon/internal/State.h:579:1
   t34.method("getDiscreteVariable", static_cast<const SimTK::AbstractValue & (SimTK::State::*)(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex)  const>(&SimTK::State::getDiscreteVariable));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::State::getDiscreteVarLastUpdateTime(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::Real SimTK::State::getDiscreteVarLastUpdateTime(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::State::getDiscreteVarLastUpdateTime(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex)
   // defined in SimTKcommon/internal/State.h:582:1
   t34.method("getDiscreteVarLastUpdateTime", static_cast<SimTK::Real (SimTK::State::*)(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex)  const>(&SimTK::State::getDiscreteVarLastUpdateTime));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for const SimTK::AbstractValue & SimTK::State::getDiscreteVarUpdateValue(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
+  DEBUG_MSG("const SimTK::AbstractValue & SimTK::State::getDiscreteVarUpdateValue(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::AbstractValue & SimTK::State::getDiscreteVarUpdateValue(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex)
   // defined in SimTKcommon/internal/State.h:588:1
   t34.method("getDiscreteVarUpdateValue", static_cast<const SimTK::AbstractValue & (SimTK::State::*)(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex)  const>(&SimTK::State::getDiscreteVarUpdateValue));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::AbstractValue & SimTK::State::updDiscreteVarUpdateValue(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::AbstractValue & SimTK::State::updDiscreteVarUpdateValue(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::AbstractValue & SimTK::State::updDiscreteVarUpdateValue(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex)
   // defined in SimTKcommon/internal/State.h:595:1
   t34.method("updDiscreteVarUpdateValue", static_cast<SimTK::AbstractValue & (SimTK::State::*)(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex)  const>(&SimTK::State::updDiscreteVarUpdateValue));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for bool SimTK::State::isDiscreteVarUpdateValueRealized(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
+  DEBUG_MSG("bool SimTK::State::isDiscreteVarUpdateValueRealized(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::State::isDiscreteVarUpdateValueRealized(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex)
   // defined in SimTKcommon/internal/State.h:600:1
   t34.method("isDiscreteVarUpdateValueRealized", static_cast<bool (SimTK::State::*)(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex)  const>(&SimTK::State::isDiscreteVarUpdateValueRealized));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::State::markDiscreteVarUpdateValueRealized(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::State::markDiscreteVarUpdateValueRealized(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::State::markDiscreteVarUpdateValueRealized(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex)
   // defined in SimTKcommon/internal/State.h:604:1
   t34.method("markDiscreteVarUpdateValueRealized", static_cast<void (SimTK::State::*)(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex)  const>(&SimTK::State::markDiscreteVarUpdateValueRealized));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::AbstractValue & SimTK::State::updDiscreteVariable(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::AbstractValue & SimTK::State::updDiscreteVariable(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::AbstractValue & SimTK::State::updDiscreteVariable(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex)
   // defined in SimTKcommon/internal/State.h:610:1
   t34.method("updDiscreteVariable", static_cast<SimTK::AbstractValue & (SimTK::State::*)(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex) >(&SimTK::State::updDiscreteVariable));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::State::setDiscreteVariable(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex, const SimTK::AbstractValue &) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::State::setDiscreteVariable(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex, const SimTK::AbstractValue &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::State::setDiscreteVariable(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex, const SimTK::AbstractValue &)
   // defined in SimTKcommon/internal/State.h:613:1
   t34.method("setDiscreteVariable", static_cast<void (SimTK::State::*)(SimTK::SubsystemIndex, SimTK::DiscreteVariableIndex, const SimTK::AbstractValue &) >(&SimTK::State::setDiscreteVariable));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::CacheEntryIndex SimTK::State::allocateCacheEntry(SimTK::SubsystemIndex, SimTK::Stage, SimTK::Stage, SimTK::AbstractValue *) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::CacheEntryIndex SimTK::State::allocateCacheEntry(SimTK::SubsystemIndex, SimTK::Stage, SimTK::Stage, SimTK::AbstractValue *) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::CacheEntryIndex SimTK::State::allocateCacheEntry(SimTK::SubsystemIndex, SimTK::Stage, SimTK::Stage, SimTK::AbstractValue *)
   // defined in SimTKcommon/internal/State.h:697:1
   t34.method("allocateCacheEntry", static_cast<SimTK::CacheEntryIndex (SimTK::State::*)(SimTK::SubsystemIndex, SimTK::Stage, SimTK::Stage, SimTK::AbstractValue *)  const>(&SimTK::State::allocateCacheEntry));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::CacheEntryIndex SimTK::State::allocateCacheEntry(SimTK::SubsystemIndex, SimTK::Stage, SimTK::AbstractValue *) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::CacheEntryIndex SimTK::State::allocateCacheEntry(SimTK::SubsystemIndex, SimTK::Stage, SimTK::AbstractValue *) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::CacheEntryIndex SimTK::State::allocateCacheEntry(SimTK::SubsystemIndex, SimTK::Stage, SimTK::AbstractValue *)
   // defined in SimTKcommon/internal/State.h:705:1
   t34.method("allocateCacheEntry", static_cast<SimTK::CacheEntryIndex (SimTK::State::*)(SimTK::SubsystemIndex, SimTK::Stage, SimTK::AbstractValue *)  const>(&SimTK::State::allocateCacheEntry));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::CacheEntryIndex SimTK::State::allocateLazyCacheEntry(SimTK::SubsystemIndex, SimTK::Stage, SimTK::AbstractValue *) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::CacheEntryIndex SimTK::State::allocateLazyCacheEntry(SimTK::SubsystemIndex, SimTK::Stage, SimTK::AbstractValue *) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::CacheEntryIndex SimTK::State::allocateLazyCacheEntry(SimTK::SubsystemIndex, SimTK::Stage, SimTK::AbstractValue *)
   // defined in SimTKcommon/internal/State.h:718:1
   t34.method("allocateLazyCacheEntry", static_cast<SimTK::CacheEntryIndex (SimTK::State::*)(SimTK::SubsystemIndex, SimTK::Stage, SimTK::AbstractValue *)  const>(&SimTK::State::allocateLazyCacheEntry));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::Stage SimTK::State::getCacheEntryAllocationStage(SimTK::SubsystemIndex, SimTK::CacheEntryIndex) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::Stage SimTK::State::getCacheEntryAllocationStage(SimTK::SubsystemIndex, SimTK::CacheEntryIndex) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Stage SimTK::State::getCacheEntryAllocationStage(SimTK::SubsystemIndex, SimTK::CacheEntryIndex)
   // defined in SimTKcommon/internal/State.h:738:1
   t34.method("getCacheEntryAllocationStage", static_cast<SimTK::Stage (SimTK::State::*)(SimTK::SubsystemIndex, SimTK::CacheEntryIndex)  const>(&SimTK::State::getCacheEntryAllocationStage));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for const SimTK::AbstractValue & SimTK::State::getCacheEntry(SimTK::SubsystemIndex, SimTK::CacheEntryIndex) (" __HERE__ ")");
+  DEBUG_MSG("const SimTK::AbstractValue & SimTK::State::getCacheEntry(SimTK::SubsystemIndex, SimTK::CacheEntryIndex) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::AbstractValue & SimTK::State::getCacheEntry(SimTK::SubsystemIndex, SimTK::CacheEntryIndex)
   // defined in SimTKcommon/internal/State.h:747:1
   t34.method("getCacheEntry", static_cast<const SimTK::AbstractValue & (SimTK::State::*)(SimTK::SubsystemIndex, SimTK::CacheEntryIndex)  const>(&SimTK::State::getCacheEntry));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::AbstractValue & SimTK::State::updCacheEntry(SimTK::SubsystemIndex, SimTK::CacheEntryIndex) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::AbstractValue & SimTK::State::updCacheEntry(SimTK::SubsystemIndex, SimTK::CacheEntryIndex) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::AbstractValue & SimTK::State::updCacheEntry(SimTK::SubsystemIndex, SimTK::CacheEntryIndex)
   // defined in SimTKcommon/internal/State.h:756:1
   t34.method("updCacheEntry", static_cast<SimTK::AbstractValue & (SimTK::State::*)(SimTK::SubsystemIndex, SimTK::CacheEntryIndex)  const>(&SimTK::State::updCacheEntry));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for bool SimTK::State::isCacheValueRealized(SimTK::SubsystemIndex, SimTK::CacheEntryIndex) (" __HERE__ ")");
+  DEBUG_MSG("bool SimTK::State::isCacheValueRealized(SimTK::SubsystemIndex, SimTK::CacheEntryIndex) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::State::isCacheValueRealized(SimTK::SubsystemIndex, SimTK::CacheEntryIndex)
   // defined in SimTKcommon/internal/State.h:766:13
   t34.method("isCacheValueRealized", static_cast<bool (SimTK::State::*)(SimTK::SubsystemIndex, SimTK::CacheEntryIndex)  const>(&SimTK::State::isCacheValueRealized));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::State::markCacheValueRealized(SimTK::SubsystemIndex, SimTK::CacheEntryIndex) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::State::markCacheValueRealized(SimTK::SubsystemIndex, SimTK::CacheEntryIndex) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::State::markCacheValueRealized(SimTK::SubsystemIndex, SimTK::CacheEntryIndex)
   // defined in SimTKcommon/internal/State.h:780:13
   t34.method("markCacheValueRealized", static_cast<void (SimTK::State::*)(SimTK::SubsystemIndex, SimTK::CacheEntryIndex)  const>(&SimTK::State::markCacheValueRealized));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::State::markCacheValueNotRealized(SimTK::SubsystemIndex, SimTK::CacheEntryIndex) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::State::markCacheValueNotRealized(SimTK::SubsystemIndex, SimTK::CacheEntryIndex) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::State::markCacheValueNotRealized(SimTK::SubsystemIndex, SimTK::CacheEntryIndex)
   // defined in SimTKcommon/internal/State.h:787:13
   t34.method("markCacheValueNotRealized", static_cast<void (SimTK::State::*)(SimTK::SubsystemIndex, SimTK::CacheEntryIndex)  const>(&SimTK::State::markCacheValueNotRealized));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for int SimTK::State::getNY() (" __HERE__ ")");
+  DEBUG_MSG("int SimTK::State::getNY() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::State::getNY()
   // defined in SimTKcommon/internal/State.h:810:12
   t34.method("getNY", static_cast<int (SimTK::State::*)()  const>(&SimTK::State::getNY));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for int SimTK::State::getNQ() (" __HERE__ ")");
+  DEBUG_MSG("int SimTK::State::getNQ() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::State::getNQ()
   // defined in SimTKcommon/internal/State.h:815:12
   t34.method("getNQ", static_cast<int (SimTK::State::*)()  const>(&SimTK::State::getNQ));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::SystemYIndex SimTK::State::getQStart() (" __HERE__ ")");
+  DEBUG_MSG("SimTK::SystemYIndex SimTK::State::getQStart() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::SystemYIndex SimTK::State::getQStart()
   // defined in SimTKcommon/internal/State.h:817:21
   t34.method("getQStart", static_cast<SimTK::SystemYIndex (SimTK::State::*)()  const>(&SimTK::State::getQStart));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for int SimTK::State::getNU() (" __HERE__ ")");
+  DEBUG_MSG("int SimTK::State::getNU() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::State::getNU()
   // defined in SimTKcommon/internal/State.h:821:12
   t34.method("getNU", static_cast<int (SimTK::State::*)()  const>(&SimTK::State::getNU));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::SystemYIndex SimTK::State::getUStart() (" __HERE__ ")");
+  DEBUG_MSG("SimTK::SystemYIndex SimTK::State::getUStart() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::SystemYIndex SimTK::State::getUStart()
   // defined in SimTKcommon/internal/State.h:823:21
   t34.method("getUStart", static_cast<SimTK::SystemYIndex (SimTK::State::*)()  const>(&SimTK::State::getUStart));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for int SimTK::State::getNZ() (" __HERE__ ")");
+  DEBUG_MSG("int SimTK::State::getNZ() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::State::getNZ()
   // defined in SimTKcommon/internal/State.h:827:12
   t34.method("getNZ", static_cast<int (SimTK::State::*)()  const>(&SimTK::State::getNZ));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::SystemYIndex SimTK::State::getZStart() (" __HERE__ ")");
+  DEBUG_MSG("SimTK::SystemYIndex SimTK::State::getZStart() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::SystemYIndex SimTK::State::getZStart()
   // defined in SimTKcommon/internal/State.h:829:21
   t34.method("getZStart", static_cast<SimTK::SystemYIndex (SimTK::State::*)()  const>(&SimTK::State::getZStart));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for int SimTK::State::getNYErr() (" __HERE__ ")");
+  DEBUG_MSG("int SimTK::State::getNYErr() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::State::getNYErr()
   // defined in SimTKcommon/internal/State.h:833:12
   t34.method("getNYErr", static_cast<int (SimTK::State::*)()  const>(&SimTK::State::getNYErr));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for int SimTK::State::getNQErr() (" __HERE__ ")");
+  DEBUG_MSG("int SimTK::State::getNQErr() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::State::getNQErr()
   // defined in SimTKcommon/internal/State.h:836:12
   t34.method("getNQErr", static_cast<int (SimTK::State::*)()  const>(&SimTK::State::getNQErr));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::SystemYErrIndex SimTK::State::getQErrStart() (" __HERE__ ")");
+  DEBUG_MSG("SimTK::SystemYErrIndex SimTK::State::getQErrStart() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::SystemYErrIndex SimTK::State::getQErrStart()
   // defined in SimTKcommon/internal/State.h:838:24
   t34.method("getQErrStart", static_cast<SimTK::SystemYErrIndex (SimTK::State::*)()  const>(&SimTK::State::getQErrStart));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for int SimTK::State::getNUErr() (" __HERE__ ")");
+  DEBUG_MSG("int SimTK::State::getNUErr() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::State::getNUErr()
   // defined in SimTKcommon/internal/State.h:842:12
   t34.method("getNUErr", static_cast<int (SimTK::State::*)()  const>(&SimTK::State::getNUErr));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::SystemYErrIndex SimTK::State::getUErrStart() (" __HERE__ ")");
+  DEBUG_MSG("SimTK::SystemYErrIndex SimTK::State::getUErrStart() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::SystemYErrIndex SimTK::State::getUErrStart()
   // defined in SimTKcommon/internal/State.h:844:24
   t34.method("getUErrStart", static_cast<SimTK::SystemYErrIndex (SimTK::State::*)()  const>(&SimTK::State::getUErrStart));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for int SimTK::State::getNUDotErr() (" __HERE__ ")");
+  DEBUG_MSG("int SimTK::State::getNUDotErr() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::State::getNUDotErr()
   // defined in SimTKcommon/internal/State.h:849:12
   t34.method("getNUDotErr", static_cast<int (SimTK::State::*)()  const>(&SimTK::State::getNUDotErr));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for int SimTK::State::getNMultipliers() (" __HERE__ ")");
+  DEBUG_MSG("int SimTK::State::getNMultipliers() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::State::getNMultipliers()
   // defined in SimTKcommon/internal/State.h:854:12
   t34.method("getNMultipliers", static_cast<int (SimTK::State::*)()  const>(&SimTK::State::getNMultipliers));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for int SimTK::State::getNEventTriggers() (" __HERE__ ")");
+  DEBUG_MSG("int SimTK::State::getNEventTriggers() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::State::getNEventTriggers()
   // defined in SimTKcommon/internal/State.h:857:12
   t34.method("getNEventTriggers", static_cast<int (SimTK::State::*)()  const>(&SimTK::State::getNEventTriggers));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for int SimTK::State::getNEventTriggersByStage(SimTK::Stage) (" __HERE__ ")");
+  DEBUG_MSG("int SimTK::State::getNEventTriggersByStage(SimTK::Stage) (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::State::getNEventTriggersByStage(SimTK::Stage)
   // defined in SimTKcommon/internal/State.h:860:12
   t34.method("getNEventTriggersByStage", static_cast<int (SimTK::State::*)(SimTK::Stage)  const>(&SimTK::State::getNEventTriggersByStage));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::SystemEventTriggerIndex SimTK::State::getEventTriggerStartByStage(SimTK::Stage) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::SystemEventTriggerIndex SimTK::State::getEventTriggerStartByStage(SimTK::Stage) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::SystemEventTriggerIndex SimTK::State::getEventTriggerStartByStage(SimTK::Stage)
   // defined in SimTKcommon/internal/State.h:864:32
   t34.method("getEventTriggerStartByStage", static_cast<SimTK::SystemEventTriggerIndex (SimTK::State::*)(SimTK::Stage)  const>(&SimTK::State::getEventTriggerStartByStage));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::SystemQIndex SimTK::State::getQStart(SimTK::SubsystemIndex) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::SystemQIndex SimTK::State::getQStart(SimTK::SubsystemIndex) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::SystemQIndex SimTK::State::getQStart(SimTK::SubsystemIndex)
   // defined in SimTKcommon/internal/State.h:888:21
   t34.method("getQStart", static_cast<SimTK::SystemQIndex (SimTK::State::*)(SimTK::SubsystemIndex)  const>(&SimTK::State::getQStart));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for int SimTK::State::getNQ(SimTK::SubsystemIndex) (" __HERE__ ")");
+  DEBUG_MSG("int SimTK::State::getNQ(SimTK::SubsystemIndex) (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::State::getNQ(SimTK::SubsystemIndex)
   // defined in SimTKcommon/internal/State.h:889:12
   t34.method("getNQ", static_cast<int (SimTK::State::*)(SimTK::SubsystemIndex)  const>(&SimTK::State::getNQ));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::SystemUIndex SimTK::State::getUStart(SimTK::SubsystemIndex) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::SystemUIndex SimTK::State::getUStart(SimTK::SubsystemIndex) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::SystemUIndex SimTK::State::getUStart(SimTK::SubsystemIndex)
   // defined in SimTKcommon/internal/State.h:890:21
   t34.method("getUStart", static_cast<SimTK::SystemUIndex (SimTK::State::*)(SimTK::SubsystemIndex)  const>(&SimTK::State::getUStart));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for int SimTK::State::getNU(SimTK::SubsystemIndex) (" __HERE__ ")");
+  DEBUG_MSG("int SimTK::State::getNU(SimTK::SubsystemIndex) (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::State::getNU(SimTK::SubsystemIndex)
   // defined in SimTKcommon/internal/State.h:891:12
   t34.method("getNU", static_cast<int (SimTK::State::*)(SimTK::SubsystemIndex)  const>(&SimTK::State::getNU));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::SystemZIndex SimTK::State::getZStart(SimTK::SubsystemIndex) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::SystemZIndex SimTK::State::getZStart(SimTK::SubsystemIndex) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::SystemZIndex SimTK::State::getZStart(SimTK::SubsystemIndex)
   // defined in SimTKcommon/internal/State.h:892:21
   t34.method("getZStart", static_cast<SimTK::SystemZIndex (SimTK::State::*)(SimTK::SubsystemIndex)  const>(&SimTK::State::getZStart));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for int SimTK::State::getNZ(SimTK::SubsystemIndex) (" __HERE__ ")");
+  DEBUG_MSG("int SimTK::State::getNZ(SimTK::SubsystemIndex) (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::State::getNZ(SimTK::SubsystemIndex)
   // defined in SimTKcommon/internal/State.h:893:12
   t34.method("getNZ", static_cast<int (SimTK::State::*)(SimTK::SubsystemIndex)  const>(&SimTK::State::getNZ));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::SystemQErrIndex SimTK::State::getQErrStart(SimTK::SubsystemIndex) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::SystemQErrIndex SimTK::State::getQErrStart(SimTK::SubsystemIndex) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::SystemQErrIndex SimTK::State::getQErrStart(SimTK::SubsystemIndex)
   // defined in SimTKcommon/internal/State.h:895:24
   t34.method("getQErrStart", static_cast<SimTK::SystemQErrIndex (SimTK::State::*)(SimTK::SubsystemIndex)  const>(&SimTK::State::getQErrStart));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for int SimTK::State::getNQErr(SimTK::SubsystemIndex) (" __HERE__ ")");
+  DEBUG_MSG("int SimTK::State::getNQErr(SimTK::SubsystemIndex) (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::State::getNQErr(SimTK::SubsystemIndex)
   // defined in SimTKcommon/internal/State.h:896:12
   t34.method("getNQErr", static_cast<int (SimTK::State::*)(SimTK::SubsystemIndex)  const>(&SimTK::State::getNQErr));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::SystemUErrIndex SimTK::State::getUErrStart(SimTK::SubsystemIndex) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::SystemUErrIndex SimTK::State::getUErrStart(SimTK::SubsystemIndex) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::SystemUErrIndex SimTK::State::getUErrStart(SimTK::SubsystemIndex)
   // defined in SimTKcommon/internal/State.h:897:24
   t34.method("getUErrStart", static_cast<SimTK::SystemUErrIndex (SimTK::State::*)(SimTK::SubsystemIndex)  const>(&SimTK::State::getUErrStart));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for int SimTK::State::getNUErr(SimTK::SubsystemIndex) (" __HERE__ ")");
+  DEBUG_MSG("int SimTK::State::getNUErr(SimTK::SubsystemIndex) (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::State::getNUErr(SimTK::SubsystemIndex)
   // defined in SimTKcommon/internal/State.h:898:12
   t34.method("getNUErr", static_cast<int (SimTK::State::*)(SimTK::SubsystemIndex)  const>(&SimTK::State::getNUErr));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::SystemUDotErrIndex SimTK::State::getUDotErrStart(SimTK::SubsystemIndex) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::SystemUDotErrIndex SimTK::State::getUDotErrStart(SimTK::SubsystemIndex) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::SystemUDotErrIndex SimTK::State::getUDotErrStart(SimTK::SubsystemIndex)
   // defined in SimTKcommon/internal/State.h:899:27
   t34.method("getUDotErrStart", static_cast<SimTK::SystemUDotErrIndex (SimTK::State::*)(SimTK::SubsystemIndex)  const>(&SimTK::State::getUDotErrStart));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for int SimTK::State::getNUDotErr(SimTK::SubsystemIndex) (" __HERE__ ")");
+  DEBUG_MSG("int SimTK::State::getNUDotErr(SimTK::SubsystemIndex) (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::State::getNUDotErr(SimTK::SubsystemIndex)
   // defined in SimTKcommon/internal/State.h:900:12
   t34.method("getNUDotErr", static_cast<int (SimTK::State::*)(SimTK::SubsystemIndex)  const>(&SimTK::State::getNUDotErr));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::SystemMultiplierIndex SimTK::State::getMultipliersStart(SimTK::SubsystemIndex) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::SystemMultiplierIndex SimTK::State::getMultipliersStart(SimTK::SubsystemIndex) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::SystemMultiplierIndex SimTK::State::getMultipliersStart(SimTK::SubsystemIndex)
   // defined in SimTKcommon/internal/State.h:901:30
   t34.method("getMultipliersStart", static_cast<SimTK::SystemMultiplierIndex (SimTK::State::*)(SimTK::SubsystemIndex)  const>(&SimTK::State::getMultipliersStart));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for int SimTK::State::getNMultipliers(SimTK::SubsystemIndex) (" __HERE__ ")");
+  DEBUG_MSG("int SimTK::State::getNMultipliers(SimTK::SubsystemIndex) (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::State::getNMultipliers(SimTK::SubsystemIndex)
   // defined in SimTKcommon/internal/State.h:902:12
   t34.method("getNMultipliers", static_cast<int (SimTK::State::*)(SimTK::SubsystemIndex)  const>(&SimTK::State::getNMultipliers));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::SystemEventTriggerByStageIndex SimTK::State::getEventTriggerStartByStage(SimTK::SubsystemIndex, SimTK::Stage) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::SystemEventTriggerByStageIndex SimTK::State::getEventTriggerStartByStage(SimTK::SubsystemIndex, SimTK::Stage) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::SystemEventTriggerByStageIndex SimTK::State::getEventTriggerStartByStage(SimTK::SubsystemIndex, SimTK::Stage)
   // defined in SimTKcommon/internal/State.h:905:5
   t34.method("getEventTriggerStartByStage", static_cast<SimTK::SystemEventTriggerByStageIndex (SimTK::State::*)(SimTK::SubsystemIndex, SimTK::Stage)  const>(&SimTK::State::getEventTriggerStartByStage));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for int SimTK::State::getNEventTriggersByStage(SimTK::SubsystemIndex, SimTK::Stage) (" __HERE__ ")");
+  DEBUG_MSG("int SimTK::State::getNEventTriggersByStage(SimTK::SubsystemIndex, SimTK::Stage) (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::State::getNEventTriggersByStage(SimTK::SubsystemIndex, SimTK::Stage)
   // defined in SimTKcommon/internal/State.h:906:12
   t34.method("getNEventTriggersByStage", static_cast<int (SimTK::State::*)(SimTK::SubsystemIndex, SimTK::Stage)  const>(&SimTK::State::getNEventTriggersByStage));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for const SimTK::Real & SimTK::State::getTime() (" __HERE__ ")");
+  DEBUG_MSG("const SimTK::Real & SimTK::State::getTime() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Real & SimTK::State::getTime()
   // defined in SimTKcommon/internal/State.h:961:22
   t34.method("getTime", static_cast<const SimTK::Real & (SimTK::State::*)()  const>(&SimTK::State::getTime));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::Real & SimTK::State::updTime() (" __HERE__ ")");
+  DEBUG_MSG("SimTK::Real & SimTK::State::updTime() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real & SimTK::State::updTime()
   // defined in SimTKcommon/internal/State.h:1026:16
   t34.method("updTime", static_cast<SimTK::Real & (SimTK::State::*)() >(&SimTK::State::updTime));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::State::setTime(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::State::setTime(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::State::setTime(SimTK::Real)
   // defined in SimTKcommon/internal/State.h:1030:13
   t34.method("setTime", static_cast<void (SimTK::State::*)(SimTK::Real) >(&SimTK::State::setTime));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::State::setSystemTopologyStageVersion(SimTK::StageVersion) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::State::setSystemTopologyStageVersion(SimTK::StageVersion) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::State::setSystemTopologyStageVersion(SimTK::StageVersion)
   // defined in SimTKcommon/internal/State.h:1143:13
   t34.method("setSystemTopologyStageVersion", static_cast<void (SimTK::State::*)(SimTK::StageVersion) >(&SimTK::State::setSystemTopologyStageVersion));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::ValueVersion SimTK::State::getQValueVersion() (" __HERE__ ")");
+  DEBUG_MSG("SimTK::ValueVersion SimTK::State::getQValueVersion() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ValueVersion SimTK::State::getQValueVersion()
   // defined in SimTKcommon/internal/State.h:1149:21
   t34.method("getQValueVersion", static_cast<SimTK::ValueVersion (SimTK::State::*)()  const>(&SimTK::State::getQValueVersion));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::ValueVersion SimTK::State::getUValueVersion() (" __HERE__ ")");
+  DEBUG_MSG("SimTK::ValueVersion SimTK::State::getUValueVersion() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ValueVersion SimTK::State::getUValueVersion()
   // defined in SimTKcommon/internal/State.h:1154:21
   t34.method("getUValueVersion", static_cast<SimTK::ValueVersion (SimTK::State::*)()  const>(&SimTK::State::getUValueVersion));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::ValueVersion SimTK::State::getZValueVersion() (" __HERE__ ")");
+  DEBUG_MSG("SimTK::ValueVersion SimTK::State::getZValueVersion() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ValueVersion SimTK::State::getZValueVersion()
   // defined in SimTKcommon/internal/State.h:1159:21
   t34.method("getZValueVersion", static_cast<SimTK::ValueVersion (SimTK::State::*)()  const>(&SimTK::State::getZValueVersion));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for const SimTK::ListOfDependents & SimTK::State::getQDependents() (" __HERE__ ")");
+  DEBUG_MSG("const SimTK::ListOfDependents & SimTK::State::getQDependents() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::ListOfDependents & SimTK::State::getQDependents()
   // defined in SimTKcommon/internal/State.h:1164:32
   t34.method("getQDependents", static_cast<const SimTK::ListOfDependents & (SimTK::State::*)()  const>(&SimTK::State::getQDependents));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for const SimTK::ListOfDependents & SimTK::State::getUDependents() (" __HERE__ ")");
+  DEBUG_MSG("const SimTK::ListOfDependents & SimTK::State::getUDependents() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::ListOfDependents & SimTK::State::getUDependents()
   // defined in SimTKcommon/internal/State.h:1168:32
   t34.method("getUDependents", static_cast<const SimTK::ListOfDependents & (SimTK::State::*)()  const>(&SimTK::State::getUDependents));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for const SimTK::ListOfDependents & SimTK::State::getZDependents() (" __HERE__ ")");
+  DEBUG_MSG("const SimTK::ListOfDependents & SimTK::State::getZDependents() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::ListOfDependents & SimTK::State::getZDependents()
   // defined in SimTKcommon/internal/State.h:1172:32
   t34.method("getZDependents", static_cast<const SimTK::ListOfDependents & (SimTK::State::*)()  const>(&SimTK::State::getZDependents));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for const SimTK::PerSubsystemInfo & SimTK::State::getPerSubsystemInfo(SimTK::SubsystemIndex) (" __HERE__ ")");
+  DEBUG_MSG("const SimTK::PerSubsystemInfo & SimTK::State::getPerSubsystemInfo(SimTK::SubsystemIndex) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::PerSubsystemInfo & SimTK::State::getPerSubsystemInfo(SimTK::SubsystemIndex)
   // defined in SimTKcommon/internal/State.h:1199:1
   t34.method("getPerSubsystemInfo", static_cast<const SimTK::PerSubsystemInfo & (SimTK::State::*)(SimTK::SubsystemIndex)  const>(&SimTK::State::getPerSubsystemInfo));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::State::autoUpdateDiscreteVariables() (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::State::autoUpdateDiscreteVariables() (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::State::autoUpdateDiscreteVariables()
   // defined in SimTKcommon/internal/State.h:1204:13
   t34.method("autoUpdateDiscreteVariables", static_cast<void (SimTK::State::*)() >(&SimTK::State::autoUpdateDiscreteVariables));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::String SimTK::State::toString() (" __HERE__ ")");
+  DEBUG_MSG("SimTK::String SimTK::State::toString() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::String SimTK::State::toString()
   // defined in SimTKcommon/internal/State.h:1207:15
   t34.method("toString", static_cast<SimTK::String (SimTK::State::*)()  const>(&SimTK::State::toString));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::String SimTK::State::cacheToString() (" __HERE__ ")");
+  DEBUG_MSG("SimTK::String SimTK::State::cacheToString() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::String SimTK::State::cacheToString()
   // defined in SimTKcommon/internal/State.h:1209:15
   t34.method("cacheToString", static_cast<SimTK::String (SimTK::State::*)()  const>(&SimTK::State::cacheToString));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::State class method wrappers
    **********************************************************************/
@@ -845,94 +993,117 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
   DEBUG_MSG("Adding SimTK!InvalidEventId methods to provide access to the global variable SimTK::InvalidEventId (" __HERE__ ")");
   // defined in SimTKcommon/internal/Event.h:39:1
   types.method("SimTK!InvalidEventId", []()-> const SimTK::EventId& { return SimTK::InvalidEventId; });
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("Adding SimTK!InvalidSystemEventTriggerIndex methods to provide access to the global variable SimTK::InvalidSystemEventTriggerIndex (" __HERE__ ")");
   // defined in SimTKcommon/internal/Event.h:47:1
   types.method("SimTK!InvalidSystemEventTriggerIndex", []()-> const SimTK::SystemEventTriggerIndex& { return SimTK::InvalidSystemEventTriggerIndex; });
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("Adding SimTK!InvalidSystemEventTriggerByStageIndex methods to provide access to the global variable SimTK::InvalidSystemEventTriggerByStageIndex (" __HERE__ ")");
   // defined in SimTKcommon/internal/Event.h:57:1
   types.method("SimTK!InvalidSystemEventTriggerByStageIndex", []()-> const SimTK::SystemEventTriggerByStageIndex& { return SimTK::InvalidSystemEventTriggerByStageIndex; });
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("Adding SimTK!InvalidEventTriggerByStageIndex methods to provide access to the global variable SimTK::InvalidEventTriggerByStageIndex (" __HERE__ ")");
   // defined in SimTKcommon/internal/Event.h:62:1
   types.method("SimTK!InvalidEventTriggerByStageIndex", []()-> const SimTK::EventTriggerByStageIndex& { return SimTK::InvalidEventTriggerByStageIndex; });
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("Adding SimTK!InvalidSubsystemIndex methods to provide access to the global variable SimTK::InvalidSubsystemIndex (" __HERE__ ")");
   // defined in SimTKcommon/internal/State.h:48:1
   types.method("SimTK!InvalidSubsystemIndex", []()-> const SimTK::SubsystemIndex& { return SimTK::InvalidSubsystemIndex; });
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("Adding SimTK!InvalidSystemYIndex methods to provide access to the global variable SimTK::InvalidSystemYIndex (" __HERE__ ")");
   // defined in SimTKcommon/internal/State.h:56:1
   types.method("SimTK!InvalidSystemYIndex", []()-> const SimTK::SystemYIndex& { return SimTK::InvalidSystemYIndex; });
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("Adding SimTK!InvalidSystemQIndex methods to provide access to the global variable SimTK::InvalidSystemQIndex (" __HERE__ ")");
   // defined in SimTKcommon/internal/State.h:65:1
   types.method("SimTK!InvalidSystemQIndex", []()-> const SimTK::SystemQIndex& { return SimTK::InvalidSystemQIndex; });
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("Adding SimTK!InvalidQIndex methods to provide access to the global variable SimTK::InvalidQIndex (" __HERE__ ")");
   // defined in SimTKcommon/internal/State.h:69:1
   types.method("SimTK!InvalidQIndex", []()-> const SimTK::QIndex& { return SimTK::InvalidQIndex; });
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("Adding SimTK!InvalidSystemUIndex methods to provide access to the global variable SimTK::InvalidSystemUIndex (" __HERE__ ")");
   // defined in SimTKcommon/internal/State.h:77:1
   types.method("SimTK!InvalidSystemUIndex", []()-> const SimTK::SystemUIndex& { return SimTK::InvalidSystemUIndex; });
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("Adding SimTK!InvalidUIndex methods to provide access to the global variable SimTK::InvalidUIndex (" __HERE__ ")");
   // defined in SimTKcommon/internal/State.h:81:1
   types.method("SimTK!InvalidUIndex", []()-> const SimTK::UIndex& { return SimTK::InvalidUIndex; });
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("Adding SimTK!InvalidSystemZIndex methods to provide access to the global variable SimTK::InvalidSystemZIndex (" __HERE__ ")");
   // defined in SimTKcommon/internal/State.h:89:1
   types.method("SimTK!InvalidSystemZIndex", []()-> const SimTK::SystemZIndex& { return SimTK::InvalidSystemZIndex; });
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("Adding SimTK!InvalidZIndex methods to provide access to the global variable SimTK::InvalidZIndex (" __HERE__ ")");
   // defined in SimTKcommon/internal/State.h:93:1
   types.method("SimTK!InvalidZIndex", []()-> const SimTK::ZIndex& { return SimTK::InvalidZIndex; });
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("Adding SimTK!InvalidDiscreteVariableIndex methods to provide access to the global variable SimTK::InvalidDiscreteVariableIndex (" __HERE__ ")");
   // defined in SimTKcommon/internal/State.h:99:1
   types.method("SimTK!InvalidDiscreteVariableIndex", []()-> const SimTK::DiscreteVariableIndex& { return SimTK::InvalidDiscreteVariableIndex; });
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("Adding SimTK!InvalidCacheEntryIndex methods to provide access to the global variable SimTK::InvalidCacheEntryIndex (" __HERE__ ")");
   // defined in SimTKcommon/internal/State.h:105:1
   types.method("SimTK!InvalidCacheEntryIndex", []()-> const SimTK::CacheEntryIndex& { return SimTK::InvalidCacheEntryIndex; });
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("Adding SimTK!InvalidSystemYErrIndex methods to provide access to the global variable SimTK::InvalidSystemYErrIndex (" __HERE__ ")");
   // defined in SimTKcommon/internal/State.h:112:1
   types.method("SimTK!InvalidSystemYErrIndex", []()-> const SimTK::SystemYErrIndex& { return SimTK::InvalidSystemYErrIndex; });
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("Adding SimTK!InvalidSystemQErrIndex methods to provide access to the global variable SimTK::InvalidSystemQErrIndex (" __HERE__ ")");
   // defined in SimTKcommon/internal/State.h:119:1
   types.method("SimTK!InvalidSystemQErrIndex", []()-> const SimTK::SystemQErrIndex& { return SimTK::InvalidSystemQErrIndex; });
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("Adding SimTK!InvalidQErrIndex methods to provide access to the global variable SimTK::InvalidQErrIndex (" __HERE__ ")");
   // defined in SimTKcommon/internal/State.h:123:1
   types.method("SimTK!InvalidQErrIndex", []()-> const SimTK::QErrIndex& { return SimTK::InvalidQErrIndex; });
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("Adding SimTK!InvalidSystemUErrIndex methods to provide access to the global variable SimTK::InvalidSystemUErrIndex (" __HERE__ ")");
   // defined in SimTKcommon/internal/State.h:130:1
   types.method("SimTK!InvalidSystemUErrIndex", []()-> const SimTK::SystemUErrIndex& { return SimTK::InvalidSystemUErrIndex; });
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("Adding SimTK!InvalidUErrIndex methods to provide access to the global variable SimTK::InvalidUErrIndex (" __HERE__ ")");
   // defined in SimTKcommon/internal/State.h:134:1
   types.method("SimTK!InvalidUErrIndex", []()-> const SimTK::UErrIndex& { return SimTK::InvalidUErrIndex; });
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("Adding SimTK!InvalidSystemUDotErrIndex methods to provide access to the global variable SimTK::InvalidSystemUDotErrIndex (" __HERE__ ")");
   // defined in SimTKcommon/internal/State.h:141:1
   types.method("SimTK!InvalidSystemUDotErrIndex", []()-> const SimTK::SystemUDotErrIndex& { return SimTK::InvalidSystemUDotErrIndex; });
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("Adding SimTK!InvalidUDotErrIndex methods to provide access to the global variable SimTK::InvalidUDotErrIndex (" __HERE__ ")");
   // defined in SimTKcommon/internal/State.h:145:1
   types.method("SimTK!InvalidUDotErrIndex", []()-> const SimTK::UDotErrIndex& { return SimTK::InvalidUDotErrIndex; });
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("Adding SimTK!InvalidSystemMultiplierIndex methods to provide access to the global variable SimTK::InvalidSystemMultiplierIndex (" __HERE__ ")");
   // defined in SimTKcommon/internal/State.h:152:1
   types.method("SimTK!InvalidSystemMultiplierIndex", []()-> const SimTK::SystemMultiplierIndex& { return SimTK::InvalidSystemMultiplierIndex; });
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("Adding SimTK!InvalidMultiplierIndex methods to provide access to the global variable SimTK::InvalidMultiplierIndex (" __HERE__ ")");
   // defined in SimTKcommon/internal/State.h:156:1
   types.method("SimTK!InvalidMultiplierIndex", []()-> const SimTK::MultiplierIndex& { return SimTK::InvalidMultiplierIndex; });
+  CLEAR_DEBUG_MSG();
 
   /* End of global function wrappers
    **********************************************************************/
@@ -942,7 +1113,6 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
     SimTK::EventId, SimTK::EventTriggerInfo, SimTK::SystemQIndex, SimTK::SystemUIndex, SimTK::QIndex, SimTK::UIndex>;
   jlcxx::for_each_parameter_type<array_types>(array_wrapper);
 
-  DEBUG_MSG("End of wrapper definitions");
-
 }
+
 }

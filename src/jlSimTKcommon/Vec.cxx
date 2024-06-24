@@ -4,17 +4,6 @@
 #include "jlSimTKcommon/Array.h"
 #include "jlSimTKcommon/Vec.h"
 
-#ifdef VERBOSE_IMPORT
-#  define DEBUG_MSG(a) std::cerr << a << "\n"
-#  define CLEAR_DEBUG_MSG() std::cerr << "\33[2K\33[1F\33[0K\r"
-#else
-#  define DEBUG_MSG(a)
-#  define CLEAR_DEBUG_MSG()
-#endif
-#define __HERE__  __FILE__ ":" QUOTE2(__LINE__)
-#define QUOTE(arg) #arg
-#define QUOTE2(arg) QUOTE(arg)
-
 namespace jlsimbody {
 
 void define_SimTKcommon_Vec(jlcxx::Module& types, const ArrayWrapper& array_wrapper){
@@ -65,29 +54,29 @@ void define_SimTKcommon_Vec(jlcxx::Module& types, const ArrayWrapper& array_wrap
 
   };
   t0.apply<
-    SimTK::Vec<1, double, 1>,
-    SimTK::Vec<2, double, 1>,
-    SimTK::Vec<3, double, 1>,
-    SimTK::Vec<4, double, 1>,
-    SimTK::Vec<5, double, 1>,
-    SimTK::Vec<6, double, 1>,
-    SimTK::Vec<7, double, 1>,
-    SimTK::Vec<8, double, 1>,
-    SimTK::Vec<9, double, 1>,
-    SimTK::Vec<10, double, 1>,
-    SimTK::Vec<11, double, 1>,
-    SimTK::Vec<12, double, 1>,
-    SimTK::Vec<16, double, 1>,
-    SimTK::Vec<2, SimTK::Vec<3, double, 1>, 1>,
-    SimTK::Vec<4, SimTK::Vec<3, double, 1>, 1>,
-    SimTK::Vec<5, SimTK::Vec<3, double, 1>, 1>,
-    SimTK::Vec<4, SimTK::Row<3, double, 1>, 1>,
-    SimTK::Vec<5, SimTK::Row<3, double, 1>, 1>,
-    SimTK::Vec<2, std::complex<double>, 1>,
-    SimTK::Vec<3, std::complex<double>, 1>,
-    SimTK::Vec<4, std::complex<double>, 1>,
-    SimTK::Vec<6, std::complex<double>, 1>,
-    SimTK::Vec<10, std::complex<double>, 1>
+    SimTK::Vec<1L, double, 1L>,
+    SimTK::Vec<2L, double, 1L>,
+    SimTK::Vec<3L, double, 1L>,
+    SimTK::Vec<4L, double, 1L>,
+    SimTK::Vec<5L, double, 1L>,
+    SimTK::Vec<6L, double, 1L>,
+    SimTK::Vec<7L, double, 1L>,
+    SimTK::Vec<8L, double, 1L>,
+    SimTK::Vec<9L, double, 1L>,
+    SimTK::Vec<10L, double, 1L>,
+    SimTK::Vec<11L, double, 1L>,
+    SimTK::Vec<12L, double, 1L>,
+    SimTK::Vec<16L, double, 1L>,
+    SimTK::Vec<2L, SimTK::Vec<3L, double, 1L>, 1L>,
+    SimTK::Vec<4L, SimTK::Vec<3L, double, 1L>, 1L>,
+    SimTK::Vec<5L, SimTK::Vec<3L, double, 1L>, 1L>,
+    SimTK::Vec<4L, SimTK::Row<3L, double, 1L>, 1L>,
+    SimTK::Vec<5L, SimTK::Row<3L, double, 1L>, 1L>,
+    SimTK::Vec<2L, std::complex<double>, 1L>,
+    SimTK::Vec<3L, std::complex<double>, 1L>,
+    SimTK::Vec<4L, std::complex<double>, 1L>,
+    SimTK::Vec<6L, std::complex<double>, 1L>,
+    SimTK::Vec<10L, std::complex<double>, 1L>
     >(t0_decl_methods);
 
   /* End of SimTK::Vec class method wrappers
@@ -97,8 +86,6 @@ void define_SimTKcommon_Vec(jlcxx::Module& types, const ArrayWrapper& array_wrap
   jlcxx::for_each_parameter_type<array_types>(array_wrapper);
   array_wrapper.template apply<SimTK::Vec<3,double>, int>();
 
-  DEBUG_MSG("End of wrapper definitions");
-  CLEAR_DEBUG_MSG();
-
 }
+
 }

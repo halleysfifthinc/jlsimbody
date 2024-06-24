@@ -21,7 +21,6 @@ void define_simbody_DecorationSubsystem(jlcxx::Module& types){
   /* End of SimTK::DecorationSubsystem class method wrappers
    **********************************************************************/
 
-  DEBUG_MSG("End of wrapper definitions");
-
 }
+
 }

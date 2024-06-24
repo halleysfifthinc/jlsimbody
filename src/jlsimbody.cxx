@@ -38,18 +38,28 @@
 using namespace jlsimbody;
 
 JLCXX_MODULE define_julia_module(jlcxx::Module& types){
+  DEBUG_MSG("type SimTK::SimTKArrayView (" __HERE__ ")");
   // defined in SimTKcommon/internal/Array.h:845:35
   auto arrview = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>,jlcxx::TypeVar<2>>,
     jlcxx::ParameterList<jlcxx::TypeVar<1>>>("SimTKArrayView", jlcxx::julia_type("AbstractVector"));
+  CLEAR_DEBUG_MSG();
 
+  DEBUG_MSG("type SimTK::SimTKArray (" __HERE__ ")");
   // defined in SimTKcommon/internal/Array.h:1520:35
   auto arr = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>,jlcxx::TypeVar<2>>,
     jlcxx::ParameterList<jlcxx::TypeVar<1>>>("SimTKArray", jlcxx::julia_type("AbstractVector"));
+  CLEAR_DEBUG_MSG();
 
   auto array_wrapper = ArrayWrapper(arr, arrview);
+
+  DEBUG_MSG("Instantiating wrappers for SimTK::SimTKArray element types (" __HERE__ ")");
   using array_types = jlcxx::ParameterList<bool, double, int, SimTK::Array_<int>>;
   jlcxx::for_each_parameter_type<array_types>(array_wrapper);
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("Instantiating wrappers for SimTK::SimTKArray<double,int> (" __HERE__ ")");
   array_wrapper.template apply<double, int>();
+  CLEAR_DEBUG_MSG();
 
   define_SimTKcommon_String(types, array_wrapper);
   define_SimTKcommon_Row(types);

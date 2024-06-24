@@ -7,7 +7,7 @@ namespace jlsimbody {
 
 void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& array_wrapper){
 
-  DEBUG_MSG("Adding wrapper for enum SimTK::DecorativeGeometry::Representation (" __HERE__ ")");
+  DEBUG_MSG("enum SimTK::DecorativeGeometry::Representation (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:99:6
   types.add_bits<SimTK::DecorativeGeometry::Representation>("SimTK!DecorativeGeometry!Representation", jlcxx::julia_type("CppEnum"));
   types.set_const("SimTK!DecorativeGeometry!Hide", SimTK::DecorativeGeometry::Hide);
@@ -15,153 +15,183 @@ void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& ar
   types.set_const("SimTK!DecorativeGeometry!DrawWireframe", SimTK::DecorativeGeometry::DrawWireframe);
   types.set_const("SimTK!DecorativeGeometry!DrawSurface", SimTK::DecorativeGeometry::DrawSurface);
   types.set_const("SimTK!DecorativeGeometry!DrawDefault", SimTK::DecorativeGeometry::DrawDefault);
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for type SimTK::PolygonalMesh (" __HERE__ ")");
+  DEBUG_MSG("type SimTK::PolygonalMesh (" __HERE__ ")");
   // defined in SimTKcommon/internal/PolygonalMesh.h:70:32
   auto t1 = types.add_type<SimTK::PolygonalMesh>("SimTK!PolygonalMesh");
   t1.template constructor<>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for type SimTK::DecorativeGeometry (" __HERE__ ")");
+  DEBUG_MSG("type SimTK::DecorativeGeometry (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:86:32
   auto t3 = types.add_type<SimTK::DecorativeGeometry>("SimTK!DecorativeGeometry");
   t3.template constructor<>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for type SimTK::DecorativeGeometryImplementation (" __HERE__ ")");
+  DEBUG_MSG("type SimTK::DecorativeGeometryImplementation (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:782:32
   auto t5 = types.add_type<SimTK::DecorativeGeometryImplementation>("SimTK!DecorativeGeometryImplementation");
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for type SimTK::DecorativePoint (" __HERE__ ")");
+  DEBUG_MSG("type SimTK::DecorativePoint (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:269:32
   auto t6 = types.add_type<SimTK::DecorativePoint>("SimTK!DecorativePoint", jlcxx::julia_base_type<SimTK::DecorativeGeometry>());
   t6.template constructor<>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for type SimTK::DecorativeLine (" __HERE__ ")");
+  DEBUG_MSG("type SimTK::DecorativeLine (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:306:32
   auto t7 = types.add_type<SimTK::DecorativeLine>("SimTK!DecorativeLine", jlcxx::julia_base_type<SimTK::DecorativeGeometry>());
   t7.template constructor<>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for type SimTK::DecorativeCircle (" __HERE__ ")");
+  DEBUG_MSG("type SimTK::DecorativeCircle (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:339:32
   auto t8 = types.add_type<SimTK::DecorativeCircle>("SimTK!DecorativeCircle", jlcxx::julia_base_type<SimTK::DecorativeGeometry>());
   t8.template constructor<>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for type SimTK::DecorativeSphere (" __HERE__ ")");
+  DEBUG_MSG("type SimTK::DecorativeSphere (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:367:32
   auto t9 = types.add_type<SimTK::DecorativeSphere>("SimTK!DecorativeSphere", jlcxx::julia_base_type<SimTK::DecorativeGeometry>());
   t9.template constructor<>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for type SimTK::DecorativeEllipsoid (" __HERE__ ")");
+  DEBUG_MSG("type SimTK::DecorativeEllipsoid (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:396:32
   auto t10 = types.add_type<SimTK::DecorativeEllipsoid>("SimTK!DecorativeEllipsoid", jlcxx::julia_base_type<SimTK::DecorativeGeometry>());
   t10.template constructor<>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for type SimTK::DecorativeBrick (" __HERE__ ")");
+  DEBUG_MSG("type SimTK::DecorativeBrick (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:426:32
   auto t11 = types.add_type<SimTK::DecorativeBrick>("SimTK!DecorativeBrick", jlcxx::julia_base_type<SimTK::DecorativeGeometry>());
   t11.template constructor<>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for type SimTK::DecorativeCylinder (" __HERE__ ")");
+  DEBUG_MSG("type SimTK::DecorativeCylinder (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:455:32
   auto t12 = types.add_type<SimTK::DecorativeCylinder>("SimTK!DecorativeCylinder", jlcxx::julia_base_type<SimTK::DecorativeGeometry>());
   t12.template constructor<>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for type SimTK::DecorativeFrame (" __HERE__ ")");
+  DEBUG_MSG("type SimTK::DecorativeFrame (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:486:32
   auto t13 = types.add_type<SimTK::DecorativeFrame>("SimTK!DecorativeFrame", jlcxx::julia_base_type<SimTK::DecorativeGeometry>());
   t13.template constructor<>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for type SimTK::DecorativeText (" __HERE__ ")");
+  DEBUG_MSG("type SimTK::DecorativeText (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:514:32
   auto t14 = types.add_type<SimTK::DecorativeText>("SimTK!DecorativeText", jlcxx::julia_base_type<SimTK::DecorativeGeometry>());
   t14.template constructor<>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for type SimTK::DecorativeMesh (" __HERE__ ")");
+  DEBUG_MSG("type SimTK::DecorativeMesh (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:549:32
   auto t15 = types.add_type<SimTK::DecorativeMesh>("SimTK!DecorativeMesh", jlcxx::julia_base_type<SimTK::DecorativeGeometry>());
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for type SimTK::DecorativeMeshFile (" __HERE__ ")");
+  DEBUG_MSG("type SimTK::DecorativeMeshFile (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:579:32
   auto t16 = types.add_type<SimTK::DecorativeMeshFile>("SimTK!DecorativeMeshFile", jlcxx::julia_base_type<SimTK::DecorativeGeometry>());
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for type SimTK::DecorativeTorus (" __HERE__ ")");
+  DEBUG_MSG("type SimTK::DecorativeTorus (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:612:32
   auto t17 = types.add_type<SimTK::DecorativeTorus>("SimTK!DecorativeTorus", jlcxx::julia_base_type<SimTK::DecorativeGeometry>());
   t17.template constructor<>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for type SimTK::DecorativeArrow (" __HERE__ ")");
+  DEBUG_MSG("type SimTK::DecorativeArrow (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:654:32
   auto t18 = types.add_type<SimTK::DecorativeArrow>("SimTK!DecorativeArrow", jlcxx::julia_base_type<SimTK::DecorativeGeometry>());
   t18.template constructor<>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for type SimTK::DecorativeCone (" __HERE__ ")");
+  DEBUG_MSG("type SimTK::DecorativeCone (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:696:32
   auto t19 = types.add_type<SimTK::DecorativeCone>("SimTK!DecorativeCone", jlcxx::julia_base_type<SimTK::DecorativeGeometry>());
   t19.template constructor<>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for type SimTK::Decorations (" __HERE__ ")");
+  DEBUG_MSG("type SimTK::Decorations (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:740:32
   auto t20 = types.add_type<SimTK::Decorations>("SimTK!Decorations", jlcxx::julia_base_type<SimTK::DecorativeGeometry>());
   t20.template constructor<>();
+  CLEAR_DEBUG_MSG();
 
   /**********************************************************************/
   /* Wrappers for the methods of class SimTK::PolygonalMesh
    */
 
-  DEBUG_MSG("Adding wrapper for SimTK::PolygonalMesh SimTK::PolygonalMesh::createSphereMesh(SimTK::Real, int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::PolygonalMesh SimTK::PolygonalMesh::createSphereMesh(SimTK::Real, int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::PolygonalMesh SimTK::PolygonalMesh::createSphereMesh(SimTK::Real, int)
   // defined in SimTKcommon/internal/PolygonalMesh.h:87:26
   types.method("SimTK!PolygonalMesh!createSphereMesh", static_cast<SimTK::PolygonalMesh (*)(SimTK::Real, int) >(&SimTK::PolygonalMesh::createSphereMesh));
   t1.method("SimTK!PolygonalMesh!createSphereMesh", [](SimTK::Real arg0) -> SimTK::PolygonalMesh { return SimTK::PolygonalMesh::createSphereMesh(arg0); });
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::PolygonalMesh::clear() (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::PolygonalMesh::clear() (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::PolygonalMesh::clear()
   // defined in SimTKcommon/internal/PolygonalMesh.h:160:10
   t1.method("clear", static_cast<void (SimTK::PolygonalMesh::*)() >(&SimTK::PolygonalMesh::clear));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for int SimTK::PolygonalMesh::getNumFaces() (" __HERE__ ")");
+  DEBUG_MSG("int SimTK::PolygonalMesh::getNumFaces() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::PolygonalMesh::getNumFaces()
   // defined in SimTKcommon/internal/PolygonalMesh.h:163:9
   t1.method("getNumFaces", static_cast<int (SimTK::PolygonalMesh::*)()  const>(&SimTK::PolygonalMesh::getNumFaces));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for int SimTK::PolygonalMesh::getNumVertices() (" __HERE__ ")");
+  DEBUG_MSG("int SimTK::PolygonalMesh::getNumVertices() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::PolygonalMesh::getNumVertices()
   // defined in SimTKcommon/internal/PolygonalMesh.h:165:9
   t1.method("getNumVertices", static_cast<int (SimTK::PolygonalMesh::*)()  const>(&SimTK::PolygonalMesh::getNumVertices));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for int SimTK::PolygonalMesh::getNumVerticesForFace(int) (" __HERE__ ")");
+  DEBUG_MSG("int SimTK::PolygonalMesh::getNumVerticesForFace(int) (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::PolygonalMesh::getNumVerticesForFace(int)
   // defined in SimTKcommon/internal/PolygonalMesh.h:174:9
   t1.method("getNumVerticesForFace", static_cast<int (SimTK::PolygonalMesh::*)(int)  const>(&SimTK::PolygonalMesh::getNumVerticesForFace));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for int SimTK::PolygonalMesh::getFaceVertex(int, int) (" __HERE__ ")");
+  DEBUG_MSG("int SimTK::PolygonalMesh::getFaceVertex(int, int) (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::PolygonalMesh::getFaceVertex(int, int)
   // defined in SimTKcommon/internal/PolygonalMesh.h:181:9
   t1.method("getFaceVertex", static_cast<int (SimTK::PolygonalMesh::*)(int, int)  const>(&SimTK::PolygonalMesh::getFaceVertex));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::PolygonalMesh & SimTK::PolygonalMesh::scaleMesh(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::PolygonalMesh & SimTK::PolygonalMesh::scaleMesh(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::PolygonalMesh & SimTK::PolygonalMesh::scaleMesh(SimTK::Real)
   // defined in SimTKcommon/internal/PolygonalMesh.h:206:20
   t1.method("scaleMesh", static_cast<SimTK::PolygonalMesh & (SimTK::PolygonalMesh::*)(SimTK::Real) >(&SimTK::PolygonalMesh::scaleMesh));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::PolygonalMesh::loadFile(const SimTK::String &) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::PolygonalMesh::loadFile(const SimTK::String &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::PolygonalMesh::loadFile(const SimTK::String &)
   // defined in SimTKcommon/internal/PolygonalMesh.h:227:10
   t1.method("loadFile", static_cast<void (SimTK::PolygonalMesh::*)(const SimTK::String &) >(&SimTK::PolygonalMesh::loadFile));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::PolygonalMesh::loadObjFile(const SimTK::String &) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::PolygonalMesh::loadObjFile(const SimTK::String &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::PolygonalMesh::loadObjFile(const SimTK::String &)
   // defined in SimTKcommon/internal/PolygonalMesh.h:233:10
   t1.method("loadObjFile", static_cast<void (SimTK::PolygonalMesh::*)(const SimTK::String &) >(&SimTK::PolygonalMesh::loadObjFile));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::PolygonalMesh::loadVtpFile(const SimTK::String &) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::PolygonalMesh::loadVtpFile(const SimTK::String &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::PolygonalMesh::loadVtpFile(const SimTK::String &)
   // defined in SimTKcommon/internal/PolygonalMesh.h:246:10
   t1.method("loadVtpFile", static_cast<void (SimTK::PolygonalMesh::*)(const SimTK::String &) >(&SimTK::PolygonalMesh::loadVtpFile));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::PolygonalMesh::loadStlFile(const SimTK::String &) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::PolygonalMesh::loadStlFile(const SimTK::String &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::PolygonalMesh::loadStlFile(const SimTK::String &)
   // defined in SimTKcommon/internal/PolygonalMesh.h:256:10
   t1.method("loadStlFile", static_cast<void (SimTK::PolygonalMesh::*)(const SimTK::String &) >(&SimTK::PolygonalMesh::loadStlFile));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::PolygonalMesh class method wrappers
    **********************************************************************/
@@ -172,119 +202,142 @@ void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& ar
    */
 
 
-  DEBUG_MSG("Adding wrapper for void SimTK::DecorativeGeometry::DecorativeGeometry(const SimTK::DecorativeGeometry &) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::DecorativeGeometry::DecorativeGeometry(const SimTK::DecorativeGeometry &) (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:93:1
   t3.constructor<const SimTK::DecorativeGeometry &>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::operator=(const SimTK::DecorativeGeometry &) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::operator=(const SimTK::DecorativeGeometry &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::operator=(const SimTK::DecorativeGeometry &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:96:21
   t3.method("assign", static_cast<SimTK::DecorativeGeometry & (SimTK::DecorativeGeometry::*)(const SimTK::DecorativeGeometry &) >(&SimTK::DecorativeGeometry::operator=));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::setBodyId(int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::setBodyId(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::setBodyId(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:118:21
   t3.method("setBodyId", static_cast<SimTK::DecorativeGeometry & (SimTK::DecorativeGeometry::*)(int) >(&SimTK::DecorativeGeometry::setBodyId));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::setIndexOnBody(int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::setIndexOnBody(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::setIndexOnBody(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:127:21
   t3.method("setIndexOnBody", static_cast<SimTK::DecorativeGeometry & (SimTK::DecorativeGeometry::*)(int) >(&SimTK::DecorativeGeometry::setIndexOnBody));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::setUserRef(void *) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::setUserRef(void *) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::setUserRef(void *)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:142:21
   t3.method("setUserRef", static_cast<SimTK::DecorativeGeometry & (SimTK::DecorativeGeometry::*)(void *) >(&SimTK::DecorativeGeometry::setUserRef));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::setResolution(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::setResolution(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::setResolution(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:159:21
   t3.method("setResolution", static_cast<SimTK::DecorativeGeometry & (SimTK::DecorativeGeometry::*)(SimTK::Real) >(&SimTK::DecorativeGeometry::setResolution));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::setScale(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::setScale(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::setScale(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:171:21
   t3.method("setScale", static_cast<SimTK::DecorativeGeometry & (SimTK::DecorativeGeometry::*)(SimTK::Real) >(&SimTK::DecorativeGeometry::setScale));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for int SimTK::DecorativeGeometry::getBodyId() (" __HERE__ ")");
+  DEBUG_MSG("int SimTK::DecorativeGeometry::getBodyId() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::DecorativeGeometry::getBodyId()
   // defined in SimTKcommon/internal/DecorativeGeometry.h:178:5
   t3.method("getBodyId", static_cast<int (SimTK::DecorativeGeometry::*)()  const>(&SimTK::DecorativeGeometry::getBodyId));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for int SimTK::DecorativeGeometry::getIndexOnBody() (" __HERE__ ")");
+  DEBUG_MSG("int SimTK::DecorativeGeometry::getIndexOnBody() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::DecorativeGeometry::getIndexOnBody()
   // defined in SimTKcommon/internal/DecorativeGeometry.h:184:5
   t3.method("getIndexOnBody", static_cast<int (SimTK::DecorativeGeometry::*)()  const>(&SimTK::DecorativeGeometry::getIndexOnBody));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void * SimTK::DecorativeGeometry::getUserRef() (" __HERE__ ")");
+  DEBUG_MSG("void * SimTK::DecorativeGeometry::getUserRef() (" __HERE__ ")");
   // signature to use in the veto list: void * SimTK::DecorativeGeometry::getUserRef()
   // defined in SimTKcommon/internal/DecorativeGeometry.h:190:7
   t3.method("getUserRef", static_cast<void * (SimTK::DecorativeGeometry::*)()  const>(&SimTK::DecorativeGeometry::getUserRef));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::DecorativeGeometry::getResolution() (" __HERE__ ")");
+  DEBUG_MSG("SimTK::Real SimTK::DecorativeGeometry::getResolution() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::DecorativeGeometry::getResolution()
   // defined in SimTKcommon/internal/DecorativeGeometry.h:194:6
   t3.method("getResolution", static_cast<SimTK::Real (SimTK::DecorativeGeometry::*)()  const>(&SimTK::DecorativeGeometry::getResolution));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::setOpacity(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::setOpacity(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::setOpacity(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:216:21
   t3.method("setOpacity", static_cast<SimTK::DecorativeGeometry & (SimTK::DecorativeGeometry::*)(SimTK::Real) >(&SimTK::DecorativeGeometry::setOpacity));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::setLineThickness(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::setLineThickness(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::setLineThickness(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:222:21
   t3.method("setLineThickness", static_cast<SimTK::DecorativeGeometry & (SimTK::DecorativeGeometry::*)(SimTK::Real) >(&SimTK::DecorativeGeometry::setLineThickness));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::DecorativeGeometry::getOpacity() (" __HERE__ ")");
+  DEBUG_MSG("SimTK::Real SimTK::DecorativeGeometry::getOpacity() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::DecorativeGeometry::getOpacity()
   // defined in SimTKcommon/internal/DecorativeGeometry.h:228:6
   t3.method("getOpacity", static_cast<SimTK::Real (SimTK::DecorativeGeometry::*)()  const>(&SimTK::DecorativeGeometry::getOpacity));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::DecorativeGeometry::getLineThickness() (" __HERE__ ")");
+  DEBUG_MSG("SimTK::Real SimTK::DecorativeGeometry::getLineThickness() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::DecorativeGeometry::getLineThickness()
   // defined in SimTKcommon/internal/DecorativeGeometry.h:231:6
   t3.method("getLineThickness", static_cast<SimTK::Real (SimTK::DecorativeGeometry::*)()  const>(&SimTK::DecorativeGeometry::getLineThickness));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::setFaceCamera(int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::setFaceCamera(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::setFaceCamera(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:237:21
   t3.method("setFaceCamera", static_cast<SimTK::DecorativeGeometry & (SimTK::DecorativeGeometry::*)(int) >(&SimTK::DecorativeGeometry::setFaceCamera));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for int SimTK::DecorativeGeometry::getFaceCamera() (" __HERE__ ")");
+  DEBUG_MSG("int SimTK::DecorativeGeometry::getFaceCamera() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::DecorativeGeometry::getFaceCamera()
   // defined in SimTKcommon/internal/DecorativeGeometry.h:240:5
   t3.method("getFaceCamera", static_cast<int (SimTK::DecorativeGeometry::*)()  const>(&SimTK::DecorativeGeometry::getFaceCamera));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::setRepresentation(const SimTK::DecorativeGeometry::Representation &) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::setRepresentation(const SimTK::DecorativeGeometry::Representation &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::setRepresentation(const SimTK::DecorativeGeometry::Representation &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:245:21
   t3.method("setRepresentation", static_cast<SimTK::DecorativeGeometry & (SimTK::DecorativeGeometry::*)(const SimTK::DecorativeGeometry::Representation &) >(&SimTK::DecorativeGeometry::setRepresentation));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeGeometry::Representation SimTK::DecorativeGeometry::getRepresentation() (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeGeometry::Representation SimTK::DecorativeGeometry::getRepresentation() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeGeometry::Representation SimTK::DecorativeGeometry::getRepresentation()
   // defined in SimTKcommon/internal/DecorativeGeometry.h:248:16
   t3.method("getRepresentation", static_cast<SimTK::DecorativeGeometry::Representation (SimTK::DecorativeGeometry::*)()  const>(&SimTK::DecorativeGeometry::getRepresentation));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::DecorativeGeometry::implementGeometry(SimTK::DecorativeGeometryImplementation &) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::DecorativeGeometry::implementGeometry(SimTK::DecorativeGeometryImplementation &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::DecorativeGeometry::implementGeometry(SimTK::DecorativeGeometryImplementation &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:250:6
   t3.method("implementGeometry", static_cast<void (SimTK::DecorativeGeometry::*)(SimTK::DecorativeGeometryImplementation &)  const>(&SimTK::DecorativeGeometry::implementGeometry));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for bool SimTK::DecorativeGeometry::isOwnerHandle() (" __HERE__ ")");
+  DEBUG_MSG("bool SimTK::DecorativeGeometry::isOwnerHandle() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::DecorativeGeometry::isOwnerHandle()
   // defined in SimTKcommon/internal/DecorativeGeometry.h:254:6
   t3.method("isOwnerHandle", static_cast<bool (SimTK::DecorativeGeometry::*)()  const>(&SimTK::DecorativeGeometry::isOwnerHandle));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for bool SimTK::DecorativeGeometry::isEmptyHandle() (" __HERE__ ")");
+  DEBUG_MSG("bool SimTK::DecorativeGeometry::isEmptyHandle() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::DecorativeGeometry::isEmptyHandle()
   // defined in SimTKcommon/internal/DecorativeGeometry.h:255:6
   t3.method("isEmptyHandle", static_cast<bool (SimTK::DecorativeGeometry::*)()  const>(&SimTK::DecorativeGeometry::isEmptyHandle));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for bool SimTK::DecorativeGeometry::hasRep() (" __HERE__ ")");
+  DEBUG_MSG("bool SimTK::DecorativeGeometry::hasRep() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::DecorativeGeometry::hasRep()
   // defined in SimTKcommon/internal/DecorativeGeometry.h:257:6
   t3.method("hasRep", static_cast<bool (SimTK::DecorativeGeometry::*)()  const>(&SimTK::DecorativeGeometry::hasRep));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::DecorativeGeometry class method wrappers
    **********************************************************************/
@@ -294,75 +347,89 @@ void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& ar
   /* Wrappers for the methods of class SimTK::DecorativeGeometryImplementation
    */
 
-  DEBUG_MSG("Adding wrapper for void SimTK::DecorativeGeometryImplementation::implementPointGeometry(const SimTK::DecorativePoint &) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::DecorativeGeometryImplementation::implementPointGeometry(const SimTK::DecorativePoint &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::DecorativeGeometryImplementation::implementPointGeometry(const SimTK::DecorativePoint &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:785:18
   t5.method("implementPointGeometry", static_cast<void (SimTK::DecorativeGeometryImplementation::*)(const SimTK::DecorativePoint &) >(&SimTK::DecorativeGeometryImplementation::implementPointGeometry));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::DecorativeGeometryImplementation::implementLineGeometry(const SimTK::DecorativeLine &) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::DecorativeGeometryImplementation::implementLineGeometry(const SimTK::DecorativeLine &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::DecorativeGeometryImplementation::implementLineGeometry(const SimTK::DecorativeLine &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:786:18
   t5.method("implementLineGeometry", static_cast<void (SimTK::DecorativeGeometryImplementation::*)(const SimTK::DecorativeLine &) >(&SimTK::DecorativeGeometryImplementation::implementLineGeometry));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::DecorativeGeometryImplementation::implementBrickGeometry(const SimTK::DecorativeBrick &) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::DecorativeGeometryImplementation::implementBrickGeometry(const SimTK::DecorativeBrick &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::DecorativeGeometryImplementation::implementBrickGeometry(const SimTK::DecorativeBrick &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:787:18
   t5.method("implementBrickGeometry", static_cast<void (SimTK::DecorativeGeometryImplementation::*)(const SimTK::DecorativeBrick &) >(&SimTK::DecorativeGeometryImplementation::implementBrickGeometry));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::DecorativeGeometryImplementation::implementCylinderGeometry(const SimTK::DecorativeCylinder &) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::DecorativeGeometryImplementation::implementCylinderGeometry(const SimTK::DecorativeCylinder &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::DecorativeGeometryImplementation::implementCylinderGeometry(const SimTK::DecorativeCylinder &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:788:18
   t5.method("implementCylinderGeometry", static_cast<void (SimTK::DecorativeGeometryImplementation::*)(const SimTK::DecorativeCylinder &) >(&SimTK::DecorativeGeometryImplementation::implementCylinderGeometry));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::DecorativeGeometryImplementation::implementCircleGeometry(const SimTK::DecorativeCircle &) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::DecorativeGeometryImplementation::implementCircleGeometry(const SimTK::DecorativeCircle &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::DecorativeGeometryImplementation::implementCircleGeometry(const SimTK::DecorativeCircle &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:789:18
   t5.method("implementCircleGeometry", static_cast<void (SimTK::DecorativeGeometryImplementation::*)(const SimTK::DecorativeCircle &) >(&SimTK::DecorativeGeometryImplementation::implementCircleGeometry));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::DecorativeGeometryImplementation::implementSphereGeometry(const SimTK::DecorativeSphere &) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::DecorativeGeometryImplementation::implementSphereGeometry(const SimTK::DecorativeSphere &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::DecorativeGeometryImplementation::implementSphereGeometry(const SimTK::DecorativeSphere &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:790:18
   t5.method("implementSphereGeometry", static_cast<void (SimTK::DecorativeGeometryImplementation::*)(const SimTK::DecorativeSphere &) >(&SimTK::DecorativeGeometryImplementation::implementSphereGeometry));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::DecorativeGeometryImplementation::implementEllipsoidGeometry(const SimTK::DecorativeEllipsoid &) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::DecorativeGeometryImplementation::implementEllipsoidGeometry(const SimTK::DecorativeEllipsoid &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::DecorativeGeometryImplementation::implementEllipsoidGeometry(const SimTK::DecorativeEllipsoid &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:791:18
   t5.method("implementEllipsoidGeometry", static_cast<void (SimTK::DecorativeGeometryImplementation::*)(const SimTK::DecorativeEllipsoid &) >(&SimTK::DecorativeGeometryImplementation::implementEllipsoidGeometry));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::DecorativeGeometryImplementation::implementFrameGeometry(const SimTK::DecorativeFrame &) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::DecorativeGeometryImplementation::implementFrameGeometry(const SimTK::DecorativeFrame &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::DecorativeGeometryImplementation::implementFrameGeometry(const SimTK::DecorativeFrame &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:792:18
   t5.method("implementFrameGeometry", static_cast<void (SimTK::DecorativeGeometryImplementation::*)(const SimTK::DecorativeFrame &) >(&SimTK::DecorativeGeometryImplementation::implementFrameGeometry));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::DecorativeGeometryImplementation::implementTextGeometry(const SimTK::DecorativeText &) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::DecorativeGeometryImplementation::implementTextGeometry(const SimTK::DecorativeText &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::DecorativeGeometryImplementation::implementTextGeometry(const SimTK::DecorativeText &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:793:18
   t5.method("implementTextGeometry", static_cast<void (SimTK::DecorativeGeometryImplementation::*)(const SimTK::DecorativeText &) >(&SimTK::DecorativeGeometryImplementation::implementTextGeometry));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::DecorativeGeometryImplementation::implementMeshGeometry(const SimTK::DecorativeMesh &) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::DecorativeGeometryImplementation::implementMeshGeometry(const SimTK::DecorativeMesh &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::DecorativeGeometryImplementation::implementMeshGeometry(const SimTK::DecorativeMesh &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:794:18
   t5.method("implementMeshGeometry", static_cast<void (SimTK::DecorativeGeometryImplementation::*)(const SimTK::DecorativeMesh &) >(&SimTK::DecorativeGeometryImplementation::implementMeshGeometry));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::DecorativeGeometryImplementation::implementMeshFileGeometry(const SimTK::DecorativeMeshFile &) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::DecorativeGeometryImplementation::implementMeshFileGeometry(const SimTK::DecorativeMeshFile &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::DecorativeGeometryImplementation::implementMeshFileGeometry(const SimTK::DecorativeMeshFile &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:795:18
   t5.method("implementMeshFileGeometry", static_cast<void (SimTK::DecorativeGeometryImplementation::*)(const SimTK::DecorativeMeshFile &) >(&SimTK::DecorativeGeometryImplementation::implementMeshFileGeometry));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::DecorativeGeometryImplementation::implementTorusGeometry(const SimTK::DecorativeTorus &) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::DecorativeGeometryImplementation::implementTorusGeometry(const SimTK::DecorativeTorus &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::DecorativeGeometryImplementation::implementTorusGeometry(const SimTK::DecorativeTorus &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:796:18
   t5.method("implementTorusGeometry", static_cast<void (SimTK::DecorativeGeometryImplementation::*)(const SimTK::DecorativeTorus &) >(&SimTK::DecorativeGeometryImplementation::implementTorusGeometry));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::DecorativeGeometryImplementation::implementArrowGeometry(const SimTK::DecorativeArrow &) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::DecorativeGeometryImplementation::implementArrowGeometry(const SimTK::DecorativeArrow &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::DecorativeGeometryImplementation::implementArrowGeometry(const SimTK::DecorativeArrow &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:797:18
   t5.method("implementArrowGeometry", static_cast<void (SimTK::DecorativeGeometryImplementation::*)(const SimTK::DecorativeArrow &) >(&SimTK::DecorativeGeometryImplementation::implementArrowGeometry));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::DecorativeGeometryImplementation::implementConeGeometry(const SimTK::DecorativeCone &) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::DecorativeGeometryImplementation::implementConeGeometry(const SimTK::DecorativeCone &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::DecorativeGeometryImplementation::implementConeGeometry(const SimTK::DecorativeCone &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:798:18
   t5.method("implementConeGeometry", static_cast<void (SimTK::DecorativeGeometryImplementation::*)(const SimTK::DecorativeCone &) >(&SimTK::DecorativeGeometryImplementation::implementConeGeometry));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::DecorativeGeometryImplementation class method wrappers
    **********************************************************************/
@@ -372,40 +439,47 @@ void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& ar
   /* Wrappers for the methods of class SimTK::DecorativePoint
    */
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativePoint & SimTK::DecorativePoint::setBodyId(int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativePoint & SimTK::DecorativePoint::setBodyId(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativePoint & SimTK::DecorativePoint::setBodyId(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:279:22
   t6.method("setBodyId", static_cast<SimTK::DecorativePoint & (SimTK::DecorativePoint::*)(int) >(&SimTK::DecorativePoint::setBodyId));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativePoint & SimTK::DecorativePoint::setIndexOnBody(int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativePoint & SimTK::DecorativePoint::setIndexOnBody(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativePoint & SimTK::DecorativePoint::setIndexOnBody(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:280:22
   t6.method("setIndexOnBody", static_cast<SimTK::DecorativePoint & (SimTK::DecorativePoint::*)(int) >(&SimTK::DecorativePoint::setIndexOnBody));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativePoint & SimTK::DecorativePoint::setUserRef(void *) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativePoint & SimTK::DecorativePoint::setUserRef(void *) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativePoint & SimTK::DecorativePoint::setUserRef(void *)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:281:22
   t6.method("setUserRef", static_cast<SimTK::DecorativePoint & (SimTK::DecorativePoint::*)(void *) >(&SimTK::DecorativePoint::setUserRef));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativePoint & SimTK::DecorativePoint::setResolution(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativePoint & SimTK::DecorativePoint::setResolution(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativePoint & SimTK::DecorativePoint::setResolution(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:283:22
   t6.method("setResolution", static_cast<SimTK::DecorativePoint & (SimTK::DecorativePoint::*)(SimTK::Real) >(&SimTK::DecorativePoint::setResolution));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativePoint & SimTK::DecorativePoint::setOpacity(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativePoint & SimTK::DecorativePoint::setOpacity(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativePoint & SimTK::DecorativePoint::setOpacity(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:286:22
   t6.method("setOpacity", static_cast<SimTK::DecorativePoint & (SimTK::DecorativePoint::*)(SimTK::Real) >(&SimTK::DecorativePoint::setOpacity));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativePoint & SimTK::DecorativePoint::setLineThickness(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativePoint & SimTK::DecorativePoint::setLineThickness(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativePoint & SimTK::DecorativePoint::setLineThickness(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:287:22
   t6.method("setLineThickness", static_cast<SimTK::DecorativePoint & (SimTK::DecorativePoint::*)(SimTK::Real) >(&SimTK::DecorativePoint::setLineThickness));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativePoint & SimTK::DecorativePoint::setRepresentation(const SimTK::DecorativeGeometry::Representation &) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativePoint & SimTK::DecorativePoint::setRepresentation(const SimTK::DecorativeGeometry::Representation &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativePoint & SimTK::DecorativePoint::setRepresentation(const SimTK::DecorativeGeometry::Representation &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:288:22
   t6.method("setRepresentation", static_cast<SimTK::DecorativePoint & (SimTK::DecorativePoint::*)(const SimTK::DecorativeGeometry::Representation &) >(&SimTK::DecorativePoint::setRepresentation));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::DecorativePoint class method wrappers
    **********************************************************************/
@@ -415,40 +489,47 @@ void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& ar
   /* Wrappers for the methods of class SimTK::DecorativeLine
    */
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeLine & SimTK::DecorativeLine::setBodyId(int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeLine & SimTK::DecorativeLine::setBodyId(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeLine & SimTK::DecorativeLine::setBodyId(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:316:21
   t7.method("setBodyId", static_cast<SimTK::DecorativeLine & (SimTK::DecorativeLine::*)(int) >(&SimTK::DecorativeLine::setBodyId));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeLine & SimTK::DecorativeLine::setIndexOnBody(int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeLine & SimTK::DecorativeLine::setIndexOnBody(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeLine & SimTK::DecorativeLine::setIndexOnBody(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:317:21
   t7.method("setIndexOnBody", static_cast<SimTK::DecorativeLine & (SimTK::DecorativeLine::*)(int) >(&SimTK::DecorativeLine::setIndexOnBody));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeLine & SimTK::DecorativeLine::setUserRef(void *) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeLine & SimTK::DecorativeLine::setUserRef(void *) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeLine & SimTK::DecorativeLine::setUserRef(void *)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:318:21
   t7.method("setUserRef", static_cast<SimTK::DecorativeLine & (SimTK::DecorativeLine::*)(void *) >(&SimTK::DecorativeLine::setUserRef));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeLine & SimTK::DecorativeLine::setResolution(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeLine & SimTK::DecorativeLine::setResolution(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeLine & SimTK::DecorativeLine::setResolution(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:320:21
   t7.method("setResolution", static_cast<SimTK::DecorativeLine & (SimTK::DecorativeLine::*)(SimTK::Real) >(&SimTK::DecorativeLine::setResolution));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeLine & SimTK::DecorativeLine::setOpacity(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeLine & SimTK::DecorativeLine::setOpacity(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeLine & SimTK::DecorativeLine::setOpacity(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:323:21
   t7.method("setOpacity", static_cast<SimTK::DecorativeLine & (SimTK::DecorativeLine::*)(SimTK::Real) >(&SimTK::DecorativeLine::setOpacity));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeLine & SimTK::DecorativeLine::setLineThickness(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeLine & SimTK::DecorativeLine::setLineThickness(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeLine & SimTK::DecorativeLine::setLineThickness(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:324:21
   t7.method("setLineThickness", static_cast<SimTK::DecorativeLine & (SimTK::DecorativeLine::*)(SimTK::Real) >(&SimTK::DecorativeLine::setLineThickness));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeLine & SimTK::DecorativeLine::setRepresentation(const SimTK::DecorativeGeometry::Representation &) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeLine & SimTK::DecorativeLine::setRepresentation(const SimTK::DecorativeGeometry::Representation &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeLine & SimTK::DecorativeLine::setRepresentation(const SimTK::DecorativeGeometry::Representation &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:325:21
   t7.method("setRepresentation", static_cast<SimTK::DecorativeLine & (SimTK::DecorativeLine::*)(const SimTK::DecorativeGeometry::Representation &) >(&SimTK::DecorativeLine::setRepresentation));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::DecorativeLine class method wrappers
    **********************************************************************/
@@ -459,54 +540,64 @@ void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& ar
    */
 
 
-  DEBUG_MSG("Adding wrapper for void SimTK::DecorativeCircle::DecorativeCircle(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::DecorativeCircle::DecorativeCircle(SimTK::Real) (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:341:14
   t8.constructor<SimTK::Real>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeCircle & SimTK::DecorativeCircle::setRadius(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeCircle & SimTK::DecorativeCircle::setRadius(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeCircle & SimTK::DecorativeCircle::setRadius(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:343:23
   t8.method("setRadius", static_cast<SimTK::DecorativeCircle & (SimTK::DecorativeCircle::*)(SimTK::Real) >(&SimTK::DecorativeCircle::setRadius));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::DecorativeCircle::getRadius() (" __HERE__ ")");
+  DEBUG_MSG("SimTK::Real SimTK::DecorativeCircle::getRadius() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::DecorativeCircle::getRadius()
   // defined in SimTKcommon/internal/DecorativeGeometry.h:344:10
   t8.method("getRadius", static_cast<SimTK::Real (SimTK::DecorativeCircle::*)()  const>(&SimTK::DecorativeCircle::getRadius));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeCircle & SimTK::DecorativeCircle::setBodyId(int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeCircle & SimTK::DecorativeCircle::setBodyId(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeCircle & SimTK::DecorativeCircle::setBodyId(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:347:23
   t8.method("setBodyId", static_cast<SimTK::DecorativeCircle & (SimTK::DecorativeCircle::*)(int) >(&SimTK::DecorativeCircle::setBodyId));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeCircle & SimTK::DecorativeCircle::setIndexOnBody(int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeCircle & SimTK::DecorativeCircle::setIndexOnBody(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeCircle & SimTK::DecorativeCircle::setIndexOnBody(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:348:23
   t8.method("setIndexOnBody", static_cast<SimTK::DecorativeCircle & (SimTK::DecorativeCircle::*)(int) >(&SimTK::DecorativeCircle::setIndexOnBody));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeCircle & SimTK::DecorativeCircle::setUserRef(void *) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeCircle & SimTK::DecorativeCircle::setUserRef(void *) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeCircle & SimTK::DecorativeCircle::setUserRef(void *)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:349:23
   t8.method("setUserRef", static_cast<SimTK::DecorativeCircle & (SimTK::DecorativeCircle::*)(void *) >(&SimTK::DecorativeCircle::setUserRef));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeCircle & SimTK::DecorativeCircle::setResolution(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeCircle & SimTK::DecorativeCircle::setResolution(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeCircle & SimTK::DecorativeCircle::setResolution(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:351:23
   t8.method("setResolution", static_cast<SimTK::DecorativeCircle & (SimTK::DecorativeCircle::*)(SimTK::Real) >(&SimTK::DecorativeCircle::setResolution));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeCircle & SimTK::DecorativeCircle::setOpacity(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeCircle & SimTK::DecorativeCircle::setOpacity(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeCircle & SimTK::DecorativeCircle::setOpacity(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:354:23
   t8.method("setOpacity", static_cast<SimTK::DecorativeCircle & (SimTK::DecorativeCircle::*)(SimTK::Real) >(&SimTK::DecorativeCircle::setOpacity));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeCircle & SimTK::DecorativeCircle::setLineThickness(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeCircle & SimTK::DecorativeCircle::setLineThickness(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeCircle & SimTK::DecorativeCircle::setLineThickness(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:355:23
   t8.method("setLineThickness", static_cast<SimTK::DecorativeCircle & (SimTK::DecorativeCircle::*)(SimTK::Real) >(&SimTK::DecorativeCircle::setLineThickness));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeCircle & SimTK::DecorativeCircle::setRepresentation(const SimTK::DecorativeGeometry::Representation &) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeCircle & SimTK::DecorativeCircle::setRepresentation(const SimTK::DecorativeGeometry::Representation &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeCircle & SimTK::DecorativeCircle::setRepresentation(const SimTK::DecorativeGeometry::Representation &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:356:23
   t8.method("setRepresentation", static_cast<SimTK::DecorativeCircle & (SimTK::DecorativeCircle::*)(const SimTK::DecorativeGeometry::Representation &) >(&SimTK::DecorativeCircle::setRepresentation));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::DecorativeCircle class method wrappers
    **********************************************************************/
@@ -517,54 +608,64 @@ void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& ar
    */
 
 
-  DEBUG_MSG("Adding wrapper for void SimTK::DecorativeSphere::DecorativeSphere(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::DecorativeSphere::DecorativeSphere(SimTK::Real) (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:369:14
   t9.constructor<SimTK::Real>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeSphere & SimTK::DecorativeSphere::setRadius(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeSphere & SimTK::DecorativeSphere::setRadius(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeSphere & SimTK::DecorativeSphere::setRadius(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:371:23
   t9.method("setRadius", static_cast<SimTK::DecorativeSphere & (SimTK::DecorativeSphere::*)(SimTK::Real) >(&SimTK::DecorativeSphere::setRadius));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::DecorativeSphere::getRadius() (" __HERE__ ")");
+  DEBUG_MSG("SimTK::Real SimTK::DecorativeSphere::getRadius() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::DecorativeSphere::getRadius()
   // defined in SimTKcommon/internal/DecorativeGeometry.h:372:10
   t9.method("getRadius", static_cast<SimTK::Real (SimTK::DecorativeSphere::*)()  const>(&SimTK::DecorativeSphere::getRadius));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeSphere & SimTK::DecorativeSphere::setBodyId(int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeSphere & SimTK::DecorativeSphere::setBodyId(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeSphere & SimTK::DecorativeSphere::setBodyId(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:375:23
   t9.method("setBodyId", static_cast<SimTK::DecorativeSphere & (SimTK::DecorativeSphere::*)(int) >(&SimTK::DecorativeSphere::setBodyId));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeSphere & SimTK::DecorativeSphere::setIndexOnBody(int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeSphere & SimTK::DecorativeSphere::setIndexOnBody(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeSphere & SimTK::DecorativeSphere::setIndexOnBody(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:376:23
   t9.method("setIndexOnBody", static_cast<SimTK::DecorativeSphere & (SimTK::DecorativeSphere::*)(int) >(&SimTK::DecorativeSphere::setIndexOnBody));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeSphere & SimTK::DecorativeSphere::setUserRef(void *) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeSphere & SimTK::DecorativeSphere::setUserRef(void *) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeSphere & SimTK::DecorativeSphere::setUserRef(void *)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:377:23
   t9.method("setUserRef", static_cast<SimTK::DecorativeSphere & (SimTK::DecorativeSphere::*)(void *) >(&SimTK::DecorativeSphere::setUserRef));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeSphere & SimTK::DecorativeSphere::setResolution(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeSphere & SimTK::DecorativeSphere::setResolution(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeSphere & SimTK::DecorativeSphere::setResolution(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:379:23
   t9.method("setResolution", static_cast<SimTK::DecorativeSphere & (SimTK::DecorativeSphere::*)(SimTK::Real) >(&SimTK::DecorativeSphere::setResolution));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeSphere & SimTK::DecorativeSphere::setOpacity(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeSphere & SimTK::DecorativeSphere::setOpacity(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeSphere & SimTK::DecorativeSphere::setOpacity(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:382:23
   t9.method("setOpacity", static_cast<SimTK::DecorativeSphere & (SimTK::DecorativeSphere::*)(SimTK::Real) >(&SimTK::DecorativeSphere::setOpacity));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeSphere & SimTK::DecorativeSphere::setLineThickness(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeSphere & SimTK::DecorativeSphere::setLineThickness(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeSphere & SimTK::DecorativeSphere::setLineThickness(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:383:23
   t9.method("setLineThickness", static_cast<SimTK::DecorativeSphere & (SimTK::DecorativeSphere::*)(SimTK::Real) >(&SimTK::DecorativeSphere::setLineThickness));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeSphere & SimTK::DecorativeSphere::setRepresentation(const SimTK::DecorativeGeometry::Representation &) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeSphere & SimTK::DecorativeSphere::setRepresentation(const SimTK::DecorativeGeometry::Representation &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeSphere & SimTK::DecorativeSphere::setRepresentation(const SimTK::DecorativeGeometry::Representation &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:384:23
   t9.method("setRepresentation", static_cast<SimTK::DecorativeSphere & (SimTK::DecorativeSphere::*)(const SimTK::DecorativeGeometry::Representation &) >(&SimTK::DecorativeSphere::setRepresentation));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::DecorativeSphere class method wrappers
    **********************************************************************/
@@ -574,40 +675,47 @@ void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& ar
   /* Wrappers for the methods of class SimTK::DecorativeEllipsoid
    */
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeEllipsoid & SimTK::DecorativeEllipsoid::setBodyId(int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeEllipsoid & SimTK::DecorativeEllipsoid::setBodyId(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeEllipsoid & SimTK::DecorativeEllipsoid::setBodyId(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:405:26
   t10.method("setBodyId", static_cast<SimTK::DecorativeEllipsoid & (SimTK::DecorativeEllipsoid::*)(int) >(&SimTK::DecorativeEllipsoid::setBodyId));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeEllipsoid & SimTK::DecorativeEllipsoid::setIndexOnBody(int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeEllipsoid & SimTK::DecorativeEllipsoid::setIndexOnBody(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeEllipsoid & SimTK::DecorativeEllipsoid::setIndexOnBody(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:406:26
   t10.method("setIndexOnBody", static_cast<SimTK::DecorativeEllipsoid & (SimTK::DecorativeEllipsoid::*)(int) >(&SimTK::DecorativeEllipsoid::setIndexOnBody));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeEllipsoid & SimTK::DecorativeEllipsoid::setUserRef(void *) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeEllipsoid & SimTK::DecorativeEllipsoid::setUserRef(void *) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeEllipsoid & SimTK::DecorativeEllipsoid::setUserRef(void *)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:407:26
   t10.method("setUserRef", static_cast<SimTK::DecorativeEllipsoid & (SimTK::DecorativeEllipsoid::*)(void *) >(&SimTK::DecorativeEllipsoid::setUserRef));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeEllipsoid & SimTK::DecorativeEllipsoid::setResolution(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeEllipsoid & SimTK::DecorativeEllipsoid::setResolution(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeEllipsoid & SimTK::DecorativeEllipsoid::setResolution(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:409:26
   t10.method("setResolution", static_cast<SimTK::DecorativeEllipsoid & (SimTK::DecorativeEllipsoid::*)(SimTK::Real) >(&SimTK::DecorativeEllipsoid::setResolution));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeEllipsoid & SimTK::DecorativeEllipsoid::setOpacity(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeEllipsoid & SimTK::DecorativeEllipsoid::setOpacity(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeEllipsoid & SimTK::DecorativeEllipsoid::setOpacity(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:412:26
   t10.method("setOpacity", static_cast<SimTK::DecorativeEllipsoid & (SimTK::DecorativeEllipsoid::*)(SimTK::Real) >(&SimTK::DecorativeEllipsoid::setOpacity));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeEllipsoid & SimTK::DecorativeEllipsoid::setLineThickness(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeEllipsoid & SimTK::DecorativeEllipsoid::setLineThickness(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeEllipsoid & SimTK::DecorativeEllipsoid::setLineThickness(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:413:26
   t10.method("setLineThickness", static_cast<SimTK::DecorativeEllipsoid & (SimTK::DecorativeEllipsoid::*)(SimTK::Real) >(&SimTK::DecorativeEllipsoid::setLineThickness));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeEllipsoid & SimTK::DecorativeEllipsoid::setRepresentation(const SimTK::DecorativeGeometry::Representation &) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeEllipsoid & SimTK::DecorativeEllipsoid::setRepresentation(const SimTK::DecorativeGeometry::Representation &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeEllipsoid & SimTK::DecorativeEllipsoid::setRepresentation(const SimTK::DecorativeGeometry::Representation &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:414:26
   t10.method("setRepresentation", static_cast<SimTK::DecorativeEllipsoid & (SimTK::DecorativeEllipsoid::*)(const SimTK::DecorativeGeometry::Representation &) >(&SimTK::DecorativeEllipsoid::setRepresentation));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::DecorativeEllipsoid class method wrappers
    **********************************************************************/
@@ -617,40 +725,47 @@ void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& ar
   /* Wrappers for the methods of class SimTK::DecorativeBrick
    */
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeBrick & SimTK::DecorativeBrick::setBodyId(int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeBrick & SimTK::DecorativeBrick::setBodyId(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeBrick & SimTK::DecorativeBrick::setBodyId(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:434:22
   t11.method("setBodyId", static_cast<SimTK::DecorativeBrick & (SimTK::DecorativeBrick::*)(int) >(&SimTK::DecorativeBrick::setBodyId));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeBrick & SimTK::DecorativeBrick::setIndexOnBody(int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeBrick & SimTK::DecorativeBrick::setIndexOnBody(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeBrick & SimTK::DecorativeBrick::setIndexOnBody(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:435:22
   t11.method("setIndexOnBody", static_cast<SimTK::DecorativeBrick & (SimTK::DecorativeBrick::*)(int) >(&SimTK::DecorativeBrick::setIndexOnBody));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeBrick & SimTK::DecorativeBrick::setUserRef(void *) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeBrick & SimTK::DecorativeBrick::setUserRef(void *) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeBrick & SimTK::DecorativeBrick::setUserRef(void *)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:436:22
   t11.method("setUserRef", static_cast<SimTK::DecorativeBrick & (SimTK::DecorativeBrick::*)(void *) >(&SimTK::DecorativeBrick::setUserRef));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeBrick & SimTK::DecorativeBrick::setResolution(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeBrick & SimTK::DecorativeBrick::setResolution(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeBrick & SimTK::DecorativeBrick::setResolution(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:438:22
   t11.method("setResolution", static_cast<SimTK::DecorativeBrick & (SimTK::DecorativeBrick::*)(SimTK::Real) >(&SimTK::DecorativeBrick::setResolution));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeBrick & SimTK::DecorativeBrick::setOpacity(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeBrick & SimTK::DecorativeBrick::setOpacity(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeBrick & SimTK::DecorativeBrick::setOpacity(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:441:22
   t11.method("setOpacity", static_cast<SimTK::DecorativeBrick & (SimTK::DecorativeBrick::*)(SimTK::Real) >(&SimTK::DecorativeBrick::setOpacity));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeBrick & SimTK::DecorativeBrick::setLineThickness(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeBrick & SimTK::DecorativeBrick::setLineThickness(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeBrick & SimTK::DecorativeBrick::setLineThickness(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:442:22
   t11.method("setLineThickness", static_cast<SimTK::DecorativeBrick & (SimTK::DecorativeBrick::*)(SimTK::Real) >(&SimTK::DecorativeBrick::setLineThickness));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeBrick & SimTK::DecorativeBrick::setRepresentation(const SimTK::DecorativeGeometry::Representation &) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeBrick & SimTK::DecorativeBrick::setRepresentation(const SimTK::DecorativeGeometry::Representation &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeBrick & SimTK::DecorativeBrick::setRepresentation(const SimTK::DecorativeGeometry::Representation &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:443:22
   t11.method("setRepresentation", static_cast<SimTK::DecorativeBrick & (SimTK::DecorativeBrick::*)(const SimTK::DecorativeGeometry::Representation &) >(&SimTK::DecorativeBrick::setRepresentation));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::DecorativeBrick class method wrappers
    **********************************************************************/
@@ -661,65 +776,77 @@ void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& ar
    */
 
 
-  DEBUG_MSG("Adding wrapper for void SimTK::DecorativeCylinder::DecorativeCylinder(SimTK::Real, SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::DecorativeCylinder::DecorativeCylinder(SimTK::Real, SimTK::Real) (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:457:14
   t12.constructor<SimTK::Real>();
   t12.constructor<SimTK::Real, SimTK::Real>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeCylinder & SimTK::DecorativeCylinder::setRadius(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeCylinder & SimTK::DecorativeCylinder::setRadius(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeCylinder & SimTK::DecorativeCylinder::setRadius(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:459:25
   t12.method("setRadius", static_cast<SimTK::DecorativeCylinder & (SimTK::DecorativeCylinder::*)(SimTK::Real) >(&SimTK::DecorativeCylinder::setRadius));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeCylinder & SimTK::DecorativeCylinder::setHalfHeight(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeCylinder & SimTK::DecorativeCylinder::setHalfHeight(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeCylinder & SimTK::DecorativeCylinder::setHalfHeight(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:460:25
   t12.method("setHalfHeight", static_cast<SimTK::DecorativeCylinder & (SimTK::DecorativeCylinder::*)(SimTK::Real) >(&SimTK::DecorativeCylinder::setHalfHeight));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::DecorativeCylinder::getRadius() (" __HERE__ ")");
+  DEBUG_MSG("SimTK::Real SimTK::DecorativeCylinder::getRadius() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::DecorativeCylinder::getRadius()
   // defined in SimTKcommon/internal/DecorativeGeometry.h:461:10
   t12.method("getRadius", static_cast<SimTK::Real (SimTK::DecorativeCylinder::*)()  const>(&SimTK::DecorativeCylinder::getRadius));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::DecorativeCylinder::getHalfHeight() (" __HERE__ ")");
+  DEBUG_MSG("SimTK::Real SimTK::DecorativeCylinder::getHalfHeight() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::DecorativeCylinder::getHalfHeight()
   // defined in SimTKcommon/internal/DecorativeGeometry.h:462:10
   t12.method("getHalfHeight", static_cast<SimTK::Real (SimTK::DecorativeCylinder::*)()  const>(&SimTK::DecorativeCylinder::getHalfHeight));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeCylinder & SimTK::DecorativeCylinder::setBodyId(int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeCylinder & SimTK::DecorativeCylinder::setBodyId(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeCylinder & SimTK::DecorativeCylinder::setBodyId(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:465:25
   t12.method("setBodyId", static_cast<SimTK::DecorativeCylinder & (SimTK::DecorativeCylinder::*)(int) >(&SimTK::DecorativeCylinder::setBodyId));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeCylinder & SimTK::DecorativeCylinder::setIndexOnBody(int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeCylinder & SimTK::DecorativeCylinder::setIndexOnBody(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeCylinder & SimTK::DecorativeCylinder::setIndexOnBody(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:466:25
   t12.method("setIndexOnBody", static_cast<SimTK::DecorativeCylinder & (SimTK::DecorativeCylinder::*)(int) >(&SimTK::DecorativeCylinder::setIndexOnBody));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeCylinder & SimTK::DecorativeCylinder::setUserRef(void *) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeCylinder & SimTK::DecorativeCylinder::setUserRef(void *) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeCylinder & SimTK::DecorativeCylinder::setUserRef(void *)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:467:25
   t12.method("setUserRef", static_cast<SimTK::DecorativeCylinder & (SimTK::DecorativeCylinder::*)(void *) >(&SimTK::DecorativeCylinder::setUserRef));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeCylinder & SimTK::DecorativeCylinder::setResolution(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeCylinder & SimTK::DecorativeCylinder::setResolution(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeCylinder & SimTK::DecorativeCylinder::setResolution(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:469:25
   t12.method("setResolution", static_cast<SimTK::DecorativeCylinder & (SimTK::DecorativeCylinder::*)(SimTK::Real) >(&SimTK::DecorativeCylinder::setResolution));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeCylinder & SimTK::DecorativeCylinder::setOpacity(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeCylinder & SimTK::DecorativeCylinder::setOpacity(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeCylinder & SimTK::DecorativeCylinder::setOpacity(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:472:25
   t12.method("setOpacity", static_cast<SimTK::DecorativeCylinder & (SimTK::DecorativeCylinder::*)(SimTK::Real) >(&SimTK::DecorativeCylinder::setOpacity));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeCylinder & SimTK::DecorativeCylinder::setLineThickness(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeCylinder & SimTK::DecorativeCylinder::setLineThickness(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeCylinder & SimTK::DecorativeCylinder::setLineThickness(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:473:25
   t12.method("setLineThickness", static_cast<SimTK::DecorativeCylinder & (SimTK::DecorativeCylinder::*)(SimTK::Real) >(&SimTK::DecorativeCylinder::setLineThickness));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeCylinder & SimTK::DecorativeCylinder::setRepresentation(const SimTK::DecorativeGeometry::Representation &) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeCylinder & SimTK::DecorativeCylinder::setRepresentation(const SimTK::DecorativeGeometry::Representation &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeCylinder & SimTK::DecorativeCylinder::setRepresentation(const SimTK::DecorativeGeometry::Representation &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:474:25
   t12.method("setRepresentation", static_cast<SimTK::DecorativeCylinder & (SimTK::DecorativeCylinder::*)(const SimTK::DecorativeGeometry::Representation &) >(&SimTK::DecorativeCylinder::setRepresentation));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::DecorativeCylinder class method wrappers
    **********************************************************************/
@@ -730,54 +857,64 @@ void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& ar
    */
 
 
-  DEBUG_MSG("Adding wrapper for void SimTK::DecorativeFrame::DecorativeFrame(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::DecorativeFrame::DecorativeFrame(SimTK::Real) (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:488:14
   t13.constructor<SimTK::Real>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeFrame & SimTK::DecorativeFrame::setAxisLength(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeFrame & SimTK::DecorativeFrame::setAxisLength(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeFrame & SimTK::DecorativeFrame::setAxisLength(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:490:22
   t13.method("setAxisLength", static_cast<SimTK::DecorativeFrame & (SimTK::DecorativeFrame::*)(SimTK::Real) >(&SimTK::DecorativeFrame::setAxisLength));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::DecorativeFrame::getAxisLength() (" __HERE__ ")");
+  DEBUG_MSG("SimTK::Real SimTK::DecorativeFrame::getAxisLength() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::DecorativeFrame::getAxisLength()
   // defined in SimTKcommon/internal/DecorativeGeometry.h:491:10
   t13.method("getAxisLength", static_cast<SimTK::Real (SimTK::DecorativeFrame::*)()  const>(&SimTK::DecorativeFrame::getAxisLength));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeFrame & SimTK::DecorativeFrame::setBodyId(int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeFrame & SimTK::DecorativeFrame::setBodyId(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeFrame & SimTK::DecorativeFrame::setBodyId(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:494:22
   t13.method("setBodyId", static_cast<SimTK::DecorativeFrame & (SimTK::DecorativeFrame::*)(int) >(&SimTK::DecorativeFrame::setBodyId));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeFrame & SimTK::DecorativeFrame::setIndexOnBody(int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeFrame & SimTK::DecorativeFrame::setIndexOnBody(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeFrame & SimTK::DecorativeFrame::setIndexOnBody(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:495:22
   t13.method("setIndexOnBody", static_cast<SimTK::DecorativeFrame & (SimTK::DecorativeFrame::*)(int) >(&SimTK::DecorativeFrame::setIndexOnBody));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeFrame & SimTK::DecorativeFrame::setUserRef(void *) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeFrame & SimTK::DecorativeFrame::setUserRef(void *) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeFrame & SimTK::DecorativeFrame::setUserRef(void *)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:496:22
   t13.method("setUserRef", static_cast<SimTK::DecorativeFrame & (SimTK::DecorativeFrame::*)(void *) >(&SimTK::DecorativeFrame::setUserRef));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeFrame & SimTK::DecorativeFrame::setResolution(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeFrame & SimTK::DecorativeFrame::setResolution(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeFrame & SimTK::DecorativeFrame::setResolution(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:498:22
   t13.method("setResolution", static_cast<SimTK::DecorativeFrame & (SimTK::DecorativeFrame::*)(SimTK::Real) >(&SimTK::DecorativeFrame::setResolution));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeFrame & SimTK::DecorativeFrame::setOpacity(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeFrame & SimTK::DecorativeFrame::setOpacity(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeFrame & SimTK::DecorativeFrame::setOpacity(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:501:22
   t13.method("setOpacity", static_cast<SimTK::DecorativeFrame & (SimTK::DecorativeFrame::*)(SimTK::Real) >(&SimTK::DecorativeFrame::setOpacity));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeFrame & SimTK::DecorativeFrame::setLineThickness(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeFrame & SimTK::DecorativeFrame::setLineThickness(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeFrame & SimTK::DecorativeFrame::setLineThickness(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:502:22
   t13.method("setLineThickness", static_cast<SimTK::DecorativeFrame & (SimTK::DecorativeFrame::*)(SimTK::Real) >(&SimTK::DecorativeFrame::setLineThickness));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeFrame & SimTK::DecorativeFrame::setRepresentation(const SimTK::DecorativeGeometry::Representation &) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeFrame & SimTK::DecorativeFrame::setRepresentation(const SimTK::DecorativeGeometry::Representation &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeFrame & SimTK::DecorativeFrame::setRepresentation(const SimTK::DecorativeGeometry::Representation &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:503:22
   t13.method("setRepresentation", static_cast<SimTK::DecorativeFrame & (SimTK::DecorativeFrame::*)(const SimTK::DecorativeGeometry::Representation &) >(&SimTK::DecorativeFrame::setRepresentation));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::DecorativeFrame class method wrappers
    **********************************************************************/
@@ -788,69 +925,82 @@ void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& ar
    */
 
 
-  DEBUG_MSG("Adding wrapper for void SimTK::DecorativeText::DecorativeText(const std::string &) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::DecorativeText::DecorativeText(const std::string &) (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:516:14
   t14.constructor<const std::string &>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeText & SimTK::DecorativeText::setText(const std::string &) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeText & SimTK::DecorativeText::setText(const std::string &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeText & SimTK::DecorativeText::setText(const std::string &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:518:21
   t14.method("setText", static_cast<SimTK::DecorativeText & (SimTK::DecorativeText::*)(const std::string &) >(&SimTK::DecorativeText::setText));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for const std::string & SimTK::DecorativeText::getText() (" __HERE__ ")");
+  DEBUG_MSG("const std::string & SimTK::DecorativeText::getText() (" __HERE__ ")");
   // signature to use in the veto list: const std::string & SimTK::DecorativeText::getText()
   // defined in SimTKcommon/internal/DecorativeGeometry.h:519:24
   t14.method("getText", static_cast<const std::string & (SimTK::DecorativeText::*)()  const>(&SimTK::DecorativeText::getText));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeText & SimTK::DecorativeText::setIsScreenText(bool) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeText & SimTK::DecorativeText::setIsScreenText(bool) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeText & SimTK::DecorativeText::setIsScreenText(bool)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:523:21
   t14.method("setIsScreenText", static_cast<SimTK::DecorativeText & (SimTK::DecorativeText::*)(bool) >(&SimTK::DecorativeText::setIsScreenText));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for bool SimTK::DecorativeText::getIsScreenText() (" __HERE__ ")");
+  DEBUG_MSG("bool SimTK::DecorativeText::getIsScreenText() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::DecorativeText::getIsScreenText()
   // defined in SimTKcommon/internal/DecorativeGeometry.h:524:10
   t14.method("getIsScreenText", static_cast<bool (SimTK::DecorativeText::*)()  const>(&SimTK::DecorativeText::getIsScreenText));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeText & SimTK::DecorativeText::setBodyId(int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeText & SimTK::DecorativeText::setBodyId(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeText & SimTK::DecorativeText::setBodyId(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:527:21
   t14.method("setBodyId", static_cast<SimTK::DecorativeText & (SimTK::DecorativeText::*)(int) >(&SimTK::DecorativeText::setBodyId));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeText & SimTK::DecorativeText::setIndexOnBody(int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeText & SimTK::DecorativeText::setIndexOnBody(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeText & SimTK::DecorativeText::setIndexOnBody(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:528:21
   t14.method("setIndexOnBody", static_cast<SimTK::DecorativeText & (SimTK::DecorativeText::*)(int) >(&SimTK::DecorativeText::setIndexOnBody));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeText & SimTK::DecorativeText::setUserRef(void *) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeText & SimTK::DecorativeText::setUserRef(void *) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeText & SimTK::DecorativeText::setUserRef(void *)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:529:21
   t14.method("setUserRef", static_cast<SimTK::DecorativeText & (SimTK::DecorativeText::*)(void *) >(&SimTK::DecorativeText::setUserRef));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeText & SimTK::DecorativeText::setResolution(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeText & SimTK::DecorativeText::setResolution(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeText & SimTK::DecorativeText::setResolution(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:531:21
   t14.method("setResolution", static_cast<SimTK::DecorativeText & (SimTK::DecorativeText::*)(SimTK::Real) >(&SimTK::DecorativeText::setResolution));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeText & SimTK::DecorativeText::setOpacity(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeText & SimTK::DecorativeText::setOpacity(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeText & SimTK::DecorativeText::setOpacity(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:534:21
   t14.method("setOpacity", static_cast<SimTK::DecorativeText & (SimTK::DecorativeText::*)(SimTK::Real) >(&SimTK::DecorativeText::setOpacity));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeText & SimTK::DecorativeText::setLineThickness(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeText & SimTK::DecorativeText::setLineThickness(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeText & SimTK::DecorativeText::setLineThickness(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:535:21
   t14.method("setLineThickness", static_cast<SimTK::DecorativeText & (SimTK::DecorativeText::*)(SimTK::Real) >(&SimTK::DecorativeText::setLineThickness));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeText & SimTK::DecorativeText::setFaceCamera(int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeText & SimTK::DecorativeText::setFaceCamera(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeText & SimTK::DecorativeText::setFaceCamera(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:536:21
   t14.method("setFaceCamera", static_cast<SimTK::DecorativeText & (SimTK::DecorativeText::*)(int) >(&SimTK::DecorativeText::setFaceCamera));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeText & SimTK::DecorativeText::setRepresentation(const SimTK::DecorativeGeometry::Representation &) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeText & SimTK::DecorativeText::setRepresentation(const SimTK::DecorativeGeometry::Representation &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeText & SimTK::DecorativeText::setRepresentation(const SimTK::DecorativeGeometry::Representation &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:537:21
   t14.method("setRepresentation", static_cast<SimTK::DecorativeText & (SimTK::DecorativeText::*)(const SimTK::DecorativeGeometry::Representation &) >(&SimTK::DecorativeText::setRepresentation));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::DecorativeText class method wrappers
    **********************************************************************/
@@ -861,49 +1011,58 @@ void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& ar
    */
 
 
-  DEBUG_MSG("Adding wrapper for void SimTK::DecorativeMesh::DecorativeMesh(const SimTK::PolygonalMesh &) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::DecorativeMesh::DecorativeMesh(const SimTK::PolygonalMesh &) (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:551:14
   t15.constructor<const SimTK::PolygonalMesh &>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for const SimTK::PolygonalMesh & SimTK::DecorativeMesh::getMesh() (" __HERE__ ")");
+  DEBUG_MSG("const SimTK::PolygonalMesh & SimTK::DecorativeMesh::getMesh() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::PolygonalMesh & SimTK::DecorativeMesh::getMesh()
   // defined in SimTKcommon/internal/DecorativeGeometry.h:552:26
   t15.method("getMesh", static_cast<const SimTK::PolygonalMesh & (SimTK::DecorativeMesh::*)()  const>(&SimTK::DecorativeMesh::getMesh));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeMesh & SimTK::DecorativeMesh::setBodyId(int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeMesh & SimTK::DecorativeMesh::setBodyId(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeMesh & SimTK::DecorativeMesh::setBodyId(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:555:21
   t15.method("setBodyId", static_cast<SimTK::DecorativeMesh & (SimTK::DecorativeMesh::*)(int) >(&SimTK::DecorativeMesh::setBodyId));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeMesh & SimTK::DecorativeMesh::setIndexOnBody(int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeMesh & SimTK::DecorativeMesh::setIndexOnBody(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeMesh & SimTK::DecorativeMesh::setIndexOnBody(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:556:21
   t15.method("setIndexOnBody", static_cast<SimTK::DecorativeMesh & (SimTK::DecorativeMesh::*)(int) >(&SimTK::DecorativeMesh::setIndexOnBody));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeMesh & SimTK::DecorativeMesh::setUserRef(void *) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeMesh & SimTK::DecorativeMesh::setUserRef(void *) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeMesh & SimTK::DecorativeMesh::setUserRef(void *)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:557:21
   t15.method("setUserRef", static_cast<SimTK::DecorativeMesh & (SimTK::DecorativeMesh::*)(void *) >(&SimTK::DecorativeMesh::setUserRef));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeMesh & SimTK::DecorativeMesh::setResolution(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeMesh & SimTK::DecorativeMesh::setResolution(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeMesh & SimTK::DecorativeMesh::setResolution(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:559:21
   t15.method("setResolution", static_cast<SimTK::DecorativeMesh & (SimTK::DecorativeMesh::*)(SimTK::Real) >(&SimTK::DecorativeMesh::setResolution));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeMesh & SimTK::DecorativeMesh::setOpacity(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeMesh & SimTK::DecorativeMesh::setOpacity(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeMesh & SimTK::DecorativeMesh::setOpacity(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:562:21
   t15.method("setOpacity", static_cast<SimTK::DecorativeMesh & (SimTK::DecorativeMesh::*)(SimTK::Real) >(&SimTK::DecorativeMesh::setOpacity));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeMesh & SimTK::DecorativeMesh::setLineThickness(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeMesh & SimTK::DecorativeMesh::setLineThickness(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeMesh & SimTK::DecorativeMesh::setLineThickness(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:563:21
   t15.method("setLineThickness", static_cast<SimTK::DecorativeMesh & (SimTK::DecorativeMesh::*)(SimTK::Real) >(&SimTK::DecorativeMesh::setLineThickness));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeMesh & SimTK::DecorativeMesh::setRepresentation(const SimTK::DecorativeGeometry::Representation &) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeMesh & SimTK::DecorativeMesh::setRepresentation(const SimTK::DecorativeGeometry::Representation &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeMesh & SimTK::DecorativeMesh::setRepresentation(const SimTK::DecorativeGeometry::Representation &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:564:21
   t15.method("setRepresentation", static_cast<SimTK::DecorativeMesh & (SimTK::DecorativeMesh::*)(const SimTK::DecorativeGeometry::Representation &) >(&SimTK::DecorativeMesh::setRepresentation));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::DecorativeMesh class method wrappers
    **********************************************************************/
@@ -914,54 +1073,64 @@ void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& ar
    */
 
 
-  DEBUG_MSG("Adding wrapper for void SimTK::DecorativeMeshFile::DecorativeMeshFile(const std::string &) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::DecorativeMeshFile::DecorativeMeshFile(const std::string &) (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:581:14
   t16.constructor<const std::string &>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for const std::string & SimTK::DecorativeMeshFile::getMeshFile() (" __HERE__ ")");
+  DEBUG_MSG("const std::string & SimTK::DecorativeMeshFile::getMeshFile() (" __HERE__ ")");
   // signature to use in the veto list: const std::string & SimTK::DecorativeMeshFile::getMeshFile()
   // defined in SimTKcommon/internal/DecorativeGeometry.h:582:24
   t16.method("getMeshFile", static_cast<const std::string & (SimTK::DecorativeMeshFile::*)()  const>(&SimTK::DecorativeMeshFile::getMeshFile));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for const SimTK::PolygonalMesh & SimTK::DecorativeMeshFile::getMesh() (" __HERE__ ")");
+  DEBUG_MSG("const SimTK::PolygonalMesh & SimTK::DecorativeMeshFile::getMesh() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::PolygonalMesh & SimTK::DecorativeMeshFile::getMesh()
   // defined in SimTKcommon/internal/DecorativeGeometry.h:585:26
   t16.method("getMesh", static_cast<const SimTK::PolygonalMesh & (SimTK::DecorativeMeshFile::*)()  const>(&SimTK::DecorativeMeshFile::getMesh));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeMeshFile & SimTK::DecorativeMeshFile::setBodyId(int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeMeshFile & SimTK::DecorativeMeshFile::setBodyId(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeMeshFile & SimTK::DecorativeMeshFile::setBodyId(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:588:25
   t16.method("setBodyId", static_cast<SimTK::DecorativeMeshFile & (SimTK::DecorativeMeshFile::*)(int) >(&SimTK::DecorativeMeshFile::setBodyId));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeMeshFile & SimTK::DecorativeMeshFile::setIndexOnBody(int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeMeshFile & SimTK::DecorativeMeshFile::setIndexOnBody(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeMeshFile & SimTK::DecorativeMeshFile::setIndexOnBody(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:589:25
   t16.method("setIndexOnBody", static_cast<SimTK::DecorativeMeshFile & (SimTK::DecorativeMeshFile::*)(int) >(&SimTK::DecorativeMeshFile::setIndexOnBody));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeMeshFile & SimTK::DecorativeMeshFile::setUserRef(void *) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeMeshFile & SimTK::DecorativeMeshFile::setUserRef(void *) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeMeshFile & SimTK::DecorativeMeshFile::setUserRef(void *)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:590:25
   t16.method("setUserRef", static_cast<SimTK::DecorativeMeshFile & (SimTK::DecorativeMeshFile::*)(void *) >(&SimTK::DecorativeMeshFile::setUserRef));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeMeshFile & SimTK::DecorativeMeshFile::setResolution(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeMeshFile & SimTK::DecorativeMeshFile::setResolution(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeMeshFile & SimTK::DecorativeMeshFile::setResolution(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:592:25
   t16.method("setResolution", static_cast<SimTK::DecorativeMeshFile & (SimTK::DecorativeMeshFile::*)(SimTK::Real) >(&SimTK::DecorativeMeshFile::setResolution));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeMeshFile & SimTK::DecorativeMeshFile::setOpacity(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeMeshFile & SimTK::DecorativeMeshFile::setOpacity(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeMeshFile & SimTK::DecorativeMeshFile::setOpacity(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:595:25
   t16.method("setOpacity", static_cast<SimTK::DecorativeMeshFile & (SimTK::DecorativeMeshFile::*)(SimTK::Real) >(&SimTK::DecorativeMeshFile::setOpacity));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeMeshFile & SimTK::DecorativeMeshFile::setLineThickness(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeMeshFile & SimTK::DecorativeMeshFile::setLineThickness(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeMeshFile & SimTK::DecorativeMeshFile::setLineThickness(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:596:25
   t16.method("setLineThickness", static_cast<SimTK::DecorativeMeshFile & (SimTK::DecorativeMeshFile::*)(SimTK::Real) >(&SimTK::DecorativeMeshFile::setLineThickness));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeMeshFile & SimTK::DecorativeMeshFile::setRepresentation(const SimTK::DecorativeGeometry::Representation &) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeMeshFile & SimTK::DecorativeMeshFile::setRepresentation(const SimTK::DecorativeGeometry::Representation &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeMeshFile & SimTK::DecorativeMeshFile::setRepresentation(const SimTK::DecorativeGeometry::Representation &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:597:25
   t16.method("setRepresentation", static_cast<SimTK::DecorativeMeshFile & (SimTK::DecorativeMeshFile::*)(const SimTK::DecorativeGeometry::Representation &) >(&SimTK::DecorativeMeshFile::setRepresentation));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::DecorativeMeshFile class method wrappers
    **********************************************************************/
@@ -972,65 +1141,77 @@ void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& ar
    */
 
 
-  DEBUG_MSG("Adding wrapper for void SimTK::DecorativeTorus::DecorativeTorus(SimTK::Real, SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::DecorativeTorus::DecorativeTorus(SimTK::Real, SimTK::Real) (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:614:14
   t17.constructor<SimTK::Real>();
   t17.constructor<SimTK::Real, SimTK::Real>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeTorus & SimTK::DecorativeTorus::setTorusRadius(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeTorus & SimTK::DecorativeTorus::setTorusRadius(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeTorus & SimTK::DecorativeTorus::setTorusRadius(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:616:22
   t17.method("setTorusRadius", static_cast<SimTK::DecorativeTorus & (SimTK::DecorativeTorus::*)(SimTK::Real) >(&SimTK::DecorativeTorus::setTorusRadius));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeTorus & SimTK::DecorativeTorus::setTubeRadius(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeTorus & SimTK::DecorativeTorus::setTubeRadius(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeTorus & SimTK::DecorativeTorus::setTubeRadius(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:617:22
   t17.method("setTubeRadius", static_cast<SimTK::DecorativeTorus & (SimTK::DecorativeTorus::*)(SimTK::Real) >(&SimTK::DecorativeTorus::setTubeRadius));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::DecorativeTorus::getTorusRadius() (" __HERE__ ")");
+  DEBUG_MSG("SimTK::Real SimTK::DecorativeTorus::getTorusRadius() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::DecorativeTorus::getTorusRadius()
   // defined in SimTKcommon/internal/DecorativeGeometry.h:618:10
   t17.method("getTorusRadius", static_cast<SimTK::Real (SimTK::DecorativeTorus::*)()  const>(&SimTK::DecorativeTorus::getTorusRadius));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::Real SimTK::DecorativeTorus::getTubeRadius() (" __HERE__ ")");
+  DEBUG_MSG("SimTK::Real SimTK::DecorativeTorus::getTubeRadius() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::DecorativeTorus::getTubeRadius()
   // defined in SimTKcommon/internal/DecorativeGeometry.h:619:10
   t17.method("getTubeRadius", static_cast<SimTK::Real (SimTK::DecorativeTorus::*)()  const>(&SimTK::DecorativeTorus::getTubeRadius));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeTorus & SimTK::DecorativeTorus::setBodyId(int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeTorus & SimTK::DecorativeTorus::setBodyId(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeTorus & SimTK::DecorativeTorus::setBodyId(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:622:22
   t17.method("setBodyId", static_cast<SimTK::DecorativeTorus & (SimTK::DecorativeTorus::*)(int) >(&SimTK::DecorativeTorus::setBodyId));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeTorus & SimTK::DecorativeTorus::setIndexOnBody(int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeTorus & SimTK::DecorativeTorus::setIndexOnBody(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeTorus & SimTK::DecorativeTorus::setIndexOnBody(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:623:22
   t17.method("setIndexOnBody", static_cast<SimTK::DecorativeTorus & (SimTK::DecorativeTorus::*)(int) >(&SimTK::DecorativeTorus::setIndexOnBody));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeTorus & SimTK::DecorativeTorus::setUserRef(void *) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeTorus & SimTK::DecorativeTorus::setUserRef(void *) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeTorus & SimTK::DecorativeTorus::setUserRef(void *)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:624:22
   t17.method("setUserRef", static_cast<SimTK::DecorativeTorus & (SimTK::DecorativeTorus::*)(void *) >(&SimTK::DecorativeTorus::setUserRef));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeTorus & SimTK::DecorativeTorus::setResolution(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeTorus & SimTK::DecorativeTorus::setResolution(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeTorus & SimTK::DecorativeTorus::setResolution(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:626:22
   t17.method("setResolution", static_cast<SimTK::DecorativeTorus & (SimTK::DecorativeTorus::*)(SimTK::Real) >(&SimTK::DecorativeTorus::setResolution));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeTorus & SimTK::DecorativeTorus::setOpacity(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeTorus & SimTK::DecorativeTorus::setOpacity(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeTorus & SimTK::DecorativeTorus::setOpacity(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:629:22
   t17.method("setOpacity", static_cast<SimTK::DecorativeTorus & (SimTK::DecorativeTorus::*)(SimTK::Real) >(&SimTK::DecorativeTorus::setOpacity));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeTorus & SimTK::DecorativeTorus::setLineThickness(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeTorus & SimTK::DecorativeTorus::setLineThickness(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeTorus & SimTK::DecorativeTorus::setLineThickness(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:630:22
   t17.method("setLineThickness", static_cast<SimTK::DecorativeTorus & (SimTK::DecorativeTorus::*)(SimTK::Real) >(&SimTK::DecorativeTorus::setLineThickness));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeTorus & SimTK::DecorativeTorus::setRepresentation(const SimTK::DecorativeGeometry::Representation &) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeTorus & SimTK::DecorativeTorus::setRepresentation(const SimTK::DecorativeGeometry::Representation &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeTorus & SimTK::DecorativeTorus::setRepresentation(const SimTK::DecorativeGeometry::Representation &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:631:22
   t17.method("setRepresentation", static_cast<SimTK::DecorativeTorus & (SimTK::DecorativeTorus::*)(const SimTK::DecorativeGeometry::Representation &) >(&SimTK::DecorativeTorus::setRepresentation));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::DecorativeTorus class method wrappers
    **********************************************************************/
@@ -1040,50 +1221,59 @@ void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& ar
   /* Wrappers for the methods of class SimTK::DecorativeArrow
    */
 
-  DEBUG_MSG("Adding wrapper for const SimTK::Real & SimTK::DecorativeArrow::getTipLength() (" __HERE__ ")");
+  DEBUG_MSG("const SimTK::Real & SimTK::DecorativeArrow::getTipLength() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Real & SimTK::DecorativeArrow::getTipLength()
   // defined in SimTKcommon/internal/DecorativeGeometry.h:659:17
   t18.method("getTipLength", static_cast<const SimTK::Real & (SimTK::DecorativeArrow::*)()  const>(&SimTK::DecorativeArrow::getTipLength));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeArrow & SimTK::DecorativeArrow::setTipLength(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeArrow & SimTK::DecorativeArrow::setTipLength(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeArrow & SimTK::DecorativeArrow::setTipLength(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:663:22
   t18.method("setTipLength", static_cast<SimTK::DecorativeArrow & (SimTK::DecorativeArrow::*)(SimTK::Real) >(&SimTK::DecorativeArrow::setTipLength));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeArrow & SimTK::DecorativeArrow::setBodyId(int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeArrow & SimTK::DecorativeArrow::setBodyId(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeArrow & SimTK::DecorativeArrow::setBodyId(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:666:22
   t18.method("setBodyId", static_cast<SimTK::DecorativeArrow & (SimTK::DecorativeArrow::*)(int) >(&SimTK::DecorativeArrow::setBodyId));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeArrow & SimTK::DecorativeArrow::setIndexOnBody(int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeArrow & SimTK::DecorativeArrow::setIndexOnBody(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeArrow & SimTK::DecorativeArrow::setIndexOnBody(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:667:22
   t18.method("setIndexOnBody", static_cast<SimTK::DecorativeArrow & (SimTK::DecorativeArrow::*)(int) >(&SimTK::DecorativeArrow::setIndexOnBody));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeArrow & SimTK::DecorativeArrow::setUserRef(void *) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeArrow & SimTK::DecorativeArrow::setUserRef(void *) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeArrow & SimTK::DecorativeArrow::setUserRef(void *)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:668:22
   t18.method("setUserRef", static_cast<SimTK::DecorativeArrow & (SimTK::DecorativeArrow::*)(void *) >(&SimTK::DecorativeArrow::setUserRef));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeArrow & SimTK::DecorativeArrow::setResolution(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeArrow & SimTK::DecorativeArrow::setResolution(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeArrow & SimTK::DecorativeArrow::setResolution(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:670:22
   t18.method("setResolution", static_cast<SimTK::DecorativeArrow & (SimTK::DecorativeArrow::*)(SimTK::Real) >(&SimTK::DecorativeArrow::setResolution));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeArrow & SimTK::DecorativeArrow::setOpacity(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeArrow & SimTK::DecorativeArrow::setOpacity(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeArrow & SimTK::DecorativeArrow::setOpacity(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:673:22
   t18.method("setOpacity", static_cast<SimTK::DecorativeArrow & (SimTK::DecorativeArrow::*)(SimTK::Real) >(&SimTK::DecorativeArrow::setOpacity));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeArrow & SimTK::DecorativeArrow::setLineThickness(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeArrow & SimTK::DecorativeArrow::setLineThickness(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeArrow & SimTK::DecorativeArrow::setLineThickness(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:674:22
   t18.method("setLineThickness", static_cast<SimTK::DecorativeArrow & (SimTK::DecorativeArrow::*)(SimTK::Real) >(&SimTK::DecorativeArrow::setLineThickness));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeArrow & SimTK::DecorativeArrow::setRepresentation(const SimTK::DecorativeGeometry::Representation &) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeArrow & SimTK::DecorativeArrow::setRepresentation(const SimTK::DecorativeGeometry::Representation &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeArrow & SimTK::DecorativeArrow::setRepresentation(const SimTK::DecorativeGeometry::Representation &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:675:22
   t18.method("setRepresentation", static_cast<SimTK::DecorativeArrow & (SimTK::DecorativeArrow::*)(const SimTK::DecorativeGeometry::Representation &) >(&SimTK::DecorativeArrow::setRepresentation));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::DecorativeArrow class method wrappers
    **********************************************************************/
@@ -1093,60 +1283,71 @@ void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& ar
   /* Wrappers for the methods of class SimTK::DecorativeCone
    */
 
-  DEBUG_MSG("Adding wrapper for const SimTK::Real & SimTK::DecorativeCone::getHeight() (" __HERE__ ")");
+  DEBUG_MSG("const SimTK::Real & SimTK::DecorativeCone::getHeight() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Real & SimTK::DecorativeCone::getHeight()
   // defined in SimTKcommon/internal/DecorativeGeometry.h:702:17
   t19.method("getHeight", static_cast<const SimTK::Real & (SimTK::DecorativeCone::*)()  const>(&SimTK::DecorativeCone::getHeight));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for const SimTK::Real & SimTK::DecorativeCone::getBaseRadius() (" __HERE__ ")");
+  DEBUG_MSG("const SimTK::Real & SimTK::DecorativeCone::getBaseRadius() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Real & SimTK::DecorativeCone::getBaseRadius()
   // defined in SimTKcommon/internal/DecorativeGeometry.h:703:17
   t19.method("getBaseRadius", static_cast<const SimTK::Real & (SimTK::DecorativeCone::*)()  const>(&SimTK::DecorativeCone::getBaseRadius));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeCone & SimTK::DecorativeCone::setHeight(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeCone & SimTK::DecorativeCone::setHeight(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeCone & SimTK::DecorativeCone::setHeight(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:707:21
   t19.method("setHeight", static_cast<SimTK::DecorativeCone & (SimTK::DecorativeCone::*)(SimTK::Real) >(&SimTK::DecorativeCone::setHeight));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeCone & SimTK::DecorativeCone::setBaseRadius(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeCone & SimTK::DecorativeCone::setBaseRadius(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeCone & SimTK::DecorativeCone::setBaseRadius(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:708:21
   t19.method("setBaseRadius", static_cast<SimTK::DecorativeCone & (SimTK::DecorativeCone::*)(SimTK::Real) >(&SimTK::DecorativeCone::setBaseRadius));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeCone & SimTK::DecorativeCone::setBodyId(int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeCone & SimTK::DecorativeCone::setBodyId(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeCone & SimTK::DecorativeCone::setBodyId(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:711:21
   t19.method("setBodyId", static_cast<SimTK::DecorativeCone & (SimTK::DecorativeCone::*)(int) >(&SimTK::DecorativeCone::setBodyId));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeCone & SimTK::DecorativeCone::setIndexOnBody(int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeCone & SimTK::DecorativeCone::setIndexOnBody(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeCone & SimTK::DecorativeCone::setIndexOnBody(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:712:21
   t19.method("setIndexOnBody", static_cast<SimTK::DecorativeCone & (SimTK::DecorativeCone::*)(int) >(&SimTK::DecorativeCone::setIndexOnBody));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeCone & SimTK::DecorativeCone::setUserRef(void *) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeCone & SimTK::DecorativeCone::setUserRef(void *) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeCone & SimTK::DecorativeCone::setUserRef(void *)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:713:21
   t19.method("setUserRef", static_cast<SimTK::DecorativeCone & (SimTK::DecorativeCone::*)(void *) >(&SimTK::DecorativeCone::setUserRef));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeCone & SimTK::DecorativeCone::setResolution(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeCone & SimTK::DecorativeCone::setResolution(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeCone & SimTK::DecorativeCone::setResolution(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:715:21
   t19.method("setResolution", static_cast<SimTK::DecorativeCone & (SimTK::DecorativeCone::*)(SimTK::Real) >(&SimTK::DecorativeCone::setResolution));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeCone & SimTK::DecorativeCone::setOpacity(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeCone & SimTK::DecorativeCone::setOpacity(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeCone & SimTK::DecorativeCone::setOpacity(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:718:21
   t19.method("setOpacity", static_cast<SimTK::DecorativeCone & (SimTK::DecorativeCone::*)(SimTK::Real) >(&SimTK::DecorativeCone::setOpacity));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeCone & SimTK::DecorativeCone::setLineThickness(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeCone & SimTK::DecorativeCone::setLineThickness(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeCone & SimTK::DecorativeCone::setLineThickness(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:719:21
   t19.method("setLineThickness", static_cast<SimTK::DecorativeCone & (SimTK::DecorativeCone::*)(SimTK::Real) >(&SimTK::DecorativeCone::setLineThickness));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::DecorativeCone & SimTK::DecorativeCone::setRepresentation(const SimTK::DecorativeGeometry::Representation &) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::DecorativeCone & SimTK::DecorativeCone::setRepresentation(const SimTK::DecorativeGeometry::Representation &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeCone & SimTK::DecorativeCone::setRepresentation(const SimTK::DecorativeGeometry::Representation &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:720:21
   t19.method("setRepresentation", static_cast<SimTK::DecorativeCone & (SimTK::DecorativeCone::*)(const SimTK::DecorativeGeometry::Representation &) >(&SimTK::DecorativeCone::setRepresentation));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::DecorativeCone class method wrappers
    **********************************************************************/
@@ -1157,59 +1358,70 @@ void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& ar
    */
 
 
-  DEBUG_MSG("Adding wrapper for void SimTK::Decorations::Decorations(const SimTK::DecorativeGeometry &) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::Decorations::Decorations(const SimTK::DecorativeGeometry &) (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:746:14
   t20.constructor<const SimTK::DecorativeGeometry &>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::Decorations & SimTK::Decorations::addDecoration(const SimTK::DecorativeGeometry &) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::Decorations & SimTK::Decorations::addDecoration(const SimTK::DecorativeGeometry &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Decorations & SimTK::Decorations::addDecoration(const SimTK::DecorativeGeometry &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:748:18
   t20.method("addDecoration", static_cast<SimTK::Decorations & (SimTK::Decorations::*)(const SimTK::DecorativeGeometry &) >(&SimTK::Decorations::addDecoration));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for int SimTK::Decorations::getNumDecorations() (" __HERE__ ")");
+  DEBUG_MSG("int SimTK::Decorations::getNumDecorations() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::Decorations::getNumDecorations()
   // defined in SimTKcommon/internal/DecorativeGeometry.h:755:9
   t20.method("getNumDecorations", static_cast<int (SimTK::Decorations::*)()  const>(&SimTK::Decorations::getNumDecorations));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for const SimTK::DecorativeGeometry & SimTK::Decorations::getDecoration(int) (" __HERE__ ")");
+  DEBUG_MSG("const SimTK::DecorativeGeometry & SimTK::Decorations::getDecoration(int) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::DecorativeGeometry & SimTK::Decorations::getDecoration(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:758:31
   t20.method("getDecoration", static_cast<const SimTK::DecorativeGeometry & (SimTK::Decorations::*)(int)  const>(&SimTK::Decorations::getDecoration));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::Decorations & SimTK::Decorations::setBodyId(int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::Decorations & SimTK::Decorations::setBodyId(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Decorations & SimTK::Decorations::setBodyId(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:761:18
   t20.method("setBodyId", static_cast<SimTK::Decorations & (SimTK::Decorations::*)(int) >(&SimTK::Decorations::setBodyId));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::Decorations & SimTK::Decorations::setIndexOnBody(int) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::Decorations & SimTK::Decorations::setIndexOnBody(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Decorations & SimTK::Decorations::setIndexOnBody(int)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:762:18
   t20.method("setIndexOnBody", static_cast<SimTK::Decorations & (SimTK::Decorations::*)(int) >(&SimTK::Decorations::setIndexOnBody));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::Decorations & SimTK::Decorations::setUserRef(void *) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::Decorations & SimTK::Decorations::setUserRef(void *) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Decorations & SimTK::Decorations::setUserRef(void *)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:763:18
   t20.method("setUserRef", static_cast<SimTK::Decorations & (SimTK::Decorations::*)(void *) >(&SimTK::Decorations::setUserRef));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::Decorations & SimTK::Decorations::setResolution(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::Decorations & SimTK::Decorations::setResolution(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Decorations & SimTK::Decorations::setResolution(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:765:18
   t20.method("setResolution", static_cast<SimTK::Decorations & (SimTK::Decorations::*)(SimTK::Real) >(&SimTK::Decorations::setResolution));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::Decorations & SimTK::Decorations::setOpacity(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::Decorations & SimTK::Decorations::setOpacity(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Decorations & SimTK::Decorations::setOpacity(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:768:18
   t20.method("setOpacity", static_cast<SimTK::Decorations & (SimTK::Decorations::*)(SimTK::Real) >(&SimTK::Decorations::setOpacity));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::Decorations & SimTK::Decorations::setLineThickness(SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::Decorations & SimTK::Decorations::setLineThickness(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Decorations & SimTK::Decorations::setLineThickness(SimTK::Real)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:769:18
   t20.method("setLineThickness", static_cast<SimTK::Decorations & (SimTK::Decorations::*)(SimTK::Real) >(&SimTK::Decorations::setLineThickness));
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for SimTK::Decorations & SimTK::Decorations::setRepresentation(const SimTK::DecorativeGeometry::Representation &) (" __HERE__ ")");
+  DEBUG_MSG("SimTK::Decorations & SimTK::Decorations::setRepresentation(const SimTK::DecorativeGeometry::Representation &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Decorations & SimTK::Decorations::setRepresentation(const SimTK::DecorativeGeometry::Representation &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:770:18
   t20.method("setRepresentation", static_cast<SimTK::Decorations & (SimTK::Decorations::*)(const SimTK::DecorativeGeometry::Representation &) >(&SimTK::Decorations::setRepresentation));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::Decorations class method wrappers
    **********************************************************************/
@@ -1224,51 +1436,61 @@ void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("Adding SimTK!Black methods to provide access to the global variable SimTK::Black (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:39:44
   types.method("SimTK!Black", []()-> const SimTK::Vec3& { return SimTK::Black; });
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("Adding SimTK!Gray methods to provide access to the global variable SimTK::Gray (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:40:44
   types.method("SimTK!Gray", []()-> const SimTK::Vec3& { return SimTK::Gray; });
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("Adding SimTK!Red methods to provide access to the global variable SimTK::Red (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:41:44
   types.method("SimTK!Red", []()-> const SimTK::Vec3& { return SimTK::Red; });
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("Adding SimTK!Green methods to provide access to the global variable SimTK::Green (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:42:44
   types.method("SimTK!Green", []()-> const SimTK::Vec3& { return SimTK::Green; });
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("Adding SimTK!Blue methods to provide access to the global variable SimTK::Blue (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:43:44
   types.method("SimTK!Blue", []()-> const SimTK::Vec3& { return SimTK::Blue; });
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("Adding SimTK!Yellow methods to provide access to the global variable SimTK::Yellow (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:44:44
   types.method("SimTK!Yellow", []()-> const SimTK::Vec3& { return SimTK::Yellow; });
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("Adding SimTK!Orange methods to provide access to the global variable SimTK::Orange (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:45:44
   types.method("SimTK!Orange", []()-> const SimTK::Vec3& { return SimTK::Orange; });
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("Adding SimTK!Magenta methods to provide access to the global variable SimTK::Magenta (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:46:44
   types.method("SimTK!Magenta", []()-> const SimTK::Vec3& { return SimTK::Magenta; });
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("Adding SimTK!Purple methods to provide access to the global variable SimTK::Purple (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:47:44
   types.method("SimTK!Purple", []()-> const SimTK::Vec3& { return SimTK::Purple; });
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("Adding SimTK!Cyan methods to provide access to the global variable SimTK::Cyan (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:48:44
   types.method("SimTK!Cyan", []()-> const SimTK::Vec3& { return SimTK::Cyan; });
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("Adding SimTK!White methods to provide access to the global variable SimTK::White (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorativeGeometry.h:49:44
   types.method("SimTK!White", []()-> const SimTK::Vec3& { return SimTK::White; });
+  CLEAR_DEBUG_MSG();
 
   /* End of global function wrappers
    **********************************************************************/
 
-  DEBUG_MSG("End of wrapper definitions");
-
 }
+
 }

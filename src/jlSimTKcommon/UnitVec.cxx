@@ -48,8 +48,6 @@ void define_SimTKcommon_UnitVec(jlcxx::Module& types){
 
   types.unset_override_module();
 
-  DEBUG_MSG("End of wrapper definitions");
-  CLEAR_DEBUG_MSG();
-
 }
+
 }

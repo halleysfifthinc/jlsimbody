@@ -7,26 +7,30 @@ namespace jlsimbody {
 
 void define_SimTKcommon_DecorationGenerator(jlcxx::Module& types){
 
-  DEBUG_MSG("Adding wrapper for type SimTK::DecorationGenerator (" __HERE__ ")");
+  DEBUG_MSG("type SimTK::DecorationGenerator (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorationGenerator.h:45:7
   auto t0 = types.add_type<SimTK::DecorationGenerator>("SimTK!DecorationGenerator");
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for type SimTK::GeodesicDecorator (" __HERE__ ")");
+  DEBUG_MSG("type SimTK::GeodesicDecorator (" __HERE__ ")");
   // defined in simmath/internal/Geodesic.h:274:7
   auto t1 = types.add_type<SimTK::GeodesicDecorator>("SimTK!GeodesicDecorator", t0.dt());
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for type SimTK::PathDecorator (" __HERE__ ")");
+  DEBUG_MSG("type SimTK::PathDecorator (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:1501:7
   auto t2 = types.add_type<SimTK::PathDecorator>("SimTK!PathDecorator", t0.dt());
+  CLEAR_DEBUG_MSG();
 
   /**********************************************************************/
   /* Wrappers for the methods of class SimTK::DecorationGenerator
    */
 
-  DEBUG_MSG("Adding wrapper for void SimTK::DecorationGenerator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::DecorationGenerator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::DecorationGenerator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &)
   // defined in SimTKcommon/internal/DecorationGenerator.h:52:18
   t0.method("generateDecorations", static_cast<void (SimTK::DecorationGenerator::*)(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &) >(&SimTK::DecorationGenerator::generateDecorations));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::DecorationGenerator class method wrappers
    **********************************************************************/
@@ -35,14 +39,16 @@ void define_SimTKcommon_DecorationGenerator(jlcxx::Module& types){
   /* Wrappers for the methods of class SimTK::GeodesicDecorator
    */
 
-  DEBUG_MSG("Adding wrapper for void SimTK::GeodesicDecorator::GeodesicDecorator(const SimTK::Geodesic &, const SimTK::Vec3 &) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::GeodesicDecorator::GeodesicDecorator(const SimTK::Geodesic &, const SimTK::Vec3 &) (" __HERE__ ")");
   // defined in simmath/internal/Geodesic.h:276:5
   t1.constructor<const SimTK::Geodesic &, const SimTK::Vec3 &>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::GeodesicDecorator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::GeodesicDecorator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::GeodesicDecorator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &)
   // defined in simmath/internal/Geodesic.h:279:18
   t1.method("generateDecorations", static_cast<void (SimTK::GeodesicDecorator::*)(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &) >(&SimTK::GeodesicDecorator::generateDecorations));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::GeodesicDecorator class method wrappers
    **********************************************************************/
@@ -53,19 +59,20 @@ void define_SimTKcommon_DecorationGenerator(jlcxx::Module& types){
    */
 
 
-  DEBUG_MSG("Adding wrapper for void SimTK::PathDecorator::PathDecorator(const SimTK::Vector &, const SimTK::Vec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::PathDecorator::PathDecorator(const SimTK::Vector &, const SimTK::Vec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &) (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:1503:5
   t2.constructor<const SimTK::Vector &, const SimTK::Vec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &>();
+  CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding wrapper for void SimTK::PathDecorator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::PathDecorator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::PathDecorator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &)
   // defined in simmath/internal/ContactGeometry.h:1506:18
   t2.method("generateDecorations", static_cast<void (SimTK::PathDecorator::*)(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &) >(&SimTK::PathDecorator::generateDecorations));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::PathDecorator class method wrappers
    **********************************************************************/
 
-  DEBUG_MSG("End of wrapper definitions");
-
 }
+
 }

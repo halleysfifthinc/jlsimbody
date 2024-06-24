@@ -20,41 +20,76 @@ void define_SimTKcommon_Mat(jlcxx::Module& types){
     typedef SimTK::Mat<M, N, ELT, CS, RS> WrappedType;
     wrapped.template constructor<>();
 
-    DEBUG_MSG("Adding wrapper for void SimTK::Mat::Mat<M, N, ELT, CS, RS>(int) (" __HERE__ ")");
+    DEBUG_MSG("void SimTK::Mat::Mat<M, N, ELT, CS, RS>(int) (" __HERE__ ")");
     // defined in SimTKcommon/internal/Mat.h:376:14
     wrapped.template constructor<int>();
+    CLEAR_DEBUG_MSG();
 
-    DEBUG_MSG("Adding wrapper for void SimTK::Mat::setToNaN() (" __HERE__ ")");
+    DEBUG_MSG("void SimTK::Mat::setToNaN() (" __HERE__ ")");
     // signature to use in the veto list: void SimTK::Mat::setToNaN()
     // defined in SimTKcommon/internal/Mat.h:904:10
     wrapped.method("setToNaN", static_cast<void (WrappedType::*)() >(&WrappedType::setToNaN));
+    CLEAR_DEBUG_MSG();
 
-    DEBUG_MSG("Adding wrapper for void SimTK::Mat::setToZero() (" __HERE__ ")");
+    DEBUG_MSG("void SimTK::Mat::setToZero() (" __HERE__ ")");
     // signature to use in the veto list: void SimTK::Mat::setToZero()
     // defined in SimTKcommon/internal/Mat.h:909:10
     wrapped.method("setToZero", static_cast<void (WrappedType::*)() >(&WrappedType::setToZero));
+    CLEAR_DEBUG_MSG();
 
-    DEBUG_MSG("Adding wrapper for bool SimTK::Mat::isNaN() (" __HERE__ ")");
+    DEBUG_MSG("bool SimTK::Mat::isNaN() (" __HERE__ ")");
     // signature to use in the veto list: bool SimTK::Mat::isNaN()
     // defined in SimTKcommon/internal/Mat.h:1092:10
     wrapped.method("isNaN", static_cast<bool (WrappedType::*)()  const>(&WrappedType::isNaN));
+    CLEAR_DEBUG_MSG();
 
-    DEBUG_MSG("Adding wrapper for bool SimTK::Mat::isInf() (" __HERE__ ")");
+    DEBUG_MSG("bool SimTK::Mat::isInf() (" __HERE__ ")");
     // signature to use in the veto list: bool SimTK::Mat::isInf()
     // defined in SimTKcommon/internal/Mat.h:1101:10
     wrapped.method("isInf", static_cast<bool (WrappedType::*)()  const>(&WrappedType::isInf));
+    CLEAR_DEBUG_MSG();
 
-    DEBUG_MSG("Adding wrapper for bool SimTK::Mat::isFinite() (" __HERE__ ")");
+    DEBUG_MSG("bool SimTK::Mat::isFinite() (" __HERE__ ")");
     // signature to use in the veto list: bool SimTK::Mat::isFinite()
     // defined in SimTKcommon/internal/Mat.h:1114:10
     wrapped.method("isFinite", static_cast<bool (WrappedType::*)()  const>(&WrappedType::isFinite));
+    CLEAR_DEBUG_MSG();
 
-    DEBUG_MSG("Adding wrapper for std::string SimTK::Mat::toString() (" __HERE__ ")");
+    DEBUG_MSG("std::string SimTK::Mat::toString() (" __HERE__ ")");
     // signature to use in the veto list: std::string SimTK::Mat::toString()
     // defined in SimTKcommon/internal/Mat.h:1219:17
     wrapped.method("toString", static_cast<std::string (WrappedType::*)()  const>(&WrappedType::toString));
+    CLEAR_DEBUG_MSG();
   };
-  t0.apply<SimTK::Mat<1, 1, double, 1, 1>, SimTK::Mat<1, 2, SimTK::Row<3, double, 1>, 1, 2>, SimTK::Mat<2, 1, SimTK::Vec<3, double, 1>, 2, 1>, SimTK::Mat<2, 2, double, 2, 1>, SimTK::Mat<2, 2, SimTK::Row<3, double, 1>, 1, 2>, SimTK::Mat<2, 2, SimTK::Vec<3, double, 1>, 2, 1>, SimTK::Mat<2, 2, std::complex<double>, 2, 1>, SimTK::Mat<2, 3, SimTK::Vec<3, double, 1>, 2, 1>, SimTK::Mat<2, 4, SimTK::Vec<3, double, 1>, 2, 1>, SimTK::Mat<2, 5, SimTK::Vec<3, double, 1>, 2, 1>, SimTK::Mat<2, 6, SimTK::Vec<3, double, 1>, 2, 1>, SimTK::Mat<3, 2, SimTK::Row<3, double, 1>, 1, 2>, SimTK::Mat<3, 3, double, 1, 3>, SimTK::Mat<3, 3, double, 3, 1>, SimTK::Mat<3, 3, std::complex<double>, 3, 1>, SimTK::Mat<2, 2, SimTK::Mat<3, 3, double, 3, 1>, 2, 1>, SimTK::Mat<3, 4, double, 3, 1>, SimTK::Mat<4, 2, SimTK::Row<3, double, 1>, 1, 2>, SimTK::Mat<4, 4, double, 4, 1>, SimTK::Mat<4, 4, SimTK::Vec<3, double, 1>, 4, 1>, SimTK::Mat<4, 4, std::complex<double>, 4, 1>, SimTK::Mat<5, 2, SimTK::Row<3, double, 1>, 1, 2>, SimTK::Mat<5, 5, double, 5, 1>, SimTK::Mat<5, 5, std::complex<double>, 5, 1>, SimTK::Mat<6, 2, SimTK::Row<3, double, 1>, 1, 2>, SimTK::Mat<6, 3, double, 6, 1>, SimTK::Mat<6, 6, double, 6, 1>>(t0_decl_methods);
+  t0.apply<
+    SimTK::Mat<1, 1, double, 1, 1>,
+    SimTK::Mat<1, 2, SimTK::Row<3, double, 1>, 1, 2>,
+    SimTK::Mat<2, 1, SimTK::Vec<3, double, 1>, 2, 1>,
+    SimTK::Mat<2, 2, double, 2, 1>,
+    SimTK::Mat<2, 2, SimTK::Row<3, double, 1>, 1, 2>,
+    SimTK::Mat<2, 2, SimTK::Vec<3, double, 1>, 2, 1>,
+    SimTK::Mat<2, 2, std::complex<double>, 2, 1>,
+    SimTK::Mat<2, 3, SimTK::Vec<3, double, 1>, 2, 1>,
+    SimTK::Mat<2, 4, SimTK::Vec<3, double, 1>, 2, 1>,
+    SimTK::Mat<2, 5, SimTK::Vec<3, double, 1>, 2, 1>,
+    SimTK::Mat<2, 6, SimTK::Vec<3, double, 1>, 2, 1>, 
+    SimTK::Mat<3, 2, SimTK::Row<3, double, 1>, 1, 2>,
+    SimTK::Mat<3, 3, double, 1, 3>,
+    SimTK::Mat<3, 3, double, 3, 1>,
+    SimTK::Mat<3, 3, std::complex<double>, 3, 1>,
+    SimTK::Mat<2, 2, SimTK::Mat<3, 3, double, 3, 1>, 2, 1>,
+    SimTK::Mat<3, 4, double, 3, 1>,
+    SimTK::Mat<4, 2, SimTK::Row<3, double, 1>, 1, 2>,
+    SimTK::Mat<4, 4, double, 4, 1>,
+    SimTK::Mat<4, 4, SimTK::Vec<3, double, 1>, 4, 1>,
+    SimTK::Mat<4, 4, std::complex<double>, 4, 1>,
+    SimTK::Mat<5, 2, SimTK::Row<3, double, 1>, 1, 2>,
+    SimTK::Mat<5, 5, double, 5, 1>,
+    SimTK::Mat<5, 5, std::complex<double>, 5, 1>,
+    SimTK::Mat<6, 2, SimTK::Row<3, double, 1>, 1, 2>,
+    SimTK::Mat<6, 3, double, 6, 1>,
+    SimTK::Mat<6, 6, double, 6, 1>
+    >(t0_decl_methods);
 
   /* End of SimTK::Mat class method wrappers
    **********************************************************************/
@@ -86,9 +121,6 @@ void define_SimTKcommon_Mat(jlcxx::Module& types){
   /* End of SimTK::SymMat class method wrappers
    **********************************************************************/
 
-  // wrapped.template constructor<const SimTK::SymMat<M,ELT,RS> &>();
-
-  DEBUG_MSG("End of wrapper definitions");
-
 }
+
 }

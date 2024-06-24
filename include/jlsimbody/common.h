@@ -2,18 +2,27 @@
 #define JLSIMBODY_COMMON_H
 
 #include <type_traits>
+#include <cstdio>
+#include <string>
+
 #include "jlcxx/jlcxx.hpp"
-#include "jlcxx/functions.hpp"
+// #include "jlcxx/functions.hpp"
 #include "jlcxx/stl.hpp"
 
 #ifdef VERBOSE_IMPORT
-#  define DEBUG_MSG(a) std::cerr << a << "\n"
-#  define CLEAR_DEBUG_MSG() std::cerr << "\33[2K\33[1F\33[0K\r"
+    namespace jlsimbody {
+        static int r = 0;
+        const char* wrapping = "Wrapping";
+    }
+
+#  define __HERE__  __FILE__ ":" QUOTE2(__LINE__)
+#  define DEBUG_MSG(a) r = std::fprintf(stderr, "%s %s", wrapping, a); std::fflush(stderr)
+#  define CLEAR_DEBUG_MSG() std::cerr << std::string(r,'\x08') << "\x1B[J"
 #else
 #  define DEBUG_MSG(a)
 #  define CLEAR_DEBUG_MSG()
 #endif
-#define __HERE__  __FILE__ ":" QUOTE2(__LINE__)
+#define __HERE__
 #define QUOTE(arg) #arg
 #define QUOTE2(arg) QUOTE(arg)
 

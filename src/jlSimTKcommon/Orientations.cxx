@@ -8,11 +8,12 @@ namespace jlsimbody {
 
 void define_SimTKcommon_Orientations(jlcxx::Module& types, const ArrayWrapper& array_wrapper){
 
-  DEBUG_MSG("Adding wrapper for enum SimTK::BodyOrSpaceType (" __HERE__ ")");
+  DEBUG_MSG("enum SimTK::BodyOrSpaceType (" __HERE__ ")");
   // defined in SimTKcommon/internal/Rotation.h:42:6
   types.add_bits<SimTK::BodyOrSpaceType>("SimTK!BodyOrSpaceType", jlcxx::julia_type("CppEnum"));
   types.set_const("SimTK!BodyRotationSequence", SimTK::BodyRotationSequence);
   types.set_const("SimTK!SpaceRotationSequence", SimTK::SpaceRotationSequence);
+  CLEAR_DEBUG_MSG();
 
   // defined in SimTKcommon/internal/Quaternion.h:41:26
   auto t1 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Quaternion_");
@@ -58,96 +59,6 @@ void define_SimTKcommon_Orientations(jlcxx::Module& types, const ArrayWrapper& a
   /**********************************************************************/
   /* Wrappers for the methods of class SimTK::Rotation_
    */
-  // auto t4_decl_methods = []<typename P> (jlcxx::TypeWrapper<SimTK::Rotation_<P>> wrapped){
-  //   typedef SimTK::Rotation_<P> WrappedType;
-  //   wrapped.template constructor<>();
-  //   wrapped.template constructor<const WrappedType &>();
-  //   wrapped.template constructor<const SimTK::InverseRotation_<P> &>();
-
-  //   wrapped.method("assign", static_cast<WrappedType & (WrappedType::*)(const WrappedType &) >(&WrappedType::operator=));
-  //   wrapped.method("assign", static_cast<WrappedType & (WrappedType::*)(const SimTK::InverseRotation_<P> &) >(&WrappedType::operator=));
-  //   wrapped.method("setRotationToNaN", static_cast<WrappedType & (WrappedType::*)() >(&WrappedType::setRotationToNaN));
-  //   wrapped.method("setRotationToIdentityMatrix", static_cast<WrappedType & (WrappedType::*)() >(&WrappedType::setRotationToIdentityMatrix));
-
-  //   wrapped.template constructor<P, const SimTK::CoordinateAxis &>();
-  //   wrapped.method("setRotationFromAngleAboutAxis", static_cast<WrappedType & (WrappedType::*)(P, const SimTK::CoordinateAxis &) >(&WrappedType::setRotationFromAngleAboutAxis));
-
-  //   wrapped.template constructor<P, const SimTK::CoordinateAxis::XCoordinateAxis>();
-  //   wrapped.method("setRotationFromAngleAboutX", static_cast<WrappedType & (WrappedType::*)(P) >(&WrappedType::setRotationFromAngleAboutX));
-  //   wrapped.method("setRotationFromAngleAboutX", static_cast<WrappedType & (WrappedType::*)(P, P) >(&WrappedType::setRotationFromAngleAboutX));
-
-  //   wrapped.template constructor<P, const SimTK::CoordinateAxis::YCoordinateAxis>();
-  //   wrapped.method("setRotationFromAngleAboutY", static_cast<WrappedType & (WrappedType::*)(P) >(&WrappedType::setRotationFromAngleAboutY));
-  //   wrapped.method("setRotationFromAngleAboutY", static_cast<WrappedType & (WrappedType::*)(P, P) >(&WrappedType::setRotationFromAngleAboutY));
-
-  //   wrapped.template constructor<P, const SimTK::CoordinateAxis::ZCoordinateAxis>();
-  //   wrapped.method("setRotationFromAngleAboutZ", static_cast<WrappedType & (WrappedType::*)(P) >(&WrappedType::setRotationFromAngleAboutZ));
-  //   wrapped.method("setRotationFromAngleAboutZ", static_cast<WrappedType & (WrappedType::*)(P, P) >(&WrappedType::setRotationFromAngleAboutZ));
-
-  //   wrapped.template constructor<P, const typename WrappedType::UnitVec3P &>();
-  //   wrapped.method("setRotationFromAngleAboutUnitVector", static_cast<WrappedType & (WrappedType::*)(P, const typename WrappedType::UnitVec3P &) >(&WrappedType::setRotationFromAngleAboutUnitVector));
-
-  //   wrapped.template constructor<P, const typename WrappedType::Vec3P &>();
-  //   wrapped.method("setRotationFromAngleAboutNonUnitVector", static_cast<WrappedType & (WrappedType::*)(P, const typename WrappedType::Vec3P &) >(&WrappedType::setRotationFromAngleAboutNonUnitVector));
-
-  //   wrapped.template constructor<SimTK::BodyOrSpaceType, P, const SimTK::CoordinateAxis &, P, const SimTK::CoordinateAxis &>();
-  //   wrapped.method("setRotationFromTwoAnglesTwoAxes", static_cast<WrappedType & (WrappedType::*)(SimTK::BodyOrSpaceType, P, const SimTK::CoordinateAxis &, P, const SimTK::CoordinateAxis &) >(&WrappedType::setRotationFromTwoAnglesTwoAxes));
-
-  //   wrapped.template constructor<SimTK::BodyOrSpaceType, P, const SimTK::CoordinateAxis &, P, const SimTK::CoordinateAxis &, P, const SimTK::CoordinateAxis &>();
-  //   wrapped.method("setRotationFromThreeAnglesThreeAxes", static_cast<WrappedType & (WrappedType::*)(SimTK::BodyOrSpaceType, P, const SimTK::CoordinateAxis &, P, const SimTK::CoordinateAxis &, P, const SimTK::CoordinateAxis &) >(&WrappedType::setRotationFromThreeAnglesThreeAxes));
-
-  //   wrapped.template constructor<const SimTK::Quaternion_<P> &>();
-  //   wrapped.method("setRotationFromQuaternion", static_cast<WrappedType & (WrappedType::*)(const SimTK::Quaternion_<P> &) >(&WrappedType::setRotationFromQuaternion));
-
-  //   wrapped.template constructor<const typename WrappedType::Mat33P &>();
-  //   wrapped.method("setRotationFromApproximateMat33", static_cast<WrappedType & (WrappedType::*)(const typename WrappedType::Mat33P &) >(&WrappedType::setRotationFromApproximateMat33));
-
-  //   wrapped.template constructor<const typename WrappedType::Mat33P &, bool>();
-  //   wrapped.method("setRotationFromMat33TrustMe", static_cast<WrappedType & (WrappedType::*)(const typename WrappedType::Mat33P &) >(&WrappedType::setRotationFromMat33TrustMe));
-  //   wrapped.method("setRotationColFromUnitVecTrustMe", static_cast<WrappedType & (WrappedType::*)(int, const typename WrappedType::UnitVec3P &) >(&WrappedType::setRotationColFromUnitVecTrustMe));
-  //   wrapped.method("setRotationFromUnitVecsTrustMe", static_cast<WrappedType & (WrappedType::*)(const typename WrappedType::UnitVec3P &, const typename WrappedType::UnitVec3P &, const typename WrappedType::UnitVec3P &) >(&WrappedType::setRotationFromUnitVecsTrustMe));
-
-  //   wrapped.template constructor<const typename WrappedType::UnitVec3P &, SimTK::CoordinateAxis>();
-  //   wrapped.method("setRotationFromOneAxis", static_cast<WrappedType & (WrappedType::*)(const typename WrappedType::UnitVec3P &, SimTK::CoordinateAxis) >(&WrappedType::setRotationFromOneAxis));
-
-  //   wrapped.template constructor<const typename WrappedType::UnitVec3P &, const SimTK::CoordinateAxis &, const typename WrappedType::Vec3P &, const SimTK::CoordinateAxis &>();
-  //   wrapped.method("setRotationFromTwoAxes", static_cast<WrappedType & (WrappedType::*)(const typename WrappedType::UnitVec3P &, const SimTK::CoordinateAxis &, const typename WrappedType::Vec3P &, const SimTK::CoordinateAxis &) >(&WrappedType::setRotationFromTwoAxes));
-
-  //   wrapped.method("setRotationToBodyFixedXY", static_cast<void (WrappedType::*)(const typename WrappedType::Vec2P &) >(&WrappedType::setRotationToBodyFixedXY));
-  //   wrapped.method("setRotationToBodyFixedXYZ", static_cast<void (WrappedType::*)(const typename WrappedType::Vec3P &) >(&WrappedType::setRotationToBodyFixedXYZ));
-  //   wrapped.method("setRotationToBodyFixedXYZ", static_cast<void (WrappedType::*)(const typename WrappedType::Vec3P &, const typename WrappedType::Vec3P &) >(&WrappedType::setRotationToBodyFixedXYZ));
-
-  //   wrapped.method("transpose", static_cast<const SimTK::InverseRotation_<P> & (WrappedType::*)() const>(&WrappedType::invert));
-  //   wrapped.method("updTranspose", static_cast<SimTK::InverseRotation_<P> & (WrappedType::*)()>(&WrappedType::updInvert));
-
-  //   wrapped.method("mult!", static_cast<WrappedType & (WrappedType::*)(const WrappedType &) >(&WrappedType::operator*=));
-  //   wrapped.method("mult!", static_cast<WrappedType & (WrappedType::*)(const SimTK::InverseRotation_<P> &) >(&WrappedType::operator*=));
-  //   wrapped.method("div!", static_cast<WrappedType & (WrappedType::*)(const WrappedType &) >(&WrappedType::operator/=));
-  //   wrapped.method("div!", static_cast<WrappedType & (WrappedType::*)(const SimTK::InverseRotation_<P> &) >(&WrappedType::operator/=));
-
-  //   wrapped.method("convertOneAxisRotationToOneAngle", static_cast<P (WrappedType::*)(const SimTK::CoordinateAxis &) const>(&WrappedType::convertOneAxisRotationToOneAngle));
-  //   wrapped.method("convertTwoAxesRotationToTwoAngles", static_cast<typename WrappedType::Vec2P (WrappedType::*)(SimTK::BodyOrSpaceType, const SimTK::CoordinateAxis &, const SimTK::CoordinateAxis &) const>(&WrappedType::convertTwoAxesRotationToTwoAngles));
-  //   wrapped.method("convertThreeAxesRotationToThreeAngles", static_cast<typename WrappedType::Vec3P (WrappedType::*)(SimTK::BodyOrSpaceType, const SimTK::CoordinateAxis &, const SimTK::CoordinateAxis &, const SimTK::CoordinateAxis &) const>(&WrappedType::convertThreeAxesRotationToThreeAngles));
-  //   wrapped.method("convertRotationToQuaternion", static_cast<SimTK::Quaternion_<P> (WrappedType::*)() const>(&WrappedType::convertRotationToQuaternion));
-  //   wrapped.method("convertRotationToAngleAxis", static_cast<typename WrappedType::Vec4P (WrappedType::*)() const>(&WrappedType::convertRotationToAngleAxis));
-  //   wrapped.method("convertRotationToBodyFixedXY", static_cast<typename WrappedType::Vec2P (WrappedType::*)() const>(&WrappedType::convertRotationToBodyFixedXY));
-  //   wrapped.method("convertRotationToBodyFixedXYZ", static_cast<typename WrappedType::Vec3P (WrappedType::*)() const>(&WrappedType::convertRotationToBodyFixedXYZ));
-
-  //   wrapped.method("isSameRotationToWithinAngle", static_cast<bool (WrappedType::*)(const WrappedType &, P) const>(&WrappedType::isSameRotationToWithinAngle));
-  //   wrapped.method("isSameRotationToWithinAngleOfMachinePrecision", static_cast<bool (WrappedType::*)(const WrappedType &) const>(&WrappedType::isSameRotationToWithinAngleOfMachinePrecision));
-  //   wrapped.method("getMaxAbsDifferenceInRotationElements", static_cast<P (WrappedType::*)(const WrappedType &) const>(&WrappedType::getMaxAbsDifferenceInRotationElements));
-  //   wrapped.method("areAllRotationElementsSameToEpsilon", static_cast<bool (WrappedType::*)(const WrappedType &, P) const>(&WrappedType::areAllRotationElementsSameToEpsilon));
-  //   wrapped.method("areAllRotationElementsSameToMachinePrecision", static_cast<bool (WrappedType::*)(const WrappedType &) const>(&WrappedType::areAllRotationElementsSameToMachinePrecision));
-
-  //   wrapped.method("get", static_cast<const typename WrappedType::ColType & (WrappedType::*)(int) const>(&WrappedType::operator()));
-  //   wrapped.method("x", static_cast<const typename WrappedType::ColType & (WrappedType::*)() const>(&WrappedType::x));
-  //   wrapped.method("y", static_cast<const typename WrappedType::ColType & (WrappedType::*)() const>(&WrappedType::y));
-  //   wrapped.method("z", static_cast<const typename WrappedType::ColType & (WrappedType::*)() const>(&WrappedType::z));
-
-  //   wrapped.method("getAxisUnitVec", static_cast<const typename WrappedType::ColType & (WrappedType::*)(SimTK::CoordinateAxis) const>(&WrappedType::getAxisUnitVec));
-  //   wrapped.method("getAxisUnitVec", static_cast<const SimTK::UnitVec<P,1> (WrappedType::*)(SimTK::CoordinateDirection) const>(&WrappedType::getAxisUnitVec));
-  // };
-  // t4.apply<SimTK::Rotation_<double>>(t4_decl_methods);
 
     t4.constructor<>();
     t4.constructor<const Rotation &>();
@@ -243,20 +154,6 @@ void define_SimTKcommon_Orientations(jlcxx::Module& types, const ArrayWrapper& a
   /**********************************************************************/
   /* Wrappers for the methods of class SimTK::InverseRotation_
    */
-  // auto t5_decl_methods = []<typename P> (jlcxx::TypeWrapper<SimTK::InverseRotation_<P>> wrapped){
-  //   typedef SimTK::InverseRotation_<P> WrappedType;
-  //   wrapped.template constructor<>();
-  //   wrapped.template constructor<const WrappedType &>();
-
-  //   wrapped.method("assign", static_cast<WrappedType & (WrappedType::*)(const WrappedType &) >(&WrappedType::operator=));
-
-  //   wrapped.method("transpose", static_cast<const SimTK::Rotation_<P> & (WrappedType::*)() const>(&WrappedType::invert));
-  //   wrapped.method("updTranspose", static_cast<SimTK::Rotation_<P> & (WrappedType::*)()>(&WrappedType::updInvert));
-  // };
-  // t5.apply<SimTK::InverseRotation_<double>>(t5_decl_methods);
-
-  /* End of SimTK::InverseRotation_ class method wrappers
-   **********************************************************************/
 
   t5.constructor<>();
   t5.constructor<const InverseRotation &>();
@@ -271,10 +168,12 @@ void define_SimTKcommon_Orientations(jlcxx::Module& types, const ArrayWrapper& a
   t5.method("asMat33", static_cast<const typename InverseRotation::BaseMat & (InverseRotation::*)() const>(&InverseRotation::asMat33));
   t5.method("toMat33", static_cast<typename InverseRotation::BaseMat (InverseRotation::*)() const>(&InverseRotation::toMat33));
 
+  /* End of SimTK::InverseRotation_ class method wrappers
+   **********************************************************************/
+
   array_wrapper.template apply<SimTK::Rotation_<double>>();
   array_wrapper.template apply<SimTK::Rotation_<double>, int>();
 
-
-  DEBUG_MSG("End of wrapper definitions");
 }
+
 }

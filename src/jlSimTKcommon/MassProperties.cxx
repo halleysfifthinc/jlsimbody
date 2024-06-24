@@ -264,7 +264,7 @@ void define_SimTKcommon_MassProperties(jlcxx::Module& types, const ArrayWrapper&
 
   /* End of SimTK::MassProperties_ class method wrappers
    **********************************************************************/
-  DEBUG_MSG("End of wrapper definitions");
 
 }
+
 }
