@@ -14,5 +14,5 @@ namespace jlcxx {
 }
 
 namespace jlsimbody{
-  void define_simbody_DecorationSubsystem(jlcxx::Module& types);
+  JLSIMBODY_NO_EXPORT void define_simbody_DecorationSubsystem(jlcxx::Module& types);
 }

@@ -22,7 +22,7 @@ namespace jlcxx {
 }
 
 namespace jlsimbody {
-  void define_SimTKcommon_Row(jlcxx::Module& types);
+  JLSIMBODY_NO_EXPORT void define_SimTKcommon_Row(jlcxx::Module& types);
 }
 
 #endif // _JLSIMTKCOMMON_ROW_H_

@@ -169,11 +169,20 @@ target_precompile_headers(jlsimbody PRIVATE
   )
 
 target_include_directories(jlsimbody PRIVATE
-  ${CMAKE_CURRENT_SOURCE_DIR}/include)
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>)
+
+include(GenerateExportHeader)
+generate_export_header(jlsimbody)
 
 target_compile_features(jlsimbody
   PUBLIC cxx_std_20
   PRIVATE cxx_generic_lambdas
+  )
+
+set_target_properties(jlsimbody PROPERTIES
+  CXX_VISIBILITY_PRESET default # TODO: Change to hidden once jlcxxwrap#168 is fixed (saves 11Mb on the .so)
+  VISIBILITY_INLINES_HIDDEN 1
   )
 
 target_compile_options(jlsimbody
@@ -206,3 +215,6 @@ install(TARGETS jlsimbody
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+install(FILES
+  ${CMAKE_CURRENT_BINARY_DIR}/jlsimbody_export.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+  )

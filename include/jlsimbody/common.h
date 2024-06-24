@@ -8,6 +8,7 @@
 #include "jlcxx/jlcxx.hpp"
 // #include "jlcxx/functions.hpp"
 #include "jlcxx/stl.hpp"
+#include "jlsimbody_export.h"
 
 #ifdef VERBOSE_IMPORT
     namespace jlsimbody {

@@ -34,7 +34,7 @@ namespace jlcxx {
 }
 
 namespace jlsimbody {
-  void define_SimTKcommon_Mat(jlcxx::Module& types);
+  JLSIMBODY_NO_EXPORT void define_SimTKcommon_Mat(jlcxx::Module& types);
 }
 
 #endif // _JLSIMTKCOMMON_MAT_H_

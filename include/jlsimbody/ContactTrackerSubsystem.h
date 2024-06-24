@@ -24,7 +24,7 @@ namespace jlcxx {
 }
 
 namespace jlsimbody {
-  void define_simbody_ContactTrackerSubsystem(jlcxx::Module& types);
+  JLSIMBODY_NO_EXPORT void define_simbody_ContactTrackerSubsystem(jlcxx::Module& types);
 }
 
 #endif

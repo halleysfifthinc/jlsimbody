@@ -8,5 +8,5 @@ namespace jlcxx {
 }
 
 namespace jlsimbody {
-  void define_SimTKcommon_String(jlcxx::Module& types, const ArrayWrapper& wraparray);
+  JLSIMBODY_NO_EXPORT void define_SimTKcommon_String(jlcxx::Module& types, const ArrayWrapper& wraparray);
 }

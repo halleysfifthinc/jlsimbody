@@ -46,5 +46,5 @@ namespace jlcxx {
 }
 
 namespace jlsimbody {
-  void define_simbody_ForceSubsystems(jlcxx::Module& types, const ArrayWrapper& array_wrapper);
+  JLSIMBODY_NO_EXPORT void define_simbody_ForceSubsystems(jlcxx::Module& types, const ArrayWrapper& array_wrapper);
 }

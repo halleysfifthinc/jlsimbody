@@ -57,5 +57,5 @@ namespace jlcxx {
 }
 
 namespace jlsimbody {
-  void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& wrap);
+  JLSIMBODY_NO_EXPORT void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& wrap);
 }

@@ -125,5 +125,5 @@ namespace jlcxx {
 }
 
 namespace jlsimbody{
-  void define_simmath_Geo(jlcxx::Module& types);
+  JLSIMBODY_NO_EXPORT void define_simmath_Geo(jlcxx::Module& types);
 }

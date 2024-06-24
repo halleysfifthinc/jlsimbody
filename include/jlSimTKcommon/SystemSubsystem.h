@@ -27,5 +27,5 @@ namespace jlcxx {
 }
 
 namespace jlsimbody {
-  void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types);
+  JLSIMBODY_NO_EXPORT void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types);
 }

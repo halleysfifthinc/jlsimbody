@@ -39,5 +39,5 @@ namespace jlcxx {
 }
 
 namespace jlsimbody {
-  void define_SimTKcommon_Orientations(jlcxx::Module& types, const ArrayWrapper& array_wrapper);
+  JLSIMBODY_NO_EXPORT void define_SimTKcommon_Orientations(jlcxx::Module& types, const ArrayWrapper& array_wrapper);
 }

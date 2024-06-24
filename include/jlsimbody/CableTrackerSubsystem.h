@@ -27,5 +27,5 @@ namespace jlcxx {
 }
 
 namespace jlsimbody{
-  void define_simbody_CableTrackerSubsystem(jlcxx::Module& types);
+  JLSIMBODY_NO_EXPORT void define_simbody_CableTrackerSubsystem(jlcxx::Module& types);
 }
