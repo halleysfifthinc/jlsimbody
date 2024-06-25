@@ -1,3 +1,6 @@
+#ifndef _JLSIMTKCOMMON_EVENTS_H
+#define _JLSIMTKCOMMON_EVENTS_H
+
 #include "SimTKcommon/internal/EventHandler.h"
 #include "SimTKcommon/internal/EventReporter.h"
 #include "jlSimTKcommon/Array.h"
@@ -30,3 +33,5 @@ namespace jlcxx {
 namespace jlsimbody {
   JLSIMBODY_NO_EXPORT void define_SimTKcommon_Events(jlcxx::Module& types, const ArrayWrapper& array_wrapper);
 }
+
+#endif // _JLSIMTKCOMMON_EVENTS_H

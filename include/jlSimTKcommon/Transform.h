@@ -1,3 +1,6 @@
+#ifndef _JLSIMTKCOMMON_TRANSFORM_H
+#define _JLSIMTKCOMMON_TRANSFORM_H
+
 #include "SimTKcommon/internal/CompositeNumericalTypes.h"
 #include "SimTKcommon/internal/ResultType.h"
 #include "SimTKcommon/Scalar.h"
@@ -33,3 +36,5 @@ namespace jlcxx {
 namespace jlsimbody {
   JLSIMBODY_NO_EXPORT void define_SimTKcommon_Transform(jlcxx::Module& types, const ArrayWrapper& array_wrapper);
 }
+
+#endif // _JLSIMTKCOMMON_TRANSFORM_H

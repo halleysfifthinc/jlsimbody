@@ -1,3 +1,6 @@
+#ifndef _JLSIMTKCOMMON_DECORATIONS_H
+#define _JLSIMTKCOMMON_DECORATIONS_H
+
 #include "SimTKcommon/internal/DecorativeGeometry.h"
 #include "SimTKcommon/internal/PolygonalMesh.h"
 #include "jlSimTKcommon/Array.h"
@@ -59,3 +62,5 @@ namespace jlcxx {
 namespace jlsimbody {
   JLSIMBODY_NO_EXPORT void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& wrap);
 }
+
+#endif // _JLSIMTKCOMMON_DECORATIONS_H

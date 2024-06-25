@@ -1,3 +1,6 @@
+#ifndef _JLSIMBODY_MOBILIZEDBODIES_H
+#define _JLSIMBODY_MOBILIZEDBODIES_H
+
 #include "simbody/internal/MobilizedBody.h"
 #include "simbody/internal/Body.h"
 #include "SimTKcommon/internal/Transform.h"
@@ -87,3 +90,5 @@ namespace jlcxx {
 namespace jlsimbody {
   JLSIMBODY_NO_EXPORT void define_simbody_MobilizedBodies(jlcxx::Module& types);
 }
+
+#endif // _JLSIMBODY_MOBILIZEDBODIES_H

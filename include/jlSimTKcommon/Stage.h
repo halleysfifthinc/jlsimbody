@@ -1,3 +1,6 @@
+#ifndef _JLSIMTKCOMMON_STAGE_H
+#define _JLSIMTKCOMMON_STAGE_H
+
 #include "SimTKcommon/internal/Stage.h"
 
 namespace jlcxx {
@@ -24,3 +27,5 @@ namespace jlcxx {
 namespace jlsimbody {
   JLSIMBODY_NO_EXPORT void define_SimTKcommon_Stage(jlcxx::Module& types);
 }
+
+#endif // _JLSIMTKCOMMON_STAGE_H

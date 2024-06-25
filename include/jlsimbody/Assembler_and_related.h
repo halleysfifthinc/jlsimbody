@@ -1,3 +1,6 @@
+#ifndef _JLSIMBODY_ASSEMBLER_AND_RELATED_H
+#define _JLSIMBODY_ASSEMBLER_AND_RELATED_H
+
 #include "simbody/internal/MultibodySystem.h"
 #include "simbody/internal/SimbodyMatterSubsystem.h"
 #include "SimTKcommon/internal/State.h"
@@ -44,3 +47,5 @@ namespace jlcxx {
 namespace jlsimbody {
   JLSIMBODY_NO_EXPORT void define_simbody_Assembler_and_related(jlcxx::Module& types, const ArrayWrapper& array_wrapper);
 }
+
+#endif // _JLSIMBODY_ASSEMBLER_AND_RELATED_H

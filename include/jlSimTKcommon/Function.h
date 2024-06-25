@@ -1,3 +1,6 @@
+#ifndef _JLSIMTKCOMMON_FUNCTION_H
+#define _JLSIMTKCOMMON_FUNCTION_H
+
 #include "SimTKcommon/internal/Function.h"
 #include "jlSimTKcommon/Array.h"
 
@@ -33,3 +36,5 @@ namespace jlcxx {
 namespace jlsimbody {
   JLSIMBODY_NO_EXPORT void define_SimTKcommon_Function(jlcxx::Module& types, const ArrayWrapper & array_wrapper);
 }
+
+#endif // _JLSIMTKCOMMON_FUNCTION_H

@@ -1,3 +1,6 @@
+#ifndef _JLSIMBODY_FORCE_H
+#define _JLSIMBODY_FORCE_H
+
 #include "SimTKcommon/internal/Subsystem.h"
 #include "simbody/internal/SimbodyMatterSubsystem.h"
 #include "simbody/internal/GeneralContactSubsystem.h"
@@ -93,3 +96,5 @@ namespace jlcxx {
 namespace jlsimbody {
   JLSIMBODY_NO_EXPORT void define_simbody_Force(jlcxx::Module& types);
 }
+
+#endif // _JLSIMBODY_FORCE_H

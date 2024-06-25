@@ -1,3 +1,6 @@
+#ifndef _JLSIMTKCOMMON_SYSTEMSUBSYSTEM_H
+#define _JLSIMTKCOMMON_SYSTEMSUBSYSTEM_H
+
 #include "SimTKcommon/internal/EventHandler.h"
 #include "SimTKcommon/internal/EventReporter.h"
 #include "SimTKcommon/internal/Measure.h"
@@ -29,3 +32,5 @@ namespace jlcxx {
 namespace jlsimbody {
   JLSIMBODY_NO_EXPORT void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types);
 }
+
+#endif // _JLSIMTKCOMMON_SYSTEMSUBSYSTEM_H

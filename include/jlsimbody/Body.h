@@ -1,3 +1,6 @@
+#ifndef _JLSIMBODY_BODY_H
+#define _JLSIMBODY_BODY_H
+
 #include "SimTKcommon/internal/DecorativeGeometry.h"
 #include "SimTKcommon/internal/Transform.h"
 #include "SimTKcommon/internal/MassProperties.h"
@@ -28,3 +31,5 @@ namespace jlcxx {
 namespace jlsimbody{
   JLSIMBODY_NO_EXPORT void define_simbody_Body(jlcxx::Module& types);
 }
+
+#endif // _JLSIMBODY_BODY_H

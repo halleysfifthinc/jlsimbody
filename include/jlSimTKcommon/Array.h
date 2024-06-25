@@ -1,5 +1,5 @@
-#ifndef JLSIMTKCOMMON_ARRAY_H
-#define JLSIMTKCOMMON_ARRAY_H
+#ifndef _JLSIMTKCOMMON_ARRAY_H
+#define _JLSIMTKCOMMON_ARRAY_H
 
 #include "jlsimbody/common.h"
 
@@ -305,4 +305,4 @@ namespace jlsimbody {
   };
 }
 
-#endif // JLSIMTKCOMMON_ARRAY_H
+#endif // _JLSIMTKCOMMON_ARRAY_H

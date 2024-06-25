@@ -1,3 +1,6 @@
+#ifndef _JLSIMTKCOMMON_MATRIXVECTOR_H
+#define _JLSIMTKCOMMON_MATRIXVECTOR_H
+
 #include "SimTKcommon/internal/CompositeNumericalTypes.h"
 #include "SimTKcommon/internal/ResultType.h"
 #include "SimTKcommon/Scalar.h"
@@ -39,3 +42,5 @@ namespace jlcxx {
 namespace jlsimbody {
   JLSIMBODY_NO_EXPORT void define_SimTKcommon_MatrixVector(jlcxx::Module& types);
 }
+
+#endif // _JLSIMTKCOMMON_MATRIXVECTOR_H

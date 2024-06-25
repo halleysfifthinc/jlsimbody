@@ -1,3 +1,6 @@
+#ifndef _JLSIMBODY_MULTIBODYSYSTEM_H
+#define _JLSIMBODY_MULTIBODYSYSTEM_H
+
 #include "SimTKcommon/internal/Subsystem.h"
 #include "SimTKcommon/internal/State.h"
 #include "SimTKcommon/internal/Vec.h"
@@ -18,3 +21,5 @@ namespace jlcxx {
 namespace jlsimbody{
   JLSIMBODY_NO_EXPORT void define_simbody_MultibodySystem(jlcxx::Module& types);
 }
+
+#endif // _JLSIMBODY_MULTIBODYSYSTEM_H

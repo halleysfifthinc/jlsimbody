@@ -1,3 +1,6 @@
+#ifndef _JLSIMBODY_FORCESUBSYSTEMS_H
+#define _JLSIMBODY_FORCESUBSYSTEMS_H
+
 #include "SimTKcommon/internal/Subsystem.h"
 #include "SimTKcommon/internal/State.h"
 #include "SimTKcommon/internal/Vec.h"
@@ -48,3 +51,5 @@ namespace jlcxx {
 namespace jlsimbody {
   JLSIMBODY_NO_EXPORT void define_simbody_ForceSubsystems(jlcxx::Module& types, const ArrayWrapper& array_wrapper);
 }
+
+#endif // _JLSIMBODY_FORCESUBSYSTEMS_H

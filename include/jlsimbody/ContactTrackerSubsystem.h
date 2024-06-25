@@ -1,3 +1,6 @@
+#ifndef _JLSIMBODY_CONTACTTRACKERSUBSYSTEM_H
+#define _JLSIMBODY_CONTACTTRACKERSUBSYSTEM_H
+
 #include "SimTKcommon/internal/Subsystem.h"
 #include "simmath/internal/Contact.h"
 #include "simmath/internal/ContactGeometry.h"
@@ -6,9 +9,6 @@
 #include "simbody/internal/MobilizedBody.h"
 #include "simbody/internal/ContactTrackerSubsystem.h"
 #include "simbody/internal/GeneralContactSubsystem.h"
-
-#ifndef JLSIMBODY_CONTACTTRACKERSUBSYSTEM_H
-#define JLSIMBODY_CONTACTTRACKERSUBSYSTEM_H
 
 namespace jlcxx {
   template<> struct IsMirroredType<SimTK::ContactSnapshot> : std::false_type { };
@@ -27,4 +27,4 @@ namespace jlsimbody {
   JLSIMBODY_NO_EXPORT void define_simbody_ContactTrackerSubsystem(jlcxx::Module& types);
 }
 
-#endif
+#endif // _JLSIMBODY_CONTACTTRACKERSUBSYSTEM_H

@@ -1,3 +1,6 @@
+#ifndef _JLSIMTKCOMMON_COORDINATEAXIS_H
+#define _JLSIMTKCOMMON_COORDINATEAXIS_H
+
 #include "SimTKcommon/internal/CoordinateAxis.h"
 
 namespace jlcxx {
@@ -30,3 +33,5 @@ namespace jlcxx {
 namespace jlsimbody {
   JLSIMBODY_NO_EXPORT void define_SimTKcommon_CoordinateAxis(jlcxx::Module& types);
 }
+
+#endif // _JLSIMTKCOMMON_COORDINATEAXIS_H

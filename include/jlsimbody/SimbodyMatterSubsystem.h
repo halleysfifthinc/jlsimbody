@@ -1,3 +1,6 @@
+#ifndef _JLSIMBODY_SIMBODYMATTERSUBSYSTEM_H
+#define _JLSIMBODY_SIMBODYMATTERSUBSYSTEM_H
+
 #include "simbody/internal/SimbodyMatterSubsystem.h"
 #include "simbody/internal/SimbodyMatterSubtree.h"
 #include "simbody/internal/MobilizedBody.h"
@@ -59,12 +62,10 @@ namespace jlcxx {
   template<> struct DefaultConstructible<SimTK::ConstrainedQIndex> : std::false_type { };
   template<> struct IsMirroredType<SimTK::MobilizerQIndex> : std::false_type { };
   template<> struct DefaultConstructible<SimTK::MobilizerQIndex> : std::false_type { };
-  template<> struct SuperType<SimTK::Motion::Sinusoid> { typedef SimTK::Motion type; };
-  template<> struct SuperType<SimTK::Motion::Steady> { typedef SimTK::Motion type; };
-  template<> struct SuperType<SimTK::Motion::Custom> { typedef SimTK::Motion type; };
-  template<> struct SuperType<SimTK::SimbodyMatterSubsystem> { typedef SimTK::Subsystem type; };
 }
 
 namespace jlsimbody{
   JLSIMBODY_NO_EXPORT void define_simbody_SimbodyMatterSubsystem(jlcxx::Module& types, const ArrayWrapper & array_wrapper);
 }
+
+#endif // _JLSIMBODY_SIMBODYMATTERSUBSYSTEM_H

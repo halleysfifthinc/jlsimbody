@@ -1,3 +1,6 @@
+#ifndef _JLSIMTKCOMMON_DECORATIONGENERATOR_H
+#define _JLSIMTKCOMMON_DECORATIONGENERATOR_H
+
 #include "SimTKcommon/internal/DecorativeGeometry.h"
 #include "SimTKcommon/internal/Transform.h"
 #include "SimTKcommon/internal/Vec.h"
@@ -21,3 +24,5 @@ namespace jlcxx {
 namespace jlsimbody {
   JLSIMBODY_NO_EXPORT void define_SimTKcommon_DecorationGenerator(jlcxx::Module& types);
 }
+
+#endif // _JLSIMTKCOMMON_DECORATIONGENERATOR_H

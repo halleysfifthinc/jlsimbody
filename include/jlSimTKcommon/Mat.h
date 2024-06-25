@@ -1,3 +1,6 @@
+#ifndef _JLSIMTKCOMMON_MAT_H_
+#define _JLSIMTKCOMMON_MAT_H_
+
 #include "SimTKcommon/internal/CompositeNumericalTypes.h"
 #include "SimTKcommon/internal/ResultType.h"
 #include "SimTKcommon/Scalar.h"
@@ -8,9 +11,6 @@
 #include "SimTKcommon/internal/SymMat.h"
 #include "jlSimTKcommon/Vec.h"
 #include "jlSimTKcommon/Row.h"
-
-#ifndef _JLSIMTKCOMMON_MAT_H_
-#define _JLSIMTKCOMMON_MAT_H_
 
 namespace jlcxx {
 

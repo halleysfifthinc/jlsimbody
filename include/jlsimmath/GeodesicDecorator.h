@@ -1,3 +1,6 @@
+#ifndef _JLSIMMATH_GEODESICDECORATOR_H
+#define _JLSIMMATH_GEODESICDECORATOR_H
+
 #include "SimTKcommon/internal/Transform.h"
 #include "SimTKcommon/internal/Vec.h"
 #include "SimTKcommon/internal/UnitVec.h"
@@ -14,3 +17,5 @@ namespace jlcxx {
 namespace jlsimbody{
   JLSIMBODY_NO_EXPORT void define_simmath_GeodesicDecorator(jlcxx::Module& types);
 }
+
+#endif // _JLSIMMATH_GEODESICDECORATOR_H

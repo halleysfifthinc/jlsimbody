@@ -1,3 +1,6 @@
+#ifndef _JLSIMTKCOMMON_STRING_H
+#define _JLSIMTKCOMMON_STRING_H
+
 #include "SimTKcommon/internal/String.h"
 #include "jlSimTKcommon/Array.h"
 
@@ -10,3 +13,5 @@ namespace jlcxx {
 namespace jlsimbody {
   JLSIMBODY_NO_EXPORT void define_SimTKcommon_String(jlcxx::Module& types, const ArrayWrapper& wraparray);
 }
+
+#endif // _JLSIMTKCOMMON_STRING_H

@@ -1,8 +1,8 @@
+#ifndef _JLSIMTKCOMMON__UNIQUEINDEX_H
+#define _JLSIMTKCOMMON__UNIQUEINDEX_H
+
 // #include "SimTKcommon/internal/common.h"
 #include "jlsimbody/common.h"
-
-#ifndef JLSIMTKCOMMON_UNIQUEINDEX_H
-#define JLSIMTKCOMMON_UNIQUEINDEX_H
 
 // template<typename UniqueIndex> struct IsMirroredType<SimTK::UniqueIndex> : std::true_type {};
 
@@ -53,4 +53,4 @@ namespace jlsimbody {
   
 }
 
-#endif // JLSIMTKCOMMON_UNIQUEINDEX_H
+#endif // _JLSIMTKCOMMON__UNIQUEINDEX_H

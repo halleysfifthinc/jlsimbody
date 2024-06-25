@@ -1,3 +1,6 @@
+#ifndef _JLSIMTKCOMMON_UNITVEC_H
+#define _JLSIMTKCOMMON_UNITVEC_H
+
 #include "SimTKcommon/SmallMatrix.h"
 #include "SimTKcommon/internal/UnitVec.h"
 #include "SimTKcommon/internal/CoordinateAxis.h"
@@ -20,3 +23,5 @@ namespace jlcxx {
 namespace jlsimbody {
   JLSIMBODY_NO_EXPORT void define_SimTKcommon_UnitVec(jlcxx::Module& types);
 }
+
+#endif // _JLSIMTKCOMMON_UNITVEC_H

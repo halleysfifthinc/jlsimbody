@@ -1,3 +1,6 @@
+#ifndef _JLSIMTKCOMMON_ROW_H_
+#define _JLSIMTKCOMMON_ROW_H_
+
 #include "SimTKcommon/internal/CompositeNumericalTypes.h"
 #include "SimTKcommon/internal/ResultType.h"
 #include "SimTKcommon/Scalar.h"
@@ -5,9 +8,6 @@
 #include "SimTKcommon/internal/conjugate.h"
 #include "SimTKcommon/internal/NTraits.h"
 #include "SimTKcommon/internal/Row.h"
-
-#ifndef _JLSIMTKCOMMON_ROW_H_
-#define _JLSIMTKCOMMON_ROW_H_
 
 namespace jlcxx {
 

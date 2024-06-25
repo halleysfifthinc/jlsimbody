@@ -1,3 +1,6 @@
+#ifndef _JLSIMMATH_GEO_H
+#define _JLSIMMATH_GEO_H
+
 #include "SimTKcommon/SmallMatrix.h"
 #include "SimTKcommon/internal/UnitVec.h"
 #include "SimTKcommon/internal/Transform.h"
@@ -127,3 +130,5 @@ namespace jlcxx {
 namespace jlsimbody{
   JLSIMBODY_NO_EXPORT void define_simmath_Geo(jlcxx::Module& types);
 }
+
+#endif // _JLSIMMATH_GEO_H

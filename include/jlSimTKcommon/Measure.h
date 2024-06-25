@@ -1,3 +1,6 @@
+#ifndef _JLSIMTKCOMMON_MEASURE_H
+#define _JLSIMTKCOMMON_MEASURE_H
+
 #include "SimTKcommon/internal/Measure.h"
 #include "SimTKcommon/internal/MeasureImplementation.h"
 #include "jlSimTKcommon/Array.h"
@@ -128,3 +131,5 @@ namespace jlcxx {
 namespace jlsimbody {
   JLSIMBODY_NO_EXPORT void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::AbstractMeasure>& t1, const ArrayWrapper& array_wrapper);
 }
+
+#endif // _JLSIMTKCOMMON_MEASURE_H

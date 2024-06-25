@@ -1,3 +1,6 @@
+#ifndef _JLSIMMATH_CONTACT_RELATED_H
+#define _JLSIMMATH_CONTACT_RELATED_H
+
 #include "SimTKcommon/internal/Transform.h"
 #include "SimTKcommon/internal/Rotation.h"
 #include "SimTKcommon/internal/DecorativeGeometry.h"
@@ -131,3 +134,5 @@ namespace jlcxx {
 namespace jlsimbody{
   JLSIMBODY_NO_EXPORT void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& array_wrapper);
 }
+
+#endif // _JLSIMMATH_CONTACT_RELATED_H

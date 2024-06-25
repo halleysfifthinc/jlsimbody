@@ -1,3 +1,6 @@
+#ifndef _JLSIMTKCOMMON_MASSPROPERTIES_H
+#define _JLSIMTKCOMMON_MASSPROPERTIES_H
+
 #include "SimTKcommon/Scalar.h"
 #include "SimTKcommon/SmallMatrix.h"
 #include "SimTKcommon/Orientation.h"
@@ -24,3 +27,5 @@ namespace jlcxx {
 namespace jlsimbody {
   JLSIMBODY_NO_EXPORT void define_SimTKcommon_MassProperties(jlcxx::Module& types, const ArrayWrapper& array_wrapper);
 }
+
+#endif // _JLSIMTKCOMMON_MASSPROPERTIES_H

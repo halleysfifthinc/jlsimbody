@@ -1,5 +1,5 @@
-#ifndef JLSIMBODY_COMMON_H
-#define JLSIMBODY_COMMON_H
+#ifndef _JLSIMBODY_COMMON_H
+#define _JLSIMBODY_COMMON_H
 
 #include <type_traits>
 #include <cstdio>
@@ -27,4 +27,4 @@
 #define QUOTE(arg) #arg
 #define QUOTE2(arg) QUOTE(arg)
 
-#endif
+#endif // _JLSIMBODY_COMMON_H

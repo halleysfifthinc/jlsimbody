@@ -1,3 +1,6 @@
+#ifndef _JLSIMTKCOMMON_STATE_H
+#define _JLSIMTKCOMMON_STATE_H
+
 #include "SimTKcommon/internal/State.h"
 #include "SimTKcommon/internal/Event.h"
 #include "jlSimTKcommon/Array.h"
@@ -74,3 +77,5 @@ namespace jlcxx {
 namespace jlsimbody {
   JLSIMBODY_NO_EXPORT void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wrapper);
 }
+
+#endif // _JLSIMTKCOMMON_STATE_H
