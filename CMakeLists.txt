@@ -6,6 +6,10 @@ set(JLSIMBODY_CXXWRAPJL_VERSION
   "Target CxxWrap.jl version (implicitly sets libcxxwrap-julia version)"
   )
 
+option(DEV_JLSIMBODY "Build jlsimbody to develop locally" OFF)
+
+option(JLSIMBODY_USE_SIMBODY_JLL "Use Simbody_jll if installed" ON)
+
 # From google/bloaty
 # When using Ninja, compiler output won't be colorized without this.
 include(CheckCXXCompilerFlag)
@@ -16,7 +20,7 @@ endif()
 
 if(${CMAKE_CXX_COMPILER_ID} MATCHES "Clang" AND CMAKE_CXX_COMPILER_VERSION VERSION_LESS 9)
   message(FATAL_ERROR "jlSimbody requires Clang-9 or later")
-  # needed for -ffile-prefix-map
+  # needed for -ffile-prefix-map, -ftime-trace
 endif()
 
 set(CMAKE_CXX_STANDARD 20)
@@ -28,24 +32,65 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib")
 if(NOT DEFINED ENV{bb_full_target})
   set(CMAKE_EXPORT_COMPILE_COMMANDS ON) # Not needed in BinaryBuilder
 
-  find_program(JULIA_EXECUTABLE julia REQUIRED)
-  if(DEFINED JULIA_EXECUTABLE)
-    execute_process(COMMAND
-      ${JULIA_EXECUTABLE} --project=@. -e "using Pkg; Pkg.add(name=\"CxxWrap\", version=\"${JLSIMBODY_CXXWRAPJL_VERSION}\"); using CxxWrap; print(CxxWrap.prefix_path())"
-      WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-      OUTPUT_VARIABLE JLCXX_PREFIX_PATH
-      )
-
-    execute_process(COMMAND 
-      ${JULIA_EXECUTABLE} --project=@. -e "using libblastrampoline_jll; print(libblastrampoline_jll.get_libblastrampoline_path())"
-      WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-      OUTPUT_VARIABLE BLASTRAMPOLINE_PATH
-      )
-    cmake_path(NORMAL_PATH BLASTRAMPOLINE_PATH)
-    set(BUILD_USING_OTHER_LAPACK ${BLASTRAMPOLINE_PATH} CACHE BOOL "")
+  if(NOT DEFINED CACHE{JULIA_EXECUTABLE})
+    find_program(JULIA_EXECUTABLE julia REQUIRED)
+    execute_process(COMMAND ${JULIA_EXECUTABLE} --startup-file=no -e "print(VERSION)" OUTPUT_VARIABLE JULIA_VERSION_INTERNAL)
   endif()
-  
-  find_package(Patch)
+  if(DEFINED JULIA_EXECUTABLE)
+    file(SHA256 "${CMAKE_CURRENT_SOURCE_DIR}/Manifest.toml" MANIFEST_CHECKSUM)
+    # Cache the CxxWrap.jl version to avoid checking on reconfigure if JLSIMBODY_CXXWRAPJL_VERSION hasn't changed
+    if(NOT "${JULIA_VERSION_INTERNAL}" STREQUAL "$CACHE{JULIA_VERSION_INTERNAL}" OR
+      NOT "${MANIFEST_CHECKSUM}" STREQUAL "$CACHE{MANIFEST_CHECKSUM}" OR
+      NOT "${JLSIMBODY_CXXWRAPJL_VERSION}" STREQUAL "${JLSIMBODY_CXXWRAPJL_VERSION_INTERNAL}")
+      message(STATUS "Checking for CxxWrap.jl v${JLSIMBODY_CXXWRAPJL_VERSION}")
+      execute_process(COMMAND
+        ${JULIA_EXECUTABLE} --startup-file=no --project=@. -e "using Pkg; Pkg.add(name=\"CxxWrap\", version=\"${JLSIMBODY_CXXWRAPJL_VERSION}\"); using CxxWrap; print(CxxWrap.prefix_path())"
+        ERROR_QUIET
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+        OUTPUT_VARIABLE JLCXX_PREFIX_PATH
+        )
+      set(JLSIMBODY_CXXWRAPJL_VERSION_INTERNAL ${JLSIMBODY_CXXWRAPJL_VERSION} CACHE INTERNAL "")
+    endif()
+
+    if(JLSIMBODY_USE_SIMBODY_JLL)
+      # Set the prefix path to Simbody_jll if installed (otherwise Simbody will be built as a subproject)
+      file(SHA256 "${CMAKE_CURRENT_SOURCE_DIR}/scripts/check_simbody_jll.jl" CHECK_SIMBODY_JLL_CHECKSUM)
+      if(NOT "${JULIA_VERSION_INTERNAL}" STREQUAL "$CACHE{JULIA_VERSION_INTERNAL}" OR
+          NOT "${MANIFEST_CHECKSUM}" STREQUAL "$CACHE{MANIFEST_CHECKSUM}" OR
+          NOT "${CHECK_SIMBODY_JLL_CHECKSUM}" STREQUAL "$CACHE{CHECK_SIMBODY_JLL_CHECKSUM}")
+        message(STATUS "Checking for Simbody_jll")
+        execute_process(COMMAND
+          ${JULIA_EXECUTABLE} --startup-file=no --project=@. --load ${CMAKE_CURRENT_SOURCE_DIR}/scripts/check_simbody_jll.jl
+          WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+          OUTPUT_VARIABLE SIMBODY_JLL_PREFIX_PATH
+          RESULTS_VARIABLE SIMBODY_JLL_PREFIX_PATH_RETURN_CODE
+          )
+        if(SIMBODY_JLL_PREFIX_PATH_RETURN_CODE EQUAL 1)
+          message(STATUS "Simbody_jll not found, building Simbody from source")
+          set(SIMBODY_JLL_PREFIX_PATH)
+        endif()
+        set(CHECK_SIMBODY_JLL_CHECKSUM ${CHECK_SIMBODY_JLL_CHECKSUM} CACHE INTERNAL "")
+      endif()
+    endif()
+
+    if(NOT "${JULIA_VERSION_INTERNAL}" STREQUAL "$CACHE{JULIA_VERSION_INTERNAL}" OR
+        NOT "${MANIFEST_CHECKSUM}" STREQUAL "$CACHE{MANIFEST_CHECKSUM}")
+      message(STATUS "Checking for libblastrampoline_jll")
+      execute_process(COMMAND
+        ${JULIA_EXECUTABLE} --startup-file=no --project=@. -e "using libblastrampoline_jll; print(libblastrampoline_jll.get_libblastrampoline_path())"
+        WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+        OUTPUT_VARIABLE BLASTRAMPOLINE_PATH
+        )
+      cmake_path(NORMAL_PATH BLASTRAMPOLINE_PATH)
+      set(BLASTRAMPOLINE_PATH ${BLASTRAMPOLINE_PATH} CACHE INTERNAL "")
+      set(BUILD_USING_OTHER_LAPACK ${BLASTRAMPOLINE_PATH} CACHE BOOL "")
+    endif()
+
+    set(JULIA_VERSION_INTERNAL ${JULIA_VERSION_INTERNAL} CACHE INTERNAL "")
+    set(MANIFEST_CHECKSUM ${MANIFEST_CHECKSUM} CACHE INTERNAL "")
+  endif()
+
+  find_package(Patch QUIET)
 endif()
 
 find_package(JlCxx QUIET REQUIRED
@@ -64,16 +109,21 @@ set(BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 set(INSTALL_DOCS OFF CACHE BOOL "" FORCE)
 set(BUILD_TESTING OFF CACHE BOOL "" FORCE)
 set(WINDOWS_USE_EXTERNAL_LIBS ON CACHE BOOL "" FORCE)
-FetchContent_Declare(Simbody 
+FetchContent_Declare(Simbody
   GIT_REPOSITORY https://github.com/halleysfifthinc/simbody
   GIT_TAG 672da64c7224900fdf962578ac723a10a4e1fd21
   GIT_SHALLOW TRUE
   PATCH_COMMAND ${Patch_EXECUTABLE} -p1 --forward --posix --silent < ${CMAKE_CURRENT_SOURCE_DIR}/patches/current_dir.patch || true
   SYSTEM
-  FIND_PACKAGE_ARGS 3.8
+  FIND_PACKAGE_ARGS 3.8 HINTS ${SIMBODY_JLL_PREFIX_PATH}
   )
 
 FetchContent_MakeAvailable(Simbody)
+if(DEFINED Simbody_SOURCE_DIR)
+  message(STATUS "Building Simbody from source at ${Simbody_SOURCE_DIR}")
+elseif(DEFINED Simbody_DIR AND EXISTS ${Simbody_DIR})
+  message(STATUS "Found Simbody_jll@v${Simbody_VERSION} at ${Simbody_DIR}")
+endif()
 
 if(TARGET SimTKcommon AND NOT TARGET Simbody::SimTKcommon)
   add_library(Simbody::SimTKcommon ALIAS SimTKcommon)
@@ -158,8 +208,6 @@ set(HEADER_FILES
 list(SORT CXX_FILES)
 list(SORT HEADER_FILES)
 
-# set(CMAKE_CXX_VISIBILITY_PRESET hidden)
-# set(CMAKE_VISIBILITY_INLINES_HIDDEN 1)
 
 add_library(jlsimbody SHARED
   ${CXX_FILES} ${HEADER_FILES})
@@ -193,14 +241,22 @@ target_compile_options(jlsimbody
     -ffile-prefix-map=${CMAKE_CURRENT_SOURCE_DIR}=jlsimbody
     -Wno-builtin-macro-redefined
     -Wdate-time
+    $<$<AND:$<CXX_COMPILER_ID:Clang>,$<BOOL:${DEV_JLSIMBODY}>>:-ftime-trace>
+    $<$<BOOL:${DEV_JLSIMBODY}>:-O1>
   )
 
-target_compile_definitions(jlsimbody PRIVATE 
+target_compile_definitions(jlsimbody PRIVATE
   $<$<CONFIG:DEBUG>:VERBOSE_IMPORT>)
 
 target_link_libraries(jlsimbody PUBLIC
   Simbody::SimTKcommon Simbody::SimTKmath Simbody::SimTKsimbody
   JlCxx::cxxwrap_julia JlCxx::cxxwrap_julia_stl)
+
+if(NOT DEFINED Simbody_SOURCE_DIR) # using Simbody_jll
+  cmake_path(GET BLASTRAMPOLINE_PATH PARENT_PATH BLASTRAMPOLINE_DIR)
+  target_link_directories(jlsimbody PRIVATE
+    ${BLASTRAMPOLINE_DIR})
+endif()
 
 # target_link_options(jlsimbody PRIVATE
 #   # --for-linker=--compress-debug-sections=zstd
