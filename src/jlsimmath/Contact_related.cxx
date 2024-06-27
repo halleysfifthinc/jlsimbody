@@ -2,7 +2,10 @@
 #include "jlsimbody/common.h"
 
 #include "jlsimmath/Contact_related.h"
+
+#ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
 #include "jlSimTKcommon/SimTK_UniqueIndex.h"
+#endif
 
 namespace jlsimbody{
 
@@ -18,10 +21,6 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   types.set_const("SimTK!Contact!Ongoing", SimTK::Contact::Ongoing);
   types.set_const("SimTK!Contact!Broken", SimTK::Contact::Broken);
   CLEAR_DEBUG_MSG();
-
-  wrap_SimTK_UniqueIndexType<SimTK::ContactSurfaceIndex>(types, "SimTK!ContactSurfaceIndex");
-  wrap_SimTK_UniqueIndexType<SimTK::ContactId>(types, "SimTK!ContactId");
-  wrap_SimTK_UniqueIndexType<SimTK::ContactTypeId>(types, "SimTK!ContactTypeId");
 
   DEBUG_MSG("type SimTK::Contact (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:85:28
@@ -64,8 +63,6 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   // defined in simmath/internal/Contact.h:542:28
   auto t11 = types.add_type<SimTK::PointContact>("SimTK!PointContact", jlcxx::julia_base_type<SimTK::Contact>());
   CLEAR_DEBUG_MSG();
-
-  wrap_SimTK_UniqueIndexType<SimTK::ContactGeometryTypeId>(types, "SimTK!ContactGeometryTypeId");
 
   DEBUG_MSG("type SimTK::ContactGeometry (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:110:28
@@ -145,7 +142,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   auto t33 = types.add_type<SimTK::GeodHitPlaneEvent>("SimTK!GeodHitPlaneEvent");
   t33.template constructor<>();
   CLEAR_DEBUG_MSG();
- 
+
   DEBUG_MSG("type SimTK::PlaneDecorator (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:1541:7
   auto t35 = types.add_type<SimTK::PlaneDecorator>("SimTK!PlaneDecorator", jlcxx::julia_base_type<SimTK::DecorationGenerator>());
@@ -213,8 +210,6 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   auto t47 = types.add_type<SimTK::ContactTracker::GeneralImplicitPair>("SimTK!ContactTracker!GeneralImplicitPair", jlcxx::julia_base_type<SimTK::ContactTracker>());
   CLEAR_DEBUG_MSG();
 
-  wrap_SimTK_UniqueIndexType<SimTK::ContactCliqueId>(types, "SimTK!ContactCliqueId");
-
   DEBUG_MSG("type SimTK::ContactMaterial (" __HERE__ ")");
   // defined in simbody/internal/ContactSurface.h:89:28
   auto t49 = types.add_type<SimTK::ContactMaterial>("SimTK!ContactMaterial");
@@ -226,6 +221,14 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   auto t50 = types.add_type<SimTK::ContactSurface>("SimTK!ContactSurface");
   t50.template constructor<>();
   CLEAR_DEBUG_MSG();
+
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
+  wrap_SimTK_UniqueIndexType<SimTK::ContactSurfaceIndex>(types, "SimTK!ContactSurfaceIndex");
+  wrap_SimTK_UniqueIndexType<SimTK::ContactId>(types, "SimTK!ContactId");
+  wrap_SimTK_UniqueIndexType<SimTK::ContactTypeId>(types, "SimTK!ContactTypeId");
+  wrap_SimTK_UniqueIndexType<SimTK::ContactGeometryTypeId>(types, "SimTK!ContactGeometryTypeId");
+  wrap_SimTK_UniqueIndexType<SimTK::ContactCliqueId>(types, "SimTK!ContactCliqueId");
+  #endif
 
   /**********************************************************************/
   /* Wrappers for the methods of class SimTK::Contact
@@ -261,11 +264,18 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   t3.method("isEmpty", static_cast<bool (SimTK::Contact::*)()  const>(&SimTK::Contact::isEmpty));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactId SimTK::Contact::getContactId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactId SimTK::Contact::getContactId()
   // defined in simmath/internal/Contact.h:122:15
   t3.method("getContactId", static_cast<SimTK::ContactId (SimTK::Contact::*)()  const>(&SimTK::Contact::getContactId));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::Contact::getContactId() (" __HERE__ ")");
+  // defined in simmath/internal/Contact.h:122:15
+  t3.method("getContactId", reinterpret_cast<int (SimTK::Contact::*)()  const>(&SimTK::Contact::getContactId));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("SimTK::Contact::Condition SimTK::Contact::getCondition() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Contact::Condition SimTK::Contact::getCondition()
@@ -273,17 +283,31 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   t3.method("getCondition", static_cast<SimTK::Contact::Condition (SimTK::Contact::*)()  const>(&SimTK::Contact::getCondition));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactSurfaceIndex SimTK::Contact::getSurface1() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactSurfaceIndex SimTK::Contact::getSurface1()
   // defined in simmath/internal/Contact.h:127:25
   t3.method("getSurface1", static_cast<SimTK::ContactSurfaceIndex (SimTK::Contact::*)()  const>(&SimTK::Contact::getSurface1));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::Contact::getSurface1() (" __HERE__ ")");
+  // defined in simmath/internal/Contact.h:127:25
+  t3.method("getSurface1", reinterpret_cast<int (SimTK::Contact::*)()  const>(&SimTK::Contact::getSurface1));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactSurfaceIndex SimTK::Contact::getSurface2() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactSurfaceIndex SimTK::Contact::getSurface2()
   // defined in simmath/internal/Contact.h:130:25
   t3.method("getSurface2", static_cast<SimTK::ContactSurfaceIndex (SimTK::Contact::*)()  const>(&SimTK::Contact::getSurface2));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::Contact::getSurface2() (" __HERE__ ")");
+  // defined in simmath/internal/Contact.h:130:25
+  t3.method("getSurface2", reinterpret_cast<int (SimTK::Contact::*)()  const>(&SimTK::Contact::getSurface2));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("const SimTK::Transform & SimTK::Contact::getTransform() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Transform & SimTK::Contact::getTransform()
@@ -291,11 +315,18 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   t3.method("getTransform", static_cast<const SimTK::Transform & (SimTK::Contact::*)()  const>(&SimTK::Contact::getTransform));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::Contact & SimTK::Contact::setContactId(SimTK::ContactId) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Contact & SimTK::Contact::setContactId(SimTK::ContactId)
   // defined in simmath/internal/Contact.h:138:14
   t3.method("setContactId", static_cast<SimTK::Contact & (SimTK::Contact::*)(SimTK::ContactId) >(&SimTK::Contact::setContactId));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("SimTK::Contact & SimTK::Contact::setContactId(int) (" __HERE__ ")");
+  // defined in simmath/internal/Contact.h:138:14
+  t3.method("setContactId", reinterpret_cast<SimTK::Contact & (SimTK::Contact::*)(int) >(&SimTK::Contact::setContactId));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("SimTK::Contact & SimTK::Contact::setCondition(SimTK::Contact::Condition) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Contact & SimTK::Contact::setCondition(SimTK::Contact::Condition)
@@ -303,11 +334,18 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   t3.method("setCondition", static_cast<SimTK::Contact & (SimTK::Contact::*)(SimTK::Contact::Condition) >(&SimTK::Contact::setCondition));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::Contact & SimTK::Contact::setSurfaces(SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Contact & SimTK::Contact::setSurfaces(SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex)
   // defined in simmath/internal/Contact.h:142:14
   t3.method("setSurfaces", static_cast<SimTK::Contact & (SimTK::Contact::*)(SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex) >(&SimTK::Contact::setSurfaces));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("SimTK::Contact & SimTK::Contact::setSurfaces(int, int) (" __HERE__ ")");
+  // defined in simmath/internal/Contact.h:142:14
+  t3.method("setSurfaces", reinterpret_cast<SimTK::Contact & (SimTK::Contact::*)(int, int) >(&SimTK::Contact::setSurfaces));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("SimTK::Contact & SimTK::Contact::setTransform(const SimTK::Transform &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Contact & SimTK::Contact::setTransform(const SimTK::Transform &)
@@ -315,17 +353,31 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   t3.method("setTransform", static_cast<SimTK::Contact & (SimTK::Contact::*)(const SimTK::Transform &) >(&SimTK::Contact::setTransform));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactTypeId SimTK::Contact::getTypeId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactTypeId SimTK::Contact::getTypeId()
   // defined in simmath/internal/Contact.h:148:19
   t3.method("getTypeId", static_cast<SimTK::ContactTypeId (SimTK::Contact::*)()  const>(&SimTK::Contact::getTypeId));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::Contact::getTypeId() (" __HERE__ ")");
+  // defined in simmath/internal/Contact.h:148:19
+  t3.method("getTypeId", reinterpret_cast<int (SimTK::Contact::*)()  const>(&SimTK::Contact::getTypeId));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactId SimTK::Contact::createNewContactId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactId SimTK::Contact::createNewContactId()
   // defined in simmath/internal/Contact.h:153:22
   types.method("SimTK!Contact!createNewContactId", static_cast<SimTK::ContactId (*)() >(&SimTK::Contact::createNewContactId));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::Contact::createNewContactId() (" __HERE__ ")");
+  // defined in simmath/internal/Contact.h:153:22
+  types.method("SimTK!Contact!createNewContactId", reinterpret_cast<int (*)() >(&SimTK::Contact::createNewContactId));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   /* End of SimTK::Contact class method wrappers
    **********************************************************************/
@@ -336,10 +388,18 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
    */
 
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::UntrackedContact::UntrackedContact(SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex) (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:191:5
   t5.constructor<SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex>();
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::UntrackedContact::UntrackedContact(int, int) (" __HERE__ ")");
+  t5.constructor([] (int surf1, int surf2) {
+    return new SimTK::UntrackedContact(SimTK::ContactSurfaceIndex(surf1), SimTK::ContactSurfaceIndex(surf2));
+  });
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("bool SimTK::UntrackedContact::isInstance(const SimTK::Contact &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::UntrackedContact::isInstance(const SimTK::Contact &)
@@ -347,11 +407,18 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   types.method("SimTK!UntrackedContact!isInstance", static_cast<bool (*)(const SimTK::Contact &) >(&SimTK::UntrackedContact::isInstance));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactTypeId SimTK::UntrackedContact::classTypeId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactTypeId SimTK::UntrackedContact::classTypeId()
   // defined in simmath/internal/Contact.h:196:26
   types.method("SimTK!UntrackedContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::UntrackedContact::classTypeId));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::UntrackedContact::classTypeId() (" __HERE__ ")");
+  // defined in simmath/internal/Contact.h:196:26
+  types.method("SimTK!UntrackedContact!classTypeId", reinterpret_cast<int (*)() >(&SimTK::UntrackedContact::classTypeId));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   /* End of SimTK::UntrackedContact class method wrappers
    **********************************************************************/
@@ -361,11 +428,19 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   /* Wrappers for the methods of class SimTK::BrokenContact
    */
 
-
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::BrokenContact::BrokenContact(SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex, const SimTK::Transform &, SimTK::Real) (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:224:5
   t6.constructor<SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex, const SimTK::Transform &, SimTK::Real>();
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::BrokenContact::BrokenContact(int, int, const SimTK::Transform &, SimTK::Real) (" __HERE__ ")");
+  // defined in simmath/internal/Contact.h:224:5
+  t6.constructor([] (int surf1, int surf2, const SimTK::Transform &X_S1S2, SimTK::Real separation) {
+    return new SimTK::BrokenContact(SimTK::ContactSurfaceIndex(surf1), SimTK::ContactSurfaceIndex(surf2), X_S1S2, separation);
+  });
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("SimTK::Real SimTK::BrokenContact::getSeparation() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::BrokenContact::getSeparation()
@@ -379,11 +454,18 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   types.method("SimTK!BrokenContact!isInstance", static_cast<bool (*)(const SimTK::Contact &) >(&SimTK::BrokenContact::isInstance));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactTypeId SimTK::BrokenContact::classTypeId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactTypeId SimTK::BrokenContact::classTypeId()
   // defined in simmath/internal/Contact.h:235:26
   types.method("SimTK!BrokenContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::BrokenContact::classTypeId));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::BrokenContact::classTypeId() (" __HERE__ ")");
+  // defined in simmath/internal/Contact.h:235:26
+  types.method("SimTK!BrokenContact!classTypeId", reinterpret_cast<int (*)() >(&SimTK::BrokenContact::classTypeId));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   /* End of SimTK::BrokenContact class method wrappers
    **********************************************************************/
@@ -393,11 +475,19 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   /* Wrappers for the methods of class SimTK::CircularPointContact
    */
 
-
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::CircularPointContact::CircularPointContact(SimTK::ContactSurfaceIndex, SimTK::Real, SimTK::ContactSurfaceIndex, SimTK::Real, const SimTK::Transform &, SimTK::Real, SimTK::Real, const SimTK::Vec3 &, const SimTK::UnitVec3 &) (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:276:5
   t7.constructor<SimTK::ContactSurfaceIndex, SimTK::Real, SimTK::ContactSurfaceIndex, SimTK::Real, const SimTK::Transform &, SimTK::Real, SimTK::Real, const SimTK::Vec3 &, const SimTK::UnitVec3 &>();
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::CircularPointContact::CircularPointContact(int, SimTK::Real, int, SimTK::Real, const SimTK::Transform &, SimTK::Real, SimTK::Real, const SimTK::Vec3 &, const SimTK::UnitVec3 &) (" __HERE__ ")");
+  // defined in simmath/internal/Contact.h:276:5
+  t7.constructor([] (int surf1, SimTK::Real radius1, int surf2, SimTK::Real radius2, const SimTK::Transform &X_S1S2, SimTK::Real radius, SimTK::Real depth, const SimTK::Vec3 &origin_S1, const SimTK::UnitVec3 &normal_S1) {
+    return new SimTK::CircularPointContact(SimTK::ContactSurfaceIndex(surf1), radius1, SimTK::ContactSurfaceIndex(surf2), radius2, X_S1S2, radius, depth, origin_S1, normal_S1);
+  });
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("SimTK::Real SimTK::CircularPointContact::getRadius1() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::CircularPointContact::getRadius1()
@@ -453,11 +543,18 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   types.method("SimTK!CircularPointContact!updAs", static_cast<SimTK::CircularPointContact & (*)(SimTK::Contact &) >(&SimTK::CircularPointContact::updAs));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactTypeId SimTK::CircularPointContact::classTypeId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactTypeId SimTK::CircularPointContact::classTypeId()
   // defined in simmath/internal/Contact.h:311:26
   types.method("SimTK!CircularPointContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::CircularPointContact::classTypeId));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::CircularPointContact::classTypeId() (" __HERE__ ")");
+  // defined in simmath/internal/Contact.h:311:26
+  types.method("SimTK!CircularPointContact!classTypeId", reinterpret_cast<int (*)() >(&SimTK::CircularPointContact::classTypeId));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   /* End of SimTK::CircularPointContact class method wrappers
    **********************************************************************/
@@ -467,11 +564,19 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   /* Wrappers for the methods of class SimTK::EllipticalPointContact
    */
 
-
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::EllipticalPointContact::EllipticalPointContact(SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex, const SimTK::Transform &, const SimTK::Transform &, const SimTK::Vec2 &, SimTK::Real) (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:370:5
   t8.constructor<SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex, const SimTK::Transform &, const SimTK::Transform &, const SimTK::Vec2 &, SimTK::Real>();
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::EllipticalPointContact::EllipticalPointContact(int, int, const SimTK::Transform &, const SimTK::Transform &, const SimTK::Vec2 &, SimTK::Real) (" __HERE__ ")");
+  // defined in simmath/internal/Contact.h:370:5
+  t8.constructor([] (int surf1, int surf2, const SimTK::Transform &X_S1S2, const SimTK::Transform &X_S1C, const SimTK::Vec2 &k, SimTK::Real depth) {
+    return new SimTK::EllipticalPointContact(SimTK::ContactSurfaceIndex(surf1), SimTK::ContactSurfaceIndex(surf2), X_S1S2, X_S1C, k, depth);
+  });
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("const SimTK::Vec2 & SimTK::EllipticalPointContact::getCurvatures() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Vec2 & SimTK::EllipticalPointContact::getCurvatures()
@@ -509,11 +614,18 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   types.method("SimTK!EllipticalPointContact!updAs", static_cast<SimTK::EllipticalPointContact & (*)(SimTK::Contact &) >(&SimTK::EllipticalPointContact::updAs));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactTypeId SimTK::EllipticalPointContact::classTypeId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactTypeId SimTK::EllipticalPointContact::classTypeId()
   // defined in simmath/internal/Contact.h:401:26
   types.method("SimTK!EllipticalPointContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::EllipticalPointContact::classTypeId));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::EllipticalPointContact::classTypeId() (" __HERE__ ")");
+  // defined in simmath/internal/Contact.h:401:26
+  types.method("SimTK!EllipticalPointContact!classTypeId", reinterpret_cast<int (*)() >(&SimTK::EllipticalPointContact::classTypeId));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   /* End of SimTK::EllipticalPointContact class method wrappers
    **********************************************************************/
@@ -523,11 +635,19 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   /* Wrappers for the methods of class SimTK::BrickHalfSpaceContact
    */
 
-
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::BrickHalfSpaceContact::BrickHalfSpaceContact(SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex, const SimTK::Transform &, int, SimTK::Real) (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:430:5
   t9.constructor<SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex, const SimTK::Transform &, int, SimTK::Real>();
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::BrickHalfSpaceContact::BrickHalfSpaceContact(int, int, const SimTK::Transform &, int, SimTK::Real) (" __HERE__ ")");
+  // defined in simmath/internal/Contact.h:430:5
+  t9.constructor([] (int halfSpace, int brick, const SimTK::Transform &X_HB, int lowestVertex, SimTK::Real depth) {
+    return new SimTK::BrickHalfSpaceContact(SimTK::ContactSurfaceIndex(halfSpace), SimTK::ContactSurfaceIndex(brick), X_HB, lowestVertex, depth);
+  });
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("int SimTK::BrickHalfSpaceContact::getLowestVertex() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::BrickHalfSpaceContact::getLowestVertex()
@@ -559,11 +679,18 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   types.method("SimTK!BrickHalfSpaceContact!updAs", static_cast<SimTK::BrickHalfSpaceContact & (*)(SimTK::Contact &) >(&SimTK::BrickHalfSpaceContact::updAs));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactTypeId SimTK::BrickHalfSpaceContact::classTypeId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactTypeId SimTK::BrickHalfSpaceContact::classTypeId()
   // defined in simmath/internal/Contact.h:461:26
   types.method("SimTK!BrickHalfSpaceContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::BrickHalfSpaceContact::classTypeId));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::BrickHalfSpaceContact::classTypeId() (" __HERE__ ")");
+  // defined in simmath/internal/Contact.h:461:26
+  types.method("SimTK!BrickHalfSpaceContact!classTypeId", reinterpret_cast<int (*)() >(&SimTK::BrickHalfSpaceContact::classTypeId));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   /* End of SimTK::BrickHalfSpaceContact class method wrappers
    **********************************************************************/
@@ -573,17 +700,30 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   /* Wrappers for the methods of class SimTK::TriangleMeshContact
    */
 
-
+  // TODO: Switch lambda return types from std::vector to something cheaper to compile (i.e. that is already compiled)
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::TriangleMeshContact::TriangleMeshContact(SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex, const SimTK::Transform &, const std::set<int> &, const std::set<int> &) (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:491:5
   // t10.constructor<SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex, const SimTK::Transform &, const std::set<int> &, const std::set<int> &>();
+  // lambda because std::set<int> isn't wrapped (yet, potential TODO)
   t10.constructor([] (SimTK::ContactSurfaceIndex surf1, SimTK::ContactSurfaceIndex surf2, const SimTK::Transform& X_S1S2, const jlcxx::ArrayRef<int>& faces1, const jlcxx::ArrayRef<int>& faces2) {
     std::set<int> faces1_set(faces1.begin(), faces1.end());
     std::set<int> faces2_set(faces2.begin(), faces2.end());
-    
+
     return new SimTK::TriangleMeshContact(surf1, surf2, X_S1S2, faces1_set, faces2_set);
   });
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::TriangleMeshContact::TriangleMeshContact(int, int, const SimTK::Transform &, const std::set<int> &, const std::set<int> &) (" __HERE__ ")");
+  // defined in simmath/internal/Contact.h:491:5
+  t10.constructor([] (int surf1, int surf2, const SimTK::Transform& X_S1S2, const jlcxx::ArrayRef<int>& faces1, const jlcxx::ArrayRef<int>& faces2) {
+    std::set<int> faces1_set(faces1.begin(), faces1.end());
+    std::set<int> faces2_set(faces2.begin(), faces2.end());
+
+    return new SimTK::TriangleMeshContact(SimTK::ContactSurfaceIndex(surf1), SimTK::ContactSurfaceIndex(surf2), X_S1S2, faces1_set, faces2_set);
+  });
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("const std::set<int> & SimTK::TriangleMeshContact::getSurface1Faces() (" __HERE__ ")");
   // signature to use in the veto list: const std::set<int> & SimTK::TriangleMeshContact::getSurface1Faces()
@@ -591,7 +731,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   // t10.method("getSurface1Faces", static_cast<const std::set<int> & (SimTK::TriangleMeshContact::*)()  const>(&SimTK::TriangleMeshContact::getSurface1Faces));
   t10.method("getSurface1Faces", [] (SimTK::TriangleMeshContact& self) -> std::vector<int> {
     auto input = self.getSurface1Faces();
-    std::vector<int> output(input.begin(), input.end()); 
+    std::vector<int> output(input.begin(), input.end());
     return output;
   });
   CLEAR_DEBUG_MSG();
@@ -602,7 +742,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   // t10.method("getSurface2Faces", static_cast<const std::set<int> & (SimTK::TriangleMeshContact::*)()  const>(&SimTK::TriangleMeshContact::getSurface2Faces));
   t10.method("getSurface2Faces", [] (SimTK::TriangleMeshContact& self) -> std::vector<int> {
     auto input = self.getSurface2Faces();
-    std::vector<int> output(input.begin(), input.end()); 
+    std::vector<int> output(input.begin(), input.end());
     return output;
   });
   CLEAR_DEBUG_MSG();
@@ -625,11 +765,18 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   types.method("SimTK!TriangleMeshContact!updAs", static_cast<SimTK::TriangleMeshContact & (*)(SimTK::Contact &) >(&SimTK::TriangleMeshContact::updAs));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactTypeId SimTK::TriangleMeshContact::classTypeId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactTypeId SimTK::TriangleMeshContact::classTypeId()
   // defined in simmath/internal/Contact.h:521:26
   types.method("SimTK!TriangleMeshContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::TriangleMeshContact::classTypeId));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::TriangleMeshContact::classTypeId() (" __HERE__ ")");
+  // defined in simmath/internal/Contact.h:521:26
+  types.method("SimTK!TriangleMeshContact!classTypeId", reinterpret_cast<int (*)() >(&SimTK::TriangleMeshContact::classTypeId));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   /* End of SimTK::TriangleMeshContact class method wrappers
    **********************************************************************/
@@ -638,18 +785,33 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   /**********************************************************************/
   /* Wrappers for the methods of class SimTK::PointContact
    */
+  // TODO: SimTK::PointContact is OBSOLETE, don't wrap?
 
-
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::PointContact::PointContact(SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex, SimTK::Vec3 &, SimTK::Vec3 &, SimTK::Real, SimTK::Real, SimTK::Real) (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:560:5
   t11.constructor<SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex, SimTK::Vec3 &, SimTK::Vec3 &, SimTK::Real, SimTK::Real, SimTK::Real>();
   CLEAR_DEBUG_MSG();
 
-
   DEBUG_MSG("void SimTK::PointContact::PointContact(SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex, SimTK::Vec3 &, SimTK::Vec3 &, SimTK::Real, SimTK::Real) (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:577:5
   t11.constructor<SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex, SimTK::Vec3 &, SimTK::Vec3 &, SimTK::Real, SimTK::Real>();
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::PointContact::PointContact(int, int, SimTK::Vec3 &, SimTK::Vec3 &, SimTK::Real, SimTK::Real, SimTK::Real) (" __HERE__ ")");
+  // defined in simmath/internal/Contact.h:560:5
+  t11.constructor([] (int surf1, int surf2, SimTK::Vec3 &location, SimTK::Vec3 &normal, SimTK::Real radius1, SimTK::Real radius2, SimTK::Real depth) -> SimTK::PointContact* {
+    return new SimTK::PointContact(SimTK::ContactSurfaceIndex(surf1), SimTK::ContactSurfaceIndex(surf2), location, normal, radius1, radius2, depth);
+  });
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("void SimTK::PointContact::PointContact(int, int, SimTK::Vec3 &, SimTK::Vec3 &, SimTK::Real, SimTK::Real) (" __HERE__ ")");
+  // defined in simmath/internal/Contact.h:577:5
+  t11.constructor([] (int surf1, int surf2, SimTK::Vec3 &location, SimTK::Vec3 &normal, SimTK::Real radius, SimTK::Real depth) -> SimTK::PointContact* {
+    return new SimTK::PointContact(SimTK::ContactSurfaceIndex(surf1), SimTK::ContactSurfaceIndex(surf2), location, normal, radius, depth);
+  });
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("SimTK::Vec3 SimTK::PointContact::getLocation() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Vec3 SimTK::PointContact::getLocation()
@@ -693,11 +855,18 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   types.method("SimTK!PointContact!isInstance", static_cast<bool (*)(const SimTK::Contact &) >(&SimTK::PointContact::isInstance));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactTypeId SimTK::PointContact::classTypeId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactTypeId SimTK::PointContact::classTypeId()
   // defined in simmath/internal/Contact.h:616:26
   types.method("SimTK!PointContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::PointContact::classTypeId));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::PointContact::classTypeId() (" __HERE__ ")");
+  // defined in simmath/internal/Contact.h:616:26
+  types.method("SimTK!PointContact!classTypeId", reinterpret_cast<int (*)() >(&SimTK::PointContact::classTypeId));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   /* End of SimTK::PointContact class method wrappers
    **********************************************************************/
@@ -833,11 +1002,18 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   t17.method("calcSupportPoint", static_cast<SimTK::Vec3 (SimTK::ContactGeometry::*)(SimTK::UnitVec3)  const>(&SimTK::ContactGeometry::calcSupportPoint));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactGeometryTypeId SimTK::ContactGeometry::getTypeId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactGeometryTypeId SimTK::ContactGeometry::getTypeId()
   // defined in simmath/internal/ContactGeometry.h:402:23
   t17.method("getTypeId", static_cast<SimTK::ContactGeometryTypeId (SimTK::ContactGeometry::*)()  const>(&SimTK::ContactGeometry::getTypeId));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::ContactGeometry::getTypeId() (" __HERE__ ")");
+  // defined in simmath/internal/ContactGeometry.h:402:23
+  t17.method("getTypeId", reinterpret_cast<int (SimTK::ContactGeometry::*)()  const>(&SimTK::ContactGeometry::getTypeId));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("SimTK::Vec2 SimTK::ContactGeometry::evalParametricCurvature(const SimTK::Vec3 &, const SimTK::UnitVec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &, SimTK::Transform &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Vec2 SimTK::ContactGeometry::evalParametricCurvature(const SimTK::Vec3 &, const SimTK::UnitVec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &, SimTK::Transform &)
@@ -1071,11 +1247,18 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   types.method("SimTK!ContactGeometry!HalfSpace!updAs", static_cast<SimTK::ContactGeometry::HalfSpace & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::HalfSpace::updAs));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactGeometryTypeId SimTK::ContactGeometry::HalfSpace::classTypeId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactGeometryTypeId SimTK::ContactGeometry::HalfSpace::classTypeId()
   // defined in simmath/internal/ContactGeometry.h:849:30
   types.method("SimTK!ContactGeometry!HalfSpace!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::HalfSpace::classTypeId));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::ContactGeometry::HalfSpace::classTypeId() (" __HERE__ ")");
+  // defined in simmath/internal/ContactGeometry.h:849:30
+  types.method("SimTK!ContactGeometry!HalfSpace!classTypeId", reinterpret_cast<int (*)() >(&SimTK::ContactGeometry::HalfSpace::classTypeId));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   /* End of SimTK::ContactGeometry::HalfSpace class method wrappers
    **********************************************************************/
@@ -1121,11 +1304,18 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   types.method("SimTK!ContactGeometry!Cylinder!updAs", static_cast<SimTK::ContactGeometry::Cylinder & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Cylinder::updAs));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactGeometryTypeId SimTK::ContactGeometry::Cylinder::classTypeId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactGeometryTypeId SimTK::ContactGeometry::Cylinder::classTypeId()
   // defined in simmath/internal/ContactGeometry.h:881:30
   types.method("SimTK!ContactGeometry!Cylinder!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::Cylinder::classTypeId));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::ContactGeometry::Cylinder::classTypeId() (" __HERE__ ")");
+  // defined in simmath/internal/ContactGeometry.h:881:30
+  types.method("SimTK!ContactGeometry!Cylinder!classTypeId", reinterpret_cast<int (*)() >(&SimTK::ContactGeometry::Cylinder::classTypeId));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   /* End of SimTK::ContactGeometry::Cylinder class method wrappers
    **********************************************************************/
@@ -1171,11 +1361,18 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   types.method("SimTK!ContactGeometry!Sphere!updAs", static_cast<SimTK::ContactGeometry::Sphere & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Sphere::updAs));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactGeometryTypeId SimTK::ContactGeometry::Sphere::classTypeId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactGeometryTypeId SimTK::ContactGeometry::Sphere::classTypeId()
   // defined in simmath/internal/ContactGeometry.h:912:30
   types.method("SimTK!ContactGeometry!Sphere!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::Sphere::classTypeId));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::ContactGeometry::Sphere::classTypeId() (" __HERE__ ")");
+  // defined in simmath/internal/ContactGeometry.h:912:30
+  types.method("SimTK!ContactGeometry!Sphere!classTypeId", reinterpret_cast<int (*)() >(&SimTK::ContactGeometry::Sphere::classTypeId));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   /* End of SimTK::ContactGeometry::Sphere class method wrappers
    **********************************************************************/
@@ -1257,11 +1454,18 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   types.method("SimTK!ContactGeometry!Ellipsoid!updAs", static_cast<SimTK::ContactGeometry::Ellipsoid & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Ellipsoid::updAs));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactGeometryTypeId SimTK::ContactGeometry::Ellipsoid::classTypeId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactGeometryTypeId SimTK::ContactGeometry::Ellipsoid::classTypeId()
   // defined in simmath/internal/ContactGeometry.h:1044:30
   types.method("SimTK!ContactGeometry!Ellipsoid!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::Ellipsoid::classTypeId));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::ContactGeometry::Ellipsoid::classTypeId() (" __HERE__ ")");
+  // defined in simmath/internal/ContactGeometry.h:1044:30
+  types.method("SimTK!ContactGeometry!Ellipsoid!classTypeId", reinterpret_cast<int (*)() >(&SimTK::ContactGeometry::Ellipsoid::classTypeId));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   /* End of SimTK::ContactGeometry::Ellipsoid class method wrappers
    **********************************************************************/
@@ -1307,11 +1511,18 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   types.method("SimTK!ContactGeometry!SmoothHeightMap!updAs", static_cast<SimTK::ContactGeometry::SmoothHeightMap & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::SmoothHeightMap::updAs));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactGeometryTypeId SimTK::ContactGeometry::SmoothHeightMap::classTypeId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactGeometryTypeId SimTK::ContactGeometry::SmoothHeightMap::classTypeId()
   // defined in simmath/internal/ContactGeometry.h:1093:30
   types.method("SimTK!ContactGeometry!SmoothHeightMap!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::SmoothHeightMap::classTypeId));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::ContactGeometry::SmoothHeightMap::classTypeId() (" __HERE__ ")");
+  // defined in simmath/internal/ContactGeometry.h:1093:30
+  types.method("SimTK!ContactGeometry!SmoothHeightMap!classTypeId", reinterpret_cast<int (*)() >(&SimTK::ContactGeometry::SmoothHeightMap::classTypeId));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   /* End of SimTK::ContactGeometry::SmoothHeightMap class method wrappers
    **********************************************************************/
@@ -1372,11 +1583,18 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   types.method("SimTK!ContactGeometry!Brick!updAs", static_cast<SimTK::ContactGeometry::Brick & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Brick::updAs));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactGeometryTypeId SimTK::ContactGeometry::Brick::classTypeId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactGeometryTypeId SimTK::ContactGeometry::Brick::classTypeId()
   // defined in simmath/internal/ContactGeometry.h:1132:30
   types.method("SimTK!ContactGeometry!Brick!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::Brick::classTypeId));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::ContactGeometry::Brick::classTypeId() (" __HERE__ ")");
+  // defined in simmath/internal/ContactGeometry.h:1132:30
+  types.method("SimTK!ContactGeometry!Brick!classTypeId", reinterpret_cast<int (*)() >(&SimTK::ContactGeometry::Brick::classTypeId));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   /* End of SimTK::ContactGeometry::Brick class method wrappers
    **********************************************************************/
@@ -1543,11 +1761,18 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   types.method("SimTK!ContactGeometry!TriangleMesh!updAs", static_cast<SimTK::ContactGeometry::TriangleMesh & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::TriangleMesh::updAs));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactGeometryTypeId SimTK::ContactGeometry::TriangleMesh::classTypeId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactGeometryTypeId SimTK::ContactGeometry::TriangleMesh::classTypeId()
   // defined in simmath/internal/ContactGeometry.h:1327:30
   types.method("SimTK!ContactGeometry!TriangleMesh!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::TriangleMesh::classTypeId));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::ContactGeometry::TriangleMesh::classTypeId() (" __HERE__ ")");
+  // defined in simmath/internal/ContactGeometry.h:1327:30
+  types.method("SimTK!ContactGeometry!TriangleMesh!classTypeId", reinterpret_cast<int (*)() >(&SimTK::ContactGeometry::TriangleMesh::classTypeId));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   /* End of SimTK::ContactGeometry::TriangleMesh class method wrappers
    **********************************************************************/
@@ -1654,11 +1879,18 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   types.method("SimTK!ContactGeometry!Torus!updAs", static_cast<SimTK::ContactGeometry::Torus & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Torus::updAs));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactGeometryTypeId SimTK::ContactGeometry::Torus::classTypeId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactGeometryTypeId SimTK::ContactGeometry::Torus::classTypeId()
   // defined in simmath/internal/ContactGeometry.h:1396:30
   types.method("SimTK!ContactGeometry!Torus!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::Torus::classTypeId));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::ContactGeometry::Torus::classTypeId() (" __HERE__ ")");
+  // defined in simmath/internal/ContactGeometry.h:1396:30
+  types.method("SimTK!ContactGeometry!Torus!classTypeId", reinterpret_cast<int (*)() >(&SimTK::ContactGeometry::Torus::classTypeId));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   /* End of SimTK::ContactGeometry::Torus class method wrappers
    **********************************************************************/
@@ -1738,11 +1970,17 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   /* Wrappers for the methods of class SimTK::ContactTracker
    */
 
-
+  // std::pair isn't wrapped by jlcxxwrap
+  // #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   // DEBUG_MSG("const std::pair<SimTK::ContactGeometryTypeId,SimTK::ContactGeometryTypeId> & SimTK::ContactTracker::getContactGeometryTypeIds() (" __HERE__ ")");
   // // signature to use in the veto list: const std::pair<SimTK::ContactGeometryTypeId,SimTK::ContactGeometryTypeId> & SimTK::ContactTracker::getContactGeometryTypeIds()
   // // defined in simmath/internal/ContactTracker.h:85:1
   // t36.method("getContactGeometryTypeIds", static_cast<const std::pair<SimTK::ContactGeometryTypeId,SimTK::ContactGeometryTypeId> & (SimTK::ContactTracker::*)()  const>(&SimTK::ContactTracker::getContactGeometryTypeIds));
+  // #else
+  // DEBUG_MSG("const std::pair<int,int> & SimTK::ContactTracker::getContactGeometryTypeIds() (" __HERE__ ")");
+  // // defined in simmath/internal/ContactTracker.h:85:1
+  // t36.method("getContactGeometryTypeIds", reinterpret_cast<const std::pair<int,int> & (SimTK::ContactTracker::*)()  const>(&SimTK::ContactTracker::getContactGeometryTypeIds));
+  // #endif
 
   DEBUG_MSG("bool SimTK::ContactTracker::trackContact(const SimTK::Contact &, const SimTK::Transform &, const SimTK::ContactGeometry &, const SimTK::Transform &, const SimTK::ContactGeometry &, SimTK::Real, SimTK::Contact &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::ContactTracker::trackContact(const SimTK::Contact &, const SimTK::Transform &, const SimTK::ContactGeometry &, const SimTK::Transform &, const SimTK::ContactGeometry &, SimTK::Real, SimTK::Contact &)
@@ -1880,11 +2118,19 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   /* Wrappers for the methods of class SimTK::ContactTracker::HalfSpaceConvexImplicit
    */
 
-
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::ContactTracker::HalfSpaceConvexImplicit::HalfSpaceConvexImplicit(SimTK::ContactGeometryTypeId) (" __HERE__ ")");
   // defined in simmath/internal/ContactTracker.h:393:10
   t45.constructor<SimTK::ContactGeometryTypeId>();
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::ContactTracker::HalfSpaceConvexImplicit::HalfSpaceConvexImplicit(int) (" __HERE__ ")");
+  // defined in simmath/internal/ContactTracker.h:393:10
+  t45.constructor([] (int typeOfConvexImplicitSurface) {
+    return new SimTK::ContactTracker::HalfSpaceConvexImplicit(SimTK::ContactGeometryTypeId(typeOfConvexImplicitSurface));
+  });
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("bool SimTK::ContactTracker::HalfSpaceConvexImplicit::trackContact(const SimTK::Contact &, const SimTK::Transform &, const SimTK::ContactGeometry &, const SimTK::Transform &, const SimTK::ContactGeometry &, SimTK::Real, SimTK::Contact &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::ContactTracker::HalfSpaceConvexImplicit::trackContact(const SimTK::Contact &, const SimTK::Transform &, const SimTK::ContactGeometry &, const SimTK::Transform &, const SimTK::ContactGeometry &, SimTK::Real, SimTK::Contact &)
@@ -1900,11 +2146,19 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   /* Wrappers for the methods of class SimTK::ContactTracker::ConvexImplicitPair
    */
 
-
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::ContactTracker::ConvexImplicitPair::ConvexImplicitPair(SimTK::ContactGeometryTypeId, SimTK::ContactGeometryTypeId) (" __HERE__ ")");
   // defined in simmath/internal/ContactTracker.h:418:1
   t46.constructor<SimTK::ContactGeometryTypeId, SimTK::ContactGeometryTypeId>();
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::ContactTracker::ConvexImplicitPair::ConvexImplicitPair(int, int) (" __HERE__ ")");
+  // defined in simmath/internal/ContactTracker.h:418:1
+  t46.constructor([] (int type1, int typ2) {
+    return new SimTK::ContactTracker::ConvexImplicitPair(SimTK::ContactGeometryTypeId(type1), SimTK::ContactGeometryTypeId(typ2));
+  });
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("bool SimTK::ContactTracker::ConvexImplicitPair::trackContact(const SimTK::Contact &, const SimTK::Transform &, const SimTK::ContactGeometry &, const SimTK::Transform &, const SimTK::ContactGeometry &, SimTK::Real, SimTK::Contact &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::ContactTracker::ConvexImplicitPair::trackContact(const SimTK::Contact &, const SimTK::Transform &, const SimTK::ContactGeometry &, const SimTK::Transform &, const SimTK::ContactGeometry &, SimTK::Real, SimTK::Contact &)
@@ -1920,11 +2174,19 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   /* Wrappers for the methods of class SimTK::ContactTracker::GeneralImplicitPair
    */
 
-
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::ContactTracker::GeneralImplicitPair::GeneralImplicitPair(SimTK::ContactGeometryTypeId, SimTK::ContactGeometryTypeId) (" __HERE__ ")");
   // defined in simmath/internal/ContactTracker.h:445:1
   t47.constructor<SimTK::ContactGeometryTypeId, SimTK::ContactGeometryTypeId>();
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::ContactTracker::GeneralImplicitPair::GeneralImplicitPair(int, int) (" __HERE__ ")");
+  // defined in simmath/internal/ContactTracker.h:445:1
+  t47.constructor([] (int type1, int type2) {
+    return new SimTK::ContactTracker::GeneralImplicitPair(SimTK::ContactGeometryTypeId(type1), SimTK::ContactGeometryTypeId(type2));
+  });
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("bool SimTK::ContactTracker::GeneralImplicitPair::trackContact(const SimTK::Contact &, const SimTK::Transform &, const SimTK::ContactGeometry &, const SimTK::Transform &, const SimTK::ContactGeometry &, SimTK::Real, SimTK::Contact &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::ContactTracker::GeneralImplicitPair::trackContact(const SimTK::Contact &, const SimTK::Transform &, const SimTK::ContactGeometry &, const SimTK::Transform &, const SimTK::ContactGeometry &, SimTK::Real, SimTK::Contact &)
@@ -2097,17 +2359,31 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   t50.method("updMaterial", static_cast<SimTK::ContactMaterial & (SimTK::ContactSurface::*)() >(&SimTK::ContactSurface::updMaterial));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactSurface & SimTK::ContactSurface::joinClique(SimTK::ContactCliqueId) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactSurface & SimTK::ContactSurface::joinClique(SimTK::ContactCliqueId)
   // defined in simbody/internal/ContactSurface.h:395:17
   t50.method("joinClique", static_cast<SimTK::ContactSurface & (SimTK::ContactSurface::*)(SimTK::ContactCliqueId) >(&SimTK::ContactSurface::joinClique));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("SimTK::ContactSurface & SimTK::ContactSurface::joinClique(int) (" __HERE__ ")");
+  // defined in simbody/internal/ContactSurface.h:395:17
+  t50.method("joinClique", reinterpret_cast<SimTK::ContactSurface & (SimTK::ContactSurface::*)(int) >(&SimTK::ContactSurface::joinClique));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::ContactSurface::leaveClique(SimTK::ContactCliqueId) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::ContactSurface::leaveClique(SimTK::ContactCliqueId)
   // defined in simbody/internal/ContactSurface.h:411:6
   t50.method("leaveClique", static_cast<void (SimTK::ContactSurface::*)(SimTK::ContactCliqueId) >(&SimTK::ContactSurface::leaveClique));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::ContactSurface::leaveClique(int) (" __HERE__ ")");
+  // defined in simbody/internal/ContactSurface.h:411:6
+  t50.method("leaveClique", reinterpret_cast<void (SimTK::ContactSurface::*)(int) >(&SimTK::ContactSurface::leaveClique));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("bool SimTK::ContactSurface::isInSameClique(const SimTK::ContactSurface &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::ContactSurface::isInSameClique(const SimTK::ContactSurface &)
@@ -2125,11 +2401,18 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   // // defined in simbody/internal/ContactSurface.h:433:13
   // t50.method("SimTK!ContactSurface!cliquesIntersect", static_cast<bool (*)(const SimTK::Array_<SimTK::ContactCliqueId,short> &, const SimTK::Array_<SimTK::ContactCliqueId,short> &) >(&SimTK::ContactSurface::cliquesIntersect));
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactCliqueId SimTK::ContactSurface::createNewContactClique() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactCliqueId SimTK::ContactSurface::createNewContactClique()
   // defined in simbody/internal/ContactSurface.h:456:24
   types.method("SimTK!ContactSurface!createNewContactClique", static_cast<SimTK::ContactCliqueId (*)() >(&SimTK::ContactSurface::createNewContactClique));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("SimTK::ContactCliqueId SimTK::ContactSurface::createNewContactClique() (" __HERE__ ")");
+  // defined in simbody/internal/ContactSurface.h:456:24
+  types.method("SimTK!ContactSurface!createNewContactClique", reinterpret_cast<int (*)() >(&SimTK::ContactSurface::createNewContactClique));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("SimTK::ContactSurface & SimTK::ContactSurface::setIndexOnBody(int) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactSurface & SimTK::ContactSurface::setIndexOnBody(int)
@@ -2159,39 +2442,6 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
    **********************************************************************/
 
   array_wrapper.template apply<SimTK::Contact>();
-
-  /**********************************************************************
-   * Wrappers for global functions and variables including
-   * class static members
-   */
-
-  DEBUG_MSG("Adding SimTK!InvalidContactSurfaceIndex methods to provide access to the global variable SimTK::InvalidContactSurfaceIndex (" __HERE__ ")");
-  // defined in simmath/internal/Contact.h:39:1
-  types.method("SimTK!InvalidContactSurfaceIndex", []()-> const SimTK::ContactSurfaceIndex& { return SimTK::InvalidContactSurfaceIndex; });
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("Adding SimTK!InvalidContactId methods to provide access to the global variable SimTK::InvalidContactId (" __HERE__ ")");
-  // defined in simmath/internal/Contact.h:50:1
-  types.method("SimTK!InvalidContactId", []()-> const SimTK::ContactId& { return SimTK::InvalidContactId; });
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("Adding SimTK!InvalidContactTypeId methods to provide access to the global variable SimTK::InvalidContactTypeId (" __HERE__ ")");
-  // defined in simmath/internal/Contact.h:58:1
-  types.method("SimTK!InvalidContactTypeId", []()-> const SimTK::ContactTypeId& { return SimTK::InvalidContactTypeId; });
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("Adding SimTK!InvalidContactGeometryTypeId methods to provide access to the global variable SimTK::InvalidContactGeometryTypeId (" __HERE__ ")");
-  // defined in simmath/internal/ContactGeometry.h:44:1
-  types.method("SimTK!InvalidContactGeometryTypeId", []()-> const SimTK::ContactGeometryTypeId& { return SimTK::InvalidContactGeometryTypeId; });
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("Adding SimTK!InvalidContactCliqueId methods to provide access to the global variable SimTK::InvalidContactCliqueId (" __HERE__ ")");
-  // defined in simbody/internal/ContactSurface.h:40:1
-  types.method("SimTK!InvalidContactCliqueId", []()-> const SimTK::ContactCliqueId& { return SimTK::InvalidContactCliqueId; });
-  CLEAR_DEBUG_MSG();
-
-  /* End of global function wrappers
-   **********************************************************************/
 
 }
 

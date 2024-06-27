@@ -60,8 +60,6 @@ namespace SimTK {
 }
 
 namespace jlcxx {
-  template<> struct IsMirroredType<SimTK::MeasureIndex> : std::false_type { };
-  template<> struct DefaultConstructible<SimTK::MeasureIndex> : std::false_type { };
   template<> struct IsMirroredType<SimTK::AbstractMeasure> : std::false_type { };
   template<> struct DefaultConstructible<SimTK::AbstractMeasure> : std::false_type { };
 
@@ -126,6 +124,10 @@ namespace jlcxx {
   // template<typename T> struct SuperType<SimTK::Measure_Zero_<T>> { typedef SimTK::Measure_Constant_<T> type; };
   // template<typename T> struct SuperType<SimTK::Measure_One_<T>> { typedef SimTK::Measure_Constant_<T> type; };
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
+  template<> struct IsMirroredType<SimTK::MeasureIndex> : std::false_type { };
+  template<> struct DefaultConstructible<SimTK::MeasureIndex> : std::false_type { };
+  #endif
 }
 
 namespace jlsimbody {

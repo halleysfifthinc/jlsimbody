@@ -2,20 +2,19 @@
 #include "jlsimbody/common.h"
 
 #include "jlsimbody/Assembler_and_related.h"
+
+#ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
 #include "jlSimTKcommon/SimTK_UniqueIndex.h"
+#endif
 
 namespace jlsimbody {
 
 void define_simbody_Assembler_and_related(jlcxx::Module& types, const ArrayWrapper& array_wrapper){
 
-  wrap_SimTK_UniqueIndexType<SimTK::AssemblyConditionIndex>(types, "SimTK!AssemblyConditionIndex");
-
   DEBUG_MSG("type SimTK::Assembler (" __HERE__ ")");
   // defined in simbody/internal/Assembler.h:148:28
   auto t1 = types.add_type<SimTK::Assembler>("SimTK!Assembler");
   CLEAR_DEBUG_MSG();
-
-  wrap_SimTK_UniqueIndexType<SimTK::Assembler::FreeQIndex>(types, "SimTK!Assembler!FreeQIndex");
 
   DEBUG_MSG("type SimTK::AssemblyCondition (" __HERE__ ")");
   // defined in simbody/internal/AssemblyCondition.h:44:28
@@ -28,24 +27,27 @@ void define_simbody_Assembler_and_related(jlcxx::Module& types, const ArrayWrapp
   t12.template constructor<>();
   CLEAR_DEBUG_MSG();
 
-  wrap_SimTK_UniqueIndexType<SimTK::Markers::MarkerIx>(types, "SimTK!Markers!MarkerIx");
-  wrap_SimTK_UniqueIndexType<SimTK::Markers::ObservationIx>(types, "SimTK!Markers!ObservationIx");
-
   DEBUG_MSG("type SimTK::OrientationSensors (" __HERE__ ")");
   // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:89:28
   auto t15 = types.add_type<SimTK::OrientationSensors>("SimTK!OrientationSensors", jlcxx::julia_base_type<SimTK::AssemblyCondition>());
   t15.template constructor<>();
   CLEAR_DEBUG_MSG();
 
-  wrap_SimTK_UniqueIndexType<SimTK::OrientationSensors::OSensorIx>(types, "SimTK!OrientationSensors!OSensorIx");
-  wrap_SimTK_UniqueIndexType<SimTK::OrientationSensors::ObservationIx>(types, "SimTK!OrientationSensors!ObservationIx");
-
   DEBUG_MSG("type SimTK::QValue (" __HERE__ ")");
   // defined in simbody/internal/AssemblyCondition_QValue.h:41:7
   auto t18 = types.add_type<SimTK::QValue>("SimTK!QValue", jlcxx::julia_base_type<SimTK::AssemblyCondition>());
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
+  wrap_SimTK_UniqueIndexType<SimTK::AssemblyConditionIndex>(types, "SimTK!AssemblyConditionIndex");
+  wrap_SimTK_UniqueIndexType<SimTK::Assembler::FreeQIndex>(types, "SimTK!Assembler!FreeQIndex");
+  wrap_SimTK_UniqueIndexType<SimTK::Markers::MarkerIx>(types, "SimTK!Markers!MarkerIx");
+  wrap_SimTK_UniqueIndexType<SimTK::Markers::ObservationIx>(types, "SimTK!Markers!ObservationIx");
+  wrap_SimTK_UniqueIndexType<SimTK::OrientationSensors::OSensorIx>(types, "SimTK!OrientationSensors!OSensorIx");
+  wrap_SimTK_UniqueIndexType<SimTK::OrientationSensors::ObservationIx>(types, "SimTK!OrientationSensors!ObservationIx");
+
   jlcxx::for_each_parameter_type<jlcxx::ParameterList<SimTK::Markers::MarkerIx,SimTK::OrientationSensors::OSensorIx>>(array_wrapper);
+  #endif
 
   /**********************************************************************/
   /* Wrappers for the methods of class SimTK::Assembler
@@ -97,24 +99,46 @@ void define_simbody_Assembler_and_related(jlcxx::Module& types, const ArrayWrapp
   t1.method("getSystemConstraintsWeight", static_cast<SimTK::Real (SimTK::Assembler::*)()  const>(&SimTK::Assembler::getSystemConstraintsWeight));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::Assembler & SimTK::Assembler::setAssemblyConditionWeight(SimTK::AssemblyConditionIndex, SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Assembler & SimTK::Assembler::setAssemblyConditionWeight(SimTK::AssemblyConditionIndex, SimTK::Real)
   // defined in simbody/internal/Assembler.h:261:12
   t1.method("setAssemblyConditionWeight", static_cast<SimTK::Assembler & (SimTK::Assembler::*)(SimTK::AssemblyConditionIndex, SimTK::Real) >(&SimTK::Assembler::setAssemblyConditionWeight));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("SimTK::Assembler & SimTK::Assembler::setAssemblyConditionWeight(int, SimTK::Real) (" __HERE__ ")");
+  // defined in simbody/internal/Assembler.h:261:12
+  t1.method("setAssemblyConditionWeight", reinterpret_cast<SimTK::Assembler & (SimTK::Assembler::*)(int, SimTK::Real) >(&SimTK::Assembler::setAssemblyConditionWeight));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::Real SimTK::Assembler::getAssemblyConditionWeight(SimTK::AssemblyConditionIndex) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::Assembler::getAssemblyConditionWeight(SimTK::AssemblyConditionIndex)
   // defined in simbody/internal/Assembler.h:278:6
   t1.method("getAssemblyConditionWeight", static_cast<SimTK::Real (SimTK::Assembler::*)(SimTK::AssemblyConditionIndex)  const>(&SimTK::Assembler::getAssemblyConditionWeight));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("SimTK::Real SimTK::Assembler::getAssemblyConditionWeight(int) (" __HERE__ ")");
+  // defined in simbody/internal/Assembler.h:278:6
+  t1.method("getAssemblyConditionWeight", reinterpret_cast<SimTK::Real (SimTK::Assembler::*)(int)  const>(&SimTK::Assembler::getAssemblyConditionWeight));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::AssemblyConditionIndex SimTK::Assembler::adoptAssemblyError(SimTK::AssemblyCondition *) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::AssemblyConditionIndex SimTK::Assembler::adoptAssemblyError(SimTK::AssemblyCondition *)
   // defined in simbody/internal/Assembler.h:289:5
   t1.method("adoptAssemblyError", static_cast<SimTK::AssemblyConditionIndex (SimTK::Assembler::*)(SimTK::AssemblyCondition *) >(&SimTK::Assembler::adoptAssemblyError));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::Assembler::adoptAssemblyError(SimTK::AssemblyCondition *) (" __HERE__ ")");
+  // defined in simbody/internal/Assembler.h:289:5
+  t1.method("adoptAssemblyError", reinterpret_cast<int (SimTK::Assembler::*)(SimTK::AssemblyCondition *) >(&SimTK::Assembler::adoptAssemblyError));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::AssemblyConditionIndex SimTK::Assembler::adoptAssemblyGoal(SimTK::AssemblyCondition *, SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::AssemblyConditionIndex SimTK::Assembler::adoptAssemblyGoal(SimTK::AssemblyCondition *, SimTK::Real)
   // defined in simbody/internal/Assembler.h:299:5
@@ -122,6 +146,20 @@ void define_simbody_Assembler_and_related(jlcxx::Module& types, const ArrayWrapp
   t1.method("adoptAssemblyGoal", [](SimTK::Assembler& a, SimTK::AssemblyCondition * arg0) -> SimTK::AssemblyConditionIndex { return a.adoptAssemblyGoal(arg0); });
   t1.method("adoptAssemblyGoal", [](SimTK::Assembler* a, SimTK::AssemblyCondition * arg0) -> SimTK::AssemblyConditionIndex { return a->adoptAssemblyGoal(arg0); });
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::Assembler::adoptAssemblyGoal(SimTK::AssemblyCondition *, SimTK::Real) (" __HERE__ ")");
+  // signature to use in the veto list: int SimTK::Assembler::adoptAssemblyGoal(SimTK::AssemblyCondition *, SimTK::Real)
+  // defined in simbody/internal/Assembler.h:299:5
+  t1.method("adoptAssemblyGoal", reinterpret_cast<int (SimTK::Assembler::*)(SimTK::AssemblyCondition *, SimTK::Real) >(&SimTK::Assembler::adoptAssemblyGoal),
+    jlcxx::arg("p"), jlcxx::arg("weight")=1.0);
+  t1.method("adoptAssemblyGoal", [](SimTK::Assembler& a, SimTK::AssemblyCondition * p, SimTK::Real weight) -> int {
+    return a.adoptAssemblyGoal(p, weight);
+  }, jlcxx::arg("p"), jlcxx::arg("weight")=1.0);
+  t1.method("adoptAssemblyGoal", [](SimTK::Assembler* a, SimTK::AssemblyCondition * p, SimTK::Real weight) -> int {
+    return a->adoptAssemblyGoal(p, weight);
+  }, jlcxx::arg("p"), jlcxx::arg("weight")=1.0);
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("SimTK::Assembler & SimTK::Assembler::setInternalState(const SimTK::State &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Assembler & SimTK::Assembler::setInternalState(const SimTK::State &)
@@ -179,41 +217,83 @@ void define_simbody_Assembler_and_related(jlcxx::Module& types, const ArrayWrapp
   t1.method("updateFromInternalState", static_cast<void (SimTK::Assembler::*)(SimTK::State &)  const>(&SimTK::Assembler::updateFromInternalState));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::Assembler::lockMobilizer(SimTK::MobilizedBodyIndex) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::Assembler::lockMobilizer(SimTK::MobilizedBodyIndex)
   // defined in simbody/internal/Assembler.h:405:6
   t1.method("lockMobilizer", static_cast<void (SimTK::Assembler::*)(SimTK::MobilizedBodyIndex) >(&SimTK::Assembler::lockMobilizer));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::Assembler::lockMobilizer(int) (" __HERE__ ")");
+  // defined in simbody/internal/Assembler.h:405:6
+  t1.method("lockMobilizer", reinterpret_cast<void (SimTK::Assembler::*)(int) >(&SimTK::Assembler::lockMobilizer));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::Assembler::unlockMobilizer(SimTK::MobilizedBodyIndex) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::Assembler::unlockMobilizer(SimTK::MobilizedBodyIndex)
   // defined in simbody/internal/Assembler.h:412:6
   t1.method("unlockMobilizer", static_cast<void (SimTK::Assembler::*)(SimTK::MobilizedBodyIndex) >(&SimTK::Assembler::unlockMobilizer));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::Assembler::unlockMobilizer(int) (" __HERE__ ")");
+  // defined in simbody/internal/Assembler.h:412:6
+  t1.method("unlockMobilizer", reinterpret_cast<void (SimTK::Assembler::*)(int) >(&SimTK::Assembler::unlockMobilizer));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::Assembler::lockQ(SimTK::MobilizedBodyIndex, SimTK::MobilizerQIndex) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::Assembler::lockQ(SimTK::MobilizedBodyIndex, SimTK::MobilizerQIndex)
   // defined in simbody/internal/Assembler.h:426:6
   t1.method("lockQ", static_cast<void (SimTK::Assembler::*)(SimTK::MobilizedBodyIndex, SimTK::MobilizerQIndex) >(&SimTK::Assembler::lockQ));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::Assembler::lockQ(int, int) (" __HERE__ ")");
+  // defined in simbody/internal/Assembler.h:426:6
+  t1.method("lockQ", reinterpret_cast<void (SimTK::Assembler::*)(int, int) >(&SimTK::Assembler::lockQ));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::Assembler::unlockQ(SimTK::MobilizedBodyIndex, SimTK::MobilizerQIndex) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::Assembler::unlockQ(SimTK::MobilizedBodyIndex, SimTK::MobilizerQIndex)
   // defined in simbody/internal/Assembler.h:433:6
   t1.method("unlockQ", static_cast<void (SimTK::Assembler::*)(SimTK::MobilizedBodyIndex, SimTK::MobilizerQIndex) >(&SimTK::Assembler::unlockQ));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::Assembler::unlockQ(int, int) (" __HERE__ ")");
+  // defined in simbody/internal/Assembler.h:433:6
+  t1.method("unlockQ", reinterpret_cast<void (SimTK::Assembler::*)(int, int) >(&SimTK::Assembler::unlockQ));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::Assembler::restrictQ(SimTK::MobilizedBodyIndex, SimTK::MobilizerQIndex, SimTK::Real, SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::Assembler::restrictQ(SimTK::MobilizedBodyIndex, SimTK::MobilizerQIndex, SimTK::Real, SimTK::Real)
   // defined in simbody/internal/Assembler.h:449:6
   t1.method("restrictQ", static_cast<void (SimTK::Assembler::*)(SimTK::MobilizedBodyIndex, SimTK::MobilizerQIndex, SimTK::Real, SimTK::Real) >(&SimTK::Assembler::restrictQ));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::Assembler::restrictQ(int, int, SimTK::Real, SimTK::Real) (" __HERE__ ")");
+  // defined in simbody/internal/Assembler.h:449:6
+  t1.method("restrictQ", reinterpret_cast<void (SimTK::Assembler::*)(int, int, SimTK::Real, SimTK::Real) >(&SimTK::Assembler::restrictQ));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::Assembler::unrestrictQ(SimTK::MobilizedBodyIndex, SimTK::MobilizerQIndex) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::Assembler::unrestrictQ(SimTK::MobilizedBodyIndex, SimTK::MobilizerQIndex)
   // defined in simbody/internal/Assembler.h:465:6
   t1.method("unrestrictQ", static_cast<void (SimTK::Assembler::*)(SimTK::MobilizedBodyIndex, SimTK::MobilizerQIndex) >(&SimTK::Assembler::unrestrictQ));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::Assembler::unrestrictQ(int, int) (" __HERE__ ")");
+  // defined in simbody/internal/Assembler.h:465:6
+  t1.method("unrestrictQ", reinterpret_cast<void (SimTK::Assembler::*)(int, int) >(&SimTK::Assembler::unrestrictQ));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("int SimTK::Assembler::getNumGoalEvals() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::Assembler::getNumGoalEvals()
@@ -311,23 +391,44 @@ void define_simbody_Assembler_and_related(jlcxx::Module& types, const ArrayWrapp
   t1.method("getNumFreeQs", static_cast<int (SimTK::Assembler::*)()  const>(&SimTK::Assembler::getNumFreeQs));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::QIndex SimTK::Assembler::getQIndexOfFreeQ(SimTK::Assembler::FreeQIndex) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::QIndex SimTK::Assembler::getQIndexOfFreeQ(SimTK::Assembler::FreeQIndex)
   // defined in simbody/internal/Assembler.h:566:8
   t1.method("getQIndexOfFreeQ", static_cast<SimTK::QIndex (SimTK::Assembler::*)(SimTK::Assembler::FreeQIndex)  const>(&SimTK::Assembler::getQIndexOfFreeQ));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::Assembler::getQIndexOfFreeQ(int) (" __HERE__ ")");
+  // defined in simbody/internal/Assembler.h:566:8
+  t1.method("getQIndexOfFreeQ", reinterpret_cast<int (SimTK::Assembler::*)(int)  const>(&SimTK::Assembler::getQIndexOfFreeQ));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::Assembler::FreeQIndex SimTK::Assembler::getFreeQIndexOfQ(SimTK::QIndex) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Assembler::FreeQIndex SimTK::Assembler::getFreeQIndexOfQ(SimTK::QIndex)
   // defined in simbody/internal/Assembler.h:573:12
   t1.method("getFreeQIndexOfQ", static_cast<SimTK::Assembler::FreeQIndex (SimTK::Assembler::*)(SimTK::QIndex)  const>(&SimTK::Assembler::getFreeQIndexOfQ));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::Assembler::getFreeQIndexOfQ(int) (" __HERE__ ")");
+  // defined in simbody/internal/Assembler.h:573:12
+  t1.method("getFreeQIndexOfQ", reinterpret_cast<int (SimTK::Assembler::*)(int)  const>(&SimTK::Assembler::getFreeQIndexOfQ));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::Vec2 SimTK::Assembler::getFreeQBounds(SimTK::Assembler::FreeQIndex) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Vec2 SimTK::Assembler::getFreeQBounds(SimTK::Assembler::FreeQIndex)
   // defined in simbody/internal/Assembler.h:578:6
   t1.method("getFreeQBounds", static_cast<SimTK::Vec2 (SimTK::Assembler::*)(SimTK::Assembler::FreeQIndex)  const>(&SimTK::Assembler::getFreeQBounds));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("SimTK::Vec2 SimTK::Assembler::getFreeQBounds(int) (" __HERE__ ")");
+  // defined in simbody/internal/Assembler.h:578:6
+  t1.method("getFreeQBounds", reinterpret_cast<SimTK::Vec2 (SimTK::Assembler::*)(int)  const>(&SimTK::Assembler::getFreeQBounds));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("const SimTK::MultibodySystem & SimTK::Assembler::getMultibodySystem() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::MultibodySystem & SimTK::Assembler::getMultibodySystem()
@@ -414,11 +515,18 @@ void define_simbody_Assembler_and_related(jlcxx::Module& types, const ArrayWrapp
   t4.method("getAssembler", static_cast<const SimTK::Assembler & (SimTK::AssemblyCondition::*)()  const>(&SimTK::AssemblyCondition::getAssembler));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::AssemblyConditionIndex SimTK::AssemblyCondition::getAssemblyConditionIndex() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::AssemblyConditionIndex SimTK::AssemblyCondition::getAssemblyConditionIndex()
   // defined in simbody/internal/AssemblyCondition.h:157:24
   t4.method("getAssemblyConditionIndex", static_cast<SimTK::AssemblyConditionIndex (SimTK::AssemblyCondition::*)()  const>(&SimTK::AssemblyCondition::getAssemblyConditionIndex));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::AssemblyCondition::getAssemblyConditionIndex() (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition.h:157:24
+  t4.method("getAssemblyConditionIndex", reinterpret_cast<int (SimTK::AssemblyCondition::*)()  const>(&SimTK::AssemblyCondition::getAssemblyConditionIndex));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   /* End of SimTK::AssemblyCondition class method wrappers
    **********************************************************************/
@@ -428,27 +536,80 @@ void define_simbody_Assembler_and_related(jlcxx::Module& types, const ArrayWrapp
   /* Wrappers for the methods of class SimTK::Markers
    */
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::Markers::MarkerIx SimTK::Markers::addMarker(const SimTK::String &, SimTK::MobilizedBodyIndex, const SimTK::Vec3 &, SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Markers::MarkerIx SimTK::Markers::addMarker(const SimTK::String &, SimTK::MobilizedBodyIndex, const SimTK::Vec3 &, SimTK::Real)
   // defined in simbody/internal/AssemblyCondition_Markers.h:141:10
-  t12.method("addMarker", static_cast<SimTK::Markers::MarkerIx (SimTK::Markers::*)(const SimTK::String &, SimTK::MobilizedBodyIndex, const SimTK::Vec3 &, SimTK::Real) >(&SimTK::Markers::addMarker));
-  t12.method("addMarker", [](SimTK::Markers& a, const SimTK::String & arg0, SimTK::MobilizedBodyIndex arg1, const SimTK::Vec3 & arg2) -> SimTK::Markers::MarkerIx { return a.addMarker(arg0, arg1, arg2); });
-  t12.method("addMarker", [](SimTK::Markers* a, const SimTK::String & arg0, SimTK::MobilizedBodyIndex arg1, const SimTK::Vec3 & arg2) -> SimTK::Markers::MarkerIx { return a->addMarker(arg0, arg1, arg2); });
+  t12.method("addMarker", static_cast<SimTK::Markers::MarkerIx (SimTK::Markers::*)(const SimTK::String &, SimTK::MobilizedBodyIndex, const SimTK::Vec3 &, SimTK::Real) >(&SimTK::Markers::addMarker),
+    jlcxx::arg("name"), jlcxx::arg("bodyB"), jlcxx::arg("markerInB"), jlcxx::arg("weight") = 1.0);
+  t12.method("addMarker", [](SimTK::Markers& m, const SimTK::String & name, SimTK::MobilizedBodyIndex bodyB, const SimTK::Vec3 & markerInB, SimTK::Real weight) -> SimTK::Markers::MarkerIx {
+    return m.addMarker(name, bodyB, markerInB, weight);
+  }, jlcxx::arg("name"), jlcxx::arg("bodyB"), jlcxx::arg("markerInB"), jlcxx::arg("weight") = 1.0);
+  t12.method("addMarker", [](SimTK::Markers* m, const SimTK::String & name, SimTK::MobilizedBodyIndex bodyB, const SimTK::Vec3 & markerInB, SimTK::Real weight) -> SimTK::Markers::MarkerIx {
+    return m->addMarker(name, bodyB, markerInB, weight);
+  }, jlcxx::arg("name"), jlcxx::arg("bodyB"), jlcxx::arg("markerInB"), jlcxx::arg("weight") = 1.0);
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::Markers::addMarker(const SimTK::String &, int, const SimTK::Vec3 &, SimTK::Real) (" __HERE__ ")");
+  // signature to use in the veto list: int SimTK::Markers::addMarker(const SimTK::String &, int, const SimTK::Vec3 &, SimTK::Real)
+  // defined in simbody/internal/AssemblyCondition_Markers.h:141:10
+  t12.method("addMarker", reinterpret_cast<int (SimTK::Markers::*)(const SimTK::String &, int, const SimTK::Vec3 &, SimTK::Real) >(
+    static_cast<SimTK::Markers::MarkerIx (SimTK::Markers::*)(const SimTK::String &, SimTK::MobilizedBodyIndex, const SimTK::Vec3 &, SimTK::Real) >(&SimTK::Markers::addMarker)
+  ),
+    jlcxx::arg("name"), jlcxx::arg("bodyB"), jlcxx::arg("markerInB"), jlcxx::arg("weight") = 1.0);
+  t12.method("addMarker", [](SimTK::Markers& m, const SimTK::String & name, int bodyB, const SimTK::Vec3 & markerInB, SimTK::Real weight) -> int {
+    return m.addMarker(name, SimTK::MobilizedBodyIndex(bodyB), markerInB, weight);
+  }, jlcxx::arg("name"), jlcxx::arg("bodyB"), jlcxx::arg("markerInB"), jlcxx::arg("weight") = 1.0);
+  t12.method("addMarker", [](SimTK::Markers* m, const SimTK::String & name, int bodyB, const SimTK::Vec3 & markerInB, SimTK::Real weight) -> int {
+    return m->addMarker(name, SimTK::MobilizedBodyIndex(bodyB), markerInB, weight);
+  }, jlcxx::arg("name"), jlcxx::arg("bodyB"), jlcxx::arg("markerInB"), jlcxx::arg("weight") = 1.0);
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::Markers::MarkerIx SimTK::Markers::addMarker(SimTK::MobilizedBodyIndex, const SimTK::Vec3 &, SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Markers::MarkerIx SimTK::Markers::addMarker(SimTK::MobilizedBodyIndex, const SimTK::Vec3 &, SimTK::Real)
   // defined in simbody/internal/AssemblyCondition_Markers.h:169:10
-  t12.method("addMarker", static_cast<SimTK::Markers::MarkerIx (SimTK::Markers::*)(SimTK::MobilizedBodyIndex, const SimTK::Vec3 &, SimTK::Real) >(&SimTK::Markers::addMarker));
-  t12.method("addMarker", [](SimTK::Markers& a, SimTK::MobilizedBodyIndex arg0, const SimTK::Vec3 & arg1) -> SimTK::Markers::MarkerIx { return a.addMarker(arg0, arg1); });
-  t12.method("addMarker", [](SimTK::Markers* a, SimTK::MobilizedBodyIndex arg0, const SimTK::Vec3 & arg1) -> SimTK::Markers::MarkerIx { return a->addMarker(arg0, arg1); });
+  t12.method("addMarker", static_cast<SimTK::Markers::MarkerIx (SimTK::Markers::*)(SimTK::MobilizedBodyIndex, const SimTK::Vec3 &, SimTK::Real) >(&SimTK::Markers::addMarker),
+    jlcxx::arg("bodyB"), jlcxx::arg("markerInB"), jlcxx::arg("weight") = 1.0);
+  t12.method("addMarker", [](SimTK::Markers& m, SimTK::MobilizedBodyIndex bodyB, const SimTK::Vec3 & markerInB, SimTK::Real weight) -> SimTK::Markers::MarkerIx {
+    return m.addMarker(bodyB, markerInB, weight);
+    }, jlcxx::arg("bodyB"), jlcxx::arg("markerInB"), jlcxx::arg("weight") = 1.0);
+  t12.method("addMarker", [](SimTK::Markers* m, SimTK::MobilizedBodyIndex bodyB, const SimTK::Vec3 & markerInB, SimTK::Real weight) -> SimTK::Markers::MarkerIx {
+    return m->addMarker(bodyB, markerInB, weight);
+    }, jlcxx::arg("bodyB"), jlcxx::arg("markerInB"), jlcxx::arg("weight") = 1.0);
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::Markers::addMarker(int, const SimTK::Vec3 &, SimTK::Real) (" __HERE__ ")");
+  // signature to use in the veto list: int SimTK::Markers::addMarker(int, const SimTK::Vec3 &, SimTK::Real)
+  // defined in simbody/internal/AssemblyCondition_Markers.h:169:10
+  t12.method("addMarker", reinterpret_cast<int (SimTK::Markers::*)(int, const SimTK::Vec3 &, SimTK::Real) >(
+    static_cast<SimTK::Markers::MarkerIx (SimTK::Markers::*)(SimTK::MobilizedBodyIndex, const SimTK::Vec3 &, SimTK::Real) >(&SimTK::Markers::addMarker)
+  ),
+    jlcxx::arg("bodyB"), jlcxx::arg("markerInB"), jlcxx::arg("weight") = 1.0);
+  t12.method("addMarker", [](SimTK::Markers& m, int bodyB, const SimTK::Vec3 & markerInB, SimTK::Real weight) -> int {
+    return m.addMarker(SimTK::MobilizedBodyIndex(bodyB), markerInB);
+    }, jlcxx::arg("bodyB"), jlcxx::arg("markerInB"), jlcxx::arg("weight") = 1.0);
+  t12.method("addMarker", [](SimTK::Markers* m, int bodyB, const SimTK::Vec3 & markerInB, SimTK::Real weight) -> int {
+    return m->addMarker(SimTK::MobilizedBodyIndex(bodyB), markerInB);
+    }, jlcxx::arg("bodyB"), jlcxx::arg("markerInB"), jlcxx::arg("weight") = 1.0);
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::Markers::defineObservationOrder(const SimTK::Array_<SimTK::Markers::MarkerIx> &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::Markers::defineObservationOrder(const SimTK::Array_<SimTK::Markers::MarkerIx> &)
   // defined in simbody/internal/AssemblyCondition_Markers.h:194:6
   t12.method("defineObservationOrder", static_cast<void (SimTK::Markers::*)(const SimTK::Array_<SimTK::Markers::MarkerIx> &) >(&SimTK::Markers::defineObservationOrder));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::Markers::defineObservationOrder(const SimTK::Array_<int> &) (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_Markers.h:194:6
+  t12.method("defineObservationOrder", reinterpret_cast<void (SimTK::Markers::*)(const SimTK::Array_<int> &) >(
+    static_cast<void (SimTK::Markers::*)(const SimTK::Array_<SimTK::Markers::MarkerIx> &) >(&SimTK::Markers::defineObservationOrder)
+  ));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("void SimTK::Markers::defineObservationOrder(const SimTK::Array_<SimTK::String> &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::Markers::defineObservationOrder(const SimTK::Array_<SimTK::String> &)
@@ -468,35 +629,72 @@ void define_simbody_Assembler_and_related(jlcxx::Module& types, const ArrayWrapp
   t12.method("getNumMarkers", static_cast<int (SimTK::Markers::*)()  const>(&SimTK::Markers::getNumMarkers));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::String & SimTK::Markers::getMarkerName(SimTK::Markers::MarkerIx) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::String & SimTK::Markers::getMarkerName(SimTK::Markers::MarkerIx)
   // defined in simbody/internal/AssemblyCondition_Markers.h:280:15
   t12.method("getMarkerName", static_cast<const SimTK::String & (SimTK::Markers::*)(SimTK::Markers::MarkerIx) >(&SimTK::Markers::getMarkerName));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("const SimTK::String & SimTK::Markers::getMarkerName(int) (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_Markers.h:280:15
+  t12.method("getMarkerName", reinterpret_cast<const SimTK::String & (SimTK::Markers::*)(int) >(&SimTK::Markers::getMarkerName));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::Markers::MarkerIx SimTK::Markers::getMarkerIx(const SimTK::String &) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Markers::MarkerIx SimTK::Markers::getMarkerIx(const SimTK::String &)
   // defined in simbody/internal/AssemblyCondition_Markers.h:285:16
   t12.method("getMarkerIx", static_cast<const SimTK::Markers::MarkerIx (SimTK::Markers::*)(const SimTK::String &) >(&SimTK::Markers::getMarkerIx));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("const int SimTK::Markers::getMarkerIx(const SimTK::String &) (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_Markers.h:285:16
+  t12.method("getMarkerIx", reinterpret_cast<const int (SimTK::Markers::*)(const SimTK::String &) >(&SimTK::Markers::getMarkerIx));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::Real SimTK::Markers::getMarkerWeight(SimTK::Markers::MarkerIx) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::Markers::getMarkerWeight(SimTK::Markers::MarkerIx)
   // defined in simbody/internal/AssemblyCondition_Markers.h:291:6
   t12.method("getMarkerWeight", static_cast<SimTK::Real (SimTK::Markers::*)(SimTK::Markers::MarkerIx) >(&SimTK::Markers::getMarkerWeight));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("SimTK::Real SimTK::Markers::getMarkerWeight(int) (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_Markers.h:291:6
+  t12.method("getMarkerWeight", reinterpret_cast<SimTK::Real (SimTK::Markers::*)(int) >(&SimTK::Markers::getMarkerWeight));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::MobilizedBodyIndex SimTK::Markers::getMarkerBody(SimTK::Markers::MarkerIx) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::MobilizedBodyIndex SimTK::Markers::getMarkerBody(SimTK::Markers::MarkerIx)
   // defined in simbody/internal/AssemblyCondition_Markers.h:295:20
   t12.method("getMarkerBody", static_cast<SimTK::MobilizedBodyIndex (SimTK::Markers::*)(SimTK::Markers::MarkerIx)  const>(&SimTK::Markers::getMarkerBody));
   CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("const SimTK::Vec3 & SimTK::Markers::getMarkerStation(SimTK::Markers::MarkerIx) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vec3 & SimTK::Markers::getMarkerStation(SimTK::Markers::MarkerIx)
-  // defined in simbody/internal/AssemblyCondition_Markers.h:299:13
-  t12.method("getMarkerStation", static_cast<const SimTK::Vec3 & (SimTK::Markers::*)(SimTK::Markers::MarkerIx)  const>(&SimTK::Markers::getMarkerStation));
+  #else
+  DEBUG_MSG("int SimTK::Markers::getMarkerBody(int) (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_Markers.h:295:20
+  t12.method("getMarkerBody", reinterpret_cast<int (SimTK::Markers::*)(int)  const>(
+    static_cast<SimTK::MobilizedBodyIndex (SimTK::Markers::*)(SimTK::Markers::MarkerIx)  const>(&SimTK::Markers::getMarkerBody)
+  ));
   CLEAR_DEBUG_MSG();
+  #endif
+
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
+  DEBUG_MSG("const SimTK::Vec3 & SimTK::Markers::getMarkerStation(int) (" __HERE__ ")");
+  // signature to use in the veto list: const SimTK::Vec3 & SimTK::Markers::getMarkerStation(int)
+  // defined in simbody/internal/AssemblyCondition_Markers.h:299:13
+  t12.method("getMarkerStation", reinterpret_cast<const SimTK::Vec3 & (SimTK::Markers::*)(int)  const>(&SimTK::Markers::getMarkerStation));
+  CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("const SimTK::Vec3 & SimTK::Markers::getMarkerStation(int) (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_Markers.h:299:13
+  t12.method("getMarkerStation", reinterpret_cast<const SimTK::Vec3 & (SimTK::Markers::*)(int)  const>(&SimTK::Markers::getMarkerStation));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("int SimTK::Markers::getNumObservations() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::Markers::getNumObservations()
@@ -504,41 +702,83 @@ void define_simbody_Assembler_and_related(jlcxx::Module& types, const ArrayWrapp
   t12.method("getNumObservations", static_cast<int (SimTK::Markers::*)()  const>(&SimTK::Markers::getNumObservations));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::Markers::ObservationIx SimTK::Markers::getObservationIxForMarker(SimTK::Markers::MarkerIx) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Markers::ObservationIx SimTK::Markers::getObservationIxForMarker(SimTK::Markers::MarkerIx)
   // defined in simbody/internal/AssemblyCondition_Markers.h:314:15
   t12.method("getObservationIxForMarker", static_cast<SimTK::Markers::ObservationIx (SimTK::Markers::*)(SimTK::Markers::MarkerIx)  const>(&SimTK::Markers::getObservationIxForMarker));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::Markers::getObservationIxForMarker(int) (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_Markers.h:314:15
+  t12.method("getObservationIxForMarker", reinterpret_cast<int (SimTK::Markers::*)(int)  const>(&SimTK::Markers::getObservationIxForMarker));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("bool SimTK::Markers::hasObservation(SimTK::Markers::MarkerIx) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::Markers::hasObservation(SimTK::Markers::MarkerIx)
   // defined in simbody/internal/AssemblyCondition_Markers.h:319:6
   t12.method("hasObservation", static_cast<bool (SimTK::Markers::*)(SimTK::Markers::MarkerIx)  const>(&SimTK::Markers::hasObservation));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("bool SimTK::Markers::hasObservation(int) (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_Markers.h:319:6
+  t12.method("hasObservation", reinterpret_cast<bool (SimTK::Markers::*)(int)  const>(&SimTK::Markers::hasObservation));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::Markers::MarkerIx SimTK::Markers::getMarkerIxForObservation(SimTK::Markers::ObservationIx) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Markers::MarkerIx SimTK::Markers::getMarkerIxForObservation(SimTK::Markers::ObservationIx)
   // defined in simbody/internal/AssemblyCondition_Markers.h:327:10
   t12.method("getMarkerIxForObservation", static_cast<SimTK::Markers::MarkerIx (SimTK::Markers::*)(SimTK::Markers::ObservationIx)  const>(&SimTK::Markers::getMarkerIxForObservation));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::Markers::getMarkerIxForObservation(int) (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_Markers.h:327:10
+  t12.method("getMarkerIxForObservation", reinterpret_cast<int (SimTK::Markers::*)(int)  const>(&SimTK::Markers::getMarkerIxForObservation));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("bool SimTK::Markers::hasMarker(SimTK::Markers::ObservationIx) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::Markers::hasMarker(SimTK::Markers::ObservationIx)
   // defined in simbody/internal/AssemblyCondition_Markers.h:332:6
   t12.method("hasMarker", static_cast<bool (SimTK::Markers::*)(SimTK::Markers::ObservationIx)  const>(&SimTK::Markers::hasMarker));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("bool SimTK::Markers::hasMarker(int) (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_Markers.h:332:6
+  t12.method("hasMarker", reinterpret_cast<bool (SimTK::Markers::*)(int)  const>(&SimTK::Markers::hasMarker));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::Array_<SimTK::Markers::MarkerIx> & SimTK::Markers::getMarkersOnBody(SimTK::MobilizedBodyIndex) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Array_<SimTK::Markers::MarkerIx> & SimTK::Markers::getMarkersOnBody(SimTK::MobilizedBodyIndex)
   // defined in simbody/internal/AssemblyCondition_Markers.h:339:25
   t12.method("getMarkersOnBody", static_cast<const SimTK::Array_<SimTK::Markers::MarkerIx> & (SimTK::Markers::*)(SimTK::MobilizedBodyIndex) >(&SimTK::Markers::getMarkersOnBody));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("const SimTK::Array_<int> & SimTK::Markers::getMarkersOnBody(int) (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_Markers.h:339:25
+  t12.method("getMarkersOnBody", reinterpret_cast<const SimTK::Array_<int> & (SimTK::Markers::*)(int) >(&SimTK::Markers::getMarkersOnBody));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::Markers::moveOneObservation(SimTK::Markers::ObservationIx, const SimTK::Vec3 &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::Markers::moveOneObservation(SimTK::Markers::ObservationIx, const SimTK::Vec3 &)
   // defined in simbody/internal/AssemblyCondition_Markers.h:362:6
   t12.method("moveOneObservation", static_cast<void (SimTK::Markers::*)(SimTK::Markers::ObservationIx, const SimTK::Vec3 &) >(&SimTK::Markers::moveOneObservation));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::Markers::moveOneObservation(int, const SimTK::Vec3 &) (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_Markers.h:362:6
+  t12.method("moveOneObservation", reinterpret_cast<void (SimTK::Markers::*)(int, const SimTK::Vec3 &) >(&SimTK::Markers::moveOneObservation));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("void SimTK::Markers::moveAllObservations(const SimTK::Array_<SimTK::Vec3> &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::Markers::moveAllObservations(const SimTK::Array_<SimTK::Vec3> &)
@@ -546,41 +786,83 @@ void define_simbody_Assembler_and_related(jlcxx::Module& types, const ArrayWrapp
   t12.method("moveAllObservations", static_cast<void (SimTK::Markers::*)(const SimTK::Array_<SimTK::Vec3> &) >(&SimTK::Markers::moveAllObservations));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::Markers::changeMarkerWeight(SimTK::Markers::MarkerIx, SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::Markers::changeMarkerWeight(SimTK::Markers::MarkerIx, SimTK::Real)
   // defined in simbody/internal/AssemblyCondition_Markers.h:402:6
   t12.method("changeMarkerWeight", static_cast<void (SimTK::Markers::*)(SimTK::Markers::MarkerIx, SimTK::Real) >(&SimTK::Markers::changeMarkerWeight));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::Markers::changeMarkerWeight(int, SimTK::Real) (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_Markers.h:402:6
+  t12.method("changeMarkerWeight", reinterpret_cast<void (SimTK::Markers::*)(int, SimTK::Real) >(&SimTK::Markers::changeMarkerWeight));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::Vec3 & SimTK::Markers::getObservation(SimTK::Markers::ObservationIx) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Vec3 & SimTK::Markers::getObservation(SimTK::Markers::ObservationIx)
   // defined in simbody/internal/AssemblyCondition_Markers.h:420:13
-  t12.method("getObservation", static_cast<const SimTK::Vec3 & (SimTK::Markers::*)(SimTK::Markers::ObservationIx)  const>(&SimTK::Markers::getObservation));
+  t12.method("getObservation", reinterpret_cast<const SimTK::Vec3 & (SimTK::Markers::*)(int)  const>(&SimTK::Markers::getObservation));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("const SimTK::Vec3 & SimTK::Markers::getObservation(int) (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_Markers.h:420:13
+  t12.method("getObservation", reinterpret_cast<const SimTK::Vec3 & (SimTK::Markers::*)(int)  const>(&SimTK::Markers::getObservation));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::Array_<SimTK::Vec3,SimTK::Markers::ObservationIx> & SimTK::Markers::getAllObservations() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Array_<SimTK::Vec3,SimTK::Markers::ObservationIx> & SimTK::Markers::getAllObservations()
   // defined in simbody/internal/AssemblyCondition_Markers.h:427:35
   t12.method("getAllObservations", reinterpret_cast<const SimTK::Array_<SimTK::Vec3,int> & (SimTK::Markers::*)()  const>(&SimTK::Markers::getAllObservations));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("const SimTK::Array_<SimTK::Vec3,int> & SimTK::Markers::getAllObservations() (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_Markers.h:427:35
+  t12.method("getAllObservations", reinterpret_cast<const SimTK::Array_<SimTK::Vec3,int> & (SimTK::Markers::*)()  const>(&SimTK::Markers::getAllObservations));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::Vec3 SimTK::Markers::findCurrentMarkerLocation(SimTK::Markers::MarkerIx) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Vec3 SimTK::Markers::findCurrentMarkerLocation(SimTK::Markers::MarkerIx)
   // defined in simbody/internal/AssemblyCondition_Markers.h:433:6
   t12.method("findCurrentMarkerLocation", static_cast<SimTK::Vec3 (SimTK::Markers::*)(SimTK::Markers::MarkerIx)  const>(&SimTK::Markers::findCurrentMarkerLocation));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("SimTK::Vec3 SimTK::Markers::findCurrentMarkerLocation(int) (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_Markers.h:433:6
+  t12.method("findCurrentMarkerLocation", reinterpret_cast<SimTK::Vec3 (SimTK::Markers::*)(int)  const>(&SimTK::Markers::findCurrentMarkerLocation));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::Real SimTK::Markers::findCurrentMarkerError(SimTK::Markers::MarkerIx) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::Markers::findCurrentMarkerError(SimTK::Markers::MarkerIx)
   // defined in simbody/internal/AssemblyCondition_Markers.h:444:6
   t12.method("findCurrentMarkerError", static_cast<SimTK::Real (SimTK::Markers::*)(SimTK::Markers::MarkerIx)  const>(&SimTK::Markers::findCurrentMarkerError));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("SimTK::Real SimTK::Markers::findCurrentMarkerError(int) (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_Markers.h:444:6
+  t12.method("findCurrentMarkerError", reinterpret_cast<SimTK::Real (SimTK::Markers::*)(int)  const>(&SimTK::Markers::findCurrentMarkerError));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::Real SimTK::Markers::findCurrentMarkerErrorSquared(SimTK::Markers::MarkerIx) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::Markers::findCurrentMarkerErrorSquared(SimTK::Markers::MarkerIx)
   // defined in simbody/internal/AssemblyCondition_Markers.h:454:6
   t12.method("findCurrentMarkerErrorSquared", static_cast<SimTK::Real (SimTK::Markers::*)(SimTK::Markers::MarkerIx)  const>(&SimTK::Markers::findCurrentMarkerErrorSquared));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("SimTK::Real SimTK::Markers::findCurrentMarkerErrorSquared(int) (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_Markers.h:454:6
+  t12.method("findCurrentMarkerErrorSquared", reinterpret_cast<SimTK::Real (SimTK::Markers::*)(int)  const>(&SimTK::Markers::findCurrentMarkerErrorSquared));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("int SimTK::Markers::initializeCondition() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::Markers::initializeCondition()
@@ -631,27 +913,60 @@ void define_simbody_Assembler_and_related(jlcxx::Module& types, const ArrayWrapp
   /* Wrappers for the methods of class SimTK::OrientationSensors
    */
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::OrientationSensors::OSensorIx SimTK::OrientationSensors::addOSensor(const SimTK::String &, SimTK::MobilizedBodyIndex, const SimTK::Rotation &, SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::OrientationSensors::OSensorIx SimTK::OrientationSensors::addOSensor(const SimTK::String &, SimTK::MobilizedBodyIndex, const SimTK::Rotation &, SimTK::Real)
   // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:150:11
   t15.method("addOSensor", static_cast<SimTK::OrientationSensors::OSensorIx (SimTK::OrientationSensors::*)(const SimTK::String &, SimTK::MobilizedBodyIndex, const SimTK::Rotation &, SimTK::Real) >(&SimTK::OrientationSensors::addOSensor));
-  t15.method("addOSensor", [](SimTK::OrientationSensors& a, const SimTK::String & arg0, SimTK::MobilizedBodyIndex arg1, const SimTK::Rotation & arg2) -> SimTK::OrientationSensors::OSensorIx { return a.addOSensor(arg0, arg1, arg2); });
-  t15.method("addOSensor", [](SimTK::OrientationSensors* a, const SimTK::String & arg0, SimTK::MobilizedBodyIndex arg1, const SimTK::Rotation & arg2) -> SimTK::OrientationSensors::OSensorIx { return a->addOSensor(arg0, arg1, arg2); });
+  t15.method("addOSensor", [](SimTK::OrientationSensors& a, const SimTK::String & name, SimTK::MobilizedBodyIndex bodyB, const SimTK::Rotation & orientationInB) -> SimTK::OrientationSensors::OSensorIx { return a.addOSensor(name, bodyB, orientationInB); });
+  t15.method("addOSensor", [](SimTK::OrientationSensors* a, const SimTK::String & name, SimTK::MobilizedBodyIndex bodyB, const SimTK::Rotation & orientationInB) -> SimTK::OrientationSensors::OSensorIx { return a->addOSensor(name, bodyB, orientationInB); });
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::OrientationSensors::addOSensor(const SimTK::String &, int, const SimTK::Rotation &, SimTK::Real) (" __HERE__ ")");
+  // signature to use in the veto list: int SimTK::OrientationSensors::addOSensor(const SimTK::String &, int, const SimTK::Rotation &, SimTK::Real)
+  // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:150:11
+  t15.method("addOSensor", reinterpret_cast<int (SimTK::OrientationSensors::*)(const SimTK::String &, int, const SimTK::Rotation &, SimTK::Real) >(
+    static_cast<SimTK::OrientationSensors::OSensorIx (SimTK::OrientationSensors::*)(const SimTK::String &, SimTK::MobilizedBodyIndex, const SimTK::Rotation &, SimTK::Real) >(&SimTK::OrientationSensors::addOSensor)
+  ));
+  t15.method("addOSensor", [](SimTK::OrientationSensors& a, const SimTK::String & name, int bodyB, const SimTK::Rotation & orientationInB) -> int { return a.addOSensor(name, SimTK::MobilizedBodyIndex(bodyB), orientationInB); });
+  t15.method("addOSensor", [](SimTK::OrientationSensors* a, const SimTK::String & name, int bodyB, const SimTK::Rotation & orientationInB) -> int { return a->addOSensor(name, SimTK::MobilizedBodyIndex(bodyB), orientationInB); });
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::OrientationSensors::OSensorIx SimTK::OrientationSensors::addOSensor(SimTK::MobilizedBodyIndex, const SimTK::Rotation &, SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::OrientationSensors::OSensorIx SimTK::OrientationSensors::addOSensor(SimTK::MobilizedBodyIndex, const SimTK::Rotation &, SimTK::Real)
   // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:179:11
   t15.method("addOSensor", static_cast<SimTK::OrientationSensors::OSensorIx (SimTK::OrientationSensors::*)(SimTK::MobilizedBodyIndex, const SimTK::Rotation &, SimTK::Real) >(&SimTK::OrientationSensors::addOSensor));
-  t15.method("addOSensor", [](SimTK::OrientationSensors& a, SimTK::MobilizedBodyIndex arg0, const SimTK::Rotation & arg1) -> SimTK::OrientationSensors::OSensorIx { return a.addOSensor(arg0, arg1); });
-  t15.method("addOSensor", [](SimTK::OrientationSensors* a, SimTK::MobilizedBodyIndex arg0, const SimTK::Rotation & arg1) -> SimTK::OrientationSensors::OSensorIx { return a->addOSensor(arg0, arg1); });
+  t15.method("addOSensor", [](SimTK::OrientationSensors& a, SimTK::MobilizedBodyIndex bodyB, const SimTK::Rotation & orientationInB) -> SimTK::OrientationSensors::OSensorIx { return a.addOSensor(bodyB, orientationInB); });
+  t15.method("addOSensor", [](SimTK::OrientationSensors* a, SimTK::MobilizedBodyIndex bodyB, const SimTK::Rotation & orientationInB) -> SimTK::OrientationSensors::OSensorIx { return a->addOSensor(bodyB, orientationInB); });
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::OrientationSensors::addOSensor(int, const SimTK::Rotation &, SimTK::Real) (" __HERE__ ")");
+  // signature to use in the veto list: int SimTK::OrientationSensors::addOSensor(int, const SimTK::Rotation &, SimTK::Real)
+  // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:179:11
+  t15.method("addOSensor", reinterpret_cast<int (SimTK::OrientationSensors::*)(int, const SimTK::Rotation &, SimTK::Real) >(
+    static_cast<SimTK::OrientationSensors::OSensorIx (SimTK::OrientationSensors::*)(SimTK::MobilizedBodyIndex, const SimTK::Rotation &, SimTK::Real) >(&SimTK::OrientationSensors::addOSensor)
+  ));
+  t15.method("addOSensor", [](SimTK::OrientationSensors& a, int bodyB, const SimTK::Rotation & orientationInB) -> int { return a.addOSensor(SimTK::MobilizedBodyIndex(bodyB), orientationInB); });
+  t15.method("addOSensor", [](SimTK::OrientationSensors* a, int bodyB, const SimTK::Rotation & orientationInB) -> int { return a->addOSensor(SimTK::MobilizedBodyIndex(bodyB), orientationInB); });
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::OrientationSensors::defineObservationOrder(const SimTK::Array_<SimTK::OrientationSensors::OSensorIx> &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::OrientationSensors::defineObservationOrder(const SimTK::Array_<SimTK::OrientationSensors::OSensorIx> &)
   // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:204:6
   t15.method("defineObservationOrder", static_cast<void (SimTK::OrientationSensors::*)(const SimTK::Array_<SimTK::OrientationSensors::OSensorIx> &) >(&SimTK::OrientationSensors::defineObservationOrder));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::OrientationSensors::defineObservationOrder(const SimTK::Array_<int> &) (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:204:6
+  t15.method("defineObservationOrder", reinterpret_cast<void (SimTK::OrientationSensors::*)(const SimTK::Array_<int> &) >(
+    static_cast<void (SimTK::OrientationSensors::*)(const SimTK::Array_<SimTK::OrientationSensors::OSensorIx> &) >(&SimTK::OrientationSensors::defineObservationOrder)
+  ));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("void SimTK::OrientationSensors::defineObservationOrder(const SimTK::Array_<SimTK::String> &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::OrientationSensors::defineObservationOrder(const SimTK::Array_<SimTK::String> &)
@@ -671,35 +986,70 @@ void define_simbody_Assembler_and_related(jlcxx::Module& types, const ArrayWrapp
   t15.method("getNumOSensors", static_cast<int (SimTK::OrientationSensors::*)()  const>(&SimTK::OrientationSensors::getNumOSensors));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::String & SimTK::OrientationSensors::getOSensorName(SimTK::OrientationSensors::OSensorIx) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::String & SimTK::OrientationSensors::getOSensorName(SimTK::OrientationSensors::OSensorIx)
   // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:291:15
   t15.method("getOSensorName", static_cast<const SimTK::String & (SimTK::OrientationSensors::*)(SimTK::OrientationSensors::OSensorIx) >(&SimTK::OrientationSensors::getOSensorName));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("const SimTK::String & SimTK::OrientationSensors::getOSensorName(int) (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:291:15
+  t15.method("getOSensorName", reinterpret_cast<const SimTK::String & (SimTK::OrientationSensors::*)(int) >(&SimTK::OrientationSensors::getOSensorName));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::OrientationSensors::OSensorIx SimTK::OrientationSensors::getOSensorIx(const SimTK::String &) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::OrientationSensors::OSensorIx SimTK::OrientationSensors::getOSensorIx(const SimTK::String &)
   // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:297:17
   t15.method("getOSensorIx", static_cast<const SimTK::OrientationSensors::OSensorIx (SimTK::OrientationSensors::*)(const SimTK::String &) >(&SimTK::OrientationSensors::getOSensorIx));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("const int SimTK::OrientationSensors::getOSensorIx(const SimTK::String &) (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:297:17
+  t15.method("getOSensorIx", reinterpret_cast<const int (SimTK::OrientationSensors::*)(const SimTK::String &) >(&SimTK::OrientationSensors::getOSensorIx));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::Real SimTK::OrientationSensors::getOSensorWeight(SimTK::OrientationSensors::OSensorIx) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::OrientationSensors::getOSensorWeight(SimTK::OrientationSensors::OSensorIx)
   // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:303:6
   t15.method("getOSensorWeight", static_cast<SimTK::Real (SimTK::OrientationSensors::*)(SimTK::OrientationSensors::OSensorIx) >(&SimTK::OrientationSensors::getOSensorWeight));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("SimTK::Real SimTK::OrientationSensors::getOSensorWeight(int) (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:303:6
+  t15.method("getOSensorWeight", reinterpret_cast<SimTK::Real (SimTK::OrientationSensors::*)(int) >(&SimTK::OrientationSensors::getOSensorWeight));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::MobilizedBodyIndex SimTK::OrientationSensors::getOSensorBody(SimTK::OrientationSensors::OSensorIx) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::MobilizedBodyIndex SimTK::OrientationSensors::getOSensorBody(SimTK::OrientationSensors::OSensorIx)
   // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:307:20
   t15.method("getOSensorBody", static_cast<SimTK::MobilizedBodyIndex (SimTK::OrientationSensors::*)(SimTK::OrientationSensors::OSensorIx)  const>(&SimTK::OrientationSensors::getOSensorBody));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::OrientationSensors::getOSensorBody(int) (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:307:20
+  t15.method("getOSensorBody", reinterpret_cast<int (SimTK::OrientationSensors::*)(int)  const>(&SimTK::OrientationSensors::getOSensorBody));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::Rotation & SimTK::OrientationSensors::getOSensorStation(SimTK::OrientationSensors::OSensorIx) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Rotation & SimTK::OrientationSensors::getOSensorStation(SimTK::OrientationSensors::OSensorIx)
   // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:312:17
   t15.method("getOSensorStation", static_cast<const SimTK::Rotation & (SimTK::OrientationSensors::*)(SimTK::OrientationSensors::OSensorIx)  const>(&SimTK::OrientationSensors::getOSensorStation));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("const SimTK::Rotation & SimTK::OrientationSensors::getOSensorStation(int) (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:312:17
+  t15.method("getOSensorStation", reinterpret_cast<const SimTK::Rotation & (SimTK::OrientationSensors::*)(int)  const>(&SimTK::OrientationSensors::getOSensorStation));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("int SimTK::OrientationSensors::getNumObservations() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::OrientationSensors::getNumObservations()
@@ -707,41 +1057,83 @@ void define_simbody_Assembler_and_related(jlcxx::Module& types, const ArrayWrapp
   t15.method("getNumObservations", static_cast<int (SimTK::OrientationSensors::*)()  const>(&SimTK::OrientationSensors::getNumObservations));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::OrientationSensors::ObservationIx SimTK::OrientationSensors::getObservationIxForOSensor(SimTK::OrientationSensors::OSensorIx) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::OrientationSensors::ObservationIx SimTK::OrientationSensors::getObservationIxForOSensor(SimTK::OrientationSensors::OSensorIx)
   // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:327:15
   t15.method("getObservationIxForOSensor", static_cast<SimTK::OrientationSensors::ObservationIx (SimTK::OrientationSensors::*)(SimTK::OrientationSensors::OSensorIx)  const>(&SimTK::OrientationSensors::getObservationIxForOSensor));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::OrientationSensors::getObservationIxForOSensor(int) (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:327:15
+  t15.method("getObservationIxForOSensor", reinterpret_cast<int (SimTK::OrientationSensors::*)(int)  const>(&SimTK::OrientationSensors::getObservationIxForOSensor));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("bool SimTK::OrientationSensors::hasObservation(SimTK::OrientationSensors::OSensorIx) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::OrientationSensors::hasObservation(SimTK::OrientationSensors::OSensorIx)
   // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:332:6
   t15.method("hasObservation", static_cast<bool (SimTK::OrientationSensors::*)(SimTK::OrientationSensors::OSensorIx)  const>(&SimTK::OrientationSensors::hasObservation));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("bool SimTK::OrientationSensors::hasObservation(int) (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:332:6
+  t15.method("hasObservation", reinterpret_cast<bool (SimTK::OrientationSensors::*)(int)  const>(&SimTK::OrientationSensors::hasObservation));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::OrientationSensors::OSensorIx SimTK::OrientationSensors::getOSensorIxForObservation(SimTK::OrientationSensors::ObservationIx) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::OrientationSensors::OSensorIx SimTK::OrientationSensors::getOSensorIxForObservation(SimTK::OrientationSensors::ObservationIx)
   // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:340:11
   t15.method("getOSensorIxForObservation", static_cast<SimTK::OrientationSensors::OSensorIx (SimTK::OrientationSensors::*)(SimTK::OrientationSensors::ObservationIx)  const>(&SimTK::OrientationSensors::getOSensorIxForObservation));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::OrientationSensors::getOSensorIxForObservation(int) (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:340:11
+  t15.method("getOSensorIxForObservation", reinterpret_cast<int (SimTK::OrientationSensors::*)(int)  const>(&SimTK::OrientationSensors::getOSensorIxForObservation));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("bool SimTK::OrientationSensors::hasOSensor(SimTK::OrientationSensors::ObservationIx) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::OrientationSensors::hasOSensor(SimTK::OrientationSensors::ObservationIx)
   // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:345:6
   t15.method("hasOSensor", static_cast<bool (SimTK::OrientationSensors::*)(SimTK::OrientationSensors::ObservationIx)  const>(&SimTK::OrientationSensors::hasOSensor));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("bool SimTK::OrientationSensors::hasOSensor(int) (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:345:6
+  t15.method("hasOSensor", reinterpret_cast<bool (SimTK::OrientationSensors::*)(int)  const>(&SimTK::OrientationSensors::hasOSensor));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::Array_<SimTK::OrientationSensors::OSensorIx> & SimTK::OrientationSensors::getOSensorsOnBody(SimTK::MobilizedBodyIndex) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Array_<SimTK::OrientationSensors::OSensorIx> & SimTK::OrientationSensors::getOSensorsOnBody(SimTK::MobilizedBodyIndex)
   // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:352:26
   t15.method("getOSensorsOnBody", static_cast<const SimTK::Array_<SimTK::OrientationSensors::OSensorIx> & (SimTK::OrientationSensors::*)(SimTK::MobilizedBodyIndex) >(&SimTK::OrientationSensors::getOSensorsOnBody));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("const SimTK::Array_<int> & SimTK::OrientationSensors::getOSensorsOnBody(int) (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:352:26
+  t15.method("getOSensorsOnBody", reinterpret_cast<const SimTK::Array_<int> & (SimTK::OrientationSensors::*)(int) >(&SimTK::OrientationSensors::getOSensorsOnBody));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::OrientationSensors::moveOneObservation(SimTK::OrientationSensors::ObservationIx, const SimTK::Rotation &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::OrientationSensors::moveOneObservation(SimTK::OrientationSensors::ObservationIx, const SimTK::Rotation &)
   // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:375:6
   t15.method("moveOneObservation", static_cast<void (SimTK::OrientationSensors::*)(SimTK::OrientationSensors::ObservationIx, const SimTK::Rotation &) >(&SimTK::OrientationSensors::moveOneObservation));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::OrientationSensors::moveOneObservation(int, const SimTK::Rotation &) (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:375:6
+  t15.method("moveOneObservation", reinterpret_cast<void (SimTK::OrientationSensors::*)(int, const SimTK::Rotation &) >(&SimTK::OrientationSensors::moveOneObservation));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("void SimTK::OrientationSensors::moveAllObservations(const SimTK::Array_<SimTK::Rotation> &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::OrientationSensors::moveAllObservations(const SimTK::Array_<SimTK::Rotation> &)
@@ -749,35 +1141,70 @@ void define_simbody_Assembler_and_related(jlcxx::Module& types, const ArrayWrapp
   t15.method("moveAllObservations", static_cast<void (SimTK::OrientationSensors::*)(const SimTK::Array_<SimTK::Rotation> &) >(&SimTK::OrientationSensors::moveAllObservations));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::OrientationSensors::changeOSensorWeight(SimTK::OrientationSensors::OSensorIx, SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::OrientationSensors::changeOSensorWeight(SimTK::OrientationSensors::OSensorIx, SimTK::Real)
   // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:417:6
   t15.method("changeOSensorWeight", static_cast<void (SimTK::OrientationSensors::*)(SimTK::OrientationSensors::OSensorIx, SimTK::Real) >(&SimTK::OrientationSensors::changeOSensorWeight));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::OrientationSensors::changeOSensorWeight(int, SimTK::Real) (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:417:6
+  t15.method("changeOSensorWeight", reinterpret_cast<void (SimTK::OrientationSensors::*)(int, SimTK::Real) >(&SimTK::OrientationSensors::changeOSensorWeight));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::Rotation & SimTK::OrientationSensors::getObservation(SimTK::OrientationSensors::ObservationIx) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Rotation & SimTK::OrientationSensors::getObservation(SimTK::OrientationSensors::ObservationIx)
   // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:436:17
   t15.method("getObservation", static_cast<const SimTK::Rotation & (SimTK::OrientationSensors::*)(SimTK::OrientationSensors::ObservationIx)  const>(&SimTK::OrientationSensors::getObservation));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("const SimTK::Rotation & SimTK::OrientationSensors::getObservation(int) (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:436:17
+  t15.method("getObservation", reinterpret_cast<const SimTK::Rotation & (SimTK::OrientationSensors::*)(int)  const>(&SimTK::OrientationSensors::getObservation));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::Array_<SimTK::Rotation,SimTK::OrientationSensors::ObservationIx> & SimTK::OrientationSensors::getAllObservations() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Array_<SimTK::Rotation,SimTK::OrientationSensors::ObservationIx> & SimTK::OrientationSensors::getAllObservations()
   // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:445:39
+  t15.method("getAllObservations", static_cast<const SimTK::Array_<SimTK::Rotation,SimTK::OrientationSensors::ObservationIx> & (SimTK::OrientationSensors::*)()  const>(&SimTK::OrientationSensors::getAllObservations));
+  CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("const SimTK::Array_<SimTK::Rotation,int> & SimTK::OrientationSensors::getAllObservations() (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:445:39
   t15.method("getAllObservations", reinterpret_cast<const SimTK::Array_<SimTK::Rotation,int> & (SimTK::OrientationSensors::*)()  const>(&SimTK::OrientationSensors::getAllObservations));
   CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::Rotation SimTK::OrientationSensors::findCurrentOSensorOrientation(SimTK::OrientationSensors::OSensorIx) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Rotation SimTK::OrientationSensors::findCurrentOSensorOrientation(SimTK::OrientationSensors::OSensorIx)
   // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:452:10
   t15.method("findCurrentOSensorOrientation", static_cast<SimTK::Rotation (SimTK::OrientationSensors::*)(SimTK::OrientationSensors::OSensorIx)  const>(&SimTK::OrientationSensors::findCurrentOSensorOrientation));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("SimTK::Rotation SimTK::OrientationSensors::findCurrentOSensorOrientation(int) (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:452:10
+  t15.method("findCurrentOSensorOrientation", reinterpret_cast<SimTK::Rotation (SimTK::OrientationSensors::*)(int)  const>(&SimTK::OrientationSensors::findCurrentOSensorOrientation));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::Real SimTK::OrientationSensors::findCurrentOSensorError(SimTK::OrientationSensors::OSensorIx) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::OrientationSensors::findCurrentOSensorError(SimTK::OrientationSensors::OSensorIx)
   // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:460:6
   t15.method("findCurrentOSensorError", static_cast<SimTK::Real (SimTK::OrientationSensors::*)(SimTK::OrientationSensors::OSensorIx)  const>(&SimTK::OrientationSensors::findCurrentOSensorError));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("SimTK::Real SimTK::OrientationSensors::findCurrentOSensorError(int) (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_OrientationSensors.h:460:6
+  t15.method("findCurrentOSensorError", reinterpret_cast<SimTK::Real (SimTK::OrientationSensors::*)(int)  const>(&SimTK::OrientationSensors::findCurrentOSensorError));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("int SimTK::OrientationSensors::initializeCondition() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::OrientationSensors::initializeCondition()
@@ -828,11 +1255,19 @@ void define_simbody_Assembler_and_related(jlcxx::Module& types, const ArrayWrapp
   /* Wrappers for the methods of class SimTK::QValue
    */
 
-
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::QValue::QValue(SimTK::MobilizedBodyIndex, SimTK::MobilizerQIndex, SimTK::Real) (" __HERE__ ")");
   // defined in simbody/internal/AssemblyCondition_QValue.h:46:5
   t18.constructor<SimTK::MobilizedBodyIndex, SimTK::MobilizerQIndex, SimTK::Real>();
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::QValue::QValue(int, int, SimTK::Real) (" __HERE__ ")");
+  // defined in simbody/internal/AssemblyCondition_QValue.h:46:5
+  t18.constructor([] (int mbx, int qz, SimTK::Real value) -> SimTK::QValue* {
+    return new SimTK::QValue(SimTK::MobilizedBodyIndex(mbx), SimTK::MobilizerQIndex(qz), value); 
+  });
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("SimTK::Real SimTK::QValue::getValue() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::QValue::getValue()

@@ -17,12 +17,6 @@
 #include "jlSimTKcommon/Array.h"
 
 namespace jlcxx {
-  template<> struct IsMirroredType<SimTK::ContactSurfaceIndex> : std::false_type { };
-  template<> struct DefaultConstructible<SimTK::ContactSurfaceIndex> : std::false_type { };
-  template<> struct IsMirroredType<SimTK::ContactId> : std::false_type { };
-  template<> struct DefaultConstructible<SimTK::ContactId> : std::false_type { };
-  template<> struct IsMirroredType<SimTK::ContactTypeId> : std::false_type { };
-  template<> struct DefaultConstructible<SimTK::ContactTypeId> : std::false_type { };
   template<> struct IsMirroredType<SimTK::Contact> : std::false_type { };
   template<> struct DefaultConstructible<SimTK::Contact> : std::false_type { };
   template<> struct IsMirroredType<SimTK::UntrackedContact> : std::false_type { };
@@ -39,8 +33,6 @@ namespace jlcxx {
   template<> struct DefaultConstructible<SimTK::TriangleMeshContact> : std::false_type { };
   template<> struct IsMirroredType<SimTK::PointContact> : std::false_type { };
   template<> struct DefaultConstructible<SimTK::PointContact> : std::false_type { };
-  template<> struct IsMirroredType<SimTK::ContactGeometryTypeId> : std::false_type { };
-  template<> struct DefaultConstructible<SimTK::ContactGeometryTypeId> : std::false_type { };
   template<> struct IsMirroredType<SimTK::ContactGeometry> : std::false_type { };
   template<> struct DefaultConstructible<SimTK::ContactGeometry> : std::false_type { };
   template<> struct IsMirroredType<SimTK::Plane> : std::false_type { };
@@ -95,14 +87,26 @@ namespace jlcxx {
   template<> struct DefaultConstructible<SimTK::ContactTracker::ConvexImplicitPair> : std::false_type { };
   template<> struct IsMirroredType<SimTK::ContactTracker::GeneralImplicitPair> : std::false_type { };
   template<> struct DefaultConstructible<SimTK::ContactTracker::GeneralImplicitPair> : std::false_type { };
-  template<> struct IsMirroredType<SimTK::ContactCliqueId> : std::false_type { };
-  template<> struct DefaultConstructible<SimTK::ContactCliqueId> : std::false_type { };
   template<> struct IsMirroredType<SimTK::ContactMaterial> : std::false_type { };
   template<> struct DefaultConstructible<SimTK::ContactMaterial> : std::false_type { };
   template<> struct IsMirroredType<SimTK::ContactSurface> : std::false_type { };
   template<> struct DefaultConstructible<SimTK::ContactSurface> : std::false_type { };
   template<> struct IsMirroredType<SimTK::PlaneDecorator> : std::false_type { };
   template<> struct DefaultConstructible<SimTK::PlaneDecorator> : std::false_type { };
+
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
+  template<> struct IsMirroredType<SimTK::ContactSurfaceIndex> : std::false_type { };
+  template<> struct DefaultConstructible<SimTK::ContactSurfaceIndex> : std::false_type { };
+  template<> struct IsMirroredType<SimTK::ContactId> : std::false_type { };
+  template<> struct DefaultConstructible<SimTK::ContactId> : std::false_type { };
+  template<> struct IsMirroredType<SimTK::ContactTypeId> : std::false_type { };
+  template<> struct DefaultConstructible<SimTK::ContactTypeId> : std::false_type { };
+  template<> struct IsMirroredType<SimTK::ContactGeometryTypeId> : std::false_type { };
+  template<> struct DefaultConstructible<SimTK::ContactGeometryTypeId> : std::false_type { };
+  template<> struct IsMirroredType<SimTK::ContactCliqueId> : std::false_type { };
+  template<> struct DefaultConstructible<SimTK::ContactCliqueId> : std::false_type { };
+  #endif
+
   template<> struct SuperType<SimTK::PlaneDecorator> { typedef SimTK::DecorationGenerator type; };
   template<> struct SuperType<SimTK::UntrackedContact> { typedef SimTK::Contact type; };
   template<> struct SuperType<SimTK::BrokenContact> { typedef SimTK::Contact type; };

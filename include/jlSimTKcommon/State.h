@@ -6,14 +6,6 @@
 #include "jlSimTKcommon/Array.h"
 
 namespace jlcxx {
-  template<> struct IsMirroredType<SimTK::EventId> : std::false_type { };
-  template<> struct DefaultConstructible<SimTK::EventId> : std::false_type { };
-  template<> struct IsMirroredType<SimTK::SystemEventTriggerIndex> : std::false_type { };
-  template<> struct DefaultConstructible<SimTK::SystemEventTriggerIndex> : std::false_type { };
-  template<> struct IsMirroredType<SimTK::SystemEventTriggerByStageIndex> : std::false_type { };
-  template<> struct DefaultConstructible<SimTK::SystemEventTriggerByStageIndex> : std::false_type { };
-  template<> struct IsMirroredType<SimTK::EventTriggerByStageIndex> : std::false_type { };
-  template<> struct DefaultConstructible<SimTK::EventTriggerByStageIndex> : std::false_type { };
   template<> struct IsMirroredType<SimTK::Event> : std::false_type { };
   template<> struct DefaultConstructible<SimTK::Event> : std::false_type { };
   template<> struct IsMirroredType<SimTK::Event::Cause> : std::false_type { };
@@ -24,6 +16,26 @@ namespace jlcxx {
   template<> struct DefaultConstructible<SimTK::HandleEventsOptions> : std::false_type { };
   template<> struct IsMirroredType<SimTK::HandleEventsResults> : std::false_type { };
   template<> struct DefaultConstructible<SimTK::HandleEventsResults> : std::false_type { };
+  template<> struct IsMirroredType<SimTK::State> : std::false_type { };
+  template<> struct DefaultConstructible<SimTK::State> : std::false_type { };
+  template<> struct IsMirroredType<SimTK::AbstractValue> : std::false_type { };
+  template<> struct DefaultConstructible<SimTK::AbstractValue> : std::false_type { };
+  template<> struct IsMirroredType<SimTK::ListOfDependents> : std::false_type { };
+  template<> struct DefaultConstructible<SimTK::ListOfDependents> : std::false_type { };
+  template<> struct IsMirroredType<SimTK::DiscreteVarInfo> : std::false_type { };
+  template<> struct DefaultConstructible<SimTK::DiscreteVarInfo> : std::false_type { };
+  template<> struct IsMirroredType<SimTK::PerSubsystemInfo> : std::false_type { };
+  template<> struct DefaultConstructible<SimTK::PerSubsystemInfo> : std::false_type { };
+
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
+  template<> struct IsMirroredType<SimTK::EventId> : std::false_type { };
+  template<> struct DefaultConstructible<SimTK::EventId> : std::false_type { };
+  template<> struct IsMirroredType<SimTK::SystemEventTriggerIndex> : std::false_type { };
+  template<> struct DefaultConstructible<SimTK::SystemEventTriggerIndex> : std::false_type { }
+  template<> struct IsMirroredType<SimTK::SystemEventTriggerByStageIndex> : std::false_type { };
+  template<> struct DefaultConstructible<SimTK::SystemEventTriggerByStageIndex> : std::false_type { };
+  template<> struct IsMirroredType<SimTK::EventTriggerByStageIndex> : std::false_type { };
+  template<> struct DefaultConstructible<SimTK::EventTriggerByStageIndex> : std::false_type { };
   template<> struct IsMirroredType<SimTK::SubsystemIndex> : std::false_type { };
   template<> struct DefaultConstructible<SimTK::SubsystemIndex> : std::false_type { };
   template<> struct IsMirroredType<SimTK::SystemYIndex> : std::false_type { };
@@ -62,16 +74,7 @@ namespace jlcxx {
   template<> struct DefaultConstructible<SimTK::SystemMultiplierIndex> : std::false_type { };
   template<> struct IsMirroredType<SimTK::MultiplierIndex> : std::false_type { };
   template<> struct DefaultConstructible<SimTK::MultiplierIndex> : std::false_type { };
-  template<> struct IsMirroredType<SimTK::State> : std::false_type { };
-  template<> struct DefaultConstructible<SimTK::State> : std::false_type { };
-  template<> struct IsMirroredType<SimTK::AbstractValue> : std::false_type { };
-  template<> struct DefaultConstructible<SimTK::AbstractValue> : std::false_type { };
-  template<> struct IsMirroredType<SimTK::ListOfDependents> : std::false_type { };
-  template<> struct DefaultConstructible<SimTK::ListOfDependents> : std::false_type { };
-  template<> struct IsMirroredType<SimTK::DiscreteVarInfo> : std::false_type { };
-  template<> struct DefaultConstructible<SimTK::DiscreteVarInfo> : std::false_type { };
-  template<> struct IsMirroredType<SimTK::PerSubsystemInfo> : std::false_type { };
-  template<> struct DefaultConstructible<SimTK::PerSubsystemInfo> : std::false_type { };
+  #endif
 }
 
 namespace jlsimbody {

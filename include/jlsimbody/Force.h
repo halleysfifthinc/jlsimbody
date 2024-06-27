@@ -29,8 +29,6 @@ namespace jlcxx {
   template<> struct DefaultConstructible<SimTK::ForceSubsystem> : std::false_type { };
   template<> struct IsMirroredType<SimTK::GeneralForceSubsystem> : std::false_type { };
   template<> struct DefaultConstructible<SimTK::GeneralForceSubsystem> : std::false_type { };
-  template<> struct IsMirroredType<SimTK::ForceIndex> : std::false_type { };
-  template<> struct DefaultConstructible<SimTK::ForceIndex> : std::false_type { };
   template<> struct IsMirroredType<SimTK::Force> : std::false_type { };
   template<> struct DefaultConstructible<SimTK::Force> : std::false_type { };
   template<> struct IsMirroredType<SimTK::Force::TwoPointLinearSpring> : std::false_type { };
@@ -71,6 +69,7 @@ namespace jlcxx {
   template<> struct DefaultConstructible<SimTK::CableSpring> : std::false_type { };
   template<> struct IsMirroredType<SimTK::ElasticFoundationForce> : std::false_type { };
   template<> struct DefaultConstructible<SimTK::ElasticFoundationForce> : std::false_type { };
+
   template<> struct SuperType<SimTK::GeneralForceSubsystem> { typedef SimTK::ForceSubsystem type; };
   template<> struct SuperType<SimTK::Force::TwoPointLinearSpring> { typedef SimTK::Force type; };
   template<> struct SuperType<SimTK::Force::TwoPointLinearDamper> { typedef SimTK::Force type; };
@@ -91,6 +90,12 @@ namespace jlcxx {
   template<> struct SuperType<SimTK::HuntCrossleyForce> { typedef SimTK::Force type; };
   template<> struct SuperType<SimTK::CableSpring> { typedef SimTK::Force type; };
   template<> struct SuperType<SimTK::ElasticFoundationForce> { typedef SimTK::Force type; };
+
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
+  template<> struct IsMirroredType<SimTK::ForceIndex> : std::false_type { };
+  template<> struct DefaultConstructible<SimTK::ForceIndex> : std::false_type { };
+  #endif
+
 }
 
 namespace jlsimbody {

@@ -2,7 +2,10 @@
 #include "jlsimbody/common.h"
 
 #include "jlsimbody/Force.h"
+
+#ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
 #include "jlSimTKcommon/SimTK_UniqueIndex.h"
+#endif
 
 namespace jlsimbody {
 
@@ -19,8 +22,6 @@ void define_simbody_Force(jlcxx::Module& types){
   auto t1 = types.add_type<SimTK::GeneralForceSubsystem>("SimTK!GeneralForceSubsystem", jlcxx::julia_base_type<SimTK::ForceSubsystem>());
   t1.template constructor<>();
   CLEAR_DEBUG_MSG();
-
-  wrap_SimTK_UniqueIndexType<SimTK::ForceIndex>(types, "SimTK!ForceIndex");
 
   DEBUG_MSG("type SimTK::Force (" __HERE__ ")");
   // defined in simbody/internal/Force.h:50:28
@@ -139,16 +140,27 @@ void define_simbody_Force(jlcxx::Module& types){
   // defined in simbody/internal/ElasticFoundationForce.h:96:28
   auto t35 = types.add_type<SimTK::ElasticFoundationForce>("SimTK!ElasticFoundationForce", jlcxx::julia_base_type<SimTK::Force>());
   CLEAR_DEBUG_MSG();
+  
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
+  wrap_SimTK_UniqueIndexType<SimTK::ForceIndex>(types, "SimTK!ForceIndex");
+  #endif
 
   /**********************************************************************/
   /* Wrappers for the methods of class SimTK::GeneralForceSubsystem
    */
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ForceIndex SimTK::GeneralForceSubsystem::adoptForce(SimTK::Force &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ForceIndex SimTK::GeneralForceSubsystem::adoptForce(SimTK::Force &)
   // defined in simbody/internal/GeneralForceSubsystem.h:64:16
   t1.method("adoptForce", static_cast<SimTK::ForceIndex (SimTK::GeneralForceSubsystem::*)(SimTK::Force &) >(&SimTK::GeneralForceSubsystem::adoptForce));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::GeneralForceSubsystem::adoptForce(SimTK::Force &) (" __HERE__ ")");
+  // defined in simbody/internal/GeneralForceSubsystem.h:64:16
+  t1.method("adoptForce", reinterpret_cast<int (SimTK::GeneralForceSubsystem::*)(SimTK::Force &) >(&SimTK::GeneralForceSubsystem::adoptForce));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("int SimTK::GeneralForceSubsystem::getNumForces() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::GeneralForceSubsystem::getNumForces()
@@ -156,29 +168,57 @@ void define_simbody_Force(jlcxx::Module& types){
   t1.method("getNumForces", static_cast<int (SimTK::GeneralForceSubsystem::*)()  const>(&SimTK::GeneralForceSubsystem::getNumForces));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::Force & SimTK::GeneralForceSubsystem::getForce(SimTK::ForceIndex) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Force & SimTK::GeneralForceSubsystem::getForce(SimTK::ForceIndex)
   // defined in simbody/internal/GeneralForceSubsystem.h:71:18
   t1.method("getForce", static_cast<const SimTK::Force & (SimTK::GeneralForceSubsystem::*)(SimTK::ForceIndex)  const>(&SimTK::GeneralForceSubsystem::getForce));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("const SimTK::Force & SimTK::GeneralForceSubsystem::getForce(int) (" __HERE__ ")");
+  // defined in simbody/internal/GeneralForceSubsystem.h:71:18
+  t1.method("getForce", reinterpret_cast<const SimTK::Force & (SimTK::GeneralForceSubsystem::*)(int)  const>(&SimTK::GeneralForceSubsystem::getForce));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::Force & SimTK::GeneralForceSubsystem::updForce(SimTK::ForceIndex) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Force & SimTK::GeneralForceSubsystem::updForce(SimTK::ForceIndex)
   // defined in simbody/internal/GeneralForceSubsystem.h:74:12
   t1.method("updForce", static_cast<SimTK::Force & (SimTK::GeneralForceSubsystem::*)(SimTK::ForceIndex) >(&SimTK::GeneralForceSubsystem::updForce));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("SimTK::Force & SimTK::GeneralForceSubsystem::updForce(int) (" __HERE__ ")");
+  // defined in simbody/internal/GeneralForceSubsystem.h:74:12
+  t1.method("updForce", reinterpret_cast<SimTK::Force & (SimTK::GeneralForceSubsystem::*)(int) >(&SimTK::GeneralForceSubsystem::updForce));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("bool SimTK::GeneralForceSubsystem::isForceDisabled(const SimTK::State &, SimTK::ForceIndex) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::GeneralForceSubsystem::isForceDisabled(const SimTK::State &, SimTK::ForceIndex)
   // defined in simbody/internal/GeneralForceSubsystem.h:78:10
   t1.method("isForceDisabled", static_cast<bool (SimTK::GeneralForceSubsystem::*)(const SimTK::State &, SimTK::ForceIndex)  const>(&SimTK::GeneralForceSubsystem::isForceDisabled));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("bool SimTK::GeneralForceSubsystem::isForceDisabled(const SimTK::State &, int) (" __HERE__ ")");
+  // defined in simbody/internal/GeneralForceSubsystem.h:78:10
+  t1.method("isForceDisabled", reinterpret_cast<bool (SimTK::GeneralForceSubsystem::*)(const SimTK::State &, int)  const>(&SimTK::GeneralForceSubsystem::isForceDisabled));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::GeneralForceSubsystem::setForceIsDisabled(SimTK::State &, SimTK::ForceIndex, bool) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::GeneralForceSubsystem::setForceIsDisabled(SimTK::State &, SimTK::ForceIndex, bool)
   // defined in simbody/internal/GeneralForceSubsystem.h:86:10
   t1.method("setForceIsDisabled", static_cast<void (SimTK::GeneralForceSubsystem::*)(SimTK::State &, SimTK::ForceIndex, bool)  const>(&SimTK::GeneralForceSubsystem::setForceIsDisabled));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::GeneralForceSubsystem::setForceIsDisabled(SimTK::State &, int, bool) (" __HERE__ ")");
+  // defined in simbody/internal/GeneralForceSubsystem.h:86:10
+  t1.method("setForceIsDisabled", reinterpret_cast<void (SimTK::GeneralForceSubsystem::*)(SimTK::State &, int, bool)  const>(&SimTK::GeneralForceSubsystem::setForceIsDisabled));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("void SimTK::GeneralForceSubsystem::setNumberOfThreads(unsigned int) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::GeneralForceSubsystem::setNumberOfThreads(unsigned int)
@@ -248,11 +288,18 @@ void define_simbody_Force(jlcxx::Module& types){
   t3.method("getForceSubsystem", static_cast<const SimTK::GeneralForceSubsystem & (SimTK::Force::*)()  const>(&SimTK::Force::getForceSubsystem));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ForceIndex SimTK::Force::getForceIndex() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ForceIndex SimTK::Force::getForceIndex()
   // defined in simbody/internal/Force.h:164:16
   t3.method("getForceIndex", static_cast<SimTK::ForceIndex (SimTK::Force::*)()  const>(&SimTK::Force::getForceIndex));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("SimTK::ForceIndex SimTK::Force::getForceIndex() (" __HERE__ ")");
+  // defined in simbody/internal/Force.h:164:16
+  t3.method("getForceIndex", reinterpret_cast<int (SimTK::Force::*)()  const>(&SimTK::Force::getForceIndex));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   /* End of SimTK::Force class method wrappers
    **********************************************************************/
@@ -409,11 +456,18 @@ void define_simbody_Force(jlcxx::Module& types){
   t18.method("clearAllBodyForces", static_cast<void (SimTK::Force::DiscreteForces::*)(SimTK::State &)  const>(&SimTK::Force::DiscreteForces::clearAllBodyForces));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::Force::DiscreteForces::setOneMobilityForce(SimTK::State &, const SimTK::MobilizedBody &, SimTK::MobilizerUIndex, SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::Force::DiscreteForces::setOneMobilityForce(SimTK::State &, const SimTK::MobilizedBody &, SimTK::MobilizerUIndex, SimTK::Real)
   // defined in simbody/internal/Force_DiscreteForces.h:82:10
   t18.method("setOneMobilityForce", static_cast<void (SimTK::Force::DiscreteForces::*)(SimTK::State &, const SimTK::MobilizedBody &, SimTK::MobilizerUIndex, SimTK::Real)  const>(&SimTK::Force::DiscreteForces::setOneMobilityForce));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::Force::DiscreteForces::setOneMobilityForce(SimTK::State &, const SimTK::MobilizedBody &, int, SimTK::Real) (" __HERE__ ")");
+  // defined in simbody/internal/Force_DiscreteForces.h:82:10
+  t18.method("setOneMobilityForce", reinterpret_cast<void (SimTK::Force::DiscreteForces::*)(SimTK::State &, const SimTK::MobilizedBody &, int, SimTK::Real)  const>(&SimTK::Force::DiscreteForces::setOneMobilityForce));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("void SimTK::Force::DiscreteForces::setOneBodyForce(SimTK::State &, const SimTK::MobilizedBody &, const SimTK::SpatialVec &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::Force::DiscreteForces::setOneBodyForce(SimTK::State &, const SimTK::MobilizedBody &, const SimTK::SpatialVec &)
@@ -439,11 +493,18 @@ void define_simbody_Force(jlcxx::Module& types){
   t18.method("setAllBodyForces", static_cast<void (SimTK::Force::DiscreteForces::*)(SimTK::State &, const SimTK::Vector_<SimTK::SpatialVec> &)  const>(&SimTK::Force::DiscreteForces::setAllBodyForces));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::Real SimTK::Force::DiscreteForces::getOneMobilityForce(const SimTK::State &, const SimTK::MobilizedBody &, SimTK::MobilizerUIndex) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::Force::DiscreteForces::getOneMobilityForce(const SimTK::State &, const SimTK::MobilizedBody &, SimTK::MobilizerUIndex)
   // defined in simbody/internal/Force_DiscreteForces.h:151:10
   t18.method("getOneMobilityForce", static_cast<SimTK::Real (SimTK::Force::DiscreteForces::*)(const SimTK::State &, const SimTK::MobilizedBody &, SimTK::MobilizerUIndex)  const>(&SimTK::Force::DiscreteForces::getOneMobilityForce));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("SimTK::Real SimTK::Force::DiscreteForces::getOneMobilityForce(const SimTK::State &, const SimTK::MobilizedBody &, int) (" __HERE__ ")");
+  // defined in simbody/internal/Force_DiscreteForces.h:151:10
+  t18.method("getOneMobilityForce", reinterpret_cast<SimTK::Real (SimTK::Force::DiscreteForces::*)(const SimTK::State &, const SimTK::MobilizedBody &, int)  const>(&SimTK::Force::DiscreteForces::getOneMobilityForce));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("SimTK::SpatialVec SimTK::Force::DiscreteForces::getOneBodyForce(const SimTK::State &, const SimTK::MobilizedBody &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::SpatialVec SimTK::Force::DiscreteForces::getOneBodyForce(const SimTK::State &, const SimTK::MobilizedBody &)
@@ -489,11 +550,18 @@ void define_simbody_Force(jlcxx::Module& types){
   t20.constructor<SimTK::GeneralForceSubsystem &, const SimTK::SimbodyMatterSubsystem &, SimTK::Real>();
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::Force::Gravity & SimTK::Force::Gravity::setDefaultBodyIsExcluded(SimTK::MobilizedBodyIndex, bool) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Force::Gravity & SimTK::Force::Gravity::setDefaultBodyIsExcluded(SimTK::MobilizedBodyIndex, bool)
   // defined in simbody/internal/Force_Gravity.h:210:10
   t20.method("setDefaultBodyIsExcluded", static_cast<SimTK::Force::Gravity & (SimTK::Force::Gravity::*)(SimTK::MobilizedBodyIndex, bool) >(&SimTK::Force::Gravity::setDefaultBodyIsExcluded));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("SimTK::Force::Gravity & SimTK::Force::Gravity::setDefaultBodyIsExcluded(int, bool) (" __HERE__ ")");
+  // defined in simbody/internal/Force_Gravity.h:210:10
+  t20.method("setDefaultBodyIsExcluded", reinterpret_cast<SimTK::Force::Gravity & (SimTK::Force::Gravity::*)(int, bool) >(&SimTK::Force::Gravity::setDefaultBodyIsExcluded));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("SimTK::Force::Gravity & SimTK::Force::Gravity::setDefaultGravityVector(const SimTK::Vec3 &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Force::Gravity & SimTK::Force::Gravity::setDefaultGravityVector(const SimTK::Vec3 &)
@@ -525,11 +593,18 @@ void define_simbody_Force(jlcxx::Module& types){
   t20.method("setDefaultZeroHeight", static_cast<SimTK::Force::Gravity & (SimTK::Force::Gravity::*)(SimTK::Real) >(&SimTK::Force::Gravity::setDefaultZeroHeight));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("bool SimTK::Force::Gravity::getDefaultBodyIsExcluded(SimTK::MobilizedBodyIndex) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::Force::Gravity::getDefaultBodyIsExcluded(SimTK::MobilizedBodyIndex)
   // defined in simbody/internal/Force_Gravity.h:270:6
   t20.method("getDefaultBodyIsExcluded", static_cast<bool (SimTK::Force::Gravity::*)(SimTK::MobilizedBodyIndex)  const>(&SimTK::Force::Gravity::getDefaultBodyIsExcluded));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("bool SimTK::Force::Gravity::getDefaultBodyIsExcluded(int) (" __HERE__ ")");
+  // defined in simbody/internal/Force_Gravity.h:270:6
+  t20.method("getDefaultBodyIsExcluded", reinterpret_cast<bool (SimTK::Force::Gravity::*)(int)  const>(&SimTK::Force::Gravity::getDefaultBodyIsExcluded));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("SimTK::Vec3 SimTK::Force::Gravity::getDefaultGravityVector() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Vec3 SimTK::Force::Gravity::getDefaultGravityVector()
@@ -555,11 +630,18 @@ void define_simbody_Force(jlcxx::Module& types){
   t20.method("getDefaultZeroHeight", static_cast<SimTK::Real (SimTK::Force::Gravity::*)()  const>(&SimTK::Force::Gravity::getDefaultZeroHeight));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::Force::Gravity & SimTK::Force::Gravity::setBodyIsExcluded(SimTK::State &, SimTK::MobilizedBodyIndex, bool) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Force::Gravity & SimTK::Force::Gravity::setBodyIsExcluded(SimTK::State &, SimTK::MobilizedBodyIndex, bool)
   // defined in simbody/internal/Force_Gravity.h:323:16
   t20.method("setBodyIsExcluded", static_cast<const SimTK::Force::Gravity & (SimTK::Force::Gravity::*)(SimTK::State &, SimTK::MobilizedBodyIndex, bool)  const>(&SimTK::Force::Gravity::setBodyIsExcluded));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("const SimTK::Force::Gravity & SimTK::Force::Gravity::setBodyIsExcluded(SimTK::State &, int, bool) (" __HERE__ ")");
+  // defined in simbody/internal/Force_Gravity.h:323:16
+  t20.method("setBodyIsExcluded", reinterpret_cast<const SimTK::Force::Gravity & (SimTK::Force::Gravity::*)(SimTK::State &, int, bool)  const>(&SimTK::Force::Gravity::setBodyIsExcluded));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("const SimTK::Force::Gravity & SimTK::Force::Gravity::setGravityVector(SimTK::State &, const SimTK::Vec3 &) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Force::Gravity & SimTK::Force::Gravity::setGravityVector(SimTK::State &, const SimTK::Vec3 &)
@@ -591,11 +673,18 @@ void define_simbody_Force(jlcxx::Module& types){
   t20.method("setZeroHeight", static_cast<const SimTK::Force::Gravity & (SimTK::Force::Gravity::*)(SimTK::State &, SimTK::Real)  const>(&SimTK::Force::Gravity::setZeroHeight));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("bool SimTK::Force::Gravity::getBodyIsExcluded(const SimTK::State &, SimTK::MobilizedBodyIndex) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::Force::Gravity::getBodyIsExcluded(const SimTK::State &, SimTK::MobilizedBodyIndex)
   // defined in simbody/internal/Force_Gravity.h:406:6
   t20.method("getBodyIsExcluded", static_cast<bool (SimTK::Force::Gravity::*)(const SimTK::State &, SimTK::MobilizedBodyIndex)  const>(&SimTK::Force::Gravity::getBodyIsExcluded));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("bool SimTK::Force::Gravity::getBodyIsExcluded(const SimTK::State &, int) (" __HERE__ ")");
+  // defined in simbody/internal/Force_Gravity.h:406:6
+  t20.method("getBodyIsExcluded", reinterpret_cast<bool (SimTK::Force::Gravity::*)(const SimTK::State &, int)  const>(&SimTK::Force::Gravity::getBodyIsExcluded));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("SimTK::Vec3 SimTK::Force::Gravity::getGravityVector(const SimTK::State &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Vec3 SimTK::Force::Gravity::getGravityVector(const SimTK::State &)
@@ -633,11 +722,18 @@ void define_simbody_Force(jlcxx::Module& types){
   t20.method("getBodyForces", static_cast<const SimTK::Vector_<SimTK::SpatialVec> & (SimTK::Force::Gravity::*)(const SimTK::State &)  const>(&SimTK::Force::Gravity::getBodyForces));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::SpatialVec & SimTK::Force::Gravity::getBodyForce(const SimTK::State &, SimTK::MobilizedBodyIndex) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::SpatialVec & SimTK::Force::Gravity::getBodyForce(const SimTK::State &, SimTK::MobilizedBodyIndex)
   // defined in simbody/internal/Force_Gravity.h:506:1
   t20.method("getBodyForce", static_cast<const SimTK::SpatialVec & (SimTK::Force::Gravity::*)(const SimTK::State &, SimTK::MobilizedBodyIndex)  const>(&SimTK::Force::Gravity::getBodyForce));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("const SimTK::SpatialVec & SimTK::Force::Gravity::getBodyForce(const SimTK::State &, int) (" __HERE__ ")");
+  // defined in simbody/internal/Force_Gravity.h:506:1
+  t20.method("getBodyForce", reinterpret_cast<const SimTK::SpatialVec & (SimTK::Force::Gravity::*)(const SimTK::State &, int)  const>(&SimTK::Force::Gravity::getBodyForce));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("const SimTK::Vector_<SimTK::Vec3> & SimTK::Force::Gravity::getParticleForces(const SimTK::State &) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Vector_<SimTK::Vec3> & SimTK::Force::Gravity::getParticleForces(const SimTK::State &)
@@ -877,11 +973,19 @@ void define_simbody_Force(jlcxx::Module& types){
   /* Wrappers for the methods of class SimTK::Force::MobilityConstantForce
    */
 
-
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::Force::MobilityConstantForce::MobilityConstantForce(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::MobilizerUIndex, SimTK::Real) (" __HERE__ ")");
   // defined in simbody/internal/Force_MobilityConstantForce.h:53:5
   t23.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::MobilizerUIndex, SimTK::Real>();
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::Force::MobilityConstantForce::MobilityConstantForce(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, int, SimTK::Real) (" __HERE__ ")");
+  // defined in simbody/internal/Force_MobilityConstantForce.h:53:5
+  t23.constructor([] (SimTK::GeneralForceSubsystem &forces, const SimTK::MobilizedBody &mobod, int whichU, SimTK::Real defaultForce) -> SimTK::Force::MobilityConstantForce* {
+    return new SimTK::Force::MobilityConstantForce(forces, mobod, SimTK::MobilizerUIndex(whichU), defaultForce);
+  });
+  CLEAR_DEBUG_MSG();
+  #endif
 
 
   DEBUG_MSG("void SimTK::Force::MobilityConstantForce::MobilityConstantForce(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::Real) (" __HERE__ ")");
@@ -927,12 +1031,20 @@ void define_simbody_Force(jlcxx::Module& types){
   /* Wrappers for the methods of class SimTK::Force::MobilityDiscreteForce
    */
 
-
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::Force::MobilityDiscreteForce::MobilityDiscreteForce(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::MobilizerUIndex, SimTK::Real) (" __HERE__ ")");
   // defined in simbody/internal/Force_MobilityDiscreteForce.h:72:5
   t24.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::MobilizerUIndex>();
   t24.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::MobilizerUIndex, SimTK::Real>();
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::Force::MobilityDiscreteForce::MobilityDiscreteForce(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, int, SimTK::Real) (" __HERE__ ")");
+  // defined in simbody/internal/Force_MobilityDiscreteForce.h:72:5
+  t24.constructor([] (SimTK::GeneralForceSubsystem &forces, const SimTK::MobilizedBody &mobod, int whichU, SimTK::Real defaultForce) -> SimTK::Force::MobilityDiscreteForce* {
+    return new SimTK::Force::MobilityDiscreteForce(forces, mobod, SimTK::MobilizerUIndex(whichU), defaultForce);
+  }, jlcxx::arg("forces"), jlcxx::arg("mobod"), jlcxx::arg("whichU"), jlcxx::arg("defaultForce") = 0.0);
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("void SimTK::Force::MobilityDiscreteForce::MobilityDiscreteForce(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::Real) (" __HERE__ ")");
   // defined in simbody/internal/Force_MobilityDiscreteForce.h:81:5
@@ -972,11 +1084,19 @@ void define_simbody_Force(jlcxx::Module& types){
   /* Wrappers for the methods of class SimTK::Force::MobilityLinearDamper
    */
 
-
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::Force::MobilityLinearDamper::MobilityLinearDamper(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::MobilizerUIndex, SimTK::Real) (" __HERE__ ")");
   // defined in simbody/internal/Force_MobilityLinearDamper.h:61:5
   t25.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::MobilizerUIndex, SimTK::Real>();
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::Force::MobilityLinearDamper::MobilityLinearDamper(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, int, SimTK::Real) (" __HERE__ ")");
+  // defined in simbody/internal/Force_MobilityLinearDamper.h:61:5
+  t25.constructor([] (SimTK::GeneralForceSubsystem &forces, const SimTK::MobilizedBody &mobod, int whichU, SimTK::Real defaultDamping) -> SimTK::Force::MobilityLinearDamper* {
+    return new SimTK::Force::MobilityLinearDamper(forces, mobod, SimTK::MobilizerUIndex(whichU), defaultDamping);
+  });
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("SimTK::Force::MobilityLinearDamper & SimTK::Force::MobilityLinearDamper::setDefaultDamping(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Force::MobilityLinearDamper & SimTK::Force::MobilityLinearDamper::setDefaultDamping(SimTK::Real)
@@ -1016,11 +1136,19 @@ void define_simbody_Force(jlcxx::Module& types){
   /* Wrappers for the methods of class SimTK::Force::MobilityLinearSpring
    */
 
-
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::Force::MobilityLinearSpring::MobilityLinearSpring(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::MobilizerQIndex, SimTK::Real, SimTK::Real) (" __HERE__ ")");
   // defined in simbody/internal/Force_MobilityLinearSpring.h:66:5
   t26.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::MobilizerQIndex, SimTK::Real, SimTK::Real>();
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::Force::MobilityLinearSpring::MobilityLinearSpring(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, int, SimTK::Real, SimTK::Real) (" __HERE__ ")");
+  // defined in simbody/internal/Force_MobilityLinearSpring.h:66:5
+  t26.constructor([] (SimTK::GeneralForceSubsystem &forces, const SimTK::MobilizedBody &mobod, int whichQ, SimTK::Real defaultStiffness, SimTK::Real defaultQZero) -> SimTK::Force::MobilityLinearSpring* {
+    return new SimTK::Force::MobilityLinearSpring(forces, mobod, SimTK::MobilizerQIndex(whichQ), defaultStiffness, defaultQZero);
+  });
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("SimTK::Force::MobilityLinearSpring & SimTK::Force::MobilityLinearSpring::setDefaultStiffness(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Force::MobilityLinearSpring & SimTK::Force::MobilityLinearSpring::setDefaultStiffness(SimTK::Real)
@@ -1084,13 +1212,22 @@ void define_simbody_Force(jlcxx::Module& types){
   /* Wrappers for the methods of class SimTK::Force::MobilityLinearStop
    */
 
-
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::Force::MobilityLinearStop::MobilityLinearStop(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::MobilizerQIndex, SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real) (" __HERE__ ")");
   // defined in simbody/internal/Force_MobilityLinearStop.h:89:5
   t28.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::MobilizerQIndex, SimTK::Real, SimTK::Real>();
   t28.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::MobilizerQIndex, SimTK::Real, SimTK::Real, SimTK::Real>();
   t28.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::MobilizerQIndex, SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real>();
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::Force::MobilityLinearStop::MobilityLinearStop(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, int, SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real) (" __HERE__ ")");
+  // defined in simbody/internal/Force_MobilityLinearStop.h:89:5
+  t28.constructor(
+    [] (SimTK::GeneralForceSubsystem &forces, const SimTK::MobilizedBody &mobod, int whichQ, SimTK::Real defaultStiffness, SimTK::Real defaultDissipation, SimTK::Real defaultQLow, SimTK::Real defaultQHigh) -> SimTK::Force::MobilityLinearStop* {
+    return new SimTK::Force::MobilityLinearStop(forces, mobod, SimTK::MobilizerQIndex(whichQ), defaultStiffness, defaultDissipation, defaultQLow, defaultQHigh);
+  }, jlcxx::arg("forces"), jlcxx::arg("mobod"), jlcxx::arg("whichQ"), jlcxx::arg("defaultStiffness"), jlcxx::arg("defaultDissipation"), jlcxx::arg("defaultQLow") = -SimTK::Infinity, jlcxx::arg("defaultQHigh") = SimTK::Infinity);
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("SimTK::Force::MobilityLinearStop & SimTK::Force::MobilityLinearStop::setDefaultBounds(SimTK::Real, SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Force::MobilityLinearStop & SimTK::Force::MobilityLinearStop::setDefaultBounds(SimTK::Real, SimTK::Real)
@@ -1343,17 +1480,32 @@ void define_simbody_Force(jlcxx::Module& types){
   /* Wrappers for the methods of class SimTK::HuntCrossleyForce
    */
 
-
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::HuntCrossleyForce::HuntCrossleyForce(SimTK::GeneralForceSubsystem &, SimTK::GeneralContactSubsystem &, SimTK::ContactSetIndex) (" __HERE__ ")");
   // defined in simbody/internal/HuntCrossleyForce.h:131:5
   t30.constructor<SimTK::GeneralForceSubsystem &, SimTK::GeneralContactSubsystem &, SimTK::ContactSetIndex>();
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::HuntCrossleyForce::HuntCrossleyForce(SimTK::GeneralForceSubsystem &, SimTK::GeneralContactSubsystem &, int) (" __HERE__ ")");
+  // defined in simbody/internal/HuntCrossleyForce.h:131:5
+  t30.constructor([] (SimTK::GeneralForceSubsystem &forces, SimTK::GeneralContactSubsystem &contacts, int contactSet) -> SimTK::HuntCrossleyForce* {
+    return new SimTK::HuntCrossleyForce(forces, contacts, SimTK::ContactSetIndex(contactSet));
+  });
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::HuntCrossleyForce::setBodyParameters(SimTK::ContactSurfaceIndex, SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::HuntCrossleyForce::setBodyParameters(SimTK::ContactSurfaceIndex, SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real)
   // defined in simbody/internal/HuntCrossleyForce.h:144:10
   t30.method("setBodyParameters", static_cast<void (SimTK::HuntCrossleyForce::*)(SimTK::ContactSurfaceIndex, SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real) >(&SimTK::HuntCrossleyForce::setBodyParameters));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::HuntCrossleyForce::setBodyParameters(int, SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real) (" __HERE__ ")");
+  // defined in simbody/internal/HuntCrossleyForce.h:144:10
+  t30.method("setBodyParameters", reinterpret_cast<void (SimTK::HuntCrossleyForce::*)(int, SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real) >(&SimTK::HuntCrossleyForce::setBodyParameters));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("SimTK::Real SimTK::HuntCrossleyForce::getTransitionVelocity() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::HuntCrossleyForce::getTransitionVelocity()
@@ -1367,11 +1519,18 @@ void define_simbody_Force(jlcxx::Module& types){
   t30.method("setTransitionVelocity", static_cast<void (SimTK::HuntCrossleyForce::*)(SimTK::Real) >(&SimTK::HuntCrossleyForce::setTransitionVelocity));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactSetIndex SimTK::HuntCrossleyForce::getContactSetIndex() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactSetIndex SimTK::HuntCrossleyForce::getContactSetIndex()
   // defined in simbody/internal/HuntCrossleyForce.h:159:21
   t30.method("getContactSetIndex", static_cast<SimTK::ContactSetIndex (SimTK::HuntCrossleyForce::*)()  const>(&SimTK::HuntCrossleyForce::getContactSetIndex));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("SimTK::ContactSetIndex SimTK::HuntCrossleyForce::getContactSetIndex() (" __HERE__ ")");
+  // defined in simbody/internal/HuntCrossleyForce.h:159:21
+  t30.method("getContactSetIndex", reinterpret_cast<int (SimTK::HuntCrossleyForce::*)()  const>(&SimTK::HuntCrossleyForce::getContactSetIndex));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   /* End of SimTK::HuntCrossleyForce class method wrappers
    **********************************************************************/
@@ -1515,17 +1674,32 @@ void define_simbody_Force(jlcxx::Module& types){
   /* Wrappers for the methods of class SimTK::ElasticFoundationForce
    */
 
-
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::ElasticFoundationForce::ElasticFoundationForce(SimTK::GeneralForceSubsystem &, SimTK::GeneralContactSubsystem &, SimTK::ContactSetIndex) (" __HERE__ ")");
   // defined in simbody/internal/ElasticFoundationForce.h:105:5
   t35.constructor<SimTK::GeneralForceSubsystem &, SimTK::GeneralContactSubsystem &, SimTK::ContactSetIndex>();
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::ElasticFoundationForce::ElasticFoundationForce(SimTK::GeneralForceSubsystem &, SimTK::GeneralContactSubsystem &, int) (" __HERE__ ")");
+  // defined in simbody/internal/ElasticFoundationForce.h:105:5
+  t35.constructor([] (SimTK::GeneralForceSubsystem &forces, SimTK::GeneralContactSubsystem &contacts, int contactSet) -> SimTK::ElasticFoundationForce* {
+    return new SimTK::ElasticFoundationForce(forces, contacts, SimTK::ContactSetIndex(contactSet));
+  });
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::ElasticFoundationForce::setBodyParameters(SimTK::ContactSurfaceIndex, SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::ElasticFoundationForce::setBodyParameters(SimTK::ContactSurfaceIndex, SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real)
   // defined in simbody/internal/ElasticFoundationForce.h:117:10
   t35.method("setBodyParameters", static_cast<void (SimTK::ElasticFoundationForce::*)(SimTK::ContactSurfaceIndex, SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real) >(&SimTK::ElasticFoundationForce::setBodyParameters));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::ElasticFoundationForce::setBodyParameters(int, SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real) (" __HERE__ ")");
+  // defined in simbody/internal/ElasticFoundationForce.h:117:10
+  t35.method("setBodyParameters", reinterpret_cast<void (SimTK::ElasticFoundationForce::*)(int, SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real) >(&SimTK::ElasticFoundationForce::setBodyParameters));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("SimTK::Real SimTK::ElasticFoundationForce::getTransitionVelocity() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::ElasticFoundationForce::getTransitionVelocity()

@@ -85,17 +85,33 @@ void define_simbody_ForceSubsystems(jlcxx::Module& types, const ArrayWrapper& ar
   /* Wrappers for the methods of class SimTK::ContactForce
    */
 
-
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::ContactForce::ContactForce(SimTK::ContactId, const SimTK::Vec3 &, const SimTK::SpatialVec &, SimTK::Real, SimTK::Real) (" __HERE__ ")");
   // defined in simbody/internal/CompliantContactSubsystem.h:310:1
   t2.constructor<SimTK::ContactId, const SimTK::Vec3 &, const SimTK::SpatialVec &, SimTK::Real, SimTK::Real>();
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::ContactForce::ContactForce(int, const SimTK::Vec3 &, const SimTK::SpatialVec &, SimTK::Real, SimTK::Real) (" __HERE__ ")");
+  // defined in simbody/internal/CompliantContactSubsystem.h:310:1
+  t2.constructor(
+    [] (int id, const SimTK::Vec3 & contactPt, const SimTK::SpatialVec & forceOnSurface2, SimTK::Real potentialEnergy, SimTK::Real powerLoss) -> SimTK::ContactForce* {
+    return new SimTK::ContactForce(SimTK::ContactId(id), contactPt, forceOnSurface2, potentialEnergy, powerLoss);
+  });
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactId SimTK::ContactForce::getContactId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactId SimTK::ContactForce::getContactId()
   // defined in simbody/internal/CompliantContactSubsystem.h:318:11
   t2.method("getContactId", static_cast<SimTK::ContactId (SimTK::ContactForce::*)()  const>(&SimTK::ContactForce::getContactId));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::ContactForce::getContactId() (" __HERE__ ")");
+  // defined in simbody/internal/CompliantContactSubsystem.h:318:11
+  t2.method("getContactId", reinterpret_cast<int (SimTK::ContactForce::*)()  const>(&SimTK::ContactForce::getContactId));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("const SimTK::Vec3 & SimTK::ContactForce::getContactPoint() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Vec3 & SimTK::ContactForce::getContactPoint()
@@ -121,17 +137,31 @@ void define_simbody_ForceSubsystems(jlcxx::Module& types, const ArrayWrapper& ar
   t2.method("getPowerDissipation", static_cast<SimTK::Real (SimTK::ContactForce::*)()  const>(&SimTK::ContactForce::getPowerDissipation));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::ContactForce::setTo(SimTK::ContactId, const SimTK::Vec3 &, const SimTK::SpatialVec &, SimTK::Real, SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::ContactForce::setTo(SimTK::ContactId, const SimTK::Vec3 &, const SimTK::SpatialVec &, SimTK::Real, SimTK::Real)
   // defined in simbody/internal/CompliantContactSubsystem.h:340:6
   t2.method("setTo", static_cast<void (SimTK::ContactForce::*)(SimTK::ContactId, const SimTK::Vec3 &, const SimTK::SpatialVec &, SimTK::Real, SimTK::Real) >(&SimTK::ContactForce::setTo));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::ContactForce::setTo(int, const SimTK::Vec3 &, const SimTK::SpatialVec &, SimTK::Real, SimTK::Real) (" __HERE__ ")");
+  // defined in simbody/internal/CompliantContactSubsystem.h:340:6
+  t2.method("setTo", reinterpret_cast<void (SimTK::ContactForce::*)(int, const SimTK::Vec3 &, const SimTK::SpatialVec &, SimTK::Real, SimTK::Real) >(&SimTK::ContactForce::setTo));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::ContactForce::setContactId(SimTK::ContactId) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::ContactForce::setContactId(SimTK::ContactId)
   // defined in simbody/internal/CompliantContactSubsystem.h:350:6
   t2.method("setContactId", static_cast<void (SimTK::ContactForce::*)(SimTK::ContactId) >(&SimTK::ContactForce::setContactId));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::ContactForce::setContactId(int) (" __HERE__ ")");
+  // defined in simbody/internal/CompliantContactSubsystem.h:350:6
+  t2.method("setContactId", reinterpret_cast<void (SimTK::ContactForce::*)(int) >(&SimTK::ContactForce::setContactId));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("void SimTK::ContactForce::setContactPoint(const SimTK::Vec3 &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::ContactForce::setContactPoint(const SimTK::Vec3 &)
@@ -262,11 +292,18 @@ void define_simbody_ForceSubsystems(jlcxx::Module& types, const ArrayWrapper& ar
    */
 
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactTypeId SimTK::ContactForceGenerator::getContactTypeId() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactTypeId SimTK::ContactForceGenerator::getContactTypeId()
   // defined in simbody/internal/CompliantContactSubsystem.h:636:15
   t5.method("getContactTypeId", static_cast<SimTK::ContactTypeId (SimTK::ContactForceGenerator::*)()  const>(&SimTK::ContactForceGenerator::getContactTypeId));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::ContactForceGenerator::getContactTypeId() (" __HERE__ ")");
+  // defined in simbody/internal/CompliantContactSubsystem.h:636:15
+  t5.method("getContactTypeId", reinterpret_cast<int (SimTK::ContactForceGenerator::*)()  const>(&SimTK::ContactForceGenerator::getContactTypeId));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("const SimTK::CompliantContactSubsystem & SimTK::ContactForceGenerator::getCompliantContactSubsystem() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::CompliantContactSubsystem & SimTK::ContactForceGenerator::getCompliantContactSubsystem()
@@ -342,17 +379,31 @@ void define_simbody_ForceSubsystems(jlcxx::Module& types, const ArrayWrapper& ar
   t0.method("getContactForce", static_cast<const SimTK::ContactForce & (SimTK::CompliantContactSubsystem::*)(const SimTK::State &, int)  const>(&SimTK::CompliantContactSubsystem::getContactForce));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::ContactForce & SimTK::CompliantContactSubsystem::getContactForceById(const SimTK::State &, SimTK::ContactId) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::ContactForce & SimTK::CompliantContactSubsystem::getContactForceById(const SimTK::State &, SimTK::ContactId)
   // defined in simbody/internal/CompliantContactSubsystem.h:107:21
   t0.method("getContactForceById", static_cast<const SimTK::ContactForce & (SimTK::CompliantContactSubsystem::*)(const SimTK::State &, SimTK::ContactId)  const>(&SimTK::CompliantContactSubsystem::getContactForceById));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("const SimTK::ContactForce & SimTK::CompliantContactSubsystem::getContactForceById(const SimTK::State &, int) (" __HERE__ ")");
+  // defined in simbody/internal/CompliantContactSubsystem.h:107:21
+  t0.method("getContactForceById", reinterpret_cast<const SimTK::ContactForce & (SimTK::CompliantContactSubsystem::*)(const SimTK::State &, int)  const>(&SimTK::CompliantContactSubsystem::getContactForceById));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("bool SimTK::CompliantContactSubsystem::calcContactPatchDetailsById(const SimTK::State &, SimTK::ContactId, SimTK::ContactPatch &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::CompliantContactSubsystem::calcContactPatchDetailsById(const SimTK::State &, SimTK::ContactId, SimTK::ContactPatch &)
   // defined in simbody/internal/CompliantContactSubsystem.h:136:6
   t0.method("calcContactPatchDetailsById", static_cast<bool (SimTK::CompliantContactSubsystem::*)(const SimTK::State &, SimTK::ContactId, SimTK::ContactPatch &)  const>(&SimTK::CompliantContactSubsystem::calcContactPatchDetailsById));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("bool SimTK::CompliantContactSubsystem::calcContactPatchDetailsById(const SimTK::State &, int, SimTK::ContactPatch &) (" __HERE__ ")");
+  // defined in simbody/internal/CompliantContactSubsystem.h:136:6
+  t0.method("calcContactPatchDetailsById", reinterpret_cast<bool (SimTK::CompliantContactSubsystem::*)(const SimTK::State &, int, SimTK::ContactPatch &)  const>(&SimTK::CompliantContactSubsystem::calcContactPatchDetailsById));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("SimTK::Real SimTK::CompliantContactSubsystem::getDissipatedEnergy(const SimTK::State &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::CompliantContactSubsystem::getDissipatedEnergy(const SimTK::State &)
@@ -378,11 +429,18 @@ void define_simbody_ForceSubsystems(jlcxx::Module& types, const ArrayWrapper& ar
   t0.method("adoptDefaultForceGenerator", static_cast<void (SimTK::CompliantContactSubsystem::*)(SimTK::ContactForceGenerator *) >(&SimTK::CompliantContactSubsystem::adoptDefaultForceGenerator));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("bool SimTK::CompliantContactSubsystem::hasForceGenerator(SimTK::ContactTypeId) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::CompliantContactSubsystem::hasForceGenerator(SimTK::ContactTypeId)
   // defined in simbody/internal/CompliantContactSubsystem.h:209:6
   t0.method("hasForceGenerator", static_cast<bool (SimTK::CompliantContactSubsystem::*)(SimTK::ContactTypeId)  const>(&SimTK::CompliantContactSubsystem::hasForceGenerator));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("bool SimTK::CompliantContactSubsystem::hasForceGenerator(int) (" __HERE__ ")");
+  // defined in simbody/internal/CompliantContactSubsystem.h:209:6
+  t0.method("hasForceGenerator", reinterpret_cast<bool (SimTK::CompliantContactSubsystem::*)(int)  const>(&SimTK::CompliantContactSubsystem::hasForceGenerator));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("bool SimTK::CompliantContactSubsystem::hasDefaultForceGenerator() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::CompliantContactSubsystem::hasDefaultForceGenerator()
@@ -390,11 +448,18 @@ void define_simbody_ForceSubsystems(jlcxx::Module& types, const ArrayWrapper& ar
   t0.method("hasDefaultForceGenerator", static_cast<bool (SimTK::CompliantContactSubsystem::*)()  const>(&SimTK::CompliantContactSubsystem::hasDefaultForceGenerator));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::ContactForceGenerator & SimTK::CompliantContactSubsystem::getContactForceGenerator(SimTK::ContactTypeId) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::ContactForceGenerator & SimTK::CompliantContactSubsystem::getContactForceGenerator(SimTK::ContactTypeId)
   // defined in simbody/internal/CompliantContactSubsystem.h:220:5
   t0.method("getContactForceGenerator", static_cast<const SimTK::ContactForceGenerator & (SimTK::CompliantContactSubsystem::*)(SimTK::ContactTypeId)  const>(&SimTK::CompliantContactSubsystem::getContactForceGenerator));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("const SimTK::ContactForceGenerator & SimTK::CompliantContactSubsystem::getContactForceGenerator(int) (" __HERE__ ")");
+  // defined in simbody/internal/CompliantContactSubsystem.h:220:5
+  t0.method("getContactForceGenerator", reinterpret_cast<const SimTK::ContactForceGenerator & (SimTK::CompliantContactSubsystem::*)(int)  const>(&SimTK::CompliantContactSubsystem::getContactForceGenerator));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("const SimTK::ContactForceGenerator & SimTK::CompliantContactSubsystem::getDefaultForceGenerator() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::ContactForceGenerator & SimTK::CompliantContactSubsystem::getDefaultForceGenerator()
@@ -776,11 +841,19 @@ void define_simbody_ForceSubsystems(jlcxx::Module& types, const ArrayWrapper& ar
   /* Wrappers for the methods of class SimTK::ContactForceGenerator::DoNothing
    */
 
-
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::ContactForceGenerator::DoNothing::DoNothing(SimTK::ContactTypeId) (" __HERE__ ")");
   // defined in simbody/internal/CompliantContactSubsystem.h:845:10
   t14.constructor<SimTK::ContactTypeId>();
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::ContactForceGenerator::DoNothing::DoNothing(int) (" __HERE__ ")");
+  // defined in simbody/internal/CompliantContactSubsystem.h:845:10
+  t14.constructor([] (int type) -> SimTK::ContactForceGenerator::DoNothing* {
+    return new SimTK::ContactForceGenerator::DoNothing(SimTK::ContactTypeId(type));
+  }, jlcxx::arg("type")=SimTK::ContactTypeId(0));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("void SimTK::ContactForceGenerator::DoNothing::calcContactForce(const SimTK::State &, const SimTK::Contact &, const SimTK::SpatialVec &, SimTK::ContactForce &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::ContactForceGenerator::DoNothing::calcContactForce(const SimTK::State &, const SimTK::Contact &, const SimTK::SpatialVec &, SimTK::ContactForce &)
@@ -802,11 +875,19 @@ void define_simbody_ForceSubsystems(jlcxx::Module& types, const ArrayWrapper& ar
   /* Wrappers for the methods of class SimTK::ContactForceGenerator::ThrowError
    */
 
-
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::ContactForceGenerator::ThrowError::ThrowError(SimTK::ContactTypeId) (" __HERE__ ")");
   // defined in simbody/internal/CompliantContactSubsystem.h:876:10
   t15.constructor<SimTK::ContactTypeId>();
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("void SimTK::ContactForceGenerator::ThrowError::ThrowError(int) (" __HERE__ ")");
+  // defined in simbody/internal/CompliantContactSubsystem.h:876:10
+  t15.constructor([] (int type) -> SimTK::ContactForceGenerator::ThrowError* {
+    return new SimTK::ContactForceGenerator::ThrowError(SimTK::ContactTypeId(type));
+  }, jlcxx::arg("type")=SimTK::ContactTypeId(0));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("void SimTK::ContactForceGenerator::ThrowError::calcContactForce(const SimTK::State &, const SimTK::Contact &, const SimTK::SpatialVec &, SimTK::ContactForce &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::ContactForceGenerator::ThrowError::calcContactForce(const SimTK::State &, const SimTK::Contact &, const SimTK::SpatialVec &, SimTK::ContactForce &)
@@ -828,17 +909,31 @@ void define_simbody_ForceSubsystems(jlcxx::Module& types, const ArrayWrapper& ar
   /* Wrappers for the methods of class SimTK::HuntCrossleyContact
    */
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("int SimTK::HuntCrossleyContact::addSphere(SimTK::MobilizedBodyIndex, const SimTK::Vec3 &, const SimTK::Real &, const SimTK::Real &, const SimTK::Real &) (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::HuntCrossleyContact::addSphere(SimTK::MobilizedBodyIndex, const SimTK::Vec3 &, const SimTK::Real &, const SimTK::Real &, const SimTK::Real &)
   // defined in simbody/internal/HuntCrossleyContact.h:94:9
   t24.method("addSphere", static_cast<int (SimTK::HuntCrossleyContact::*)(SimTK::MobilizedBodyIndex, const SimTK::Vec3 &, const SimTK::Real &, const SimTK::Real &, const SimTK::Real &) >(&SimTK::HuntCrossleyContact::addSphere));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::HuntCrossleyContact::addSphere(int, const SimTK::Vec3 &, const SimTK::Real &, const SimTK::Real &, const SimTK::Real &) (" __HERE__ ")");
+  // defined in simbody/internal/HuntCrossleyContact.h:94:9
+  t24.method("addSphere", reinterpret_cast<int (SimTK::HuntCrossleyContact::*)(int, const SimTK::Vec3 &, const SimTK::Real &, const SimTK::Real &, const SimTK::Real &) >(&SimTK::HuntCrossleyContact::addSphere));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("int SimTK::HuntCrossleyContact::addHalfSpace(SimTK::MobilizedBodyIndex, const SimTK::UnitVec3 &, const SimTK::Real &, const SimTK::Real &, const SimTK::Real &) (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::HuntCrossleyContact::addHalfSpace(SimTK::MobilizedBodyIndex, const SimTK::UnitVec3 &, const SimTK::Real &, const SimTK::Real &, const SimTK::Real &)
   // defined in simbody/internal/HuntCrossleyContact.h:99:9
   t24.method("addHalfSpace", static_cast<int (SimTK::HuntCrossleyContact::*)(SimTK::MobilizedBodyIndex, const SimTK::UnitVec3 &, const SimTK::Real &, const SimTK::Real &, const SimTK::Real &) >(&SimTK::HuntCrossleyContact::addHalfSpace));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::HuntCrossleyContact::addHalfSpace(int, const SimTK::UnitVec3 &, const SimTK::Real &, const SimTK::Real &, const SimTK::Real &) (" __HERE__ ")");
+  // defined in simbody/internal/HuntCrossleyContact.h:99:9
+  t24.method("addHalfSpace", reinterpret_cast<int (SimTK::HuntCrossleyContact::*)(int, const SimTK::UnitVec3 &, const SimTK::Real &, const SimTK::Real &, const SimTK::Real &) >(&SimTK::HuntCrossleyContact::addHalfSpace));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   /* End of SimTK::HuntCrossleyContact class method wrappers
    **********************************************************************/

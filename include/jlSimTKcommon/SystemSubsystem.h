@@ -7,6 +7,8 @@
 #include "SimTKcommon/internal/System.h"
 #include "SimTKcommon/internal/Subsystem.h"
 
+#include "jlSimTKcommon/Array.h"
+
 namespace jlcxx {
   template<> struct IsMirroredType<SimTK::Subsystem> : std::false_type { };
   template<> struct DefaultConstructible<SimTK::Subsystem> : std::false_type { };
@@ -30,7 +32,7 @@ namespace jlcxx {
 }
 
 namespace jlsimbody {
-  JLSIMBODY_NO_EXPORT void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types);
+  JLSIMBODY_NO_EXPORT void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types, const ArrayWrapper& array_wrapper);
 }
 
 #endif // _JLSIMTKCOMMON_SYSTEMSUBSYSTEM_H

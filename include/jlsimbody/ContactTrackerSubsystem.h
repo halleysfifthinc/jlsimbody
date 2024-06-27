@@ -17,10 +17,13 @@ namespace jlcxx {
   template<> struct DefaultConstructible<SimTK::ContactTrackerSubsystem> : std::false_type { };
   template<> struct IsMirroredType<SimTK::GeneralContactSubsystem> : std::false_type { };
   template<> struct DefaultConstructible<SimTK::GeneralContactSubsystem> : std::false_type { };
-  template<> struct IsMirroredType<SimTK::ContactSetIndex> : std::false_type { };
-  template<> struct DefaultConstructible<SimTK::ContactSetIndex> : std::false_type { };
   template<> struct SuperType<SimTK::ContactTrackerSubsystem> { typedef SimTK::Subsystem type; };
   template<> struct SuperType<SimTK::GeneralContactSubsystem> { typedef SimTK::Subsystem type; };
+
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
+  template<> struct IsMirroredType<SimTK::ContactSetIndex> : std::false_type { };
+  template<> struct DefaultConstructible<SimTK::ContactSetIndex> : std::false_type { };
+  #endif
 }
 
 namespace jlsimbody {

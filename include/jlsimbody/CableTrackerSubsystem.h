@@ -10,23 +10,27 @@
 #include "simbody/internal/CablePath.h"
 
 namespace jlcxx {
-  template<> struct IsMirroredType<SimTK::CablePathIndex> : std::false_type { };
-  template<> struct DefaultConstructible<SimTK::CablePathIndex> : std::false_type { };
   template<> struct IsMirroredType<SimTK::CablePath> : std::false_type { };
   template<> struct DefaultConstructible<SimTK::CablePath> : std::false_type { };
   template<> struct IsMirroredType<SimTK::CableTrackerSubsystem> : std::false_type { };
   template<> struct DefaultConstructible<SimTK::CableTrackerSubsystem> : std::false_type { };
-  template<> struct IsMirroredType<SimTK::CableObstacleIndex> : std::false_type { };
-  template<> struct DefaultConstructible<SimTK::CableObstacleIndex> : std::false_type { };
   template<> struct IsMirroredType<SimTK::CableObstacle> : std::false_type { };
   template<> struct DefaultConstructible<SimTK::CableObstacle> : std::false_type { };
   template<> struct IsMirroredType<SimTK::CableObstacle::ViaPoint> : std::false_type { };
   template<> struct DefaultConstructible<SimTK::CableObstacle::ViaPoint> : std::false_type { };
   template<> struct IsMirroredType<SimTK::CableObstacle::Surface> : std::false_type { };
   template<> struct DefaultConstructible<SimTK::CableObstacle::Surface> : std::false_type { };
+
   template<> struct SuperType<SimTK::CableTrackerSubsystem> { typedef SimTK::Subsystem type; };
   template<> struct SuperType<SimTK::CableObstacle::ViaPoint> { typedef SimTK::CableObstacle type; };
   template<> struct SuperType<SimTK::CableObstacle::Surface> { typedef SimTK::CableObstacle type; };
+
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
+  template<> struct IsMirroredType<SimTK::CablePathIndex> : std::false_type { };
+  template<> struct DefaultConstructible<SimTK::CablePathIndex> : std::false_type { };
+  template<> struct IsMirroredType<SimTK::CableObstacleIndex> : std::false_type { };
+  template<> struct DefaultConstructible<SimTK::CableObstacleIndex> : std::false_type { };
+  #endif
 }
 
 namespace jlsimbody{

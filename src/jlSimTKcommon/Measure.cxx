@@ -180,11 +180,18 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
   t1.method("isSameSubsystem", static_cast<bool (SimTK::AbstractMeasure::*)(const SimTK::Subsystem &)  const>(&SimTK::AbstractMeasure::isSameSubsystem));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::MeasureIndex SimTK::AbstractMeasure::getSubsystemMeasureIndex() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::MeasureIndex SimTK::AbstractMeasure::getSubsystemMeasureIndex()
   // defined in SimTKcommon/internal/Measure.h:236:18
   t1.method("getSubsystemMeasureIndex", static_cast<SimTK::MeasureIndex (SimTK::AbstractMeasure::*)()  const>(&SimTK::AbstractMeasure::getSubsystemMeasureIndex));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::AbstractMeasure::getSubsystemMeasureIndex() (" __HERE__ ")");
+  // defined in SimTKcommon/internal/Measure.h:236:18
+  t1.method("getSubsystemMeasureIndex", reinterpret_cast<int (SimTK::AbstractMeasure::*)()  const>(&SimTK::AbstractMeasure::getSubsystemMeasureIndex));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   // DEBUG_MSG("const SimTK::AbstractMeasure::Implementation & SimTK::AbstractMeasure::getImpl() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::AbstractMeasure::Implementation & SimTK::AbstractMeasure::getImpl()
@@ -1054,19 +1061,6 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
    **********************************************************************/
 
   array_wrapper.template apply<SimTK::Measure_<double>>();
-
-  /**********************************************************************
-   * Wrappers for global functions and variables including
-   * class static members
-   */
-
-  DEBUG_MSG("Adding SimTK!InvalidMeasureIndex methods to provide access to the global variable SimTK::InvalidMeasureIndex (" __HERE__ ")");
-  // defined in SimTKcommon/internal/Measure.h:133:1
-  types.method("SimTK!InvalidMeasureIndex", []()-> const SimTK::MeasureIndex& { return SimTK::InvalidMeasureIndex; });
-  CLEAR_DEBUG_MSG();
-
-  /* End of global function wrappers
-   **********************************************************************/
 
 }
 

@@ -2,13 +2,14 @@
 #include "jlsimbody/common.h"
 
 #include "jlsimbody/CableTrackerSubsystem.h"
+
+#ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
 #include "jlSimTKcommon/SimTK_UniqueIndex.h"
+#endif
 
 namespace jlsimbody {
 
 void define_simbody_CableTrackerSubsystem(jlcxx::Module& types){
-
-  wrap_SimTK_UniqueIndexType<SimTK::CablePathIndex>(types, "SimTK!CablePathIndex");
 
   DEBUG_MSG("type SimTK::CableTrackerSubsystem (" __HERE__ ")");
   // defined in simbody/internal/CableTrackerSubsystem.h:68:28
@@ -21,8 +22,6 @@ void define_simbody_CableTrackerSubsystem(jlcxx::Module& types){
   auto t2 = types.add_type<SimTK::CablePath>("SimTK!CablePath");
   t2.template constructor<>();
   CLEAR_DEBUG_MSG();
-
-  wrap_SimTK_UniqueIndexType<SimTK::CableObstacleIndex>(types, "SimTK!CableObstacleIndex");
 
   DEBUG_MSG("type SimTK::CableObstacle (" __HERE__ ")");
   // defined in simbody/internal/CablePath.h:210:28
@@ -42,6 +41,11 @@ void define_simbody_CableTrackerSubsystem(jlcxx::Module& types){
   t9.template constructor<>();
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
+  wrap_SimTK_UniqueIndexType<SimTK::CablePathIndex>(types, "SimTK!CablePathIndex");
+  wrap_SimTK_UniqueIndexType<SimTK::CableObstacleIndex>(types, "SimTK!CableObstacleIndex");
+  #endif
+
   /**********************************************************************/
   /* Wrappers for the methods of class SimTK::CableTrackerSubsystem
    */
@@ -52,17 +56,31 @@ void define_simbody_CableTrackerSubsystem(jlcxx::Module& types){
   t1.method("getNumCablePaths", static_cast<int (SimTK::CableTrackerSubsystem::*)()  const>(&SimTK::CableTrackerSubsystem::getNumCablePaths));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::CablePath & SimTK::CableTrackerSubsystem::getCablePath(SimTK::CablePathIndex) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::CablePath & SimTK::CableTrackerSubsystem::getCablePath(SimTK::CablePathIndex)
   // defined in simbody/internal/CableTrackerSubsystem.h:79:18
   t1.method("getCablePath", static_cast<const SimTK::CablePath & (SimTK::CableTrackerSubsystem::*)(SimTK::CablePathIndex)  const>(&SimTK::CableTrackerSubsystem::getCablePath));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("const SimTK::CablePath & SimTK::CableTrackerSubsystem::getCablePath(int) (" __HERE__ ")");
+  // defined in simbody/internal/CableTrackerSubsystem.h:79:18
+  t1.method("getCablePath", reinterpret_cast<const SimTK::CablePath & (SimTK::CableTrackerSubsystem::*)(int)  const>(&SimTK::CableTrackerSubsystem::getCablePath));
+  CLEAR_DEBUG_MSG();
+  #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::CablePath & SimTK::CableTrackerSubsystem::updCablePath(SimTK::CablePathIndex) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::CablePath & SimTK::CableTrackerSubsystem::updCablePath(SimTK::CablePathIndex)
   // defined in simbody/internal/CableTrackerSubsystem.h:81:12
   t1.method("updCablePath", static_cast<SimTK::CablePath & (SimTK::CableTrackerSubsystem::*)(SimTK::CablePathIndex) >(&SimTK::CableTrackerSubsystem::updCablePath));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("SimTK::CablePath & SimTK::CableTrackerSubsystem::updCablePath(int) (" __HERE__ ")");
+  // defined in simbody/internal/CableTrackerSubsystem.h:81:12
+  t1.method("updCablePath", reinterpret_cast<SimTK::CablePath & (SimTK::CableTrackerSubsystem::*)(int) >(&SimTK::CableTrackerSubsystem::updCablePath));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   /* End of SimTK::CableTrackerSubsystem class method wrappers
    **********************************************************************/
@@ -108,11 +126,18 @@ void define_simbody_CableTrackerSubsystem(jlcxx::Module& types){
   t2.method("getNumObstacles", static_cast<int (SimTK::CablePath::*)()  const>(&SimTK::CablePath::getNumObstacles));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::CableObstacle & SimTK::CablePath::getObstacle(SimTK::CableObstacleIndex) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::CableObstacle & SimTK::CablePath::getObstacle(SimTK::CableObstacleIndex)
   // defined in simbody/internal/CablePath.h:149:22
   t2.method("getObstacle", static_cast<const SimTK::CableObstacle & (SimTK::CablePath::*)(SimTK::CableObstacleIndex)  const>(&SimTK::CablePath::getObstacle));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("const SimTK::CableObstacle & SimTK::CablePath::getObstacle(int) (" __HERE__ ")");
+  // defined in simbody/internal/CablePath.h:149:22
+  t2.method("getObstacle", reinterpret_cast<const SimTK::CableObstacle & (SimTK::CablePath::*)(int)  const>(&SimTK::CablePath::getObstacle));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("SimTK::Real SimTK::CablePath::getCableLength(const SimTK::State &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::CablePath::getCableLength(const SimTK::State &)
@@ -193,11 +218,18 @@ void define_simbody_CableTrackerSubsystem(jlcxx::Module& types){
   t6.method("getCablePath", static_cast<const SimTK::CablePath & (SimTK::CableObstacle::*)()  const>(&SimTK::CableObstacle::getCablePath));
   CLEAR_DEBUG_MSG();
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::CableObstacleIndex SimTK::CableObstacle::getObstacleIndex() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::CableObstacleIndex SimTK::CableObstacle::getObstacleIndex()
   // defined in simbody/internal/CablePath.h:241:20
   t6.method("getObstacleIndex", static_cast<SimTK::CableObstacleIndex (SimTK::CableObstacle::*)()  const>(&SimTK::CableObstacle::getObstacleIndex));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::CableObstacle::getObstacleIndex() (" __HERE__ ")");
+  // defined in simbody/internal/CablePath.h:241:20
+  t6.method("getObstacleIndex", reinterpret_cast<int (SimTK::CableObstacle::*)()  const>(&SimTK::CableObstacle::getObstacleIndex));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("const SimTK::DecorativeGeometry & SimTK::CableObstacle::getDecorativeGeometry() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::DecorativeGeometry & SimTK::CableObstacle::getDecorativeGeometry()
@@ -294,25 +326,6 @@ void define_simbody_CableTrackerSubsystem(jlcxx::Module& types){
   CLEAR_DEBUG_MSG();
 
   /* End of SimTK::CableObstacle::Surface class method wrappers
-   **********************************************************************/
-
-
-  /**********************************************************************
-   * Wrappers for global functions and variables including
-   * class static members
-   */
-
-  DEBUG_MSG("Adding SimTK!InvalidCablePathIndex methods to provide access to the global variable SimTK::InvalidCablePathIndex (" __HERE__ ")");
-  // defined in simbody/internal/CableTrackerSubsystem.h:35:1
-  types.method("SimTK!InvalidCablePathIndex", []()-> const SimTK::CablePathIndex& { return SimTK::InvalidCablePathIndex; });
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("Adding SimTK!InvalidCableObstacleIndex methods to provide access to the global variable SimTK::InvalidCableObstacleIndex (" __HERE__ ")");
-  // defined in simbody/internal/CablePath.h:38:1
-  types.method("SimTK!InvalidCableObstacleIndex", []()-> const SimTK::CableObstacleIndex& { return SimTK::InvalidCableObstacleIndex; });
-  CLEAR_DEBUG_MSG();
-
-  /* End of global function wrappers
    **********************************************************************/
 
 }
