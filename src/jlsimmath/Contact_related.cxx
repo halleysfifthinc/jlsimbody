@@ -7,6 +7,10 @@
 #include "jlSimTKcommon/SimTK_UniqueIndex.h"
 #endif
 
+namespace jlcxx {
+  extern template void create_if_not_exists<std::vector<int>>();
+}
+
 namespace jlsimbody{
 
 void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& array_wrapper){
