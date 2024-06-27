@@ -151,13 +151,7 @@ void define_simbody_Assembler_and_related(jlcxx::Module& types, const ArrayWrapp
   // signature to use in the veto list: int SimTK::Assembler::adoptAssemblyGoal(SimTK::AssemblyCondition *, SimTK::Real)
   // defined in simbody/internal/Assembler.h:299:5
   t1.method("adoptAssemblyGoal", reinterpret_cast<int (SimTK::Assembler::*)(SimTK::AssemblyCondition *, SimTK::Real) >(&SimTK::Assembler::adoptAssemblyGoal),
-    jlcxx::arg("p"), jlcxx::arg("weight")=1.0);
-  t1.method("adoptAssemblyGoal", [](SimTK::Assembler& a, SimTK::AssemblyCondition * p, SimTK::Real weight) -> int {
-    return a.adoptAssemblyGoal(p, weight);
-  }, jlcxx::arg("p"), jlcxx::arg("weight")=1.0);
-  t1.method("adoptAssemblyGoal", [](SimTK::Assembler* a, SimTK::AssemblyCondition * p, SimTK::Real weight) -> int {
-    return a->adoptAssemblyGoal(p, weight);
-  }, jlcxx::arg("p"), jlcxx::arg("weight")=1.0);
+    jlcxx::arg("a"), jlcxx::arg("p"), jlcxx::arg("weight"));
   CLEAR_DEBUG_MSG();
   #endif
 
@@ -556,13 +550,7 @@ void define_simbody_Assembler_and_related(jlcxx::Module& types, const ArrayWrapp
   t12.method("addMarker", reinterpret_cast<int (SimTK::Markers::*)(const SimTK::String &, int, const SimTK::Vec3 &, SimTK::Real) >(
     static_cast<SimTK::Markers::MarkerIx (SimTK::Markers::*)(const SimTK::String &, SimTK::MobilizedBodyIndex, const SimTK::Vec3 &, SimTK::Real) >(&SimTK::Markers::addMarker)
   ),
-    jlcxx::arg("name"), jlcxx::arg("bodyB"), jlcxx::arg("markerInB"), jlcxx::arg("weight") = 1.0);
-  t12.method("addMarker", [](SimTK::Markers& m, const SimTK::String & name, int bodyB, const SimTK::Vec3 & markerInB, SimTK::Real weight) -> int {
-    return m.addMarker(name, SimTK::MobilizedBodyIndex(bodyB), markerInB, weight);
-  }, jlcxx::arg("name"), jlcxx::arg("bodyB"), jlcxx::arg("markerInB"), jlcxx::arg("weight") = 1.0);
-  t12.method("addMarker", [](SimTK::Markers* m, const SimTK::String & name, int bodyB, const SimTK::Vec3 & markerInB, SimTK::Real weight) -> int {
-    return m->addMarker(name, SimTK::MobilizedBodyIndex(bodyB), markerInB, weight);
-  }, jlcxx::arg("name"), jlcxx::arg("bodyB"), jlcxx::arg("markerInB"), jlcxx::arg("weight") = 1.0);
+    jlcxx::arg("m"), jlcxx::arg("name"), jlcxx::arg("bodyB"), jlcxx::arg("markerInB"), jlcxx::arg("weight") = 1.0);
   CLEAR_DEBUG_MSG();
   #endif
 
@@ -586,13 +574,7 @@ void define_simbody_Assembler_and_related(jlcxx::Module& types, const ArrayWrapp
   t12.method("addMarker", reinterpret_cast<int (SimTK::Markers::*)(int, const SimTK::Vec3 &, SimTK::Real) >(
     static_cast<SimTK::Markers::MarkerIx (SimTK::Markers::*)(SimTK::MobilizedBodyIndex, const SimTK::Vec3 &, SimTK::Real) >(&SimTK::Markers::addMarker)
   ),
-    jlcxx::arg("bodyB"), jlcxx::arg("markerInB"), jlcxx::arg("weight") = 1.0);
-  t12.method("addMarker", [](SimTK::Markers& m, int bodyB, const SimTK::Vec3 & markerInB, SimTK::Real weight) -> int {
-    return m.addMarker(SimTK::MobilizedBodyIndex(bodyB), markerInB);
-    }, jlcxx::arg("bodyB"), jlcxx::arg("markerInB"), jlcxx::arg("weight") = 1.0);
-  t12.method("addMarker", [](SimTK::Markers* m, int bodyB, const SimTK::Vec3 & markerInB, SimTK::Real weight) -> int {
-    return m->addMarker(SimTK::MobilizedBodyIndex(bodyB), markerInB);
-    }, jlcxx::arg("bodyB"), jlcxx::arg("markerInB"), jlcxx::arg("weight") = 1.0);
+    jlcxx::arg("m"), jlcxx::arg("bodyB"), jlcxx::arg("markerInB"), jlcxx::arg("weight") = 1.0);
   CLEAR_DEBUG_MSG();
   #endif
 

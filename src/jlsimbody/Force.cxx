@@ -973,25 +973,17 @@ void define_simbody_Force(jlcxx::Module& types){
   /* Wrappers for the methods of class SimTK::Force::MobilityConstantForce
    */
 
+  DEBUG_MSG("void SimTK::Force::MobilityConstantForce::MobilityConstantForce(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, int, SimTK::Real) (" __HERE__ ")");
+  // defined in simbody/internal/Force_MobilityConstantForce.h:113:5
+  t23.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, int, SimTK::Real>();
+  CLEAR_DEBUG_MSG();
+
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::Force::MobilityConstantForce::MobilityConstantForce(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::MobilizerUIndex, SimTK::Real) (" __HERE__ ")");
   // defined in simbody/internal/Force_MobilityConstantForce.h:53:5
   t23.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::MobilizerUIndex, SimTK::Real>();
   CLEAR_DEBUG_MSG();
-  #else
-  DEBUG_MSG("void SimTK::Force::MobilityConstantForce::MobilityConstantForce(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, int, SimTK::Real) (" __HERE__ ")");
-  // defined in simbody/internal/Force_MobilityConstantForce.h:53:5
-  t23.constructor([] (SimTK::GeneralForceSubsystem &forces, const SimTK::MobilizedBody &mobod, int whichU, SimTK::Real defaultForce) -> SimTK::Force::MobilityConstantForce* {
-    return new SimTK::Force::MobilityConstantForce(forces, mobod, SimTK::MobilizerUIndex(whichU), defaultForce);
-  });
-  CLEAR_DEBUG_MSG();
   #endif
-
-
-  DEBUG_MSG("void SimTK::Force::MobilityConstantForce::MobilityConstantForce(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::Real) (" __HERE__ ")");
-  // defined in simbody/internal/Force_MobilityConstantForce.h:61:5
-  t23.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::Real>();
-  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Force::MobilityConstantForce & SimTK::Force::MobilityConstantForce::setDefaultForce(SimTK::Real) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Force::MobilityConstantForce & SimTK::Force::MobilityConstantForce::setDefaultForce(SimTK::Real)
@@ -1015,12 +1007,6 @@ void define_simbody_Force(jlcxx::Module& types){
   // signature to use in the veto list: SimTK::Real SimTK::Force::MobilityConstantForce::getForce(const SimTK::State &)
   // defined in simbody/internal/Force_MobilityConstantForce.h:104:10
   t23.method("getForce", static_cast<SimTK::Real (SimTK::Force::MobilityConstantForce::*)(const SimTK::State &)  const>(&SimTK::Force::MobilityConstantForce::getForce));
-  CLEAR_DEBUG_MSG();
-
-
-  DEBUG_MSG("void SimTK::Force::MobilityConstantForce::MobilityConstantForce(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, int, SimTK::Real) (" __HERE__ ")");
-  // defined in simbody/internal/Force_MobilityConstantForce.h:113:5
-  t23.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, int, SimTK::Real>();
   CLEAR_DEBUG_MSG();
 
   /* End of SimTK::Force::MobilityConstantForce class method wrappers
@@ -1048,8 +1034,7 @@ void define_simbody_Force(jlcxx::Module& types){
 
   DEBUG_MSG("void SimTK::Force::MobilityDiscreteForce::MobilityDiscreteForce(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::Real) (" __HERE__ ")");
   // defined in simbody/internal/Force_MobilityDiscreteForce.h:81:5
-  t24.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &>();
-  t24.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::Real>();
+  t24.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::Real>(jlcxx::arg("forces"), jlcxx::arg("mobod"), jlcxx::arg("defaultForce") = 0.0);
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Force::MobilityDiscreteForce & SimTK::Force::MobilityDiscreteForce::setDefaultMobilityForce(SimTK::Real) (" __HERE__ ")");
@@ -1084,17 +1069,15 @@ void define_simbody_Force(jlcxx::Module& types){
   /* Wrappers for the methods of class SimTK::Force::MobilityLinearDamper
    */
 
+  DEBUG_MSG("void SimTK::Force::MobilityLinearDamper::MobilityLinearDamper(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, int, SimTK::Real) (" __HERE__ ")");
+  // defined in simbody/internal/Force_MobilityLinearDamper.h:119:5
+  t25.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, int, SimTK::Real>();
+  CLEAR_DEBUG_MSG();
+
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::Force::MobilityLinearDamper::MobilityLinearDamper(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::MobilizerUIndex, SimTK::Real) (" __HERE__ ")");
   // defined in simbody/internal/Force_MobilityLinearDamper.h:61:5
   t25.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::MobilizerUIndex, SimTK::Real>();
-  CLEAR_DEBUG_MSG();
-  #else
-  DEBUG_MSG("void SimTK::Force::MobilityLinearDamper::MobilityLinearDamper(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, int, SimTK::Real) (" __HERE__ ")");
-  // defined in simbody/internal/Force_MobilityLinearDamper.h:61:5
-  t25.constructor([] (SimTK::GeneralForceSubsystem &forces, const SimTK::MobilizedBody &mobod, int whichU, SimTK::Real defaultDamping) -> SimTK::Force::MobilityLinearDamper* {
-    return new SimTK::Force::MobilityLinearDamper(forces, mobod, SimTK::MobilizerUIndex(whichU), defaultDamping);
-  });
   CLEAR_DEBUG_MSG();
   #endif
 
@@ -1122,12 +1105,6 @@ void define_simbody_Force(jlcxx::Module& types){
   t25.method("getDamping", static_cast<SimTK::Real (SimTK::Force::MobilityLinearDamper::*)(const SimTK::State &)  const>(&SimTK::Force::MobilityLinearDamper::getDamping));
   CLEAR_DEBUG_MSG();
 
-
-  DEBUG_MSG("void SimTK::Force::MobilityLinearDamper::MobilityLinearDamper(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, int, SimTK::Real) (" __HERE__ ")");
-  // defined in simbody/internal/Force_MobilityLinearDamper.h:119:5
-  t25.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, int, SimTK::Real>();
-  CLEAR_DEBUG_MSG();
-
   /* End of SimTK::Force::MobilityLinearDamper class method wrappers
    **********************************************************************/
 
@@ -1136,17 +1113,15 @@ void define_simbody_Force(jlcxx::Module& types){
   /* Wrappers for the methods of class SimTK::Force::MobilityLinearSpring
    */
 
+  DEBUG_MSG("void SimTK::Force::MobilityLinearSpring::MobilityLinearSpring(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, int, SimTK::Real, SimTK::Real) (" __HERE__ ")");
+  // defined in simbody/internal/Force_MobilityLinearSpring.h:167:5
+  t26.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, int, SimTK::Real, SimTK::Real>();
+  CLEAR_DEBUG_MSG();
+
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::Force::MobilityLinearSpring::MobilityLinearSpring(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::MobilizerQIndex, SimTK::Real, SimTK::Real) (" __HERE__ ")");
   // defined in simbody/internal/Force_MobilityLinearSpring.h:66:5
   t26.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::MobilizerQIndex, SimTK::Real, SimTK::Real>();
-  CLEAR_DEBUG_MSG();
-  #else
-  DEBUG_MSG("void SimTK::Force::MobilityLinearSpring::MobilityLinearSpring(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, int, SimTK::Real, SimTK::Real) (" __HERE__ ")");
-  // defined in simbody/internal/Force_MobilityLinearSpring.h:66:5
-  t26.constructor([] (SimTK::GeneralForceSubsystem &forces, const SimTK::MobilizedBody &mobod, int whichQ, SimTK::Real defaultStiffness, SimTK::Real defaultQZero) -> SimTK::Force::MobilityLinearSpring* {
-    return new SimTK::Force::MobilityLinearSpring(forces, mobod, SimTK::MobilizerQIndex(whichQ), defaultStiffness, defaultQZero);
-  });
   CLEAR_DEBUG_MSG();
   #endif
 
@@ -1196,12 +1171,6 @@ void define_simbody_Force(jlcxx::Module& types){
   // signature to use in the veto list: SimTK::Real SimTK::Force::MobilityLinearSpring::getQZero(const SimTK::State &)
   // defined in simbody/internal/Force_MobilityLinearSpring.h:158:10
   t26.method("getQZero", static_cast<SimTK::Real (SimTK::Force::MobilityLinearSpring::*)(const SimTK::State &)  const>(&SimTK::Force::MobilityLinearSpring::getQZero));
-  CLEAR_DEBUG_MSG();
-
-
-  DEBUG_MSG("void SimTK::Force::MobilityLinearSpring::MobilityLinearSpring(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, int, SimTK::Real, SimTK::Real) (" __HERE__ ")");
-  // defined in simbody/internal/Force_MobilityLinearSpring.h:167:5
-  t26.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, int, SimTK::Real, SimTK::Real>();
   CLEAR_DEBUG_MSG();
 
   /* End of SimTK::Force::MobilityLinearSpring class method wrappers

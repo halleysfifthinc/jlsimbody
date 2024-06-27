@@ -1622,11 +1622,18 @@ void define_simbody_SimbodyMatterSubsystem(jlcxx::Module& types, const ArrayWrap
   CLEAR_DEBUG_MSG();
   #endif
 
+  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::UIndex SimTK::Constraint::getUIndexOfConstrainedU(const SimTK::State &, SimTK::ConstrainedUIndex) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::UIndex SimTK::Constraint::getUIndexOfConstrainedU(const SimTK::State &, SimTK::ConstrainedUIndex)
   // defined in simbody/internal/Constraint.h:225:8
   t18.method("getUIndexOfConstrainedU", static_cast<SimTK::UIndex (SimTK::Constraint::*)(const SimTK::State &, SimTK::ConstrainedUIndex)  const>(&SimTK::Constraint::getUIndexOfConstrainedU));
   CLEAR_DEBUG_MSG();
+  #else
+  DEBUG_MSG("int SimTK::Constraint::getUIndexOfConstrainedU(const SimTK::State &, int) (" __HERE__ ")");
+  // defined in simbody/internal/Constraint.h:225:8
+  t18.method("getUIndexOfConstrainedU", reinterpret_cast<int (SimTK::Constraint::*)(const SimTK::State &, int)  const>(&SimTK::Constraint::getUIndexOfConstrainedU));
+  CLEAR_DEBUG_MSG();
+  #endif
 
   DEBUG_MSG("void SimTK::Constraint::getNumConstraintEquationsInUse(const SimTK::State &, int &, int &, int &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::Constraint::getNumConstraintEquationsInUse(const SimTK::State &, int &, int &, int &)

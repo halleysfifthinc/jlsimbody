@@ -851,7 +851,7 @@ void define_simbody_ForceSubsystems(jlcxx::Module& types, const ArrayWrapper& ar
   // defined in simbody/internal/CompliantContactSubsystem.h:845:10
   t14.constructor([] (int type) -> SimTK::ContactForceGenerator::DoNothing* {
     return new SimTK::ContactForceGenerator::DoNothing(SimTK::ContactTypeId(type));
-  }, jlcxx::arg("type")=SimTK::ContactTypeId(0));
+  });
   CLEAR_DEBUG_MSG();
   #endif
 
@@ -885,7 +885,7 @@ void define_simbody_ForceSubsystems(jlcxx::Module& types, const ArrayWrapper& ar
   // defined in simbody/internal/CompliantContactSubsystem.h:876:10
   t15.constructor([] (int type) -> SimTK::ContactForceGenerator::ThrowError* {
     return new SimTK::ContactForceGenerator::ThrowError(SimTK::ContactTypeId(type));
-  }, jlcxx::arg("type")=SimTK::ContactTypeId(0));
+  });
   CLEAR_DEBUG_MSG();
   #endif
 
