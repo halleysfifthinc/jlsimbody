@@ -142,12 +142,8 @@ void define_simmath_Geo(jlcxx::Module& types){
     wrapped.method("findDistanceSqrToPoint", static_cast<P (WrappedType::*)(const SimTK::Vec<3,P>&) const>(&WrappedType::findDistanceSqrToPoint));
     wrapped.method("findSupportPoint", static_cast<SimTK::Vec<3,P> (WrappedType::*)(const SimTK::Vec<3,P>&) const>(&WrappedType::findSupportPoint));
     wrapped.method("findDistanceSqrToSphere", static_cast<P (WrappedType::*)(const SimTK::Geo::Sphere_<P>&) const>(&WrappedType::findDistanceSqrToSphere));
-    // wrapped.method("findDistanceSqrToAlignedBox", static_cast<P (WrappedType::*)(const SimTK::Geo::AlignedBox_<P>&) const>(&WrappedType::findDistanceSqrToAlignedBox));
     
     wrapped.method("intersectsSphere", static_cast<bool (WrappedType::*)(const SimTK::Geo::Sphere_<P>&) const>(&WrappedType::intersectsSphere));
-    // wrapped.method("intersectsAlignedBox", static_cast<bool (WrappedType::*)(const SimTK::Geo::AlignedBox_<P>&) const>(&WrappedType::intersectsAlignedBox));
-    // wrapped.method("intersectsOrientedBox", static_cast<bool (WrappedType::*)(const SimTK::Geo::OrientedBox_<P>&) const>(&WrappedType::intersectsOrientedBox));
-    // wrapped.method("mayIntersectOrientedBox", static_cast<bool (WrappedType::*)(const SimTK::Geo::OrientedBox_<P>&) const>(&WrappedType::mayIntersectOrientedBox));
 
     wrapped.method("getVertexPos", static_cast<SimTK::Vec<3,P> (WrappedType::*)(int) const>(&WrappedType::getVertexPos));
     wrapped.method("findSupportVertex", static_cast<int (WrappedType::*)(const SimTK::Vec<3,P>&) const>(&WrappedType::findSupportVertex));
@@ -196,6 +192,15 @@ void define_simmath_Geo(jlcxx::Module& types){
     wrapped.method("stretchBoundary", static_cast<WrappedType& (WrappedType::*)()>(&WrappedType::stretchBoundary));
   };
   t8.apply<SimTK::Geo::AlignedBox_<double>>(t8_decl_methods);
+
+
+    // wrapped.method("findDistanceSqrToAlignedBox", static_cast<P (WrappedType::*)(const SimTK::Geo::AlignedBox_<P>&) const>(&WrappedType::findDistanceSqrToAlignedBox));
+
+    // wrapped.method("intersectsAlignedBox", static_cast<bool (WrappedType::*)(const SimTK::Geo::AlignedBox_<P>&) const>(&WrappedType::intersectsAlignedBox));
+
+    // wrapped.method("intersectsOrientedBox", static_cast<bool (WrappedType::*)(const SimTK::Geo::OrientedBox_<P>&) const>(&WrappedType::intersectsOrientedBox));
+
+    // wrapped.method("mayIntersectOrientedBox", static_cast<bool (WrappedType::*)(const SimTK::Geo::OrientedBox_<P>&) const>(&WrappedType::mayIntersectOrientedBox));
 
   // types.method("intersectsAlignedBox", static_cast<bool (*)(const SimTK::Geo::Box&, const SimTK::Geo::AlignedBox&)>(&SimTK::Geo::Box::intersectsAlignedBox));
   types.method("intersectsAlignedBox", [] (const SimTK::Geo::Box& box, const SimTK::Geo::AlignedBox& abox) -> bool {
@@ -288,14 +293,12 @@ void define_simmath_Geo(jlcxx::Module& types){
   types.method("calcBoundingSphere", static_cast<SimTK::Geo::Sphere (*)(const Vec3&, const Vec3&, const Vec3&)>(&SimTK::Geo::Point::calcBoundingSphere));
   types.method("calcBoundingSphere", static_cast<SimTK::Geo::Sphere (*)(const Vec3&, const Vec3&, const Vec3&, const Vec3&)>(&SimTK::Geo::Point::calcBoundingSphere));
   types.method("calcBoundingSphere", static_cast<SimTK::Geo::Sphere (*)(const SimTK::Array_<Vec3>&)>(&SimTK::Geo::Point::calcBoundingSphere));
-  types.method("calcBoundingSphere", static_cast<SimTK::Geo::Sphere (*)(const std::vector<Vec3>&)>(&SimTK::Geo::Point::calcBoundingSphere));
   types.method("calcBoundingSphere", static_cast<SimTK::Geo::Sphere (*)(const Vec3&, SimTK::Array_<int>&)>(&SimTK::Geo::Point::calcBoundingSphere));
   types.method("calcBoundingSphere", static_cast<SimTK::Geo::Sphere (*)(const Vec3&, const Vec3&, SimTK::Array_<int>&)>(&SimTK::Geo::Point::calcBoundingSphere));
   types.method("calcBoundingSphere", static_cast<SimTK::Geo::Sphere (*)(const Vec3&, const Vec3&, const Vec3&, bool, SimTK::Array_<int>&)>(&SimTK::Geo::Point::calcBoundingSphere));
   types.method("calcBoundingSphere", static_cast<SimTK::Geo::Sphere (*)(const Vec3&, const Vec3&, const Vec3&, const Vec3&, bool, SimTK::Array_<int>&)>(&SimTK::Geo::Point::calcBoundingSphere));
   types.method("calcBoundingSphere", static_cast<SimTK::Geo::Sphere (*)(const SimTK::Array_<Vec3>&, SimTK::Array_<int>&)>(&SimTK::Geo::Point::calcBoundingSphere));
   types.method("calcApproxBoundingSphere", static_cast<SimTK::Geo::Sphere (*)(const SimTK::Array_<Vec3>&)>(&SimTK::Geo::Point::calcApproxBoundingSphere));
-  types.method("calcApproxBoundingSphere", static_cast<SimTK::Geo::Sphere (*)(const std::vector<Vec3>&)>(&SimTK::Geo::Point::calcApproxBoundingSphere));
 
   /* End of SimTK::Geo::Point_ class method wrappers
    **********************************************************************/
