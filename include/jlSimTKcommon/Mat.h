@@ -17,7 +17,7 @@ namespace jlcxx {
   template<int M, int N, typename ELT, int CS, int RS>
   struct BuildParameterList<SimTK::Mat<M, N, ELT, CS, RS>>
   {
-    typedef ParameterList<std::integral_constant<int, M>, std::integral_constant<int, N>, ELT, std::integral_constant<int, CS>, std::integral_constant<int, RS>> type;
+    typedef ParameterList<std::integral_constant<long, M>, std::integral_constant<long, N>, ELT, std::integral_constant<long, CS>, std::integral_constant<long, RS>> type;
   };
 
   template<int M, int N, typename ELT, int CS, int RS> struct IsMirroredType<SimTK::Mat<M, N, ELT, CS, RS>> : std::false_type { };
@@ -26,7 +26,7 @@ namespace jlcxx {
   template<int M, typename ELT, int RS>
   struct BuildParameterList<SimTK::SymMat<M, ELT, RS>>
   {
-    typedef ParameterList<std::integral_constant<int, M>, ELT, std::integral_constant<int, RS>> type;
+    typedef ParameterList<std::integral_constant<long, M>, ELT, std::integral_constant<long, RS>> type;
   };
 
   template<int M, typename ELT, int RS> struct IsMirroredType<SimTK::SymMat<M, ELT, RS>> : std::false_type { };

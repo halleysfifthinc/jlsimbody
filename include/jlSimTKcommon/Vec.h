@@ -18,7 +18,7 @@ namespace jlcxx {
   template<int M, typename ELT, int STRIDE>
   struct BuildParameterList<SimTK::Vec<M, ELT, STRIDE>>
   {
-    typedef ParameterList<std::integral_constant<int, M>, ELT, std::integral_constant<int, STRIDE>> type;
+    typedef ParameterList<std::integral_constant<long, M>, ELT, std::integral_constant<long, STRIDE>> type;
   };
 
   template<int M, typename ELT, int STRIDE> struct IsMirroredType<SimTK::Vec<M, ELT, STRIDE>> : std::false_type { };
