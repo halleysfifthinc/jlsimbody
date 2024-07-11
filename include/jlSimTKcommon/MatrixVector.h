@@ -1,6 +1,8 @@
 #ifndef _JLSIMTKCOMMON_MATRIXVECTOR_H
 #define _JLSIMTKCOMMON_MATRIXVECTOR_H
 
+#include "jlcxx/tuple.hpp"
+
 #include "SimTKcommon/internal/CompositeNumericalTypes.h"
 #include "SimTKcommon/internal/ResultType.h"
 #include "SimTKcommon/Scalar.h"

@@ -9,11 +9,7 @@
 
 namespace jlsimbody {
 
-void define_SimTKcommon_Vec(jlcxx::Module& types, const ArrayWrapper& array_wrapper){
-
-  // defined in SimTKcommon/internal/Vec.h:184:7
-  auto t0 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>, jlcxx::TypeVar<2>, jlcxx::TypeVar<3>>,
-    jlcxx::ParameterList<jlcxx::TypeVar<2>>>("SimTKVec", jlcxx::julia_type("AbstractVector"));
+void define_SimTKcommon_Vec(jlcxx::Module& types, jlcxx::TypeWrapper<jlcxx::Parametric<jlcxx::TypeVar<1>, jlcxx::TypeVar<2>, jlcxx::TypeVar<3>>>& vec, const ArrayWrapper& array_wrapper){
 
   /**********************************************************************/
   /* Wrappers for the methods of class SimTK::Vec
@@ -28,7 +24,6 @@ void define_SimTKcommon_Vec(jlcxx::Module& types, const ArrayWrapper& array_wrap
 
     wrapped.template constructor<>();
     wrapped.template constructor<const ELT &>();
-    wrapped.template constructor<const ELT*>();
 
     if constexpr (M == 2)
       wrapped.template constructor<const ELT &, const ELT &>();
@@ -51,6 +46,72 @@ void define_SimTKcommon_Vec(jlcxx::Module& types, const ArrayWrapper& array_wrap
     if constexpr (M == 8)
       wrapped.template constructor<const ELT &, const ELT &, const ELT &, const ELT &, const ELT &, const ELT &, const ELT &, const ELT &>();
     CLEAR_DEBUG_MSG();
+
+    if constexpr (std::is_same<ELT, double>::value || std::is_same<ELT, std::complex<double>>::value) {
+      wrapped.template constructor<const ELT*>();
+
+      wrapped.module().set_override_module(jl_base_module);
+      wrapped.method("unsafe_copyto!",
+        [] (WrappedType& dest, const int doffs, const jlcxx::ArrayRef<ELT> src, const int soffs, const int N) -> void {
+          auto dv = SimTK::VectorIterator<ELT,WrappedType>(dest,doffs-1);
+          typename jlcxx::ArrayRef<ELT>::const_iterator sv = src.begin()+soffs-1;
+          for (int i = 0; i < N; ++i, ++sv, ++dv) {
+            *dv = *sv;
+          }
+        }
+      );
+      wrapped.method("unsafe_copyto!",
+        [] (jlcxx::ArrayRef<ELT> dest, const int doffs, WrappedType& src, const int soffs, const int N) -> void {
+          typename jlcxx::ArrayRef<ELT>::iterator dv = dest.begin()+doffs-1;
+          auto sv = SimTK::VectorIterator<ELT,WrappedType>(src,soffs-1);
+          for (int i = 0; i < N; ++i, ++sv, ++dv) {
+            *dv = *sv;
+          }
+        }
+      );
+      wrapped.module().unset_override_module();
+    } else {
+      wrapped.constructor([] (const jlcxx::ArrayRef<jl_value_t*> a) {
+        WrappedType* w = new WrappedType(a.size());
+        auto wv = SimTK::VectorIterator<ELT,WrappedType>(*w,0);
+        typename jlcxx::ArrayRef<jl_value_t*>::const_iterator av = a.begin();
+        typename jlcxx::ArrayRef<jl_value_t*>::const_iterator const end = a.end();
+        for (; av != end; ++av, ++wv) {
+            *wv = jlcxx::unbox<ELT>(*av);
+        }
+        return w;
+      });
+      wrapped.method("unsafe_copyto!",
+        [] (WrappedType& dest, const int doffs, const jlcxx::ArrayRef<jl_value_t*> src, const int soffs, const int N) -> void {
+          auto dv = SimTK::VectorIterator<ELT,WrappedType>(dest,doffs-1);
+          typename jlcxx::ArrayRef<jl_value_t*>::const_iterator sv = src.begin()+soffs-1;
+          for (int i = 0; i < N; ++i, ++sv, ++dv) {
+            *dv = jlcxx::unbox<ELT>(*sv);
+          }
+        }
+      );
+      wrapped.method("unsafe_copyto!",
+        [] (jlcxx::ArrayRef<jl_value_t*> dest, const int doffs, WrappedType& src, const int soffs, const int N) -> void {
+          typename jlcxx::ArrayRef<jl_value_t*>::iterator dv = dest.begin()+doffs-1;
+          auto sv = SimTK::VectorIterator<ELT,WrappedType>(src,soffs-1);
+          for (int i = 0; i < N; ++i, ++sv, ++dv) {
+            *dv = jlcxx::box<ELT>(*sv);
+          }
+        }
+      );
+    }
+
+    wrapped.module().set_override_module(jl_base_module);
+    wrapped.method("unsafe_copyto!",
+      [] (WrappedType& dest, const int doffs, WrappedType& src, const int soffs, const int N) -> void {
+        auto dv = SimTK::VectorIterator<ELT,WrappedType>(dest,doffs-1);
+        auto sv = SimTK::VectorIterator<ELT,WrappedType>(src,soffs-1);
+        for (int i = 0; i < N; ++i, ++sv, ++dv) {
+          *dv = *sv;
+        }
+      }
+    );
+    wrapped.module().unset_override_module();
 
     DEBUG_MSG("ELT & SimTK::Vec::operator(int) (" __HERE__ ")");
     wrapped.method("cppgetindex", static_cast<ELT & (WrappedType::*)(int) >(&WrappedType::operator()));
@@ -81,7 +142,7 @@ void define_SimTKcommon_Vec(jlcxx::Module& types, const ArrayWrapper& array_wrap
     }
 
   };
-  t0.apply<
+  vec.apply<
     SimTK::Vec<1, double, 1>,
     SimTK::Vec<2, double, 1>,
     SimTK::Vec<3, double, 1>,

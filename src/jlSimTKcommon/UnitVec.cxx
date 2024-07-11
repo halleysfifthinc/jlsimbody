@@ -5,17 +5,19 @@
 
 namespace jlsimbody {
 
-void define_SimTKcommon_UnitVec(jlcxx::Module& types){
+void define_SimTKcommon_UnitVec(jlcxx::Module& types, jlcxx::TypeWrapper<jlcxx::Parametric<jlcxx::TypeVar<1>, jlcxx::TypeVar<2>, jlcxx::TypeVar<3>>>& vec){
 
+  // Parametric inheritance with the integral_constant needs a patched version of libcxxwrap-julia that doesn't ignore SuperParametersT
   // defined in SimTKcommon/internal/UnitVec.h:40:33
-  auto t1 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>, jlcxx::TypeVar<2>>>("SimTK!UnitVec");
+  auto t1 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<2>, jlcxx::TypeVar<3>>,
+    jlcxx::ParameterList<std::integral_constant<long, 3>, jlcxx::TypeVar<2>, jlcxx::TypeVar<3>>>("SimTKUnitVec", vec.dt());
 
   /**********************************************************************/
   /* Wrappers for the methods of class SimTK::UnitVec
    */
   auto t1_decl_methods = []<typename P, int S> (jlcxx::TypeWrapper<SimTK::UnitVec<P, S>> wrapped){
     typedef SimTK::UnitVec<P,S> WrappedType;
-    
+
     wrapped.template constructor<>();
     wrapped.template constructor<const WrappedType &>();
     wrapped.template constructor<const typename WrappedType::BaseVec &>();
@@ -25,28 +27,14 @@ void define_SimTKcommon_UnitVec(jlcxx::Module& types){
     wrapped.template constructor<const SimTK::CoordinateDirection &>();
     wrapped.template constructor<int>();
 
-    wrapped.method("assign", static_cast<WrappedType & (WrappedType::*)(const WrappedType &) >(&WrappedType::operator=));
     wrapped.method("asVec3", static_cast<const typename WrappedType::BaseVec & (WrappedType::*)() const>(&WrappedType::asVec3));
-    wrapped.method("cppgetindex", static_cast<const P & (WrappedType::*)(int) const>(&WrappedType::operator[]));
     wrapped.method("perp", static_cast<SimTK::UnitVec<P,1> (WrappedType::*)() const>(&WrappedType::perp));
 
-    wrapped.module().set_override_module(jl_base_module);
-
-    wrapped.method("-", static_cast<SimTK::UnitVec<P,1> (WrappedType::*)() const>(&WrappedType::operator-));
-    wrapped.method("abs", static_cast<SimTK::UnitVec<P,1> (WrappedType::*)() const>(&WrappedType::abs));
-
-    wrapped.module().unset_override_module();
   };
   t1.apply<SimTK::UnitVec<double, 1>>(t1_decl_methods);
 
   /* End of SimTK::UnitVec class method wrappers
    **********************************************************************/
-  
-  types.set_override_module(jl_base_module);
-  
-  types.method("==", static_cast<bool (*)(const SimTK::UnitVec<double,1> &, const SimTK::UnitVec<double,1> &)>(&SimTK::operator==));
-
-  types.unset_override_module();
 
 }
 

@@ -27,11 +27,47 @@ void define_SimTKcommon_Row(jlcxx::Module& types){
 
     wrapped.template constructor<>();
     wrapped.template constructor<const ELT &>();
-    wrapped.template constructor<const ELT*>();
 
     if constexpr (N == 3)
       wrapped.template constructor<const ELT &, const ELT &, const ELT &>();
     CLEAR_DEBUG_MSG();
+
+    if constexpr (std::is_same<ELT, double>::value || std::is_same<ELT, std::complex<double>>::value) {
+      wrapped.template constructor<const ELT*>();
+
+      wrapped.module().set_override_module(jl_base_module);
+      wrapped.method("unsafe_copyto!",
+        [] (WrappedType& dest, const int doffs, const jlcxx::ArrayRef<ELT> src, const int soffs, const int n) -> void {
+          auto dv = SimTK::VectorIterator<ELT,WrappedType>(dest,doffs-1);
+          typename jlcxx::ArrayRef<ELT>::const_iterator sv = src.begin()+soffs-1;
+          for (int i = 0; i < n; ++i, ++sv, ++dv) {
+            *dv = *sv;
+          }
+        }
+      );
+      wrapped.method("unsafe_copyto!",
+        [] (jlcxx::ArrayRef<ELT> dest, const int doffs, WrappedType& src, const int soffs, const int n) -> void {
+          typename jlcxx::ArrayRef<ELT>::iterator dv = dest.begin()+doffs-1;
+          auto sv = SimTK::VectorIterator<ELT,WrappedType>(src,soffs-1);
+          for (int i = 0; i < n; ++i, ++sv, ++dv) {
+            *dv = *sv;
+          }
+        }
+      );
+      wrapped.module().unset_override_module();
+    }
+
+    wrapped.module().set_override_module(jl_base_module);
+    wrapped.method("unsafe_copyto!",
+      [] (WrappedType& dest, const int doffs, WrappedType& src, const int soffs, const int n) -> void {
+        auto dv = SimTK::VectorIterator<ELT,WrappedType>(dest,doffs-1);
+        auto sv = SimTK::VectorIterator<ELT,WrappedType>(src,soffs-1);
+        for (int i = 0; i < n; ++i, ++sv, ++dv) {
+          *dv = *sv;
+        }
+      }
+    );
+    wrapped.module().unset_override_module();
 
     DEBUG_MSG("ELT & SimTK::Row::operator(int) (" __HERE__ ")");
     wrapped.method("cppgetindex", static_cast<ELT & (WrappedType::*)(int) >(&WrappedType::operator[]));

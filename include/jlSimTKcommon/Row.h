@@ -8,6 +8,7 @@
 #include "SimTKcommon/internal/conjugate.h"
 #include "SimTKcommon/internal/NTraits.h"
 #include "SimTKcommon/internal/Row.h"
+#include "SimTKcommon/internal/VectorIterator.h"
 
 namespace jlcxx {
 

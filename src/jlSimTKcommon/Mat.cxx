@@ -31,45 +31,89 @@ void define_SimTKcommon_Mat(jlcxx::Module& types){
 
     wrapped.template constructor<>();
 
-    if (jlcxx::has_julia_type<typename WrappedType::TRow>()) {
-      using TRow = typename WrappedType::TRow;
-      if constexpr (M == 2)
-        wrapped.template constructor<const TRow &, const TRow &>();
+    if constexpr (std::is_same<ELT, double>::value || std::is_same<ELT, std::complex<double>>::value) {
+      wrapped.constructor([] (const jlcxx::ArrayRef<ELT> a) {
+          typename jlcxx::ArrayRef<ELT>::const_iterator av = a.begin();
+          typename jlcxx::ArrayRef<ELT>::const_iterator const end = a.end();
+          WrappedType* w = new WrappedType();
+          for (int j=0; j < N && av < end; ++j)
+            for (int i=0; i < N && av < end; ++i, ++av) {
+              w->elt(i,j) = *av;
+            }
 
-      if constexpr (M == 3)
-        wrapped.template constructor<const TRow &, const TRow &, const TRow &>();
+          return w;
+      });
 
-      if constexpr (M == 4)
-        wrapped.template constructor<const TRow &, const TRow &, const TRow &, const TRow &>();
+      wrapped.module().set_override_module(jl_base_module);
+      wrapped.method("unsafe_copyto!",
+        [] (WrappedType& dest, const int doffs, const jlcxx::ArrayRef<ELT> src, const int soffs, const int n) -> void {
+          // reinterpret_cast to Vec is needed because VectorIterator iterates using single int [] indexing,
+          // but Mat uses single int [] indexing to slice rows
+          auto dr = reinterpret_cast<SimTK::Vec<M*N, ELT, 1>*>(&dest);
+          auto dv = SimTK::VectorIterator<ELT,SimTK::Vec<M*N, ELT, 1>>(*dr,doffs-1);
+          typename jlcxx::ArrayRef<ELT>::const_iterator sv = src.begin()+soffs-1;
+          for (int i = 0; i < n; ++i, ++sv, ++dv) {
+            *dv = *sv;
+          }
+        }
+      );
+      wrapped.method("unsafe_copyto!",
+        [] (jlcxx::ArrayRef<ELT> dest, const int doffs, WrappedType& src, const int soffs, const int n) -> void {
+          typename jlcxx::ArrayRef<ELT>::iterator dv = dest.begin()+doffs-1;
+          auto sr = reinterpret_cast<SimTK::Vec<M*N, ELT, 1>*>(&src);
+          auto sv = SimTK::VectorIterator<ELT,SimTK::Vec<M*N, ELT, 1>>(*sr,soffs-1);
+          for (int i = 0; i < n; ++i, ++sv, ++dv) {
+            *dv = *sv;
+          }
+        }
+      );
+      wrapped.module().unset_override_module();
+    } else {
+      wrapped.constructor([] (const jlcxx::ArrayRef<jl_value_t*> a) {
+          typename jlcxx::ArrayRef<jl_value_t*>::const_iterator av = a.begin();
+          typename jlcxx::ArrayRef<jl_value_t*>::const_iterator const end = a.end();
+          WrappedType* w = new WrappedType();
+          for (int j=0; j < N && av < end; ++j)
+            for (int i=0; i < N && av < end; ++i, ++av) {
+              w->elt(i,j) = jlcxx::unbox<ELT>(*av);
+            }
 
-      if constexpr (M == 5)
-        wrapped.template constructor<const TRow &, const TRow &, const TRow &, const TRow &, const TRow &>();
-
-      if constexpr (M == 6)
-        wrapped.template constructor<const TRow &, const TRow &, const TRow &, const TRow &, const TRow &, const TRow &>();
-
-      wrapped.method("rowslice", static_cast<TRow & (WrappedType::*)(int)>(&WrappedType::row));
+          return w;
+      });
+      wrapped.method("unsafe_copyto!",
+        [] (WrappedType& dest, const int doffs, const jlcxx::ArrayRef<jl_value_t*> src, const int soffs, const int n) -> void {
+          auto dr = reinterpret_cast<SimTK::Vec<M*N, ELT, 1>*>(&dest);
+          auto dv = SimTK::VectorIterator<ELT,SimTK::Vec<M*N, ELT, 1>>(*dr,doffs-1);
+          typename jlcxx::ArrayRef<jl_value_t*>::const_iterator sv = src.begin()+soffs-1;
+          for (int i = 0; i < n; ++i, ++sv, ++dv) {
+            *dv = jlcxx::unbox<ELT>(*sv);
+          }
+        }
+      );
+      wrapped.method("unsafe_copyto!",
+        [] (jlcxx::ArrayRef<jl_value_t*> dest, const int doffs, WrappedType& src, const int soffs, const int n) -> void {
+          typename jlcxx::ArrayRef<jl_value_t*>::iterator dv = dest.begin()+doffs-1;
+          auto sr = reinterpret_cast<SimTK::Vec<M*N, ELT, 1>*>(&src);
+          auto sv = SimTK::VectorIterator<ELT,SimTK::Vec<M*N, ELT, 1>>(*sr,soffs-1);
+          for (int i = 0; i < n; ++i, ++sv, ++dv) {
+            *dv = jlcxx::box<ELT>(*sv);
+          }
+        }
+      );
     }
 
-    if (jlcxx::has_julia_type<typename WrappedType::TCol>()) {
-      using TCol = typename WrappedType::TCol;
-      if constexpr (M == 2)
-        wrapped.template constructor<const TCol &, const TCol &>();
-
-      if constexpr (M == 3)
-        wrapped.template constructor<const TCol &, const TCol &, const TCol &>();
-
-      if constexpr (M == 4)
-        wrapped.template constructor<const TCol &, const TCol &, const TCol &, const TCol &>();
-
-      if constexpr (M == 5)
-        wrapped.template constructor<const TCol &, const TCol &, const TCol &, const TCol &, const TCol &>();
-
-      if constexpr (M == 6)
-        wrapped.template constructor<const TCol &, const TCol &, const TCol &, const TCol &, const TCol &, const TCol &>();
-
-      wrapped.method("colslice", static_cast<TCol & (WrappedType::*)(int)>(&WrappedType::col));
-    }
+    wrapped.module().set_override_module(jl_base_module);
+    wrapped.method("unsafe_copyto!",
+      [] (WrappedType& dest, const int doffs, const ELT* src, const int soffs, const int n) -> void {
+        auto dr = reinterpret_cast<SimTK::Vec<M*N, ELT, 1>*>(&dest);
+        auto dv = SimTK::VectorIterator<ELT,SimTK::Vec<M*N, ELT, 1>>(*dr,doffs-1);
+        auto sv = src+soffs-1;
+        for (int i = 0; i < n; ++i, ++sv, ++dv) {
+          *dv = *sv;
+        }
+      }
+    );
+    wrapped.module().unset_override_module();
 
     wrapped.method("cppgetindex", static_cast<ELT & (WrappedType::*)(int, int)>(&WrappedType::elt));
     wrapped.method("cppsetindex!", static_cast<void (WrappedType::*)(int, int, const ELT &)>(&WrappedType::set));
@@ -168,8 +212,15 @@ void define_SimTKcommon_Mat(jlcxx::Module& types){
     wrapped.method("setFromSymmetric", static_cast<WrappedType & (WrappedType::*)(const SimTK::Mat<M,M,ELT,M,RS> &)>(&WrappedType::setFromSymmetric));
 
     wrapped.method("cppgetindex", static_cast<ELT & (WrappedType::*)(int, int)>(&WrappedType::operator()));
-    wrapped.method("slice_row", static_cast<SimTK::Row<M,ELT,RS> (WrappedType::*)(int) const>(&WrappedType::row));
-    wrapped.method("slice_col", static_cast<SimTK::Vec<M,ELT,RS> (WrappedType::*)(int) const>(&WrappedType::col));
+
+    DEBUG_MSG("void SimTK::SymMat::operator[](typename WrappedType::index_type) (" __HERE__ ")");
+    wrapped.method("cppsetindex!", [](WrappedType& a, int i, int j, const ELT & val){
+      a[i] = val;
+    });
+    CLEAR_DEBUG_MSG();
+
+    wrapped.method("rowslice", static_cast<SimTK::Row<M,ELT,RS> (WrappedType::*)(int) const>(&WrappedType::row));
+    wrapped.method("colslice", static_cast<SimTK::Vec<M,ELT,RS> (WrappedType::*)(int) const>(&WrappedType::col));
 
     wrapped.method("setToNan", static_cast<void (WrappedType::*)() >(&WrappedType::setToNaN));
     wrapped.method("setToZero", static_cast<void (WrappedType::*)() >(&WrappedType::setToZero));

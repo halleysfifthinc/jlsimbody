@@ -9,6 +9,8 @@
 #include "SimTKcommon/internal/NTraits.h"
 #include "SimTKcommon/internal/Mat.h"
 #include "SimTKcommon/internal/SymMat.h"
+#include "SimTKcommon/internal/VectorIterator.h"
+
 #include "jlSimTKcommon/Vec.h"
 #include "jlSimTKcommon/Row.h"
 

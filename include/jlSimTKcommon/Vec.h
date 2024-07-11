@@ -1,3 +1,6 @@
+#ifndef _JLSIMTKCOMMON_VEC_H_
+#define _JLSIMTKCOMMON_VEC_H_
+
 #include "SimTKcommon/internal/CompositeNumericalTypes.h"
 #include "SimTKcommon/internal/ResultType.h"
 #include "SimTKcommon/Scalar.h"
@@ -6,12 +9,10 @@
 #include "SimTKcommon/internal/NTraits.h"
 #include "SimTKcommon/internal/common.h"
 #include "SimTKcommon/internal/Vec.h"
+#include "SimTKcommon/internal/VectorIterator.h"
 
 #include "jlSimTKcommon/Array.h"
 #include "jlSimTKcommon/Row.h"
-
-#ifndef _JLSIMTKCOMMON_VEC_H_
-#define _JLSIMTKCOMMON_VEC_H_
 
 namespace jlcxx {
 
@@ -26,7 +27,7 @@ namespace jlcxx {
 }
 
 namespace jlsimbody {
-  JLSIMBODY_NO_EXPORT void define_SimTKcommon_Vec(jlcxx::Module& types, const ArrayWrapper& array_wrapper);
+  JLSIMBODY_NO_EXPORT void define_SimTKcommon_Vec(jlcxx::Module&, jlcxx::TypeWrapper<jlcxx::Parametric<jlcxx::TypeVar<1>, jlcxx::TypeVar<2>, jlcxx::TypeVar<3>>>&, const ArrayWrapper&);
 }
 
 #endif // _JLSIMTKCOMMON_VEC_H_

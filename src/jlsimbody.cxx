@@ -63,10 +63,15 @@ JLCXX_MODULE define_julia_module(jlcxx::Module& types){
 
   define_SimTKcommon_String(types, array_wrapper);
   define_SimTKcommon_Row(types);
-  define_SimTKcommon_Vec(types, array_wrapper);
+
+  // defined in SimTKcommon/internal/Vec.h:184:7
+  auto vec = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>, jlcxx::TypeVar<2>, jlcxx::TypeVar<3>>,
+    jlcxx::ParameterList<jlcxx::TypeVar<2>>>("SimTKVec", jlcxx::julia_type("AbstractVector"));
+  define_SimTKcommon_Vec(types, vec, array_wrapper);
+
   define_SimTKcommon_Mat(types);
   define_SimTKcommon_CoordinateAxis(types);
-  define_SimTKcommon_UnitVec(types);
+  define_SimTKcommon_UnitVec(types, vec);
   define_SimTKcommon_Orientations(types, array_wrapper);
   define_SimTKcommon_Transform(types, array_wrapper);
   define_SimTKcommon_SpatialAlgebra(types);
