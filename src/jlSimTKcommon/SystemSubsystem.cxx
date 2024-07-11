@@ -85,7 +85,7 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types, const ArrayWrapper
   t50.template constructor<>();
   CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Instantiating wrappers for SimTK::Array_<SimTK::EventTriggerInfo> (" __HERE__ ")");
+  DEBUG_MSG("SimTK::Array_<SimTK::EventTriggerInfo> (" __HERE__ ")");
   array_wrapper.template apply<SimTK::EventTriggerInfo>();
   CLEAR_DEBUG_MSG();
 

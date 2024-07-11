@@ -1608,12 +1608,11 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   /* Wrappers for the methods of class SimTK::ContactGeometry::TriangleMesh
    */
 
-
-  // DEBUG_MSG("void SimTK::ContactGeometry::TriangleMesh::TriangleMesh(const SimTK::ArrayViewConst_<SimTK::Vec3> &, const SimTK::ArrayViewConst_<int> &, bool) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::ContactGeometry::TriangleMesh::TriangleMesh(const SimTK::Array_<SimTK::Vec3> &, const SimTK::Array_<int> &, bool) (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:1177:1
-  // t28.constructor<const SimTK::ArrayViewConst_<SimTK::Vec3> &, const SimTK::ArrayViewConst_<int> &>();
-  // t28.constructor<const SimTK::ArrayViewConst_<SimTK::Vec3> &, const SimTK::ArrayViewConst_<int> &, bool>();
-
+  t28.constructor<const SimTK::Array_<SimTK::Vec3> &, const SimTK::Array_<int> &>();
+  t28.constructor<const SimTK::Array_<SimTK::Vec3> &, const SimTK::Array_<int> &, bool>();
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::ContactGeometry::TriangleMesh::TriangleMesh(const SimTK::PolygonalMesh &, bool) (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:1186:10
