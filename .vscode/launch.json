@@ -1,0 +1,47 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(gdb) Launch",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${userHome}/.julia/juliaup/julia-1.10.4+0.x64.linux.gnu/bin/julia",
+            "args": [
+                "-t1,1",
+                "--gcthreads=1,0",
+                "--startup-file=no",
+                "--project=${workspaceFolder}",
+                "-L${workspaceFolder}/scripts/debug.jl"
+            ],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "sourceFileMap": {
+                "jlsimbody/": "${workspaceFolder}/"
+            },
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Set Disassembly Flavor to Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                },
+                {
+                    "text": "handle SIGSEGV noprint nostop pass"
+                },
+                {
+                    "text": "set substitute-path jlsimbody/ ${workspaceFolder}/"
+                }
+            ]
+        }
+    ]
+}
