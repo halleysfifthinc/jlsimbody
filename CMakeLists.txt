@@ -6,9 +6,17 @@ set(JLSIMBODY_CXXWRAPJL_VERSION
   "Target CxxWrap.jl version (implicitly sets libcxxwrap-julia version)"
   )
 
+option(JLSIMBODY_USE_SIMBODY_JLL "Use Simbody_jll if installed" ON)
+
 option(DEV_JLSIMBODY "Build jlsimbody to develop locally" OFF)
 
-option(JLSIMBODY_USE_SIMBODY_JLL "Use Simbody_jll if installed" ON)
+include(CMakeDependentOption)
+cmake_dependent_option(JLSIMBODY_LINKER_TYPE "Specify a different linker than the compiler default"
+  "DEFAULT" "CMAKE_VERSION VERSION_GREATER_EQUAL 3.29" "")
+
+if(JLSIMBODY_LINKER_TYPE AND ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU" AND "${CMAKE_CXX_COMPILER_VERSION}" VERSION_LESS 12))
+  set(CMAKE_LINKER_TYPE ${JLSIMBODY_LINKER_TYPE})
+endif()
 
 # From google/bloaty
 # When using Ninja, compiler output won't be colorized without this.
@@ -233,6 +241,9 @@ set_target_properties(jlsimbody PROPERTIES
   VISIBILITY_INLINES_HIDDEN 1
   )
 
+set(gen_jlsimbody_is_dev "$<BOOL:${DEV_JLSIMBODY}>")
+set(is_clang "$<CXX_COMPILER_ID:Clang>")
+
 target_compile_options(jlsimbody
   PRIVATE
     -no-canonical-prefixes
@@ -241,8 +252,9 @@ target_compile_options(jlsimbody
     -ffile-prefix-map=${CMAKE_CURRENT_SOURCE_DIR}=jlsimbody
     -Wno-builtin-macro-redefined
     -Wdate-time
-    $<$<AND:$<CXX_COMPILER_ID:Clang>,$<BOOL:${DEV_JLSIMBODY}>>:-ftime-trace>
-    $<$<BOOL:${DEV_JLSIMBODY}>:-O1>
+    $<$<AND:${is_clang},${gen_jlsimbody_is_dev}>:-ftime-trace>
+    $<${gen_jlsimbody_is_dev}:-O1>
+    $<$<CONFIG:DEBUG>:-Og>
   )
 
 target_compile_definitions(jlsimbody PRIVATE
@@ -258,12 +270,15 @@ if(NOT DEFINED Simbody_SOURCE_DIR) # using Simbody_jll
     ${BLASTRAMPOLINE_DIR})
 endif()
 
-# target_link_options(jlsimbody PRIVATE
-#   # --for-linker=--compress-debug-sections=zstd
-#   # --for-linker=-flto
-#   --for-linker=--gc-sections
-#   --for-linker=--icf=safe
-# )
+set(linker_is_mold "$<STREQUAL:${CMAKE_LINKER_TYPE},MOLD>")
+target_link_options(jlsimbody PRIVATE
+  --for-linker=--compress-debug-sections=$<IF:${linker_is_mold},zstd,zlib> # GNU ld doesn't support zstd
+  # --for-linker=-flto
+  # --for-linker=--gc-sections
+  $<$<AND:${is_clang},${linker_is_mold}>:--for-linker=--icf=safe> # --icf not recognized by GNU ld; icf=safe needs an LLVM compiler
+  # $<${gen_jlsimbody_is_dev}:--for-linker=--print-gc-sections>
+  # $<$<AND:${gen_jlsimbody_is_dev},${is_clang},${linker_is_mold}>:--for-linker=--print-icf-sections> # --icf not recognized by GNU ld
+)
 
 include(GNUInstallDirs)
 
