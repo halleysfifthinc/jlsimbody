@@ -264,7 +264,7 @@ target_link_libraries(jlsimbody PUBLIC
   Simbody::SimTKcommon Simbody::SimTKmath Simbody::SimTKsimbody
   JlCxx::cxxwrap_julia JlCxx::cxxwrap_julia_stl)
 
-if(NOT DEFINED Simbody_SOURCE_DIR) # using Simbody_jll
+if(NOT DEFINED ENV{bb_full_target} AND NOT DEFINED Simbody_SOURCE_DIR) # using Simbody_jll
   cmake_path(GET BLASTRAMPOLINE_PATH PARENT_PATH BLASTRAMPOLINE_DIR)
   target_link_directories(jlsimbody PRIVATE
     ${BLASTRAMPOLINE_DIR})
