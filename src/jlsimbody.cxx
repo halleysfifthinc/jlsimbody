@@ -72,7 +72,7 @@ JLCXX_MODULE define_julia_module(jlcxx::Module& types){
   define_SimTKcommon_Mat(types);
   define_SimTKcommon_CoordinateAxis(types);
   define_SimTKcommon_UnitVec(types, vec);
-  define_SimTKcommon_Orientations(types, array_wrapper);
+  define_SimTKcommon_Orientations(types, vec, array_wrapper);
   define_SimTKcommon_Transform(types, array_wrapper);
   define_SimTKcommon_SpatialAlgebra(types);
   define_SimTKcommon_MassProperties(types, array_wrapper);

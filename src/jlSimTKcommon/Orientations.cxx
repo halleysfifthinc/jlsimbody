@@ -6,26 +6,30 @@
 
 namespace jlsimbody {
 
-void define_SimTKcommon_Orientations(jlcxx::Module& types, const ArrayWrapper& array_wrapper){
+void define_SimTKcommon_Orientations(jlcxx::Module& types, WrappedVec& vec, const ArrayWrapper& array_wrapper){
 
   DEBUG_MSG("enum SimTK::BodyOrSpaceType (" __HERE__ ")");
   // defined in SimTKcommon/internal/Rotation.h:42:6
-  types.add_bits<SimTK::BodyOrSpaceType>("SimTK!BodyOrSpaceType", jlcxx::julia_type("CppEnum"));
-  types.set_const("SimTK!BodyRotationSequence", SimTK::BodyRotationSequence);
-  types.set_const("SimTK!SpaceRotationSequence", SimTK::SpaceRotationSequence);
+  types.add_bits<SimTK::BodyOrSpaceType>("BodyOrSpaceType", jlcxx::julia_type("CppEnum"));
+  types.set_const("BodyRotationSequence", SimTK::BodyRotationSequence);
+  types.set_const("SpaceRotationSequence", SimTK::SpaceRotationSequence);
   CLEAR_DEBUG_MSG();
 
   // defined in SimTKcommon/internal/Quaternion.h:41:26
-  auto t1 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Quaternion_");
+  auto t1 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<2>>,
+    jlcxx::ParameterList<std::integral_constant<long, 4>, jlcxx::TypeVar<2>, std::integral_constant<long, 1>>>(
+      "Quaternion", vec.dt());
 
   // defined in SimTKcommon/internal/Rotation.h:46:26
-  // auto t4 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Rotation_");
-  auto t4 = types.add_type<SimTK::Rotation_<double>>("SimTK!Rotation");
+  // auto t4 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("Rotation_");
+  auto t4 = types.add_type<SimTK::Rotation_<double>>("Rotation",
+    jlcxx::julia_base_type<SimTK::Mat<3,3,double>>());
   typedef SimTK::Rotation_<double> Rotation;
 
   // defined in SimTKcommon/internal/Rotation.h:47:26
-  // auto t5 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!InverseRotation_");
-  auto t5 = types.add_type<SimTK::InverseRotation_<double>>("SimTK!InverseRotation");
+  // auto t5 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("InverseRotation_");
+  auto t5 = types.add_type<SimTK::InverseRotation_<double>>("InverseRotation",
+    jlcxx::julia_base_type<typename SimTK::Mat<3,3,double>::TransposeType>());
   typedef SimTK::InverseRotation_<double> InverseRotation;
 
   /**********************************************************************/
@@ -41,7 +45,6 @@ void define_SimTKcommon_Orientations(jlcxx::Module& types, const ArrayWrapper& a
 
     wrapped.template constructor<const Rotation &>();
 
-    wrapped.method("assign", static_cast<WrappedType & (WrappedType::*)(const WrappedType &) >(&WrappedType::operator=));
     wrapped.method("setQuaternionToZeroRotation", static_cast<void (WrappedType::*)() >(&WrappedType::setQuaternionToZeroRotation));
     wrapped.method("setQuaternionToNaN", static_cast<void (WrappedType::*)() >(&WrappedType::setQuaternionToNaN));
     wrapped.method("setQuaternionFromAngleAxis", static_cast<void (WrappedType::*)(const SimTK::Vec<4,P> &) >(&WrappedType::setQuaternionFromAngleAxis));
@@ -49,7 +52,6 @@ void define_SimTKcommon_Orientations(jlcxx::Module& types, const ArrayWrapper& a
     wrapped.method("convertQuaternionToAngleAxis", static_cast<SimTK::Vec<4,P> (WrappedType::*)() const>(&WrappedType::convertQuaternionToAngleAxis));
     wrapped.method("asVec4", static_cast<const SimTK::Vec<4,P> & (WrappedType::*)() const>(&WrappedType::asVec4));
     wrapped.method("normalizeThis", static_cast<WrappedType & (WrappedType::*)() >(&WrappedType::normalizeThis));
-    wrapped.method("normalize", static_cast<WrappedType (WrappedType::*)() const>(&WrappedType::normalize));
   };
   t1.apply<SimTK::Quaternion_<double>>(t1_decl_methods);
 
@@ -60,92 +62,103 @@ void define_SimTKcommon_Orientations(jlcxx::Module& types, const ArrayWrapper& a
   /* Wrappers for the methods of class SimTK::Rotation_
    */
 
-    t4.constructor<>();
-    t4.constructor<const Rotation &>();
-    t4.constructor<const SimTK::InverseRotation_<double> &>();
+  t4.constructor<>();
+  t4.constructor<const Rotation &>();
+  t4.constructor<const SimTK::InverseRotation_<double> &>();
+  t4.constructor<double, const SimTK::CoordinateAxis &>();
+  t4.constructor<double, const typename Rotation::UnitVec3P &>();
+  t4.constructor<double, const typename Rotation::Vec3P &>();
+  t4.constructor<SimTK::BodyOrSpaceType, double, const SimTK::CoordinateAxis &, double, const SimTK::CoordinateAxis &>();
+  t4.constructor<SimTK::BodyOrSpaceType, double, const SimTK::CoordinateAxis &, double, const SimTK::CoordinateAxis &, double, const SimTK::CoordinateAxis &>();
+  t4.constructor<const SimTK::Quaternion_<double> &>();
+  t4.constructor<const typename Rotation::Mat33P &>();
+  t4.constructor<const typename Rotation::Mat33P &, bool>();
+  t4.constructor<const typename Rotation::UnitVec3P &, SimTK::CoordinateAxis>();
+  t4.constructor<const typename Rotation::UnitVec3P &, const SimTK::CoordinateAxis &, const typename Rotation::Vec3P &, const SimTK::CoordinateAxis &>();
 
-    t4.method("assign", static_cast<Rotation & (Rotation::*)(const Rotation &) >(&Rotation::operator=));
-    t4.method("assign", static_cast<Rotation & (Rotation::*)(const SimTK::InverseRotation_<double> &) >(&Rotation::operator=));
-    t4.method("setRotationToNaN", static_cast<Rotation & (Rotation::*)() >(&Rotation::setRotationToNaN));
-    t4.method("setRotationToIdentityMatrix", static_cast<Rotation & (Rotation::*)() >(&Rotation::setRotationToIdentityMatrix));
+  // t4.method("convert", static_cast<Rotation & (Rotation::*)(const SimTK::InverseRotation_<double> &) >(&Rotation::operator=));
+  t4.method("setToNaN", static_cast<Rotation & (Rotation::*)() >(&Rotation::setRotationToNaN));
+  t4.method("setRotationToIdentityMatrix", static_cast<Rotation & (Rotation::*)() >(&Rotation::setRotationToIdentityMatrix));
+  t4.method("setRotationFromAngleAboutAxis", static_cast<Rotation & (Rotation::*)(double, const SimTK::CoordinateAxis &) >(&Rotation::setRotationFromAngleAboutAxis));
+  t4.method("setRotationFromAngleAboutX", static_cast<Rotation & (Rotation::*)(double) >(&Rotation::setRotationFromAngleAboutX));
+  t4.method("setRotationFromAngleAboutX", static_cast<Rotation & (Rotation::*)(double, double) >(&Rotation::setRotationFromAngleAboutX));
+  t4.method("setRotationFromAngleAboutY", static_cast<Rotation & (Rotation::*)(double) >(&Rotation::setRotationFromAngleAboutY));
+  t4.method("setRotationFromAngleAboutY", static_cast<Rotation & (Rotation::*)(double, double) >(&Rotation::setRotationFromAngleAboutY));
+  t4.method("setRotationFromAngleAboutZ", static_cast<Rotation & (Rotation::*)(double) >(&Rotation::setRotationFromAngleAboutZ));
+  t4.method("setRotationFromAngleAboutZ", static_cast<Rotation & (Rotation::*)(double, double) >(&Rotation::setRotationFromAngleAboutZ));
+  t4.method("setRotationFromAngleAboutUnitVector", static_cast<Rotation & (Rotation::*)(double, const typename Rotation::UnitVec3P &) >(&Rotation::setRotationFromAngleAboutUnitVector));
+  t4.method("setRotationFromAngleAboutNonUnitVector", static_cast<Rotation & (Rotation::*)(double, const typename Rotation::Vec3P &) >(&Rotation::setRotationFromAngleAboutNonUnitVector));
+  t4.method("setRotationFromTwoAnglesTwoAxes", static_cast<Rotation & (Rotation::*)(SimTK::BodyOrSpaceType, double, const SimTK::CoordinateAxis &, double, const SimTK::CoordinateAxis &) >(&Rotation::setRotationFromTwoAnglesTwoAxes));
+  t4.method("setRotationFromThreeAnglesThreeAxes", static_cast<Rotation & (Rotation::*)(SimTK::BodyOrSpaceType, double, const SimTK::CoordinateAxis &, double, const SimTK::CoordinateAxis &, double, const SimTK::CoordinateAxis &) >(&Rotation::setRotationFromThreeAnglesThreeAxes));
+  t4.method("setRotationFromQuaternion", static_cast<Rotation & (Rotation::*)(const SimTK::Quaternion_<double> &) >(&Rotation::setRotationFromQuaternion));
+  t4.method("setRotationFromApproximateMat33", static_cast<Rotation & (Rotation::*)(const typename Rotation::Mat33P &) >(&Rotation::setRotationFromApproximateMat33));
+  t4.method("setRotationFromMat33Trust", static_cast<Rotation & (Rotation::*)(const typename Rotation::Mat33P &) >(&Rotation::setRotationFromMat33TrustMe));
+  t4.method("setRotationColFromUnitVecTrust", static_cast<Rotation & (Rotation::*)(int, const typename Rotation::UnitVec3P &) >(&Rotation::setRotationColFromUnitVecTrustMe));
+  t4.method("setRotationFromUnitVecsTrust", static_cast<Rotation & (Rotation::*)(const typename Rotation::UnitVec3P &, const typename Rotation::UnitVec3P &, const typename Rotation::UnitVec3P &) >(&Rotation::setRotationFromUnitVecsTrustMe));
+  t4.method("setRotationFromOneAxis", static_cast<Rotation & (Rotation::*)(const typename Rotation::UnitVec3P &, SimTK::CoordinateAxis) >(&Rotation::setRotationFromOneAxis));
+  t4.method("setRotationFromTwoAxes", static_cast<Rotation & (Rotation::*)(const typename Rotation::UnitVec3P &, const SimTK::CoordinateAxis &, const typename Rotation::Vec3P &, const SimTK::CoordinateAxis &) >(&Rotation::setRotationFromTwoAxes));
+  t4.method("setRotationToBodyFixedXY", static_cast<void (Rotation::*)(const typename Rotation::Vec2P &) >(&Rotation::setRotationToBodyFixedXY));
+  t4.method("setRotationToBodyFixedXYZ", static_cast<void (Rotation::*)(const typename Rotation::Vec3P &) >(&Rotation::setRotationToBodyFixedXYZ));
+  t4.method("setRotationToBodyFixedXYZ", static_cast<void (Rotation::*)(const typename Rotation::Vec3P &, const typename Rotation::Vec3P &) >(&Rotation::setRotationToBodyFixedXYZ));
 
-    t4.constructor<double, const SimTK::CoordinateAxis &>();
-    t4.method("setRotationFromAngleAboutAxis", static_cast<Rotation & (Rotation::*)(double, const SimTK::CoordinateAxis &) >(&Rotation::setRotationFromAngleAboutAxis));
+  // TODO: Add collect (copy?) method to return an InverseRotation from a julia transpose
+  // t4.method("transpose", static_cast<const InverseRotation & (Rotation::*)() const>(&Rotation::invert));
+  // t4.method("updTranspose", static_cast<InverseRotation & (Rotation::*)()>(&Rotation::updInvert));
 
-    t4.constructor<double, const SimTK::CoordinateAxis::XCoordinateAxis>();
-    t4.method("setRotationFromAngleAboutX", static_cast<Rotation & (Rotation::*)(double) >(&Rotation::setRotationFromAngleAboutX));
-    t4.method("setRotationFromAngleAboutX", static_cast<Rotation & (Rotation::*)(double, double) >(&Rotation::setRotationFromAngleAboutX));
+  t4.method("x", static_cast<const typename Rotation::ColType & (Rotation::*)() const>(&Rotation::x));
+  t4.method("y", static_cast<const typename Rotation::ColType & (Rotation::*)() const>(&Rotation::y));
+  t4.method("z", static_cast<const typename Rotation::ColType & (Rotation::*)() const>(&Rotation::z));
+  t4.method("getAxisUnitVec", static_cast<const typename Rotation::ColType & (Rotation::*)(SimTK::CoordinateAxis) const>(&Rotation::getAxisUnitVec));
+  t4.method("getAxisUnitVec", static_cast<const SimTK::UnitVec<double,1> (Rotation::*)(SimTK::CoordinateDirection) const>(&Rotation::getAxisUnitVec));
 
-    t4.constructor<double, const SimTK::CoordinateAxis::YCoordinateAxis>();
-    t4.method("setRotationFromAngleAboutY", static_cast<Rotation & (Rotation::*)(double) >(&Rotation::setRotationFromAngleAboutY));
-    t4.method("setRotationFromAngleAboutY", static_cast<Rotation & (Rotation::*)(double, double) >(&Rotation::setRotationFromAngleAboutY));
+  types.method("calcNForBodyXYZInBodyFrame", static_cast<Rotation::Mat33P (*)(const Rotation::Vec3P&) >(&Rotation::calcNForBodyXYZInBodyFrame));
+  types.method("calcNForBodyXYZInBodyFrame", static_cast<Rotation::Mat33P (*)(const Rotation::Vec3P&, const Rotation::Vec3P&) >(&Rotation::calcNForBodyXYZInBodyFrame));
+  types.method("calcNForBodyXYZInParentFrame", static_cast<Rotation::Mat33P (*)(const Rotation::Vec3P&) >(&Rotation::calcNForBodyXYZInParentFrame));
+  types.method("calcNForBodyXYZInParentFrame", static_cast<Rotation::Mat33P (*)(const Rotation::Vec3P&, const Rotation::Vec3P&) >(&Rotation::calcNForBodyXYZInParentFrame));
+  types.method("calcNDotForBodyXYZInBodyFrame", static_cast<Rotation::Mat33P (*)(const Rotation::Vec3P&, const Rotation::Vec3P&) >(&Rotation::calcNDotForBodyXYZInBodyFrame));
+  types.method("calcNDotForBodyXYZInBodyFrame", static_cast<Rotation::Mat33P (*)(const Rotation::Vec3P&, const Rotation::Vec3P&, const Rotation::Vec3P&) >(&Rotation::calcNDotForBodyXYZInBodyFrame));
+  types.method("calcNDotForBodyXYZInParentFrame", static_cast<Rotation::Mat33P (*)(const Rotation::Vec3P&, const Rotation::Vec3P&) >(&Rotation::calcNDotForBodyXYZInParentFrame));
+  types.method("calcNDotForBodyXYZInParentFrame", static_cast<Rotation::Mat33P (*)(const Rotation::Vec2P&, const Rotation::Vec2P&, double, const Rotation::Vec3P&) >(&Rotation::calcNDotForBodyXYZInParentFrame));
+  types.method("calcNInvForBodyXYZInBodyFrame", static_cast<Rotation::Mat33P (*)(const Rotation::Vec3P&) >(&Rotation::calcNInvForBodyXYZInBodyFrame));
+  types.method("calcNInvForBodyXYZInBodyFrame", static_cast<Rotation::Mat33P (*)(const Rotation::Vec3P&, const Rotation::Vec3P&) >(&Rotation::calcNInvForBodyXYZInBodyFrame));
+  types.method("calcNInvForBodyXYZInParentFrame", static_cast<Rotation::Mat33P (*)(const Rotation::Vec3P&) >(&Rotation::calcNInvForBodyXYZInParentFrame));
+  types.method("calcNInvForBodyXYZInParentFrame", static_cast<Rotation::Mat33P (*)(const Rotation::Vec3P&, const Rotation::Vec3P&) >(&Rotation::calcNInvForBodyXYZInParentFrame));
 
-    t4.constructor<double, const SimTK::CoordinateAxis::ZCoordinateAxis>();
-    t4.method("setRotationFromAngleAboutZ", static_cast<Rotation & (Rotation::*)(double) >(&Rotation::setRotationFromAngleAboutZ));
-    t4.method("setRotationFromAngleAboutZ", static_cast<Rotation & (Rotation::*)(double, double) >(&Rotation::setRotationFromAngleAboutZ));
+  types.method("calcUnnormalizedNForQuaternion", static_cast<Rotation::Mat43P (*)(const Rotation::Vec4P&) >(&Rotation::calcUnnormalizedNForQuaternion));
+  types.method("calcUnnormalizedNDotForQuaternion", static_cast<Rotation::Mat43P (*)(const Rotation::Vec4P&) >(&Rotation::calcUnnormalizedNDotForQuaternion));
+  types.method("calcUnnormalizedNInvForQuaternion", static_cast<Rotation::Mat34P (*)(const Rotation::Vec4P&) >(&Rotation::calcUnnormalizedNInvForQuaternion));
 
-    t4.constructor<double, const typename Rotation::UnitVec3P &>();
-    t4.method("setRotationFromAngleAboutUnitVector", static_cast<Rotation & (Rotation::*)(double, const typename Rotation::UnitVec3P &) >(&Rotation::setRotationFromAngleAboutUnitVector));
+  t4.method("asMat33", static_cast<const Rotation::Mat33P & (Rotation::*)() const>(&Rotation::asMat33));
+  t4.method("reexpressSymMat33", static_cast<Rotation::SymMat33P (Rotation::*)(const Rotation::SymMat33P &) const>(&Rotation::reexpressSymMat33));
 
-    t4.constructor<double, const typename Rotation::Vec3P &>();
-    t4.method("setRotationFromAngleAboutNonUnitVector", static_cast<Rotation & (Rotation::*)(double, const typename Rotation::Vec3P &) >(&Rotation::setRotationFromAngleAboutNonUnitVector));
+  t4.method("convertOneAxisRotationToOneAngle", static_cast<double (Rotation::*)(const SimTK::CoordinateAxis &) const>(&Rotation::convertOneAxisRotationToOneAngle));
+  t4.method("convertTwoAxesRotationToTwoAngles", static_cast<typename Rotation::Vec2P (Rotation::*)(SimTK::BodyOrSpaceType, const SimTK::CoordinateAxis &, const SimTK::CoordinateAxis &) const>(&Rotation::convertTwoAxesRotationToTwoAngles));
+  t4.method("convertThreeAxesRotationToThreeAngles", static_cast<typename Rotation::Vec3P (Rotation::*)(SimTK::BodyOrSpaceType, const SimTK::CoordinateAxis &, const SimTK::CoordinateAxis &, const SimTK::CoordinateAxis &) const>(&Rotation::convertThreeAxesRotationToThreeAngles));
+  t4.method("convertRotationToQuaternion", static_cast<SimTK::Quaternion_<double> (Rotation::*)() const>(&Rotation::convertRotationToQuaternion));
+  t4.method("convertRotationToAngleAxis", static_cast<typename Rotation::Vec4P (Rotation::*)() const>(&Rotation::convertRotationToAngleAxis));
+  t4.method("convertRotationToBodyFixedXY", static_cast<typename Rotation::Vec2P (Rotation::*)() const>(&Rotation::convertRotationToBodyFixedXY));
+  t4.method("convertRotationToBodyFixedXYZ", static_cast<typename Rotation::Vec3P (Rotation::*)() const>(&Rotation::convertRotationToBodyFixedXYZ));
 
-    t4.constructor<SimTK::BodyOrSpaceType, double, const SimTK::CoordinateAxis &, double, const SimTK::CoordinateAxis &>();
-    t4.method("setRotationFromTwoAnglesTwoAxes", static_cast<Rotation & (Rotation::*)(SimTK::BodyOrSpaceType, double, const SimTK::CoordinateAxis &, double, const SimTK::CoordinateAxis &) >(&Rotation::setRotationFromTwoAnglesTwoAxes));
+  types.method("convertAngVelToBodyFixed321Dot", static_cast<Rotation::Vec3P (*)(const Rotation::Vec3P &, const Rotation::Vec3P &)>(&Rotation::convertAngVelToBodyFixed321Dot));
+  types.method("convertBodyFixed321DotToAngVel", static_cast<Rotation::Vec3P (*)(const Rotation::Vec3P &, const Rotation::Vec3P &)>(&Rotation::convertBodyFixed321DotToAngVel));
+  types.method("convertAngVelDotToBodyFixed321DotDot", static_cast<Rotation::Vec3P (*)(const Rotation::Vec3P &, const Rotation::Vec3P &, const Rotation::Vec3P &)>(&Rotation::convertAngVelDotToBodyFixed321DotDot));
+  types.method("convertAngVelInBodyFrameToBodyXYZDot", static_cast<Rotation::Vec3P (*)(const Rotation::Vec3P &, const Rotation::Vec3P &)>(&Rotation::convertAngVelInBodyFrameToBodyXYZDot));
+  types.method("convertAngVelInBodyFrameToBodyXYZDot", static_cast<Rotation::Vec3P (*)(const Rotation::Vec3P &, const Rotation::Vec3P &, const Rotation::Vec3P &)>(&Rotation::convertAngVelInBodyFrameToBodyXYZDot));
+  types.method("convertBodyXYZDotToAngVelInBodyFrame", static_cast<Rotation::Vec3P (*)(const Rotation::Vec3P &, const Rotation::Vec3P &)>(&Rotation::convertBodyXYZDotToAngVelInBodyFrame));
+  types.method("convertBodyXYZDotToAngVelInBodyFrame", static_cast<Rotation::Vec3P (*)(const Rotation::Vec3P &, const Rotation::Vec3P &, const Rotation::Vec3P &)>(&Rotation::convertBodyXYZDotToAngVelInBodyFrame));
+  types.method("convertAngVelDotInBodyFrameToBodyXYZDotDot", static_cast<Rotation::Vec3P (*)(const Rotation::Vec3P &, const Rotation::Vec3P &, const Rotation::Vec3P &)>(&Rotation::convertAngVelDotInBodyFrameToBodyXYZDotDot));
+  types.method("convertAngVelDotInBodyFrameToBodyXYZDotDot", static_cast<Rotation::Vec3P (*)(const Rotation::Vec3P &, const Rotation::Vec3P &, const Rotation::Vec3P &, const Rotation::Vec3P &)>(&Rotation::convertAngVelDotInBodyFrameToBodyXYZDotDot));
+  types.method("convertAngVelToQuaternionDot", static_cast<Rotation::Vec4P (*)(const Rotation::Vec4P &, const Rotation::Vec3P &)>(&Rotation::convertAngVelToQuaternionDot));
+  types.method("convertQuaternionDotToAngVel", static_cast<Rotation::Vec3P (*)(const Rotation::Vec4P &, const Rotation::Vec4P &)>(&Rotation::convertQuaternionDotToAngVel));
+  types.method("convertAngVelDotToQuaternionDotDot", static_cast<Rotation::Vec4P (*)(const Rotation::Vec4P &, const Rotation::Vec3P &, const Rotation::Vec3P &)>(&Rotation::convertAngVelDotToQuaternionDotDot));
+  types.method("convertAngVelInParentToBodyXYZDot", static_cast<Rotation::Vec3P (*)(const Rotation::Vec2P &, const Rotation::Vec2P &, double, const Rotation::Vec3P &)>(&Rotation::convertAngVelInParentToBodyXYZDot));
+  types.method("convertAngAccInParentToBodyXYZDotDot", static_cast<Rotation::Vec3P (*)(const Rotation::Vec2P &, const Rotation::Vec2P &, double, const Rotation::Vec3P &, const Rotation::Vec3P &)>(&Rotation::convertAngAccInParentToBodyXYZDotDot));
 
-    t4.constructor<SimTK::BodyOrSpaceType, double, const SimTK::CoordinateAxis &, double, const SimTK::CoordinateAxis &, double, const SimTK::CoordinateAxis &>();
-    t4.method("setRotationFromThreeAnglesThreeAxes", static_cast<Rotation & (Rotation::*)(SimTK::BodyOrSpaceType, double, const SimTK::CoordinateAxis &, double, const SimTK::CoordinateAxis &, double, const SimTK::CoordinateAxis &) >(&Rotation::setRotationFromThreeAnglesThreeAxes));
-
-    t4.constructor<const SimTK::Quaternion_<double> &>();
-    t4.method("setRotationFromQuaternion", static_cast<Rotation & (Rotation::*)(const SimTK::Quaternion_<double> &) >(&Rotation::setRotationFromQuaternion));
-
-    t4.constructor<const typename Rotation::Mat33P &>();
-    t4.method("setRotationFromApproximateMat33", static_cast<Rotation & (Rotation::*)(const typename Rotation::Mat33P &) >(&Rotation::setRotationFromApproximateMat33));
-
-    t4.constructor<const typename Rotation::Mat33P &, bool>();
-    t4.method("setRotationFromMat33TrustMe", static_cast<Rotation & (Rotation::*)(const typename Rotation::Mat33P &) >(&Rotation::setRotationFromMat33TrustMe));
-    t4.method("setRotationColFromUnitVecTrustMe", static_cast<Rotation & (Rotation::*)(int, const typename Rotation::UnitVec3P &) >(&Rotation::setRotationColFromUnitVecTrustMe));
-    t4.method("setRotationFromUnitVecsTrustMe", static_cast<Rotation & (Rotation::*)(const typename Rotation::UnitVec3P &, const typename Rotation::UnitVec3P &, const typename Rotation::UnitVec3P &) >(&Rotation::setRotationFromUnitVecsTrustMe));
-
-    t4.constructor<const typename Rotation::UnitVec3P &, SimTK::CoordinateAxis>();
-    t4.method("setRotationFromOneAxis", static_cast<Rotation & (Rotation::*)(const typename Rotation::UnitVec3P &, SimTK::CoordinateAxis) >(&Rotation::setRotationFromOneAxis));
-
-    t4.constructor<const typename Rotation::UnitVec3P &, const SimTK::CoordinateAxis &, const typename Rotation::Vec3P &, const SimTK::CoordinateAxis &>();
-    t4.method("setRotationFromTwoAxes", static_cast<Rotation & (Rotation::*)(const typename Rotation::UnitVec3P &, const SimTK::CoordinateAxis &, const typename Rotation::Vec3P &, const SimTK::CoordinateAxis &) >(&Rotation::setRotationFromTwoAxes));
-
-    t4.method("setRotationToBodyFixedXY", static_cast<void (Rotation::*)(const typename Rotation::Vec2P &) >(&Rotation::setRotationToBodyFixedXY));
-    t4.method("setRotationToBodyFixedXYZ", static_cast<void (Rotation::*)(const typename Rotation::Vec3P &) >(&Rotation::setRotationToBodyFixedXYZ));
-    t4.method("setRotationToBodyFixedXYZ", static_cast<void (Rotation::*)(const typename Rotation::Vec3P &, const typename Rotation::Vec3P &) >(&Rotation::setRotationToBodyFixedXYZ));
-
-    t4.method("transpose", static_cast<const InverseRotation & (Rotation::*)() const>(&Rotation::invert));
-    t4.method("updTranspose", static_cast<InverseRotation & (Rotation::*)()>(&Rotation::updInvert));
-
-    t4.method("mult!", static_cast<Rotation & (Rotation::*)(const Rotation &) >(&Rotation::operator*=));
-    t4.method("mult!", static_cast<Rotation & (Rotation::*)(const InverseRotation &) >(&Rotation::operator*=));
-    t4.method("div!", static_cast<Rotation & (Rotation::*)(const Rotation &) >(&Rotation::operator/=));
-    t4.method("div!", static_cast<Rotation & (Rotation::*)(const InverseRotation &) >(&Rotation::operator/=));
-
-    t4.method("convertOneAxisRotationToOneAngle", static_cast<double (Rotation::*)(const SimTK::CoordinateAxis &) const>(&Rotation::convertOneAxisRotationToOneAngle));
-    t4.method("convertTwoAxesRotationToTwoAngles", static_cast<typename Rotation::Vec2P (Rotation::*)(SimTK::BodyOrSpaceType, const SimTK::CoordinateAxis &, const SimTK::CoordinateAxis &) const>(&Rotation::convertTwoAxesRotationToTwoAngles));
-    t4.method("convertThreeAxesRotationToThreeAngles", static_cast<typename Rotation::Vec3P (Rotation::*)(SimTK::BodyOrSpaceType, const SimTK::CoordinateAxis &, const SimTK::CoordinateAxis &, const SimTK::CoordinateAxis &) const>(&Rotation::convertThreeAxesRotationToThreeAngles));
-    t4.method("convertRotationToQuaternion", static_cast<SimTK::Quaternion_<double> (Rotation::*)() const>(&Rotation::convertRotationToQuaternion));
-    t4.method("convertRotationToAngleAxis", static_cast<typename Rotation::Vec4P (Rotation::*)() const>(&Rotation::convertRotationToAngleAxis));
-    t4.method("convertRotationToBodyFixedXY", static_cast<typename Rotation::Vec2P (Rotation::*)() const>(&Rotation::convertRotationToBodyFixedXY));
-    t4.method("convertRotationToBodyFixedXYZ", static_cast<typename Rotation::Vec3P (Rotation::*)() const>(&Rotation::convertRotationToBodyFixedXYZ));
-
-    t4.method("isSameRotationToWithinAngle", static_cast<bool (Rotation::*)(const Rotation &, double) const>(&Rotation::isSameRotationToWithinAngle));
-    t4.method("isSameRotationToWithinAngleOfMachinePrecision", static_cast<bool (Rotation::*)(const Rotation &) const>(&Rotation::isSameRotationToWithinAngleOfMachinePrecision));
-    t4.method("getMaxAbsDifferenceInRotationElements", static_cast<double (Rotation::*)(const Rotation &) const>(&Rotation::getMaxAbsDifferenceInRotationElements));
-    t4.method("areAllRotationElementsSameToEpsilon", static_cast<bool (Rotation::*)(const Rotation &, double) const>(&Rotation::areAllRotationElementsSameToEpsilon));
-    t4.method("areAllRotationElementsSameToMachinePrecision", static_cast<bool (Rotation::*)(const Rotation &) const>(&Rotation::areAllRotationElementsSameToMachinePrecision));
-
-    // t4.method("get", static_cast<const typename Rotation::ColType & (Rotation::*)(int) const>(&Rotation::operator()));
-    // t4.method("x", static_cast<const typename Rotation::ColType & (Rotation::*)() const>(&Rotation::x));
-    // t4.method("y", static_cast<const typename Rotation::ColType & (Rotation::*)() const>(&Rotation::y));
-    // t4.method("z", static_cast<const typename Rotation::ColType & (Rotation::*)() const>(&Rotation::z));
-
-    t4.method("getAxisUnitVec", static_cast<const typename Rotation::ColType & (Rotation::*)(SimTK::CoordinateAxis) const>(&Rotation::getAxisUnitVec));
-    t4.method("getAxisUnitVec", static_cast<const SimTK::UnitVec<double,1> (Rotation::*)(SimTK::CoordinateDirection) const>(&Rotation::getAxisUnitVec));
+  t4.method("isSameRotationToWithinAngle", static_cast<bool (Rotation::*)(const Rotation &, double) const>(&Rotation::isSameRotationToWithinAngle));
+  t4.method("isSameRotationToWithinAngleOfMachinePrecision", static_cast<bool (Rotation::*)(const Rotation &) const>(&Rotation::isSameRotationToWithinAngleOfMachinePrecision));
+  t4.method("getMaxAbsDifferenceInRotationElements", static_cast<double (Rotation::*)(const Rotation &) const>(&Rotation::getMaxAbsDifferenceInRotationElements));
+  t4.method("areAllRotationElementsSameToEpsilon", static_cast<bool (Rotation::*)(const Rotation &, double) const>(&Rotation::areAllRotationElementsSameToEpsilon));
+  t4.method("areAllRotationElementsSameToMachinePrecision", static_cast<bool (Rotation::*)(const Rotation &) const>(&Rotation::areAllRotationElementsSameToMachinePrecision));
 
 
   /* End of SimTK::Rotation_ class method wrappers
@@ -157,16 +170,20 @@ void define_SimTKcommon_Orientations(jlcxx::Module& types, const ArrayWrapper& a
 
   t5.constructor<>();
   t5.constructor<const InverseRotation &>();
-  t5.method("assign", static_cast<InverseRotation & (InverseRotation::*)(const InverseRotation &) >(&InverseRotation::operator=));
-  t5.method("transpose", static_cast<const Rotation & (InverseRotation::*)() const>(&InverseRotation::invert));
-  t5.method("updTranspose", static_cast<Rotation & (InverseRotation::*)()>(&InverseRotation::updInvert));
-    
-  // t5.method("get", static_cast<const typename InverseRotation::ColType & (InverseRotation::*)(int) const>(&InverseRotation::operator()));
-  // t5.method("x", static_cast<const typename InverseRotation::ColType & (InverseRotation::*)() const>(&InverseRotation::x));
-  // t5.method("y", static_cast<const typename InverseRotation::ColType & (InverseRotation::*)() const>(&InverseRotation::y));
-  // t5.method("z", static_cast<const typename InverseRotation::ColType & (InverseRotation::*)() const>(&InverseRotation::z));
+
+  // See above comment re: transpose for Rotation
+  // t5.method("transpose", static_cast<const Rotation & (InverseRotation::*)() const>(&InverseRotation::invert));
+  // t5.method("updTranspose", static_cast<Rotation & (InverseRotation::*)()>(&InverseRotation::updInvert));
+
+  t5.method("x", static_cast<const typename InverseRotation::ColType & (InverseRotation::*)() const>(&InverseRotation::x));
+  t5.method("y", static_cast<const typename InverseRotation::ColType & (InverseRotation::*)() const>(&InverseRotation::y));
+  t5.method("z", static_cast<const typename InverseRotation::ColType & (InverseRotation::*)() const>(&InverseRotation::z));
+  t5.method("getAxisUnitVec", static_cast<const typename InverseRotation::ColType & (InverseRotation::*)(SimTK::CoordinateAxis) const>(&InverseRotation::getAxisUnitVec));
+  t5.method("getAxisUnitVec", static_cast<const SimTK::UnitVec<double,1> (InverseRotation::*)(SimTK::CoordinateDirection) const>(&InverseRotation::getAxisUnitVec));
+
   t5.method("asMat33", static_cast<const typename InverseRotation::BaseMat & (InverseRotation::*)() const>(&InverseRotation::asMat33));
-  t5.method("toMat33", static_cast<typename InverseRotation::BaseMat (InverseRotation::*)() const>(&InverseRotation::toMat33));
+  t5.method("reexpressSymMat33", static_cast<SimTK::SymMat<3,double> (InverseRotation::*)(const SimTK::SymMat<3,double> &) const>(&InverseRotation::reexpressSymMat33));
+
 
   /* End of SimTK::InverseRotation_ class method wrappers
    **********************************************************************/
