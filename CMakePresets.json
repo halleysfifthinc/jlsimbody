@@ -1,0 +1,61 @@
+{
+    "version": 3,
+    "configurePresets": [
+        {
+            "name": "default",
+            "displayName": "Default/default",
+            "description": "Ninja, BUILD_TYPE=Release",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/out/build/${presetName}",
+            "installDir": "${sourceDir}/out/install/${presetName}",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_C_COMPILER": "/usr/bin/gcc",
+                "CMAKE_CXX_COMPILER": "/usr/bin/g++"
+            }
+        },
+        {
+            "name": "dev-default",
+            "displayName": "Default/dev",
+            "description": "default for jlsimbody devs; inherits from default +(BUILD_TYPE=RelWithDebInfo)",
+            "inherits":["default"],
+            "cacheVariables": {
+                "DEV_JLSIMBODY": "ON",
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+            }
+        },
+        {
+            "name": "dev-default-debug",
+            "displayName": "Default/dev: Debug",
+            "description": "Debug build type",
+            "inherits": "dev-default",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "default",
+            "description": "Build with 4 threads",
+            "displayName": "Default/default",
+            "configurePreset": "default",
+            "jobs": 4
+        },
+        {
+            "name": "dev-default",
+            "description": "Build with 4 threads",
+            "displayName": "Default/dev",
+            "configurePreset": "dev-default",
+            "jobs": 4
+        },
+        {
+            "name": "dev-default-debug",
+            "description": "Build preset for Debug configuration",
+            "configurePreset": "dev-default-debug",
+            "inherits": [
+                "dev-default"
+            ]
+        }
+    ]
+}
