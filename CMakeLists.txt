@@ -289,3 +289,14 @@ install(TARGETS jlsimbody
 install(FILES
   ${CMAKE_CURRENT_BINARY_DIR}/jlsimbody_export.h DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
   )
+
+if(NOT DEFINED ENV{bb_full_target})
+  add_custom_command(TARGET jlsimbody POST_BUILD
+    COMMAND ${JULIA_EXECUTABLE} --startup-file=no --project=@. ${CMAKE_CURRENT_SOURCE_DIR}/scripts/override.jl ${CMAKE_CURRENT_BINARY_DIR} override
+    BYPRODUCTS ${CMAKE_CURRENT_BINARY_DIR}/jlsimbody_override
+    VERBATIM)
+
+  add_custom_target(unoverride
+    COMMAND ${JULIA_EXECUTABLE} --startup-file=no --project=@. ${CMAKE_CURRENT_SOURCE_DIR}/scripts/override.jl ${CMAKE_CURRENT_BINARY_DIR} unoverride
+    VERBATIM)
+endif()
