@@ -9,53 +9,53 @@ void define_SimTKcommon_CoordinateAxis(jlcxx::Module& types){
 
   DEBUG_MSG("type SimTK::CoordinateAxis (" __HERE__ ")");
   // defined in SimTKcommon/internal/CoordinateAxis.h:53:7
-  auto t0 = types.add_type<SimTK::CoordinateAxis>("SimTK!CoordinateAxis");
+  auto t0 = types.add_type<SimTK::CoordinateAxis>("CoordinateAxis");
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::CoordinateAxis::XCoordinateAxis (" __HERE__ ")");
   // defined in SimTKcommon/internal/CoordinateAxis.h:194:23
-  auto t1 = types.add_type<SimTK::CoordinateAxis::XCoordinateAxis>("SimTK!CoordinateAxis!XCoordinateAxis", jlcxx::julia_base_type<SimTK::CoordinateAxis>());
+  auto t1 = types.add_type<SimTK::CoordinateAxis::XCoordinateAxis>("XCoordinateAxis", jlcxx::julia_base_type<SimTK::CoordinateAxis>());
   t1.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::CoordinateAxis::YCoordinateAxis (" __HERE__ ")");
   // defined in SimTKcommon/internal/CoordinateAxis.h:197:23
-  auto t2 = types.add_type<SimTK::CoordinateAxis::YCoordinateAxis>("SimTK!CoordinateAxis!YCoordinateAxis", jlcxx::julia_base_type<SimTK::CoordinateAxis>());
+  auto t2 = types.add_type<SimTK::CoordinateAxis::YCoordinateAxis>("YCoordinateAxis", jlcxx::julia_base_type<SimTK::CoordinateAxis>());
   t2.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::CoordinateAxis::ZCoordinateAxis (" __HERE__ ")");
   // defined in SimTKcommon/internal/CoordinateAxis.h:200:23
-  auto t3 = types.add_type<SimTK::CoordinateAxis::ZCoordinateAxis>("SimTK!CoordinateAxis!ZCoordinateAxis", jlcxx::julia_base_type<SimTK::CoordinateAxis>());
+  auto t3 = types.add_type<SimTK::CoordinateAxis::ZCoordinateAxis>("ZCoordinateAxis", jlcxx::julia_base_type<SimTK::CoordinateAxis>());
   t3.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::CoordinateDirection (" __HERE__ ")");
   // defined in SimTKcommon/internal/CoordinateAxis.h:244:7
-  auto t4 = types.add_type<SimTK::CoordinateDirection>("SimTK!CoordinateDirection");
+  auto t4 = types.add_type<SimTK::CoordinateDirection>("CoordinateDirection");
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::CoordinateDirection::Negative (" __HERE__ ")");
   // defined in SimTKcommon/internal/CoordinateAxis.h:248:11
-  auto t5 = types.add_type<SimTK::CoordinateDirection::Negative>("SimTK!CoordinateDirection!Negative");
+  auto t5 = types.add_type<SimTK::CoordinateDirection::Negative>("Negative");
   t5.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::CoordinateDirection::NegXDirection (" __HERE__ ")");
   // defined in SimTKcommon/internal/CoordinateAxis.h:338:28
-  auto t6 = types.add_type<SimTK::CoordinateDirection::NegXDirection>("SimTK!CoordinateDirection!NegXDirection", jlcxx::julia_base_type<SimTK::CoordinateDirection>());
+  auto t6 = types.add_type<SimTK::CoordinateDirection::NegXDirection>("NegXDirection", jlcxx::julia_base_type<SimTK::CoordinateDirection>());
   t6.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::CoordinateDirection::NegYDirection (" __HERE__ ")");
   // defined in SimTKcommon/internal/CoordinateAxis.h:341:28
-  auto t7 = types.add_type<SimTK::CoordinateDirection::NegYDirection>("SimTK!CoordinateDirection!NegYDirection", jlcxx::julia_base_type<SimTK::CoordinateDirection>());
+  auto t7 = types.add_type<SimTK::CoordinateDirection::NegYDirection>("NegYDirection", jlcxx::julia_base_type<SimTK::CoordinateDirection>());
   t7.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::CoordinateDirection::NegZDirection (" __HERE__ ")");
   // defined in SimTKcommon/internal/CoordinateAxis.h:344:28
-  auto t8 = types.add_type<SimTK::CoordinateDirection::NegZDirection>("SimTK!CoordinateDirection!NegZDirection", jlcxx::julia_base_type<SimTK::CoordinateDirection>());
+  auto t8 = types.add_type<SimTK::CoordinateDirection::NegZDirection>("NegZDirection", jlcxx::julia_base_type<SimTK::CoordinateDirection>());
   t8.template constructor<>();
   CLEAR_DEBUG_MSG();
 
@@ -177,17 +177,17 @@ void define_SimTKcommon_CoordinateAxis(jlcxx::Module& types){
   t0.method("crossProduct", static_cast<SimTK::CoordinateAxis (SimTK::CoordinateAxis::*)(const SimTK::CoordinateAxis &, int &)  const>(&SimTK::CoordinateAxis::crossProduct));
   CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("const SimTK::CoordinateAxis & SimTK::CoordinateAxis::getCoordinateAxis(int) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::CoordinateAxis & SimTK::CoordinateAxis::getCoordinateAxis(int)
-  // defined in SimTKcommon/internal/CoordinateAxis.h:168:34
-  types.method("SimTK!CoordinateAxis!getCoordinateAxis", static_cast<const SimTK::CoordinateAxis & (*)(int) >(&SimTK::CoordinateAxis::getCoordinateAxis));
-  CLEAR_DEBUG_MSG();
+  // DEBUG_MSG("const SimTK::CoordinateAxis & SimTK::CoordinateAxis::getCoordinateAxis(int) (" __HERE__ ")");
+  // // signature to use in the veto list: const SimTK::CoordinateAxis & SimTK::CoordinateAxis::getCoordinateAxis(int)
+  // // defined in SimTKcommon/internal/CoordinateAxis.h:168:34
+  // types.method("SimTK!CoordinateAxis!getCoordinateAxis", static_cast<const SimTK::CoordinateAxis & (*)(int) >(&SimTK::CoordinateAxis::getCoordinateAxis));
+  // CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("bool SimTK::CoordinateAxis::isIndexInRange(int) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::CoordinateAxis::isIndexInRange(int)
-  // defined in SimTKcommon/internal/CoordinateAxis.h:173:18
-  types.method("SimTK!CoordinateAxis!isIndexInRange", static_cast<bool (*)(int) >(&SimTK::CoordinateAxis::isIndexInRange));
-  CLEAR_DEBUG_MSG();
+  // DEBUG_MSG("bool SimTK::CoordinateAxis::isIndexInRange(int) (" __HERE__ ")");
+  // // signature to use in the veto list: bool SimTK::CoordinateAxis::isIndexInRange(int)
+  // // defined in SimTKcommon/internal/CoordinateAxis.h:173:18
+  // types.method("SimTK!CoordinateAxis!isIndexInRange", static_cast<bool (*)(int) >(&SimTK::CoordinateAxis::isIndexInRange));
+  // CLEAR_DEBUG_MSG();
 
   /* End of SimTK::CoordinateAxis class method wrappers
    **********************************************************************/
@@ -203,12 +203,10 @@ void define_SimTKcommon_CoordinateAxis(jlcxx::Module& types){
   t4.constructor<const SimTK::CoordinateAxis &>();
   CLEAR_DEBUG_MSG();
 
-
   DEBUG_MSG("void SimTK::CoordinateDirection::CoordinateDirection(const SimTK::CoordinateAxis &, SimTK::CoordinateDirection::Negative) (" __HERE__ ")");
   // defined in SimTKcommon/internal/CoordinateAxis.h:257:5
   t4.constructor<const SimTK::CoordinateAxis &, SimTK::CoordinateDirection::Negative>();
   CLEAR_DEBUG_MSG();
-
 
   DEBUG_MSG("void SimTK::CoordinateDirection::CoordinateDirection(const SimTK::CoordinateAxis &, int) (" __HERE__ ")");
   // defined in SimTKcommon/internal/CoordinateAxis.h:267:5
@@ -279,11 +277,11 @@ void define_SimTKcommon_CoordinateAxis(jlcxx::Module& types){
   types.method("==", static_cast<bool (*)(const SimTK::CoordinateAxis &, const SimTK::CoordinateAxis &) >(&SimTK::operator==));
   CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("bool SimTK::operator!=(const SimTK::CoordinateAxis &, const SimTK::CoordinateAxis &) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::operator!=(const SimTK::CoordinateAxis &, const SimTK::CoordinateAxis &)
-  // defined in SimTKcommon/internal/CoordinateAxis.h:226:13
-  types.method("!=", static_cast<bool (*)(const SimTK::CoordinateAxis &, const SimTK::CoordinateAxis &) >(&SimTK::operator!=));
-  CLEAR_DEBUG_MSG();
+  // DEBUG_MSG("bool SimTK::operator!=(const SimTK::CoordinateAxis &, const SimTK::CoordinateAxis &) (" __HERE__ ")");
+  // // signature to use in the veto list: bool SimTK::operator!=(const SimTK::CoordinateAxis &, const SimTK::CoordinateAxis &)
+  // // defined in SimTKcommon/internal/CoordinateAxis.h:226:13
+  // types.method("!=", static_cast<bool (*)(const SimTK::CoordinateAxis &, const SimTK::CoordinateAxis &) >(&SimTK::operator!=));
+  // CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::operator==(const SimTK::CoordinateDirection &, const SimTK::CoordinateDirection &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::operator==(const SimTK::CoordinateDirection &, const SimTK::CoordinateDirection &)
@@ -291,29 +289,29 @@ void define_SimTKcommon_CoordinateAxis(jlcxx::Module& types){
   types.method("==", static_cast<bool (*)(const SimTK::CoordinateDirection &, const SimTK::CoordinateDirection &) >(&SimTK::operator==));
   CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("bool SimTK::operator!=(const SimTK::CoordinateDirection &, const SimTK::CoordinateDirection &) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::operator!=(const SimTK::CoordinateDirection &, const SimTK::CoordinateDirection &)
-  // defined in SimTKcommon/internal/CoordinateAxis.h:362:13
-  types.method("!=", static_cast<bool (*)(const SimTK::CoordinateDirection &, const SimTK::CoordinateDirection &) >(&SimTK::operator!=));
-  CLEAR_DEBUG_MSG();
+  // DEBUG_MSG("bool SimTK::operator!=(const SimTK::CoordinateDirection &, const SimTK::CoordinateDirection &) (" __HERE__ ")");
+  // // signature to use in the veto list: bool SimTK::operator!=(const SimTK::CoordinateDirection &, const SimTK::CoordinateDirection &)
+  // // defined in SimTKcommon/internal/CoordinateAxis.h:362:13
+  // types.method("!=", static_cast<bool (*)(const SimTK::CoordinateDirection &, const SimTK::CoordinateDirection &) >(&SimTK::operator!=));
+  // CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("const SimTK::CoordinateDirection::NegXDirection & SimTK::operator-(const SimTK::CoordinateAxis::XCoordinateAxis &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::CoordinateDirection::NegXDirection & SimTK::operator-(const SimTK::CoordinateAxis::XCoordinateAxis &)
-  // defined in SimTKcommon/internal/CoordinateAxis.h:369:1
-  types.method("-", static_cast<const SimTK::CoordinateDirection::NegXDirection & (*)(const SimTK::CoordinateAxis::XCoordinateAxis &) >(&SimTK::operator-));
-  CLEAR_DEBUG_MSG();
+  // DEBUG_MSG("const SimTK::CoordinateDirection::NegXDirection & SimTK::operator-(const SimTK::CoordinateAxis::XCoordinateAxis &) (" __HERE__ ")");
+  // // signature to use in the veto list: const SimTK::CoordinateDirection::NegXDirection & SimTK::operator-(const SimTK::CoordinateAxis::XCoordinateAxis &)
+  // // defined in SimTKcommon/internal/CoordinateAxis.h:369:1
+  // types.method("-", static_cast<const SimTK::CoordinateDirection::NegXDirection & (*)(const SimTK::CoordinateAxis::XCoordinateAxis &) >(&SimTK::operator-));
+  // CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("const SimTK::CoordinateDirection::NegYDirection & SimTK::operator-(const SimTK::CoordinateAxis::YCoordinateAxis &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::CoordinateDirection::NegYDirection & SimTK::operator-(const SimTK::CoordinateAxis::YCoordinateAxis &)
-  // defined in SimTKcommon/internal/CoordinateAxis.h:373:1
-  types.method("-", static_cast<const SimTK::CoordinateDirection::NegYDirection & (*)(const SimTK::CoordinateAxis::YCoordinateAxis &) >(&SimTK::operator-));
-  CLEAR_DEBUG_MSG();
+  // DEBUG_MSG("const SimTK::CoordinateDirection::NegYDirection & SimTK::operator-(const SimTK::CoordinateAxis::YCoordinateAxis &) (" __HERE__ ")");
+  // // signature to use in the veto list: const SimTK::CoordinateDirection::NegYDirection & SimTK::operator-(const SimTK::CoordinateAxis::YCoordinateAxis &)
+  // // defined in SimTKcommon/internal/CoordinateAxis.h:373:1
+  // types.method("-", static_cast<const SimTK::CoordinateDirection::NegYDirection & (*)(const SimTK::CoordinateAxis::YCoordinateAxis &) >(&SimTK::operator-));
+  // CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("const SimTK::CoordinateDirection::NegZDirection & SimTK::operator-(const SimTK::CoordinateAxis::ZCoordinateAxis &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::CoordinateDirection::NegZDirection & SimTK::operator-(const SimTK::CoordinateAxis::ZCoordinateAxis &)
-  // defined in SimTKcommon/internal/CoordinateAxis.h:377:1
-  types.method("-", static_cast<const SimTK::CoordinateDirection::NegZDirection & (*)(const SimTK::CoordinateAxis::ZCoordinateAxis &) >(&SimTK::operator-));
-  CLEAR_DEBUG_MSG();
+  // DEBUG_MSG("const SimTK::CoordinateDirection::NegZDirection & SimTK::operator-(const SimTK::CoordinateAxis::ZCoordinateAxis &) (" __HERE__ ")");
+  // // signature to use in the veto list: const SimTK::CoordinateDirection::NegZDirection & SimTK::operator-(const SimTK::CoordinateAxis::ZCoordinateAxis &)
+  // // defined in SimTKcommon/internal/CoordinateAxis.h:377:1
+  // types.method("-", static_cast<const SimTK::CoordinateDirection::NegZDirection & (*)(const SimTK::CoordinateAxis::ZCoordinateAxis &) >(&SimTK::operator-));
+  // CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::CoordinateDirection SimTK::operator-(const SimTK::CoordinateAxis &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::CoordinateDirection SimTK::operator-(const SimTK::CoordinateAxis &)
@@ -327,23 +325,23 @@ void define_SimTKcommon_CoordinateAxis(jlcxx::Module& types){
   types.method("+", static_cast<SimTK::CoordinateDirection (*)(const SimTK::CoordinateAxis &) >(&SimTK::operator+));
   CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("const SimTK::CoordinateAxis::XCoordinateAxis & SimTK::operator-(const SimTK::CoordinateDirection::NegXDirection &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::CoordinateAxis::XCoordinateAxis & SimTK::operator-(const SimTK::CoordinateDirection::NegXDirection &)
-  // defined in SimTKcommon/internal/CoordinateAxis.h:394:1
-  types.method("-", static_cast<const SimTK::CoordinateAxis::XCoordinateAxis & (*)(const SimTK::CoordinateDirection::NegXDirection &) >(&SimTK::operator-));
-  CLEAR_DEBUG_MSG();
+  // DEBUG_MSG("const SimTK::CoordinateAxis::XCoordinateAxis & SimTK::operator-(const SimTK::CoordinateDirection::NegXDirection &) (" __HERE__ ")");
+  // // signature to use in the veto list: const SimTK::CoordinateAxis::XCoordinateAxis & SimTK::operator-(const SimTK::CoordinateDirection::NegXDirection &)
+  // // defined in SimTKcommon/internal/CoordinateAxis.h:394:1
+  // types.method("-", static_cast<const SimTK::CoordinateAxis::XCoordinateAxis & (*)(const SimTK::CoordinateDirection::NegXDirection &) >(&SimTK::operator-));
+  // CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("const SimTK::CoordinateAxis::YCoordinateAxis & SimTK::operator-(const SimTK::CoordinateDirection::NegYDirection &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::CoordinateAxis::YCoordinateAxis & SimTK::operator-(const SimTK::CoordinateDirection::NegYDirection &)
-  // defined in SimTKcommon/internal/CoordinateAxis.h:398:1
-  types.method("-", static_cast<const SimTK::CoordinateAxis::YCoordinateAxis & (*)(const SimTK::CoordinateDirection::NegYDirection &) >(&SimTK::operator-));
-  CLEAR_DEBUG_MSG();
+  // DEBUG_MSG("const SimTK::CoordinateAxis::YCoordinateAxis & SimTK::operator-(const SimTK::CoordinateDirection::NegYDirection &) (" __HERE__ ")");
+  // // signature to use in the veto list: const SimTK::CoordinateAxis::YCoordinateAxis & SimTK::operator-(const SimTK::CoordinateDirection::NegYDirection &)
+  // // defined in SimTKcommon/internal/CoordinateAxis.h:398:1
+  // types.method("-", static_cast<const SimTK::CoordinateAxis::YCoordinateAxis & (*)(const SimTK::CoordinateDirection::NegYDirection &) >(&SimTK::operator-));
+  // CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("const SimTK::CoordinateAxis::ZCoordinateAxis & SimTK::operator-(const SimTK::CoordinateDirection::NegZDirection &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::CoordinateAxis::ZCoordinateAxis & SimTK::operator-(const SimTK::CoordinateDirection::NegZDirection &)
-  // defined in SimTKcommon/internal/CoordinateAxis.h:402:1
-  types.method("-", static_cast<const SimTK::CoordinateAxis::ZCoordinateAxis & (*)(const SimTK::CoordinateDirection::NegZDirection &) >(&SimTK::operator-));
-  CLEAR_DEBUG_MSG();
+  // DEBUG_MSG("const SimTK::CoordinateAxis::ZCoordinateAxis & SimTK::operator-(const SimTK::CoordinateDirection::NegZDirection &) (" __HERE__ ")");
+  // // signature to use in the veto list: const SimTK::CoordinateAxis::ZCoordinateAxis & SimTK::operator-(const SimTK::CoordinateDirection::NegZDirection &)
+  // // defined in SimTKcommon/internal/CoordinateAxis.h:402:1
+  // types.method("-", static_cast<const SimTK::CoordinateAxis::ZCoordinateAxis & (*)(const SimTK::CoordinateDirection::NegZDirection &) >(&SimTK::operator-));
+  // CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::CoordinateDirection SimTK::operator-(const SimTK::CoordinateDirection &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::CoordinateDirection SimTK::operator-(const SimTK::CoordinateDirection &)
@@ -352,35 +350,35 @@ void define_SimTKcommon_CoordinateAxis(jlcxx::Module& types){
   CLEAR_DEBUG_MSG();
   types.unset_override_module();
 
-  DEBUG_MSG("Adding SimTK!XAxis methods to provide access to the global variable SimTK::XAxis (" __HERE__ ")");
-  // defined in SimTKcommon/internal/CoordinateAxis.h:206:72
-  types.method("SimTK!XAxis", []()-> const SimTK::CoordinateAxis::XCoordinateAxis& { return SimTK::XAxis; });
-  CLEAR_DEBUG_MSG();
+  // DEBUG_MSG("Adding SimTK!XAxis methods to provide access to the global variable SimTK::XAxis (" __HERE__ ")");
+  // // defined in SimTKcommon/internal/CoordinateAxis.h:206:72
+  // types.method("SimTK!XAxis", []()-> const SimTK::CoordinateAxis::XCoordinateAxis& { return SimTK::XAxis; });
+  // CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding SimTK!YAxis methods to provide access to the global variable SimTK::YAxis (" __HERE__ ")");
-  // defined in SimTKcommon/internal/CoordinateAxis.h:209:72
-  types.method("SimTK!YAxis", []()-> const SimTK::CoordinateAxis::YCoordinateAxis& { return SimTK::YAxis; });
-  CLEAR_DEBUG_MSG();
+  // DEBUG_MSG("Adding SimTK!YAxis methods to provide access to the global variable SimTK::YAxis (" __HERE__ ")");
+  // // defined in SimTKcommon/internal/CoordinateAxis.h:209:72
+  // types.method("SimTK!YAxis", []()-> const SimTK::CoordinateAxis::YCoordinateAxis& { return SimTK::YAxis; });
+  // CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding SimTK!ZAxis methods to provide access to the global variable SimTK::ZAxis (" __HERE__ ")");
-  // defined in SimTKcommon/internal/CoordinateAxis.h:212:72
-  types.method("SimTK!ZAxis", []()-> const SimTK::CoordinateAxis::ZCoordinateAxis& { return SimTK::ZAxis; });
-  CLEAR_DEBUG_MSG();
+  // DEBUG_MSG("Adding SimTK!ZAxis methods to provide access to the global variable SimTK::ZAxis (" __HERE__ ")");
+  // // defined in SimTKcommon/internal/CoordinateAxis.h:212:72
+  // types.method("SimTK!ZAxis", []()-> const SimTK::CoordinateAxis::ZCoordinateAxis& { return SimTK::ZAxis; });
+  // CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding SimTK!NegXAxis methods to provide access to the global variable SimTK::NegXAxis (" __HERE__ ")");
-  // defined in SimTKcommon/internal/CoordinateAxis.h:350:5
-  types.method("SimTK!NegXAxis", []()-> const SimTK::CoordinateDirection::NegXDirection& { return SimTK::NegXAxis; });
-  CLEAR_DEBUG_MSG();
+  // DEBUG_MSG("Adding SimTK!NegXAxis methods to provide access to the global variable SimTK::NegXAxis (" __HERE__ ")");
+  // // defined in SimTKcommon/internal/CoordinateAxis.h:350:5
+  // types.method("SimTK!NegXAxis", []()-> const SimTK::CoordinateDirection::NegXDirection& { return SimTK::NegXAxis; });
+  // CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding SimTK!NegYAxis methods to provide access to the global variable SimTK::NegYAxis (" __HERE__ ")");
-  // defined in SimTKcommon/internal/CoordinateAxis.h:352:5
-  types.method("SimTK!NegYAxis", []()-> const SimTK::CoordinateDirection::NegYDirection& { return SimTK::NegYAxis; });
-  CLEAR_DEBUG_MSG();
+  // DEBUG_MSG("Adding SimTK!NegYAxis methods to provide access to the global variable SimTK::NegYAxis (" __HERE__ ")");
+  // // defined in SimTKcommon/internal/CoordinateAxis.h:352:5
+  // types.method("SimTK!NegYAxis", []()-> const SimTK::CoordinateDirection::NegYDirection& { return SimTK::NegYAxis; });
+  // CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("Adding SimTK!NegZAxis methods to provide access to the global variable SimTK::NegZAxis (" __HERE__ ")");
-  // defined in SimTKcommon/internal/CoordinateAxis.h:354:5
-  types.method("SimTK!NegZAxis", []()-> const SimTK::CoordinateDirection::NegZDirection& { return SimTK::NegZAxis; });
-  CLEAR_DEBUG_MSG();
+  // DEBUG_MSG("Adding SimTK!NegZAxis methods to provide access to the global variable SimTK::NegZAxis (" __HERE__ ")");
+  // // defined in SimTKcommon/internal/CoordinateAxis.h:354:5
+  // types.method("SimTK!NegZAxis", []()-> const SimTK::CoordinateDirection::NegZDirection& { return SimTK::NegZAxis; });
+  // CLEAR_DEBUG_MSG();
 
   /* End of global function wrappers
    **********************************************************************/
