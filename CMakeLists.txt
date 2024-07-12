@@ -8,7 +8,7 @@ set(JLSIMBODY_CXXWRAPJL_VERSION
 
 option(JLSIMBODY_USE_SIMBODY_JLL "Use Simbody_jll if installed" ON)
 
-option(DEV_JLSIMBODY "Build jlsimbody to develop locally" OFF)
+option(JLSIMBODY_DEV "Build jlsimbody to develop locally" OFF)
 
 include(CMakeDependentOption)
 cmake_dependent_option(JLSIMBODY_LINKER_TYPE "Specify a different linker than the compiler default"
@@ -241,7 +241,7 @@ set_target_properties(jlsimbody PROPERTIES
   VISIBILITY_INLINES_HIDDEN 1
   )
 
-set(gen_jlsimbody_is_dev "$<BOOL:${DEV_JLSIMBODY}>")
+set(gen_jlsimbody_is_dev "$<BOOL:${JLSIMBODY_DEV}>")
 set(is_clang "$<CXX_COMPILER_ID:Clang>")
 
 target_compile_options(jlsimbody
