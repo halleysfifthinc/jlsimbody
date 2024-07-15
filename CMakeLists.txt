@@ -296,6 +296,10 @@ if(NOT DEFINED ENV{bb_full_target})
     BYPRODUCTS ${CMAKE_CURRENT_BINARY_DIR}/jlsimbody_override
     VERBATIM)
 
+  add_custom_target(override
+    COMMAND ${JULIA_EXECUTABLE} --startup-file=no --project=@. ${CMAKE_CURRENT_SOURCE_DIR}/scripts/override.jl ${CMAKE_CURRENT_BINARY_DIR} override
+    VERBATIM)
+
   add_custom_target(unoverride
     COMMAND ${JULIA_EXECUTABLE} --startup-file=no --project=@. ${CMAKE_CURRENT_SOURCE_DIR}/scripts/override.jl ${CMAKE_CURRENT_BINARY_DIR} unoverride
     VERBATIM)
