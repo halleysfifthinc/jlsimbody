@@ -8,9 +8,9 @@ namespace jlsimbody {
 void define_SimTKcommon_MassProperties(jlcxx::Module& types, const ArrayWrapper& array_wrapper){
 
   // defined in SimTKcommon/internal/MassProperties.h:82:26
-  auto t1 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Inertia_");
+  auto inertia = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Inertia_");
 
-  auto t15 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!UnitInertia_");
+  auto t15 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!UnitInertia_", inertia.dt());
 
   auto t2 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!SpatialInerta_");
 
@@ -29,13 +29,18 @@ void define_SimTKcommon_MassProperties(jlcxx::Module& types, const ArrayWrapper&
     wrapped.template constructor<>();
     wrapped.template constructor<const P &>();
     wrapped.template constructor<const SimTK::Vec<3,P>, const P &>();
+    // TODO: Replace appropriate constructors/methods when default allocated arguments works
+    wrapped.template constructor<const SimTK::Vec<3,P>>();
     wrapped.template constructor<const SimTK::Vec<3,P>, const SimTK::Vec<3,P>>();
-    // wrapped.template constructor<const SimTK::Vec<3,P>>(); // Second argument has a default
+    // wrapped.template constructor<const SimTK::Vec<3,P>, const SimTK::Vec<3,P>>(
+    //   jlcxx::arg("moments"), jlcxx::arg("products")=zeroVec);
     wrapped.template constructor<const P &, const P &, const P &>();
     wrapped.template constructor<const P &, const P &, const P &, const P &, const P &, const P &>();
     wrapped.template constructor<const SimTK::Mat<3,3,P> &>();
 
     wrapped.method("setInertia", static_cast<WrappedType & (WrappedType::*)(const SimTK::Vec<3,P> &, const SimTK::Vec<3,P> &) >(&WrappedType::setInertia));
+    // wrapped.method("setInertia", static_cast<WrappedType & (WrappedType::*)(const SimTK::Vec<3,P> &, const SimTK::Vec<3,P> &) >(&WrappedType::setInertia),
+    //   jlcxx::arg("inertia"), jlcxx::arg("moments"), jlcxx::arg("products")=SimTK::Vec<3,P>(0));
     wrapped.method("setInertia", static_cast<WrappedType & (WrappedType::*)(const P &, const P &, const P &) >(&WrappedType::setInertia));
     wrapped.method("setInertia", static_cast<WrappedType & (WrappedType::*)(const P &, const P &, const P &, const P &, const P &, const P &) >(&WrappedType::setInertia));
 
@@ -45,17 +50,18 @@ void define_SimTKcommon_MassProperties(jlcxx::Module& types, const ArrayWrapper&
     wrapped.method("div!", static_cast<WrappedType & (WrappedType::*)(const P &) >(&WrappedType::operator/=));
 
     wrapped.method("shiftToMassCenter", static_cast<WrappedType (WrappedType::*)(const SimTK::Vec<3,P> &, const P &) const>(&WrappedType::shiftToMassCenter));
-    wrapped.method("shiftToMassCenter!", static_cast<WrappedType & (WrappedType::*)(const SimTK::Vec<3,P> &, const P &) >(&WrappedType::shiftToMassCenterInPlace));
+    wrapped.method("shiftToMassCenterInPlace", static_cast<WrappedType & (WrappedType::*)(const SimTK::Vec<3,P> &, const P &) >(&WrappedType::shiftToMassCenterInPlace));
     wrapped.method("shiftFromMassCenter", static_cast<WrappedType (WrappedType::*)(const SimTK::Vec<3,P> &, const P &) const>(&WrappedType::shiftFromMassCenter));
-    wrapped.method("shiftFromMassCenter!", static_cast<WrappedType & (WrappedType::*)(const SimTK::Vec<3,P> &, const P &) >(&WrappedType::shiftFromMassCenterInPlace));
+    wrapped.method("shiftFromMassCenterInPlace", static_cast<WrappedType & (WrappedType::*)(const SimTK::Vec<3,P> &, const P &) >(&WrappedType::shiftFromMassCenterInPlace));
 
     wrapped.method("reexpress", static_cast<WrappedType (WrappedType::*)(const Rotation &) const>(&WrappedType::reexpress));
     wrapped.method("reexpress", static_cast<WrappedType (WrappedType::*)(const InverseRotation &) const>(&WrappedType::reexpress));
-    wrapped.method("reexpress!", static_cast<WrappedType & (WrappedType::*)(const Rotation &) >(&WrappedType::reexpressInPlace));
-    wrapped.method("reexpress!", static_cast<WrappedType & (WrappedType::*)(const InverseRotation &) >(&WrappedType::reexpressInPlace));
+    wrapped.method("reexpressInPlace", static_cast<WrappedType & (WrappedType::*)(const Rotation &) >(&WrappedType::reexpressInPlace));
+    wrapped.method("reexpressInPlace", static_cast<WrappedType & (WrappedType::*)(const InverseRotation &) >(&WrappedType::reexpressInPlace));
 
     wrapped.method("trace", static_cast<P (WrappedType::*)() const>(&WrappedType::trace));
 
+    wrapped.method("asSymMat33", static_cast<const SimTK::SymMat<3,P> & (WrappedType::*)() const>(&WrappedType::asSymMat33));
     wrapped.method("toMat33", static_cast<SimTK::Mat<3,3,P> (WrappedType::*)() const>(&WrappedType::toMat33));
     wrapped.method("getMoments", static_cast<const SimTK::Vec<3,P> & (WrappedType::*)() const>(&WrappedType::getMoments));
     wrapped.method("getProducts", static_cast<const SimTK::Vec<3,P> & (WrappedType::*)() const>(&WrappedType::getProducts));
@@ -64,26 +70,25 @@ void define_SimTKcommon_MassProperties(jlcxx::Module& types, const ArrayWrapper&
 
     wrapped.module().set_override_module(jl_base_module);
 
-    wrapped.method("isnan", static_cast<bool (WrappedType::*)() const>(&WrappedType::isNaN));
-    wrapped.method("isinf", static_cast<bool (WrappedType::*)() const>(&WrappedType::isInf));
-    wrapped.method("isfinite", static_cast<bool (WrappedType::*)() const>(&WrappedType::isFinite));
+    // wrapped.method("isnan", static_cast<bool (WrappedType::*)() const>(&WrappedType::isNaN));
+    // wrapped.method("isinf", static_cast<bool (WrappedType::*)() const>(&WrappedType::isInf));
+    // wrapped.method("isfinite", static_cast<bool (WrappedType::*)() const>(&WrappedType::isFinite));
     wrapped.method("isequal", static_cast<bool (WrappedType::*)(const WrappedType &) const>(&WrappedType::isNumericallyEqual));
 
     wrapped.module().unset_override_module();
   };
-  t1.apply<SimTK::Inertia_<double>>(t1_decl_methods);
+  inertia.apply<SimTK::Inertia_<double>>(t1_decl_methods);
 
   types.set_override_module(jl_base_module);
-
   types.method("+", static_cast<SimTK::Inertia_<double> (*)(const SimTK::Inertia_<double> &, const SimTK::Inertia_<double> &) >(&SimTK::operator+));
   types.method("-", static_cast<SimTK::Inertia_<double> (*)(const SimTK::Inertia_<double> &, const SimTK::Inertia_<double> &) >(&SimTK::operator-));
-  
+
   types.method("*", static_cast<SimTK::Inertia_<double> (*)(const SimTK::Inertia_<double> &, const double &) >(&SimTK::operator*));
   types.method("*", static_cast<SimTK::Vec<3,double> (*)(const SimTK::Inertia_<double> &, const SimTK::Vec<3,double> &) >(&SimTK::operator*));
   types.method("/", static_cast<SimTK::Inertia_<double> (*)(const SimTK::Inertia_<double> &, const double &) >(&SimTK::operator/));
-
   types.unset_override_module();
 
+  types.method("isValidInertiaMatrix", &SimTK::Inertia_<double>::isValidInertiaMatrix);
   types.method("pointMassAtOrigin", &SimTK::Inertia_<double>::pointMassAtOrigin);
   types.method("pointMassAt", &SimTK::Inertia_<double>::pointMassAt);
 
@@ -105,7 +110,9 @@ void define_SimTKcommon_MassProperties(jlcxx::Module& types, const ArrayWrapper&
     typedef SimTK::UnitInertia_<P> WrappedType;
     wrapped.template constructor<>();
     wrapped.template constructor<P>();
+    wrapped.template constructor<const SimTK::Vec<3,P> &>();
     wrapped.template constructor<const SimTK::Vec<3,P> &, const SimTK::Vec<3,P> &>();
+    // wrapped.template constructor<const SimTK::Vec<3,P> &, const SimTK::Vec<3,P> &>(jlcxx::arg("moments"), jlcxx::arg("products")=SimTK::Vec<3,P>(0));
     wrapped.template constructor<P,P,P>();
     wrapped.template constructor<P,P,P,P,P,P>();
     wrapped.template constructor<const SimTK::Inertia_<P> &>();
@@ -115,13 +122,13 @@ void define_SimTKcommon_MassProperties(jlcxx::Module& types, const ArrayWrapper&
     wrapped.method("setUnitInertia", static_cast<WrappedType & (WrappedType::*)(const SimTK::Vec<3,P> &, const SimTK::Vec<3,P> &) >(&WrappedType::setUnitInertia));
     wrapped.method("setUnitInertia", static_cast<WrappedType & (WrappedType::*)(const P &, const P &, const P &, const P &, const P &, const P &) >(&WrappedType::setUnitInertia));
     wrapped.method("shiftToCentroid", static_cast<WrappedType (WrappedType::*)(const SimTK::Vec<3,P> &) const>(&WrappedType::shiftToCentroid));
-    wrapped.method("shiftToCentroid!", static_cast<WrappedType& (WrappedType::*)(const SimTK::Vec<3,P> &) >(&WrappedType::shiftToCentroidInPlace));
+    wrapped.method("shiftToCentroidInPlace", static_cast<WrappedType& (WrappedType::*)(const SimTK::Vec<3,P> &) >(&WrappedType::shiftToCentroidInPlace));
     wrapped.method("shiftFromCentroid", static_cast<WrappedType (WrappedType::*)(const SimTK::Vec<3,P> &) const>(&WrappedType::shiftFromCentroid));
-    wrapped.method("shiftFromCentroid!", static_cast<WrappedType& (WrappedType::*)(const SimTK::Vec<3,P> &) >(&WrappedType::shiftFromCentroidInPlace));
+    wrapped.method("shiftFromCentroidInPlace", static_cast<WrappedType& (WrappedType::*)(const SimTK::Vec<3,P> &) >(&WrappedType::shiftFromCentroidInPlace));
     wrapped.method("reexpress", static_cast<WrappedType (WrappedType::*)(const SimTK::Rotation_<P> &) const>(&WrappedType::reexpress));
-    wrapped.method("reexpress!", static_cast<WrappedType& (WrappedType::*)(const SimTK::Rotation_<P> &) >(&WrappedType::reexpressInPlace));
+    wrapped.method("reexpressInPlace", static_cast<WrappedType& (WrappedType::*)(const SimTK::Rotation_<P> &) >(&WrappedType::reexpressInPlace));
     wrapped.method("reexpress", static_cast<WrappedType (WrappedType::*)(const SimTK::InverseRotation_<P> &) const>(&WrappedType::reexpress));
-    wrapped.method("reexpress!", static_cast<WrappedType& (WrappedType::*)(const SimTK::InverseRotation_<P> &) >(&WrappedType::reexpressInPlace));
+    wrapped.method("reexpressInPlace", static_cast<WrappedType& (WrappedType::*)(const SimTK::InverseRotation_<P> &) >(&WrappedType::reexpressInPlace));
 
     wrapped.method("asUnitInertia", static_cast<const SimTK::Inertia_<P> & (WrappedType::*)() const>(&WrappedType::asUnitInertia));
     wrapped.method("setFromUnitInertia", static_cast<WrappedType & (WrappedType::*)(const SimTK::Inertia_<P> &) >(&WrappedType::setFromUnitInertia));
@@ -151,29 +158,27 @@ void define_SimTKcommon_MassProperties(jlcxx::Module& types, const ArrayWrapper&
     wrapped.method("div!", static_cast<WrappedType & (WrappedType::*)(const P &) >(&WrappedType::operator/=));
 
     wrapped.module().set_override_module(jl_base_module);
-    wrapped.method("*", static_cast<SimTK::Vec<2,SimTK::Vec<3,P>> (WrappedType::*)(const SimTK::Vec<2,SimTK::Vec<3,P>> &) const>(&WrappedType::operator*));
+    wrapped.method("*", static_cast<SimTK::SpatialVec (WrappedType::*)(const SimTK::SpatialVec &) const>(&WrappedType::operator*));
     wrapped.module().unset_override_module();
 
     wrapped.method("reexpress", static_cast<WrappedType (WrappedType::*)(const SimTK::Rotation_<P> &) const>(&WrappedType::reexpress));
-    wrapped.method("reexpress!", static_cast<WrappedType& (WrappedType::*)(const SimTK::Rotation_<P> &) >(&WrappedType::reexpressInPlace));
+    wrapped.method("reexpressInPlace", static_cast<WrappedType& (WrappedType::*)(const SimTK::Rotation_<P> &) >(&WrappedType::reexpressInPlace));
     wrapped.method("reexpress", static_cast<WrappedType (WrappedType::*)(const SimTK::InverseRotation_<P> &) const>(&WrappedType::reexpress));
-    wrapped.method("reexpress!", static_cast<WrappedType& (WrappedType::*)(const SimTK::InverseRotation_<P> &) >(&WrappedType::reexpressInPlace));
+    wrapped.method("reexpressInPlace", static_cast<WrappedType& (WrappedType::*)(const SimTK::InverseRotation_<P> &) >(&WrappedType::reexpressInPlace));
     wrapped.method("shift", static_cast<WrappedType (WrappedType::*)(const SimTK::Vec<3,P> &) const>(&WrappedType::shift));
-    wrapped.method("shift!", static_cast<WrappedType& (WrappedType::*)(const SimTK::Vec<3,P> &) >(&WrappedType::shiftInPlace));
+    wrapped.method("shiftInPlace", static_cast<WrappedType& (WrappedType::*)(const SimTK::Vec<3,P> &) >(&WrappedType::shiftInPlace));
     wrapped.method("transform", static_cast<WrappedType (WrappedType::*)(const SimTK::Transform_<P> &) const>(&WrappedType::transform));
-    wrapped.method("transform!", static_cast<WrappedType& (WrappedType::*)(const SimTK::Transform_<P> &) >(&WrappedType::transformInPlace));
+    wrapped.method("transformInPlace", static_cast<WrappedType& (WrappedType::*)(const SimTK::Transform_<P> &) >(&WrappedType::transformInPlace));
     wrapped.method("transform", static_cast<WrappedType (WrappedType::*)(const SimTK::InverseTransform_<P> &) const>(&WrappedType::transform));
-    wrapped.method("transform!", static_cast<WrappedType& (WrappedType::*)(const SimTK::InverseTransform_<P> &) >(&WrappedType::transformInPlace));
-    
+    wrapped.method("transformInPlace", static_cast<WrappedType& (WrappedType::*)(const SimTK::InverseTransform_<P> &) >(&WrappedType::transformInPlace));
+
     wrapped.method("toSpatialMat", static_cast<const SimTK::Mat<2,2,SimTK::Mat<3,3,P>> (WrappedType::*)() const>(&WrappedType::toSpatialMat));
   };
   t2.apply<SimTK::SpatialInertia_<double>>(t2_decl_methods);
 
   types.set_override_module(jl_base_module);
-
   types.method("+", static_cast<SimTK::SpatialInertia_<double> (*)(const SimTK::SpatialInertia_<double> &, const SimTK::SpatialInertia_<double> &) >(&SimTK::operator+));
   types.method("-", static_cast<SimTK::SpatialInertia_<double> (*)(const SimTK::SpatialInertia_<double> &, const SimTK::SpatialInertia_<double> &) >(&SimTK::operator-));
-
   types.unset_override_module();
 
   array_wrapper.template apply<SimTK::SpatialInertia_<double>, int>();
@@ -195,22 +200,17 @@ void define_SimTKcommon_MassProperties(jlcxx::Module& types, const ArrayWrapper&
     wrapped.method("sub!", static_cast<WrappedType & (WrappedType::*)(const WrappedType &) >(&WrappedType::operator-=));
 
     wrapped.module().set_override_module(jl_base_module);
-    wrapped.method("*", static_cast<SimTK::Vec<2,SimTK::Vec<3,P>> (WrappedType::*)(const SimTK::Vec<2,SimTK::Vec<3,P>> &) const>(&WrappedType::operator*));
-
+    wrapped.method("*", static_cast<SimTK::SpatialVec (WrappedType::*)(const SimTK::SpatialVec &) const>(&WrappedType::operator*));
     wrapped.method("*", static_cast<SimTK::Mat<2, 1, SimTK::Vec<3,P>> (WrappedType::*)(const SimTK::Mat<2, 1, SimTK::Vec<3,P>> &) const>(&WrappedType::operator*));
     wrapped.method("*", static_cast<SimTK::Mat<2, 2, SimTK::Vec<3,P>> (WrappedType::*)(const SimTK::Mat<2, 2, SimTK::Vec<3,P>> &) const>(&WrappedType::operator*));
     wrapped.method("*", static_cast<SimTK::Mat<2, 3, SimTK::Vec<3,P>> (WrappedType::*)(const SimTK::Mat<2, 3, SimTK::Vec<3,P>> &) const>(&WrappedType::operator*));
     wrapped.method("*", static_cast<SimTK::Mat<2, 4, SimTK::Vec<3,P>> (WrappedType::*)(const SimTK::Mat<2, 4, SimTK::Vec<3,P>> &) const>(&WrappedType::operator*));
     wrapped.method("*", static_cast<SimTK::Mat<2, 5, SimTK::Vec<3,P>> (WrappedType::*)(const SimTK::Mat<2, 5, SimTK::Vec<3,P>> &) const>(&WrappedType::operator*));
     wrapped.method("*", static_cast<SimTK::Mat<2, 6, SimTK::Vec<3,P>> (WrappedType::*)(const SimTK::Mat<2, 6, SimTK::Vec<3,P>> &) const>(&WrappedType::operator*));
-
-    // jlcxx::for_each_parameter_type<jlcxx::ParameterList<int 1,int 2,int 3,int 4,int 5,int 6>>([&]<int N>() {
-    //   wrapped.method("*", static_cast<SimTK::Mat<2, N, SimTK::Vec<3,P>> (WrappedType::*)(const SimTK::Mat<2, N, SimTK::Vec<3,P>> &) >(&WrappedType::operator*));
-    // });
     wrapped.module().unset_override_module();
 
     wrapped.method("shift", static_cast<WrappedType (WrappedType::*)(const SimTK::Vec<3,P> &) const>(&WrappedType::shift));
-    wrapped.method("shift!", static_cast<WrappedType& (WrappedType::*)(const SimTK::Vec<3,P> &) >(&WrappedType::shiftInPlace));
+    wrapped.method("shiftInPlace", static_cast<WrappedType& (WrappedType::*)(const SimTK::Vec<3,P> &) >(&WrappedType::shiftInPlace));
 
     wrapped.method("toSpatialMat", static_cast<const SimTK::Mat<2,2,SimTK::Mat<3,3,P>> (WrappedType::*)() const>(&WrappedType::toSpatialMat));
   };
@@ -230,8 +230,10 @@ void define_SimTKcommon_MassProperties(jlcxx::Module& types, const ArrayWrapper&
     wrapped.template constructor<const P &, const Vec3P &, const Inertia &>();
 
     wrapped.method("setMassProperties", static_cast<WrappedType & (WrappedType::*)(const P &, const Vec3P &, const Inertia &) >(&WrappedType::setMassProperties));
+    wrapped.method("setMassProperties", static_cast<WrappedType & (WrappedType::*)(const P &, const Vec3P &, const SimTK::UnitInertia &) >(&WrappedType::setMassProperties));
     wrapped.method("getMass", static_cast<const P & (WrappedType::*)() const>(&WrappedType::getMass));
     wrapped.method("getMassCenter", static_cast<const Vec3P & (WrappedType::*)() const>(&WrappedType::getMassCenter));
+    wrapped.method("getUnitInertia", static_cast<const SimTK::UnitInertia & (WrappedType::*)() const>(&WrappedType::getUnitInertia));
     wrapped.method("calcInertia", static_cast<const Inertia (WrappedType::*)() const>(&WrappedType::calcInertia));
 
     wrapped.method("calcCentralInertia", static_cast<Inertia (WrappedType::*)() const>(&WrappedType::calcCentralInertia));
@@ -247,14 +249,6 @@ void define_SimTKcommon_MassProperties(jlcxx::Module& types, const ArrayWrapper&
     wrapped.method("isNearlyMassless", static_cast<bool (WrappedType::*)(const P &) const>(&WrappedType::isNearlyMassless));
     wrapped.method("isExactlyCentral", static_cast<bool (WrappedType::*)() const>(&WrappedType::isExactlyCentral));
     wrapped.method("isNearlyCentral", static_cast<bool (WrappedType::*)(const P &) const>(&WrappedType::isNearlyCentral));
-
-    wrapped.module().set_override_module(jl_base_module);
-
-    wrapped.method("isnan", static_cast<bool (WrappedType::*)() const>(&WrappedType::isNaN));
-    wrapped.method("isinf", static_cast<bool (WrappedType::*)() const>(&WrappedType::isInf));
-    wrapped.method("isfinite", static_cast<bool (WrappedType::*)() const>(&WrappedType::isFinite));
-
-    wrapped.module().unset_override_module();
 
     wrapped.method("toSpatialMat", static_cast<SimTK::Mat<2,2,SimTK::Mat<3,3,P>> (WrappedType::*)() const>(&WrappedType::toSpatialMat));
     wrapped.method("toMat66", static_cast<SimTK::Mat<6,6,P> (WrappedType::*)() const>(&WrappedType::toMat66));
