@@ -1,7 +1,7 @@
 using TOML
 
 override_file = expanduser("~/.julia/artifacts/Overrides.toml")
-jlsimbody_jll_uuid = "41345730-a986-5d5b-a415-889198d08c6f"
+jlsimbody_jll_uuid = "041f4ef7-f559-5b27-b355-a04ac8b0617e"
 statusfile = joinpath(ARGS[1], "jlsimbody_override")
 
 changed::Bool = false
