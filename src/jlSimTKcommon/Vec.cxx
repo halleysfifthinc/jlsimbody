@@ -23,6 +23,7 @@ void define_SimTKcommon_Vec(jlcxx::Module& types, jlcxx::TypeWrapper<jlcxx::Para
     #endif
 
     wrapped.template constructor<>();
+    wrapped.template constructor<const WrappedType &>();
     wrapped.template constructor<const ELT &>();
 
     if constexpr (M == 2)
