@@ -48,6 +48,7 @@ void define_SimTKcommon_Transform(jlcxx::Module& types, const ArrayWrapper& arra
   // t2.method("y", &InverseTransform::y);
   // t2.method("z", &InverseTransform::z);
 
+  t2.method("asMat34", [](const InverseTransform &it) -> SimTK::Mat<3,4,double> { return ((Transform)it).asMat34(); });
   t2.method("toMat34", &InverseTransform::toMat34);
   t2.method("toMat44", &InverseTransform::toMat44);
   t2.method("T", &InverseTransform::T);
