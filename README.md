@@ -1,6 +1,6 @@
 # jlSimbody
 
-This is the C++ library that wraps [Simbody](https://github.com/simbody/simbody) for use in Julia by Simbody.jl.
+This is the C++ library that wraps [Simbody](https://github.com/simbody/simbody) for use in Julia by [Simbody.jl](https://github.com/halleysfifthinc/Simbody.jl).
 
 ## Building
 
