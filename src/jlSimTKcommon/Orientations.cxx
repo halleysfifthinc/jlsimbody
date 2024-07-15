@@ -45,6 +45,7 @@ void define_SimTKcommon_Orientations(jlcxx::Module& types, WrappedVec& vec, cons
 
     wrapped.template constructor<const Rotation &>();
 
+    wrapped.method("assign!", static_cast<WrappedType & (WrappedType::*)(const WrappedType &) >(&WrappedType::operator=));
     wrapped.method("setQuaternionToZeroRotation", static_cast<void (WrappedType::*)() >(&WrappedType::setQuaternionToZeroRotation));
     wrapped.method("setQuaternionToNaN", static_cast<void (WrappedType::*)() >(&WrappedType::setQuaternionToNaN));
     wrapped.method("setQuaternionFromAngleAxis", static_cast<void (WrappedType::*)(const SimTK::Vec<4,P> &) >(&WrappedType::setQuaternionFromAngleAxis));
@@ -76,7 +77,8 @@ void define_SimTKcommon_Orientations(jlcxx::Module& types, WrappedVec& vec, cons
   t4.constructor<const typename Rotation::UnitVec3P &, SimTK::CoordinateAxis>();
   t4.constructor<const typename Rotation::UnitVec3P &, const SimTK::CoordinateAxis &, const typename Rotation::Vec3P &, const SimTK::CoordinateAxis &>();
 
-  // t4.method("convert", static_cast<Rotation & (Rotation::*)(const SimTK::InverseRotation_<double> &) >(&Rotation::operator=));
+  t4.method("assign!", static_cast<Rotation & (Rotation::*)(const Rotation &) >(&Rotation::operator=));
+  t4.method("castAsRotation", [] (const InverseRotation &ir) -> Rotation { return ir; });
   t4.method("setToNaN", static_cast<Rotation & (Rotation::*)() >(&Rotation::setRotationToNaN));
   t4.method("setRotationToIdentityMatrix", static_cast<Rotation & (Rotation::*)() >(&Rotation::setRotationToIdentityMatrix));
   t4.method("setRotationFromAngleAboutAxis", static_cast<Rotation & (Rotation::*)(double, const SimTK::CoordinateAxis &) >(&Rotation::setRotationFromAngleAboutAxis));

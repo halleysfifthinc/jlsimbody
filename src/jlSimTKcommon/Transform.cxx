@@ -8,10 +8,10 @@ namespace jlsimbody {
 
 void define_SimTKcommon_Transform(jlcxx::Module& types, const ArrayWrapper& array_wrapper){
 
-  auto t1 = types.add_type<SimTK::Transform_<double>>("SimTK!Transform");
+  auto t1 = types.add_type<SimTK::Transform_<double>>("Transform");
   typedef SimTK::Transform_<double> Transform;
 
-  auto t2 = types.add_type<SimTK::InverseTransform_<double>>("SimTK!InverseTransform");
+  auto t2 = types.add_type<SimTK::InverseTransform_<double>>("InverseTransform");
   typedef SimTK::InverseTransform_<double> InverseTransform;
 
   /**********************************************************************/
@@ -19,8 +19,9 @@ void define_SimTKcommon_Transform(jlcxx::Module& types, const ArrayWrapper& arra
    */
   t2.constructor<>();
 
-  // t2.method("getAsTransform", static_cast<Transform & (InverseTransform::*)() const>(&InverseTransform::operator Transform()));
-  t2.method("assign", static_cast<InverseTransform & (InverseTransform::*)(const InverseTransform &) >(&InverseTransform::operator=));
+  t2.method("assign!", static_cast<InverseTransform & (InverseTransform::*)(const InverseTransform &) >(&InverseTransform::operator=));
+  t2.method("castAsTransform", [] (const InverseTransform &it) -> Transform { return it; });
+
   t2.method("invert", &InverseTransform::invert);
   t2.method("updInvert!", &InverseTransform::updInvert);
 
@@ -42,14 +43,14 @@ void define_SimTKcommon_Transform(jlcxx::Module& types, const ArrayWrapper& arra
   t2.method("pInv", &InverseTransform::pInv);
   t2.method("setPInv!", &InverseTransform::setPInv);
 
-  t2.method("T", &InverseTransform::T);
-
+  // Implemented in Julia
   // t2.method("x", &InverseTransform::x);
   // t2.method("y", &InverseTransform::y);
   // t2.method("z", &InverseTransform::z);
 
   t2.method("toMat34", &InverseTransform::toMat34);
   t2.method("toMat44", &InverseTransform::toMat44);
+  t2.method("T", &InverseTransform::T);
 
   /* End of SimTK::InverseTransform_ class method wrappers
    **********************************************************************/
@@ -62,15 +63,15 @@ void define_SimTKcommon_Transform(jlcxx::Module& types, const ArrayWrapper& arra
   t1.constructor<const SimTK::Rotation_<double> &>();
   t1.constructor<const SimTK::Vec<3,double> &>();
 
-  t1.method("assign", static_cast<Transform & (Transform::*)(const InverseTransform &) >(&Transform::operator=));
+  t1.method("assign!", static_cast<Transform & (Transform::*)(const InverseTransform &) >(&Transform::operator=));
   t1.method("add!", static_cast<Transform & (Transform::*)(const SimTK::Vec<3,double> &) >(&Transform::operator+=));
   t1.method("subtract!", static_cast<Transform & (Transform::*)(const SimTK::Vec<3,double> &) >(&Transform::operator-=));
   t1.method("set", static_cast<Transform & (Transform::*)(const SimTK::Rotation_<double> &, const SimTK::Vec<3,double> &) >(&Transform::set));
   t1.method("setToZero", static_cast<Transform & (Transform::*)() >(&Transform::setToZero));
   t1.method("setToNaN", static_cast<Transform & (Transform::*)() >(&Transform::setToNaN));
 
-  t1.method("transpose", static_cast<const InverseTransform & (Transform::*)() const>(&Transform::invert));
-  t1.method("updTranspose!", static_cast<InverseTransform & (Transform::*)() >(&Transform::updInvert));
+  t1.method("invert", static_cast<const InverseTransform & (Transform::*)() const>(&Transform::invert));
+  t1.method("updInvert!", static_cast<InverseTransform & (Transform::*)() >(&Transform::updInvert));
 
   t1.method("compose", static_cast<Transform (Transform::*)(const Transform &) const>(&Transform::compose));
   t1.method("compose", static_cast<Transform (Transform::*)(const InverseTransform &) const>(&Transform::compose));
@@ -102,6 +103,14 @@ void define_SimTKcommon_Transform(jlcxx::Module& types, const ArrayWrapper& arra
 
   /* End of SimTK::Transform_ class method wrappers
    **********************************************************************/
+  types.set_override_module(jl_base_module);
+  types.method("*", [] (const Transform &t, const SimTK::Vec<3,double> &v) -> SimTK::Vec<3,double> { return t*v; });
+  types.method("*", [] (const InverseTransform &t, const SimTK::Vec<3,double> &v) -> SimTK::Vec<3,double> { return t*v; });
+  types.method("*", [] (const Transform &t, const SimTK::Vec<4,double> &v) -> SimTK::Vec<4,double> { return t*v; });
+  types.method("*", [] (const InverseTransform &t, const SimTK::Vec<4,double> &v) -> SimTK::Vec<4,double> { return t*v; });
+  types.method("+", [] (const Transform &t, const SimTK::Vec<3,double> &v) -> Transform { return t+v; });
+  types.method("-", [] (const Transform &t, const SimTK::Vec<3,double> &v) -> Transform { return t-v; });
+  types.unset_override_module();
 
   using array_types = jlcxx::ParameterList<Transform>;
   jlcxx::for_each_parameter_type<array_types>(array_wrapper);
