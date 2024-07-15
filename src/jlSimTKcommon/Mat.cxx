@@ -175,6 +175,7 @@ void define_SimTKcommon_Mat(jlcxx::Module& types){
     SimTK::Mat<3, 3, std::complex<double>, 3, 1>,
     SimTK::Mat<2, 2, SimTK::Mat<3, 3, double, 3, 1>, 2, 1>,
     SimTK::Mat<3, 4, double, 3, 1>,
+    SimTK::Mat<4, 3, double, 4, 1>,
     SimTK::Mat<4, 2, SimTK::Row<3, double, 1>, 1, 2>,
     SimTK::Mat<4, 4, double, 4, 1>,
     SimTK::Mat<4, 4, SimTK::Vec<3, double, 1>, 4, 1>,

@@ -105,10 +105,26 @@ void define_SimTKcommon_Orientations(jlcxx::Module& types, WrappedVec& vec, cons
   // t4.method("transpose", static_cast<const InverseRotation & (Rotation::*)() const>(&Rotation::invert));
   // t4.method("updTranspose", static_cast<InverseRotation & (Rotation::*)()>(&Rotation::updInvert));
 
-  t4.method("x", static_cast<const typename Rotation::ColType & (Rotation::*)() const>(&Rotation::x));
-  t4.method("y", static_cast<const typename Rotation::ColType & (Rotation::*)() const>(&Rotation::y));
-  t4.method("z", static_cast<const typename Rotation::ColType & (Rotation::*)() const>(&Rotation::z));
-  t4.method("getAxisUnitVec", static_cast<const typename Rotation::ColType & (Rotation::*)(SimTK::CoordinateAxis) const>(&Rotation::getAxisUnitVec));
+  // t4.method("x", static_cast<const typename Rotation::ColType & (Rotation::*)() const>(&Rotation::x));
+  t4.method("x", [] (const Rotation & r) -> SimTK::UnitVec3* {
+    return new SimTK::UnitVec3(r.x());
+  });
+
+  // t4.method("y", static_cast<const typename Rotation::ColType & (Rotation::*)() const>(&Rotation::y));
+  t4.method("y", [] (const Rotation & r) -> SimTK::UnitVec3* {
+    return new SimTK::UnitVec3(r.y());
+  });
+
+  // t4.method("z", static_cast<const typename Rotation::ColType & (Rotation::*)() const>(&Rotation::z));
+  t4.method("z", [] (const Rotation & r) -> SimTK::UnitVec3* {
+    return new SimTK::UnitVec3(r.z());
+  });
+
+  // t4.method("getAxisUnitVec", static_cast<const typename Rotation::ColType & (Rotation::*)(SimTK::CoordinateAxis) const>(&Rotation::getAxisUnitVec));
+  t4.method("getAxisUnitVec", [] (const Rotation & r, SimTK::CoordinateAxis axis) -> SimTK::UnitVec3* {
+    return new SimTK::UnitVec3(r.getAxisUnitVec(axis));
+  });
+
   t4.method("getAxisUnitVec", static_cast<const SimTK::UnitVec<double,1> (Rotation::*)(SimTK::CoordinateDirection) const>(&Rotation::getAxisUnitVec));
 
   types.method("calcNForBodyXYZInBodyFrame", static_cast<Rotation::Mat33P (*)(const Rotation::Vec3P&) >(&Rotation::calcNForBodyXYZInBodyFrame));
@@ -175,10 +191,26 @@ void define_SimTKcommon_Orientations(jlcxx::Module& types, WrappedVec& vec, cons
   // t5.method("transpose", static_cast<const Rotation & (InverseRotation::*)() const>(&InverseRotation::invert));
   // t5.method("updTranspose", static_cast<Rotation & (InverseRotation::*)()>(&InverseRotation::updInvert));
 
-  t5.method("x", static_cast<const typename InverseRotation::ColType & (InverseRotation::*)() const>(&InverseRotation::x));
-  t5.method("y", static_cast<const typename InverseRotation::ColType & (InverseRotation::*)() const>(&InverseRotation::y));
-  t5.method("z", static_cast<const typename InverseRotation::ColType & (InverseRotation::*)() const>(&InverseRotation::z));
-  t5.method("getAxisUnitVec", static_cast<const typename InverseRotation::ColType & (InverseRotation::*)(SimTK::CoordinateAxis) const>(&InverseRotation::getAxisUnitVec));
+  // t5.method("x", static_cast<const typename InverseRotation::ColType & (InverseRotation::*)() const>(&InverseRotation::x));
+  t5.method("x", [] (const InverseRotation & r) -> SimTK::UnitVec3* {
+    return new SimTK::UnitVec3(r.x());
+  });
+
+  // t5.method("y", static_cast<const typename InverseRotation::ColType & (InverseRotation::*)() const>(&InverseRotation::y));
+  t5.method("y", [] (const InverseRotation & r) -> SimTK::UnitVec3* {
+    return new SimTK::UnitVec3(r.y());
+  });
+
+  // t5.method("z", static_cast<const typename InverseRotation::ColType & (InverseRotation::*)() const>(&InverseRotation::z));
+  t5.method("z", [] (const InverseRotation & r) -> SimTK::UnitVec3* {
+    return new SimTK::UnitVec3(r.z());
+  });
+
+  // t5.method("getAxisUnitVec", static_cast<const typename InverseRotation::ColType & (InverseRotation::*)(SimTK::CoordinateAxis) const>(&InverseRotation::getAxisUnitVec));
+  t5.method("getAxisUnitVec", [] (const InverseRotation & r, SimTK::CoordinateAxis axis) -> SimTK::UnitVec3* {
+    return new SimTK::UnitVec3(r.getAxisUnitVec(axis));
+  });
+
   t5.method("getAxisUnitVec", static_cast<const SimTK::UnitVec<double,1> (InverseRotation::*)(SimTK::CoordinateDirection) const>(&InverseRotation::getAxisUnitVec));
 
   t5.method("asMat33", static_cast<const typename InverseRotation::BaseMat & (InverseRotation::*)() const>(&InverseRotation::asMat33));
