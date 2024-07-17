@@ -9,42 +9,42 @@ void define_SimTKcommon_Events(jlcxx::Module& types, const ArrayWrapper& array_w
 
   DEBUG_MSG("type SimTK::EventHandler (" __HERE__ ")");
   // defined in SimTKcommon/internal/EventHandler.h:51:32
-  auto t0 = types.add_type<SimTK::EventHandler>("SimTK!EventHandler");
+  auto t0 = types.add_type<SimTK::EventHandler>("EventHandler");
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::ScheduledEventHandler (" __HERE__ ")");
   // defined in SimTKcommon/internal/EventHandler.h:84:32
-  auto t2 = types.add_type<SimTK::ScheduledEventHandler>("SimTK!ScheduledEventHandler", jlcxx::julia_base_type<SimTK::EventHandler>());
+  auto t2 = types.add_type<SimTK::ScheduledEventHandler>("ScheduledEventHandler", jlcxx::julia_base_type<SimTK::EventHandler>());
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::TriggeredEventHandler (" __HERE__ ")");
   // defined in SimTKcommon/internal/EventHandler.h:109:32
-  auto t3 = types.add_type<SimTK::TriggeredEventHandler>("SimTK!TriggeredEventHandler", jlcxx::julia_base_type<SimTK::EventHandler>());
+  auto t3 = types.add_type<SimTK::TriggeredEventHandler>("TriggeredEventHandler", jlcxx::julia_base_type<SimTK::EventHandler>());
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::PeriodicEventHandler (" __HERE__ ")");
   // defined in SimTKcommon/internal/EventHandler.h:146:32
-  auto t6 = types.add_type<SimTK::PeriodicEventHandler>("SimTK!PeriodicEventHandler", jlcxx::julia_base_type<SimTK::ScheduledEventHandler>());
+  auto t6 = types.add_type<SimTK::PeriodicEventHandler>("PeriodicEventHandler", jlcxx::julia_base_type<SimTK::ScheduledEventHandler>());
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::EventReporter (" __HERE__ ")");
   // defined in SimTKcommon/internal/EventReporter.h:53:32
-  auto t7 = types.add_type<SimTK::EventReporter>("SimTK!EventReporter");
+  auto t7 = types.add_type<SimTK::EventReporter>("EventReporter");
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::ScheduledEventReporter (" __HERE__ ")");
   // defined in SimTKcommon/internal/EventReporter.h:72:32
-  auto t8 = types.add_type<SimTK::ScheduledEventReporter>("SimTK!ScheduledEventReporter", jlcxx::julia_base_type<SimTK::EventReporter>());
+  auto t8 = types.add_type<SimTK::ScheduledEventReporter>("ScheduledEventReporter", jlcxx::julia_base_type<SimTK::EventReporter>());
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::TriggeredEventReporter (" __HERE__ ")");
   // defined in SimTKcommon/internal/EventReporter.h:96:32
-  auto t9 = types.add_type<SimTK::TriggeredEventReporter>("SimTK!TriggeredEventReporter", jlcxx::julia_base_type<SimTK::EventReporter>());
+  auto t9 = types.add_type<SimTK::TriggeredEventReporter>("TriggeredEventReporter", jlcxx::julia_base_type<SimTK::EventReporter>());
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::PeriodicEventReporter (" __HERE__ ")");
   // defined in SimTKcommon/internal/EventReporter.h:138:32
-  auto t10 = types.add_type<SimTK::PeriodicEventReporter>("SimTK!PeriodicEventReporter", jlcxx::julia_base_type<SimTK::ScheduledEventReporter>());
+  auto t10 = types.add_type<SimTK::PeriodicEventReporter>("PeriodicEventReporter", jlcxx::julia_base_type<SimTK::ScheduledEventReporter>());
   CLEAR_DEBUG_MSG();
 
   /**********************************************************************/
@@ -79,6 +79,8 @@ void define_SimTKcommon_Events(jlcxx::Module& types, const ArrayWrapper& array_w
   /* Wrappers for the methods of class SimTK::TriggeredEventHandler
    */
 
+  // t3.template constructor<SimTK::Stage>();
+  // t3.template constructor<const SimTK::TriggeredEventHandler &>();
 
   DEBUG_MSG("SimTK::TriggeredEventHandler & SimTK::TriggeredEventHandler::operator=(const SimTK::TriggeredEventHandler &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::TriggeredEventHandler & SimTK::TriggeredEventHandler::operator=(const SimTK::TriggeredEventHandler &)
@@ -113,12 +115,7 @@ void define_SimTKcommon_Events(jlcxx::Module& types, const ArrayWrapper& array_w
   /* Wrappers for the methods of class SimTK::PeriodicEventHandler
    */
 
-  DEBUG_MSG("SimTK::Real SimTK::PeriodicEventHandler::getNextEventTime(const SimTK::State &, bool) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Real SimTK::PeriodicEventHandler::getNextEventTime(const SimTK::State &, bool)
-  // defined in SimTKcommon/internal/EventHandler.h:151:10
-  t6.method("getNextEventTime", static_cast<SimTK::Real (SimTK::PeriodicEventHandler::*)(const SimTK::State &, bool)  const>(&SimTK::PeriodicEventHandler::getNextEventTime));
-  CLEAR_DEBUG_MSG();
-
+  // t6.template constructor<SimTK::Real>();
 
   DEBUG_MSG("SimTK::Real SimTK::PeriodicEventHandler::getEventInterval() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::PeriodicEventHandler::getEventInterval()
@@ -168,6 +165,8 @@ void define_SimTKcommon_Events(jlcxx::Module& types, const ArrayWrapper& array_w
   /* Wrappers for the methods of class SimTK::TriggeredEventReporter
    */
 
+  // t9.template constructor<const SimTK::TriggeredEventReporter &>();
+  // t9.template constructor<SimTK::Stage>();
 
   DEBUG_MSG("SimTK::TriggeredEventReporter & SimTK::TriggeredEventReporter::operator=(const SimTK::TriggeredEventReporter &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::TriggeredEventReporter & SimTK::TriggeredEventReporter::operator=(const SimTK::TriggeredEventReporter &)
@@ -202,12 +201,7 @@ void define_SimTKcommon_Events(jlcxx::Module& types, const ArrayWrapper& array_w
   /* Wrappers for the methods of class SimTK::PeriodicEventReporter
    */
 
-  DEBUG_MSG("SimTK::Real SimTK::PeriodicEventReporter::getNextEventTime(const SimTK::State &, bool) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Real SimTK::PeriodicEventReporter::getNextEventTime(const SimTK::State &, bool)
-  // defined in SimTKcommon/internal/EventReporter.h:142:10
-  t10.method("getNextEventTime", static_cast<SimTK::Real (SimTK::PeriodicEventReporter::*)(const SimTK::State &, bool)  const>(&SimTK::PeriodicEventReporter::getNextEventTime));
-  CLEAR_DEBUG_MSG();
-
+  // t10.template constructor<SimTK::Real>();
 
   DEBUG_MSG("SimTK::Real SimTK::PeriodicEventReporter::getEventInterval() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::PeriodicEventReporter::getEventInterval()
