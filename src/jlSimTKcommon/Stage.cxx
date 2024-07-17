@@ -9,85 +9,84 @@ void define_SimTKcommon_Stage(jlcxx::Module& types){
 
   DEBUG_MSG("enum SimTK::Stage::Level (" __HERE__ ")");
   // defined in SimTKcommon/internal/Stage.h:68:10
-  types.add_bits<SimTK::Stage::Level>("SimTK!Stage!Level", jlcxx::julia_type("CppEnum"));
-  types.set_const("SimTK!Stage!Empty", SimTK::Stage::Empty);
-  types.set_const("SimTK!Stage!Topology", SimTK::Stage::Topology);
-  types.set_const("SimTK!Stage!Model", SimTK::Stage::Model);
-  types.set_const("SimTK!Stage!Instance", SimTK::Stage::Instance);
-  types.set_const("SimTK!Stage!Time", SimTK::Stage::Time);
-  types.set_const("SimTK!Stage!Position", SimTK::Stage::Position);
-  types.set_const("SimTK!Stage!Velocity", SimTK::Stage::Velocity);
-  types.set_const("SimTK!Stage!Dynamics", SimTK::Stage::Dynamics);
-  types.set_const("SimTK!Stage!Acceleration", SimTK::Stage::Acceleration);
-  types.set_const("SimTK!Stage!Report", SimTK::Stage::Report);
-  types.set_const("SimTK!Stage!Infinity", SimTK::Stage::Infinity);
-  types.set_const("SimTK!Stage!LowestValid", SimTK::Stage::LowestValid);
-  types.set_const("SimTK!Stage!HighestValid", SimTK::Stage::HighestValid);
-  types.set_const("SimTK!Stage!LowestRuntime", SimTK::Stage::LowestRuntime);
-  types.set_const("SimTK!Stage!HighestRuntime", SimTK::Stage::HighestRuntime);
+  types.add_bits<SimTK::Stage::Level>("StageLevel", jlcxx::julia_type("CppEnum"));
+  types.set_const("Empty", SimTK::Stage::Empty);
+  types.set_const("Topology", SimTK::Stage::Topology);
+  types.set_const("Model", SimTK::Stage::Model);
+  types.set_const("Instance", SimTK::Stage::Instance);
+  types.set_const("Time", SimTK::Stage::Time);
+  types.set_const("Position", SimTK::Stage::Position);
+  types.set_const("Velocity", SimTK::Stage::Velocity);
+  types.set_const("Dynamics", SimTK::Stage::Dynamics);
+  types.set_const("Acceleration", SimTK::Stage::Acceleration);
+  types.set_const("Report", SimTK::Stage::Report);
+  types.set_const("Infinity", SimTK::Stage::Infinity);
+  types.set_const("LowestValid", SimTK::Stage::LowestValid);
+  types.set_const("HighestValid", SimTK::Stage::HighestValid);
+  types.set_const("LowestRuntime", SimTK::Stage::LowestRuntime);
+  types.set_const("HighestRuntime", SimTK::Stage::HighestRuntime);
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("Adding anonymous enum defined in SimTKcommon/internal/Stage.h:87:5 (" __HERE__ ")");
   // defined in SimTKcommon/internal/Stage.h:87:5
-  types.set_const("SimTK!Stage!NValid", static_cast<int>(SimTK::Stage::NValid));
-  types.set_const("SimTK!Stage!NRuntime", static_cast<int>(SimTK::Stage::NRuntime));
+  types.set_const("NValid", static_cast<int>(SimTK::Stage::NValid));
+  types.set_const("NRuntime", static_cast<int>(SimTK::Stage::NRuntime));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Stage (" __HERE__ ")");
   // defined in SimTKcommon/internal/Stage.h:66:7
-  auto t0 = types.add_type<SimTK::Stage>("SimTK!Stage");
+  auto t0 = types.add_type<SimTK::Stage>("Stage");
   t0.template constructor<>();
   CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("type SimTK::Exception::RealizeTopologyMustBeCalledFirst (" __HERE__ ")");
-  // defined in SimTKcommon/internal/Stage.h:189:7
-  auto t4 = types.add_type<SimTK::Exception::RealizeTopologyMustBeCalledFirst>("SimTK!Exception!RealizeTopologyMustBeCalledFirst");
-  CLEAR_DEBUG_MSG();
+  // DEBUG_MSG("type SimTK::Exception::RealizeTopologyMustBeCalledFirst (" __HERE__ ")");
+  // // defined in SimTKcommon/internal/Stage.h:189:7
+  // auto t4 = types.add_type<SimTK::Exception::RealizeTopologyMustBeCalledFirst>("Exception!RealizeTopologyMustBeCalledFirst");
+  // CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("type SimTK::Exception::StateAndSystemTopologyVersionsMustMatch (" __HERE__ ")");
-  // defined in SimTKcommon/internal/Stage.h:202:7
-  auto t5 = types.add_type<SimTK::Exception::StateAndSystemTopologyVersionsMustMatch>("SimTK!Exception!StateAndSystemTopologyVersionsMustMatch");
-  CLEAR_DEBUG_MSG();
+  // DEBUG_MSG("type SimTK::Exception::StateAndSystemTopologyVersionsMustMatch (" __HERE__ ")");
+  // // defined in SimTKcommon/internal/Stage.h:202:7
+  // auto t5 = types.add_type<SimTK::Exception::StateAndSystemTopologyVersionsMustMatch>("Exception!StateAndSystemTopologyVersionsMustMatch");
+  // CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("type SimTK::Exception::StageTooLow (" __HERE__ ")");
-  // defined in SimTKcommon/internal/Stage.h:226:7
-  auto t6 = types.add_type<SimTK::Exception::StageTooLow>("SimTK!Exception!StageTooLow");
-  CLEAR_DEBUG_MSG();
+  // DEBUG_MSG("type SimTK::Exception::StageTooLow (" __HERE__ ")");
+  // // defined in SimTKcommon/internal/Stage.h:226:7
+  // auto t6 = types.add_type<SimTK::Exception::StageTooLow>("Exception!StageTooLow");
+  // CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("type SimTK::Exception::StageIsWrong (" __HERE__ ")");
-  // defined in SimTKcommon/internal/Stage.h:237:7
-  auto t7 = types.add_type<SimTK::Exception::StageIsWrong>("SimTK!Exception!StageIsWrong");
-  CLEAR_DEBUG_MSG();
+  // DEBUG_MSG("type SimTK::Exception::StageIsWrong (" __HERE__ ")");
+  // // defined in SimTKcommon/internal/Stage.h:237:7
+  // auto t7 = types.add_type<SimTK::Exception::StageIsWrong>("Exception!StageIsWrong");
+  // CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("type SimTK::Exception::StageTooHigh (" __HERE__ ")");
-  // defined in SimTKcommon/internal/Stage.h:248:7
-  auto t8 = types.add_type<SimTK::Exception::StageTooHigh>("SimTK!Exception!StageTooHigh");
-  CLEAR_DEBUG_MSG();
+  // DEBUG_MSG("type SimTK::Exception::StageTooHigh (" __HERE__ ")");
+  // // defined in SimTKcommon/internal/Stage.h:248:7
+  // auto t8 = types.add_type<SimTK::Exception::StageTooHigh>("Exception!StageTooHigh");
+  // CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("type SimTK::Exception::StageOutOfRange (" __HERE__ ")");
-  // defined in SimTKcommon/internal/Stage.h:259:7
-  auto t9 = types.add_type<SimTK::Exception::StageOutOfRange>("SimTK!Exception!StageOutOfRange");
-  CLEAR_DEBUG_MSG();
+  // DEBUG_MSG("type SimTK::Exception::StageOutOfRange (" __HERE__ ")");
+  // // defined in SimTKcommon/internal/Stage.h:259:7
+  // auto t9 = types.add_type<SimTK::Exception::StageOutOfRange>("Exception!StageOutOfRange");
+  // CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("type SimTK::Exception::CacheEntryOutOfDate (" __HERE__ ")");
-  // defined in SimTKcommon/internal/Stage.h:270:7
-  auto t10 = types.add_type<SimTK::Exception::CacheEntryOutOfDate>("SimTK!Exception!CacheEntryOutOfDate");
-  CLEAR_DEBUG_MSG();
+  // DEBUG_MSG("type SimTK::Exception::CacheEntryOutOfDate (" __HERE__ ")");
+  // // defined in SimTKcommon/internal/Stage.h:270:7
+  // auto t10 = types.add_type<SimTK::Exception::CacheEntryOutOfDate>("Exception!CacheEntryOutOfDate");
+  // CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("type SimTK::Exception::RealizeCheckFailed (" __HERE__ ")");
-  // defined in SimTKcommon/internal/Stage.h:286:7
-  auto t11 = types.add_type<SimTK::Exception::RealizeCheckFailed>("SimTK!Exception!RealizeCheckFailed");
-  CLEAR_DEBUG_MSG();
+  // DEBUG_MSG("type SimTK::Exception::RealizeCheckFailed (" __HERE__ ")");
+  // // defined in SimTKcommon/internal/Stage.h:286:7
+  // auto t11 = types.add_type<SimTK::Exception::RealizeCheckFailed>("Exception!RealizeCheckFailed");
+  // CLEAR_DEBUG_MSG();
 
   /**********************************************************************/
   /* Wrappers for the methods of class SimTK::Stage
    */
 
-
+  // Ambiguous/overwrites the following int constructor method
   // DEBUG_MSG("void SimTK::Stage::Stage(SimTK::Stage::Level) (" __HERE__ ")");
   // // defined in SimTKcommon/internal/Stage.h:95:5
   // t0.constructor<SimTK::Stage::Level>();
-
 
   DEBUG_MSG("void SimTK::Stage::Stage(int) (" __HERE__ ")");
   // defined in SimTKcommon/internal/Stage.h:100:14
@@ -101,34 +100,10 @@ void define_SimTKcommon_Stage(jlcxx::Module& types){
   t0.method("==", static_cast<bool (SimTK::Stage::*)(SimTK::Stage::Level)  const>(&SimTK::Stage::operator==));
   CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("bool SimTK::Stage::operator!=(SimTK::Stage::Level) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::Stage::operator!=(SimTK::Stage::Level)
-  // defined in SimTKcommon/internal/Stage.h:108:10
-  t0.method("!=", static_cast<bool (SimTK::Stage::*)(SimTK::Stage::Level)  const>(&SimTK::Stage::operator!=));
-  CLEAR_DEBUG_MSG();
-
   DEBUG_MSG("bool SimTK::Stage::operator<(SimTK::Stage::Level) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::Stage::operator<(SimTK::Stage::Level)
   // defined in SimTKcommon/internal/Stage.h:109:10
   t0.method("<", static_cast<bool (SimTK::Stage::*)(SimTK::Stage::Level)  const>(&SimTK::Stage::operator<));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("bool SimTK::Stage::operator<=(SimTK::Stage::Level) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::Stage::operator<=(SimTK::Stage::Level)
-  // defined in SimTKcommon/internal/Stage.h:110:10
-  t0.method("<=", static_cast<bool (SimTK::Stage::*)(SimTK::Stage::Level)  const>(&SimTK::Stage::operator<=));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("bool SimTK::Stage::operator>(SimTK::Stage::Level) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::Stage::operator>(SimTK::Stage::Level)
-  // defined in SimTKcommon/internal/Stage.h:111:10
-  t0.method(">", static_cast<bool (SimTK::Stage::*)(SimTK::Stage::Level)  const>(&SimTK::Stage::operator>));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("bool SimTK::Stage::operator>=(SimTK::Stage::Level) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::Stage::operator>=(SimTK::Stage::Level)
-  // defined in SimTKcommon/internal/Stage.h:112:10
-  t0.method(">=", static_cast<bool (SimTK::Stage::*)(SimTK::Stage::Level)  const>(&SimTK::Stage::operator>=));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::Stage::operator==(SimTK::Stage) (" __HERE__ ")");
@@ -137,34 +112,10 @@ void define_SimTKcommon_Stage(jlcxx::Module& types){
   t0.method("==", static_cast<bool (SimTK::Stage::*)(SimTK::Stage)  const>(&SimTK::Stage::operator==));
   CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("bool SimTK::Stage::operator!=(SimTK::Stage) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::Stage::operator!=(SimTK::Stage)
-  // defined in SimTKcommon/internal/Stage.h:114:10
-  t0.method("!=", static_cast<bool (SimTK::Stage::*)(SimTK::Stage)  const>(&SimTK::Stage::operator!=));
-  CLEAR_DEBUG_MSG();
-
   DEBUG_MSG("bool SimTK::Stage::operator<(SimTK::Stage) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::Stage::operator<(SimTK::Stage)
   // defined in SimTKcommon/internal/Stage.h:115:10
   t0.method("<", static_cast<bool (SimTK::Stage::*)(SimTK::Stage)  const>(&SimTK::Stage::operator<));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("bool SimTK::Stage::operator<=(SimTK::Stage) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::Stage::operator<=(SimTK::Stage)
-  // defined in SimTKcommon/internal/Stage.h:116:10
-  t0.method("<=", static_cast<bool (SimTK::Stage::*)(SimTK::Stage)  const>(&SimTK::Stage::operator<=));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("bool SimTK::Stage::operator>(SimTK::Stage) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::Stage::operator>(SimTK::Stage)
-  // defined in SimTKcommon/internal/Stage.h:117:10
-  t0.method(">", static_cast<bool (SimTK::Stage::*)(SimTK::Stage)  const>(&SimTK::Stage::operator>));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("bool SimTK::Stage::operator>=(SimTK::Stage) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::Stage::operator>=(SimTK::Stage)
-  // defined in SimTKcommon/internal/Stage.h:118:10
-  t0.method(">=", static_cast<bool (SimTK::Stage::*)(SimTK::Stage)  const>(&SimTK::Stage::operator>=));
   CLEAR_DEBUG_MSG();
   types.unset_override_module();
 
@@ -226,111 +177,111 @@ void define_SimTKcommon_Stage(jlcxx::Module& types){
    **********************************************************************/
 
 
-  /**********************************************************************/
-  /* Wrappers for the methods of class SimTK::Exception::RealizeTopologyMustBeCalledFirst
-   */
+  // /**********************************************************************/
+  // /* Wrappers for the methods of class SimTK::Exception::RealizeTopologyMustBeCalledFirst
+  //  */
 
 
-  DEBUG_MSG("void SimTK::Exception::RealizeTopologyMustBeCalledFirst::RealizeTopologyMustBeCalledFirst(const char *, int, const char *, const char *, const char *) (" __HERE__ ")");
-  // defined in SimTKcommon/internal/Stage.h:191:5
-  t4.constructor<const char *, int, const char *, const char *, const char *>();
-  CLEAR_DEBUG_MSG();
+  // DEBUG_MSG("void SimTK::Exception::RealizeTopologyMustBeCalledFirst::RealizeTopologyMustBeCalledFirst(const char *, int, const char *, const char *, const char *) (" __HERE__ ")");
+  // // defined in SimTKcommon/internal/Stage.h:191:5
+  // t4.constructor<const char *, int, const char *, const char *, const char *>();
+  // CLEAR_DEBUG_MSG();
 
-  /* End of SimTK::Exception::RealizeTopologyMustBeCalledFirst class method wrappers
-   **********************************************************************/
-
-
-  /**********************************************************************/
-  /* Wrappers for the methods of class SimTK::Exception::StateAndSystemTopologyVersionsMustMatch
-   */
+  // /* End of SimTK::Exception::RealizeTopologyMustBeCalledFirst class method wrappers
+  //  **********************************************************************/
 
 
-  DEBUG_MSG("void SimTK::Exception::StateAndSystemTopologyVersionsMustMatch::StateAndSystemTopologyVersionsMustMatch(const char *, int, const char *, const char *, const char *, int, int) (" __HERE__ ")");
-  // defined in SimTKcommon/internal/Stage.h:204:5
-  t5.constructor<const char *, int, const char *, const char *, const char *, int, int>();
-  CLEAR_DEBUG_MSG();
-
-  /* End of SimTK::Exception::StateAndSystemTopologyVersionsMustMatch class method wrappers
-   **********************************************************************/
+  // /**********************************************************************/
+  // /* Wrappers for the methods of class SimTK::Exception::StateAndSystemTopologyVersionsMustMatch
+  //  */
 
 
-  /**********************************************************************/
-  /* Wrappers for the methods of class SimTK::Exception::StageTooLow
-   */
+  // DEBUG_MSG("void SimTK::Exception::StateAndSystemTopologyVersionsMustMatch::StateAndSystemTopologyVersionsMustMatch(const char *, int, const char *, const char *, const char *, int, int) (" __HERE__ ")");
+  // // defined in SimTKcommon/internal/Stage.h:204:5
+  // t5.constructor<const char *, int, const char *, const char *, const char *, int, int>();
+  // CLEAR_DEBUG_MSG();
+
+  // /* End of SimTK::Exception::StateAndSystemTopologyVersionsMustMatch class method wrappers
+  //  **********************************************************************/
 
 
-  DEBUG_MSG("void SimTK::Exception::StageTooLow::StageTooLow(const char *, int, SimTK::Stage, SimTK::Stage, const char *) (" __HERE__ ")");
-  // defined in SimTKcommon/internal/Stage.h:228:5
-  t6.constructor<const char *, int, SimTK::Stage, SimTK::Stage, const char *>();
-  CLEAR_DEBUG_MSG();
-
-  /* End of SimTK::Exception::StageTooLow class method wrappers
-   **********************************************************************/
+  // /**********************************************************************/
+  // /* Wrappers for the methods of class SimTK::Exception::StageTooLow
+  //  */
 
 
-  /**********************************************************************/
-  /* Wrappers for the methods of class SimTK::Exception::StageIsWrong
-   */
+  // DEBUG_MSG("void SimTK::Exception::StageTooLow::StageTooLow(const char *, int, SimTK::Stage, SimTK::Stage, const char *) (" __HERE__ ")");
+  // // defined in SimTKcommon/internal/Stage.h:228:5
+  // t6.constructor<const char *, int, SimTK::Stage, SimTK::Stage, const char *>();
+  // CLEAR_DEBUG_MSG();
+
+  // /* End of SimTK::Exception::StageTooLow class method wrappers
+  //  **********************************************************************/
 
 
-  DEBUG_MSG("void SimTK::Exception::StageIsWrong::StageIsWrong(const char *, int, SimTK::Stage, SimTK::Stage, const char *) (" __HERE__ ")");
-  // defined in SimTKcommon/internal/Stage.h:239:5
-  t7.constructor<const char *, int, SimTK::Stage, SimTK::Stage, const char *>();
-  CLEAR_DEBUG_MSG();
-
-  /* End of SimTK::Exception::StageIsWrong class method wrappers
-   **********************************************************************/
+  // /**********************************************************************/
+  // /* Wrappers for the methods of class SimTK::Exception::StageIsWrong
+  //  */
 
 
-  /**********************************************************************/
-  /* Wrappers for the methods of class SimTK::Exception::StageTooHigh
-   */
+  // DEBUG_MSG("void SimTK::Exception::StageIsWrong::StageIsWrong(const char *, int, SimTK::Stage, SimTK::Stage, const char *) (" __HERE__ ")");
+  // // defined in SimTKcommon/internal/Stage.h:239:5
+  // t7.constructor<const char *, int, SimTK::Stage, SimTK::Stage, const char *>();
+  // CLEAR_DEBUG_MSG();
+
+  // /* End of SimTK::Exception::StageIsWrong class method wrappers
+  //  **********************************************************************/
 
 
-  DEBUG_MSG("void SimTK::Exception::StageTooHigh::StageTooHigh(const char *, int, SimTK::Stage, SimTK::Stage, const char *) (" __HERE__ ")");
-  // defined in SimTKcommon/internal/Stage.h:250:5
-  t8.constructor<const char *, int, SimTK::Stage, SimTK::Stage, const char *>();
-  CLEAR_DEBUG_MSG();
-
-  /* End of SimTK::Exception::StageTooHigh class method wrappers
-   **********************************************************************/
+  // /**********************************************************************/
+  // /* Wrappers for the methods of class SimTK::Exception::StageTooHigh
+  //  */
 
 
-  /**********************************************************************/
-  /* Wrappers for the methods of class SimTK::Exception::StageOutOfRange
-   */
+  // DEBUG_MSG("void SimTK::Exception::StageTooHigh::StageTooHigh(const char *, int, SimTK::Stage, SimTK::Stage, const char *) (" __HERE__ ")");
+  // // defined in SimTKcommon/internal/Stage.h:250:5
+  // t8.constructor<const char *, int, SimTK::Stage, SimTK::Stage, const char *>();
+  // CLEAR_DEBUG_MSG();
+
+  // /* End of SimTK::Exception::StageTooHigh class method wrappers
+  //  **********************************************************************/
 
 
-  DEBUG_MSG("void SimTK::Exception::StageOutOfRange::StageOutOfRange(const char *, int, SimTK::Stage, SimTK::Stage, SimTK::Stage, const char *) (" __HERE__ ")");
-  // defined in SimTKcommon/internal/Stage.h:261:5
-  t9.constructor<const char *, int, SimTK::Stage, SimTK::Stage, SimTK::Stage, const char *>();
-  CLEAR_DEBUG_MSG();
-
-  /* End of SimTK::Exception::StageOutOfRange class method wrappers
-   **********************************************************************/
+  // /**********************************************************************/
+  // /* Wrappers for the methods of class SimTK::Exception::StageOutOfRange
+  //  */
 
 
-  /**********************************************************************/
-  /* Wrappers for the methods of class SimTK::Exception::CacheEntryOutOfDate
-   */
+  // DEBUG_MSG("void SimTK::Exception::StageOutOfRange::StageOutOfRange(const char *, int, SimTK::Stage, SimTK::Stage, SimTK::Stage, const char *) (" __HERE__ ")");
+  // // defined in SimTKcommon/internal/Stage.h:261:5
+  // t9.constructor<const char *, int, SimTK::Stage, SimTK::Stage, SimTK::Stage, const char *>();
+  // CLEAR_DEBUG_MSG();
+
+  // /* End of SimTK::Exception::StageOutOfRange class method wrappers
+  //  **********************************************************************/
 
 
-  DEBUG_MSG("void SimTK::Exception::CacheEntryOutOfDate::CacheEntryOutOfDate(const char *, int, SimTK::Stage, SimTK::Stage, SimTK::StageVersion, SimTK::StageVersion) (" __HERE__ ")");
-  // defined in SimTKcommon/internal/Stage.h:272:5
-  t10.constructor<const char *, int, SimTK::Stage, SimTK::Stage, SimTK::StageVersion, SimTK::StageVersion>();
-  CLEAR_DEBUG_MSG();
-
-  /* End of SimTK::Exception::CacheEntryOutOfDate class method wrappers
-   **********************************************************************/
+  // /**********************************************************************/
+  // /* Wrappers for the methods of class SimTK::Exception::CacheEntryOutOfDate
+  //  */
 
 
-  /**********************************************************************/
-  /* Wrappers for the methods of class SimTK::Exception::RealizeCheckFailed
-   */
+  // DEBUG_MSG("void SimTK::Exception::CacheEntryOutOfDate::CacheEntryOutOfDate(const char *, int, SimTK::Stage, SimTK::Stage, SimTK::StageVersion, SimTK::StageVersion) (" __HERE__ ")");
+  // // defined in SimTKcommon/internal/Stage.h:272:5
+  // t10.constructor<const char *, int, SimTK::Stage, SimTK::Stage, SimTK::StageVersion, SimTK::StageVersion>();
+  // CLEAR_DEBUG_MSG();
+
+  // /* End of SimTK::Exception::CacheEntryOutOfDate class method wrappers
+  //  **********************************************************************/
 
 
-  /* End of SimTK::Exception::RealizeCheckFailed class method wrappers
-   **********************************************************************/
+  // /**********************************************************************/
+  // /* Wrappers for the methods of class SimTK::Exception::RealizeCheckFailed
+  //  */
+
+
+  // /* End of SimTK::Exception::RealizeCheckFailed class method wrappers
+  //  **********************************************************************/
 
 }
 
