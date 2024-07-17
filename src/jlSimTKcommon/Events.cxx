@@ -83,7 +83,7 @@ void define_SimTKcommon_Events(jlcxx::Module& types, const ArrayWrapper& array_w
   DEBUG_MSG("SimTK::TriggeredEventHandler & SimTK::TriggeredEventHandler::operator=(const SimTK::TriggeredEventHandler &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::TriggeredEventHandler & SimTK::TriggeredEventHandler::operator=(const SimTK::TriggeredEventHandler &)
   // defined in SimTKcommon/internal/EventHandler.h:113:28
-  t3.method("assign", static_cast<SimTK::TriggeredEventHandler & (SimTK::TriggeredEventHandler::*)(const SimTK::TriggeredEventHandler &) >(&SimTK::TriggeredEventHandler::operator=));
+  t3.method("set!", static_cast<SimTK::TriggeredEventHandler & (SimTK::TriggeredEventHandler::*)(const SimTK::TriggeredEventHandler &) >(&SimTK::TriggeredEventHandler::operator=));
   CLEAR_DEBUG_MSG();
 
 
@@ -172,7 +172,7 @@ void define_SimTKcommon_Events(jlcxx::Module& types, const ArrayWrapper& array_w
   DEBUG_MSG("SimTK::TriggeredEventReporter & SimTK::TriggeredEventReporter::operator=(const SimTK::TriggeredEventReporter &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::TriggeredEventReporter & SimTK::TriggeredEventReporter::operator=(const SimTK::TriggeredEventReporter &)
   // defined in SimTKcommon/internal/EventReporter.h:100:29
-  t9.method("assign", static_cast<SimTK::TriggeredEventReporter & (SimTK::TriggeredEventReporter::*)(const SimTK::TriggeredEventReporter &) >(&SimTK::TriggeredEventReporter::operator=));
+  t9.method("set!", static_cast<SimTK::TriggeredEventReporter & (SimTK::TriggeredEventReporter::*)(const SimTK::TriggeredEventReporter &) >(&SimTK::TriggeredEventReporter::operator=));
   CLEAR_DEBUG_MSG();
 
 

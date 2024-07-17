@@ -40,7 +40,7 @@ namespace jlsimbody {
 
       DEBUG_MSG("ArrayView_<T, X> & SimTK::ArrayView_::operator=(const WrappedType &) (" __HERE__ ")");
       // defined in SimTKcommon/internal/Array.h:923:13
-      wrapped.method("assign", static_cast<WrappedType & (WrappedType::*)(const WrappedType &) >(&WrappedType::operator=));
+      wrapped.method("set!", static_cast<WrappedType & (WrappedType::*)(const WrappedType &) >(&WrappedType::operator=));
       CLEAR_DEBUG_MSG();
 
       DEBUG_MSG("ArrayView_<T, X> SimTK::ArrayView_::updSubArray(typename WrappedType::index_type, typename WrappedType::size_type) (" __HERE__ ")");

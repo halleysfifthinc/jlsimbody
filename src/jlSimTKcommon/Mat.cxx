@@ -115,6 +115,8 @@ void define_SimTKcommon_Mat(jlcxx::Module& types){
     );
     wrapped.module().unset_override_module();
 
+    wrapped.method("set!", static_cast<WrappedType & (WrappedType::*)(const WrappedType &) >(&WrappedType::operator=));
+
     wrapped.method("cppgetindex", static_cast<ELT & (WrappedType::*)(int, int)>(&WrappedType::elt));
     wrapped.method("cppsetindex!", static_cast<void (WrappedType::*)(int, int, const ELT &)>(&WrappedType::set));
 

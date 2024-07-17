@@ -56,7 +56,7 @@ void define_simbody_Body(jlcxx::Module& types){
   DEBUG_MSG("SimTK::Body & SimTK::Body::operator=(const SimTK::Body &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Body & SimTK::Body::operator=(const SimTK::Body &)
   // defined in simbody/internal/Body.h:66:7
-  t0.method("assign", static_cast<SimTK::Body & (SimTK::Body::*)(const SimTK::Body &) >(&SimTK::Body::operator=));
+  t0.method("set!", static_cast<SimTK::Body & (SimTK::Body::*)(const SimTK::Body &) >(&SimTK::Body::operator=));
   CLEAR_DEBUG_MSG();
 
 

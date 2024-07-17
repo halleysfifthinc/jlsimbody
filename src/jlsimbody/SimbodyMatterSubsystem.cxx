@@ -2140,7 +2140,7 @@ void define_simbody_SimbodyMatterSubsystem(jlcxx::Module& types, const ArrayWrap
   DEBUG_MSG("SimTK::SimbodyMatterSubsystem & SimTK::SimbodyMatterSubsystem::operator=(const SimTK::SimbodyMatterSubsystem &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::SimbodyMatterSubsystem & SimTK::SimbodyMatterSubsystem::operator=(const SimTK::SimbodyMatterSubsystem &)
   // defined in simbody/internal/SimbodyMatterSubsystem.h:283:25
-  t17.method("assign", static_cast<SimTK::SimbodyMatterSubsystem & (SimTK::SimbodyMatterSubsystem::*)(const SimTK::SimbodyMatterSubsystem &) >(&SimTK::SimbodyMatterSubsystem::operator=));
+  t17.method("set!", static_cast<SimTK::SimbodyMatterSubsystem & (SimTK::SimbodyMatterSubsystem::*)(const SimTK::SimbodyMatterSubsystem &) >(&SimTK::SimbodyMatterSubsystem::operator=));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::SimbodyMatterSubsystem::setUseEulerAngles(SimTK::State &, bool) (" __HERE__ ")");
@@ -3367,7 +3367,7 @@ void define_simbody_SimbodyMatterSubsystem(jlcxx::Module& types, const ArrayWrap
   // DEBUG_MSG("SimTK::SimbodyMatterSubtree & SimTK::SimbodyMatterSubtree::operator=(const SimTK::SimbodyMatterSubtree &) (" __HERE__ ")");
   // // signature to use in the veto list: SimTK::SimbodyMatterSubtree & SimTK::SimbodyMatterSubtree::operator=(const SimTK::SimbodyMatterSubtree &)
   // // defined in simbody/internal/SimbodyMatterSubtree.h:113:27
-  // t28.method("assign", static_cast<SimTK::SimbodyMatterSubtree & (SimTK::SimbodyMatterSubtree::*)(const SimTK::SimbodyMatterSubtree &) >(&SimTK::SimbodyMatterSubtree::operator=));
+  // t28.method("set!", static_cast<SimTK::SimbodyMatterSubtree & (SimTK::SimbodyMatterSubtree::*)(const SimTK::SimbodyMatterSubtree &) >(&SimTK::SimbodyMatterSubtree::operator=));
 
 
   // DEBUG_MSG("void SimTK::SimbodyMatterSubtree::SimbodyMatterSubtree(const SimTK::SimbodyMatterSubsystem &) (" __HERE__ ")");
@@ -3515,7 +3515,7 @@ void define_simbody_SimbodyMatterSubsystem(jlcxx::Module& types, const ArrayWrap
   // DEBUG_MSG("SimTK::SimbodyMatterSubtreeResults & SimTK::SimbodyMatterSubtreeResults::operator=(const SimTK::SimbodyMatterSubtreeResults &) (" __HERE__ ")");
   // // signature to use in the veto list: SimTK::SimbodyMatterSubtreeResults & SimTK::SimbodyMatterSubtreeResults::operator=(const SimTK::SimbodyMatterSubtreeResults &)
   // // defined in simbody/internal/SimbodyMatterSubtree.h:246:34
-  // t30.method("assign", static_cast<SimTK::SimbodyMatterSubtreeResults & (SimTK::SimbodyMatterSubtreeResults::*)(const SimTK::SimbodyMatterSubtreeResults &) >(&SimTK::SimbodyMatterSubtreeResults::operator=));
+  // t30.method("set!", static_cast<SimTK::SimbodyMatterSubtreeResults & (SimTK::SimbodyMatterSubtreeResults::*)(const SimTK::SimbodyMatterSubtreeResults &) >(&SimTK::SimbodyMatterSubtreeResults::operator=));
 
   // DEBUG_MSG("void SimTK::SimbodyMatterSubtreeResults::clear() (" __HERE__ ")");
   // // signature to use in the veto list: void SimTK::SimbodyMatterSubtreeResults::clear()

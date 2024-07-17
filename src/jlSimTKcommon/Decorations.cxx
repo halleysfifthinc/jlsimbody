@@ -210,7 +210,7 @@ void define_SimTKcommon_Decorations(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::operator=(const SimTK::DecorativeGeometry &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::operator=(const SimTK::DecorativeGeometry &)
   // defined in SimTKcommon/internal/DecorativeGeometry.h:96:21
-  t3.method("assign", static_cast<SimTK::DecorativeGeometry & (SimTK::DecorativeGeometry::*)(const SimTK::DecorativeGeometry &) >(&SimTK::DecorativeGeometry::operator=));
+  t3.method("set!", static_cast<SimTK::DecorativeGeometry & (SimTK::DecorativeGeometry::*)(const SimTK::DecorativeGeometry &) >(&SimTK::DecorativeGeometry::operator=));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::DecorativeGeometry & SimTK::DecorativeGeometry::setBodyId(int) (" __HERE__ ")");

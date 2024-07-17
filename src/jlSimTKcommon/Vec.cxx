@@ -114,6 +114,8 @@ void define_SimTKcommon_Vec(jlcxx::Module& types, jlcxx::TypeWrapper<jlcxx::Para
     );
     wrapped.module().unset_override_module();
 
+    wrapped.method("set!", static_cast<WrappedType & (WrappedType::*)(const WrappedType &) >(&WrappedType::operator=));
+
     DEBUG_MSG("ELT & SimTK::Vec::operator(int) (" __HERE__ ")");
     wrapped.method("cppgetindex", static_cast<ELT & (WrappedType::*)(int) >(&WrappedType::operator()));
     CLEAR_DEBUG_MSG();

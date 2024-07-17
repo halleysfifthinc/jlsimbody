@@ -102,7 +102,7 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types, const ArrayWrapper
   DEBUG_MSG("SimTK::Subsystem & SimTK::Subsystem::operator=(const SimTK::Subsystem &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Subsystem & SimTK::Subsystem::operator=(const SimTK::Subsystem &)
   // defined in SimTKcommon/internal/Subsystem.h:70:12
-  t0.method("assign", static_cast<SimTK::Subsystem & (SimTK::Subsystem::*)(const SimTK::Subsystem &) >(&SimTK::Subsystem::operator=));
+  t0.method("set!", static_cast<SimTK::Subsystem & (SimTK::Subsystem::*)(const SimTK::Subsystem &) >(&SimTK::Subsystem::operator=));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_US
@@ -1318,7 +1318,7 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types, const ArrayWrapper
   DEBUG_MSG("SimTK::System & SimTK::System::operator=(const SimTK::System &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::System & SimTK::System::operator=(const SimTK::System &)
   // defined in SimTKcommon/internal/System.h:784:9
-  t22.method("assign", static_cast<SimTK::System & (SimTK::System::*)(const SimTK::System &) >(&SimTK::System::operator=));
+  t22.method("set!", static_cast<SimTK::System & (SimTK::System::*)(const SimTK::System &) >(&SimTK::System::operator=));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::String & SimTK::System::getName() (" __HERE__ ")");

@@ -69,6 +69,8 @@ void define_SimTKcommon_Row(jlcxx::Module& types){
     );
     wrapped.module().unset_override_module();
 
+    wrapped.method("set!", static_cast<WrappedType & (WrappedType::*)(const WrappedType &) >(&WrappedType::operator=));
+
     DEBUG_MSG("ELT & SimTK::Row::operator(int) (" __HERE__ ")");
     wrapped.method("cppgetindex", static_cast<ELT & (WrappedType::*)(int) >(&WrappedType::operator[]));
     CLEAR_DEBUG_MSG();

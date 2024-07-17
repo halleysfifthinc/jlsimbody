@@ -253,7 +253,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("SimTK::Contact & SimTK::Contact::operator=(const SimTK::Contact &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Contact & SimTK::Contact::operator=(const SimTK::Contact &)
   // defined in simmath/internal/Contact.h:112:14
-  t3.method("assign", static_cast<SimTK::Contact & (SimTK::Contact::*)(const SimTK::Contact &) >(&SimTK::Contact::operator=));
+  t3.method("set!", static_cast<SimTK::Contact & (SimTK::Contact::*)(const SimTK::Contact &) >(&SimTK::Contact::operator=));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::Contact::clear() (" __HERE__ ")");
@@ -889,7 +889,7 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   DEBUG_MSG("SimTK::ContactGeometry & SimTK::ContactGeometry::operator=(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactGeometry & SimTK::ContactGeometry::operator=(const SimTK::ContactGeometry &)
   // defined in simmath/internal/ContactGeometry.h:129:18
-  t17.method("assign", static_cast<SimTK::ContactGeometry & (SimTK::ContactGeometry::*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::operator=));
+  t17.method("set!", static_cast<SimTK::ContactGeometry & (SimTK::ContactGeometry::*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::operator=));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::DecorativeGeometry SimTK::ContactGeometry::createDecorativeGeometry() (" __HERE__ ")");

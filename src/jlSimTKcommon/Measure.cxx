@@ -121,7 +121,7 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
   DEBUG_MSG("SimTK::AbstractMeasure & SimTK::AbstractMeasure::operator=(const SimTK::AbstractMeasure &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::AbstractMeasure & SimTK::AbstractMeasure::operator=(const SimTK::AbstractMeasure &)
   // defined in SimTKcommon/internal/Measure.h:179:22
-  t1.method("assign", static_cast<SimTK::AbstractMeasure & (SimTK::AbstractMeasure::*)(const SimTK::AbstractMeasure &) >(&SimTK::AbstractMeasure::operator=));
+  t1.method("set!", static_cast<SimTK::AbstractMeasure & (SimTK::AbstractMeasure::*)(const SimTK::AbstractMeasure &) >(&SimTK::AbstractMeasure::operator=));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::AbstractMeasure & SimTK::AbstractMeasure::shallowAssign(const SimTK::AbstractMeasure &) (" __HERE__ ")");
@@ -231,7 +231,7 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
     DEBUG_MSG("Measure_<T> & SimTK::Measure_::operator=(const WrappedType &) (" __HERE__ ")");
     // signature to use in the veto list: Measure_<T> & SimTK::Measure_::operator=(const WrappedType &)
     // defined in SimTKcommon/internal/Measure.h:267:5
-    wrapped.method("assign", static_cast<WrappedType & (WrappedType::*)(const WrappedType &) >(&WrappedType::operator=));
+    wrapped.method("set!", static_cast<WrappedType & (WrappedType::*)(const WrappedType &) >(&WrappedType::operator=));
     CLEAR_DEBUG_MSG();
     // wrapped.method("assign", [](WrappedType& a) -> WrappedType & { return a.operator=(); });
     // wrapped.method("assign", [](WrappedType* a) -> WrappedType & { return a->operator=(); });
@@ -326,7 +326,7 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
     DEBUG_MSG("SimTK::Measure_::Constant & SimTK::Measure_::Constant::operator=(const SimTK::Measure_::Constant &) (" __HERE__ ")");
     // signature to use in the veto list: SimTK::Measure_::Constant & SimTK::Measure_::Constant::operator=(const SimTK::Measure_::Constant &)
     // defined in SimTKcommon/internal/Measure.h:343:5
-    wrapped.method("assign", static_cast<WrappedType & (WrappedType::*)(const WrappedType &) >(&WrappedType::operator=));
+    wrapped.method("set!", static_cast<WrappedType & (WrappedType::*)(const WrappedType &) >(&WrappedType::operator=));
     // wrapped.method("assign", [](WrappedType& a) -> WrappedType & { return a.operator=(); });
     // wrapped.method("assign", [](WrappedType* a) -> WrappedType & { return a->operator=(); });
     CLEAR_DEBUG_MSG();
@@ -434,7 +434,7 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
     }
   };
   t5.apply<
-    SimTK::Measure_Zero_<SimTK::Vector_<double>>, 
+    SimTK::Measure_Zero_<SimTK::Vector_<double>>,
     SimTK::Measure_Zero_<double>
     >(t5_decl_methods);
 
@@ -526,7 +526,7 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
 
   auto t11_decl_methods = []<typename T> (jlcxx::TypeWrapper<SimTK::Measure_Result_<T>> wrapped){
     typedef SimTK::Measure_Result_<T> WrappedType;
-    
+
     DEBUG_MSG("void SimTK::Measure_::Result::Result(SimTK::Measure_::Result::Implementation *) (" __HERE__ ")");
     wrapped.constructor([] () {
       return reinterpret_cast<WrappedType*>(new typename SimTK::Measure_<T>::Result());
@@ -625,7 +625,7 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
 
   auto t12_decl_methods = []<typename T> (jlcxx::TypeWrapper<SimTK::Measure_Sinusoid_<T>> wrapped){
     typedef SimTK::Measure_Sinusoid_<T> WrappedType;
-    
+
     DEBUG_MSG("void SimTK::Measure_::Sinusoid::Sinusoid(SimTK::Measure_::Sinusoid::Implementation *) (" __HERE__ ")");
     wrapped.constructor([] () {
       return reinterpret_cast<WrappedType*>(new typename SimTK::Measure_<T>::Sinusoid());
@@ -658,7 +658,7 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
 
   auto t13_decl_methods = []<typename T> (jlcxx::TypeWrapper<SimTK::Measure_Plus_<T>> wrapped){
     typedef SimTK::Measure_Plus_<T> WrappedType;
-    
+
     DEBUG_MSG("void SimTK::Measure_::Plus::Plus(SimTK::Measure_::Plus::Implementation *) (" __HERE__ ")");
     wrapped.constructor([] () {
       return reinterpret_cast<WrappedType*>(new typename SimTK::Measure_<T>::Plus());
@@ -693,7 +693,7 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
 
   auto t14_decl_methods = []<typename T> (jlcxx::TypeWrapper<SimTK::Measure_Minus_<T>> wrapped){
     typedef SimTK::Measure_Minus_<T> WrappedType;
-    
+
     DEBUG_MSG("void SimTK::Measure_::Minus::Minus(SimTK::Measure_::Minus::Implementation *) (" __HERE__ ")");
     wrapped.constructor([] () {
       return reinterpret_cast<WrappedType*>(new typename SimTK::Measure_<T>::Minus());
@@ -728,7 +728,7 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
 
   auto t15_decl_methods = []<typename T> (jlcxx::TypeWrapper<SimTK::Measure_Scale_<T>> wrapped){
     typedef SimTK::Measure_Scale_<T> WrappedType;
-    
+
     DEBUG_MSG("void SimTK::Measure_::Scale::Scale(SimTK::Measure_::Scale::Implementation *) (" __HERE__ ")");
     wrapped.constructor([] () {
       return reinterpret_cast<WrappedType*>(new typename SimTK::Measure_<T>::Scale());
@@ -770,7 +770,7 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
 
   auto t16_decl_methods = []<typename T> (jlcxx::TypeWrapper<SimTK::Measure_Integrate_<T>> wrapped){
     typedef SimTK::Measure_Integrate_<T> WrappedType;
-    
+
     DEBUG_MSG("void SimTK::Measure_::Integrate::Integrate(SimTK::Measure_::Integrate::Implementation *) (" __HERE__ ")");
     wrapped.constructor([] () {
       return reinterpret_cast<WrappedType*>(new typename SimTK::Measure_<T>::Integrate());
@@ -835,7 +835,7 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
 
   auto t17_decl_methods = []<typename T> (jlcxx::TypeWrapper<SimTK::Measure_Differentiate_<T>> wrapped){
     typedef SimTK::Measure_Differentiate_<T> WrappedType;
-    
+
     DEBUG_MSG("void SimTK::Measure_::Differentiate::Differentiate(SimTK::Measure_::Differentiate::Implementation *) (" __HERE__ ")");
     wrapped.constructor([] () {
       return reinterpret_cast<WrappedType*>(new typename SimTK::Measure_<T>::Differentiate());
@@ -900,7 +900,7 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
   auto t18_decl_methods = []<typename T> (jlcxx::TypeWrapper<SimTK::Measure_Extreme_<T>> wrapped){
     typedef SimTK::Measure_Extreme_<T> WrappedType;
     typedef SimTK::Measure_<double>::Extreme::Operation Operation;
-    
+
     DEBUG_MSG("void SimTK::Measure_::Extreme::Extreme(SimTK::Measure_::Extreme::Implementation *) (" __HERE__ ")");
     wrapped.constructor([] () {
       return reinterpret_cast<WrappedType*>(new typename SimTK::Measure_<T>::Extreme());

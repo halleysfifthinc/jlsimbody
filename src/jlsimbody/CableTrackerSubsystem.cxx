@@ -111,7 +111,7 @@ void define_simbody_CableTrackerSubsystem(jlcxx::Module& types){
   DEBUG_MSG("SimTK::CablePath & SimTK::CablePath::operator=(const SimTK::CablePath &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::CablePath & SimTK::CablePath::operator=(const SimTK::CablePath &)
   // defined in simbody/internal/CablePath.h:115:12
-  t2.method("assign", static_cast<SimTK::CablePath & (SimTK::CablePath::*)(const SimTK::CablePath &) >(&SimTK::CablePath::operator=));
+  t2.method("set!", static_cast<SimTK::CablePath & (SimTK::CablePath::*)(const SimTK::CablePath &) >(&SimTK::CablePath::operator=));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::CablePath::solveForInitialCablePath(SimTK::State &) (" __HERE__ ")");
@@ -197,7 +197,7 @@ void define_simbody_CableTrackerSubsystem(jlcxx::Module& types){
   DEBUG_MSG("SimTK::CableObstacle & SimTK::CableObstacle::operator=(const SimTK::CableObstacle &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::CableObstacle & SimTK::CableObstacle::operator=(const SimTK::CableObstacle &)
   // defined in simbody/internal/CablePath.h:225:16
-  t6.method("assign", static_cast<SimTK::CableObstacle & (SimTK::CableObstacle::*)(const SimTK::CableObstacle &) >(&SimTK::CableObstacle::operator=));
+  t6.method("set!", static_cast<SimTK::CableObstacle & (SimTK::CableObstacle::*)(const SimTK::CableObstacle &) >(&SimTK::CableObstacle::operator=));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Transform & SimTK::CableObstacle::getDefaultTransform() (" __HERE__ ")");

@@ -181,7 +181,7 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
   DEBUG_MSG("SimTK::Event::Cause & SimTK::Event::Cause::operator=(SimTK::Event::Cause::Num) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Event::Cause & SimTK::Event::Cause::operator=(SimTK::Event::Cause::Num)
   // defined in SimTKcommon/internal/Event.h:141:16
-  t5.method("assign", static_cast<SimTK::Event::Cause & (SimTK::Event::Cause::*)(SimTK::Event::Cause::Num) >(&SimTK::Event::Cause::operator=));
+  t5.method("set!", static_cast<SimTK::Event::Cause & (SimTK::Event::Cause::*)(SimTK::Event::Cause::Num) >(&SimTK::Event::Cause::operator=));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::Event::Cause::isValid() (" __HERE__ ")");
@@ -219,7 +219,7 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
   DEBUG_MSG("SimTK::EventTriggerInfo & SimTK::EventTriggerInfo::operator=(const SimTK::EventTriggerInfo &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::EventTriggerInfo & SimTK::EventTriggerInfo::operator=(const SimTK::EventTriggerInfo &)
   // defined in SimTKcommon/internal/Event.h:215:23
-  t8.method("assign", static_cast<SimTK::EventTriggerInfo & (SimTK::EventTriggerInfo::*)(const SimTK::EventTriggerInfo &) >(&SimTK::EventTriggerInfo::operator=));
+  t8.method("set!", static_cast<SimTK::EventTriggerInfo & (SimTK::EventTriggerInfo::*)(const SimTK::EventTriggerInfo &) >(&SimTK::EventTriggerInfo::operator=));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
@@ -473,7 +473,7 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
   DEBUG_MSG("SimTK::State & SimTK::State::operator=(const SimTK::State &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::State & SimTK::State::operator=(const SimTK::State &)
   // defined in SimTKcommon/internal/State.h:302:8
-  t34.method("assign", static_cast<SimTK::State & (SimTK::State::*)(const SimTK::State &) >(&SimTK::State::operator=));
+  t34.method("set!", static_cast<SimTK::State & (SimTK::State::*)(const SimTK::State &) >(&SimTK::State::operator=));
   CLEAR_DEBUG_MSG();
 
 
@@ -1438,7 +1438,7 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
    **********************************************************************/
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
-  using array_types = jlcxx::ParameterList<SimTK::CacheEntryIndex, 
+  using array_types = jlcxx::ParameterList<SimTK::CacheEntryIndex,
     // SimTK::CacheEntryInfo, SimTK::DiscreteVarInfo,
     SimTK::EventId, SimTK::EventTriggerInfo, SimTK::SystemQIndex, SimTK::SystemUIndex, SimTK::QIndex, SimTK::UIndex>;
   jlcxx::for_each_parameter_type<array_types>(array_wrapper);
