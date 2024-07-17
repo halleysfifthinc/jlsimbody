@@ -104,8 +104,8 @@ void define_SimTKcommon_Orientations(jlcxx::Module& types, WrappedVec& vec, cons
   t4.method("setRotationToBodyFixedXYZ", static_cast<void (Rotation::*)(const typename Rotation::Vec3P &, const typename Rotation::Vec3P &) >(&Rotation::setRotationToBodyFixedXYZ));
 
   // TODO: Add collect (copy?) method to return an InverseRotation from a julia transpose
-  // t4.method("transpose", static_cast<const InverseRotation & (Rotation::*)() const>(&Rotation::invert));
-  // t4.method("updTranspose", static_cast<InverseRotation & (Rotation::*)()>(&Rotation::updInvert));
+  t4.method("invert", static_cast<const InverseRotation & (Rotation::*)() const>(&Rotation::invert));
+  t4.method("updInvert", static_cast<InverseRotation & (Rotation::*)()>(&Rotation::updInvert));
 
   // t4.method("x", static_cast<const typename Rotation::ColType & (Rotation::*)() const>(&Rotation::x));
   t4.method("x", [] (const Rotation & r) -> SimTK::UnitVec3* {
@@ -190,8 +190,8 @@ void define_SimTKcommon_Orientations(jlcxx::Module& types, WrappedVec& vec, cons
   t5.constructor<const InverseRotation &>();
 
   // See above comment re: transpose for Rotation
-  // t5.method("transpose", static_cast<const Rotation & (InverseRotation::*)() const>(&InverseRotation::invert));
-  // t5.method("updTranspose", static_cast<Rotation & (InverseRotation::*)()>(&InverseRotation::updInvert));
+  t5.method("invert", static_cast<const Rotation & (InverseRotation::*)() const>(&InverseRotation::invert));
+  t5.method("updInvert", static_cast<Rotation & (InverseRotation::*)()>(&InverseRotation::updInvert));
 
   // t5.method("x", static_cast<const typename InverseRotation::ColType & (InverseRotation::*)() const>(&InverseRotation::x));
   t5.method("x", [] (const InverseRotation & r) -> SimTK::UnitVec3* {

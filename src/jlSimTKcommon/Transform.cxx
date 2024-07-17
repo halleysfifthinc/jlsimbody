@@ -105,6 +105,7 @@ void define_SimTKcommon_Transform(jlcxx::Module& types, const ArrayWrapper& arra
   /* End of SimTK::Transform_ class method wrappers
    **********************************************************************/
   types.set_override_module(jl_base_module);
+  types.method("==", static_cast<bool (*)(const Transform &, const Transform &)>(&SimTK::operator==));
   types.method("*", [] (const Transform &t, const SimTK::Vec<3,double> &v) -> SimTK::Vec<3,double> { return t*v; });
   types.method("*", [] (const InverseTransform &t, const SimTK::Vec<3,double> &v) -> SimTK::Vec<3,double> { return t*v; });
   types.method("*", [] (const Transform &t, const SimTK::Vec<4,double> &v) -> SimTK::Vec<4,double> { return t*v; });

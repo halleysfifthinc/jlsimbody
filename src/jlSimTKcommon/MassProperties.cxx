@@ -80,6 +80,7 @@ void define_SimTKcommon_MassProperties(jlcxx::Module& types, const ArrayWrapper&
   inertia.apply<SimTK::Inertia_<double>>(t1_decl_methods);
 
   types.set_override_module(jl_base_module);
+  types.method("==", static_cast<bool (*)(const SimTK::Inertia_<double> &, const SimTK::Inertia_<double> &) >(&SimTK::operator==));
   types.method("+", static_cast<SimTK::Inertia_<double> (*)(const SimTK::Inertia_<double> &, const SimTK::Inertia_<double> &) >(&SimTK::operator+));
   types.method("-", static_cast<SimTK::Inertia_<double> (*)(const SimTK::Inertia_<double> &, const SimTK::Inertia_<double> &) >(&SimTK::operator-));
 
@@ -216,6 +217,10 @@ void define_SimTKcommon_MassProperties(jlcxx::Module& types, const ArrayWrapper&
   };
   t3.apply<SimTK::ArticulatedInertia_<double>>(t3_decl_methods);
 
+  types.set_override_module(jl_base_module);
+  types.method("+", static_cast<SimTK::ArticulatedInertia_<double> (*)(const SimTK::ArticulatedInertia_<double> &, const SimTK::ArticulatedInertia_<double> &) >(&SimTK::operator+));
+  types.method("-", static_cast<SimTK::ArticulatedInertia_<double> (*)(const SimTK::ArticulatedInertia_<double> &, const SimTK::ArticulatedInertia_<double> &) >(&SimTK::operator-));
+  types.unset_override_module();
 
   /**********************************************************************/
   /* Wrappers for the methods of class SimTK::MassProperties_
