@@ -8,16 +8,16 @@ namespace jlsimbody {
 void define_SimTKcommon_MassProperties(jlcxx::Module& types, const ArrayWrapper& array_wrapper){
 
   // defined in SimTKcommon/internal/MassProperties.h:82:26
-  auto inertia = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Inertia_");
+  auto inertia = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("Inertia");
 
-  auto t15 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!UnitInertia_", inertia.dt());
+  auto t15 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("UnitInertia", inertia.dt());
 
-  auto t2 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!SpatialInerta_");
+  auto t2 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SpatialInerta");
 
-  auto t3 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!ArticulatedInerta_");
+  auto t3 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("ArticulatedInerta");
 
   // defined in SimTKcommon/internal/MassProperties.h:85:26
-  auto t4 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!MassProperties_");
+  auto t4 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("MassProperties");
 
   /**********************************************************************/
   /* Wrappers for the methods of class SimTK::Inertia_
