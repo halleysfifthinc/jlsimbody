@@ -14,100 +14,83 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
 
   DEBUG_MSG("enum SimTK::Event::Cause::Num (" __HERE__ ")");
   // defined in SimTKcommon/internal/Event.h:128:14
-  types.add_bits<SimTK::Event::Cause::Num>("SimTK!Event!Cause!Num", jlcxx::julia_type("CppEnum"));
-  types.set_const("SimTK!Event!Cause!Initialization", SimTK::Event::Cause::Initialization);
-  types.set_const("SimTK!Event!Cause!Triggered", SimTK::Event::Cause::Triggered);
-  types.set_const("SimTK!Event!Cause!Scheduled", SimTK::Event::Cause::Scheduled);
-  types.set_const("SimTK!Event!Cause!TimeAdvanced", SimTK::Event::Cause::TimeAdvanced);
-  types.set_const("SimTK!Event!Cause!Signaled", SimTK::Event::Cause::Signaled);
-  types.set_const("SimTK!Event!Cause!Termination", SimTK::Event::Cause::Termination);
-  types.set_const("SimTK!Event!Cause!Invalid", SimTK::Event::Cause::Invalid);
+  types.add_bits<SimTK::Event::Cause::Num>("EventCauseNum", jlcxx::julia_type("CppEnum"));
+  types.set_const("CauseInitialization", SimTK::Event::Cause::Initialization);
+  types.set_const("CauseTriggered", SimTK::Event::Cause::Triggered);
+  types.set_const("CauseScheduled", SimTK::Event::Cause::Scheduled);
+  types.set_const("CauseTimeAdvanced", SimTK::Event::Cause::TimeAdvanced);
+  types.set_const("CauseSignaled", SimTK::Event::Cause::Signaled);
+  types.set_const("CauseTermination", SimTK::Event::Cause::Termination);
+  types.set_const("CauseInvalid", SimTK::Event::Cause::Invalid);
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("enum SimTK::Event::Trigger (" __HERE__ ")");
   // defined in SimTKcommon/internal/Event.h:158:10
-  types.add_bits<SimTK::Event::Trigger>("SimTK!Event!Trigger", jlcxx::julia_type("CppEnum"));
-  types.set_const("SimTK!Event!NoEventTrigger", SimTK::Event::NoEventTrigger);
-  types.set_const("SimTK!Event!PositiveToNegative", SimTK::Event::PositiveToNegative);
-  types.set_const("SimTK!Event!NegativeToPositive", SimTK::Event::NegativeToPositive);
-  types.set_const("SimTK!Event!Falling", SimTK::Event::Falling);
-  types.set_const("SimTK!Event!Rising", SimTK::Event::Rising);
-  types.set_const("SimTK!Event!AnySignChange", SimTK::Event::AnySignChange);
+  types.add_bits<SimTK::Event::Trigger>("EventTrigger", jlcxx::julia_type("CppEnum"));
+  types.set_const("Event_NoEventTrigger", SimTK::Event::NoEventTrigger);
+  types.set_const("Event_PositiveToNegative", SimTK::Event::PositiveToNegative);
+  types.set_const("Event_NegativeToPositive", SimTK::Event::NegativeToPositive);
+  types.set_const("Event_Falling", SimTK::Event::Falling);
+  types.set_const("Event_Rising", SimTK::Event::Rising);
+  types.set_const("Event_AnySignChange", SimTK::Event::AnySignChange);
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("enum SimTK::HandleEventsOptions::Option (" __HERE__ ")");
   // defined in SimTKcommon/internal/Event.h:271:10
-  types.add_bits<SimTK::HandleEventsOptions::Option>("SimTK!HandleEventsOptions!Option", jlcxx::julia_type("CppEnum"));
-  types.set_const("SimTK!HandleEventsOptions!None", SimTK::HandleEventsOptions::None);
-  types.set_const("SimTK!HandleEventsOptions!DontThrow", SimTK::HandleEventsOptions::DontThrow);
-  types.set_const("SimTK!HandleEventsOptions!UseInfinityNorm", SimTK::HandleEventsOptions::UseInfinityNorm);
+  types.add_bits<SimTK::HandleEventsOptions::Option>("HandleEventsOption", jlcxx::julia_type("CppEnum"));
+  types.set_const("HandleEventsOption_None", SimTK::HandleEventsOptions::None);
+  types.set_const("HandleEventsOption_DontThrow", SimTK::HandleEventsOptions::DontThrow);
+  types.set_const("HandleEventsOption_UseInfinityNorm", SimTK::HandleEventsOptions::UseInfinityNorm);
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("enum SimTK::HandleEventsResults::Status (" __HERE__ ")");
   // defined in SimTKcommon/internal/Event.h:349:10
-  types.add_bits<SimTK::HandleEventsResults::Status>("SimTK!HandleEventsResults!Status", jlcxx::julia_type("CppEnum"));
-  types.set_const("SimTK!HandleEventsResults!Invalid", SimTK::HandleEventsResults::Invalid);
-  types.set_const("SimTK!HandleEventsResults!Succeeded", SimTK::HandleEventsResults::Succeeded);
-  types.set_const("SimTK!HandleEventsResults!ShouldTerminate", SimTK::HandleEventsResults::ShouldTerminate);
-  types.set_const("SimTK!HandleEventsResults!Failed", SimTK::HandleEventsResults::Failed);
+  types.add_bits<SimTK::HandleEventsResults::Status>("HandleEventsResult", jlcxx::julia_type("CppEnum"));
+  types.set_const("HandleEventsResult_Invalid", SimTK::HandleEventsResults::Invalid);
+  types.set_const("HandleEventsResult_Succeeded", SimTK::HandleEventsResults::Succeeded);
+  types.set_const("HandleEventsResult_ShouldTerminate", SimTK::HandleEventsResults::ShouldTerminate);
+  types.set_const("HandleEventsResult_Failed", SimTK::HandleEventsResults::Failed);
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Event (" __HERE__ ")");
   // defined in SimTKcommon/internal/Event.h:76:7
-  auto t4 = types.add_type<SimTK::Event>("SimTK!Event");
+  auto t4 = types.add_type<SimTK::Event>("Event");
   t4.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Event::Cause (" __HERE__ ")");
   // defined in SimTKcommon/internal/Event.h:126:11
-  auto t5 = types.add_type<SimTK::Event::Cause>("SimTK!Event!Cause");
+  auto t5 = types.add_type<SimTK::Event::Cause>("EventCause");
   t5.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::EventTriggerInfo (" __HERE__ ")");
   // defined in SimTKcommon/internal/Event.h:209:32
-  auto t8 = types.add_type<SimTK::EventTriggerInfo>("SimTK!EventTriggerInfo");
+  auto t8 = types.add_type<SimTK::EventTriggerInfo>("EventTriggerInfo");
   t8.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::HandleEventsOptions (" __HERE__ ")");
   // defined in SimTKcommon/internal/Event.h:269:7
-  auto t9 = types.add_type<SimTK::HandleEventsOptions>("SimTK!HandleEventsOptions");
+  auto t9 = types.add_type<SimTK::HandleEventsOptions>("HandleEventsOptions");
   t9.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::HandleEventsResults (" __HERE__ ")");
   // defined in SimTKcommon/internal/Event.h:345:7
-  auto t11 = types.add_type<SimTK::HandleEventsResults>("SimTK!HandleEventsResults");
+  auto t11 = types.add_type<SimTK::HandleEventsResults>("HandleEventsResults");
   t11.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::State (" __HERE__ ")");
   // defined in SimTKcommon/internal/State.h:280:32
-  auto t34 = types.add_type<SimTK::State>("SimTK!State");
+  auto t34 = types.add_type<SimTK::State>("State");
   t34.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::AbstractValue (" __HERE__ ")");
   // defined in SimTKcommon/internal/Value.h:49:7
-  types.add_type<SimTK::AbstractValue>("SimTK!AbstractValue");
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("type SimTK::ListOfDependents (" __HERE__ ")");
-  // defined in SimTKcommon/internal/StateImpl.h:62:7
-  auto t36 = types.add_type<SimTK::ListOfDependents>("SimTK!ListOfDependents");
-  t36.template constructor<>();
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("type SimTK::DiscreteVarInfo (" __HERE__ ")");
-  // defined in SimTKcommon/internal/StateImpl.h:155:7
-  auto t37 = types.add_type<SimTK::DiscreteVarInfo>("SimTK!DiscreteVarInfo");
-  t37.template constructor<>();
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("type SimTK::PerSubsystemInfo (" __HERE__ ")");
-  // defined in SimTKcommon/internal/StateImpl.h:611:32
-  types.add_type<SimTK::PerSubsystemInfo>("SimTK!PerSubsystemInfo");
+  types.add_type<SimTK::AbstractValue>("AbstractValue");
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
@@ -143,25 +126,19 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
   DEBUG_MSG("const char * SimTK::Event::getCauseName(SimTK::Event::Cause) (" __HERE__ ")");
   // signature to use in the veto list: const char * SimTK::Event::getCauseName(SimTK::Event::Cause)
   // defined in SimTKcommon/internal/Event.h:151:49
-  types.method("SimTK!Event!getCauseName", static_cast<const char * (*)(SimTK::Event::Cause) >(&SimTK::Event::getCauseName));
+  types.method("getCauseName", static_cast<const char * (*)(SimTK::Event::Cause) >(&SimTK::Event::getCauseName));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("std::string SimTK::Event::eventTriggerString(SimTK::Event::Trigger) (" __HERE__ ")");
   // signature to use in the veto list: std::string SimTK::Event::eventTriggerString(SimTK::Event::Trigger)
   // defined in SimTKcommon/internal/Event.h:171:49
-  types.method("SimTK!Event!eventTriggerString", static_cast<std::string (*)(SimTK::Event::Trigger) >(&SimTK::Event::eventTriggerString));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("SimTK::Event::Trigger SimTK::Event::classifyTransition(int, int) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Event::Trigger SimTK::Event::classifyTransition(int, int)
-  // defined in SimTKcommon/internal/Event.h:177:20
-  types.method("SimTK!Event!classifyTransition", static_cast<SimTK::Event::Trigger (*)(int, int) >(&SimTK::Event::classifyTransition));
+  types.method("eventTriggerString", static_cast<std::string (*)(SimTK::Event::Trigger) >(&SimTK::Event::eventTriggerString));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Event::Trigger SimTK::Event::maskTransition(SimTK::Event::Trigger, SimTK::Event::Trigger) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Event::Trigger SimTK::Event::maskTransition(SimTK::Event::Trigger, SimTK::Event::Trigger)
   // defined in SimTKcommon/internal/Event.h:191:20
-  types.method("SimTK!Event!maskTransition", static_cast<SimTK::Event::Trigger (*)(SimTK::Event::Trigger, SimTK::Event::Trigger) >(&SimTK::Event::maskTransition));
+  types.method("maskTransition", static_cast<SimTK::Event::Trigger (*)(SimTK::Event::Trigger, SimTK::Event::Trigger) >(&SimTK::Event::maskTransition));
   CLEAR_DEBUG_MSG();
 
   /* End of SimTK::Event class method wrappers
@@ -352,11 +329,11 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
   t9.method("isOptionSet", static_cast<bool (SimTK::HandleEventsOptions::*)(SimTK::HandleEventsOptions::Option)  const>(&SimTK::HandleEventsOptions::isOptionSet));
   CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("SimTK::Real SimTK::HandleEventsOptions::getDefaultAccuracy() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Real SimTK::HandleEventsOptions::getDefaultAccuracy()
-  // defined in SimTKcommon/internal/Event.h:319:17
-  types.method("SimTK!HandleEventsOptions!getDefaultAccuracy", static_cast<SimTK::Real (*)() >(&SimTK::HandleEventsOptions::getDefaultAccuracy));
-  CLEAR_DEBUG_MSG();
+  // DEBUG_MSG("SimTK::Real SimTK::HandleEventsOptions::getDefaultAccuracy() (" __HERE__ ")");
+  // // signature to use in the veto list: SimTK::Real SimTK::HandleEventsOptions::getDefaultAccuracy()
+  // // defined in SimTKcommon/internal/Event.h:319:17
+  // types.method("SimTK!HandleEventsOptions!getDefaultAccuracy", static_cast<SimTK::Real (*)() >(&SimTK::HandleEventsOptions::getDefaultAccuracy));
+  // CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::HandleEventsOptions & SimTK::HandleEventsOptions::operator|=(const SimTK::HandleEventsOptions &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::HandleEventsOptions & SimTK::HandleEventsOptions::operator|=(const SimTK::HandleEventsOptions &)
@@ -608,6 +585,147 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
   // defined in SimTKcommon/internal/State.h:400:21
   t34.method("getSystemTopologyStageVersion", static_cast<SimTK::StageVersion (SimTK::State::*)()  const>(&SimTK::State::getSystemTopologyStageVersion));
   CLEAR_DEBUG_MSG();
+
+  t34.method("getEventTriggers", static_cast<const SimTK::Vector & (SimTK::State::*)() const>(&SimTK::State::getEventTriggers));
+  t34.method("getEventTriggersByStage", static_cast<const SimTK::Vector & (SimTK::State::*)(SimTK::Stage) const>(&SimTK::State::getEventTriggersByStage));
+  t34.method("getEventTriggersByStage", reinterpret_cast<const SimTK::Vector & (SimTK::State::*)(int, SimTK::Stage) const>(
+    static_cast<const SimTK::Vector & (SimTK::State::*)(SimTK::SubsystemIndex, SimTK::Stage) const>(&SimTK::State::getEventTriggersByStage)
+  ));
+  t34.method("updEventTriggers", static_cast<SimTK::Vector & (SimTK::State::*)() const>(&SimTK::State::updEventTriggers));
+  t34.method("updEventTriggersByStage", static_cast<SimTK::Vector & (SimTK::State::*)(SimTK::Stage) const>(&SimTK::State::updEventTriggersByStage));
+  t34.method("updEventTriggersByStage", reinterpret_cast<SimTK::Vector & (SimTK::State::*)(int, SimTK::Stage) const>(
+    static_cast<SimTK::Vector & (SimTK::State::*)(SimTK::SubsystemIndex, SimTK::Stage) const>(&SimTK::State::updEventTriggersByStage)
+  ));
+  t34.method("getQ", reinterpret_cast<const SimTK::Vector & (SimTK::State::*)(int) const>(
+    static_cast<const SimTK::Vector & (SimTK::State::*)(SimTK::SubsystemIndex) const>(&SimTK::State::getQ)
+  ));
+  t34.method("getU", reinterpret_cast<const SimTK::Vector & (SimTK::State::*)(int) const>(
+    static_cast<const SimTK::Vector & (SimTK::State::*)(SimTK::SubsystemIndex) const>(&SimTK::State::getU)
+  ));
+  t34.method("getZ", reinterpret_cast<const SimTK::Vector & (SimTK::State::*)(int) const>(
+    static_cast<const SimTK::Vector & (SimTK::State::*)(SimTK::SubsystemIndex) const>(&SimTK::State::getZ)
+  ));
+  t34.method("getUWeights", reinterpret_cast<const SimTK::Vector & (SimTK::State::*)(int) const>(
+    static_cast<const SimTK::Vector & (SimTK::State::*)(SimTK::SubsystemIndex) const>(&SimTK::State::getUWeights)
+  ));
+  t34.method("getZWeights", reinterpret_cast<const SimTK::Vector & (SimTK::State::*)(int) const>(
+    static_cast<const SimTK::Vector & (SimTK::State::*)(SimTK::SubsystemIndex) const>(&SimTK::State::getZWeights)
+  ));
+  t34.method("updQ", reinterpret_cast<SimTK::Vector & (SimTK::State::*)(int)>(
+    static_cast<SimTK::Vector & (SimTK::State::*)(SimTK::SubsystemIndex)>(&SimTK::State::updQ)
+  ));
+  t34.method("updU", reinterpret_cast<SimTK::Vector & (SimTK::State::*)(int)>(
+    static_cast<SimTK::Vector & (SimTK::State::*)(SimTK::SubsystemIndex)>(&SimTK::State::updU)
+  ));
+  t34.method("updZ", reinterpret_cast<SimTK::Vector & (SimTK::State::*)(int)>(
+    static_cast<SimTK::Vector & (SimTK::State::*)(SimTK::SubsystemIndex)>(&SimTK::State::updZ)
+  ));
+  t34.method("updUWeights", reinterpret_cast<SimTK::Vector & (SimTK::State::*)(int)>(
+    static_cast<SimTK::Vector & (SimTK::State::*)(SimTK::SubsystemIndex)>(&SimTK::State::updUWeights)
+  ));
+  t34.method("updZWeights", reinterpret_cast<SimTK::Vector & (SimTK::State::*)(int)>(
+    static_cast<SimTK::Vector & (SimTK::State::*)(SimTK::SubsystemIndex)>(&SimTK::State::updZWeights)
+  ));
+  t34.method("getQDot", reinterpret_cast<const SimTK::Vector & (SimTK::State::*)(int) const>(
+    static_cast<const SimTK::Vector & (SimTK::State::*)(SimTK::SubsystemIndex) const>(&SimTK::State::getQDot)
+  ));
+  t34.method("getUDot", reinterpret_cast<const SimTK::Vector & (SimTK::State::*)(int) const>(
+    static_cast<const SimTK::Vector & (SimTK::State::*)(SimTK::SubsystemIndex) const>(&SimTK::State::getUDot)
+  ));
+  t34.method("getZDot", reinterpret_cast<const SimTK::Vector & (SimTK::State::*)(int) const>(
+    static_cast<const SimTK::Vector & (SimTK::State::*)(SimTK::SubsystemIndex) const>(&SimTK::State::getZDot)
+  ));
+  t34.method("getQDotDot", reinterpret_cast<const SimTK::Vector & (SimTK::State::*)(int) const>(
+    static_cast<const SimTK::Vector & (SimTK::State::*)(SimTK::SubsystemIndex) const>(&SimTK::State::getQDotDot)
+  ));
+  t34.method("updQDot", reinterpret_cast<SimTK::Vector & (SimTK::State::*)(int) const>(
+    static_cast<SimTK::Vector & (SimTK::State::*)(SimTK::SubsystemIndex) const>(&SimTK::State::updQDot)
+  ));
+  t34.method("updUDot", reinterpret_cast<SimTK::Vector & (SimTK::State::*)(int) const>(
+    static_cast<SimTK::Vector & (SimTK::State::*)(SimTK::SubsystemIndex) const>(&SimTK::State::updUDot)
+  ));
+  t34.method("updZDot", reinterpret_cast<SimTK::Vector & (SimTK::State::*)(int) const>(
+    static_cast<SimTK::Vector & (SimTK::State::*)(SimTK::SubsystemIndex) const>(&SimTK::State::updZDot)
+  ));
+  t34.method("updQDotDot", reinterpret_cast<SimTK::Vector & (SimTK::State::*)(int) const>(
+    static_cast<SimTK::Vector & (SimTK::State::*)(SimTK::SubsystemIndex) const>(&SimTK::State::updQDotDot)
+  ));
+  t34.method("getQErr", reinterpret_cast<const SimTK::Vector & (SimTK::State::*)(int) const>(
+    static_cast<const SimTK::Vector & (SimTK::State::*)(SimTK::SubsystemIndex) const>(&SimTK::State::getQErr)
+  ));
+  t34.method("getUErr", reinterpret_cast<const SimTK::Vector & (SimTK::State::*)(int) const>(
+    static_cast<const SimTK::Vector & (SimTK::State::*)(SimTK::SubsystemIndex) const>(&SimTK::State::getUErr)
+  ));
+  t34.method("getUDotErr", reinterpret_cast<const SimTK::Vector & (SimTK::State::*)(int) const>(
+    static_cast<const SimTK::Vector & (SimTK::State::*)(SimTK::SubsystemIndex) const>(&SimTK::State::getUDotErr)
+  ));
+  t34.method("getMultipliers", reinterpret_cast<const SimTK::Vector & (SimTK::State::*)(int) const>(
+    static_cast<const SimTK::Vector & (SimTK::State::*)(SimTK::SubsystemIndex) const>(&SimTK::State::getMultipliers)
+  ));
+  t34.method("getQErrWeights", reinterpret_cast<const SimTK::Vector & (SimTK::State::*)(int) const>(
+    static_cast<const SimTK::Vector & (SimTK::State::*)(SimTK::SubsystemIndex) const>(&SimTK::State::getQErrWeights)
+  ));
+  t34.method("getUErrWeights", reinterpret_cast<const SimTK::Vector & (SimTK::State::*)(int) const>(
+    static_cast<const SimTK::Vector & (SimTK::State::*)(SimTK::SubsystemIndex) const>(&SimTK::State::getUErrWeights)
+  ));
+  t34.method("updQErr", reinterpret_cast<SimTK::Vector & (SimTK::State::*)(int) const>(
+    static_cast<SimTK::Vector & (SimTK::State::*)(SimTK::SubsystemIndex) const>(&SimTK::State::updQErr)
+  ));
+  t34.method("updUErr", reinterpret_cast<SimTK::Vector & (SimTK::State::*)(int) const>(
+    static_cast<SimTK::Vector & (SimTK::State::*)(SimTK::SubsystemIndex) const>(&SimTK::State::updUErr)
+  ));
+  t34.method("updUDotErr", reinterpret_cast<SimTK::Vector & (SimTK::State::*)(int) const>(
+    static_cast<SimTK::Vector & (SimTK::State::*)(SimTK::SubsystemIndex) const>(&SimTK::State::updUDotErr)
+  ));
+  t34.method("updMultipliers", reinterpret_cast<SimTK::Vector & (SimTK::State::*)(int) const>(
+    static_cast<SimTK::Vector & (SimTK::State::*)(SimTK::SubsystemIndex) const>(&SimTK::State::updMultipliers)
+  ));
+  t34.method("updQErrWeights", reinterpret_cast<SimTK::Vector & (SimTK::State::*)(int)>(
+    static_cast<SimTK::Vector & (SimTK::State::*)(SimTK::SubsystemIndex)>(&SimTK::State::updQErrWeights)
+  ));
+  t34.method("updUErrWeights", reinterpret_cast<SimTK::Vector & (SimTK::State::*)(int)>(
+    static_cast<SimTK::Vector & (SimTK::State::*)(SimTK::SubsystemIndex)>(&SimTK::State::updUErrWeights)
+  ));
+  t34.method("getY", static_cast<const SimTK::Vector & (SimTK::State::*)() const>(&SimTK::State::getY));
+  t34.method("getQ", static_cast<const SimTK::Vector & (SimTK::State::*)() const>(&SimTK::State::getQ));
+  t34.method("getU", static_cast<const SimTK::Vector & (SimTK::State::*)() const>(&SimTK::State::getU));
+  t34.method("getZ", static_cast<const SimTK::Vector & (SimTK::State::*)() const>(&SimTK::State::getZ));
+  t34.method("getUWeights", static_cast<const SimTK::Vector & (SimTK::State::*)() const>(&SimTK::State::getUWeights));
+  t34.method("getZWeights", static_cast<const SimTK::Vector & (SimTK::State::*)() const>(&SimTK::State::getZWeights));
+  t34.method("updUWeights", static_cast<SimTK::Vector & (SimTK::State::*)()>(&SimTK::State::updUWeights));
+  t34.method("updZWeights", static_cast<SimTK::Vector & (SimTK::State::*)()>(&SimTK::State::updZWeights));
+  t34.method("updY", static_cast<SimTK::Vector & (SimTK::State::*)()>(&SimTK::State::updY));
+  t34.method("setY", static_cast<void (SimTK::State::*)(const SimTK::Vector &y)>(&SimTK::State::setY));
+  t34.method("updQ", static_cast<SimTK::Vector & (SimTK::State::*)()>(&SimTK::State::updQ));
+  t34.method("updU", static_cast<SimTK::Vector & (SimTK::State::*)()>(&SimTK::State::updU));
+  t34.method("updZ", static_cast<SimTK::Vector & (SimTK::State::*)()>(&SimTK::State::updZ));
+  t34.method("setQ", static_cast<void (SimTK::State::*)(const SimTK::Vector &q)>(&SimTK::State::setQ));
+  t34.method("setU", static_cast<void (SimTK::State::*)(const SimTK::Vector &u)>(&SimTK::State::setU));
+  t34.method("setZ", static_cast<void (SimTK::State::*)(const SimTK::Vector &z)>(&SimTK::State::setZ));
+  t34.method("getYDot", static_cast<const SimTK::Vector & (SimTK::State::*)() const>(&SimTK::State::getYDot));
+  t34.method("getQDot", static_cast<const SimTK::Vector & (SimTK::State::*)() const>(&SimTK::State::getQDot));
+  t34.method("getZDot", static_cast<const SimTK::Vector & (SimTK::State::*)() const>(&SimTK::State::getZDot));
+  t34.method("getUDot", static_cast<const SimTK::Vector & (SimTK::State::*)() const>(&SimTK::State::getUDot));
+  t34.method("getQDotDot", static_cast<const SimTK::Vector & (SimTK::State::*)() const>(&SimTK::State::getQDotDot));
+  t34.method("updYDot", static_cast<SimTK::Vector & (SimTK::State::*)() const>(&SimTK::State::updYDot));
+  t34.method("updQDot", static_cast<SimTK::Vector & (SimTK::State::*)() const>(&SimTK::State::updQDot));
+  t34.method("updZDot", static_cast<SimTK::Vector & (SimTK::State::*)() const>(&SimTK::State::updZDot));
+  t34.method("updUDot", static_cast<SimTK::Vector & (SimTK::State::*)() const>(&SimTK::State::updUDot));
+  t34.method("updQDotDot", static_cast<SimTK::Vector & (SimTK::State::*)() const>(&SimTK::State::updQDotDot));
+  t34.method("getYErr", static_cast<const SimTK::Vector & (SimTK::State::*)() const>(&SimTK::State::getYErr));
+  t34.method("getQErr", static_cast<const SimTK::Vector & (SimTK::State::*)() const>(&SimTK::State::getQErr));
+  t34.method("getUErr", static_cast<const SimTK::Vector & (SimTK::State::*)() const>(&SimTK::State::getUErr));
+  t34.method("getUDotErr", static_cast<const SimTK::Vector & (SimTK::State::*)() const>(&SimTK::State::getUDotErr));
+  t34.method("getMultipliers", static_cast<const SimTK::Vector & (SimTK::State::*)() const>(&SimTK::State::getMultipliers));
+  t34.method("getQErrWeights", static_cast<const SimTK::Vector & (SimTK::State::*)() const>(&SimTK::State::getQErrWeights));
+  t34.method("getUErrWeights", static_cast<const SimTK::Vector & (SimTK::State::*)() const>(&SimTK::State::getUErrWeights));
+  t34.method("updQErrWeights", static_cast<SimTK::Vector & (SimTK::State::*)()>(&SimTK::State::updQErrWeights));
+  t34.method("updUErrWeights", static_cast<SimTK::Vector & (SimTK::State::*)()>(&SimTK::State::updUErrWeights));
+  t34.method("updYErr", static_cast<SimTK::Vector & (SimTK::State::*)() const>(&SimTK::State::updYErr));
+  t34.method("updQErr", static_cast<SimTK::Vector & (SimTK::State::*)() const>(&SimTK::State::updQErr));
+  t34.method("updUErr", static_cast<SimTK::Vector & (SimTK::State::*)() const>(&SimTK::State::updUErr));
+  t34.method("updUDotErr", static_cast<SimTK::Vector & (SimTK::State::*)() const>(&SimTK::State::updUDotErr));
+  t34.method("updMultipliers", static_cast<SimTK::Vector & (SimTK::State::*)() const>(&SimTK::State::updMultipliers));
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::QErrIndex SimTK::State::allocateQErr(SimTK::SubsystemIndex, int) (" __HERE__ ")");
@@ -1359,79 +1477,6 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
   // signature to use in the veto list: void SimTK::State::setTime(SimTK::Real)
   // defined in SimTKcommon/internal/State.h:1030:13
   t34.method("setTime", static_cast<void (SimTK::State::*)(SimTK::Real) >(&SimTK::State::setTime));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("void SimTK::State::setSystemTopologyStageVersion(SimTK::StageVersion) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::State::setSystemTopologyStageVersion(SimTK::StageVersion)
-  // defined in SimTKcommon/internal/State.h:1143:13
-  t34.method("setSystemTopologyStageVersion", static_cast<void (SimTK::State::*)(SimTK::StageVersion) >(&SimTK::State::setSystemTopologyStageVersion));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("SimTK::ValueVersion SimTK::State::getQValueVersion() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::ValueVersion SimTK::State::getQValueVersion()
-  // defined in SimTKcommon/internal/State.h:1149:21
-  t34.method("getQValueVersion", static_cast<SimTK::ValueVersion (SimTK::State::*)()  const>(&SimTK::State::getQValueVersion));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("SimTK::ValueVersion SimTK::State::getUValueVersion() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::ValueVersion SimTK::State::getUValueVersion()
-  // defined in SimTKcommon/internal/State.h:1154:21
-  t34.method("getUValueVersion", static_cast<SimTK::ValueVersion (SimTK::State::*)()  const>(&SimTK::State::getUValueVersion));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("SimTK::ValueVersion SimTK::State::getZValueVersion() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::ValueVersion SimTK::State::getZValueVersion()
-  // defined in SimTKcommon/internal/State.h:1159:21
-  t34.method("getZValueVersion", static_cast<SimTK::ValueVersion (SimTK::State::*)()  const>(&SimTK::State::getZValueVersion));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("const SimTK::ListOfDependents & SimTK::State::getQDependents() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::ListOfDependents & SimTK::State::getQDependents()
-  // defined in SimTKcommon/internal/State.h:1164:32
-  t34.method("getQDependents", static_cast<const SimTK::ListOfDependents & (SimTK::State::*)()  const>(&SimTK::State::getQDependents));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("const SimTK::ListOfDependents & SimTK::State::getUDependents() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::ListOfDependents & SimTK::State::getUDependents()
-  // defined in SimTKcommon/internal/State.h:1168:32
-  t34.method("getUDependents", static_cast<const SimTK::ListOfDependents & (SimTK::State::*)()  const>(&SimTK::State::getUDependents));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("const SimTK::ListOfDependents & SimTK::State::getZDependents() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::ListOfDependents & SimTK::State::getZDependents()
-  // defined in SimTKcommon/internal/State.h:1172:32
-  t34.method("getZDependents", static_cast<const SimTK::ListOfDependents & (SimTK::State::*)()  const>(&SimTK::State::getZDependents));
-  CLEAR_DEBUG_MSG();
-
-  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
-  DEBUG_MSG("const SimTK::PerSubsystemInfo & SimTK::State::getPerSubsystemInfo(SimTK::SubsystemIndex) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::PerSubsystemInfo & SimTK::State::getPerSubsystemInfo(SimTK::SubsystemIndex)
-  // defined in SimTKcommon/internal/State.h:1199:1
-  t34.method("getPerSubsystemInfo", static_cast<const SimTK::PerSubsystemInfo & (SimTK::State::*)(SimTK::SubsystemIndex)  const>(&SimTK::State::getPerSubsystemInfo));
-  CLEAR_DEBUG_MSG();
-  #else
-  DEBUG_MSG("const SimTK::PerSubsystemInfo & SimTK::State::getPerSubsystemInfo(int) (" __HERE__ ")");
-  // defined in SimTKcommon/internal/State.h:1199:1
-  t34.method("getPerSubsystemInfo", reinterpret_cast<const SimTK::PerSubsystemInfo & (SimTK::State::*)(int)  const>(&SimTK::State::getPerSubsystemInfo));
-  CLEAR_DEBUG_MSG();
-  #endif
-
-  DEBUG_MSG("void SimTK::State::autoUpdateDiscreteVariables() (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::State::autoUpdateDiscreteVariables()
-  // defined in SimTKcommon/internal/State.h:1204:13
-  t34.method("autoUpdateDiscreteVariables", static_cast<void (SimTK::State::*)() >(&SimTK::State::autoUpdateDiscreteVariables));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("SimTK::String SimTK::State::toString() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::String SimTK::State::toString()
-  // defined in SimTKcommon/internal/State.h:1207:15
-  t34.method("toString", static_cast<SimTK::String (SimTK::State::*)()  const>(&SimTK::State::toString));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("SimTK::String SimTK::State::cacheToString() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::String SimTK::State::cacheToString()
-  // defined in SimTKcommon/internal/State.h:1209:15
-  t34.method("cacheToString", static_cast<SimTK::String (SimTK::State::*)()  const>(&SimTK::State::cacheToString));
   CLEAR_DEBUG_MSG();
 
   /* End of SimTK::State class method wrappers
