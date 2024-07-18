@@ -90,7 +90,7 @@ JLCXX_MODULE define_julia_module(jlcxx::Module& types){
   auto abs_meas = types.add_type<SimTK::AbstractMeasure>("SimTK!AbstractMeasure");
   abs_meas.template constructor<>();
 
-  define_SimTKcommon_SystemSubsystem(types, array_wrapper);
+  define_SimTKcommon_SystemSubsystem(types);
   define_SimTKcommon_Measure(types, abs_meas, array_wrapper);
   define_SimTKcommon_Function(types, array_wrapper);
 

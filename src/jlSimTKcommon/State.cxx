@@ -1482,10 +1482,13 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
   /* End of SimTK::State class method wrappers
    **********************************************************************/
 
+  DEBUG_MSG("SimTK::Array_<SimTK::EventTriggerInfo> (" __HERE__ ")");
+  array_wrapper.template apply<SimTK::EventTriggerInfo>();
+  CLEAR_DEBUG_MSG();
+
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   using array_types = jlcxx::ParameterList<SimTK::CacheEntryIndex,
-    // SimTK::CacheEntryInfo, SimTK::DiscreteVarInfo,
-    SimTK::EventId, SimTK::EventTriggerInfo, SimTK::SystemQIndex, SimTK::SystemUIndex, SimTK::QIndex, SimTK::UIndex>;
+    SimTK::EventId, SimTK::SystemQIndex, SimTK::SystemUIndex, SimTK::QIndex, SimTK::UIndex>;
   jlcxx::for_each_parameter_type<array_types>(array_wrapper);
   #endif
 

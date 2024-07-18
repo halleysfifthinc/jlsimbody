@@ -84,16 +84,17 @@ void define_SimTKcommon_Stage(jlcxx::Module& types){
    */
 
   // Ambiguous/overwrites the following int constructor method
-  // DEBUG_MSG("void SimTK::Stage::Stage(SimTK::Stage::Level) (" __HERE__ ")");
-  // // defined in SimTKcommon/internal/Stage.h:95:5
-  // t0.constructor<SimTK::Stage::Level>();
-
-  DEBUG_MSG("void SimTK::Stage::Stage(int) (" __HERE__ ")");
-  // defined in SimTKcommon/internal/Stage.h:100:14
-  t0.constructor<int>();
-  types.set_override_module(jl_base_module);
+  DEBUG_MSG("void SimTK::Stage::Stage(SimTK::Stage::Level) (" __HERE__ ")");
+  // defined in SimTKcommon/internal/Stage.h:95:5
+  t0.constructor<SimTK::Stage::Level>();
   CLEAR_DEBUG_MSG();
 
+  // DEBUG_MSG("void SimTK::Stage::Stage(int) (" __HERE__ ")");
+  // // defined in SimTKcommon/internal/Stage.h:100:14
+  // t0.constructor<int>();
+  // CLEAR_DEBUG_MSG();
+
+  types.set_override_module(jl_base_module);
   DEBUG_MSG("bool SimTK::Stage::operator==(SimTK::Stage::Level) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::Stage::operator==(SimTK::Stage::Level)
   // defined in SimTKcommon/internal/Stage.h:107:10
