@@ -83,11 +83,11 @@ JLCXX_MODULE define_julia_module(jlcxx::Module& types){
   define_SimTKcommon_Events(types, array_wrapper);
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
-  wrap_SimTK_UniqueIndexType<SimTK::MeasureIndex>(types, "SimTK!MeasureIndex");
+  wrap_SimTK_UniqueIndexType<SimTK::MeasureIndex>(types, "MeasureIndex");
   #endif
 
   // defined in SimTKcommon/internal/Measure.h:151:32
-  auto abs_meas = types.add_type<SimTK::AbstractMeasure>("SimTK!AbstractMeasure");
+  auto abs_meas = types.add_type<SimTK::AbstractMeasure>("AbstractMeasure");
   abs_meas.template constructor<>();
 
   define_SimTKcommon_SystemSubsystem(types);

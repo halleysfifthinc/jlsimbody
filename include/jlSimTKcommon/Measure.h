@@ -23,34 +23,34 @@ namespace SimTK {
 
   template<typename T>
   class Measure_Result_ : public SimTK::Measure_<T>::Result { };
-  
+
   template<typename T>
   class Measure_Sinusoid_ : public SimTK::Measure_<T>::Sinusoid { };
-  
+
   template<typename T>
   class Measure_Plus_ : public SimTK::Measure_<T>::Plus { };
-  
+
   template<typename T>
   class Measure_Minus_ : public SimTK::Measure_<T>::Minus { };
-  
+
   template<typename T>
   class Measure_Scale_ : public SimTK::Measure_<T>::Scale { };
-  
+
   template<typename T>
   class Measure_Integrate_ : public SimTK::Measure_<T>::Integrate { };
-  
+
   template<typename T>
   class Measure_Differentiate_ : public SimTK::Measure_<T>::Differentiate { };
-  
+
   template<typename T>
   class Measure_Extreme_ : public SimTK::Measure_<T>::Extreme { };
-  
+
   template<typename T>
   class Measure_Minimum_ : public SimTK::Measure_<T>::Minimum { };
-  
+
   template<typename T>
   class Measure_Maximum_ : public SimTK::Measure_<T>::Maximum { };
-  
+
   template<typename T>
   class Measure_MaxAbs_ : public SimTK::Measure_<T>::MaxAbs { };
 

@@ -3,105 +3,114 @@
 
 #include "jlSimTKcommon/Measure.h"
 
+#define ISA_MEASURE_TYPE(T) \
+  static_cast<bool (*)(const SimTK::AbstractMeasure &) >(&T::isA)
+
+#define GETAS_MEASURE_TYPE(cast, T) \
+  cast<const T & (*)(const SimTK::AbstractMeasure &) >(&T::getAs)
+
+#define UPDAS_MEASURE_TYPE(cast, T) \
+  cast<T & (*)(SimTK::AbstractMeasure &) >(&T::updAs)
+
 namespace jlsimbody {
 
-void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::AbstractMeasure>& t1, const ArrayWrapper& array_wrapper){
+void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::AbstractMeasure>& abs_meas, const ArrayWrapper& array_wrapper){
 
   DEBUG_MSG("enum SimTK::Measure_::Extreme::Operation (" __HERE__ ")");
   // defined in SimTKcommon/internal/Measure.h:841:10
-  types.add_bits<typename SimTK::Measure_<double>::Extreme::Operation>("SimTK!Measure_!Extreme!Operation", jlcxx::julia_type("CppEnum"));
-  types.set_const("SimTK!Measure_!Extreme!MaxAbs", SimTK::Measure_<double>::Extreme::MaxAbs);
-  types.set_const("SimTK!Measure_!Extreme!Maximum", SimTK::Measure_<double>::Extreme::Maximum);
-  types.set_const("SimTK!Measure_!Extreme!MinAbs", SimTK::Measure_<double>::Extreme::MinAbs);
-  types.set_const("SimTK!Measure_!Extreme!Minimum", SimTK::Measure_<double>::Extreme::Minimum);
+  types.add_bits<typename SimTK::Measure_<double>::Extreme::Operation>("Measure_ExtremeOperation", jlcxx::julia_type("CppEnum"));
+  types.set_const("Measure_Extreme_MaxAbs", SimTK::Measure_<double>::Extreme::MaxAbs);
+  types.set_const("Measure_Extreme_Maximum", SimTK::Measure_<double>::Extreme::Maximum);
+  types.set_const("Measure_Extreme_MinAbs", SimTK::Measure_<double>::Extreme::MinAbs);
+  types.set_const("Measure_Extreme_Minimum", SimTK::Measure_<double>::Extreme::Minimum);
   CLEAR_DEBUG_MSG();
 
   // defined in SimTKcommon/internal/Measure.h:263:7
-  auto t3 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Measure_");
+  auto t3 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("Measure", abs_meas.dt());
 
   DEBUG_MSG("type SimTK::Measure_::Constant (" __HERE__ ")");
   // defined in SimTKcommon/internal/Measure.h:341:20
-  auto t4 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Measure_!Constant", t3.dt());
+  auto t4 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("ConstantMeasure", t3.dt());
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Measure_::Zero (" __HERE__ ")");
   // defined in SimTKcommon/internal/Measure.h:371:20
-  auto t5 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Measure_!Zero", t4.dt());
+  auto t5 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("ZeroMeasure", t4.dt());
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Measure_::One (" __HERE__ ")");
   // defined in SimTKcommon/internal/Measure.h:391:20
-  auto t7 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Measure_!One", t4.dt());
+  auto t7 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("OneMeasure", t4.dt());
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Measure_::Time (" __HERE__ ")");
   // defined in SimTKcommon/internal/Measure.h:409:20
-  auto t9 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Measure_!Time", t3.dt());
+  auto t9 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("TimeMeasure", t3.dt());
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Measure_::Variable (" __HERE__ ")");
   // defined in SimTKcommon/internal/Measure.h:422:20
-  auto t10 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Measure_!Variable", t3.dt());
+  auto t10 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("VariableMeasure", t3.dt());
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Measure_::Result (" __HERE__ ")");
   // defined in SimTKcommon/internal/Measure.h:457:20
-  auto t11 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Measure_!Result", t3.dt());
+  auto t11 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("ResultMeasure", t3.dt());
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Measure_::Sinusoid (" __HERE__ ")");
   // defined in SimTKcommon/internal/Measure.h:575:20
-  auto t12 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Measure_!Sinusoid", t3.dt());
+  auto t12 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SinusoidMeasure", t3.dt());
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Measure_::Plus (" __HERE__ ")");
   // defined in SimTKcommon/internal/Measure.h:597:20
-  auto t13 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Measure_!Plus", t3.dt());
+  auto t13 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("PlusMeasure", t3.dt());
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Measure_::Minus (" __HERE__ ")");
   // defined in SimTKcommon/internal/Measure.h:622:20
-  auto t14 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Measure_!Minus", t3.dt());
+  auto t14 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("MinusMeasure", t3.dt());
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Measure_::Scale (" __HERE__ ")");
   // defined in SimTKcommon/internal/Measure.h:647:20
-  auto t15 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Measure_!Scale", t3.dt());
+  auto t15 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("ScaleMeasure", t3.dt());
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Measure_::Integrate (" __HERE__ ")");
   // defined in SimTKcommon/internal/Measure.h:677:20
-  auto t16 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Measure_!Integrate", t3.dt());
+  auto t16 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("IntegrateMeasure", t3.dt());
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Measure_::Differentiate (" __HERE__ ")");
   // defined in SimTKcommon/internal/Measure.h:744:20
-  auto t17 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Measure_!Differentiate", t3.dt());
+  auto t17 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("DifferentiateMeasure", t3.dt());
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Measure_::Extreme (" __HERE__ ")");
   // defined in SimTKcommon/internal/Measure.h:837:20
-  auto t18 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Measure_!Extreme", t3.dt());
+  auto t18 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("ExtremeMeasure", t3.dt());
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Measure_::Minimum (" __HERE__ ")");
   // defined in SimTKcommon/internal/Measure.h:885:20
-  auto t20 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Measure_!Minimum", t18.dt());
+  auto t20 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("MinimumMeasure", t18.dt());
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Measure_::Maximum (" __HERE__ ")");
   // defined in SimTKcommon/internal/Measure.h:895:20
-  auto t21 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Measure_!Maximum", t18.dt());
+  auto t21 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("MaximumMeasure", t18.dt());
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Measure_::MaxAbs (" __HERE__ ")");
   // defined in SimTKcommon/internal/Measure.h:905:20
-  auto t22 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Measure_!MaxAbs", t18.dt());
+  auto t22 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("MaxAbsMeasure", t18.dt());
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Measure_::MinAbs (" __HERE__ ")");
   // defined in SimTKcommon/internal/Measure.h:916:20
-  auto t23 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Measure_!MinAbs", t18.dt());
+  auto t23 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("MinAbsMeasure", t18.dt());
   CLEAR_DEBUG_MSG();
 
   /**********************************************************************/
@@ -111,109 +120,70 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
 
   // DEBUG_MSG("void SimTK::AbstractMeasure::AbstractMeasure(SimTK::AbstractMeasure::Implementation *) (" __HERE__ ")");
   // // defined in SimTKcommon/internal/Measure.h:164:14
-  // t1.constructor<SimTK::AbstractMeasure::Implementation *>();
+  // abs_meas.constructor<SimTK::AbstractMeasure::Implementation *>();
 
   DEBUG_MSG("void SimTK::AbstractMeasure::AbstractMeasure(const SimTK::AbstractMeasure &) (" __HERE__ ")");
   // defined in SimTKcommon/internal/Measure.h:174:5
-  t1.constructor<const SimTK::AbstractMeasure &>();
+  abs_meas.constructor<const SimTK::AbstractMeasure &>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::AbstractMeasure & SimTK::AbstractMeasure::operator=(const SimTK::AbstractMeasure &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::AbstractMeasure & SimTK::AbstractMeasure::operator=(const SimTK::AbstractMeasure &)
   // defined in SimTKcommon/internal/Measure.h:179:22
-  t1.method("set!", static_cast<SimTK::AbstractMeasure & (SimTK::AbstractMeasure::*)(const SimTK::AbstractMeasure &) >(&SimTK::AbstractMeasure::operator=));
+  abs_meas.method("set!", static_cast<SimTK::AbstractMeasure & (SimTK::AbstractMeasure::*)(const SimTK::AbstractMeasure &) >(&SimTK::AbstractMeasure::operator=));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::AbstractMeasure & SimTK::AbstractMeasure::shallowAssign(const SimTK::AbstractMeasure &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::AbstractMeasure & SimTK::AbstractMeasure::shallowAssign(const SimTK::AbstractMeasure &)
   // defined in SimTKcommon/internal/Measure.h:191:22
-  t1.method("shallowAssign", static_cast<SimTK::AbstractMeasure & (SimTK::AbstractMeasure::*)(const SimTK::AbstractMeasure &) >(&SimTK::AbstractMeasure::shallowAssign));
+  abs_meas.method("shallowAssign", static_cast<SimTK::AbstractMeasure & (SimTK::AbstractMeasure::*)(const SimTK::AbstractMeasure &) >(&SimTK::AbstractMeasure::shallowAssign));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::AbstractMeasure & SimTK::AbstractMeasure::deepAssign(const SimTK::AbstractMeasure &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::AbstractMeasure & SimTK::AbstractMeasure::deepAssign(const SimTK::AbstractMeasure &)
   // defined in SimTKcommon/internal/Measure.h:197:22
-  t1.method("deepAssign", static_cast<SimTK::AbstractMeasure & (SimTK::AbstractMeasure::*)(const SimTK::AbstractMeasure &) >(&SimTK::AbstractMeasure::deepAssign));
+  abs_meas.method("deepAssign", static_cast<SimTK::AbstractMeasure & (SimTK::AbstractMeasure::*)(const SimTK::AbstractMeasure &) >(&SimTK::AbstractMeasure::deepAssign));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("int SimTK::AbstractMeasure::getNumTimeDerivatives() (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::AbstractMeasure::getNumTimeDerivatives()
   // defined in SimTKcommon/internal/Measure.h:206:9
-  t1.method("getNumTimeDerivatives", static_cast<int (SimTK::AbstractMeasure::*)()  const>(&SimTK::AbstractMeasure::getNumTimeDerivatives));
+  abs_meas.method("getNumTimeDerivatives", static_cast<int (SimTK::AbstractMeasure::*)()  const>(&SimTK::AbstractMeasure::getNumTimeDerivatives));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Stage SimTK::AbstractMeasure::getDependsOnStage(int) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Stage SimTK::AbstractMeasure::getDependsOnStage(int)
   // defined in SimTKcommon/internal/Measure.h:216:11
-  t1.method("getDependsOnStage", static_cast<SimTK::Stage (SimTK::AbstractMeasure::*)(int)  const>(&SimTK::AbstractMeasure::getDependsOnStage));
-  t1.method("getDependsOnStage", [](SimTK::AbstractMeasure const& a) -> SimTK::Stage { return a.getDependsOnStage(); });
-  t1.method("getDependsOnStage", [](SimTK::AbstractMeasure const* a) -> SimTK::Stage { return a->getDependsOnStage(); });
+  abs_meas.method("getDependsOnStage", static_cast<SimTK::Stage (SimTK::AbstractMeasure::*)(int)  const>(&SimTK::AbstractMeasure::getDependsOnStage));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::AbstractMeasure::isSameMeasure(const SimTK::AbstractMeasure &) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::AbstractMeasure::isSameMeasure(const SimTK::AbstractMeasure &)
   // defined in SimTKcommon/internal/Measure.h:220:10
-  t1.method("isSameMeasure", static_cast<bool (SimTK::AbstractMeasure::*)(const SimTK::AbstractMeasure &)  const>(&SimTK::AbstractMeasure::isSameMeasure));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("bool SimTK::AbstractMeasure::isEmptyHandle() (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::AbstractMeasure::isEmptyHandle()
-  // defined in SimTKcommon/internal/Measure.h:223:10
-  t1.method("isEmptyHandle", static_cast<bool (SimTK::AbstractMeasure::*)()  const>(&SimTK::AbstractMeasure::isEmptyHandle));
+  abs_meas.method("isSameMeasure", static_cast<bool (SimTK::AbstractMeasure::*)(const SimTK::AbstractMeasure &)  const>(&SimTK::AbstractMeasure::isSameMeasure));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::AbstractMeasure::isInSubsystem() (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::AbstractMeasure::isInSubsystem()
   // defined in SimTKcommon/internal/Measure.h:226:10
-  t1.method("isInSubsystem", static_cast<bool (SimTK::AbstractMeasure::*)()  const>(&SimTK::AbstractMeasure::isInSubsystem));
+  abs_meas.method("isInSubsystem", static_cast<bool (SimTK::AbstractMeasure::*)()  const>(&SimTK::AbstractMeasure::isInSubsystem));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Subsystem & SimTK::AbstractMeasure::getSubsystem() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Subsystem & SimTK::AbstractMeasure::getSubsystem()
   // defined in SimTKcommon/internal/Measure.h:230:22
-  t1.method("getSubsystem", static_cast<const SimTK::Subsystem & (SimTK::AbstractMeasure::*)()  const>(&SimTK::AbstractMeasure::getSubsystem));
+  abs_meas.method("getSubsystem", static_cast<const SimTK::Subsystem & (SimTK::AbstractMeasure::*)()  const>(&SimTK::AbstractMeasure::getSubsystem));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::AbstractMeasure::isSameSubsystem(const SimTK::Subsystem &) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::AbstractMeasure::isSameSubsystem(const SimTK::Subsystem &)
   // defined in SimTKcommon/internal/Measure.h:232:10
-  t1.method("isSameSubsystem", static_cast<bool (SimTK::AbstractMeasure::*)(const SimTK::Subsystem &)  const>(&SimTK::AbstractMeasure::isSameSubsystem));
+  abs_meas.method("isSameSubsystem", static_cast<bool (SimTK::AbstractMeasure::*)(const SimTK::Subsystem &)  const>(&SimTK::AbstractMeasure::isSameSubsystem));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::MeasureIndex SimTK::AbstractMeasure::getSubsystemMeasureIndex() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::MeasureIndex SimTK::AbstractMeasure::getSubsystemMeasureIndex()
   // defined in SimTKcommon/internal/Measure.h:236:18
-  t1.method("getSubsystemMeasureIndex", static_cast<SimTK::MeasureIndex (SimTK::AbstractMeasure::*)()  const>(&SimTK::AbstractMeasure::getSubsystemMeasureIndex));
+  abs_meas.method("getSubsystemMeasureIndex", static_cast<SimTK::MeasureIndex (SimTK::AbstractMeasure::*)()  const>(&SimTK::AbstractMeasure::getSubsystemMeasureIndex));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("int SimTK::AbstractMeasure::getSubsystemMeasureIndex() (" __HERE__ ")");
   // defined in SimTKcommon/internal/Measure.h:236:18
-  t1.method("getSubsystemMeasureIndex", reinterpret_cast<int (SimTK::AbstractMeasure::*)()  const>(&SimTK::AbstractMeasure::getSubsystemMeasureIndex));
+  abs_meas.method("getSubsystemMeasureIndex", reinterpret_cast<int (SimTK::AbstractMeasure::*)()  const>(&SimTK::AbstractMeasure::getSubsystemMeasureIndex));
   CLEAR_DEBUG_MSG();
   #endif
 
-  // DEBUG_MSG("const SimTK::AbstractMeasure::Implementation & SimTK::AbstractMeasure::getImpl() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::AbstractMeasure::Implementation & SimTK::AbstractMeasure::getImpl()
-  // defined in SimTKcommon/internal/Measure.h:242:27
-  // t1.method("getImpl", static_cast<const SimTK::AbstractMeasure::Implementation & (SimTK::AbstractMeasure::*)()  const>(&SimTK::AbstractMeasure::getImpl));
-
-  // DEBUG_MSG("SimTK::AbstractMeasure::Implementation & SimTK::AbstractMeasure::updImpl() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::AbstractMeasure::Implementation & SimTK::AbstractMeasure::updImpl()
-  // defined in SimTKcommon/internal/Measure.h:243:27
-  // t1.method("updImpl", static_cast<SimTK::AbstractMeasure::Implementation & (SimTK::AbstractMeasure::*)() >(&SimTK::AbstractMeasure::updImpl));
-
-  DEBUG_MSG("bool SimTK::AbstractMeasure::hasImpl() (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::AbstractMeasure::hasImpl()
-  // defined in SimTKcommon/internal/Measure.h:244:27
-  t1.method("hasImpl", static_cast<bool (SimTK::AbstractMeasure::*)()  const>(&SimTK::AbstractMeasure::hasImpl));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("int SimTK::AbstractMeasure::getRefCount() (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::AbstractMeasure::getRefCount()
-  // defined in SimTKcommon/internal/Measure.h:246:9
-  t1.method("getRefCount", static_cast<int (SimTK::AbstractMeasure::*)()  const>(&SimTK::AbstractMeasure::getRefCount));
-  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::AbstractMeasure class method wrappers
    **********************************************************************/
@@ -224,86 +194,46 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
   auto t3_decl_methods = []<typename T> (jlcxx::TypeWrapper<SimTK::Measure_<T>> wrapped){
     typedef SimTK::Measure_<T> WrappedType;
 
-    // DEBUG_MSG("void SimTK::Measure_::Measure_<T>(typename WrappedType::Implementation *) (" __HERE__ ")");
-    // defined in SimTKcommon/internal/Measure.h:267:44
-    // wrapped.template constructor<typename WrappedType::Implementation *>();
-
-    DEBUG_MSG("Measure_<T> & SimTK::Measure_::operator=(const WrappedType &) (" __HERE__ ")");
-    // signature to use in the veto list: Measure_<T> & SimTK::Measure_::operator=(const WrappedType &)
-    // defined in SimTKcommon/internal/Measure.h:267:5
-    wrapped.method("set!", static_cast<WrappedType & (WrappedType::*)(const WrappedType &) >(&WrappedType::operator=));
-    CLEAR_DEBUG_MSG();
-    // wrapped.method("assign", [](WrappedType& a) -> WrappedType & { return a.operator=(); });
-    // wrapped.method("assign", [](WrappedType* a) -> WrappedType & { return a->operator=(); });
-
-    DEBUG_MSG("Measure_<T> & SimTK::Measure_::shallowAssign(const WrappedType &) (" __HERE__ ")");
-    // signature to use in the veto list: Measure_<T> & SimTK::Measure_::shallowAssign(const WrappedType &)
-    // defined in SimTKcommon/internal/Measure.h:267:5
-    wrapped.method("shallowAssign", static_cast<WrappedType & (WrappedType::*)(const WrappedType &) >(&WrappedType::shallowAssign));
-    CLEAR_DEBUG_MSG();
-    // wrapped.method("shallowAssign", [](WrappedType& a) -> WrappedType & { return a.shallowAssign(); });
-    // wrapped.method("shallowAssign", [](WrappedType* a) -> WrappedType & { return a->shallowAssign(); });
-
-    DEBUG_MSG("Measure_<T> & SimTK::Measure_::deepAssign(const WrappedType &) (" __HERE__ ")");
-    // signature to use in the veto list: Measure_<T> & SimTK::Measure_::deepAssign(const WrappedType &)
-    // defined in SimTKcommon/internal/Measure.h:267:5
-    wrapped.method("deepAssign", static_cast<WrappedType & (WrappedType::*)(const WrappedType &) >(&WrappedType::deepAssign));
-    CLEAR_DEBUG_MSG();
-    // wrapped.method("deepAssign", [](WrappedType& a) -> WrappedType & { return a.deepAssign(); });
-    // wrapped.method("deepAssign", [](WrappedType* a) -> WrappedType & { return a->deepAssign(); });
+    wrapped.template constructor<>();
 
     DEBUG_MSG("const T & SimTK::Measure_::getValue(const SimTK::State &, int) (" __HERE__ ")");
-    // signature to use in the veto list: const T & SimTK::Measure_::getValue(const SimTK::State &, int)
     // defined in SimTKcommon/internal/Measure.h:276:14
     wrapped.method("getValue", static_cast<const T & (WrappedType::*)(const SimTK::State &, int)  const>(&WrappedType::getValue));
     CLEAR_DEBUG_MSG();
-    // wrapped.method("getValue", [](WrappedType const& a, const SimTK::State & arg0) -> const T & { return a.getValue(arg0); });
-    // wrapped.method("getValue", [](WrappedType const* a, const SimTK::State & arg0) -> const T & { return a->getValue(arg0); });
 
     DEBUG_MSG("Measure_<T> & SimTK::Measure_::setDefaultValue(const T &) (" __HERE__ ")");
-    // signature to use in the veto list: Measure_<T> & SimTK::Measure_::setDefaultValue(const T &)
     // defined in SimTKcommon/internal/Measure.h:285:15
     wrapped.method("setDefaultValue", static_cast<WrappedType & (WrappedType::*)(const T &) >(&WrappedType::setDefaultValue));
     CLEAR_DEBUG_MSG();
 
     DEBUG_MSG("const T & SimTK::Measure_::getDefaultValue() (" __HERE__ ")");
-    // signature to use in the veto list: const T & SimTK::Measure_::getDefaultValue()
     // defined in SimTKcommon/internal/Measure.h:290:14
     wrapped.method("getDefaultValue", static_cast<const T & (WrappedType::*)()  const>(&WrappedType::getDefaultValue));
     CLEAR_DEBUG_MSG();
 
-    // DEBUG_MSG("bool SimTK::Measure_::isA(const SimTK::AbstractMeasure &) (" __HERE__ ")");
-    // signature to use in the veto list: bool SimTK::Measure_::isA(const SimTK::AbstractMeasure &)
-    // defined in SimTKcommon/internal/Measure.h:324:5
-    // wrapped.method("SimTK!Measure_!isA", static_cast<bool (*)(const SimTK::AbstractMeasure &) >(&WrappedType::isA));
-    // wrapped.method("SimTK!Measure_!isA", []() -> bool { return WrappedType::isA(); });
-
-    // DEBUG_MSG("const Measure_<T> & SimTK::Measure_::getAs(const SimTK::AbstractMeasure &) (" __HERE__ ")");
-    // // signature to use in the veto list: const Measure_<T> & SimTK::Measure_::getAs(const SimTK::AbstractMeasure &)
-    // // defined in SimTKcommon/internal/Measure.h:324:5
-    // wrapped.method("SimTK!Measure_!getAs", static_cast<const WrappedType & (*)(const SimTK::AbstractMeasure &) >(&WrappedType::getAs));
-    // wrapped.method("SimTK!Measure_!getAs", []() -> const WrappedType & { return WrappedType::getAs(); });
-
-    // DEBUG_MSG("Measure_<T> & SimTK::Measure_::updAs(SimTK::AbstractMeasure &) (" __HERE__ ")");
-    // signature to use in the veto list: Measure_<T> & SimTK::Measure_::updAs(SimTK::AbstractMeasure &)
-    // defined in SimTKcommon/internal/Measure.h:324:5
-    // wrapped.method("SimTK!Measure_!updAs", static_cast<WrappedType & (*)(SimTK::AbstractMeasure &) >(&WrappedType::updAs));
-    // wrapped.method("SimTK!Measure_!updAs", []() -> WrappedType & { return WrappedType::updAs(); });
-
-    // DEBUG_MSG("const SimTK::Measure_::Implementation & SimTK::Measure_::getImpl() (" __HERE__ ")");
-    // // signature to use in the veto list: const SimTK::Measure_::Implementation & SimTK::Measure_::getImpl()
-    // // defined in SimTKcommon/internal/Measure.h:324:5
-    // wrapped.method("getImpl", static_cast<const typename WrappedType::Implementation & (WrappedType::*)()  const>(&WrappedType::getImpl));
-
-    // DEBUG_MSG("SimTK::Measure_::Implementation & SimTK::Measure_::updImpl() (" __HERE__ ")");
-    // // signature to use in the veto list: SimTK::Measure_::Implementation & SimTK::Measure_::updImpl()
-    // // defined in SimTKcommon/internal/Measure.h:324:5
-    // wrapped.method("updImpl", static_cast<typename WrappedType::Implementation & (WrappedType::*)() >(&WrappedType::updImpl));
   };
   t3.apply<
-    SimTK::Measure_<SimTK::Vector_<double>>,
-    SimTK::Measure_<double>
+    SimTK::Measure_<double>,
+    SimTK::Measure_<SimTK::Vector_<double>>
     >(t3_decl_methods);
+
+  DEBUG_MSG("bool SimTK::Measure_<T>::isA(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  // defined in SimTKcommon/internal/Measure.h:324:5
+  types.method("isA_Measure_double", ISA_MEASURE_TYPE(SimTK::Measure_<double>));
+  types.method("isA_Measure_Vector_double", ISA_MEASURE_TYPE(SimTK::Measure_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const Measure_<T> & SimTK::Measure_::getAs(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  // defined in SimTKcommon/internal/Measure.h:324:5
+  types.method("getAs_Measure_double", GETAS_MEASURE_TYPE(static_cast,SimTK::Measure_<double>));
+  types.method("getAs_Measure_Vector_double", GETAS_MEASURE_TYPE(static_cast,SimTK::Measure_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("Measure_<T> & SimTK::Measure_::updAs(SimTK::AbstractMeasure &) (" __HERE__ ")");
+  // // defined in SimTKcommon/internal/Measure.h:324:5
+  types.method("updAs_Measure_double", UPDAS_MEASURE_TYPE(static_cast,SimTK::Measure_<double>));
+  types.method("updAs_Measure_Vector_double", UPDAS_MEASURE_TYPE(static_cast,SimTK::Measure_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::Measure_ class method wrappers
    **********************************************************************/
@@ -318,34 +248,6 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
     wrapped.constructor([] () {
       return reinterpret_cast<WrappedType*>(new typename SimTK::Measure_<T>::Constant());
     });
-    // DEBUG_MSG("void SimTK::Measure_::Constant::Constant(SimTK::Measure_::Constant::Implementation *) (" __HERE__ ")");
-    // defined in SimTKcommon/internal/Measure.h:343:35
-    // wrapped.template constructor<typename WrappedType::Implementation *>();
-
-
-    DEBUG_MSG("SimTK::Measure_::Constant & SimTK::Measure_::Constant::operator=(const SimTK::Measure_::Constant &) (" __HERE__ ")");
-    // signature to use in the veto list: SimTK::Measure_::Constant & SimTK::Measure_::Constant::operator=(const SimTK::Measure_::Constant &)
-    // defined in SimTKcommon/internal/Measure.h:343:5
-    wrapped.method("set!", static_cast<WrappedType & (WrappedType::*)(const WrappedType &) >(&WrappedType::operator=));
-    // wrapped.method("assign", [](WrappedType& a) -> WrappedType & { return a.operator=(); });
-    // wrapped.method("assign", [](WrappedType* a) -> WrappedType & { return a->operator=(); });
-    CLEAR_DEBUG_MSG();
-
-    DEBUG_MSG("SimTK::Measure_::Constant & SimTK::Measure_::Constant::shallowAssign(const SimTK::Measure_::Constant &) (" __HERE__ ")");
-    // signature to use in the veto list: SimTK::Measure_::Constant & SimTK::Measure_::Constant::shallowAssign(const SimTK::Measure_::Constant &)
-    // defined in SimTKcommon/internal/Measure.h:343:5
-    wrapped.method("shallowAssign", reinterpret_cast<WrappedType & (WrappedType::*)(const WrappedType &) >(&WrappedType::shallowAssign));
-    // wrapped.method("shallowAssign", [](WrappedType& a) -> WrappedType & { return a.shallowAssign(); });
-    // wrapped.method("shallowAssign", [](WrappedType* a) -> WrappedType & { return a->shallowAssign(); });
-    CLEAR_DEBUG_MSG();
-
-    DEBUG_MSG("SimTK::Measure_::Constant & SimTK::Measure_::Constant::deepAssign(const SimTK::Measure_::Constant &) (" __HERE__ ")");
-    // signature to use in the veto list: SimTK::Measure_::Constant & SimTK::Measure_::Constant::deepAssign(const SimTK::Measure_::Constant &)
-    // defined in SimTKcommon/internal/Measure.h:343:5
-    wrapped.method("deepAssign", reinterpret_cast<WrappedType & (WrappedType::*)(const WrappedType &) >(&WrappedType::deepAssign));
-    // wrapped.method("deepAssign", [](WrappedType& a) -> WrappedType & { return a.deepAssign(); });
-    // wrapped.method("deepAssign", [](WrappedType* a) -> WrappedType & { return a->deepAssign(); });
-    CLEAR_DEBUG_MSG();
 
     DEBUG_MSG("void SimTK::Measure_::Constant::Constant(SimTK::Subsystem &) (" __HERE__ ")");
     // defined in SimTKcommon/internal/Measure.h:343:35
@@ -370,45 +272,26 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
       return reinterpret_cast<WrappedType*>(new typename SimTK::Measure_<T>::Constant(sub, val));
     });
     CLEAR_DEBUG_MSG();
-
-    DEBUG_MSG("SimTK::Measure_::Constant & SimTK::Measure_::Constant::setValue(const T &) (" __HERE__ ")");
-    // signature to use in the veto list: SimTK::Measure_::Constant & SimTK::Measure_::Constant::setValue(const T &)
-    // defined in SimTKcommon/internal/Measure.h:358:15
-    wrapped.method("setValue", reinterpret_cast<WrappedType & (WrappedType::*)(const T &) >(&WrappedType::setValue));
-    CLEAR_DEBUG_MSG();
-
-    // DEBUG_MSG("bool SimTK::Measure_::Constant::isA(const SimTK::AbstractMeasure &) (" __HERE__ ")");
-    // signature to use in the veto list: bool SimTK::Measure_::Constant::isA(const SimTK::AbstractMeasure &)
-    // defined in SimTKcommon/internal/Measure.h:361:5
-    // wrapped.method("SimTK!Measure_!Constant!isA", static_cast<bool (*)(const SimTK::AbstractMeasure &) >(&WrappedType::isA));
-    // wrapped.method("SimTK!Measure_!Constant!isA", []() -> bool { return WrappedType::isA(); });
-
-    // DEBUG_MSG("const SimTK::Measure_::Constant & SimTK::Measure_::Constant::getAs(const SimTK::AbstractMeasure &) (" __HERE__ ")");
-    // // signature to use in the veto list: const SimTK::Measure_::Constant & SimTK::Measure_::Constant::getAs(const SimTK::AbstractMeasure &)
-    // // defined in SimTKcommon/internal/Measure.h:361:5
-    // wrapped.method("SimTK!Measure_!Constant!getAs", reinterpret_cast<const WrappedType & (*)(const SimTK::AbstractMeasure &) >(&WrappedType::getAs));
-    // wrapped.method("SimTK!Measure_!Constant!getAs", []() -> const WrappedType & { return WrappedType::getAs(); });
-
-    // DEBUG_MSG("SimTK::Measure_::Constant & SimTK::Measure_::Constant::updAs(SimTK::AbstractMeasure &) (" __HERE__ ")");
-    // // signature to use in the veto list: SimTK::Measure_::Constant & SimTK::Measure_::Constant::updAs(SimTK::AbstractMeasure &)
-    // // defined in SimTKcommon/internal/Measure.h:361:5
-    // wrapped.method("SimTK!Measure_!Constant!updAs", reinterpret_cast<WrappedType & (*)(SimTK::AbstractMeasure &) >(&WrappedType::updAs));
-    // wrapped.method("SimTK!Measure_!Constant!updAs", []() -> WrappedType & { return WrappedType::updAs(); });
-
-    // DEBUG_MSG("const SimTK::Measure_::Constant::Implementation & SimTK::Measure_::Constant::getImpl() (" __HERE__ ")");
-    // signature to use in the veto list: const SimTK::Measure_::Constant::Implementation & SimTK::Measure_::Constant::getImpl()
-    // defined in SimTKcommon/internal/Measure.h:361:5
-    // wrapped.method("getImpl", static_cast<const typename WrappedType::Implementation & (WrappedType::*)()  const>(&WrappedType::getImpl));
-
-    // DEBUG_MSG("SimTK::Measure_::Constant::Implementation & SimTK::Measure_::Constant::updImpl() (" __HERE__ ")");
-    // signature to use in the veto list: SimTK::Measure_::Constant::Implementation & SimTK::Measure_::Constant::updImpl()
-    // defined in SimTKcommon/internal/Measure.h:361:5
-    // wrapped.method("updImpl", static_cast<typename WrappedType::Implementation & (WrappedType::*)() >(&WrappedType::updImpl));
   };
   t4.apply<
-    SimTK::Measure_Constant_<SimTK::Vector_<double>>,
-    SimTK::Measure_Constant_<double>
+    SimTK::Measure_Constant_<double>,
+    SimTK::Measure_Constant_<SimTK::Vector_<double>>
     >(t4_decl_methods);
+
+  DEBUG_MSG("bool SimTK::Measure_<T>::Constant::isA(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("isA_ConstantMeasure_double", ISA_MEASURE_TYPE(SimTK::Measure_Constant_<double>));
+  types.method("isA_ConstantMeasure_Vector_double", ISA_MEASURE_TYPE(SimTK::Measure_Constant_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::Measure_<T>::Constant & SimTK::Measure_<T>::Constant::getAs(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("getAs_ConstantMeasure_double", GETAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Constant_<double>));
+  types.method("getAs_ConstantMeasure_Vector_double", GETAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Constant_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Measure_<T>::Constant & SimTK::Measure_<T>::Constant::updAs(SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("updAs_ConstantMeasure_double", UPDAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Constant_<double>));
+  types.method("updAs_ConstantMeasure_Vector_double", UPDAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Constant_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
 
   /**********************************************************************/
   /* Wrappers for the methods of class SimTK::Measure_::Zero
@@ -434,9 +317,24 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
     }
   };
   t5.apply<
-    SimTK::Measure_Zero_<SimTK::Vector_<double>>,
-    SimTK::Measure_Zero_<double>
+    SimTK::Measure_Zero_<double>,
+    SimTK::Measure_Zero_<SimTK::Vector_<double>>
     >(t5_decl_methods);
+
+  DEBUG_MSG("bool SimTK::Measure_<T>::Zero::isA(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("isA_ZeroMeasure_double", ISA_MEASURE_TYPE(SimTK::Measure_Zero_<double>));
+  types.method("isA_ZeroMeasure_Vector_double", ISA_MEASURE_TYPE(SimTK::Measure_Zero_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::Measure_<T>::Zero & SimTK::Measure_<T>::Zero::getAs(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("getAs_ZeroMeasure_double", GETAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Zero_<double>));
+  types.method("getAs_ZeroMeasure_Vector_double", GETAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Zero_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Measure_<T>::Zero & SimTK::Measure_<T>::Zero::updAs(SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("updAs_ZeroMeasure_double", UPDAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Zero_<double>));
+  types.method("updAs_ZeroMeasure_Vector_double", UPDAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Zero_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::Measure_::Zero class method wrappers
    **********************************************************************/
@@ -466,9 +364,24 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
     }
   };
   t7.apply<
-    SimTK::Measure_One_<SimTK::Vector_<double>>,
-    SimTK::Measure_One_<double>
+    SimTK::Measure_One_<double>,
+    SimTK::Measure_One_<SimTK::Vector_<double>>
     >(t7_decl_methods);
+
+  DEBUG_MSG("bool SimTK::Measure_<T>::One::isA(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("isA_OneMeasure_double", ISA_MEASURE_TYPE(SimTK::Measure_One_<double>));
+  types.method("isA_OneMeasure_Vector_double", ISA_MEASURE_TYPE(SimTK::Measure_One_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::Measure_<T>::One & SimTK::Measure_<T>::One::getAs(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("getAs_OneMeasure_double", GETAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_One_<double>));
+  types.method("getAs_OneMeasure_Vector_double", GETAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_One_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Measure_<T>::One & SimTK::Measure_<T>::One::updAs(SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("updAs_OneMeasure_double", UPDAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_One_<double>));
+  types.method("updAs_OneMeasure_Vector_double", UPDAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_One_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::Measure_::One class method wrappers
    **********************************************************************/
@@ -483,13 +396,25 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
     wrapped.constructor([] () {
       return reinterpret_cast<WrappedType*>(new typename SimTK::Measure_<T>::Time());
     });
-     wrapped.constructor([] (SimTK::Subsystem& sub) {
+    wrapped.constructor([] (SimTK::Subsystem& sub) {
       return reinterpret_cast<WrappedType*>(new typename SimTK::Measure_<T>::Time(sub));
     });
   };
   t9.apply<
     SimTK::Measure_Time_<double>
     >(t9_decl_methods);
+
+  DEBUG_MSG("bool SimTK::Measure_<T>::Time::isA(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("isA_TimeMeasure_double", ISA_MEASURE_TYPE(SimTK::Measure_Time_<double>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::Measure_<T>::Time & SimTK::Measure_<T>::Time::getAs(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("getAs_TimeMeasure_double", GETAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Time_<double>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Measure_<T>::Time & SimTK::Measure_<T>::Time::updAs(SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("updAs_TimeMeasure_double", UPDAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Time_<double>));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::Measure_::Time class method wrappers
    **********************************************************************/
@@ -498,7 +423,6 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
   /**********************************************************************/
   /* Wrappers for the methods of class SimTK::Measure_::Variable
    */
-
 
   auto t10_decl_methods = []<typename T> (jlcxx::TypeWrapper<SimTK::Measure_Variable_<T>> wrapped){
     typedef SimTK::Measure_Variable_<T> WrappedType;
@@ -511,10 +435,24 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
     wrapped.constructor([] (SimTK::Subsystem& sub, SimTK::Stage invalidates, const T& val) {
       return reinterpret_cast<WrappedType*>(new typename SimTK::Measure_<T>::Variable(sub, invalidates, val));
     });
+
+    wrapped.method("setValue", static_cast<void (WrappedType::*)(SimTK::State &, const T &) const>(&WrappedType::setValue));
   };
   t10.apply<
     SimTK::Measure_Variable_<double>
     >(t10_decl_methods);
+
+  DEBUG_MSG("bool SimTK::Measure_<T>::Variable::isA(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("isA_VariableMeasure_double", ISA_MEASURE_TYPE(SimTK::Measure_Variable_<double>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::Measure_<T>::Variable & SimTK::Measure_<T>::Variable::getAs(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("getAs_VariableMeasure_double", GETAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Variable_<double>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Measure_<T>::Variable & SimTK::Measure_<T>::Variable::updAs(SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("updAs_VariableMeasure_double", UPDAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Variable_<double>));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::Measure_::Variable class method wrappers
    **********************************************************************/
@@ -546,74 +484,79 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
     CLEAR_DEBUG_MSG();
 
     DEBUG_MSG("SimTK::Stage SimTK::Measure_::Result::getDependsOnStage() (" __HERE__ ")");
-    // signature to use in the veto list: SimTK::Stage SimTK::Measure_::Result::getDependsOnStage()
     // defined in SimTKcommon/internal/Measure.h:484:11
     wrapped.method("getDependsOnStage", static_cast<SimTK::Stage (WrappedType::*)()  const>(&WrappedType::getDependsOnStage));
     CLEAR_DEBUG_MSG();
 
     DEBUG_MSG("SimTK::Stage SimTK::Measure_::Result::getInvalidatedStage() (" __HERE__ ")");
-    // signature to use in the veto list: SimTK::Stage SimTK::Measure_::Result::getInvalidatedStage()
     // defined in SimTKcommon/internal/Measure.h:486:11
     wrapped.method("getInvalidatedStage", static_cast<SimTK::Stage (WrappedType::*)()  const>(&WrappedType::getInvalidatedStage));
     CLEAR_DEBUG_MSG();
 
     DEBUG_MSG("SimTK::Measure_::Result & SimTK::Measure_::Result::setDependsOnStage(SimTK::Stage) (" __HERE__ ")");
-    // signature to use in the veto list: SimTK::Measure_::Result & SimTK::Measure_::Result::setDependsOnStage(SimTK::Stage)
     // defined in SimTKcommon/internal/Measure.h:494:13
     wrapped.method("setDependsOnStage", reinterpret_cast<WrappedType & (WrappedType::*)(SimTK::Stage) >(&WrappedType::setDependsOnStage));
     CLEAR_DEBUG_MSG();
 
     DEBUG_MSG("SimTK::Measure_::Result & SimTK::Measure_::Result::setInvalidatedStage(SimTK::Stage) (" __HERE__ ")");
-    // signature to use in the veto list: SimTK::Measure_::Result & SimTK::Measure_::Result::setInvalidatedStage(SimTK::Stage)
     // defined in SimTKcommon/internal/Measure.h:501:13
     wrapped.method("setInvalidatedStage", reinterpret_cast<WrappedType & (WrappedType::*)(SimTK::Stage) >(&WrappedType::setInvalidatedStage));
     CLEAR_DEBUG_MSG();
 
     DEBUG_MSG("SimTK::Measure_::Result & SimTK::Measure_::Result::setIsPresumedValidAtDependsOnStage(bool) (" __HERE__ ")");
-    // signature to use in the veto list: SimTK::Measure_::Result & SimTK::Measure_::Result::setIsPresumedValidAtDependsOnStage(bool)
     // defined in SimTKcommon/internal/Measure.h:516:13
     wrapped.method("setIsPresumedValidAtDependsOnStage", reinterpret_cast<WrappedType & (WrappedType::*)(bool) >(&WrappedType::setIsPresumedValidAtDependsOnStage));
     CLEAR_DEBUG_MSG();
 
     DEBUG_MSG("bool SimTK::Measure_::Result::getIsPresumedValidAtDependsOnStage() (" __HERE__ ")");
-    // signature to use in the veto list: bool SimTK::Measure_::Result::getIsPresumedValidAtDependsOnStage()
     // defined in SimTKcommon/internal/Measure.h:521:10
     wrapped.method("getIsPresumedValidAtDependsOnStage", static_cast<bool (WrappedType::*)()  const>(&WrappedType::getIsPresumedValidAtDependsOnStage));
     CLEAR_DEBUG_MSG();
 
     DEBUG_MSG("T & SimTK::Measure_::Result::updValue(const SimTK::State &) (" __HERE__ ")");
-    // signature to use in the veto list: T & SimTK::Measure_::Result::updValue(const SimTK::State &)
     // defined in SimTKcommon/internal/Measure.h:530:8
     wrapped.method("updValue", static_cast<T & (WrappedType::*)(const SimTK::State &)  const>(&WrappedType::updValue));
     CLEAR_DEBUG_MSG();
 
     DEBUG_MSG("void SimTK::Measure_::Result::markAsValid(const SimTK::State &) (" __HERE__ ")");
-    // signature to use in the veto list: void SimTK::Measure_::Result::markAsValid(const SimTK::State &)
     // defined in SimTKcommon/internal/Measure.h:539:10
     wrapped.method("markAsValid", static_cast<void (WrappedType::*)(const SimTK::State &)  const>(&WrappedType::markAsValid));
     CLEAR_DEBUG_MSG();
 
     DEBUG_MSG("bool SimTK::Measure_::Result::isValid(const SimTK::State &) (" __HERE__ ")");
-    // signature to use in the veto list: bool SimTK::Measure_::Result::isValid(const SimTK::State &)
     // defined in SimTKcommon/internal/Measure.h:544:10
     wrapped.method("isValid", static_cast<bool (WrappedType::*)(const SimTK::State &)  const>(&WrappedType::isValid));
     CLEAR_DEBUG_MSG();
 
     DEBUG_MSG("void SimTK::Measure_::Result::markAsNotValid(const SimTK::State &) (" __HERE__ ")");
-    // signature to use in the veto list: void SimTK::Measure_::Result::markAsNotValid(const SimTK::State &)
     // defined in SimTKcommon/internal/Measure.h:553:10
     wrapped.method("markAsNotValid", static_cast<void (WrappedType::*)(const SimTK::State &)  const>(&WrappedType::markAsNotValid));
     CLEAR_DEBUG_MSG();
 
     DEBUG_MSG("void SimTK::Measure_::Result::setValue(const SimTK::State &, const T &) (" __HERE__ ")");
-    // signature to use in the veto list: void SimTK::Measure_::Result::setValue(const SimTK::State &, const T &)
     // defined in SimTKcommon/internal/Measure.h:559:10
     wrapped.method("setValue", static_cast<void (WrappedType::*)(const SimTK::State &, const T &)  const>(&WrappedType::setValue));
     CLEAR_DEBUG_MSG();
   };
   t11.apply<
-    SimTK::Measure_Result_<SimTK::Vector_<double>>,
-    SimTK::Measure_Result_<double>>(t11_decl_methods);
+    SimTK::Measure_Result_<double>,
+    SimTK::Measure_Result_<SimTK::Vector_<double>>
+    >(t11_decl_methods);
+
+  DEBUG_MSG("bool SimTK::Measure_<T>::Result::isA(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("isA_ResultMeasure_double", ISA_MEASURE_TYPE(SimTK::Measure_Result_<double>));
+  types.method("isA_ResultMeasure_Vector_double", ISA_MEASURE_TYPE(SimTK::Measure_Result_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::Measure_<T>::Result & SimTK::Measure_<T>::Result::getAs(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("getAs_ResultMeasure_double", GETAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Result_<double>));
+  types.method("getAs_ResultMeasure_Vector_double", GETAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Result_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Measure_<T>::Result & SimTK::Measure_<T>::Result::updAs(SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("updAs_ResultMeasure_double", UPDAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Result_<double>));
+  types.method("updAs_ResultMeasure_Vector_double", UPDAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Result_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::Measure_::Result class method wrappers
    **********************************************************************/
@@ -648,6 +591,18 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
     SimTK::Measure_Sinusoid_<double>
     >(t12_decl_methods);
 
+  DEBUG_MSG("bool SimTK::Measure_<T>::Sinusoid::isA(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("isA_SinusoidMeasure_double", ISA_MEASURE_TYPE(SimTK::Measure_Sinusoid_<double>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::Measure_<T>::Sinusoid & SimTK::Measure_<T>::Sinusoid::getAs(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("getAs_SinusoidMeasure_double", GETAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Sinusoid_<double>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Measure_<T>::Sinusoid & SimTK::Measure_<T>::Sinusoid::updAs(SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("updAs_SinusoidMeasure_double", UPDAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Sinusoid_<double>));
+  CLEAR_DEBUG_MSG();
+
   /* End of SimTK::Measure_::Sinusoid class method wrappers
    **********************************************************************/
 
@@ -679,9 +634,24 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
     CLEAR_DEBUG_MSG();
   };
   t13.apply<
-    SimTK::Measure_Plus_<SimTK::Vector_<double>>,
-    SimTK::Measure_Plus_<double>
+    SimTK::Measure_Plus_<double>,
+    SimTK::Measure_Plus_<SimTK::Vector_<double>>
     >(t13_decl_methods);
+
+  DEBUG_MSG("bool SimTK::Measure_<T>::Plus::isA(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("isA_PlusMeasure_double", ISA_MEASURE_TYPE(SimTK::Measure_Plus_<double>));
+  types.method("isA_PlusMeasure_Vector_double", ISA_MEASURE_TYPE(SimTK::Measure_Plus_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::Measure_<T>::Plus & SimTK::Measure_<T>::Plus::getAs(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("getAs_PlusMeasure_double", GETAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Plus_<double>));
+  types.method("getAs_PlusMeasure_Vector_double", GETAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Plus_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Measure_<T>::Plus & SimTK::Measure_<T>::Plus::updAs(SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("updAs_PlusMeasure_double", UPDAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Plus_<double>));
+  types.method("updAs_PlusMeasure_Vector_double", UPDAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Plus_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::Measure_::Plus class method wrappers
    **********************************************************************/
@@ -714,9 +684,24 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
     CLEAR_DEBUG_MSG();
   };
   t14.apply<
-    SimTK::Measure_Minus_<SimTK::Vector_<double>>,
-    SimTK::Measure_Minus_<double>
+    SimTK::Measure_Minus_<double>,
+    SimTK::Measure_Minus_<SimTK::Vector_<double>>
     >(t14_decl_methods);
+
+  DEBUG_MSG("bool SimTK::Measure_<T>::Minus::isA(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("isA_MinusMeasure_double", ISA_MEASURE_TYPE(SimTK::Measure_Minus_<double>));
+  types.method("isA_MinusMeasure_Vector_double", ISA_MEASURE_TYPE(SimTK::Measure_Minus_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const Measure_<T>::Minus & SimTK::Measure_<T>::Minus::getAs(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("getAs_MinusMeasure_double", GETAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Minus_<double>));
+  types.method("getAs_MinusMeasure_Vector_double", GETAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Minus_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("Measure_<T>::Minus & SimTK::Measure_<T>::Minus::updAs(SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("updAs_MinusMeasure_double", UPDAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Minus_<double>));
+  types.method("updAs_MinusMeasure_Vector_double", UPDAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Minus_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::Measure_::Minus class method wrappers
    **********************************************************************/
@@ -749,16 +734,30 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
     CLEAR_DEBUG_MSG();
 
     DEBUG_MSG("const Measure_<T> & SimTK::Measure_::Scale::getOperandMeasure() (" __HERE__ ")");
-    // signature to use in the veto list: const Measure_<T> & SimTK::Measure_::Scale::getOperandMeasure()
     // defined in SimTKcommon/internal/Measure.h:661:24
     wrapped.method("getOperandMeasure", static_cast<const SimTK::Measure_<T> & (WrappedType::*)()  const>(&WrappedType::getOperandMeasure));
     CLEAR_DEBUG_MSG();
 
   };
   t15.apply<
-    SimTK::Measure_Scale_<SimTK::Vector_<double>>,
-    SimTK::Measure_Scale_<double>
+    SimTK::Measure_Scale_<double>,
+    SimTK::Measure_Scale_<SimTK::Vector_<double>>
     >(t15_decl_methods);
+
+  DEBUG_MSG("bool SimTK::Measure_<T>::Scale::isA(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("isA_ScaleMeasure_double", ISA_MEASURE_TYPE(SimTK::Measure_Scale_<double>));
+  types.method("isA_ScaleMeasure_Vector_double", ISA_MEASURE_TYPE(SimTK::Measure_Scale_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const Measure_<T>::Scale & SimTK::Measure_<T>::Scale::getAs(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("getAs_ScaleMeasure_double", GETAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Scale_<double>));
+  types.method("getAs_ScaleMeasure_Vector_double", GETAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Scale_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("Measure_<T>::Scale & SimTK::Measure_<T>::Scale::updAs(SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("updAs_ScaleMeasure_double", UPDAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Scale_<double>));
+  types.method("updAs_ScaleMeasure_Vector_double", UPDAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Scale_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::Measure_::Scale class method wrappers
    **********************************************************************/
@@ -791,39 +790,49 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
     CLEAR_DEBUG_MSG();
 
     DEBUG_MSG("void SimTK::Measure_::Integrate::setValue(SimTK::State &, const T &) (" __HERE__ ")");
-    // signature to use in the veto list: void SimTK::Measure_::Integrate::setValue(SimTK::State &, const T &)
     // defined in SimTKcommon/internal/Measure.h:696:10
     wrapped.method("setValue", static_cast<void (WrappedType::*)(SimTK::State &, const T &)  const>(&WrappedType::setValue));
     CLEAR_DEBUG_MSG();
 
     DEBUG_MSG("const Measure_<T> & SimTK::Measure_::Integrate::getDerivativeMeasure() (" __HERE__ ")");
-    // signature to use in the veto list: const Measure_<T> & SimTK::Measure_::Integrate::getDerivativeMeasure()
     // defined in SimTKcommon/internal/Measure.h:700:24
     wrapped.method("getDerivativeMeasure", static_cast<const SimTK::Measure_<T> & (WrappedType::*)()  const>(&WrappedType::getDerivativeMeasure));
     CLEAR_DEBUG_MSG();
 
     DEBUG_MSG("const Measure_<T> & SimTK::Measure_::Integrate::getInitialConditionMeasure() (" __HERE__ ")");
-    // signature to use in the veto list: const Measure_<T> & SimTK::Measure_::Integrate::getInitialConditionMeasure()
     // defined in SimTKcommon/internal/Measure.h:705:24
     wrapped.method("getInitialConditionMeasure", static_cast<const SimTK::Measure_<T> & (WrappedType::*)()  const>(&WrappedType::getInitialConditionMeasure));
     CLEAR_DEBUG_MSG();
 
     DEBUG_MSG("SimTK::Measure_::Integrate & SimTK::Measure_::Integrate::setDerivativeMeasure(const Measure_<T> &) (" __HERE__ ")");
-    // signature to use in the veto list: SimTK::Measure_::Integrate & SimTK::Measure_::Integrate::setDerivativeMeasure(const Measure_<T> &)
     // defined in SimTKcommon/internal/Measure.h:708:16
     wrapped.method("setDerivativeMeasure", reinterpret_cast<WrappedType & (WrappedType::*)(const SimTK::Measure_<T> &) >(&WrappedType::setDerivativeMeasure));
     CLEAR_DEBUG_MSG();
 
     DEBUG_MSG("SimTK::Measure_::Integrate & SimTK::Measure_::Integrate::setInitialConditionMeasure(const Measure_<T> &) (" __HERE__ ")");
-    // signature to use in the veto list: SimTK::Measure_::Integrate & SimTK::Measure_::Integrate::setInitialConditionMeasure(const Measure_<T> &)
     // defined in SimTKcommon/internal/Measure.h:711:16
     wrapped.method("setInitialConditionMeasure", reinterpret_cast<WrappedType & (WrappedType::*)(const SimTK::Measure_<T> &) >(&WrappedType::setInitialConditionMeasure));
     CLEAR_DEBUG_MSG();
   };
   t16.apply<
-    SimTK::Measure_Integrate_<SimTK::Vector_<double>>,
-    SimTK::Measure_Integrate_<double>
+    SimTK::Measure_Integrate_<double>,
+    SimTK::Measure_Integrate_<SimTK::Vector_<double>>
     >(t16_decl_methods);
+
+  DEBUG_MSG("bool SimTK::Measure_<T>::Integrate::isA(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("isA_IntegrateMeasure_double", ISA_MEASURE_TYPE(SimTK::Measure_Integrate_<double>));
+  types.method("isA_IntegrateMeasure_Vector_double", ISA_MEASURE_TYPE(SimTK::Measure_Integrate_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const Measure_<T>::Integrate & SimTK::Measure_<T>::Integrate::getAs(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("getAs_IntegrateMeasure_double", GETAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Integrate_<double>));
+  types.method("getAs_IntegrateMeasure_Vector_double", GETAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Integrate_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("Measure_<T>::Integrate & SimTK::Measure_<T>::Integrate::updAs(SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("updAs_IntegrateMeasure_double", UPDAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Integrate_<double>));
+  types.method("updAs_IntegrateMeasure_Vector_double", UPDAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Integrate_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::Measure_::Integrate class method wrappers
    **********************************************************************/
@@ -856,39 +865,49 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
     CLEAR_DEBUG_MSG();
 
     DEBUG_MSG("bool SimTK::Measure_::Differentiate::isUsingApproximation() (" __HERE__ ")");
-    // signature to use in the veto list: bool SimTK::Measure_::Differentiate::isUsingApproximation()
     // defined in SimTKcommon/internal/Measure.h:760:10
     wrapped.method("isUsingApproximation", static_cast<bool (WrappedType::*)()  const>(&WrappedType::isUsingApproximation));
     CLEAR_DEBUG_MSG();
 
     DEBUG_MSG("const Measure_<T> & SimTK::Measure_::Differentiate::getOperandMeasure() (" __HERE__ ")");
-    // signature to use in the veto list: const Measure_<T> & SimTK::Measure_::Differentiate::getOperandMeasure()
     // defined in SimTKcommon/internal/Measure.h:765:24
     wrapped.method("getOperandMeasure", static_cast<const SimTK::Measure_<T> & (WrappedType::*)()  const>(&WrappedType::getOperandMeasure));
     CLEAR_DEBUG_MSG();
 
     DEBUG_MSG("SimTK::Measure_::Differentiate & SimTK::Measure_::Differentiate::setOperandMeasure(const Measure_<T> &) (" __HERE__ ")");
-    // signature to use in the veto list: SimTK::Measure_::Differentiate & SimTK::Measure_::Differentiate::setOperandMeasure(const Measure_<T> &)
     // defined in SimTKcommon/internal/Measure.h:771:20
     wrapped.method("setOperandMeasure", reinterpret_cast<WrappedType & (WrappedType::*)(const SimTK::Measure_<T> &) >(&WrappedType::setOperandMeasure));
     CLEAR_DEBUG_MSG();
 
     DEBUG_MSG("void SimTK::Measure_::Differentiate::setForceUseApproximation(bool) (" __HERE__ ")");
-    // signature to use in the veto list: void SimTK::Measure_::Differentiate::setForceUseApproximation(bool)
     // defined in SimTKcommon/internal/Measure.h:777:10
     wrapped.method("setForceUseApproximation", static_cast<void (WrappedType::*)(bool) >(&WrappedType::setForceUseApproximation));
     CLEAR_DEBUG_MSG();
 
     DEBUG_MSG("bool SimTK::Measure_::Differentiate::getForceUseApproximation() (" __HERE__ ")");
-    // signature to use in the veto list: bool SimTK::Measure_::Differentiate::getForceUseApproximation()
     // defined in SimTKcommon/internal/Measure.h:784:10
     wrapped.method("getForceUseApproximation", static_cast<bool (WrappedType::*)()  const>(&WrappedType::getForceUseApproximation));
     CLEAR_DEBUG_MSG();
   };
   t17.apply<
-    SimTK::Measure_Differentiate_<SimTK::Vector_<double>>,
-    SimTK::Measure_Differentiate_<double>
+    SimTK::Measure_Differentiate_<double>,
+    SimTK::Measure_Differentiate_<SimTK::Vector_<double>>
     >(t17_decl_methods);
+
+  DEBUG_MSG("bool SimTK::Measure_<T>::Differentiate::isA(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("isA_DifferentiateMeasure_double", ISA_MEASURE_TYPE(SimTK::Measure_Differentiate_<double>));
+  types.method("isA_DifferentiateMeasure_Vector_double", ISA_MEASURE_TYPE(SimTK::Measure_Differentiate_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const Measure_<T>::Differentiate & SimTK::Measure_<T>::Differentiate::getAs(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("getAs_DifferentiateMeasure_double", GETAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Differentiate_<double>));
+  types.method("getAs_DifferentiateMeasure_Vector_double", GETAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Differentiate_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("Measure_<T>::Differentiate & SimTK::Measure_<T>::Differentiate::updAs(SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("updAs_DifferentiateMeasure_double", UPDAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Differentiate_<double>));
+  types.method("updAs_DifferentiateMeasure_Vector_double", UPDAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Differentiate_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::Measure_::Differentiate class method wrappers
    **********************************************************************/
@@ -921,45 +940,54 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
     CLEAR_DEBUG_MSG();
 
     DEBUG_MSG("SimTK::Measure_::Extreme & SimTK::Measure_::Extreme::setOperation(SimTK::Measure_::Extreme::Operation) (" __HERE__ ")");
-    // signature to use in the veto list: SimTK::Measure_::Extreme & SimTK::Measure_::Extreme::setOperation(SimTK::Measure_::Extreme::Operation)
     // defined in SimTKcommon/internal/Measure.h:856:14
     wrapped.method("setOperation", reinterpret_cast<WrappedType & (WrappedType::*)(Operation) >(&WrappedType::setOperation));
     CLEAR_DEBUG_MSG();
 
     DEBUG_MSG("SimTK::Measure_::Extreme::Operation SimTK::Measure_::Extreme::getOperation() (" __HERE__ ")");
-    // signature to use in the veto list: SimTK::Measure_::Extreme::Operation SimTK::Measure_::Extreme::getOperation()
     // defined in SimTKcommon/internal/Measure.h:860:15
     wrapped.method("getOperation", reinterpret_cast<Operation (WrappedType::*)()  const>(&WrappedType::getOperation));
     CLEAR_DEBUG_MSG();
 
     DEBUG_MSG("SimTK::Real SimTK::Measure_::Extreme::getTimeOfExtremeValue(const SimTK::State &) (" __HERE__ ")");
-    // signature to use in the veto list: SimTK::Real SimTK::Measure_::Extreme::getTimeOfExtremeValue(const SimTK::State &)
     // defined in SimTKcommon/internal/Measure.h:867:10
     wrapped.method("getTimeOfExtremeValue", static_cast<SimTK::Real (WrappedType::*)(const SimTK::State &)  const>(&WrappedType::getTimeOfExtremeValue));
     CLEAR_DEBUG_MSG();
 
     DEBUG_MSG("void SimTK::Measure_::Extreme::setValue(SimTK::State &, const T &) (" __HERE__ ")");
-    // signature to use in the veto list: void SimTK::Measure_::Extreme::setValue(SimTK::State &, const T &)
     // defined in SimTKcommon/internal/Measure.h:870:10
     wrapped.method("setValue", static_cast<void (WrappedType::*)(SimTK::State &, const T &)  const>(&WrappedType::setValue));
     CLEAR_DEBUG_MSG();
 
     DEBUG_MSG("const Measure_<T> & SimTK::Measure_::Extreme::getOperandMeasure() (" __HERE__ ")");
-    // signature to use in the veto list: const Measure_<T> & SimTK::Measure_::Extreme::getOperandMeasure()
     // defined in SimTKcommon/internal/Measure.h:873:24
     wrapped.method("getOperandMeasure", static_cast<const SimTK::Measure_<T> & (WrappedType::*)()  const>(&WrappedType::getOperandMeasure));
     CLEAR_DEBUG_MSG();
 
     DEBUG_MSG("SimTK::Measure_::Extreme & SimTK::Measure_::Extreme::setOperandMeasure(const Measure_<T> &) (" __HERE__ ")");
-    // signature to use in the veto list: SimTK::Measure_::Extreme & SimTK::Measure_::Extreme::setOperandMeasure(const Measure_<T> &)
     // defined in SimTKcommon/internal/Measure.h:876:14
     wrapped.method("setOperandMeasure", reinterpret_cast<WrappedType & (WrappedType::*)(const SimTK::Measure_<T> &) >(&WrappedType::setOperandMeasure));
     CLEAR_DEBUG_MSG();
   };
   t18.apply<
-    SimTK::Measure_Extreme_<SimTK::Vector_<double>>,
-    SimTK::Measure_Extreme_<double>
+    SimTK::Measure_Extreme_<double>,
+    SimTK::Measure_Extreme_<SimTK::Vector_<double>>
     >(t18_decl_methods);
+
+  DEBUG_MSG("bool SimTK::Measure_<T>::Extreme::isA(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("isA_ExtremeMeasure_double", ISA_MEASURE_TYPE(SimTK::Measure_Extreme_<double>));
+  types.method("isA_ExtremeMeasure_Vector_double", ISA_MEASURE_TYPE(SimTK::Measure_Extreme_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const Measure_<T>::Extreme & SimTK::Measure_<T>::Extreme::getAs(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("getAs_ExtremeMeasure_double", GETAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Extreme_<double>));
+  types.method("getAs_ExtremeMeasure_Vector_double", GETAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Extreme_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("Measure_<T>::Extreme & SimTK::Measure_<T>::Extreme::updAs(SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("updAs_ExtremeMeasure_double", UPDAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Extreme_<double>));
+  types.method("updAs_ExtremeMeasure_Vector_double", UPDAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Extreme_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::Measure_::Extreme class method wrappers
    **********************************************************************/
@@ -981,9 +1009,24 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
 
   };
   t20.apply<
-    SimTK::Measure_Minimum_<SimTK::Vector_<double>>,
-    SimTK::Measure_Minimum_<double>
+    SimTK::Measure_Minimum_<double>,
+    SimTK::Measure_Minimum_<SimTK::Vector_<double>>
     >(t20_decl_methods);
+
+  DEBUG_MSG("bool SimTK::Measure_<T>::Minimum::isA(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("isA_MinimumMeasure_double", ISA_MEASURE_TYPE(SimTK::Measure_Minimum_<double>));
+  types.method("isA_MinimumMeasure_Vector_double", ISA_MEASURE_TYPE(SimTK::Measure_Minimum_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const Measure_<T>::Minimum & SimTK::Measure_<T>::Minimum::getAs(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("getAs_MinimumMeasure_double", GETAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Minimum_<double>));
+  types.method("getAs_MinimumMeasure_Vector_double", GETAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Minimum_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("Measure_<T>::Minimum & SimTK::Measure_<T>::Minimum::updAs(SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("updAs_MinimumMeasure_double", UPDAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Minimum_<double>));
+  types.method("updAs_MinimumMeasure_Vector_double", UPDAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Minimum_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::Measure_::Minimum class method wrappers
    **********************************************************************/
@@ -1005,9 +1048,24 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
 
   };
   t21.apply<
-    SimTK::Measure_Maximum_<SimTK::Vector_<double>>,
-    SimTK::Measure_Maximum_<double>
+    SimTK::Measure_Maximum_<double>,
+    SimTK::Measure_Maximum_<SimTK::Vector_<double>>
     >(t21_decl_methods);
+
+  DEBUG_MSG("bool SimTK::Measure_<T>::Maximum::isA(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("isA_MaximumMeasure_double", ISA_MEASURE_TYPE(SimTK::Measure_Maximum_<double>));
+  types.method("isA_MaximumMeasure_Vector_double", ISA_MEASURE_TYPE(SimTK::Measure_Maximum_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const Measure_<T>::Maximum & SimTK::Measure_<T>::Maximum::getAs(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("getAs_MaximumMeasure_double", GETAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Maximum_<double>));
+  types.method("getAs_MaximumMeasure_Vector_double", GETAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Maximum_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("Measure_<T>::Maximum & SimTK::Measure_<T>::Maximum::updAs(SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("updAs_MaximumMeasure_double", UPDAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Maximum_<double>));
+  types.method("updAs_MaximumMeasure_Vector_double", UPDAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_Maximum_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::Measure_::Maximum class method wrappers
    **********************************************************************/
@@ -1029,9 +1087,24 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
 
   };
   t22.apply<
-    SimTK::Measure_MaxAbs_<SimTK::Vector_<double>>,
-    SimTK::Measure_MaxAbs_<double>
+    SimTK::Measure_MaxAbs_<double>,
+    SimTK::Measure_MaxAbs_<SimTK::Vector_<double>>
     >(t22_decl_methods);
+
+  DEBUG_MSG("bool SimTK::Measure_<T>::MaxAbs::isA(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("isA_MaxAbsMeasure_double", ISA_MEASURE_TYPE(SimTK::Measure_MaxAbs_<double>));
+  types.method("isA_MaxAbsMeasure_Vector_double", ISA_MEASURE_TYPE(SimTK::Measure_MaxAbs_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const Measure_<T>::MaxAbs & SimTK::Measure_<T>::MaxAbs::getAs(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("getAs_MaxAbsMeasure_double", GETAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_MaxAbs_<double>));
+  types.method("getAs_MaxAbsMeasure_Vector_double", GETAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_MaxAbs_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("Measure_<T>::MaxAbs & SimTK::Measure_<T>::MaxAbs::updAs(SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("updAs_MaxAbsMeasure_double", UPDAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_MaxAbs_<double>));
+  types.method("updAs_MaxAbsMeasure_Vector_double", UPDAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_MaxAbs_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::Measure_::MaxAbs class method wrappers
    **********************************************************************/
@@ -1053,9 +1126,24 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
 
   };
   t23.apply<
-    SimTK::Measure_MinAbs_<SimTK::Vector_<double>>,
-    SimTK::Measure_MinAbs_<double>
+    SimTK::Measure_MinAbs_<double>,
+    SimTK::Measure_MinAbs_<SimTK::Vector_<double>>
     >(t23_decl_methods);
+
+  DEBUG_MSG("bool SimTK::Measure_<T>::MinAbs::isA(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("isA_MinAbsMeasure_double", ISA_MEASURE_TYPE(SimTK::Measure_MinAbs_<double>));
+  types.method("isA_MinAbsMeasure_Vector_double", ISA_MEASURE_TYPE(SimTK::Measure_MinAbs_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const Measure_<T>::MinAbs & SimTK::Measure_<T>::MinAbs::getAs(const SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("getAs_MinAbsMeasure_double", GETAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_MinAbs_<double>));
+  types.method("getAs_MinAbsMeasure_Vector_double", GETAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_MinAbs_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("Measure_<T>::MinAbs & SimTK::Measure_<T>::MinAbs::updAs(SimTK::AbstractMeasure &) (" __HERE__ ")");
+  types.method("updAs_MinAbsMeasure_double", UPDAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_MinAbs_<double>));
+  types.method("updAs_MinAbsMeasure_Vector_double", UPDAS_MEASURE_TYPE(reinterpret_cast,SimTK::Measure_MinAbs_<SimTK::Vector_<double>>));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::Measure_::MinAbs class method wrappers
    **********************************************************************/
