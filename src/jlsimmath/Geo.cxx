@@ -14,50 +14,83 @@ void define_simmath_Geo(jlcxx::Module& types){
   // t0.template constructor<>();
 
   // defined in simmath/internal/Geo.h:55:26
-  auto t1 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Geo!Point_");
+  auto t1 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("GeoPoint");
 
   // defined in simmath/internal/Geo.h:56:26
-  auto t2 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Geo!Sphere_");
+  auto t2 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("GeoSphere");
 
   // defined in simmath/internal/Geo.h:57:26
-  auto t3 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Geo!LineSeg_");
+  auto t3 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("GeoLineSeg");
 
   // defined in simmath/internal/Geo.h:61:26
-  auto t7 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Geo!Box_");
+  auto t7 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("GeoBox");
 
   // defined in simmath/internal/Geo.h:62:26
-  auto t8 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Geo!AlignedBox_");
+  auto t8 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("GeoAlignedBox");
 
   // defined in simmath/internal/Geo.h:63:26
-  auto t9 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Geo!OrientedBox_");
+  auto t9 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("GeoOrientedBox");
 
   // defined in simmath/internal/Geo.h:64:26
-  auto t10 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Geo!Triangle_");
+  auto t10 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("GeoTriangle");
 
   // defined in simmath/internal/Geo.h:65:26
-  auto t11 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Geo!CubicHermiteCurve_");
+  auto t11 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("GeoCubicHermiteCurve");
 
   // defined in simmath/internal/Geo.h:66:26
-  auto t12 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Geo!BicubicHermitePatch_");
+  auto t12 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("GeoBicubicHermitePatch");
 
   // defined in simmath/internal/Geo.h:67:26
-  auto t13 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Geo!CubicBezierCurve_");
+  auto t13 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("GeoCubicBezierCurve");
 
   // defined in simmath/internal/Geo.h:68:26
-  auto t14 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SimTK!Geo!BicubicBezierPatch_");
+  auto t14 = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("GeoBicubicBezierPatch");
 
 
   DEBUG_MSG("type SimTK::Geodesic (" __HERE__ ")");
   // defined in simmath/internal/Geodesic.h:51:28
-  auto t15 = types.add_type<SimTK::Geodesic>("SimTK!Geodesic");
+  auto t15 = types.add_type<SimTK::Geodesic>("Geodesic");
   t15.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::GeodesicOptions (" __HERE__ ")");
   // defined in simmath/internal/Geodesic.h:311:7
-  auto t16 = types.add_type<SimTK::GeodesicOptions>("SimTK!GeodesicOptions");
+  auto t16 = types.add_type<SimTK::GeodesicOptions>("GeodesicOptions");
   t16.template constructor<>();
   CLEAR_DEBUG_MSG();
+
+  /**********************************************************************/
+  /* Static methods from SimTK::Geo
+   */
+
+  types.method("isCusp", static_cast<bool (*)(const SimTK::Vec<3,double> &)>(&SimTK::Geo::isCusp));
+
+  // static bool 	isInflectionPoint (const Vec< 3, RealP, S > &Pu, const Vec< 3, RealP, S > &Puu)
+  types.method("isInflectionPoint", static_cast<bool (*)(const SimTK::Vec<3,double> &, const SimTK::Vec<3,double> &)>(&SimTK::Geo::isInflectionPoint));
+
+  // static UnitVec< RealP, 1 > 	calcUnitTangent (const Vec< 3, RealP, S > &Pu)
+  types.method("calcUnitTangent", static_cast<SimTK::UnitVec<double,1> (*)(const SimTK::Vec<3,double> &)>(&SimTK::Geo::calcUnitTangent));
+
+  // static Vec< 3, RealP > 	calcCurvatureVector (const Vec< 3, RealP, S > &Pu, const Vec< 3, RealP, S > &Puu)
+  types.method("calcCurvatureVector", static_cast<SimTK::Vec<3,double> (*)(const SimTK::Vec<3,double> &, const SimTK::Vec<3,double> &)>(&SimTK::Geo::calcCurvatureVector));
+
+  // static UnitVec< RealP, 1 > 	calcUnitNormal (const Vec< 3, RealP, S > &Pu, const Vec< 3, RealP, S > &Puu)
+  types.method("calcUnitNormal", static_cast<SimTK::UnitVec<double,1> (*)(const SimTK::Vec<3,double> &, const SimTK::Vec<3,double> &)>(&SimTK::Geo::calcUnitNormal));
+
+  // static RealP 	calcCurveFrame (const Vec< 3, RealP, S > &P, const Vec< 3, RealP, S > &Pu, const Vec< 3, RealP, S > &Puu, Transform_< RealP > &X_FP)
+  types.method("calcCurveFrame", static_cast<double (*)(const SimTK::Vec<3,double> &, const SimTK::Vec<3,double> &, const SimTK::Vec<3,double> &, SimTK::Transform_<double> &)>(&SimTK::Geo::calcCurveFrame));
+
+  // static RealP 	calcCurvatureSqr (const Vec< 3, RealP, S > &Pu, const Vec< 3, RealP, S > &Puu)
+  types.method("calcCurvatureSqr", static_cast<double (*)(const SimTK::Vec<3,double> &, const SimTK::Vec<3,double> &)>(&SimTK::Geo::calcCurvatureSqr));
+
+  // static RealP 	calcTorsion (const Vec< 3, RealP, S > &Pu, const Vec< 3, RealP, S > &Puu, const Vec< 3, RealP, S > &Puuu)
+  types.method("calcTorsion", static_cast<double (*)(const SimTK::Vec<3,double> &, const SimTK::Vec<3,double> &, const SimTK::Vec<3,double> &)>(&SimTK::Geo::calcTorsion));
+
+  // static void 	findClosestPointsOfTwoLines (const Vec< 3, RealP > &p0, const UnitVec< RealP, 1 > &d0, const Vec< 3, RealP > &p1, const UnitVec< RealP, 1 > &d1, Vec< 3, RealP > &x0, Vec< 3, RealP > &x1, bool &linesAreParallel)
+  types.method("findClosestPointsOfTwoLines", static_cast<void (*)(const SimTK::Vec<3,double> &, const SimTK::UnitVec<double,1> &, const SimTK::Vec<3,double> &, const SimTK::UnitVec<double,1> &, SimTK::Vec<3,double> &, SimTK::Vec<3,double> &, bool &)>(&SimTK::Geo::findClosestPointsOfTwoLines));
+
+  /*
+   **********************************************************************/
 
   /**********************************************************************/
   /* Wrappers for the methods of class SimTK::Geo::Sphere_
@@ -108,13 +141,11 @@ void define_simmath_Geo(jlcxx::Module& types){
     wrapped.method("findDistanceToPoint", static_cast<P (WrappedType::*)(const SimTK::Vec<3,P>&) const>(&WrappedType::findDistanceToPoint));
     wrapped.method("findDistanceToPointSqr", static_cast<P (WrappedType::*)(const SimTK::Vec<3,P>&) const>(&WrappedType::findDistanceToPointSqr));
 
-    wrapped.module().set_override_module(jl_base_module);
-    
-    wrapped.method("getindex", [](const WrappedType& self, int i) {
-      return self[i-1];
+    wrapped.method("cppgetindex", static_cast<SimTK::Vec<3,P> & (WrappedType::*)(int) >(&WrappedType::operator[]));
+    wrapped.method("cppsetindex!", [] (WrappedType &t, int i, const SimTK::Vec<3,P> &v) {
+      t[i] = v;
     });
-    
-    wrapped.module().unset_override_module();
+
   };
   t3.apply<SimTK::Geo::LineSeg_<double>>(t3_decl_methods);
 
@@ -142,7 +173,6 @@ void define_simmath_Geo(jlcxx::Module& types){
     wrapped.method("findDistanceSqrToPoint", static_cast<P (WrappedType::*)(const SimTK::Vec<3,P>&) const>(&WrappedType::findDistanceSqrToPoint));
     wrapped.method("findSupportPoint", static_cast<SimTK::Vec<3,P> (WrappedType::*)(const SimTK::Vec<3,P>&) const>(&WrappedType::findSupportPoint));
     wrapped.method("findDistanceSqrToSphere", static_cast<P (WrappedType::*)(const SimTK::Geo::Sphere_<P>&) const>(&WrappedType::findDistanceSqrToSphere));
-    
     wrapped.method("intersectsSphere", static_cast<bool (WrappedType::*)(const SimTK::Geo::Sphere_<P>&) const>(&WrappedType::intersectsSphere));
 
     wrapped.method("getVertexPos", static_cast<SimTK::Vec<3,P> (WrappedType::*)(int) const>(&WrappedType::getVertexPos));
@@ -162,9 +192,9 @@ void define_simmath_Geo(jlcxx::Module& types){
     wrapped.method("getVertexEdges", static_cast<void (WrappedType::*)(int, int[3], int[3]) const>(&WrappedType::getVertexEdges));
     wrapped.method("getFaceEdges", static_cast<void (WrappedType::*)(int, int[4]) const>(&WrappedType::getFaceEdges));
     wrapped.method("getEdgeFaces", static_cast<void (WrappedType::*)(int, int[2], int[2]) const>(&WrappedType::getEdgeFaces));
-    wrapped.method("getNumVertices", []() { return 8; });
-    wrapped.method("getNumEdges", []() { return 12; });
-    wrapped.method("getNumFaces", []() { return 6; });
+    wrapped.module().method("getNumVertices", static_cast<int (*)()>(WrappedType::getNumVertices));
+    wrapped.module().method("getNumEdges", static_cast<int (*)()>(WrappedType::getNumEdges));
+    wrapped.module().method("getNumFaces", static_cast<int (*)()>(WrappedType::getNumFaces));
 
   };
   t7.apply<SimTK::Geo::Box_<double>>(t7_decl_methods);
@@ -193,20 +223,10 @@ void define_simmath_Geo(jlcxx::Module& types){
   };
   t8.apply<SimTK::Geo::AlignedBox_<double>>(t8_decl_methods);
 
-
-    // wrapped.method("findDistanceSqrToAlignedBox", static_cast<P (WrappedType::*)(const SimTK::Geo::AlignedBox_<P>&) const>(&WrappedType::findDistanceSqrToAlignedBox));
-
-    // wrapped.method("intersectsAlignedBox", static_cast<bool (WrappedType::*)(const SimTK::Geo::AlignedBox_<P>&) const>(&WrappedType::intersectsAlignedBox));
-
-    // wrapped.method("intersectsOrientedBox", static_cast<bool (WrappedType::*)(const SimTK::Geo::OrientedBox_<P>&) const>(&WrappedType::intersectsOrientedBox));
-
-    // wrapped.method("mayIntersectOrientedBox", static_cast<bool (WrappedType::*)(const SimTK::Geo::OrientedBox_<P>&) const>(&WrappedType::mayIntersectOrientedBox));
-
-  // types.method("intersectsAlignedBox", static_cast<bool (*)(const SimTK::Geo::Box&, const SimTK::Geo::AlignedBox&)>(&SimTK::Geo::Box::intersectsAlignedBox));
+  // Two methods from Geo::Box that couldn't be defined in the parametric method decl wrapper because AlignedBox hasn't been defined at that point
   types.method("intersectsAlignedBox", [] (const SimTK::Geo::Box& box, const SimTK::Geo::AlignedBox& abox) -> bool {
     return box.intersectsAlignedBox(abox);
   });
-  // wrapped.method("findDistanceSqrToAlignedBox", static_cast<P (WrappedType::*)(const SimTK::Geo::AlignedBox_<P>&) const>(&WrappedType::findDistanceSqrToAlignedBox));
   types.method("findDistanceSqrToAlignedBox", [] (const SimTK::Geo::Box& box, const SimTK::Geo::AlignedBox& abox) -> double {
     return box.findDistanceSqrToAlignedBox(abox);
   });
@@ -239,8 +259,7 @@ void define_simmath_Geo(jlcxx::Module& types){
   };
   t9.apply<SimTK::Geo::OrientedBox_<double>>(t9_decl_methods);
 
-  // wrapped.method("intersectsOrientedBox", static_cast<bool (SimTK::Geo::Box_<P>::*)(const WrappedType&) const>(&SimTK::Geo::Box_<P>::intersectsOrientedBox));
-  // wrapped.method("mayIntersectOrientedBox", static_cast<bool (SimTK::Geo::Box_<P>::*)(const WrappedType&) const>(&SimTK::Geo::Box_<P>::mayIntersectOrientedBox));
+  // Two methods from Geo::Box that couldn't be defined in the parametric method decl wrapper because OrientedBox hasn't been defined at that point
   types.method("intersectsOrientedBox", [] (const SimTK::Geo::Box& box, const SimTK::Geo::OrientedBox& obox) -> bool {
     return box.intersectsOrientedBox(obox);
   });
@@ -272,15 +291,15 @@ void define_simmath_Geo(jlcxx::Module& types){
   types.method("pointsAreNumericallyCoincident", static_cast<bool (*)(const Vec3 &, const Vec3 &)>(&SimTK::Geo::Point::pointsAreNumericallyCoincident));
   types.method("pointsAreNumericallyCoincident", static_cast<bool (*)(const Vec3 &, const Vec3 &, double)>(&SimTK::Geo::Point::pointsAreNumericallyCoincident));
   types.method("findSupportPoint", static_cast<void (*)(const SimTK::Array_<Vec3> &, const SimTK::UnitVec<double,1> &, int &, double &)>(&SimTK::Geo::Point::findSupportPoint));
-  // types.method("findSupportPointIndirect", static_cast<void (*)(const SimTK::Array_<const Vec3 *> &, const SimTK::UnitVec<double,1> &, int &, double &)>(&SimTK::Geo::Point::findSupportPointIndirect));
+  types.method("findSupportPointIndirect", static_cast<void (*)(const SimTK::Array_<const Vec3 *> &, const SimTK::UnitVec<double,1> &, int &, double &)>(&SimTK::Geo::Point::findSupportPointIndirect));
   types.method("findExtremePoints", static_cast<void (*)(const SimTK::Array_<Vec3> &, const SimTK::UnitVec<double,1> &, int &, int &, double &, double &)>(&SimTK::Geo::Point::findExtremePoints));
-  // types.method("findExtremePointsIndirect", static_cast<void (*)(const SimTK::Array_<const Vec3 *> &, const SimTK::UnitVec<double,1> &, int &, int &, double &, double &)>(&SimTK::Geo::Point::findExtremePointsIndirect));
+  types.method("findExtremePointsIndirect", static_cast<void (*)(const SimTK::Array_<const Vec3 *> &, const SimTK::UnitVec<double,1> &, int &, int &, double &, double &)>(&SimTK::Geo::Point::findExtremePointsIndirect));
   types.method("calcCentroid", static_cast<Vec3 (*)(const SimTK::Array_<Vec3> &)>(&SimTK::Geo::Point::calcCentroid));
-  // types.method("calcCentroidIndirect", static_cast<Vec3 (*)(const SimTK::Array_<const Vec3 *> &)>(&SimTK::Geo::Point::calcCentroidIndirect));
-  // types.method("calcCovariance", static_cast<void (*)(const SimTK::Array_<Vec3> &, Vec3 &, SimTK::SymMat<3,3,double> &)>(&SimTK::Geo::Point::calcCovariance));
-  // types.method("calcCovarianceIndirect", static_cast<void (*)(const SimTK::Array_<const Vec3 *> &, Vec3 &, SimTK::SymMat<3,3,double> &)>(&SimTK::Geo::Point::calcCovarianceIndirect));
+  types.method("calcCentroidIndirect", static_cast<Vec3 (*)(const SimTK::Array_<const Vec3 *> &)>(&SimTK::Geo::Point::calcCentroidIndirect));
+  types.method("calcCovariance", static_cast<void (*)(const SimTK::Array_<Vec3> &, Vec3 &, SimTK::SymMat<3,double> &)>(&SimTK::Geo::Point::calcCovariance));
+  types.method("calcCovarianceIndirect", static_cast<void (*)(const SimTK::Array_<const Vec3 *> &, Vec3 &, SimTK::SymMat<3,double> &)>(&SimTK::Geo::Point::calcCovarianceIndirect));
   types.method("calcPrincipalComponents", static_cast<void (*)(const SimTK::Array_<Vec3> &, SimTK::Transform &)>(&SimTK::Geo::Point::calcPrincipalComponents));
-  // types.method("calcPrincipalComponentsIndirect", static_cast<void (*)(const SimTK::Array_<const Vec3 *> &, SimTK::Transform &)>(&SimTK::Geo::Point::calcPrincipalComponentsIndirect));
+  types.method("calcPrincipalComponentsIndirect", static_cast<void (*)(const SimTK::Array_<const Vec3 *> &, SimTK::Transform &)>(&SimTK::Geo::Point::calcPrincipalComponentsIndirect));
   types.method("findAxisAlignedExtremePoints", static_cast<void (*)(const SimTK::Array_<Vec3>&, int[3], int[3], Vec3&, Vec3&)>(&SimTK::Geo::Point::findAxisAlignedExtremePoints));
   types.method("calcAxisAlignedBoundingBox", static_cast<SimTK::Geo::AlignedBox (*)(const SimTK::Array_<Vec3>&, SimTK::Array_<int>&)>(&SimTK::Geo::Point::calcAxisAlignedBoundingBox));
   types.method("calcAxisAlignedBoundingBox", static_cast<SimTK::Geo::AlignedBox (*)(const SimTK::Array_<Vec3>&)>(&SimTK::Geo::Point::calcAxisAlignedBoundingBox));
@@ -317,6 +336,12 @@ void define_simmath_Geo(jlcxx::Module& types){
     wrapped.method("setVertices", static_cast<WrappedType& (WrappedType::*)(const SimTK::Vec<3,P>* )>(&WrappedType::setVertices));
     wrapped.method("getVertex", static_cast<const SimTK::Vec<3,P>& (WrappedType::*)(int) const>(&WrappedType::getVertex));
     wrapped.method("updVertex", static_cast<SimTK::Vec<3,P>& (WrappedType::*)(int)>(&WrappedType::updVertex));
+
+    wrapped.method("cppgetindex", static_cast<SimTK::Vec<3,P> & (WrappedType::*)(int) >(&WrappedType::operator[]));
+    wrapped.method("cppsetindex!", [] (WrappedType &t, int i, const SimTK::Vec<3,P> &v) {
+      t[i] = v;
+    });
+
     wrapped.method("getEdge", static_cast<SimTK::Geo::LineSeg_<P> (WrappedType::*)(int) const>(&WrappedType::getEdge));
     wrapped.method("findPoint", static_cast<SimTK::Vec<3,P> (WrappedType::*)(const SimTK::Vec<2,P>&) const>(&WrappedType::findPoint));
     wrapped.method("findCentroid", static_cast<SimTK::Vec<3,P> (WrappedType::*)() const>(&WrappedType::findCentroid));
@@ -508,387 +533,302 @@ void define_simmath_Geo(jlcxx::Module& types){
    */
 
   DEBUG_MSG("int SimTK::Geodesic::getNumPoints() (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::Geodesic::getNumPoints()
   // defined in simmath/internal/Geodesic.h:56:9
   t15.method("getNumPoints", static_cast<int (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getNumPoints));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Array_<SimTK::Transform> & SimTK::Geodesic::getFrenetFrames() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Array_<SimTK::Transform> & SimTK::Geodesic::getFrenetFrames()
   // defined in simmath/internal/Geodesic.h:66:30
   t15.method("getFrenetFrames", static_cast<const SimTK::Array_<SimTK::Transform> & (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getFrenetFrames));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Array_<SimTK::Transform> & SimTK::Geodesic::updFrenetFrames() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Array_<SimTK::Transform> & SimTK::Geodesic::updFrenetFrames()
   // defined in simmath/internal/Geodesic.h:67:30
   t15.method("updFrenetFrames", static_cast<SimTK::Array_<SimTK::Transform> & (SimTK::Geodesic::*)() >(&SimTK::Geodesic::updFrenetFrames));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::Geodesic::addFrenetFrame(const SimTK::Transform &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Geodesic::addFrenetFrame(const SimTK::Transform &)
   // defined in simmath/internal/Geodesic.h:68:10
   t15.method("addFrenetFrame", static_cast<void (SimTK::Geodesic::*)(const SimTK::Transform &) >(&SimTK::Geodesic::addFrenetFrame));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Array_<SimTK::Real> & SimTK::Geodesic::updArcLengths() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Array_<SimTK::Real> & SimTK::Geodesic::updArcLengths()
   // defined in simmath/internal/Geodesic.h:70:19
   t15.method("updArcLengths", static_cast<SimTK::Array_<SimTK::Real> & (SimTK::Geodesic::*)() >(&SimTK::Geodesic::updArcLengths));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Array_<SimTK::Real> & SimTK::Geodesic::getArcLengths() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Array_<SimTK::Real> & SimTK::Geodesic::getArcLengths()
   // defined in simmath/internal/Geodesic.h:71:25
   t15.method("getArcLengths", static_cast<const SimTK::Array_<SimTK::Real> & (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getArcLengths));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::Geodesic::addArcLength(SimTK::Real) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Geodesic::addArcLength(SimTK::Real)
   // defined in simmath/internal/Geodesic.h:72:10
   t15.method("addArcLength", static_cast<void (SimTK::Geodesic::*)(SimTK::Real) >(&SimTK::Geodesic::addArcLength));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Array_<SimTK::Real> & SimTK::Geodesic::updCurvatures() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Array_<SimTK::Real> & SimTK::Geodesic::updCurvatures()
   // defined in simmath/internal/Geodesic.h:74:19
   t15.method("updCurvatures", static_cast<SimTK::Array_<SimTK::Real> & (SimTK::Geodesic::*)() >(&SimTK::Geodesic::updCurvatures));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Array_<SimTK::Real> & SimTK::Geodesic::getCurvatures() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Array_<SimTK::Real> & SimTK::Geodesic::getCurvatures()
   // defined in simmath/internal/Geodesic.h:75:25
   t15.method("getCurvatures", static_cast<const SimTK::Array_<SimTK::Real> & (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getCurvatures));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::Geodesic::addCurvature(SimTK::Real) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Geodesic::addCurvature(SimTK::Real)
   // defined in simmath/internal/Geodesic.h:76:10
   t15.method("addCurvature", static_cast<void (SimTK::Geodesic::*)(SimTK::Real) >(&SimTK::Geodesic::addCurvature));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Array_<SimTK::Vec2> & SimTK::Geodesic::updDirectionalSensitivityPtoQ() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Array_<SimTK::Vec2> & SimTK::Geodesic::updDirectionalSensitivityPtoQ()
   // defined in simmath/internal/Geodesic.h:78:19
   t15.method("updDirectionalSensitivityPtoQ", static_cast<SimTK::Array_<SimTK::Vec2> & (SimTK::Geodesic::*)() >(&SimTK::Geodesic::updDirectionalSensitivityPtoQ));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Array_<SimTK::Vec2> & SimTK::Geodesic::getDirectionalSensitivityPtoQ() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Array_<SimTK::Vec2> & SimTK::Geodesic::getDirectionalSensitivityPtoQ()
   // defined in simmath/internal/Geodesic.h:80:25
   t15.method("getDirectionalSensitivityPtoQ", static_cast<const SimTK::Array_<SimTK::Vec2> & (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getDirectionalSensitivityPtoQ));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::Geodesic::addDirectionalSensitivityPtoQ(const SimTK::Vec2 &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Geodesic::addDirectionalSensitivityPtoQ(const SimTK::Vec2 &)
   // defined in simmath/internal/Geodesic.h:82:10
   t15.method("addDirectionalSensitivityPtoQ", static_cast<void (SimTK::Geodesic::*)(const SimTK::Vec2 &) >(&SimTK::Geodesic::addDirectionalSensitivityPtoQ));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Array_<SimTK::Vec2> & SimTK::Geodesic::updDirectionalSensitivityQtoP() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Array_<SimTK::Vec2> & SimTK::Geodesic::updDirectionalSensitivityQtoP()
   // defined in simmath/internal/Geodesic.h:86:19
   t15.method("updDirectionalSensitivityQtoP", static_cast<SimTK::Array_<SimTK::Vec2> & (SimTK::Geodesic::*)() >(&SimTK::Geodesic::updDirectionalSensitivityQtoP));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Array_<SimTK::Vec2> & SimTK::Geodesic::getDirectionalSensitivityQtoP() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Array_<SimTK::Vec2> & SimTK::Geodesic::getDirectionalSensitivityQtoP()
   // defined in simmath/internal/Geodesic.h:88:25
   t15.method("getDirectionalSensitivityQtoP", static_cast<const SimTK::Array_<SimTK::Vec2> & (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getDirectionalSensitivityQtoP));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::Geodesic::addDirectionalSensitivityQtoP(const SimTK::Vec2 &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Geodesic::addDirectionalSensitivityQtoP(const SimTK::Vec2 &)
   // defined in simmath/internal/Geodesic.h:90:10
   t15.method("addDirectionalSensitivityQtoP", static_cast<void (SimTK::Geodesic::*)(const SimTK::Vec2 &) >(&SimTK::Geodesic::addDirectionalSensitivityQtoP));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Array_<SimTK::Vec2> & SimTK::Geodesic::updPositionalSensitivityPtoQ() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Array_<SimTK::Vec2> & SimTK::Geodesic::updPositionalSensitivityPtoQ()
   // defined in simmath/internal/Geodesic.h:94:19
   t15.method("updPositionalSensitivityPtoQ", static_cast<SimTK::Array_<SimTK::Vec2> & (SimTK::Geodesic::*)() >(&SimTK::Geodesic::updPositionalSensitivityPtoQ));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Array_<SimTK::Vec2> & SimTK::Geodesic::getPositionalSensitivityPtoQ() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Array_<SimTK::Vec2> & SimTK::Geodesic::getPositionalSensitivityPtoQ()
   // defined in simmath/internal/Geodesic.h:96:25
   t15.method("getPositionalSensitivityPtoQ", static_cast<const SimTK::Array_<SimTK::Vec2> & (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getPositionalSensitivityPtoQ));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::Geodesic::addPositionalSensitivityPtoQ(const SimTK::Vec2 &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Geodesic::addPositionalSensitivityPtoQ(const SimTK::Vec2 &)
   // defined in simmath/internal/Geodesic.h:98:10
   t15.method("addPositionalSensitivityPtoQ", static_cast<void (SimTK::Geodesic::*)(const SimTK::Vec2 &) >(&SimTK::Geodesic::addPositionalSensitivityPtoQ));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Array_<SimTK::Vec2> & SimTK::Geodesic::updPositionalSensitivityQtoP() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Array_<SimTK::Vec2> & SimTK::Geodesic::updPositionalSensitivityQtoP()
   // defined in simmath/internal/Geodesic.h:102:19
   t15.method("updPositionalSensitivityQtoP", static_cast<SimTK::Array_<SimTK::Vec2> & (SimTK::Geodesic::*)() >(&SimTK::Geodesic::updPositionalSensitivityQtoP));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Array_<SimTK::Vec2> & SimTK::Geodesic::getPositionalSensitivityQtoP() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Array_<SimTK::Vec2> & SimTK::Geodesic::getPositionalSensitivityQtoP()
   // defined in simmath/internal/Geodesic.h:104:25
   t15.method("getPositionalSensitivityQtoP", static_cast<const SimTK::Array_<SimTK::Vec2> & (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getPositionalSensitivityQtoP));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::Geodesic::addPositionalSensitivityQtoP(const SimTK::Vec2 &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Geodesic::addPositionalSensitivityQtoP(const SimTK::Vec2 &)
   // defined in simmath/internal/Geodesic.h:106:10
   t15.method("addPositionalSensitivityQtoP", static_cast<void (SimTK::Geodesic::*)(const SimTK::Vec2 &) >(&SimTK::Geodesic::addPositionalSensitivityQtoP));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::Geodesic::setTorsionAtP(SimTK::Real) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Geodesic::setTorsionAtP(SimTK::Real)
   // defined in simmath/internal/Geodesic.h:110:10
   t15.method("setTorsionAtP", static_cast<void (SimTK::Geodesic::*)(SimTK::Real) >(&SimTK::Geodesic::setTorsionAtP));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::Geodesic::setTorsionAtQ(SimTK::Real) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Geodesic::setTorsionAtQ(SimTK::Real)
   // defined in simmath/internal/Geodesic.h:111:10
   t15.method("setTorsionAtQ", static_cast<void (SimTK::Geodesic::*)(SimTK::Real) >(&SimTK::Geodesic::setTorsionAtQ));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::Geodesic::setBinormalCurvatureAtP(SimTK::Real) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Geodesic::setBinormalCurvatureAtP(SimTK::Real)
   // defined in simmath/internal/Geodesic.h:112:10
   t15.method("setBinormalCurvatureAtP", static_cast<void (SimTK::Geodesic::*)(SimTK::Real) >(&SimTK::Geodesic::setBinormalCurvatureAtP));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::Geodesic::setBinormalCurvatureAtQ(SimTK::Real) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Geodesic::setBinormalCurvatureAtQ(SimTK::Real)
   // defined in simmath/internal/Geodesic.h:113:10
   t15.method("setBinormalCurvatureAtQ", static_cast<void (SimTK::Geodesic::*)(SimTK::Real) >(&SimTK::Geodesic::setBinormalCurvatureAtQ));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Real SimTK::Geodesic::getLength() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Real SimTK::Geodesic::getLength()
   // defined in simmath/internal/Geodesic.h:117:10
   t15.method("getLength", static_cast<SimTK::Real (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getLength));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Real SimTK::Geodesic::calcLengthDot(const SimTK::Vec3 &, const SimTK::Vec3 &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Real SimTK::Geodesic::calcLengthDot(const SimTK::Vec3 &, const SimTK::Vec3 &)
   // defined in simmath/internal/Geodesic.h:124:10
   t15.method("calcLengthDot", static_cast<SimTK::Real (SimTK::Geodesic::*)(const SimTK::Vec3 &, const SimTK::Vec3 &)  const>(&SimTK::Geodesic::calcLengthDot));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Vec3 & SimTK::Geodesic::getPointP() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vec3 & SimTK::Geodesic::getPointP()
   // defined in simmath/internal/Geodesic.h:129:17
   t15.method("getPointP", static_cast<const SimTK::Vec3 & (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getPointP));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Vec3 & SimTK::Geodesic::getPointQ() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vec3 & SimTK::Geodesic::getPointQ()
   // defined in simmath/internal/Geodesic.h:132:17
   t15.method("getPointQ", static_cast<const SimTK::Vec3 & (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getPointQ));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::UnitVec3 & SimTK::Geodesic::getNormalP() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::UnitVec3 & SimTK::Geodesic::getNormalP()
   // defined in simmath/internal/Geodesic.h:137:21
   t15.method("getNormalP", static_cast<const SimTK::UnitVec3 & (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getNormalP));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::UnitVec3 & SimTK::Geodesic::getNormalQ() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::UnitVec3 & SimTK::Geodesic::getNormalQ()
   // defined in simmath/internal/Geodesic.h:141:21
   t15.method("getNormalQ", static_cast<const SimTK::UnitVec3 & (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getNormalQ));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::UnitVec3 & SimTK::Geodesic::getTangentP() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::UnitVec3 & SimTK::Geodesic::getTangentP()
   // defined in simmath/internal/Geodesic.h:145:21
   t15.method("getTangentP", static_cast<const SimTK::UnitVec3 & (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getTangentP));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::UnitVec3 & SimTK::Geodesic::getTangentQ() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::UnitVec3 & SimTK::Geodesic::getTangentQ()
   // defined in simmath/internal/Geodesic.h:148:21
   t15.method("getTangentQ", static_cast<const SimTK::UnitVec3 & (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getTangentQ));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::UnitVec3 & SimTK::Geodesic::getBinormalP() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::UnitVec3 & SimTK::Geodesic::getBinormalP()
   // defined in simmath/internal/Geodesic.h:152:21
   t15.method("getBinormalP", static_cast<const SimTK::UnitVec3 & (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getBinormalP));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::UnitVec3 & SimTK::Geodesic::getBinormalQ() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::UnitVec3 & SimTK::Geodesic::getBinormalQ()
   // defined in simmath/internal/Geodesic.h:155:21
   t15.method("getBinormalQ", static_cast<const SimTK::UnitVec3 & (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getBinormalQ));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Real SimTK::Geodesic::getCurvatureP() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Real SimTK::Geodesic::getCurvatureP()
   // defined in simmath/internal/Geodesic.h:162:10
   t15.method("getCurvatureP", static_cast<SimTK::Real (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getCurvatureP));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Real SimTK::Geodesic::getCurvatureQ() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Real SimTK::Geodesic::getCurvatureQ()
   // defined in simmath/internal/Geodesic.h:170:10
   t15.method("getCurvatureQ", static_cast<SimTK::Real (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getCurvatureQ));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Real SimTK::Geodesic::getTorsionP() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Real SimTK::Geodesic::getTorsionP()
   // defined in simmath/internal/Geodesic.h:176:10
   t15.method("getTorsionP", static_cast<SimTK::Real (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getTorsionP));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Real SimTK::Geodesic::getTorsionQ() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Real SimTK::Geodesic::getTorsionQ()
   // defined in simmath/internal/Geodesic.h:181:10
   t15.method("getTorsionQ", static_cast<SimTK::Real (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getTorsionQ));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Real SimTK::Geodesic::getBinormalCurvatureP() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Real SimTK::Geodesic::getBinormalCurvatureP()
   // defined in simmath/internal/Geodesic.h:186:10
   t15.method("getBinormalCurvatureP", static_cast<SimTK::Real (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getBinormalCurvatureP));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Real SimTK::Geodesic::getBinormalCurvatureQ() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Real SimTK::Geodesic::getBinormalCurvatureQ()
   // defined in simmath/internal/Geodesic.h:190:10
   t15.method("getBinormalCurvatureQ", static_cast<SimTK::Real (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getBinormalCurvatureQ));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Real SimTK::Geodesic::getJacobiP() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Real SimTK::Geodesic::getJacobiP()
   // defined in simmath/internal/Geodesic.h:197:10
   t15.method("getJacobiP", static_cast<SimTK::Real (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getJacobiP));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Real SimTK::Geodesic::getJacobiQ() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Real SimTK::Geodesic::getJacobiQ()
   // defined in simmath/internal/Geodesic.h:203:10
   t15.method("getJacobiQ", static_cast<SimTK::Real (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getJacobiQ));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Real SimTK::Geodesic::getJacobiPDot() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Real SimTK::Geodesic::getJacobiPDot()
   // defined in simmath/internal/Geodesic.h:210:10
   t15.method("getJacobiPDot", static_cast<SimTK::Real (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getJacobiPDot));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Real SimTK::Geodesic::getJacobiQDot() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Real SimTK::Geodesic::getJacobiQDot()
   // defined in simmath/internal/Geodesic.h:213:10
   t15.method("getJacobiQDot", static_cast<SimTK::Real (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getJacobiQDot));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Real SimTK::Geodesic::getJacobiTransP() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Real SimTK::Geodesic::getJacobiTransP()
   // defined in simmath/internal/Geodesic.h:216:10
   t15.method("getJacobiTransP", static_cast<SimTK::Real (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getJacobiTransP));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Real SimTK::Geodesic::getJacobiTransQ() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Real SimTK::Geodesic::getJacobiTransQ()
   // defined in simmath/internal/Geodesic.h:217:10
   t15.method("getJacobiTransQ", static_cast<SimTK::Real (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getJacobiTransQ));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Real SimTK::Geodesic::getJacobiTransPDot() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Real SimTK::Geodesic::getJacobiTransPDot()
   // defined in simmath/internal/Geodesic.h:218:10
   t15.method("getJacobiTransPDot", static_cast<SimTK::Real (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getJacobiTransPDot));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Real SimTK::Geodesic::getJacobiTransQDot() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Real SimTK::Geodesic::getJacobiTransQDot()
   // defined in simmath/internal/Geodesic.h:219:10
   t15.method("getJacobiTransQDot", static_cast<SimTK::Real (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getJacobiTransQDot));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::Geodesic::clear() (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Geodesic::clear()
   // defined in simmath/internal/Geodesic.h:223:10
   t15.method("clear", static_cast<void (SimTK::Geodesic::*)() >(&SimTK::Geodesic::clear));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::Geodesic::setIsConvex(bool) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Geodesic::setIsConvex(bool)
   // defined in simmath/internal/Geodesic.h:237:10
   t15.method("setIsConvex", static_cast<void (SimTK::Geodesic::*)(bool) >(&SimTK::Geodesic::setIsConvex));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::Geodesic::setIsShortest(bool) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Geodesic::setIsShortest(bool)
   // defined in simmath/internal/Geodesic.h:238:10
   t15.method("setIsShortest", static_cast<void (SimTK::Geodesic::*)(bool) >(&SimTK::Geodesic::setIsShortest));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::Geodesic::setInitialStepSizeHint(SimTK::Real) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Geodesic::setInitialStepSizeHint(SimTK::Real)
   // defined in simmath/internal/Geodesic.h:239:10
   t15.method("setInitialStepSizeHint", static_cast<void (SimTK::Geodesic::*)(SimTK::Real) >(&SimTK::Geodesic::setInitialStepSizeHint));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::Geodesic::setAchievedAccuracy(SimTK::Real) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Geodesic::setAchievedAccuracy(SimTK::Real)
   // defined in simmath/internal/Geodesic.h:240:10
   t15.method("setAchievedAccuracy", static_cast<void (SimTK::Geodesic::*)(SimTK::Real) >(&SimTK::Geodesic::setAchievedAccuracy));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::Geodesic::isConvex() (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::Geodesic::isConvex()
   // defined in simmath/internal/Geodesic.h:242:10
   t15.method("isConvex", static_cast<bool (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::isConvex));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::Geodesic::isShortest() (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::Geodesic::isShortest()
   // defined in simmath/internal/Geodesic.h:243:10
   t15.method("isShortest", static_cast<bool (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::isShortest));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Real SimTK::Geodesic::getInitialStepSizeHint() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Real SimTK::Geodesic::getInitialStepSizeHint()
   // defined in simmath/internal/Geodesic.h:244:10
   t15.method("getInitialStepSizeHint", static_cast<SimTK::Real (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getInitialStepSizeHint));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Real SimTK::Geodesic::getAchievedAccuracy() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Real SimTK::Geodesic::getAchievedAccuracy()
   // defined in simmath/internal/Geodesic.h:245:10
   t15.method("getAchievedAccuracy", static_cast<SimTK::Real (SimTK::Geodesic::*)()  const>(&SimTK::Geodesic::getAchievedAccuracy));
   CLEAR_DEBUG_MSG();
 
   /* End of SimTK::Geodesic class method wrappers
    **********************************************************************/
-
-  types.method("isCusp", static_cast<bool (*)(const SimTK::Vec<3,double> &)>(&SimTK::Geo::isCusp));
-
-  // static bool 	isInflectionPoint (const Vec< 3, RealP, S > &Pu, const Vec< 3, RealP, S > &Puu)
-  types.method("isInflectionPoint", static_cast<bool (*)(const SimTK::Vec<3,double> &, const SimTK::Vec<3,double> &)>(&SimTK::Geo::isInflectionPoint));
-
-  // static UnitVec< RealP, 1 > 	calcUnitTangent (const Vec< 3, RealP, S > &Pu)
-  types.method("calcUnitTangent", static_cast<SimTK::UnitVec<double,1> (*)(const SimTK::Vec<3,double> &)>(&SimTK::Geo::calcUnitTangent));
-
-  // static Vec< 3, RealP > 	calcCurvatureVector (const Vec< 3, RealP, S > &Pu, const Vec< 3, RealP, S > &Puu)
-  types.method("calcCurvatureVector", static_cast<SimTK::Vec<3,double> (*)(const SimTK::Vec<3,double> &, const SimTK::Vec<3,double> &)>(&SimTK::Geo::calcCurvatureVector));
-
-  // static UnitVec< RealP, 1 > 	calcUnitNormal (const Vec< 3, RealP, S > &Pu, const Vec< 3, RealP, S > &Puu)
-  types.method("calcUnitNormal", static_cast<SimTK::UnitVec<double,1> (*)(const SimTK::Vec<3,double> &, const SimTK::Vec<3,double> &)>(&SimTK::Geo::calcUnitNormal));
-
-  // static RealP 	calcCurveFrame (const Vec< 3, RealP, S > &P, const Vec< 3, RealP, S > &Pu, const Vec< 3, RealP, S > &Puu, Transform_< RealP > &X_FP)
-  types.method("calcCurveFrame", static_cast<double (*)(const SimTK::Vec<3,double> &, const SimTK::Vec<3,double> &, const SimTK::Vec<3,double> &, SimTK::Transform_<double> &)>(&SimTK::Geo::calcCurveFrame));
-
-  // static RealP 	calcCurvatureSqr (const Vec< 3, RealP, S > &Pu, const Vec< 3, RealP, S > &Puu)
-  types.method("calcCurvatureSqr", static_cast<double (*)(const SimTK::Vec<3,double> &, const SimTK::Vec<3,double> &)>(&SimTK::Geo::calcCurvatureSqr));
-
-  // static RealP 	calcTorsion (const Vec< 3, RealP, S > &Pu, const Vec< 3, RealP, S > &Puu, const Vec< 3, RealP, S > &Puuu)
-  types.method("calcTorsion", static_cast<double (*)(const SimTK::Vec<3,double> &, const SimTK::Vec<3,double> &, const SimTK::Vec<3,double> &)>(&SimTK::Geo::calcTorsion));
-
-  // static void 	findClosestPointsOfTwoLines (const Vec< 3, RealP > &p0, const UnitVec< RealP, 1 > &d0, const Vec< 3, RealP > &p1, const UnitVec< RealP, 1 > &d1, Vec< 3, RealP > &x0, Vec< 3, RealP > &x1, bool &linesAreParallel)
-  types.method("findClosestPointsOfTwoLines", static_cast<void (*)(const SimTK::Vec<3,double> &, const SimTK::UnitVec<double,1> &, const SimTK::Vec<3,double> &, const SimTK::UnitVec<double,1> &, SimTK::Vec<3,double> &, SimTK::Vec<3,double> &, bool &)>(&SimTK::Geo::findClosestPointsOfTwoLines));
 
 }
 
