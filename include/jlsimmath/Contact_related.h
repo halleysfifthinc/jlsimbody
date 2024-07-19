@@ -123,6 +123,7 @@ namespace jlcxx {
   template<> struct SuperType<SimTK::ContactGeometry::Brick> { typedef SimTK::ContactGeometry type; };
   template<> struct SuperType<SimTK::ContactGeometry::TriangleMesh> { typedef SimTK::ContactGeometry type; };
   template<> struct SuperType<SimTK::ContactGeometry::Torus> { typedef SimTK::ContactGeometry type; };
+  template<> struct SuperType<SimTK::BicubicFunction> { using type = SimTK::Function_<SimTK::Real>; };
   template<> struct SuperType<SimTK::ContactTracker::HalfSpaceSphere> { typedef SimTK::ContactTracker type; };
   template<> struct SuperType<SimTK::ContactTracker::HalfSpaceEllipsoid> { typedef SimTK::ContactTracker type; };
   template<> struct SuperType<SimTK::ContactTracker::HalfSpaceBrick> { typedef SimTK::ContactTracker type; };
