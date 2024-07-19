@@ -9,17 +9,17 @@ void define_SimTKcommon_DecorationGenerator(jlcxx::Module& types){
 
   DEBUG_MSG("type SimTK::DecorationGenerator (" __HERE__ ")");
   // defined in SimTKcommon/internal/DecorationGenerator.h:45:7
-  auto t0 = types.add_type<SimTK::DecorationGenerator>("SimTK!DecorationGenerator");
+  auto t0 = types.add_type<SimTK::DecorationGenerator>("DecorationGenerator");
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::GeodesicDecorator (" __HERE__ ")");
   // defined in simmath/internal/Geodesic.h:274:7
-  auto t1 = types.add_type<SimTK::GeodesicDecorator>("SimTK!GeodesicDecorator", t0.dt());
+  auto t1 = types.add_type<SimTK::GeodesicDecorator>("GeodesicDecorator", t0.dt());
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::PathDecorator (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:1501:7
-  auto t2 = types.add_type<SimTK::PathDecorator>("SimTK!PathDecorator", t0.dt());
+  auto t2 = types.add_type<SimTK::PathDecorator>("PathDecorator", t0.dt());
   CLEAR_DEBUG_MSG();
 
   /**********************************************************************/
