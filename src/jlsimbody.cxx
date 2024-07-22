@@ -26,6 +26,7 @@
 #include "jlsimmath/Contact_related.h"
 
 #include "jlsimbody/Body.h"
+#include "jlsimbody/MobilizedBodies.h"
 #include "jlsimbody/SimbodyMatterSubsystem.h"
 #include "jlsimbody/DecorationSubsystem.h"
 #include "jlsimbody/ContactTrackerSubsystem.h"
@@ -98,7 +99,15 @@ JLCXX_MODULE define_julia_module(jlcxx::Module& types){
   define_SimTKcommon_DecorationGenerator(types);
   define_simmath_Contact_related(types, array_wrapper);
   define_simbody_Body(types);
-  define_simbody_SimbodyMatterSubsystem(types, array_wrapper);
+
+  DEBUG_MSG("type SimTK::SimbodyMatterSubsystem (" __HERE__ ")");
+  // defined in simbody/internal/SimbodyMatterSubsystem.h:133:28
+  auto mattersubsys = types.add_type<SimTK::SimbodyMatterSubsystem>("SimbodyMatterSubsystem", jlcxx::julia_base_type<SimTK::Subsystem>());
+  mattersubsys.template constructor<>();
+  CLEAR_DEBUG_MSG();
+
+  define_simbody_MobilizedBodies(types, array_wrapper);
+  define_simbody_SimbodyMatterSubsystem(types, mattersubsys, array_wrapper);
   define_simbody_DecorationSubsystem(types);
   define_simbody_ContactTrackerSubsystem(types);
   define_simbody_CableTrackerSubsystem(types);
