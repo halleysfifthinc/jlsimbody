@@ -19,7 +19,7 @@ namespace jlcxx {
 }
 
 namespace jlsimbody{
-  JLSIMBODY_NO_EXPORT void define_simbody_MultibodySystem(jlcxx::Module& types);
+  JLSIMBODY_NO_EXPORT void define_simbody_MultibodySystem(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::MultibodySystem> multibod);
 }
 
 #endif // _JLSIMBODY_MULTIBODYSYSTEM_H

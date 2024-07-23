@@ -13,24 +13,24 @@ void define_simbody_ContactTrackerSubsystem(jlcxx::Module& types){
 
   DEBUG_MSG("type SimTK::ContactSnapshot (" __HERE__ ")");
   // defined in simbody/internal/ContactTrackerSubsystem.h:307:28
-  auto t1 = types.add_type<SimTK::ContactSnapshot>("SimTK!ContactSnapshot");
+  auto t1 = types.add_type<SimTK::ContactSnapshot>("ContactSnapshot");
   t1.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::ContactTrackerSubsystem (" __HERE__ ")");
   // defined in simbody/internal/ContactTrackerSubsystem.h:148:28
-  auto t0 = types.add_type<SimTK::ContactTrackerSubsystem>("SimTK!ContactTrackerSubsystem", jlcxx::julia_base_type<SimTK::Subsystem>());
+  auto t0 = types.add_type<SimTK::ContactTrackerSubsystem>("ContactTrackerSubsystem", jlcxx::julia_base_type<SimTK::Subsystem>());
   t0.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::GeneralContactSubsystem (" __HERE__ ")");
   // defined in simbody/internal/GeneralContactSubsystem.h:57:28
-  auto t12 = types.add_type<SimTK::GeneralContactSubsystem>("SimTK!GeneralContactSubsystem", jlcxx::julia_base_type<SimTK::Subsystem>());
+  auto t12 = types.add_type<SimTK::GeneralContactSubsystem>("GeneralContactSubsystem", jlcxx::julia_base_type<SimTK::Subsystem>());
   t12.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
-  wrap_SimTK_UniqueIndexType<SimTK::ContactSetIndex>(types, "SimTK!ContactSetIndex");
+  wrap_SimTK_UniqueIndexType<SimTK::ContactSetIndex>(types, "ContactSetIndex");
   #endif
 
   /**********************************************************************/
@@ -137,10 +137,10 @@ void define_simbody_ContactTrackerSubsystem(jlcxx::Module& types){
   /* Wrappers for the methods of class SimTK::ContactTrackerSubsystem
    */
 
-
-  // DEBUG_MSG("void SimTK::ContactTrackerSubsystem::ContactTrackerSubsystem(SimTK::MultibodySystem &) (" __HERE__ ")");
-  // // defined in simbody/internal/ContactTrackerSubsystem.h:152:10
-  // t0.constructor<SimTK::MultibodySystem &>();
+  DEBUG_MSG("void SimTK::ContactTrackerSubsystem::ContactTrackerSubsystem(SimTK::MultibodySystem &) (" __HERE__ ")");
+  // defined in simbody/internal/ContactTrackerSubsystem.h:152:10
+  t0.constructor<SimTK::MultibodySystem &>();
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::ContactSnapshot & SimTK::ContactTrackerSubsystem::getActiveContacts(const SimTK::State &) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::ContactSnapshot & SimTK::ContactTrackerSubsystem::getActiveContacts(const SimTK::State &)
@@ -295,9 +295,10 @@ void define_simbody_ContactTrackerSubsystem(jlcxx::Module& types){
    */
 
 
-  // DEBUG_MSG("void SimTK::GeneralContactSubsystem::GeneralContactSubsystem(SimTK::MultibodySystem &) (" __HERE__ ")");
-  // // defined in simbody/internal/GeneralContactSubsystem.h:60:14
-  // t12.constructor<SimTK::MultibodySystem &>();
+  DEBUG_MSG("void SimTK::GeneralContactSubsystem::GeneralContactSubsystem(SimTK::MultibodySystem &) (" __HERE__ ")");
+  // defined in simbody/internal/GeneralContactSubsystem.h:60:14
+  t12.constructor<SimTK::MultibodySystem &>();
+  CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactSetIndex SimTK::GeneralContactSubsystem::createContactSet() (" __HERE__ ")");

@@ -9,14 +9,17 @@
 #include "simbody/internal/MobilizedBody.h"
 #include "simbody/internal/ContactTrackerSubsystem.h"
 #include "simbody/internal/GeneralContactSubsystem.h"
+#include "simbody/internal/MultibodySystem.h"
 
 namespace jlcxx {
   template<> struct IsMirroredType<SimTK::ContactSnapshot> : std::false_type { };
-  template<> struct DefaultConstructible<SimTK::ContactSnapshot> : std::false_type { };
   template<> struct IsMirroredType<SimTK::ContactTrackerSubsystem> : std::false_type { };
-  template<> struct DefaultConstructible<SimTK::ContactTrackerSubsystem> : std::false_type { };
   template<> struct IsMirroredType<SimTK::GeneralContactSubsystem> : std::false_type { };
+
+  template<> struct DefaultConstructible<SimTK::ContactSnapshot> : std::false_type { };
+  template<> struct DefaultConstructible<SimTK::ContactTrackerSubsystem> : std::false_type { };
   template<> struct DefaultConstructible<SimTK::GeneralContactSubsystem> : std::false_type { };
+
   template<> struct SuperType<SimTK::ContactTrackerSubsystem> { typedef SimTK::Subsystem type; };
   template<> struct SuperType<SimTK::GeneralContactSubsystem> { typedef SimTK::Subsystem type; };
 

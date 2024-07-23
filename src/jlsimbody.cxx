@@ -106,6 +106,12 @@ JLCXX_MODULE define_julia_module(jlcxx::Module& types){
   mattersubsys.template constructor<>();
   CLEAR_DEBUG_MSG();
 
+  DEBUG_MSG("type SimTK::MultibodySystem (" __HERE__ ")");
+  // defined in simbody/internal/MultibodySystem.h:48:28
+  auto multibod = types.add_type<SimTK::MultibodySystem>("MultibodySystem", jlcxx::julia_base_type<SimTK::System>());
+  multibod.template constructor<>();
+  CLEAR_DEBUG_MSG();
+
   define_simbody_MobilizedBodies(types, array_wrapper);
   define_simbody_SimbodyMatterSubsystem(types, mattersubsys, array_wrapper);
   define_simbody_DecorationSubsystem(types);
@@ -113,6 +119,6 @@ JLCXX_MODULE define_julia_module(jlcxx::Module& types){
   define_simbody_CableTrackerSubsystem(types);
   define_simbody_Force(types);
   define_simbody_ForceSubsystems(types, array_wrapper);
-  define_simbody_MultibodySystem(types);
+  define_simbody_MultibodySystem(types, multibod);
   define_simbody_Assembler_and_related(types, array_wrapper);
 }

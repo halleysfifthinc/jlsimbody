@@ -5,154 +5,147 @@
 
 namespace jlsimbody {
 
-void define_simbody_MultibodySystem(jlcxx::Module& types){
-
-  DEBUG_MSG("type SimTK::MultibodySystem (" __HERE__ ")");
-  // defined in simbody/internal/MultibodySystem.h:48:28
-  auto t0 = types.add_type<SimTK::MultibodySystem>("SimTK!MultibodySystem", jlcxx::julia_base_type<SimTK::System>());
-  t0.template constructor<>();
-  CLEAR_DEBUG_MSG();
+void define_simbody_MultibodySystem(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::MultibodySystem> multibod){
 
   /**********************************************************************/
   /* Wrappers for the methods of class SimTK::MultibodySystem
    */
 
-
   DEBUG_MSG("void SimTK::MultibodySystem::MultibodySystem(SimTK::SimbodyMatterSubsystem &) (" __HERE__ ")");
   // defined in simbody/internal/MultibodySystem.h:51:14
-  t0.constructor<SimTK::SimbodyMatterSubsystem &>();
+  multibod.constructor<SimTK::SimbodyMatterSubsystem &>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("int SimTK::MultibodySystem::addForceSubsystem(SimTK::ForceSubsystem &) (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::MultibodySystem::addForceSubsystem(SimTK::ForceSubsystem &)
   // defined in simbody/internal/MultibodySystem.h:54:9
-  t0.method("addForceSubsystem", static_cast<int (SimTK::MultibodySystem::*)(SimTK::ForceSubsystem &) >(&SimTK::MultibodySystem::addForceSubsystem));
+  multibod.method("addForceSubsystem", static_cast<int (SimTK::MultibodySystem::*)(SimTK::ForceSubsystem &) >(&SimTK::MultibodySystem::addForceSubsystem));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("int SimTK::MultibodySystem::setMatterSubsystem(SimTK::SimbodyMatterSubsystem &) (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::MultibodySystem::setMatterSubsystem(SimTK::SimbodyMatterSubsystem &)
   // defined in simbody/internal/MultibodySystem.h:56:9
-  t0.method("setMatterSubsystem", static_cast<int (SimTK::MultibodySystem::*)(SimTK::SimbodyMatterSubsystem &) >(&SimTK::MultibodySystem::setMatterSubsystem));
+  multibod.method("setMatterSubsystem", static_cast<int (SimTK::MultibodySystem::*)(SimTK::SimbodyMatterSubsystem &) >(&SimTK::MultibodySystem::setMatterSubsystem));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::SimbodyMatterSubsystem & SimTK::MultibodySystem::getMatterSubsystem() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::SimbodyMatterSubsystem & SimTK::MultibodySystem::getMatterSubsystem()
   // defined in simbody/internal/MultibodySystem.h:57:35
-  t0.method("getMatterSubsystem", static_cast<const SimTK::SimbodyMatterSubsystem & (SimTK::MultibodySystem::*)()  const>(&SimTK::MultibodySystem::getMatterSubsystem));
+  multibod.method("getMatterSubsystem", static_cast<const SimTK::SimbodyMatterSubsystem & (SimTK::MultibodySystem::*)()  const>(&SimTK::MultibodySystem::getMatterSubsystem));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::SimbodyMatterSubsystem & SimTK::MultibodySystem::updMatterSubsystem() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::SimbodyMatterSubsystem & SimTK::MultibodySystem::updMatterSubsystem()
   // defined in simbody/internal/MultibodySystem.h:58:35
-  t0.method("updMatterSubsystem", static_cast<SimTK::SimbodyMatterSubsystem & (SimTK::MultibodySystem::*)() >(&SimTK::MultibodySystem::updMatterSubsystem));
+  multibod.method("updMatterSubsystem", static_cast<SimTK::SimbodyMatterSubsystem & (SimTK::MultibodySystem::*)() >(&SimTK::MultibodySystem::updMatterSubsystem));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::MultibodySystem::hasMatterSubsystem() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::MultibodySystem::hasMatterSubsystem()
   // defined in simbody/internal/MultibodySystem.h:59:10
-  t0.method("hasMatterSubsystem", static_cast<bool (SimTK::MultibodySystem::*)()  const>(&SimTK::MultibodySystem::hasMatterSubsystem));
+  multibod.method("hasMatterSubsystem", static_cast<bool (SimTK::MultibodySystem::*)()  const>(&SimTK::MultibodySystem::hasMatterSubsystem));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("int SimTK::MultibodySystem::setDecorationSubsystem(SimTK::DecorationSubsystem &) (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::MultibodySystem::setDecorationSubsystem(SimTK::DecorationSubsystem &)
   // defined in simbody/internal/MultibodySystem.h:61:9
-  t0.method("setDecorationSubsystem", static_cast<int (SimTK::MultibodySystem::*)(SimTK::DecorationSubsystem &) >(&SimTK::MultibodySystem::setDecorationSubsystem));
+  multibod.method("setDecorationSubsystem", static_cast<int (SimTK::MultibodySystem::*)(SimTK::DecorationSubsystem &) >(&SimTK::MultibodySystem::setDecorationSubsystem));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::DecorationSubsystem & SimTK::MultibodySystem::getDecorationSubsystem() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::DecorationSubsystem & SimTK::MultibodySystem::getDecorationSubsystem()
   // defined in simbody/internal/MultibodySystem.h:62:32
-  t0.method("getDecorationSubsystem", static_cast<const SimTK::DecorationSubsystem & (SimTK::MultibodySystem::*)()  const>(&SimTK::MultibodySystem::getDecorationSubsystem));
+  multibod.method("getDecorationSubsystem", static_cast<const SimTK::DecorationSubsystem & (SimTK::MultibodySystem::*)()  const>(&SimTK::MultibodySystem::getDecorationSubsystem));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::DecorationSubsystem & SimTK::MultibodySystem::updDecorationSubsystem() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::DecorationSubsystem & SimTK::MultibodySystem::updDecorationSubsystem()
   // defined in simbody/internal/MultibodySystem.h:63:32
-  t0.method("updDecorationSubsystem", static_cast<SimTK::DecorationSubsystem & (SimTK::MultibodySystem::*)() >(&SimTK::MultibodySystem::updDecorationSubsystem));
+  multibod.method("updDecorationSubsystem", static_cast<SimTK::DecorationSubsystem & (SimTK::MultibodySystem::*)() >(&SimTK::MultibodySystem::updDecorationSubsystem));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::MultibodySystem::hasDecorationSubsystem() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::MultibodySystem::hasDecorationSubsystem()
   // defined in simbody/internal/MultibodySystem.h:64:10
-  t0.method("hasDecorationSubsystem", static_cast<bool (SimTK::MultibodySystem::*)()  const>(&SimTK::MultibodySystem::hasDecorationSubsystem));
+  multibod.method("hasDecorationSubsystem", static_cast<bool (SimTK::MultibodySystem::*)()  const>(&SimTK::MultibodySystem::hasDecorationSubsystem));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("int SimTK::MultibodySystem::setContactSubsystem(SimTK::GeneralContactSubsystem &) (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::MultibodySystem::setContactSubsystem(SimTK::GeneralContactSubsystem &)
   // defined in simbody/internal/MultibodySystem.h:66:9
-  t0.method("setContactSubsystem", static_cast<int (SimTK::MultibodySystem::*)(SimTK::GeneralContactSubsystem &) >(&SimTK::MultibodySystem::setContactSubsystem));
+  multibod.method("setContactSubsystem", static_cast<int (SimTK::MultibodySystem::*)(SimTK::GeneralContactSubsystem &) >(&SimTK::MultibodySystem::setContactSubsystem));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::GeneralContactSubsystem & SimTK::MultibodySystem::getContactSubsystem() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::GeneralContactSubsystem & SimTK::MultibodySystem::getContactSubsystem()
   // defined in simbody/internal/MultibodySystem.h:67:36
-  t0.method("getContactSubsystem", static_cast<const SimTK::GeneralContactSubsystem & (SimTK::MultibodySystem::*)()  const>(&SimTK::MultibodySystem::getContactSubsystem));
+  multibod.method("getContactSubsystem", static_cast<const SimTK::GeneralContactSubsystem & (SimTK::MultibodySystem::*)()  const>(&SimTK::MultibodySystem::getContactSubsystem));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::GeneralContactSubsystem & SimTK::MultibodySystem::updContactSubsystem() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::GeneralContactSubsystem & SimTK::MultibodySystem::updContactSubsystem()
   // defined in simbody/internal/MultibodySystem.h:68:36
-  t0.method("updContactSubsystem", static_cast<SimTK::GeneralContactSubsystem & (SimTK::MultibodySystem::*)() >(&SimTK::MultibodySystem::updContactSubsystem));
+  multibod.method("updContactSubsystem", static_cast<SimTK::GeneralContactSubsystem & (SimTK::MultibodySystem::*)() >(&SimTK::MultibodySystem::updContactSubsystem));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::MultibodySystem::hasContactSubsystem() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::MultibodySystem::hasContactSubsystem()
   // defined in simbody/internal/MultibodySystem.h:69:10
-  t0.method("hasContactSubsystem", static_cast<bool (SimTK::MultibodySystem::*)()  const>(&SimTK::MultibodySystem::hasContactSubsystem));
+  multibod.method("hasContactSubsystem", static_cast<bool (SimTK::MultibodySystem::*)()  const>(&SimTK::MultibodySystem::hasContactSubsystem));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Real SimTK::MultibodySystem::calcPotentialEnergy(const SimTK::State &) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Real SimTK::MultibodySystem::calcPotentialEnergy(const SimTK::State &)
   // defined in simbody/internal/MultibodySystem.h:74:16
-  t0.method("calcPotentialEnergy", static_cast<const SimTK::Real (SimTK::MultibodySystem::*)(const SimTK::State &)  const>(&SimTK::MultibodySystem::calcPotentialEnergy));
+  multibod.method("calcPotentialEnergy", static_cast<const SimTK::Real (SimTK::MultibodySystem::*)(const SimTK::State &)  const>(&SimTK::MultibodySystem::calcPotentialEnergy));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Real SimTK::MultibodySystem::calcKineticEnergy(const SimTK::State &) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Real SimTK::MultibodySystem::calcKineticEnergy(const SimTK::State &)
   // defined in simbody/internal/MultibodySystem.h:77:16
-  t0.method("calcKineticEnergy", static_cast<const SimTK::Real (SimTK::MultibodySystem::*)(const SimTK::State &)  const>(&SimTK::MultibodySystem::calcKineticEnergy));
+  multibod.method("calcKineticEnergy", static_cast<const SimTK::Real (SimTK::MultibodySystem::*)(const SimTK::State &)  const>(&SimTK::MultibodySystem::calcKineticEnergy));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Real SimTK::MultibodySystem::calcEnergy(const SimTK::State &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::MultibodySystem::calcEnergy(const SimTK::State &)
   // defined in simbody/internal/MultibodySystem.h:80:10
-  t0.method("calcEnergy", static_cast<SimTK::Real (SimTK::MultibodySystem::*)(const SimTK::State &)  const>(&SimTK::MultibodySystem::calcEnergy));
+  multibod.method("calcEnergy", static_cast<SimTK::Real (SimTK::MultibodySystem::*)(const SimTK::State &)  const>(&SimTK::MultibodySystem::calcEnergy));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Vector_<SimTK::SpatialVec> & SimTK::MultibodySystem::getRigidBodyForces(const SimTK::State &, SimTK::Stage) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Vector_<SimTK::SpatialVec> & SimTK::MultibodySystem::getRigidBodyForces(const SimTK::State &, SimTK::Stage)
   // defined in simbody/internal/MultibodySystem.h:93:32
-  t0.method("getRigidBodyForces", static_cast<const SimTK::Vector_<SimTK::SpatialVec> & (SimTK::MultibodySystem::*)(const SimTK::State &, SimTK::Stage)  const>(&SimTK::MultibodySystem::getRigidBodyForces));
+  multibod.method("getRigidBodyForces", static_cast<const SimTK::Vector_<SimTK::SpatialVec> & (SimTK::MultibodySystem::*)(const SimTK::State &, SimTK::Stage)  const>(&SimTK::MultibodySystem::getRigidBodyForces));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Vector_<SimTK::Vec3> & SimTK::MultibodySystem::getParticleForces(const SimTK::State &, SimTK::Stage) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Vector_<SimTK::Vec3> & SimTK::MultibodySystem::getParticleForces(const SimTK::State &, SimTK::Stage)
   // defined in simbody/internal/MultibodySystem.h:94:32
-  t0.method("getParticleForces", static_cast<const SimTK::Vector_<SimTK::Vec3> & (SimTK::MultibodySystem::*)(const SimTK::State &, SimTK::Stage)  const>(&SimTK::MultibodySystem::getParticleForces));
+  multibod.method("getParticleForces", static_cast<const SimTK::Vector_<SimTK::Vec3> & (SimTK::MultibodySystem::*)(const SimTK::State &, SimTK::Stage)  const>(&SimTK::MultibodySystem::getParticleForces));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Vector & SimTK::MultibodySystem::getMobilityForces(const SimTK::State &, SimTK::Stage) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Vector & SimTK::MultibodySystem::getMobilityForces(const SimTK::State &, SimTK::Stage)
   // defined in simbody/internal/MultibodySystem.h:95:32
-  t0.method("getMobilityForces", static_cast<const SimTK::Vector & (SimTK::MultibodySystem::*)(const SimTK::State &, SimTK::Stage)  const>(&SimTK::MultibodySystem::getMobilityForces));
+  multibod.method("getMobilityForces", static_cast<const SimTK::Vector & (SimTK::MultibodySystem::*)(const SimTK::State &, SimTK::Stage)  const>(&SimTK::MultibodySystem::getMobilityForces));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Vector_<SimTK::SpatialVec> & SimTK::MultibodySystem::updRigidBodyForces(const SimTK::State &, SimTK::Stage) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Vector_<SimTK::SpatialVec> & SimTK::MultibodySystem::updRigidBodyForces(const SimTK::State &, SimTK::Stage)
   // defined in simbody/internal/MultibodySystem.h:98:26
-  t0.method("updRigidBodyForces", static_cast<SimTK::Vector_<SimTK::SpatialVec> & (SimTK::MultibodySystem::*)(const SimTK::State &, SimTK::Stage)  const>(&SimTK::MultibodySystem::updRigidBodyForces));
+  multibod.method("updRigidBodyForces", static_cast<SimTK::Vector_<SimTK::SpatialVec> & (SimTK::MultibodySystem::*)(const SimTK::State &, SimTK::Stage)  const>(&SimTK::MultibodySystem::updRigidBodyForces));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Vector_<SimTK::Vec3> & SimTK::MultibodySystem::updParticleForces(const SimTK::State &, SimTK::Stage) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Vector_<SimTK::Vec3> & SimTK::MultibodySystem::updParticleForces(const SimTK::State &, SimTK::Stage)
   // defined in simbody/internal/MultibodySystem.h:99:26
-  t0.method("updParticleForces", static_cast<SimTK::Vector_<SimTK::Vec3> & (SimTK::MultibodySystem::*)(const SimTK::State &, SimTK::Stage)  const>(&SimTK::MultibodySystem::updParticleForces));
+  multibod.method("updParticleForces", static_cast<SimTK::Vector_<SimTK::Vec3> & (SimTK::MultibodySystem::*)(const SimTK::State &, SimTK::Stage)  const>(&SimTK::MultibodySystem::updParticleForces));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Vector & SimTK::MultibodySystem::updMobilityForces(const SimTK::State &, SimTK::Stage) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Vector & SimTK::MultibodySystem::updMobilityForces(const SimTK::State &, SimTK::Stage)
   // defined in simbody/internal/MultibodySystem.h:100:26
-  t0.method("updMobilityForces", static_cast<SimTK::Vector & (SimTK::MultibodySystem::*)(const SimTK::State &, SimTK::Stage)  const>(&SimTK::MultibodySystem::updMobilityForces));
+  multibod.method("updMobilityForces", static_cast<SimTK::Vector & (SimTK::MultibodySystem::*)(const SimTK::State &, SimTK::Stage)  const>(&SimTK::MultibodySystem::updMobilityForces));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::MultibodySystem::isInstanceOf(const SimTK::System &) (" __HERE__ ")");
