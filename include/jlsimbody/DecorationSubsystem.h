@@ -8,6 +8,7 @@
 #include "SimTKcommon/internal/Subsystem.h"
 #include "simbody/internal/common.h"
 #include "simbody/internal/DecorationSubsystem.h"
+#include "simbody/internal/MultibodySystem.h"
 
 namespace jlcxx {
   template<> struct IsMirroredType<SimTK::DecorationSubsystem> : std::false_type { };

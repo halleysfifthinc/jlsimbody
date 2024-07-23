@@ -1,12 +1,13 @@
 #ifndef _JLSIMBODY_SIMBODYMATTERSUBSYSTEM_H
 #define _JLSIMBODY_SIMBODYMATTERSUBSYSTEM_H
 
-#include "simbody/internal/SimbodyMatterSubsystem.h"
-#include "simbody/internal/SimbodyMatterSubtree.h"
+#include "simbody/internal/ConditionalConstraint.h"
+#include "simbody/internal/Constraint.h"
 #include "simbody/internal/MobilizedBody.h"
 #include "simbody/internal/MobilizedBody_Ground.h"
-#include "simbody/internal/Constraint.h"
-#include "simbody/internal/ConditionalConstraint.h"
+#include "simbody/internal/MultibodySystem.h"
+#include "simbody/internal/SimbodyMatterSubsystem.h"
+#include "simbody/internal/SimbodyMatterSubtree.h"
 
 #include "jlSimTKcommon/Array.h"
 

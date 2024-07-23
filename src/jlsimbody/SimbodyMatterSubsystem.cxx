@@ -581,9 +581,10 @@ void define_simbody_SimbodyMatterSubsystem(jlcxx::Module& types, jlcxx::TypeWrap
   /* Wrappers for the methods of class SimTK::SimbodyMatterSubsystem
    */
 
-  // DEBUG_MSG("void SimTK::SimbodyMatterSubsystem::SimbodyMatterSubsystem(SimTK::MultibodySystem &) (" __HERE__ ")");
-  // // defined in simbody/internal/SimbodyMatterSubsystem.h:152:10
-  // mattersubsys.constructor<SimTK::MultibodySystem &>();
+  DEBUG_MSG("void SimTK::SimbodyMatterSubsystem::SimbodyMatterSubsystem(SimTK::MultibodySystem &) (" __HERE__ ")");
+  // defined in simbody/internal/SimbodyMatterSubsystem.h:152:10
+  mattersubsys.constructor<SimTK::MultibodySystem &>();
+  CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::MobilizedBody & SimTK::SimbodyMatterSubsystem::getMobilizedBody(SimTK::MobilizedBodyIndex) (" __HERE__ ")");

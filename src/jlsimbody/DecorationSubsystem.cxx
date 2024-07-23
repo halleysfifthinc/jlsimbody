@@ -9,6 +9,7 @@ void define_simbody_DecorationSubsystem(jlcxx::Module& types){
 
   auto t1 = types.add_type<SimTK::DecorationSubsystem>("DecorationSubsystem", jlcxx::julia_base_type<SimTK::Subsystem>());
   t1.template constructor<>();
+  t1.template constructor<SimTK::MultibodySystem &>();
 
   /**********************************************************************/
   /* Wrappers for the methods of class SimTK::DecorationSubsystem
