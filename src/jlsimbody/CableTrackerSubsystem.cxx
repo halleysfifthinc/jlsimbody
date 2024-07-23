@@ -289,17 +289,17 @@ void define_simbody_CableTrackerSubsystem(jlcxx::Module& types){
   t8.constructor<SimTK::CablePath &, const SimTK::MobilizedBody &, const SimTK::Vec3 &>();
   CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("bool SimTK::CableObstacle::ViaPoint::isInstanceOf(const SimTK::CableObstacle &) (" __HERE__ ")");
-  types.method("CableObstacle!ViaPoint!isInstanceOf", static_cast<bool (*)(const SimTK::CableObstacle &) >(&SimTK::CableObstacle::ViaPoint::isInstance));
-  CLEAR_DEBUG_MSG();
+  // DEBUG_MSG("bool SimTK::CableObstacle::ViaPoint::isInstanceOf(const SimTK::CableObstacle &) (" __HERE__ ")");
+  // types.method("CableObstacle!ViaPoint!isInstanceOf", static_cast<bool (*)(const SimTK::CableObstacle &) >(&SimTK::CableObstacle::ViaPoint::isInstance));
+  // CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("const SimTK::CableObstacle::ViaPoint & SimTK::CableObstacle::ViaPoint::downcast(const SimTK::CableObstacle &) (" __HERE__ ")");
-  types.method("CableObstacle!ViaPoint!downcast", static_cast<const SimTK::CableObstacle::ViaPoint & (*)(const SimTK::CableObstacle &) >(&SimTK::CableObstacle::ViaPoint::downcast));
-  CLEAR_DEBUG_MSG();
+  // DEBUG_MSG("const SimTK::CableObstacle::ViaPoint & SimTK::CableObstacle::ViaPoint::downcast(const SimTK::CableObstacle &) (" __HERE__ ")");
+  // types.method("CableObstacle!ViaPoint!downcast", static_cast<const SimTK::CableObstacle::ViaPoint & (*)(const SimTK::CableObstacle &) >(&SimTK::CableObstacle::ViaPoint::downcast));
+  // CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("SimTK::CableObstacle::ViaPoint & SimTK::CableObstacle::ViaPoint::updDowncast(SimTK::CableObstacle &) (" __HERE__ ")");
-  types.method("CableObstacle!ViaPoint!updDowncast", static_cast<SimTK::CableObstacle::ViaPoint & (*)(SimTK::CableObstacle &) >(&SimTK::CableObstacle::ViaPoint::updDowncast));
-  CLEAR_DEBUG_MSG();
+  // DEBUG_MSG("SimTK::CableObstacle::ViaPoint & SimTK::CableObstacle::ViaPoint::updDowncast(SimTK::CableObstacle &) (" __HERE__ ")");
+  // types.method("CableObstacle!ViaPoint!updDowncast", static_cast<SimTK::CableObstacle::ViaPoint & (*)(SimTK::CableObstacle &) >(&SimTK::CableObstacle::ViaPoint::updDowncast));
+  // CLEAR_DEBUG_MSG();
 
   /* End of SimTK::CableObstacle::ViaPoint class method wrappers
    **********************************************************************/
@@ -333,17 +333,17 @@ void define_simbody_CableTrackerSubsystem(jlcxx::Module& types){
   t9.method("setContactPointHints", static_cast<SimTK::CableObstacle::Surface & (SimTK::CableObstacle::Surface::*)(const SimTK::Vec3 &, const SimTK::Vec3 &) >(&SimTK::CableObstacle::Surface::setContactPointHints));
   CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("bool SimTK::CableObstacle::Surface::isInstanceOf(const SimTK::CableObstacle &) (" __HERE__ ")");
-  types.method("CableObstacle!Surface!isInstanceOf", static_cast<bool (*)(const SimTK::CableObstacle &) >(&SimTK::CableObstacle::Surface::isInstance));
-  CLEAR_DEBUG_MSG();
+  // DEBUG_MSG("bool SimTK::CableObstacle::Surface::isInstanceOf(const SimTK::CableObstacle &) (" __HERE__ ")");
+  // types.method("CableObstacle!Surface!isInstanceOf", static_cast<bool (*)(const SimTK::CableObstacle &) >(&SimTK::CableObstacle::Surface::isInstance));
+  // CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("const SimTK::CableObstacle::Surface & SimTK::CableObstacle::Surface::downcast(const SimTK::CableObstacle &) (" __HERE__ ")");
-  types.method("CableObstacle!Surface!downcast", static_cast<const SimTK::CableObstacle::Surface & (*)(const SimTK::CableObstacle &) >(&SimTK::CableObstacle::Surface::downcast));
-  CLEAR_DEBUG_MSG();
+  // DEBUG_MSG("const SimTK::CableObstacle::Surface & SimTK::CableObstacle::Surface::downcast(const SimTK::CableObstacle &) (" __HERE__ ")");
+  // types.method("CableObstacle!Surface!downcast", static_cast<const SimTK::CableObstacle::Surface & (*)(const SimTK::CableObstacle &) >(&SimTK::CableObstacle::Surface::downcast));
+  // CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("SimTK::CableObstacle::Surface & SimTK::CableObstacle::Surface::updDowncast(SimTK::CableObstacle &) (" __HERE__ ")");
-  types.method("CableObstacle!Surface!updDowncast", static_cast<SimTK::CableObstacle::Surface & (*)(SimTK::CableObstacle &) >(&SimTK::CableObstacle::Surface::updDowncast));
-  CLEAR_DEBUG_MSG();
+  // DEBUG_MSG("SimTK::CableObstacle::Surface & SimTK::CableObstacle::Surface::updDowncast(SimTK::CableObstacle &) (" __HERE__ ")");
+  // types.method("CableObstacle!Surface!updDowncast", static_cast<SimTK::CableObstacle::Surface & (*)(SimTK::CableObstacle &) >(&SimTK::CableObstacle::Surface::updDowncast));
+  // CLEAR_DEBUG_MSG();
 
   /* End of SimTK::CableObstacle::Surface class method wrappers
    **********************************************************************/

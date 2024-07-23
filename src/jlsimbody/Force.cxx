@@ -13,141 +13,143 @@ void define_simbody_Force(jlcxx::Module& types){
 
   DEBUG_MSG("type SimTK::ForceSubsystem (" __HERE__ ")");
   // defined in simbody/internal/ForceSubsystem.h:36:28
-  auto t0 = types.add_type<SimTK::ForceSubsystem>("SimTK!ForceSubsystem");
+  auto t0 = types.add_type<SimTK::ForceSubsystem>("ForceSubsystem");
   t0.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::GeneralForceSubsystem (" __HERE__ ")");
   // defined in simbody/internal/GeneralForceSubsystem.h:47:28
-  auto t1 = types.add_type<SimTK::GeneralForceSubsystem>("SimTK!GeneralForceSubsystem", jlcxx::julia_base_type<SimTK::ForceSubsystem>());
+  auto t1 = types.add_type<SimTK::GeneralForceSubsystem>("GeneralForceSubsystem", jlcxx::julia_base_type<SimTK::ForceSubsystem>());
   t1.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Force (" __HERE__ ")");
   // defined in simbody/internal/Force.h:50:28
-  auto t3 = types.add_type<SimTK::Force>("SimTK!Force");
-  t3.template constructor<>();
+  auto force = types.add_type<SimTK::Force>("Force");
+  force.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Force::TwoPointLinearSpring (" __HERE__ ")");
   // defined in simbody/internal/Force.h:221:35
-  auto t6 = types.add_type<SimTK::Force::TwoPointLinearSpring>("SimTK!Force!TwoPointLinearSpring", jlcxx::julia_base_type<SimTK::Force>());
+  auto t6 = types.add_type<SimTK::Force::TwoPointLinearSpring>("TwoPointLinearSpringForce", force.dt());
   t6.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Force::TwoPointLinearDamper (" __HERE__ ")");
   // defined in simbody/internal/Force.h:254:35
-  auto t8 = types.add_type<SimTK::Force::TwoPointLinearDamper>("SimTK!Force!TwoPointLinearDamper", jlcxx::julia_base_type<SimTK::Force>());
+  auto t8 = types.add_type<SimTK::Force::TwoPointLinearDamper>("TwoPointLinearDamperForce", force.dt());
   t8.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Force::TwoPointConstantForce (" __HERE__ ")");
   // defined in simbody/internal/Force.h:285:35
-  auto t9 = types.add_type<SimTK::Force::TwoPointConstantForce>("SimTK!Force!TwoPointConstantForce", jlcxx::julia_base_type<SimTK::Force>());
+  auto t9 = types.add_type<SimTK::Force::TwoPointConstantForce>("TwoPointConstantForceForce", force.dt());
   t9.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Force::ConstantForce (" __HERE__ ")");
   // defined in simbody/internal/Force.h:313:35
-  auto t10 = types.add_type<SimTK::Force::ConstantForce>("SimTK!Force!ConstantForce", jlcxx::julia_base_type<SimTK::Force>());
+  auto t10 = types.add_type<SimTK::Force::ConstantForce>("ConstantForceForce", force.dt());
   t10.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Force::ConstantTorque (" __HERE__ ")");
   // defined in simbody/internal/Force.h:330:35
-  auto t11 = types.add_type<SimTK::Force::ConstantTorque>("SimTK!Force!ConstantTorque", jlcxx::julia_base_type<SimTK::Force>());
+  auto t11 = types.add_type<SimTK::Force::ConstantTorque>("ConstantTorqueForce", force.dt());
   t11.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Force::GlobalDamper (" __HERE__ ")");
   // defined in simbody/internal/Force.h:354:35
-  auto t12 = types.add_type<SimTK::Force::GlobalDamper>("SimTK!Force!GlobalDamper", jlcxx::julia_base_type<SimTK::Force>());
+  auto t12 = types.add_type<SimTK::Force::GlobalDamper>("GlobalDamperForce", force.dt());
   t12.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Force::UniformGravity (" __HERE__ ")");
   // defined in simbody/internal/Force.h:374:35
-  auto t14 = types.add_type<SimTK::Force::UniformGravity>("SimTK!Force!UniformGravity", jlcxx::julia_base_type<SimTK::Force>());
+  auto t14 = types.add_type<SimTK::Force::UniformGravity>("UniformGravityForce", force.dt());
   t14.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Force::DiscreteForces (" __HERE__ ")");
   // defined in simbody/internal/Force_DiscreteForces.h:41:35
-  auto t18 = types.add_type<SimTK::Force::DiscreteForces>("SimTK!Force!DiscreteForces", jlcxx::julia_base_type<SimTK::Force>());
+  auto t18 = types.add_type<SimTK::Force::DiscreteForces>("DiscreteForcesForce", force.dt());
   t18.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Force::Gravity (" __HERE__ ")");
   // defined in simbody/internal/Force_Gravity.h:70:35
-  auto t20 = types.add_type<SimTK::Force::Gravity>("SimTK!Force!Gravity", jlcxx::julia_base_type<SimTK::Force>());
+  auto t20 = types.add_type<SimTK::Force::Gravity>("GravityForce", force.dt());
   t20.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Force::LinearBushing (" __HERE__ ")");
   // defined in simbody/internal/Force_LinearBushing.h:101:35
-  auto t22 = types.add_type<SimTK::Force::LinearBushing>("SimTK!Force!LinearBushing", jlcxx::julia_base_type<SimTK::Force>());
+  auto t22 = types.add_type<SimTK::Force::LinearBushing>("LinearBushingForce", force.dt());
   t22.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Force::MobilityConstantForce (" __HERE__ ")");
   // defined in simbody/internal/Force_MobilityConstantForce.h:45:35
-  auto t23 = types.add_type<SimTK::Force::MobilityConstantForce>("SimTK!Force!MobilityConstantForce", jlcxx::julia_base_type<SimTK::Force>());
+  auto t23 = types.add_type<SimTK::Force::MobilityConstantForce>("MobilityConstantForceForce", force.dt());
   t23.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Force::MobilityDiscreteForce (" __HERE__ ")");
   // defined in simbody/internal/Force_MobilityDiscreteForce.h:52:35
-  auto t24 = types.add_type<SimTK::Force::MobilityDiscreteForce>("SimTK!Force!MobilityDiscreteForce", jlcxx::julia_base_type<SimTK::Force>());
+  auto t24 = types.add_type<SimTK::Force::MobilityDiscreteForce>("MobilityDiscreteForceForce", force.dt());
   t24.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Force::MobilityLinearDamper (" __HERE__ ")");
   // defined in simbody/internal/Force_MobilityLinearDamper.h:46:35
-  auto t25 = types.add_type<SimTK::Force::MobilityLinearDamper>("SimTK!Force!MobilityLinearDamper", jlcxx::julia_base_type<SimTK::Force>());
+  auto t25 = types.add_type<SimTK::Force::MobilityLinearDamper>("MobilityLinearDamperForce", force.dt());
   t25.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Force::MobilityLinearSpring (" __HERE__ ")");
   // defined in simbody/internal/Force_MobilityLinearSpring.h:49:35
-  auto t26 = types.add_type<SimTK::Force::MobilityLinearSpring>("SimTK!Force!MobilityLinearSpring", jlcxx::julia_base_type<SimTK::Force>());
+  auto t26 = types.add_type<SimTK::Force::MobilityLinearSpring>("MobilityLinearSpringForce", force.dt());
   t26.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Force::MobilityLinearStop (" __HERE__ ")");
   // defined in simbody/internal/Force_MobilityLinearStop.h:65:35
-  auto t28 = types.add_type<SimTK::Force::MobilityLinearStop>("SimTK!Force!MobilityLinearStop", jlcxx::julia_base_type<SimTK::Force>());
+  auto t28 = types.add_type<SimTK::Force::MobilityLinearStop>("MobilityLinearStopForce", force.dt());
   t28.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::Force::Thermostat (" __HERE__ ")");
   // defined in simbody/internal/Force_Thermostat.h:131:35
-  auto t29 = types.add_type<SimTK::Force::Thermostat>("SimTK!Force!Thermostat", jlcxx::julia_base_type<SimTK::Force>());
+  auto t29 = types.add_type<SimTK::Force::Thermostat>("ThermostatForce", force.dt());
   t29.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::HuntCrossleyForce (" __HERE__ ")");
   // defined in simbody/internal/HuntCrossleyForce.h:122:28
-  auto t30 = types.add_type<SimTK::HuntCrossleyForce>("SimTK!HuntCrossleyForce", jlcxx::julia_base_type<SimTK::Force>());
+  auto t30 = types.add_type<SimTK::HuntCrossleyForce>("HuntCrossleyForce", force.dt());
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::CableSpring (" __HERE__ ")");
   // defined in simbody/internal/CableSpring.h:90:28
-  auto t33 = types.add_type<SimTK::CableSpring>("SimTK!CableSpring", jlcxx::julia_base_type<SimTK::Force>());
+  auto t33 = types.add_type<SimTK::CableSpring>("CableSpring", force.dt());
   t33.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::ElasticFoundationForce (" __HERE__ ")");
   // defined in simbody/internal/ElasticFoundationForce.h:96:28
-  auto t35 = types.add_type<SimTK::ElasticFoundationForce>("SimTK!ElasticFoundationForce", jlcxx::julia_base_type<SimTK::Force>());
+  auto t35 = types.add_type<SimTK::ElasticFoundationForce>("ElasticFoundationForce", force.dt());
   CLEAR_DEBUG_MSG();
-  
+
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
-  wrap_SimTK_UniqueIndexType<SimTK::ForceIndex>(types, "SimTK!ForceIndex");
+  wrap_SimTK_UniqueIndexType<SimTK::ForceIndex>(types, "ForceIndex");
   #endif
 
   /**********************************************************************/
   /* Wrappers for the methods of class SimTK::GeneralForceSubsystem
    */
+
+  t1.template constructor<SimTK::MultibodySystem &>();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ForceIndex SimTK::GeneralForceSubsystem::adoptForce(SimTK::Force &) (" __HERE__ ")");
@@ -232,6 +234,26 @@ void define_simbody_Force(jlcxx::Module& types){
   t1.method("getNumberOfThreads", static_cast<int (SimTK::GeneralForceSubsystem::*)()  const>(&SimTK::GeneralForceSubsystem::getNumberOfThreads));
   CLEAR_DEBUG_MSG();
 
+  t1.method("getMultibodySystem", static_cast<const SimTK::MultibodySystem & (SimTK::GeneralForceSubsystem::*)()  const>(&SimTK::GeneralForceSubsystem::getMultibodySystem));
+
+  DEBUG_MSG("bool SimTK::GeneralForceSubsystem::isInstanceOf(const SimTK::Subsystem &) (" __HERE__ ")");
+  types.method("GeneralForceSubsystem!isInstanceOf", reinterpret_cast<bool (*)(const SimTK::Subsystem &) >(&SimTK::GeneralForceSubsystem::isInstanceOf));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::GeneralForceSubsystem & SimTK::GeneralForceSubsystem::downcast(const SimTK::Subsystem &) (" __HERE__ ")");
+  // types.method("GeneralForceSubsystem!downcast", static_cast<const SimTK::GeneralForceSubsystem & (*)(const SimTK::Subsystem &) >(&SimTK::GeneralForceSubsystem::downcast));
+  types.method("GeneralForceSubsystem!downcast", [] (const SimTK::Subsystem &mb) -> const SimTK::GeneralForceSubsystem & {
+    return static_cast<const SimTK::GeneralForceSubsystem &>(mb);
+  });
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::GeneralForceSubsystem & SimTK::GeneralForceSubsystem::updDowncast(SimTK::Subsystem &) (" __HERE__ ")");
+  // types.method("GeneralForceSubsystem!updDowncast", static_cast<SimTK::GeneralForceSubsystem & (*)(SimTK::Subsystem &) >(&SimTK::GeneralForceSubsystem::updDowncast));
+  types.method("GeneralForceSubsystem!updDowncast", [] (SimTK::Subsystem &mb) -> SimTK::GeneralForceSubsystem & {
+    return static_cast<SimTK::GeneralForceSubsystem &>(mb);
+  });
+  CLEAR_DEBUG_MSG();
+
   /* End of SimTK::GeneralForceSubsystem class method wrappers
    **********************************************************************/
 
@@ -243,61 +265,61 @@ void define_simbody_Force(jlcxx::Module& types){
   DEBUG_MSG("void SimTK::Force::disable(SimTK::State &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::Force::disable(SimTK::State &)
   // defined in simbody/internal/Force.h:62:10
-  t3.method("disable", static_cast<void (SimTK::Force::*)(SimTK::State &)  const>(&SimTK::Force::disable));
+  force.method("disable", static_cast<void (SimTK::Force::*)(SimTK::State &)  const>(&SimTK::Force::disable));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::Force::enable(SimTK::State &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::Force::enable(SimTK::State &)
   // defined in simbody/internal/Force.h:66:10
-  t3.method("enable", static_cast<void (SimTK::Force::*)(SimTK::State &)  const>(&SimTK::Force::enable));
+  force.method("enable", static_cast<void (SimTK::Force::*)(SimTK::State &)  const>(&SimTK::Force::enable));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::Force::isDisabled(const SimTK::State &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::Force::isDisabled(const SimTK::State &)
   // defined in simbody/internal/Force.h:70:10
-  t3.method("isDisabled", static_cast<bool (SimTK::Force::*)(const SimTK::State &)  const>(&SimTK::Force::isDisabled));
+  force.method("isDisabled", static_cast<bool (SimTK::Force::*)(const SimTK::State &)  const>(&SimTK::Force::isDisabled));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::Force::setDisabledByDefault(bool) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::Force::setDisabledByDefault(bool)
   // defined in simbody/internal/Force.h:76:10
-  t3.method("setDisabledByDefault", static_cast<void (SimTK::Force::*)(bool) >(&SimTK::Force::setDisabledByDefault));
+  force.method("setDisabledByDefault", static_cast<void (SimTK::Force::*)(bool) >(&SimTK::Force::setDisabledByDefault));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::Force::isDisabledByDefault() (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::Force::isDisabledByDefault()
   // defined in simbody/internal/Force.h:80:10
-  t3.method("isDisabledByDefault", static_cast<bool (SimTK::Force::*)()  const>(&SimTK::Force::isDisabledByDefault));
+  force.method("isDisabledByDefault", static_cast<bool (SimTK::Force::*)()  const>(&SimTK::Force::isDisabledByDefault));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::Force::calcForceContribution(const SimTK::State &, SimTK::Vector_<SimTK::SpatialVec> &, SimTK::Vector_<SimTK::Vec3> &, SimTK::Vector &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::Force::calcForceContribution(const SimTK::State &, SimTK::Vector_<SimTK::SpatialVec> &, SimTK::Vector_<SimTK::Vec3> &, SimTK::Vector &)
   // defined in simbody/internal/Force.h:128:10
-  t3.method("calcForceContribution", static_cast<void (SimTK::Force::*)(const SimTK::State &, SimTK::Vector_<SimTK::SpatialVec> &, SimTK::Vector_<SimTK::Vec3> &, SimTK::Vector &)  const>(&SimTK::Force::calcForceContribution));
+  force.method("calcForceContribution", static_cast<void (SimTK::Force::*)(const SimTK::State &, SimTK::Vector_<SimTK::SpatialVec> &, SimTK::Vector_<SimTK::Vec3> &, SimTK::Vector &)  const>(&SimTK::Force::calcForceContribution));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Real SimTK::Force::calcPotentialEnergyContribution(const SimTK::State &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Real SimTK::Force::calcPotentialEnergyContribution(const SimTK::State &)
   // defined in simbody/internal/Force.h:143:10
-  t3.method("calcPotentialEnergyContribution", static_cast<SimTK::Real (SimTK::Force::*)(const SimTK::State &)  const>(&SimTK::Force::calcPotentialEnergyContribution));
+  force.method("calcPotentialEnergyContribution", static_cast<SimTK::Real (SimTK::Force::*)(const SimTK::State &)  const>(&SimTK::Force::calcPotentialEnergyContribution));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::GeneralForceSubsystem & SimTK::Force::getForceSubsystem() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::GeneralForceSubsystem & SimTK::Force::getForceSubsystem()
   // defined in simbody/internal/Force.h:160:34
-  t3.method("getForceSubsystem", static_cast<const SimTK::GeneralForceSubsystem & (SimTK::Force::*)()  const>(&SimTK::Force::getForceSubsystem));
+  force.method("getForceSubsystem", static_cast<const SimTK::GeneralForceSubsystem & (SimTK::Force::*)()  const>(&SimTK::Force::getForceSubsystem));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ForceIndex SimTK::Force::getForceIndex() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ForceIndex SimTK::Force::getForceIndex()
   // defined in simbody/internal/Force.h:164:16
-  t3.method("getForceIndex", static_cast<SimTK::ForceIndex (SimTK::Force::*)()  const>(&SimTK::Force::getForceIndex));
+  force.method("getForceIndex", static_cast<SimTK::ForceIndex (SimTK::Force::*)()  const>(&SimTK::Force::getForceIndex));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("SimTK::ForceIndex SimTK::Force::getForceIndex() (" __HERE__ ")");
   // defined in simbody/internal/Force.h:164:16
-  t3.method("getForceIndex", reinterpret_cast<int (SimTK::Force::*)()  const>(&SimTK::Force::getForceIndex));
+  force.method("getForceIndex", reinterpret_cast<int (SimTK::Force::*)()  const>(&SimTK::Force::getForceIndex));
   CLEAR_DEBUG_MSG();
   #endif
 
@@ -309,10 +331,29 @@ void define_simbody_Force(jlcxx::Module& types){
   /* Wrappers for the methods of class SimTK::Force::TwoPointLinearSpring
    */
 
-
   DEBUG_MSG("void SimTK::Force::TwoPointLinearSpring::TwoPointLinearSpring(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, const SimTK::Vec3 &, const SimTK::MobilizedBody &, const SimTK::Vec3 &, SimTK::Real, SimTK::Real) (" __HERE__ ")");
   // defined in simbody/internal/Force.h:234:5
   t6.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, const SimTK::Vec3 &, const SimTK::MobilizedBody &, const SimTK::Vec3 &, SimTK::Real, SimTK::Real>();
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::Force & SimTK::Force::TwoPointLinearSpring::upcast() (" __HERE__ ")");
+  t6.method("upcast", static_cast<const SimTK::Force & (SimTK::Force::TwoPointLinearSpring::*)()  const>(&SimTK::Force::TwoPointLinearSpring::upcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force & SimTK::Force::TwoPointLinearSpring::updUpcast() (" __HERE__ ")");
+  t6.method("updUpcast", static_cast<SimTK::Force & (SimTK::Force::TwoPointLinearSpring::*)() >(&SimTK::Force::TwoPointLinearSpring::updUpcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("bool SimTK::Force::TwoPointLinearSpring::isInstanceOf(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!TwoPointLinearSpring!isInstanceOf", static_cast<bool (*)(const SimTK::Force &) >(&SimTK::Force::TwoPointLinearSpring::isInstanceOf));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::Force::TwoPointLinearSpring & SimTK::Force::TwoPointLinearSpring::downcast(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!TwoPointLinearSpring!downcast", static_cast<const SimTK::Force::TwoPointLinearSpring & (*)(const SimTK::Force &) >(&SimTK::Force::TwoPointLinearSpring::downcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force::TwoPointLinearSpring & SimTK::Force::TwoPointLinearSpring::updDowncast(SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!TwoPointLinearSpring!updDowncast", static_cast<SimTK::Force::TwoPointLinearSpring & (*)(SimTK::Force &) >(&SimTK::Force::TwoPointLinearSpring::updDowncast));
   CLEAR_DEBUG_MSG();
 
   /* End of SimTK::Force::TwoPointLinearSpring class method wrappers
@@ -329,6 +370,26 @@ void define_simbody_Force(jlcxx::Module& types){
   t8.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, const SimTK::Vec3 &, const SimTK::MobilizedBody &, const SimTK::Vec3 &, SimTK::Real>();
   CLEAR_DEBUG_MSG();
 
+  DEBUG_MSG("const SimTK::Force & SimTK::Force::TwoPointLinearDamper::upcast() (" __HERE__ ")");
+  t8.method("upcast", static_cast<const SimTK::Force & (SimTK::Force::TwoPointLinearDamper::*)()  const>(&SimTK::Force::TwoPointLinearDamper::upcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force & SimTK::Force::TwoPointLinearDamper::updUpcast() (" __HERE__ ")");
+  t8.method("updUpcast", static_cast<SimTK::Force & (SimTK::Force::TwoPointLinearDamper::*)() >(&SimTK::Force::TwoPointLinearDamper::updUpcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("bool SimTK::Force::TwoPointLinearDamper::isInstanceOf(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!TwoPointLinearDamper!isInstanceOf", static_cast<bool (*)(const SimTK::Force &) >(&SimTK::Force::TwoPointLinearDamper::isInstanceOf));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::Force::TwoPointLinearDamper & SimTK::Force::TwoPointLinearDamper::downcast(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!TwoPointLinearDamper!downcast", static_cast<const SimTK::Force::TwoPointLinearDamper & (*)(const SimTK::Force &) >(&SimTK::Force::TwoPointLinearDamper::downcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force::TwoPointLinearDamper & SimTK::Force::TwoPointLinearDamper::updDowncast(SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!TwoPointLinearDamper!updDowncast", static_cast<SimTK::Force::TwoPointLinearDamper & (*)(SimTK::Force &) >(&SimTK::Force::TwoPointLinearDamper::updDowncast));
+  CLEAR_DEBUG_MSG();
+
   /* End of SimTK::Force::TwoPointLinearDamper class method wrappers
    **********************************************************************/
 
@@ -337,10 +398,29 @@ void define_simbody_Force(jlcxx::Module& types){
   /* Wrappers for the methods of class SimTK::Force::TwoPointConstantForce
    */
 
-
   DEBUG_MSG("void SimTK::Force::TwoPointConstantForce::TwoPointConstantForce(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, const SimTK::Vec3 &, const SimTK::MobilizedBody &, const SimTK::Vec3 &, SimTK::Real) (" __HERE__ ")");
   // defined in simbody/internal/Force.h:297:5
   t9.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, const SimTK::Vec3 &, const SimTK::MobilizedBody &, const SimTK::Vec3 &, SimTK::Real>();
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::Force & SimTK::Force::TwoPointConstantForce::upcast() (" __HERE__ ")");
+  t9.method("upcast", static_cast<const SimTK::Force & (SimTK::Force::TwoPointConstantForce::*)()  const>(&SimTK::Force::TwoPointConstantForce::upcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force & SimTK::Force::TwoPointConstantForce::updUpcast() (" __HERE__ ")");
+  t9.method("updUpcast", static_cast<SimTK::Force & (SimTK::Force::TwoPointConstantForce::*)() >(&SimTK::Force::TwoPointConstantForce::updUpcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("bool SimTK::Force::TwoPointConstantForce::isInstanceOf(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!TwoPointConstantForce!isInstanceOf", static_cast<bool (*)(const SimTK::Force &) >(&SimTK::Force::TwoPointConstantForce::isInstanceOf));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::Force::TwoPointConstantForce & SimTK::Force::TwoPointConstantForce::downcast(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!TwoPointConstantForce!downcast", static_cast<const SimTK::Force::TwoPointConstantForce & (*)(const SimTK::Force &) >(&SimTK::Force::TwoPointConstantForce::downcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force::TwoPointConstantForce & SimTK::Force::TwoPointConstantForce::updDowncast(SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!TwoPointConstantForce!updDowncast", static_cast<SimTK::Force::TwoPointConstantForce & (*)(SimTK::Force &) >(&SimTK::Force::TwoPointConstantForce::updDowncast));
   CLEAR_DEBUG_MSG();
 
   /* End of SimTK::Force::TwoPointConstantForce class method wrappers
@@ -357,6 +437,26 @@ void define_simbody_Force(jlcxx::Module& types){
   t10.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, const SimTK::Vec3 &, const SimTK::Vec3 &>();
   CLEAR_DEBUG_MSG();
 
+  DEBUG_MSG("const SimTK::Force & SimTK::Force::ConstantForce::upcast() (" __HERE__ ")");
+  t10.method("upcast", static_cast<const SimTK::Force & (SimTK::Force::ConstantForce::*)()  const>(&SimTK::Force::ConstantForce::upcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force & SimTK::Force::ConstantForce::updUpcast() (" __HERE__ ")");
+  t10.method("updUpcast", static_cast<SimTK::Force & (SimTK::Force::ConstantForce::*)() >(&SimTK::Force::ConstantForce::updUpcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("bool SimTK::Force::ConstantForce::isInstanceOf(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!ConstantForce!isInstanceOf", static_cast<bool (*)(const SimTK::Force &) >(&SimTK::Force::ConstantForce::isInstanceOf));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::Force::ConstantForce & SimTK::Force::ConstantForce::downcast(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!ConstantForce!downcast", static_cast<const SimTK::Force::ConstantForce & (*)(const SimTK::Force &) >(&SimTK::Force::ConstantForce::downcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force::ConstantForce & SimTK::Force::ConstantForce::updDowncast(SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!ConstantForce!updDowncast", static_cast<SimTK::Force::ConstantForce & (*)(SimTK::Force &) >(&SimTK::Force::ConstantForce::updDowncast));
+  CLEAR_DEBUG_MSG();
+
   /* End of SimTK::Force::ConstantForce class method wrappers
    **********************************************************************/
 
@@ -369,6 +469,26 @@ void define_simbody_Force(jlcxx::Module& types){
   DEBUG_MSG("void SimTK::Force::ConstantTorque::ConstantTorque(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, const SimTK::Vec3 &) (" __HERE__ ")");
   // defined in simbody/internal/Force.h:332:5
   t11.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, const SimTK::Vec3 &>();
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::Force & SimTK::Force::ConstantTorque::upcast() (" __HERE__ ")");
+  t11.method("upcast", static_cast<const SimTK::Force & (SimTK::Force::ConstantTorque::*)()  const>(&SimTK::Force::ConstantTorque::upcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force & SimTK::Force::ConstantTorque::updUpcast() (" __HERE__ ")");
+  t11.method("updUpcast", static_cast<SimTK::Force & (SimTK::Force::ConstantTorque::*)() >(&SimTK::Force::ConstantTorque::updUpcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("bool SimTK::Force::ConstantTorque::isInstanceOf(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!ConstantTorque!isInstanceOf", static_cast<bool (*)(const SimTK::Force &) >(&SimTK::Force::ConstantTorque::isInstanceOf));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::Force::ConstantTorque & SimTK::Force::ConstantTorque::downcast(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!ConstantTorque!downcast", static_cast<const SimTK::Force::ConstantTorque & (*)(const SimTK::Force &) >(&SimTK::Force::ConstantTorque::downcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force::ConstantTorque & SimTK::Force::ConstantTorque::updDowncast(SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!ConstantTorque!updDowncast", static_cast<SimTK::Force::ConstantTorque & (*)(SimTK::Force &) >(&SimTK::Force::ConstantTorque::updDowncast));
   CLEAR_DEBUG_MSG();
 
   /* End of SimTK::Force::ConstantTorque class method wrappers
@@ -385,6 +505,26 @@ void define_simbody_Force(jlcxx::Module& types){
   t12.constructor<SimTK::GeneralForceSubsystem &, const SimTK::SimbodyMatterSubsystem &, SimTK::Real>();
   CLEAR_DEBUG_MSG();
 
+  DEBUG_MSG("const SimTK::Force & SimTK::Force::GlobalDamper::upcast() (" __HERE__ ")");
+  t12.method("upcast", static_cast<const SimTK::Force & (SimTK::Force::GlobalDamper::*)()  const>(&SimTK::Force::GlobalDamper::upcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force & SimTK::Force::GlobalDamper::updUpcast() (" __HERE__ ")");
+  t12.method("updUpcast", static_cast<SimTK::Force & (SimTK::Force::GlobalDamper::*)() >(&SimTK::Force::GlobalDamper::updUpcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("bool SimTK::Force::GlobalDamper::isInstanceOf(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!GlobalDamper!isInstanceOf", static_cast<bool (*)(const SimTK::Force &) >(&SimTK::Force::GlobalDamper::isInstanceOf));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::Force::GlobalDamper & SimTK::Force::GlobalDamper::downcast(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!GlobalDamper!downcast", static_cast<const SimTK::Force::GlobalDamper & (*)(const SimTK::Force &) >(&SimTK::Force::GlobalDamper::downcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force::GlobalDamper & SimTK::Force::GlobalDamper::updDowncast(SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!GlobalDamper!updDowncast", static_cast<SimTK::Force::GlobalDamper & (*)(SimTK::Force &) >(&SimTK::Force::GlobalDamper::updDowncast));
+  CLEAR_DEBUG_MSG();
+
   /* End of SimTK::Force::GlobalDamper class method wrappers
    **********************************************************************/
 
@@ -394,10 +534,10 @@ void define_simbody_Force(jlcxx::Module& types){
    */
 
 
-  DEBUG_MSG("void SimTK::Force::UniformGravity::UniformGravity(SimTK::GeneralForceSubsystem &, const SimTK::SimbodyMatterSubsystem &, const SimTK::Vec3 &, SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::Force::UniformGravity::UniformGravity(SimTK::GeneralForceSubsystem &, const SimTK::SimbodyMatterSubsystem &, const SimTK::Vec3 &, SimTK::Real=0) (" __HERE__ ")");
   // defined in simbody/internal/Force.h:376:5
-  t14.constructor<SimTK::GeneralForceSubsystem &, const SimTK::SimbodyMatterSubsystem &, const SimTK::Vec3 &>();
-  t14.constructor<SimTK::GeneralForceSubsystem &, const SimTK::SimbodyMatterSubsystem &, const SimTK::Vec3 &, SimTK::Real>();
+  t14.constructor<SimTK::GeneralForceSubsystem &, const SimTK::SimbodyMatterSubsystem &, const SimTK::Vec3 &, SimTK::Real>(
+    jlcxx::arg("forces"), jlcxx::arg("matter"), jlcxx::arg("g"), jlcxx::arg("zeroHeight") = 0.0);
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Vec3 SimTK::Force::UniformGravity::getGravity() (" __HERE__ ")");
@@ -422,6 +562,26 @@ void define_simbody_Force(jlcxx::Module& types){
   // signature to use in the veto list: void SimTK::Force::UniformGravity::setZeroHeight(SimTK::Real)
   // defined in simbody/internal/Force.h:386:10
   t14.method("setZeroHeight", static_cast<void (SimTK::Force::UniformGravity::*)(SimTK::Real) >(&SimTK::Force::UniformGravity::setZeroHeight));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::Force & SimTK::Force::UniformGravity::upcast() (" __HERE__ ")");
+  t14.method("upcast", static_cast<const SimTK::Force & (SimTK::Force::UniformGravity::*)()  const>(&SimTK::Force::UniformGravity::upcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force & SimTK::Force::UniformGravity::updUpcast() (" __HERE__ ")");
+  t14.method("updUpcast", static_cast<SimTK::Force & (SimTK::Force::UniformGravity::*)() >(&SimTK::Force::UniformGravity::updUpcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("bool SimTK::Force::UniformGravity::isInstanceOf(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!UniformGravity!isInstanceOf", static_cast<bool (*)(const SimTK::Force &) >(&SimTK::Force::UniformGravity::isInstanceOf));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::Force::UniformGravity & SimTK::Force::UniformGravity::downcast(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!UniformGravity!downcast", static_cast<const SimTK::Force::UniformGravity & (*)(const SimTK::Force &) >(&SimTK::Force::UniformGravity::downcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force::UniformGravity & SimTK::Force::UniformGravity::updDowncast(SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!UniformGravity!updDowncast", static_cast<SimTK::Force::UniformGravity & (*)(SimTK::Force &) >(&SimTK::Force::UniformGravity::updDowncast));
   CLEAR_DEBUG_MSG();
 
   /* End of SimTK::Force::UniformGravity class method wrappers
@@ -524,6 +684,26 @@ void define_simbody_Force(jlcxx::Module& types){
   t18.method("getAllBodyForces", static_cast<const SimTK::Vector_<SimTK::SpatialVec> & (SimTK::Force::DiscreteForces::*)(const SimTK::State &)  const>(&SimTK::Force::DiscreteForces::getAllBodyForces));
   CLEAR_DEBUG_MSG();
 
+  DEBUG_MSG("const SimTK::Force & SimTK::Force::DiscreteForces::upcast() (" __HERE__ ")");
+  t18.method("upcast", static_cast<const SimTK::Force & (SimTK::Force::DiscreteForces::*)()  const>(&SimTK::Force::DiscreteForces::upcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force & SimTK::Force::DiscreteForces::updUpcast() (" __HERE__ ")");
+  t18.method("updUpcast", static_cast<SimTK::Force & (SimTK::Force::DiscreteForces::*)() >(&SimTK::Force::DiscreteForces::updUpcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("bool SimTK::Force::DiscreteForces::isInstanceOf(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!DiscreteForces!isInstanceOf", static_cast<bool (*)(const SimTK::Force &) >(&SimTK::Force::DiscreteForces::isInstanceOf));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::Force::DiscreteForces & SimTK::Force::DiscreteForces::downcast(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!DiscreteForces!downcast", static_cast<const SimTK::Force::DiscreteForces & (*)(const SimTK::Force &) >(&SimTK::Force::DiscreteForces::downcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force::DiscreteForces & SimTK::Force::DiscreteForces::updDowncast(SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!DiscreteForces!updDowncast", static_cast<SimTK::Force::DiscreteForces & (*)(SimTK::Force &) >(&SimTK::Force::DiscreteForces::updDowncast));
+  CLEAR_DEBUG_MSG();
+
   /* End of SimTK::Force::DiscreteForces class method wrappers
    **********************************************************************/
 
@@ -535,19 +715,20 @@ void define_simbody_Force(jlcxx::Module& types){
 
   DEBUG_MSG("void SimTK::Force::Gravity::Gravity(SimTK::GeneralForceSubsystem &, const SimTK::SimbodyMatterSubsystem &, const SimTK::UnitVec3 &, SimTK::Real, SimTK::Real) (" __HERE__ ")");
   // defined in simbody/internal/Force_Gravity.h:125:1
-  t20.constructor<SimTK::GeneralForceSubsystem &, const SimTK::SimbodyMatterSubsystem &, const SimTK::UnitVec3 &, SimTK::Real>();
-  t20.constructor<SimTK::GeneralForceSubsystem &, const SimTK::SimbodyMatterSubsystem &, const SimTK::UnitVec3 &, SimTK::Real, SimTK::Real>();
+  t20.constructor<SimTK::GeneralForceSubsystem &, const SimTK::SimbodyMatterSubsystem &, const SimTK::UnitVec3 &, SimTK::Real, SimTK::Real>(
+        jlcxx::arg("forces"), jlcxx::arg("matter"), jlcxx::arg("down"), jlcxx::arg("g"), jlcxx::arg("zeroHeight") = 0.0);
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::Force::Gravity::Gravity(SimTK::GeneralForceSubsystem &, const SimTK::SimbodyMatterSubsystem &, const SimTK::Vec3 &) (" __HERE__ ")");
   // defined in simbody/internal/Force_Gravity.h:158:1
-  t20.constructor<SimTK::GeneralForceSubsystem &, const SimTK::SimbodyMatterSubsystem &, const SimTK::Vec3 &>();
+  t20.constructor<SimTK::GeneralForceSubsystem &, const SimTK::SimbodyMatterSubsystem &, const SimTK::Vec3 &>(
+    jlcxx::arg("forces"), jlcxx::arg("matter"), jlcxx::arg("gravity"));
   CLEAR_DEBUG_MSG();
 
-
-  DEBUG_MSG("void SimTK::Force::Gravity::Gravity(SimTK::GeneralForceSubsystem &, const SimTK::SimbodyMatterSubsystem &, SimTK::Real) (" __HERE__ ")");
+  DEBUG_MSG("void SimTK::Force::Gravity::Gravity(SimTK::GeneralForceSubsystem &, const SimTK::SimbodyMatterSubsystem &, const SimTK::Real) (" __HERE__ ")");
   // defined in simbody/internal/Force_Gravity.h:186:1
-  t20.constructor<SimTK::GeneralForceSubsystem &, const SimTK::SimbodyMatterSubsystem &, SimTK::Real>();
+  t20.constructor<SimTK::GeneralForceSubsystem &, const SimTK::SimbodyMatterSubsystem &, const SimTK::Real>(
+    jlcxx::arg("forces"), jlcxx::arg("matter"), jlcxx::arg("g"));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
@@ -735,12 +916,6 @@ void define_simbody_Force(jlcxx::Module& types){
   CLEAR_DEBUG_MSG();
   #endif
 
-  DEBUG_MSG("const SimTK::Vector_<SimTK::Vec3> & SimTK::Force::Gravity::getParticleForces(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vector_<SimTK::Vec3> & SimTK::Force::Gravity::getParticleForces(const SimTK::State &)
-  // defined in simbody/internal/Force_Gravity.h:516:22
-  t20.method("getParticleForces", static_cast<const SimTK::Vector_<SimTK::Vec3> & (SimTK::Force::Gravity::*)(const SimTK::State &)  const>(&SimTK::Force::Gravity::getParticleForces));
-  CLEAR_DEBUG_MSG();
-
   DEBUG_MSG("long long SimTK::Force::Gravity::getNumEvaluations() (" __HERE__ ")");
   // signature to use in the veto list: long long SimTK::Force::Gravity::getNumEvaluations()
   // defined in simbody/internal/Force_Gravity.h:533:11
@@ -759,6 +934,26 @@ void define_simbody_Force(jlcxx::Module& types){
   t20.method("invalidateForceCache", static_cast<void (SimTK::Force::Gravity::*)(const SimTK::State &)  const>(&SimTK::Force::Gravity::invalidateForceCache));
   CLEAR_DEBUG_MSG();
 
+  DEBUG_MSG("const SimTK::Force & SimTK::Force::Gravity::upcast() (" __HERE__ ")");
+  t20.method("upcast", static_cast<const SimTK::Force & (SimTK::Force::Gravity::*)()  const>(&SimTK::Force::Gravity::upcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force & SimTK::Force::Gravity::updUpcast() (" __HERE__ ")");
+  t20.method("updUpcast", static_cast<SimTK::Force & (SimTK::Force::Gravity::*)() >(&SimTK::Force::Gravity::updUpcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("bool SimTK::Force::Gravity::isInstanceOf(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!Gravity!isInstanceOf", static_cast<bool (*)(const SimTK::Force &) >(&SimTK::Force::Gravity::isInstanceOf));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::Force::Gravity & SimTK::Force::Gravity::downcast(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!Gravity!downcast", static_cast<const SimTK::Force::Gravity & (*)(const SimTK::Force &) >(&SimTK::Force::Gravity::downcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force::Gravity & SimTK::Force::Gravity::updDowncast(SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!Gravity!updDowncast", static_cast<SimTK::Force::Gravity & (*)(SimTK::Force &) >(&SimTK::Force::Gravity::updDowncast));
+  CLEAR_DEBUG_MSG();
+
   /* End of SimTK::Force::Gravity class method wrappers
    **********************************************************************/
 
@@ -772,7 +967,6 @@ void define_simbody_Force(jlcxx::Module& types){
   // defined in simbody/internal/Force_LinearBushing.h:124:5
   t22.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, const SimTK::Transform &, const SimTK::MobilizedBody &, const SimTK::Transform &, const SimTK::Vec6 &, const SimTK::Vec6 &>();
   CLEAR_DEBUG_MSG();
-
 
   DEBUG_MSG("void SimTK::Force::LinearBushing::LinearBushing(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, const SimTK::MobilizedBody &, const SimTK::Vec6 &, const SimTK::Vec6 &) (" __HERE__ ")");
   // defined in simbody/internal/Force_LinearBushing.h:146:5
@@ -965,6 +1159,26 @@ void define_simbody_Force(jlcxx::Module& types){
   t22.method("setDissipatedEnergy", static_cast<void (SimTK::Force::LinearBushing::*)(SimTK::State &, SimTK::Real)  const>(&SimTK::Force::LinearBushing::setDissipatedEnergy));
   CLEAR_DEBUG_MSG();
 
+  DEBUG_MSG("const SimTK::Force & SimTK::Force::LinearBushing::upcast() (" __HERE__ ")");
+  t22.method("upcast", static_cast<const SimTK::Force & (SimTK::Force::LinearBushing::*)()  const>(&SimTK::Force::LinearBushing::upcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force & SimTK::Force::LinearBushing::updUpcast() (" __HERE__ ")");
+  t22.method("updUpcast", static_cast<SimTK::Force & (SimTK::Force::LinearBushing::*)() >(&SimTK::Force::LinearBushing::updUpcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("bool SimTK::Force::LinearBushing::isInstanceOf(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!LinearBushing!isInstanceOf", static_cast<bool (*)(const SimTK::Force &) >(&SimTK::Force::LinearBushing::isInstanceOf));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::Force::LinearBushing & SimTK::Force::LinearBushing::downcast(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!LinearBushing!downcast", static_cast<const SimTK::Force::LinearBushing & (*)(const SimTK::Force &) >(&SimTK::Force::LinearBushing::downcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force::LinearBushing & SimTK::Force::LinearBushing::updDowncast(SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!LinearBushing!updDowncast", static_cast<SimTK::Force::LinearBushing & (*)(SimTK::Force &) >(&SimTK::Force::LinearBushing::updDowncast));
+  CLEAR_DEBUG_MSG();
+
   /* End of SimTK::Force::LinearBushing class method wrappers
    **********************************************************************/
 
@@ -1009,6 +1223,26 @@ void define_simbody_Force(jlcxx::Module& types){
   t23.method("getForce", static_cast<SimTK::Real (SimTK::Force::MobilityConstantForce::*)(const SimTK::State &)  const>(&SimTK::Force::MobilityConstantForce::getForce));
   CLEAR_DEBUG_MSG();
 
+  DEBUG_MSG("const SimTK::Force & SimTK::Force::MobilityConstantForce::upcast() (" __HERE__ ")");
+  t23.method("upcast", static_cast<const SimTK::Force & (SimTK::Force::MobilityConstantForce::*)()  const>(&SimTK::Force::MobilityConstantForce::upcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force & SimTK::Force::MobilityConstantForce::updUpcast() (" __HERE__ ")");
+  t23.method("updUpcast", static_cast<SimTK::Force & (SimTK::Force::MobilityConstantForce::*)() >(&SimTK::Force::MobilityConstantForce::updUpcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("bool SimTK::Force::MobilityConstantForce::isInstanceOf(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!MobilityConstantForce!isInstanceOf", static_cast<bool (*)(const SimTK::Force &) >(&SimTK::Force::MobilityConstantForce::isInstanceOf));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::Force::MobilityConstantForce & SimTK::Force::MobilityConstantForce::downcast(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!MobilityConstantForce!downcast", static_cast<const SimTK::Force::MobilityConstantForce & (*)(const SimTK::Force &) >(&SimTK::Force::MobilityConstantForce::downcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force::MobilityConstantForce & SimTK::Force::MobilityConstantForce::updDowncast(SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!MobilityConstantForce!updDowncast", static_cast<SimTK::Force::MobilityConstantForce & (*)(SimTK::Force &) >(&SimTK::Force::MobilityConstantForce::updDowncast));
+  CLEAR_DEBUG_MSG();
+
   /* End of SimTK::Force::MobilityConstantForce class method wrappers
    **********************************************************************/
 
@@ -1020,8 +1254,8 @@ void define_simbody_Force(jlcxx::Module& types){
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::Force::MobilityDiscreteForce::MobilityDiscreteForce(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::MobilizerUIndex, SimTK::Real) (" __HERE__ ")");
   // defined in simbody/internal/Force_MobilityDiscreteForce.h:72:5
-  t24.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::MobilizerUIndex>();
-  t24.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::MobilizerUIndex, SimTK::Real>();
+  t24.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::MobilizerUIndex, SimTK::Real>(
+    jlcxx::arg("forces"), jlcxx::arg("mobod"), jlcxx::arg("whichU"), jlcxx::arg("defaultForce") = 0.0);
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("void SimTK::Force::MobilityDiscreteForce::MobilityDiscreteForce(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, int, SimTK::Real) (" __HERE__ ")");
@@ -1034,7 +1268,8 @@ void define_simbody_Force(jlcxx::Module& types){
 
   DEBUG_MSG("void SimTK::Force::MobilityDiscreteForce::MobilityDiscreteForce(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::Real) (" __HERE__ ")");
   // defined in simbody/internal/Force_MobilityDiscreteForce.h:81:5
-  t24.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::Real>(jlcxx::arg("forces"), jlcxx::arg("mobod"), jlcxx::arg("defaultForce") = 0.0);
+  t24.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::Real>(
+    jlcxx::arg("forces"), jlcxx::arg("mobod"), jlcxx::arg("defaultForce") = 0.0);
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Force::MobilityDiscreteForce & SimTK::Force::MobilityDiscreteForce::setDefaultMobilityForce(SimTK::Real) (" __HERE__ ")");
@@ -1059,6 +1294,26 @@ void define_simbody_Force(jlcxx::Module& types){
   // signature to use in the veto list: SimTK::Real SimTK::Force::MobilityDiscreteForce::getMobilityForce(const SimTK::State &)
   // defined in simbody/internal/Force_MobilityDiscreteForce.h:120:10
   t24.method("getMobilityForce", static_cast<SimTK::Real (SimTK::Force::MobilityDiscreteForce::*)(const SimTK::State &)  const>(&SimTK::Force::MobilityDiscreteForce::getMobilityForce));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::Force & SimTK::Force::MobilityDiscreteForce::upcast() (" __HERE__ ")");
+  t24.method("upcast", static_cast<const SimTK::Force & (SimTK::Force::MobilityDiscreteForce::*)()  const>(&SimTK::Force::MobilityDiscreteForce::upcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force & SimTK::Force::MobilityDiscreteForce::updUpcast() (" __HERE__ ")");
+  t24.method("updUpcast", static_cast<SimTK::Force & (SimTK::Force::MobilityDiscreteForce::*)() >(&SimTK::Force::MobilityDiscreteForce::updUpcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("bool SimTK::Force::MobilityDiscreteForce::isInstanceOf(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!MobilityDiscreteForce!isInstanceOf", static_cast<bool (*)(const SimTK::Force &) >(&SimTK::Force::MobilityDiscreteForce::isInstanceOf));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::Force::MobilityDiscreteForce & SimTK::Force::MobilityDiscreteForce::downcast(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!MobilityDiscreteForce!downcast", static_cast<const SimTK::Force::MobilityDiscreteForce & (*)(const SimTK::Force &) >(&SimTK::Force::MobilityDiscreteForce::downcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force::MobilityDiscreteForce & SimTK::Force::MobilityDiscreteForce::updDowncast(SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!MobilityDiscreteForce!updDowncast", static_cast<SimTK::Force::MobilityDiscreteForce & (*)(SimTK::Force &) >(&SimTK::Force::MobilityDiscreteForce::updDowncast));
   CLEAR_DEBUG_MSG();
 
   /* End of SimTK::Force::MobilityDiscreteForce class method wrappers
@@ -1103,6 +1358,26 @@ void define_simbody_Force(jlcxx::Module& types){
   // signature to use in the veto list: SimTK::Real SimTK::Force::MobilityLinearDamper::getDamping(const SimTK::State &)
   // defined in simbody/internal/Force_MobilityLinearDamper.h:110:10
   t25.method("getDamping", static_cast<SimTK::Real (SimTK::Force::MobilityLinearDamper::*)(const SimTK::State &)  const>(&SimTK::Force::MobilityLinearDamper::getDamping));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::Force & SimTK::Force::MobilityLinearDamper::upcast() (" __HERE__ ")");
+  t25.method("upcast", static_cast<const SimTK::Force & (SimTK::Force::MobilityLinearDamper::*)()  const>(&SimTK::Force::MobilityLinearDamper::upcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force & SimTK::Force::MobilityLinearDamper::updUpcast() (" __HERE__ ")");
+  t25.method("updUpcast", static_cast<SimTK::Force & (SimTK::Force::MobilityLinearDamper::*)() >(&SimTK::Force::MobilityLinearDamper::updUpcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("bool SimTK::Force::MobilityLinearDamper::isInstanceOf(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!MobilityLinearDamper!isInstanceOf", static_cast<bool (*)(const SimTK::Force &) >(&SimTK::Force::MobilityLinearDamper::isInstanceOf));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::Force::MobilityLinearDamper & SimTK::Force::MobilityLinearDamper::downcast(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!MobilityLinearDamper!downcast", static_cast<const SimTK::Force::MobilityLinearDamper & (*)(const SimTK::Force &) >(&SimTK::Force::MobilityLinearDamper::downcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force::MobilityLinearDamper & SimTK::Force::MobilityLinearDamper::updDowncast(SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!MobilityLinearDamper!updDowncast", static_cast<SimTK::Force::MobilityLinearDamper & (*)(SimTK::Force &) >(&SimTK::Force::MobilityLinearDamper::updDowncast));
   CLEAR_DEBUG_MSG();
 
   /* End of SimTK::Force::MobilityLinearDamper class method wrappers
@@ -1173,6 +1448,26 @@ void define_simbody_Force(jlcxx::Module& types){
   t26.method("getQZero", static_cast<SimTK::Real (SimTK::Force::MobilityLinearSpring::*)(const SimTK::State &)  const>(&SimTK::Force::MobilityLinearSpring::getQZero));
   CLEAR_DEBUG_MSG();
 
+  DEBUG_MSG("const SimTK::Force & SimTK::Force::MobilityLinearSpring::upcast() (" __HERE__ ")");
+  t26.method("upcast", static_cast<const SimTK::Force & (SimTK::Force::MobilityLinearSpring::*)()  const>(&SimTK::Force::MobilityLinearSpring::upcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force & SimTK::Force::MobilityLinearSpring::updUpcast() (" __HERE__ ")");
+  t26.method("updUpcast", static_cast<SimTK::Force & (SimTK::Force::MobilityLinearSpring::*)() >(&SimTK::Force::MobilityLinearSpring::updUpcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("bool SimTK::Force::MobilityLinearSpring::isInstanceOf(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!MobilityLinearSpring!isInstanceOf", static_cast<bool (*)(const SimTK::Force &) >(&SimTK::Force::MobilityLinearSpring::isInstanceOf));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::Force::MobilityLinearSpring & SimTK::Force::MobilityLinearSpring::downcast(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!MobilityLinearSpring!downcast", static_cast<const SimTK::Force::MobilityLinearSpring & (*)(const SimTK::Force &) >(&SimTK::Force::MobilityLinearSpring::downcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force::MobilityLinearSpring & SimTK::Force::MobilityLinearSpring::updDowncast(SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!MobilityLinearSpring!updDowncast", static_cast<SimTK::Force::MobilityLinearSpring & (*)(SimTK::Force &) >(&SimTK::Force::MobilityLinearSpring::updDowncast));
+  CLEAR_DEBUG_MSG();
+
   /* End of SimTK::Force::MobilityLinearSpring class method wrappers
    **********************************************************************/
 
@@ -1184,9 +1479,8 @@ void define_simbody_Force(jlcxx::Module& types){
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::Force::MobilityLinearStop::MobilityLinearStop(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::MobilizerQIndex, SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real) (" __HERE__ ")");
   // defined in simbody/internal/Force_MobilityLinearStop.h:89:5
-  t28.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::MobilizerQIndex, SimTK::Real, SimTK::Real>();
-  t28.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::MobilizerQIndex, SimTK::Real, SimTK::Real, SimTK::Real>();
-  t28.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::MobilizerQIndex, SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real>();
+  t28.constructor<SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, SimTK::MobilizerQIndex, SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real>(
+    jlcxx::arg("forces"), jlcxx::arg("mobod"), jlcxx::arg("whichQ"), jlcxx::arg("defaultStiffness"), jlcxx::arg("defaultDissipation"), jlcxx::arg("defaultQLow") = -SimTK::Infinity, jlcxx::arg("defaultQHigh") = SimTK::Infinity);
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("void SimTK::Force::MobilityLinearStop::MobilityLinearStop(SimTK::GeneralForceSubsystem &, const SimTK::MobilizedBody &, int, SimTK::Real, SimTK::Real, SimTK::Real, SimTK::Real) (" __HERE__ ")");
@@ -1270,6 +1564,26 @@ void define_simbody_Force(jlcxx::Module& types){
   t28.method("getDissipation", static_cast<SimTK::Real (SimTK::Force::MobilityLinearStop::*)(const SimTK::State &)  const>(&SimTK::Force::MobilityLinearStop::getDissipation));
   CLEAR_DEBUG_MSG();
 
+  DEBUG_MSG("const SimTK::Force & SimTK::Force::MobilityLinearStop::upcast() (" __HERE__ ")");
+  t28.method("upcast", static_cast<const SimTK::Force & (SimTK::Force::MobilityLinearStop::*)()  const>(&SimTK::Force::MobilityLinearStop::upcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force & SimTK::Force::MobilityLinearStop::updUpcast() (" __HERE__ ")");
+  t28.method("updUpcast", static_cast<SimTK::Force & (SimTK::Force::MobilityLinearStop::*)() >(&SimTK::Force::MobilityLinearStop::updUpcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("bool SimTK::Force::MobilityLinearStop::isInstanceOf(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!MobilityLinearStop!isInstanceOf", static_cast<bool (*)(const SimTK::Force &) >(&SimTK::Force::MobilityLinearStop::isInstanceOf));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::Force::MobilityLinearStop & SimTK::Force::MobilityLinearStop::downcast(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!MobilityLinearStop!downcast", static_cast<const SimTK::Force::MobilityLinearStop & (*)(const SimTK::Force &) >(&SimTK::Force::MobilityLinearStop::downcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force::MobilityLinearStop & SimTK::Force::MobilityLinearStop::updDowncast(SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!MobilityLinearStop!updDowncast", static_cast<SimTK::Force::MobilityLinearStop & (*)(SimTK::Force &) >(&SimTK::Force::MobilityLinearStop::updDowncast));
+  CLEAR_DEBUG_MSG();
+
   /* End of SimTK::Force::MobilityLinearStop class method wrappers
    **********************************************************************/
 
@@ -1281,8 +1595,8 @@ void define_simbody_Force(jlcxx::Module& types){
 
   DEBUG_MSG("void SimTK::Force::Thermostat::Thermostat(SimTK::GeneralForceSubsystem &, const SimTK::SimbodyMatterSubsystem &, SimTK::Real, SimTK::Real, SimTK::Real, int) (" __HERE__ ")");
   // defined in simbody/internal/Force_Thermostat.h:136:5
-  t29.constructor<SimTK::GeneralForceSubsystem &, const SimTK::SimbodyMatterSubsystem &, SimTK::Real, SimTK::Real, SimTK::Real>();
-  t29.constructor<SimTK::GeneralForceSubsystem &, const SimTK::SimbodyMatterSubsystem &, SimTK::Real, SimTK::Real, SimTK::Real, int>();
+  t29.constructor<SimTK::GeneralForceSubsystem &, const SimTK::SimbodyMatterSubsystem &, SimTK::Real, SimTK::Real, SimTK::Real, int>(
+    jlcxx::arg("forces"), jlcxx::arg("matter"), jlcxx::arg("boltzmannsConstant"), jlcxx::arg("bathTemperature"), jlcxx::arg("relaxationTime"), jlcxx::arg("numExcludedDofs")=6);
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Force::Thermostat & SimTK::Force::Thermostat::setDefaultNumChains(int) (" __HERE__ ")");
@@ -1441,6 +1755,26 @@ void define_simbody_Force(jlcxx::Module& types){
   t29.method("setExternalWork", static_cast<void (SimTK::Force::Thermostat::*)(SimTK::State &, SimTK::Real)  const>(&SimTK::Force::Thermostat::setExternalWork));
   CLEAR_DEBUG_MSG();
 
+  DEBUG_MSG("const SimTK::Force & SimTK::Force::Thermostat::upcast() (" __HERE__ ")");
+  t29.method("upcast", static_cast<const SimTK::Force & (SimTK::Force::Thermostat::*)()  const>(&SimTK::Force::Thermostat::upcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force & SimTK::Force::Thermostat::updUpcast() (" __HERE__ ")");
+  t29.method("updUpcast", static_cast<SimTK::Force & (SimTK::Force::Thermostat::*)() >(&SimTK::Force::Thermostat::updUpcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("bool SimTK::Force::Thermostat::isInstanceOf(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!Thermostat!isInstanceOf", static_cast<bool (*)(const SimTK::Force &) >(&SimTK::Force::Thermostat::isInstanceOf));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::Force::Thermostat & SimTK::Force::Thermostat::downcast(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!Thermostat!downcast", static_cast<const SimTK::Force::Thermostat & (*)(const SimTK::Force &) >(&SimTK::Force::Thermostat::downcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force::Thermostat & SimTK::Force::Thermostat::updDowncast(SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!Thermostat!updDowncast", static_cast<SimTK::Force::Thermostat & (*)(SimTK::Force &) >(&SimTK::Force::Thermostat::updDowncast));
+  CLEAR_DEBUG_MSG();
+
   /* End of SimTK::Force::Thermostat class method wrappers
    **********************************************************************/
 
@@ -1500,6 +1834,26 @@ void define_simbody_Force(jlcxx::Module& types){
   t30.method("getContactSetIndex", reinterpret_cast<int (SimTK::HuntCrossleyForce::*)()  const>(&SimTK::HuntCrossleyForce::getContactSetIndex));
   CLEAR_DEBUG_MSG();
   #endif
+
+  DEBUG_MSG("const SimTK::Force & SimTK::HuntCrossleyForce::upcast() (" __HERE__ ")");
+  t30.method("upcast", static_cast<const SimTK::Force & (SimTK::HuntCrossleyForce::*)()  const>(&SimTK::HuntCrossleyForce::upcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force & SimTK::HuntCrossleyForce::updUpcast() (" __HERE__ ")");
+  t30.method("updUpcast", static_cast<SimTK::Force & (SimTK::HuntCrossleyForce::*)() >(&SimTK::HuntCrossleyForce::updUpcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("bool SimTK::HuntCrossleyForce::isInstanceOf(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!HuntCrossleyForce!isInstanceOf", static_cast<bool (*)(const SimTK::Force &) >(&SimTK::HuntCrossleyForce::isInstanceOf));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::HuntCrossleyForce & SimTK::HuntCrossleyForce::downcast(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!HuntCrossleyForce!downcast", static_cast<const SimTK::HuntCrossleyForce & (*)(const SimTK::Force &) >(&SimTK::HuntCrossleyForce::downcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::HuntCrossleyForce & SimTK::HuntCrossleyForce::updDowncast(SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!HuntCrossleyForce!updDowncast", static_cast<SimTK::HuntCrossleyForce & (*)(SimTK::Force &) >(&SimTK::HuntCrossleyForce::updDowncast));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::HuntCrossleyForce class method wrappers
    **********************************************************************/
@@ -1635,6 +1989,26 @@ void define_simbody_Force(jlcxx::Module& types){
   t33.method("getCablePath", static_cast<const SimTK::CablePath & (SimTK::CableSpring::*)()  const>(&SimTK::CableSpring::getCablePath));
   CLEAR_DEBUG_MSG();
 
+  DEBUG_MSG("const SimTK::Force & SimTK::CableSpring::upcast() (" __HERE__ ")");
+  t33.method("upcast", static_cast<const SimTK::Force & (SimTK::CableSpring::*)()  const>(&SimTK::CableSpring::upcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force & SimTK::CableSpring::updUpcast() (" __HERE__ ")");
+  t33.method("updUpcast", static_cast<SimTK::Force & (SimTK::CableSpring::*)() >(&SimTK::CableSpring::updUpcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("bool SimTK::CableSpring::isInstanceOf(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!CableSpring!isInstanceOf", static_cast<bool (*)(const SimTK::Force &) >(&SimTK::CableSpring::isInstanceOf));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::CableSpring & SimTK::CableSpring::downcast(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!CableSpring!downcast", static_cast<const SimTK::CableSpring & (*)(const SimTK::Force &) >(&SimTK::CableSpring::downcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::CableSpring & SimTK::CableSpring::updDowncast(SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!CableSpring!updDowncast", static_cast<SimTK::CableSpring & (*)(SimTK::Force &) >(&SimTK::CableSpring::updDowncast));
+  CLEAR_DEBUG_MSG();
+
   /* End of SimTK::CableSpring class method wrappers
    **********************************************************************/
 
@@ -1680,6 +2054,26 @@ void define_simbody_Force(jlcxx::Module& types){
   // signature to use in the veto list: void SimTK::ElasticFoundationForce::setTransitionVelocity(SimTK::Real)
   // defined in simbody/internal/ElasticFoundationForce.h:127:10
   t35.method("setTransitionVelocity", static_cast<void (SimTK::ElasticFoundationForce::*)(SimTK::Real) >(&SimTK::ElasticFoundationForce::setTransitionVelocity));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::Force & SimTK::ElasticFoundationForce::upcast() (" __HERE__ ")");
+  t35.method("upcast", static_cast<const SimTK::Force & (SimTK::ElasticFoundationForce::*)()  const>(&SimTK::ElasticFoundationForce::upcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::Force & SimTK::ElasticFoundationForce::updUpcast() (" __HERE__ ")");
+  t35.method("updUpcast", static_cast<SimTK::Force & (SimTK::ElasticFoundationForce::*)() >(&SimTK::ElasticFoundationForce::updUpcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("bool SimTK::ElasticFoundationForce::isInstanceOf(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!ElasticFoundationForce!isInstanceOf", static_cast<bool (*)(const SimTK::Force &) >(&SimTK::ElasticFoundationForce::isInstanceOf));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::ElasticFoundationForce & SimTK::ElasticFoundationForce::downcast(const SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!ElasticFoundationForce!downcast", static_cast<const SimTK::ElasticFoundationForce & (*)(const SimTK::Force &) >(&SimTK::ElasticFoundationForce::downcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::ElasticFoundationForce & SimTK::ElasticFoundationForce::updDowncast(SimTK::Force &) (" __HERE__ ")");
+  types.method("Force!ElasticFoundationForce!updDowncast", static_cast<SimTK::ElasticFoundationForce & (*)(SimTK::Force &) >(&SimTK::ElasticFoundationForce::updDowncast));
   CLEAR_DEBUG_MSG();
 
   /* End of SimTK::ElasticFoundationForce class method wrappers
