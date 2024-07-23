@@ -1,13 +1,14 @@
 #ifndef _JLSIMBODY_CABLETRACKERSUBSYSTEM_H
 #define _JLSIMBODY_CABLETRACKERSUBSYSTEM_H
 
-#include "SimTKcommon/internal/Subsystem.h"
 #include "SimTKcommon/internal/State.h"
+#include "SimTKcommon/internal/Subsystem.h"
 #include "SimTKcommon/internal/Vec.h"
 #include "SimTKcommon/internal/Vector_.h"
-#include "simbody/internal/MobilizedBody.h"
-#include "simbody/internal/CableTrackerSubsystem.h"
 #include "simbody/internal/CablePath.h"
+#include "simbody/internal/CableTrackerSubsystem.h"
+#include "simbody/internal/MobilizedBody.h"
+#include "simbody/internal/MultibodySystem.h"
 
 namespace jlcxx {
   template<> struct IsMirroredType<SimTK::CablePath> : std::false_type { };

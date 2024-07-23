@@ -13,37 +13,37 @@ void define_simbody_CableTrackerSubsystem(jlcxx::Module& types){
 
   DEBUG_MSG("type SimTK::CableTrackerSubsystem (" __HERE__ ")");
   // defined in simbody/internal/CableTrackerSubsystem.h:68:28
-  auto t1 = types.add_type<SimTK::CableTrackerSubsystem>("SimTK!CableTrackerSubsystem");
+  auto t1 = types.add_type<SimTK::CableTrackerSubsystem>("CableTrackerSubsystem", jlcxx::julia_base_type<SimTK::Subsystem>());
   t1.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::CablePath (" __HERE__ ")");
   // defined in simbody/internal/CablePath.h:92:28
-  auto t2 = types.add_type<SimTK::CablePath>("SimTK!CablePath");
+  auto t2 = types.add_type<SimTK::CablePath>("CablePath");
   t2.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::CableObstacle (" __HERE__ ")");
   // defined in simbody/internal/CablePath.h:210:28
-  auto t6 = types.add_type<SimTK::CableObstacle>("SimTK!CableObstacle");
+  auto t6 = types.add_type<SimTK::CableObstacle>("CableObstacle");
   t6.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::CableObstacle::ViaPoint (" __HERE__ ")");
   // defined in simbody/internal/CablePath.h:294:43
-  auto t8 = types.add_type<SimTK::CableObstacle::ViaPoint>("SimTK!CableObstacle!ViaPoint", jlcxx::julia_base_type<SimTK::CableObstacle>());
+  auto t8 = types.add_type<SimTK::CableObstacle::ViaPoint>("ViaPointCableObstacle", t6.dt());
   t8.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("type SimTK::CableObstacle::Surface (" __HERE__ ")");
   // defined in simbody/internal/CablePath.h:320:43
-  auto t9 = types.add_type<SimTK::CableObstacle::Surface>("SimTK!CableObstacle!Surface", jlcxx::julia_base_type<SimTK::CableObstacle>());
+  auto t9 = types.add_type<SimTK::CableObstacle::Surface>("SurfaceCableObstacle", t6.dt());
   t9.template constructor<>();
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
-  wrap_SimTK_UniqueIndexType<SimTK::CablePathIndex>(types, "SimTK!CablePathIndex");
-  wrap_SimTK_UniqueIndexType<SimTK::CableObstacleIndex>(types, "SimTK!CableObstacleIndex");
+  wrap_SimTK_UniqueIndexType<SimTK::CablePathIndex>(types, "CablePathIndex");
+  wrap_SimTK_UniqueIndexType<SimTK::CableObstacleIndex>(types, "CableObstacleIndex");
   #endif
 
   /**********************************************************************/
@@ -96,12 +96,10 @@ void define_simbody_CableTrackerSubsystem(jlcxx::Module& types){
   t2.constructor<SimTK::CableTrackerSubsystem &, const SimTK::MobilizedBody &, const SimTK::Vec3 &, const SimTK::MobilizedBody &, const SimTK::Vec3 &>();
   CLEAR_DEBUG_MSG();
 
-
   DEBUG_MSG("void SimTK::CablePath::CablePath(SimTK::CableTrackerSubsystem &, const SimTK::MobilizedBody &, const SimTK::MobilizedBody &) (" __HERE__ ")");
   // defined in simbody/internal/CablePath.h:107:1
   t2.constructor<SimTK::CableTrackerSubsystem &, const SimTK::MobilizedBody &, const SimTK::MobilizedBody &>();
   CLEAR_DEBUG_MSG();
-
 
   DEBUG_MSG("void SimTK::CablePath::CablePath(const SimTK::CablePath &) (" __HERE__ ")");
   // defined in simbody/internal/CablePath.h:112:1
@@ -188,7 +186,6 @@ void define_simbody_CableTrackerSubsystem(jlcxx::Module& types){
   t6.constructor<SimTK::CablePath &>();
   CLEAR_DEBUG_MSG();
 
-
   DEBUG_MSG("void SimTK::CableObstacle::CableObstacle(const SimTK::CableObstacle &) (" __HERE__ ")");
   // defined in simbody/internal/CablePath.h:222:1
   t6.constructor<const SimTK::CableObstacle &>();
@@ -273,11 +270,11 @@ void define_simbody_CableTrackerSubsystem(jlcxx::Module& types){
   t6.method("clear", static_cast<void (SimTK::CableObstacle::*)() >(&SimTK::CableObstacle::clear));
   CLEAR_DEBUG_MSG();
 
-  DEBUG_MSG("bool SimTK::CableObstacle::isEmpty() (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::CableObstacle::isEmpty()
-  // defined in simbody/internal/CablePath.h:275:6
-  t6.method("isEmpty", static_cast<bool (SimTK::CableObstacle::*)()  const>(&SimTK::CableObstacle::isEmpty));
-  CLEAR_DEBUG_MSG();
+  // DEBUG_MSG("bool SimTK::CableObstacle::isEmpty() (" __HERE__ ")");
+  // // signature to use in the veto list: bool SimTK::CableObstacle::isEmpty()
+  // // defined in simbody/internal/CablePath.h:275:6
+  // t6.method("isEmpty", static_cast<bool (SimTK::CableObstacle::*)()  const>(&SimTK::CableObstacle::isEmpty));
+  // CLEAR_DEBUG_MSG();
 
   /* End of SimTK::CableObstacle class method wrappers
    **********************************************************************/
@@ -287,10 +284,21 @@ void define_simbody_CableTrackerSubsystem(jlcxx::Module& types){
   /* Wrappers for the methods of class SimTK::CableObstacle::ViaPoint
    */
 
-
   DEBUG_MSG("void SimTK::CableObstacle::ViaPoint::ViaPoint(SimTK::CablePath &, const SimTK::MobilizedBody &, const SimTK::Vec3 &) (" __HERE__ ")");
   // defined in simbody/internal/CablePath.h:299:1
   t8.constructor<SimTK::CablePath &, const SimTK::MobilizedBody &, const SimTK::Vec3 &>();
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("bool SimTK::CableObstacle::ViaPoint::isInstanceOf(const SimTK::CableObstacle &) (" __HERE__ ")");
+  types.method("CableObstacle!ViaPoint!isInstanceOf", static_cast<bool (*)(const SimTK::CableObstacle &) >(&SimTK::CableObstacle::ViaPoint::isInstance));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::CableObstacle::ViaPoint & SimTK::CableObstacle::ViaPoint::downcast(const SimTK::CableObstacle &) (" __HERE__ ")");
+  types.method("CableObstacle!ViaPoint!downcast", static_cast<const SimTK::CableObstacle::ViaPoint & (*)(const SimTK::CableObstacle &) >(&SimTK::CableObstacle::ViaPoint::downcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::CableObstacle::ViaPoint & SimTK::CableObstacle::ViaPoint::updDowncast(SimTK::CableObstacle &) (" __HERE__ ")");
+  types.method("CableObstacle!ViaPoint!updDowncast", static_cast<SimTK::CableObstacle::ViaPoint & (*)(SimTK::CableObstacle &) >(&SimTK::CableObstacle::ViaPoint::updDowncast));
   CLEAR_DEBUG_MSG();
 
   /* End of SimTK::CableObstacle::ViaPoint class method wrappers
@@ -323,6 +331,18 @@ void define_simbody_CableTrackerSubsystem(jlcxx::Module& types){
   // signature to use in the veto list: SimTK::CableObstacle::Surface & SimTK::CableObstacle::Surface::setContactPointHints(const SimTK::Vec3 &, const SimTK::Vec3 &)
   // defined in simbody/internal/CablePath.h:354:10
   t9.method("setContactPointHints", static_cast<SimTK::CableObstacle::Surface & (SimTK::CableObstacle::Surface::*)(const SimTK::Vec3 &, const SimTK::Vec3 &) >(&SimTK::CableObstacle::Surface::setContactPointHints));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("bool SimTK::CableObstacle::Surface::isInstanceOf(const SimTK::CableObstacle &) (" __HERE__ ")");
+  types.method("CableObstacle!Surface!isInstanceOf", static_cast<bool (*)(const SimTK::CableObstacle &) >(&SimTK::CableObstacle::Surface::isInstance));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::CableObstacle::Surface & SimTK::CableObstacle::Surface::downcast(const SimTK::CableObstacle &) (" __HERE__ ")");
+  types.method("CableObstacle!Surface!downcast", static_cast<const SimTK::CableObstacle::Surface & (*)(const SimTK::CableObstacle &) >(&SimTK::CableObstacle::Surface::downcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::CableObstacle::Surface & SimTK::CableObstacle::Surface::updDowncast(SimTK::CableObstacle &) (" __HERE__ ")");
+  types.method("CableObstacle!Surface!updDowncast", static_cast<SimTK::CableObstacle::Surface & (*)(SimTK::CableObstacle &) >(&SimTK::CableObstacle::Surface::updDowncast));
   CLEAR_DEBUG_MSG();
 
   /* End of SimTK::CableObstacle::Surface class method wrappers
