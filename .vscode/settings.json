@@ -1,0 +1,17 @@
+{
+    "files.trimTrailingWhitespace": true,
+    "C_Cpp.files.exclude": {
+        "/": true,
+        "**/.vscode": true,
+        "**/.vs": true
+    },
+    "C_Cpp.workspaceParsingPriority": "medium",
+    "cmake.buildDirectory": "${workspaceFolder}/out/build/",
+    "cmake.copyCompileCommands": "${workspaceFolder}/out/build/compile_commands.json",
+    "cmake.ctest.allowParallelJobs": true,
+    "cmake.generator": "Ninja",
+    "C_Cpp.default.compileCommands": "${workspaceFolder}/out/build/compile_commands.json",
+    "cmake.exportCompileCommandsFile": true,
+    "compilerexplorer.compilationDirectory": "${workspaceFolder}/out/build",
+    "makefile.compileCommandsPath": "${workspaceFolder}/out/build/compile_commands.json",
+}
