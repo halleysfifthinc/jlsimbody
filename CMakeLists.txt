@@ -210,6 +210,7 @@ set(HEADER_FILES
   include/jlsimbody/Force.h
   include/jlsimbody/ForceSubsystems.h
   include/jlsimbody/MultibodySystem.h
+  include/jlsimbody/MobilizedBodies.h
   include/jlsimbody/SimbodyMatterSubsystem.h
 )
 
@@ -246,6 +247,7 @@ set(is_clang "$<CXX_COMPILER_ID:Clang>")
 
 target_compile_options(jlsimbody
   PRIVATE
+    -fdata-sections
     -no-canonical-prefixes
     -gno-record-gcc-switches
     -fno-record-gcc-switches
@@ -254,6 +256,7 @@ target_compile_options(jlsimbody
     -Wdate-time
     $<$<AND:${is_clang},${gen_jlsimbody_is_dev}>:-ftime-trace>
     $<${gen_jlsimbody_is_dev}:-O1>
+    $<$<CONFIG:RelWithDebInfo>:-g1;$<${is_clang}:-gline-tables-only>>
     $<$<CONFIG:DEBUG>:-Og>
   )
 
@@ -273,8 +276,8 @@ endif()
 set(linker_is_mold "$<STREQUAL:${CMAKE_LINKER_TYPE},MOLD>")
 target_link_options(jlsimbody PRIVATE
   --for-linker=--compress-debug-sections=$<IF:${linker_is_mold},zstd,zlib> # GNU ld doesn't support zstd
-  # --for-linker=-flto
-  # --for-linker=--gc-sections
+  --for-linker=-flto
+  --for-linker=--gc-sections
   $<$<AND:${is_clang},${linker_is_mold}>:--for-linker=--icf=safe> # --icf not recognized by GNU ld; icf=safe needs an LLVM compiler
   # $<${gen_jlsimbody_is_dev}:--for-linker=--print-gc-sections>
   # $<$<AND:${gen_jlsimbody_is_dev},${is_clang},${linker_is_mold}>:--for-linker=--print-icf-sections> # --icf not recognized by GNU ld

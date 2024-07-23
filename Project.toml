@@ -1,3 +1,6 @@
 [deps]
 CxxWrap = "1f15a43c-97ca-5a2a-ae31-89f07a497df4"
 Simbody_jll = "ca7e93f2-85b3-599e-bbf0-405d66b3bbc3"
+
+[compat]
+julia = "1.10"

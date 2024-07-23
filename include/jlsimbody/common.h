@@ -10,6 +10,10 @@
 #include "jlcxx/stl.hpp"
 #include "jlsimbody_export.h"
 
+namespace jlcxx {
+  extern template void create_if_not_exists<std::vector<int>>();
+}
+
 #ifdef VERBOSE_IMPORT
     namespace jlsimbody {
         static int r = 0;
