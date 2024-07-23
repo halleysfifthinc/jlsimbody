@@ -7,7 +7,7 @@ namespace jlsimbody {
 
 void define_simbody_DecorationSubsystem(jlcxx::Module& types){
 
-  auto t1 = types.add_type<SimTK::DecorationSubsystem>("SimTK!DecorationSubsystem", jlcxx::julia_base_type<SimTK::Subsystem>());
+  auto t1 = types.add_type<SimTK::DecorationSubsystem>("DecorationSubsystem", jlcxx::julia_base_type<SimTK::Subsystem>());
   t1.template constructor<>();
 
   /**********************************************************************/
@@ -31,8 +31,20 @@ void define_simbody_DecorationSubsystem(jlcxx::Module& types){
   #else
   t1.method("addRubberBandLine", reinterpret_cast<void (SimTK::DecorationSubsystem::*)(int, const SimTK::Vec3 &, int, const SimTK::Vec3 &, const SimTK::DecorativeLine &) >( &SimTK::DecorationSubsystem::addRubberBandLine));
   #endif
-  
+
   t1.method("addDecorationGenerator", static_cast<void (SimTK::DecorationSubsystem::*)(SimTK::Stage, SimTK::DecorationGenerator *) >( &SimTK::DecorationSubsystem::addDecorationGenerator));
+
+  DEBUG_MSG("bool SimTK::DecorationSubsystem::isInstanceOf(const SimTK::Subsystem &) (" __HERE__ ")");
+  types.method("DecorationSubsystem!isInstanceOf", static_cast<bool (*)(const SimTK::Subsystem &) >(&SimTK::DecorationSubsystem::isInstanceOf));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("const SimTK::DecorationSubsystem & SimTK::DecorationSubsystem::downcast(const SimTK::Subsystem &) (" __HERE__ ")");
+  types.method("DecorationSubsystem!downcast", static_cast<const SimTK::DecorationSubsystem & (*)(const SimTK::Subsystem &) >(&SimTK::DecorationSubsystem::downcast));
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("SimTK::DecorationSubsystem & SimTK::DecorationSubsystem::updDowncast(SimTK::Subsystem &) (" __HERE__ ")");
+  types.method("DecorationSubsystem!updDowncast", static_cast<SimTK::DecorationSubsystem & (*)(SimTK::Subsystem &) >(&SimTK::DecorationSubsystem::updDowncast));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::DecorationSubsystem class method wrappers
    **********************************************************************/
