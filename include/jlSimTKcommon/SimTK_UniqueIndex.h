@@ -19,8 +19,7 @@ namespace jlsimbody {
   template<typename UniqueIndex>
   void wrap_SimTK_UniqueIndexType(jlcxx::Module& types, std::string tname)
   {
-    auto t0 = types.add_type<UniqueIndex>(tname);
-    // types.map_type<UniqueIndex>(tname);
+    auto t0 = types.add_type<UniqueIndex>(tname, jlcxx::julia_type("Integer", "Base"));
     t0.template constructor<>();
     t0.template constructor<int>();
 
@@ -32,25 +31,20 @@ namespace jlsimbody {
     types.set_override_module(jl_base_module);
     t0.method("==", static_cast<bool (UniqueIndex::*)(const UniqueIndex &)  const>(&UniqueIndex::operator==));
     t0.method("==", static_cast<bool (UniqueIndex::*)(int)  const>(&UniqueIndex::operator==));
-    t0.method("!=", static_cast<bool (UniqueIndex::*)(int)  const>(&UniqueIndex::operator!=));
     t0.method("<", static_cast<bool (UniqueIndex::*)(int)  const>(&UniqueIndex::operator<));
-    // t0.method(">=", static_cast<bool (UniqueIndex::*)(int)  const>(&UniqueIndex::operator>=));
-    // t0.method(">", static_cast<bool (UniqueIndex::*)(int)  const>(&UniqueIndex::operator>));
-    // t0.method("<=", static_cast<bool (UniqueIndex::*)(int)  const>(&UniqueIndex::operator<=));
     types.unset_override_module();
 
-    // t0.method("inc!", static_cast<const UniqueIndex & (UniqueIndex::*)() >(&UniqueIndex::operator++));
-    // t0.method("inc!", static_cast<UniqueIndex (UniqueIndex::*)(int) >(&UniqueIndex::operator++));
-    // t0.method("dec!", static_cast<const UniqueIndex & (UniqueIndex::*)() >(&UniqueIndex::operator--));
-    // t0.method("dec!", static_cast<UniqueIndex (UniqueIndex::*)(int) >(&UniqueIndex::operator--));
+    t0.method("inc!", static_cast<const UniqueIndex & (UniqueIndex::*)() >(&UniqueIndex::operator++));
+    t0.method("inc!", static_cast<UniqueIndex (UniqueIndex::*)(int) >(&UniqueIndex::operator++));
+    t0.method("dec!", static_cast<const UniqueIndex & (UniqueIndex::*)() >(&UniqueIndex::operator--));
+    t0.method("dec!", static_cast<UniqueIndex (UniqueIndex::*)(int) >(&UniqueIndex::operator--));
     t0.method("next", static_cast<UniqueIndex (UniqueIndex::*)()  const>(&UniqueIndex::next));
     t0.method("prev", static_cast<UniqueIndex (UniqueIndex::*)()  const>(&UniqueIndex::prev));
     t0.method("add!", static_cast<UniqueIndex & (UniqueIndex::*)(int) >(&UniqueIndex::operator+=));
     t0.method("sub!", static_cast<UniqueIndex & (UniqueIndex::*)(int) >(&UniqueIndex::operator-=));
-    // t0.method("Invalid", static_cast<const UniqueIndex & (*)() >(&UniqueIndex::Invalid));
-    // t0.method("SimTK!AssemblyConditionIndex!max_size", static_cast<UniqueIndex::size_type (*)() >(&UniqueIndex::max_size));
+    t0.method("Invalid", static_cast<const UniqueIndex & (*)() >(&UniqueIndex::Invalid));
   }
-  
+
 }
 
 #endif // _JLSIMTKCOMMON__UNIQUEINDEX_H
