@@ -18,6 +18,9 @@ if(JLSIMBODY_LINKER_TYPE AND ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU" AND "${C
   set(CMAKE_LINKER_TYPE ${JLSIMBODY_LINKER_TYPE})
 endif()
 
+cmake_dependent_option(JLSIMBODY_USE_IWYU "Use include-what-you-use" OFF
+  "JLSIMBODY_DEV" OFF)
+
 # From google/bloaty
 # When using Ninja, compiler output won't be colorized without this.
 include(CheckCXXCompilerFlag)
@@ -99,6 +102,14 @@ if(NOT DEFINED ENV{bb_full_target})
   endif()
 
   find_package(Patch QUIET)
+
+  if("${JLSIMBODY_USE_IWYU}")
+    find_program(IWYU_EXECUTABLE NAMES include-what-you-use iwyu)
+  endif()
+  if(DEFINED IWYU_EXECUTABLE) # Assume the user wants to use IWYU if the executable path has been manually set
+    set(CMAKE_CXX_INCLUDE_WHAT_YOU_USE "${IWYU_EXECUTABLE};-Xiwyu;--cxx17ns;-Xiwyu;--verbose=4")
+    message(STATUS "Found include-what-you-use at ${IWYU_EXECUTABLE}")
+  endif()
 endif()
 
 find_package(JlCxx QUIET REQUIRED
@@ -217,13 +228,27 @@ set(HEADER_FILES
 list(SORT CXX_FILES)
 list(SORT HEADER_FILES)
 
+# foreach(_file ${LIB_SOURCES})
+#     file(SHA1 ${_file} checksum)
+#     string(SUBSTRING ${checksum} 0 8 checksum)
+#     set_source_files_properties(${_file} PROPERTIES
+#       COMPILE_FLAGS
+#         "-frandom-seed=0x${checksum}"
+#       COMPILE_DEFINITIONS
+#         "__FILE__=\"${_file}\"" # ${_file} is already relative to CMAKE_CURRENT_SOURCE_DIR
+#         )
+#     set_property()
+# endforeach()
 
 add_library(jlsimbody SHARED
   ${CXX_FILES} ${HEADER_FILES})
 
-target_precompile_headers(jlsimbody PRIVATE
-  include/jlsimbody/common.h
-  )
+# include-what-you-use isn't compatible with precompiled headers
+if(NOT DEFINED CMAKE_CXX_INCLUDE_WHAT_YOU_USE)
+  target_precompile_headers(jlsimbody PRIVATE
+    include/jlsimbody/common.h
+    )
+endif()
 
 target_include_directories(jlsimbody PRIVATE
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>

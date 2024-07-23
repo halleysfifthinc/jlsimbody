@@ -20,7 +20,7 @@
             "description": "default for jlsimbody devs; inherits from default +(BUILD_TYPE=RelWithDebInfo)",
             "inherits":["default"],
             "cacheVariables": {
-                "DEV_JLSIMBODY": "ON",
+                "JLSIMBODY_DEV": "ON",
                 "CMAKE_BUILD_TYPE": "RelWithDebInfo"
             }
         },
