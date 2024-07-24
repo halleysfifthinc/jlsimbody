@@ -157,14 +157,17 @@ void define_simbody_Body(jlcxx::Module& types){
   DEBUG_MSG("bool SimTK::Body::Rigid::isInstanceOf(const SimTK::Body &) (" __HERE__ ")");
   // defined in simbody/internal/Body.h:195:5
   types.method("Body!Rigid!isInstanceOf", static_cast<bool (*)(const SimTK::Body &) >(&SimTK::Body::Rigid::isInstanceOf));
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Body::Rigid & SimTK::Body::Rigid::downcast(const SimTK::Body &) (" __HERE__ ")");
   // defined in simbody/internal/Body.h:195:5
   types.method("Body!Rigid!downcast", static_cast<const SimTK::Body::Rigid & (*)(const SimTK::Body &) >(&SimTK::Body::Rigid::downcast));
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Body::Rigid & SimTK::Body::Rigid::updDowncast(SimTK::Body &) (" __HERE__ ")");
   // defined in simbody/internal/Body.h:195:5
   types.method("Body!Rigid!updDowncast", static_cast<SimTK::Body::Rigid & (*)(SimTK::Body &) >(&SimTK::Body::Rigid::updDowncast));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::Body::Rigid class method wrappers
    **********************************************************************/
@@ -238,14 +241,17 @@ void define_simbody_Body(jlcxx::Module& types){
   DEBUG_MSG("bool SimTK::Body::Massless::isInstanceOf(const SimTK::Body &) (" __HERE__ ")");
   // defined in simbody/internal/Body.h:266:5
   types.method("Body!Massless!isInstanceOf", static_cast<bool (*)(const SimTK::Body &) >(&SimTK::Body::Massless::isInstanceOf));
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Body::Massless & SimTK::Body::Massless::downcast(const SimTK::Body &) (" __HERE__ ")");
   // defined in simbody/internal/Body.h:266:5
   types.method("Body!Massless!downcast", static_cast<const SimTK::Body::Massless & (*)(const SimTK::Body &) >(&SimTK::Body::Massless::downcast));
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Body::Massless & SimTK::Body::Massless::updDowncast(SimTK::Body &) (" __HERE__ ")");
   // defined in simbody/internal/Body.h:266:5
   types.method("Body!Massless!updDowncast", static_cast<SimTK::Body::Massless & (*)(SimTK::Body &) >(&SimTK::Body::Massless::updDowncast));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::Body::Massless class method wrappers
    **********************************************************************/
@@ -258,14 +264,17 @@ void define_simbody_Body(jlcxx::Module& types){
   DEBUG_MSG("bool SimTK::Body::Ground::isInstanceOf(const SimTK::Body &) (" __HERE__ ")");
   // defined in simbody/internal/Body.h:284:5
   types.method("Body!Ground!isInstanceOf", static_cast<bool (*)(const SimTK::Body &) >(&SimTK::Body::Ground::isInstanceOf));
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Body::Ground & SimTK::Body::Ground::downcast(const SimTK::Body &) (" __HERE__ ")");
   // defined in simbody/internal/Body.h:284:5
   types.method("Body!Ground!downcast", static_cast<const SimTK::Body::Ground & (*)(const SimTK::Body &) >(&SimTK::Body::Ground::downcast));
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Body::Ground & SimTK::Body::Ground::updDowncast(SimTK::Body &) (" __HERE__ ")");
   // defined in simbody/internal/Body.h:284:5
   types.method("Body!Ground!updDowncast", static_cast<SimTK::Body::Ground & (*)(SimTK::Body &) >(&SimTK::Body::Ground::updDowncast));
+  CLEAR_DEBUG_MSG();
 
   /* End of SimTK::Body::Ground class method wrappers
    **********************************************************************/
