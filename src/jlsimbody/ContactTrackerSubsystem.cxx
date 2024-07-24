@@ -271,19 +271,19 @@ void define_simbody_ContactTrackerSubsystem(jlcxx::Module& types){
   DEBUG_MSG("bool SimTK::ContactTrackerSubsystem::isInstanceOf(const SimTK::Subsystem &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::ContactTrackerSubsystem::isInstanceOf(const SimTK::Subsystem &)
   // defined in simbody/internal/ContactTrackerSubsystem.h:284:1
-  types.method("SimTK!ContactTrackerSubsystem!isInstanceOf", static_cast<bool (*)(const SimTK::Subsystem &) >(&SimTK::ContactTrackerSubsystem::isInstanceOf));
+  types.method("ContactTrackerSubsystem!isInstanceOf", static_cast<bool (*)(const SimTK::Subsystem &) >(&SimTK::ContactTrackerSubsystem::isInstanceOf));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::ContactTrackerSubsystem & SimTK::ContactTrackerSubsystem::downcast(const SimTK::Subsystem &) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::ContactTrackerSubsystem & SimTK::ContactTrackerSubsystem::downcast(const SimTK::Subsystem &)
   // defined in simbody/internal/ContactTrackerSubsystem.h:284:1
-  types.method("SimTK!ContactTrackerSubsystem!downcast", static_cast<const SimTK::ContactTrackerSubsystem & (*)(const SimTK::Subsystem &) >(&SimTK::ContactTrackerSubsystem::downcast));
+  types.method("ContactTrackerSubsystem!downcast", static_cast<const SimTK::ContactTrackerSubsystem & (*)(const SimTK::Subsystem &) >(&SimTK::ContactTrackerSubsystem::downcast));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::ContactTrackerSubsystem & SimTK::ContactTrackerSubsystem::updDowncast(SimTK::Subsystem &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::ContactTrackerSubsystem & SimTK::ContactTrackerSubsystem::updDowncast(SimTK::Subsystem &)
   // defined in simbody/internal/ContactTrackerSubsystem.h:284:1
-  types.method("SimTK!ContactTrackerSubsystem!updDowncast", static_cast<SimTK::ContactTrackerSubsystem & (*)(SimTK::Subsystem &) >(&SimTK::ContactTrackerSubsystem::updDowncast));
+  types.method("ContactTrackerSubsystem!updDowncast", static_cast<SimTK::ContactTrackerSubsystem & (*)(SimTK::Subsystem &) >(&SimTK::ContactTrackerSubsystem::updDowncast));
   CLEAR_DEBUG_MSG();
 
   /* End of SimTK::ContactTrackerSubsystem class method wrappers
@@ -426,19 +426,19 @@ void define_simbody_ContactTrackerSubsystem(jlcxx::Module& types){
   DEBUG_MSG("bool SimTK::GeneralContactSubsystem::isInstanceOf(const SimTK::Subsystem &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::GeneralContactSubsystem::isInstanceOf(const SimTK::Subsystem &)
   // defined in simbody/internal/GeneralContactSubsystem.h:125:5
-  types.method("SimTK!GeneralContactSubsystem!isInstanceOf", static_cast<bool (*)(const SimTK::Subsystem &) >(&SimTK::GeneralContactSubsystem::isInstanceOf));
+  types.method("GeneralContactSubsystem!isInstanceOf", static_cast<bool (*)(const SimTK::Subsystem &) >(&SimTK::GeneralContactSubsystem::isInstanceOf));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::GeneralContactSubsystem & SimTK::GeneralContactSubsystem::downcast(const SimTK::Subsystem &) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::GeneralContactSubsystem & SimTK::GeneralContactSubsystem::downcast(const SimTK::Subsystem &)
   // defined in simbody/internal/GeneralContactSubsystem.h:125:5
-  types.method("SimTK!GeneralContactSubsystem!downcast", static_cast<const SimTK::GeneralContactSubsystem & (*)(const SimTK::Subsystem &) >(&SimTK::GeneralContactSubsystem::downcast));
+  types.method("GeneralContactSubsystem!downcast", static_cast<const SimTK::GeneralContactSubsystem & (*)(const SimTK::Subsystem &) >(&SimTK::GeneralContactSubsystem::downcast));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::GeneralContactSubsystem & SimTK::GeneralContactSubsystem::updDowncast(SimTK::Subsystem &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::GeneralContactSubsystem & SimTK::GeneralContactSubsystem::updDowncast(SimTK::Subsystem &)
   // defined in simbody/internal/GeneralContactSubsystem.h:125:5
-  types.method("SimTK!GeneralContactSubsystem!updDowncast", static_cast<SimTK::GeneralContactSubsystem & (*)(SimTK::Subsystem &) >(&SimTK::GeneralContactSubsystem::updDowncast));
+  types.method("GeneralContactSubsystem!updDowncast", static_cast<SimTK::GeneralContactSubsystem & (*)(SimTK::Subsystem &) >(&SimTK::GeneralContactSubsystem::updDowncast));
   CLEAR_DEBUG_MSG();
 
   /* End of SimTK::GeneralContactSubsystem class method wrappers

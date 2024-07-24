@@ -94,29 +94,29 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
-  wrap_SimTK_UniqueIndexType<SimTK::EventId>(types, "SimTK!EventId");
-  wrap_SimTK_UniqueIndexType<SimTK::SystemEventTriggerIndex>(types, "SimTK!SystemEventTriggerIndex");
-  wrap_SimTK_UniqueIndexType<SimTK::SystemEventTriggerByStageIndex>(types, "SimTK!SystemEventTriggerByStageIndex");
-  wrap_SimTK_UniqueIndexType<SimTK::EventTriggerByStageIndex>(types, "SimTK!EventTriggerByStageIndex");
-  wrap_SimTK_UniqueIndexType<SimTK::SubsystemIndex>(types, "SimTK!SubsystemIndex");
-  wrap_SimTK_UniqueIndexType<SimTK::SystemYIndex>(types, "SimTK!SystemYIndex");
-  wrap_SimTK_UniqueIndexType<SimTK::SystemQIndex>(types, "SimTK!SystemQIndex");
-  wrap_SimTK_UniqueIndexType<SimTK::QIndex>(types, "SimTK!QIndex");
-  wrap_SimTK_UniqueIndexType<SimTK::SystemUIndex>(types, "SimTK!SystemUIndex");
-  wrap_SimTK_UniqueIndexType<SimTK::UIndex>(types, "SimTK!UIndex");
-  wrap_SimTK_UniqueIndexType<SimTK::SystemZIndex>(types, "SimTK!SystemZIndex");
-  wrap_SimTK_UniqueIndexType<SimTK::ZIndex>(types, "SimTK!ZIndex");
-  wrap_SimTK_UniqueIndexType<SimTK::DiscreteVariableIndex>(types, "SimTK!DiscreteVariableIndex");
-  wrap_SimTK_UniqueIndexType<SimTK::CacheEntryIndex>(types, "SimTK!CacheEntryIndex");
-  wrap_SimTK_UniqueIndexType<SimTK::SystemYErrIndex>(types, "SimTK!SystemYErrIndex");
-  wrap_SimTK_UniqueIndexType<SimTK::SystemQErrIndex>(types, "SimTK!SystemQErrIndex");
-  wrap_SimTK_UniqueIndexType<SimTK::QErrIndex>(types, "SimTK!QErrIndex");
-  wrap_SimTK_UniqueIndexType<SimTK::SystemUErrIndex>(types, "SimTK!SystemUErrIndex");
-  wrap_SimTK_UniqueIndexType<SimTK::UErrIndex>(types, "SimTK!UErrIndex");
-  wrap_SimTK_UniqueIndexType<SimTK::SystemUDotErrIndex>(types, "SimTK!SystemUDotErrIndex");
-  wrap_SimTK_UniqueIndexType<SimTK::UDotErrIndex>(types, "SimTK!UDotErrIndex");
-  wrap_SimTK_UniqueIndexType<SimTK::SystemMultiplierIndex>(types, "SimTK!SystemMultiplierIndex");
-  wrap_SimTK_UniqueIndexType<SimTK::MultiplierIndex>(types, "SimTK!MultiplierIndex");
+  wrap_SimTK_UniqueIndexType<SimTK::EventId>(types, "EventId");
+  wrap_SimTK_UniqueIndexType<SimTK::SystemEventTriggerIndex>(types, "SystemEventTriggerIndex");
+  wrap_SimTK_UniqueIndexType<SimTK::SystemEventTriggerByStageIndex>(types, "SystemEventTriggerByStageIndex");
+  wrap_SimTK_UniqueIndexType<SimTK::EventTriggerByStageIndex>(types, "EventTriggerByStageIndex");
+  wrap_SimTK_UniqueIndexType<SimTK::SubsystemIndex>(types, "SubsystemIndex");
+  wrap_SimTK_UniqueIndexType<SimTK::SystemYIndex>(types, "SystemYIndex");
+  wrap_SimTK_UniqueIndexType<SimTK::SystemQIndex>(types, "SystemQIndex");
+  wrap_SimTK_UniqueIndexType<SimTK::QIndex>(types, "QIndex");
+  wrap_SimTK_UniqueIndexType<SimTK::SystemUIndex>(types, "SystemUIndex");
+  wrap_SimTK_UniqueIndexType<SimTK::UIndex>(types, "UIndex");
+  wrap_SimTK_UniqueIndexType<SimTK::SystemZIndex>(types, "SystemZIndex");
+  wrap_SimTK_UniqueIndexType<SimTK::ZIndex>(types, "ZIndex");
+  wrap_SimTK_UniqueIndexType<SimTK::DiscreteVariableIndex>(types, "DiscreteVariableIndex");
+  wrap_SimTK_UniqueIndexType<SimTK::CacheEntryIndex>(types, "CacheEntryIndex");
+  wrap_SimTK_UniqueIndexType<SimTK::SystemYErrIndex>(types, "SystemYErrIndex");
+  wrap_SimTK_UniqueIndexType<SimTK::SystemQErrIndex>(types, "SystemQErrIndex");
+  wrap_SimTK_UniqueIndexType<SimTK::QErrIndex>(types, "QErrIndex");
+  wrap_SimTK_UniqueIndexType<SimTK::SystemUErrIndex>(types, "SystemUErrIndex");
+  wrap_SimTK_UniqueIndexType<SimTK::UErrIndex>(types, "UErrIndex");
+  wrap_SimTK_UniqueIndexType<SimTK::SystemUDotErrIndex>(types, "SystemUDotErrIndex");
+  wrap_SimTK_UniqueIndexType<SimTK::UDotErrIndex>(types, "UDotErrIndex");
+  wrap_SimTK_UniqueIndexType<SimTK::SystemMultiplierIndex>(types, "SystemMultiplierIndex");
+  wrap_SimTK_UniqueIndexType<SimTK::MultiplierIndex>(types, "MultiplierIndex");
   #endif
 
   /**********************************************************************/
@@ -332,7 +332,7 @@ void define_SimTKcommon_State(jlcxx::Module& types, const ArrayWrapper& array_wr
   // DEBUG_MSG("SimTK::Real SimTK::HandleEventsOptions::getDefaultAccuracy() (" __HERE__ ")");
   // // signature to use in the veto list: SimTK::Real SimTK::HandleEventsOptions::getDefaultAccuracy()
   // // defined in SimTKcommon/internal/Event.h:319:17
-  // types.method("SimTK!HandleEventsOptions!getDefaultAccuracy", static_cast<SimTK::Real (*)() >(&SimTK::HandleEventsOptions::getDefaultAccuracy));
+  // types.method("HandleEventsOptions!getDefaultAccuracy", static_cast<SimTK::Real (*)() >(&SimTK::HandleEventsOptions::getDefaultAccuracy));
   // CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::HandleEventsOptions & SimTK::HandleEventsOptions::operator|=(const SimTK::HandleEventsOptions &) (" __HERE__ ")");

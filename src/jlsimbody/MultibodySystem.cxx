@@ -151,19 +151,19 @@ void define_simbody_MultibodySystem(jlcxx::Module& types, jlcxx::TypeWrapper<Sim
   DEBUG_MSG("bool SimTK::MultibodySystem::isInstanceOf(const SimTK::System &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::MultibodySystem::isInstanceOf(const SimTK::System &)
   // defined in simbody/internal/MultibodySystem.h:103:5
-  types.method("SimTK!MultibodySystem!isInstanceOf", static_cast<bool (*)(const SimTK::System &) >(&SimTK::MultibodySystem::isInstanceOf));
+  types.method("MultibodySystem!isInstanceOf", static_cast<bool (*)(const SimTK::System &) >(&SimTK::MultibodySystem::isInstanceOf));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::MultibodySystem & SimTK::MultibodySystem::downcast(const SimTK::System &) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::MultibodySystem & SimTK::MultibodySystem::downcast(const SimTK::System &)
   // defined in simbody/internal/MultibodySystem.h:103:5
-  types.method("SimTK!MultibodySystem!downcast", static_cast<const SimTK::MultibodySystem & (*)(const SimTK::System &) >(&SimTK::MultibodySystem::downcast));
+  types.method("MultibodySystem!downcast", static_cast<const SimTK::MultibodySystem & (*)(const SimTK::System &) >(&SimTK::MultibodySystem::downcast));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::MultibodySystem & SimTK::MultibodySystem::updDowncast(SimTK::System &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::MultibodySystem & SimTK::MultibodySystem::updDowncast(SimTK::System &)
   // defined in simbody/internal/MultibodySystem.h:103:5
-  types.method("SimTK!MultibodySystem!updDowncast", static_cast<SimTK::MultibodySystem & (*)(SimTK::System &) >(&SimTK::MultibodySystem::updDowncast));
+  types.method("MultibodySystem!updDowncast", static_cast<SimTK::MultibodySystem & (*)(SimTK::System &) >(&SimTK::MultibodySystem::updDowncast));
   CLEAR_DEBUG_MSG();
 
   /* End of SimTK::MultibodySystem class method wrappers

@@ -9,7 +9,7 @@ void define_simmath_DecoratorGenerators(jlcxx::Module& types){
 
   DEBUG_MSG("type SimTK::GeodesicDecorator (" __HERE__ ")");
   // defined in simmath/internal/Geodesic.h:274:7
-  auto t1 = types.add_type<SimTK::GeodesicDecorator>("SimTK!GeodesicDecorator", jlcxx::julia_type("DecorationGenerator"));
+  auto t1 = types.add_type<SimTK::GeodesicDecorator>("GeodesicDecorator", jlcxx::julia_type("DecorationGenerator"));
 
   /**********************************************************************/
   /* Wrappers for the methods of class SimTK::GeodesicDecorator

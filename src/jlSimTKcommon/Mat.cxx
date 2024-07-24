@@ -233,7 +233,7 @@ void define_SimTKcommon_Mat(jlcxx::Module& types){
   /* End of SimTK::SymMat class method wrappers
    **********************************************************************/
 
-  types.method("SimTK!Mat", [] (const SimTK::SymMat<3,double,1> &m) {
+  types.method("asMat", [] (const SimTK::SymMat<3,double,1> &m) {
     return new SimTK::Mat<3,3>(m);
   });
 

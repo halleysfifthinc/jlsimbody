@@ -10,7 +10,7 @@ void define_simmath_Geo(jlcxx::Module& types){
 
   // DEBUG_MSG("type SimTK::Geo (" __HERE__ ")");
   // // defined in simmath/internal/Geo.h:53:28
-  // auto t0 = types.add_type<SimTK::Geo>("SimTK!Geo");
+  // auto t0 = types.add_type<SimTK::Geo>("Geo");
   // t0.template constructor<>();
 
   // defined in simmath/internal/Geo.h:55:26

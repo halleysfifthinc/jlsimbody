@@ -351,12 +351,12 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactId SimTK::Contact::createNewContactId() (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:153:22
-  types.method("SimTK!Contact!createNewContactId", static_cast<SimTK::ContactId (*)() >(&SimTK::Contact::createNewContactId));
+  types.method("Contact!createNewContactId", static_cast<SimTK::ContactId (*)() >(&SimTK::Contact::createNewContactId));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("int SimTK::Contact::createNewContactId() (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:153:22
-  types.method("SimTK!Contact!createNewContactId", reinterpret_cast<int (*)() >(&SimTK::Contact::createNewContactId));
+  types.method("Contact!createNewContactId", reinterpret_cast<int (*)() >(&SimTK::Contact::createNewContactId));
   CLEAR_DEBUG_MSG();
   #endif
 
@@ -384,18 +384,18 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("bool SimTK::UntrackedContact::isInstance(const SimTK::Contact &) (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:194:17
-  types.method("SimTK!UntrackedContact!isInstance", static_cast<bool (*)(const SimTK::Contact &) >(&SimTK::UntrackedContact::isInstance));
+  types.method("UntrackedContact!isInstance", static_cast<bool (*)(const SimTK::Contact &) >(&SimTK::UntrackedContact::isInstance));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactTypeId SimTK::UntrackedContact::classTypeId() (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:196:26
-  types.method("SimTK!UntrackedContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::UntrackedContact::classTypeId));
+  types.method("UntrackedContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::UntrackedContact::classTypeId));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("int SimTK::UntrackedContact::classTypeId() (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:196:26
-  types.method("SimTK!UntrackedContact!classTypeId", reinterpret_cast<int (*)() >(&SimTK::UntrackedContact::classTypeId));
+  types.method("UntrackedContact!classTypeId", reinterpret_cast<int (*)() >(&SimTK::UntrackedContact::classTypeId));
   CLEAR_DEBUG_MSG();
   #endif
 
@@ -428,18 +428,18 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("bool SimTK::BrokenContact::isInstance(const SimTK::Contact &) (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:233:17
-  types.method("SimTK!BrokenContact!isInstance", static_cast<bool (*)(const SimTK::Contact &) >(&SimTK::BrokenContact::isInstance));
+  types.method("BrokenContact!isInstance", static_cast<bool (*)(const SimTK::Contact &) >(&SimTK::BrokenContact::isInstance));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactTypeId SimTK::BrokenContact::classTypeId() (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:235:26
-  types.method("SimTK!BrokenContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::BrokenContact::classTypeId));
+  types.method("BrokenContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::BrokenContact::classTypeId));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("int SimTK::BrokenContact::classTypeId() (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:235:26
-  types.method("SimTK!BrokenContact!classTypeId", reinterpret_cast<int (*)() >(&SimTK::BrokenContact::classTypeId));
+  types.method("BrokenContact!classTypeId", reinterpret_cast<int (*)() >(&SimTK::BrokenContact::classTypeId));
   CLEAR_DEBUG_MSG();
   #endif
 
@@ -497,28 +497,28 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("bool SimTK::CircularPointContact::isInstance(const SimTK::Contact &) (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:302:17
-  types.method("SimTK!CircularPointContact!isInstance", static_cast<bool (*)(const SimTK::Contact &) >(&SimTK::CircularPointContact::isInstance));
+  types.method("CircularPointContact!isInstance", static_cast<bool (*)(const SimTK::Contact &) >(&SimTK::CircularPointContact::isInstance));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::CircularPointContact & SimTK::CircularPointContact::getAs(const SimTK::Contact &) (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:303:40
-  types.method("SimTK!CircularPointContact!getAs", static_cast<const SimTK::CircularPointContact & (*)(const SimTK::Contact &) >(&SimTK::CircularPointContact::getAs));
+  types.method("CircularPointContact!getAs", static_cast<const SimTK::CircularPointContact & (*)(const SimTK::Contact &) >(&SimTK::CircularPointContact::getAs));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::CircularPointContact & SimTK::CircularPointContact::updAs(SimTK::Contact &) (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:306:34
-  types.method("SimTK!CircularPointContact!updAs", static_cast<SimTK::CircularPointContact & (*)(SimTK::Contact &) >(&SimTK::CircularPointContact::updAs));
+  types.method("CircularPointContact!updAs", static_cast<SimTK::CircularPointContact & (*)(SimTK::Contact &) >(&SimTK::CircularPointContact::updAs));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactTypeId SimTK::CircularPointContact::classTypeId() (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:311:26
-  types.method("SimTK!CircularPointContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::CircularPointContact::classTypeId));
+  types.method("CircularPointContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::CircularPointContact::classTypeId));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("int SimTK::CircularPointContact::classTypeId() (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:311:26
-  types.method("SimTK!CircularPointContact!classTypeId", reinterpret_cast<int (*)() >(&SimTK::CircularPointContact::classTypeId));
+  types.method("CircularPointContact!classTypeId", reinterpret_cast<int (*)() >(&SimTK::CircularPointContact::classTypeId));
   CLEAR_DEBUG_MSG();
   #endif
 
@@ -561,28 +561,28 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("bool SimTK::EllipticalPointContact::isInstance(const SimTK::Contact &) (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:392:17
-  types.method("SimTK!EllipticalPointContact!isInstance", static_cast<bool (*)(const SimTK::Contact &) >(&SimTK::EllipticalPointContact::isInstance));
+  types.method("EllipticalPointContact!isInstance", static_cast<bool (*)(const SimTK::Contact &) >(&SimTK::EllipticalPointContact::isInstance));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::EllipticalPointContact & SimTK::EllipticalPointContact::getAs(const SimTK::Contact &) (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:393:42
-  types.method("SimTK!EllipticalPointContact!getAs", static_cast<const SimTK::EllipticalPointContact & (*)(const SimTK::Contact &) >(&SimTK::EllipticalPointContact::getAs));
+  types.method("EllipticalPointContact!getAs", static_cast<const SimTK::EllipticalPointContact & (*)(const SimTK::Contact &) >(&SimTK::EllipticalPointContact::getAs));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::EllipticalPointContact & SimTK::EllipticalPointContact::updAs(SimTK::Contact &) (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:396:36
-  types.method("SimTK!EllipticalPointContact!updAs", static_cast<SimTK::EllipticalPointContact & (*)(SimTK::Contact &) >(&SimTK::EllipticalPointContact::updAs));
+  types.method("EllipticalPointContact!updAs", static_cast<SimTK::EllipticalPointContact & (*)(SimTK::Contact &) >(&SimTK::EllipticalPointContact::updAs));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactTypeId SimTK::EllipticalPointContact::classTypeId() (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:401:26
-  types.method("SimTK!EllipticalPointContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::EllipticalPointContact::classTypeId));
+  types.method("EllipticalPointContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::EllipticalPointContact::classTypeId));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("int SimTK::EllipticalPointContact::classTypeId() (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:401:26
-  types.method("SimTK!EllipticalPointContact!classTypeId", reinterpret_cast<int (*)() >(&SimTK::EllipticalPointContact::classTypeId));
+  types.method("EllipticalPointContact!classTypeId", reinterpret_cast<int (*)() >(&SimTK::EllipticalPointContact::classTypeId));
   CLEAR_DEBUG_MSG();
   #endif
 
@@ -620,28 +620,28 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("bool SimTK::BrickHalfSpaceContact::isInstance(const SimTK::Contact &) (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:445:17
-  types.method("SimTK!BrickHalfSpaceContact!isInstance", static_cast<bool (*)(const SimTK::Contact &) >(&SimTK::BrickHalfSpaceContact::isInstance));
+  types.method("BrickHalfSpaceContact!isInstance", static_cast<bool (*)(const SimTK::Contact &) >(&SimTK::BrickHalfSpaceContact::isInstance));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::BrickHalfSpaceContact & SimTK::BrickHalfSpaceContact::getAs(const SimTK::Contact &) (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:449:41
-  types.method("SimTK!BrickHalfSpaceContact!getAs", static_cast<const SimTK::BrickHalfSpaceContact & (*)(const SimTK::Contact &) >(&SimTK::BrickHalfSpaceContact::getAs));
+  types.method("BrickHalfSpaceContact!getAs", static_cast<const SimTK::BrickHalfSpaceContact & (*)(const SimTK::Contact &) >(&SimTK::BrickHalfSpaceContact::getAs));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::BrickHalfSpaceContact & SimTK::BrickHalfSpaceContact::updAs(SimTK::Contact &) (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:455:35
-  types.method("SimTK!BrickHalfSpaceContact!updAs", static_cast<SimTK::BrickHalfSpaceContact & (*)(SimTK::Contact &) >(&SimTK::BrickHalfSpaceContact::updAs));
+  types.method("BrickHalfSpaceContact!updAs", static_cast<SimTK::BrickHalfSpaceContact & (*)(SimTK::Contact &) >(&SimTK::BrickHalfSpaceContact::updAs));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactTypeId SimTK::BrickHalfSpaceContact::classTypeId() (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:461:26
-  types.method("SimTK!BrickHalfSpaceContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::BrickHalfSpaceContact::classTypeId));
+  types.method("BrickHalfSpaceContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::BrickHalfSpaceContact::classTypeId));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("int SimTK::BrickHalfSpaceContact::classTypeId() (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:461:26
-  types.method("SimTK!BrickHalfSpaceContact!classTypeId", reinterpret_cast<int (*)() >(&SimTK::BrickHalfSpaceContact::classTypeId));
+  types.method("BrickHalfSpaceContact!classTypeId", reinterpret_cast<int (*)() >(&SimTK::BrickHalfSpaceContact::classTypeId));
   CLEAR_DEBUG_MSG();
   #endif
 
@@ -700,28 +700,28 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("bool SimTK::TriangleMeshContact::isInstance(const SimTK::Contact &) (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:507:17
-  types.method("SimTK!TriangleMeshContact!isInstance", static_cast<bool (*)(const SimTK::Contact &) >(&SimTK::TriangleMeshContact::isInstance));
+  types.method("TriangleMeshContact!isInstance", static_cast<bool (*)(const SimTK::Contact &) >(&SimTK::TriangleMeshContact::isInstance));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::TriangleMeshContact & SimTK::TriangleMeshContact::getAs(const SimTK::Contact &) (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:510:39
-  types.method("SimTK!TriangleMeshContact!getAs", static_cast<const SimTK::TriangleMeshContact & (*)(const SimTK::Contact &) >(&SimTK::TriangleMeshContact::getAs));
+  types.method("TriangleMeshContact!getAs", static_cast<const SimTK::TriangleMeshContact & (*)(const SimTK::Contact &) >(&SimTK::TriangleMeshContact::getAs));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::TriangleMeshContact & SimTK::TriangleMeshContact::updAs(SimTK::Contact &) (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:515:33
-  types.method("SimTK!TriangleMeshContact!updAs", static_cast<SimTK::TriangleMeshContact & (*)(SimTK::Contact &) >(&SimTK::TriangleMeshContact::updAs));
+  types.method("TriangleMeshContact!updAs", static_cast<SimTK::TriangleMeshContact & (*)(SimTK::Contact &) >(&SimTK::TriangleMeshContact::updAs));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactTypeId SimTK::TriangleMeshContact::classTypeId() (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:521:26
-  types.method("SimTK!TriangleMeshContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::TriangleMeshContact::classTypeId));
+  types.method("TriangleMeshContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::TriangleMeshContact::classTypeId));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("int SimTK::TriangleMeshContact::classTypeId() (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:521:26
-  types.method("SimTK!TriangleMeshContact!classTypeId", reinterpret_cast<int (*)() >(&SimTK::TriangleMeshContact::classTypeId));
+  types.method("TriangleMeshContact!classTypeId", reinterpret_cast<int (*)() >(&SimTK::TriangleMeshContact::classTypeId));
   CLEAR_DEBUG_MSG();
   #endif
 
@@ -792,18 +792,18 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("bool SimTK::PointContact::isInstance(const SimTK::Contact &) (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:612:17
-  types.method("SimTK!PointContact!isInstance", static_cast<bool (*)(const SimTK::Contact &) >(&SimTK::PointContact::isInstance));
+  types.method("PointContact!isInstance", static_cast<bool (*)(const SimTK::Contact &) >(&SimTK::PointContact::isInstance));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactTypeId SimTK::PointContact::classTypeId() (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:616:26
-  types.method("SimTK!PointContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::PointContact::classTypeId));
+  types.method("PointContact!classTypeId", static_cast<SimTK::ContactTypeId (*)() >(&SimTK::PointContact::classTypeId));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("int SimTK::PointContact::classTypeId() (" __HERE__ ")");
   // defined in simmath/internal/Contact.h:616:26
-  types.method("SimTK!PointContact!classTypeId", reinterpret_cast<int (*)() >(&SimTK::PointContact::classTypeId));
+  types.method("PointContact!classTypeId", reinterpret_cast<int (*)() >(&SimTK::PointContact::classTypeId));
   CLEAR_DEBUG_MSG();
   #endif
 
@@ -1092,28 +1092,28 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("bool SimTK::ContactGeometry::HalfSpace::isInstance(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:839:13
-  types.method("SimTK!ContactGeometry!HalfSpace!isInstance", static_cast<bool (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::HalfSpace::isInstance));
+  types.method("ContactGeometry!HalfSpace!isInstance", static_cast<bool (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::HalfSpace::isInstance));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::ContactGeometry::HalfSpace & SimTK::ContactGeometry::HalfSpace::getAs(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:842:25
-  types.method("SimTK!ContactGeometry!HalfSpace!getAs", static_cast<const SimTK::ContactGeometry::HalfSpace & (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::HalfSpace::getAs));
+  types.method("ContactGeometry!HalfSpace!getAs", static_cast<const SimTK::ContactGeometry::HalfSpace & (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::HalfSpace::getAs));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::ContactGeometry::HalfSpace & SimTK::ContactGeometry::HalfSpace::updAs(SimTK::ContactGeometry &) (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:845:19
-  types.method("SimTK!ContactGeometry!HalfSpace!updAs", static_cast<SimTK::ContactGeometry::HalfSpace & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::HalfSpace::updAs));
+  types.method("ContactGeometry!HalfSpace!updAs", static_cast<SimTK::ContactGeometry::HalfSpace & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::HalfSpace::updAs));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactGeometryTypeId SimTK::ContactGeometry::HalfSpace::classTypeId() (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:849:30
-  types.method("SimTK!ContactGeometry!HalfSpace!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::HalfSpace::classTypeId));
+  types.method("ContactGeometry!HalfSpace!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::HalfSpace::classTypeId));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("int SimTK::ContactGeometry::HalfSpace::classTypeId() (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:849:30
-  types.method("SimTK!ContactGeometry!HalfSpace!classTypeId", reinterpret_cast<int (*)() >(&SimTK::ContactGeometry::HalfSpace::classTypeId));
+  types.method("ContactGeometry!HalfSpace!classTypeId", reinterpret_cast<int (*)() >(&SimTK::ContactGeometry::HalfSpace::classTypeId));
   CLEAR_DEBUG_MSG();
   #endif
 
@@ -1143,28 +1143,28 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("bool SimTK::ContactGeometry::Cylinder::isInstance(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:871:13
-  types.method("SimTK!ContactGeometry!Cylinder!isInstance", static_cast<bool (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Cylinder::isInstance));
+  types.method("ContactGeometry!Cylinder!isInstance", static_cast<bool (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Cylinder::isInstance));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::ContactGeometry::Cylinder & SimTK::ContactGeometry::Cylinder::getAs(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:874:24
-  types.method("SimTK!ContactGeometry!Cylinder!getAs", static_cast<const SimTK::ContactGeometry::Cylinder & (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Cylinder::getAs));
+  types.method("ContactGeometry!Cylinder!getAs", static_cast<const SimTK::ContactGeometry::Cylinder & (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Cylinder::getAs));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::ContactGeometry::Cylinder & SimTK::ContactGeometry::Cylinder::updAs(SimTK::ContactGeometry &) (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:877:18
-  types.method("SimTK!ContactGeometry!Cylinder!updAs", static_cast<SimTK::ContactGeometry::Cylinder & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Cylinder::updAs));
+  types.method("ContactGeometry!Cylinder!updAs", static_cast<SimTK::ContactGeometry::Cylinder & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Cylinder::updAs));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactGeometryTypeId SimTK::ContactGeometry::Cylinder::classTypeId() (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:881:30
-  types.method("SimTK!ContactGeometry!Cylinder!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::Cylinder::classTypeId));
+  types.method("ContactGeometry!Cylinder!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::Cylinder::classTypeId));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("int SimTK::ContactGeometry::Cylinder::classTypeId() (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:881:30
-  types.method("SimTK!ContactGeometry!Cylinder!classTypeId", reinterpret_cast<int (*)() >(&SimTK::ContactGeometry::Cylinder::classTypeId));
+  types.method("ContactGeometry!Cylinder!classTypeId", reinterpret_cast<int (*)() >(&SimTK::ContactGeometry::Cylinder::classTypeId));
   CLEAR_DEBUG_MSG();
   #endif
 
@@ -1194,28 +1194,28 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("bool SimTK::ContactGeometry::Sphere::isInstance(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:902:13
-  types.method("SimTK!ContactGeometry!Sphere!isInstance", static_cast<bool (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Sphere::isInstance));
+  types.method("ContactGeometry!Sphere!isInstance", static_cast<bool (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Sphere::isInstance));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::ContactGeometry::Sphere & SimTK::ContactGeometry::Sphere::getAs(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:905:22
-  types.method("SimTK!ContactGeometry!Sphere!getAs", static_cast<const SimTK::ContactGeometry::Sphere & (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Sphere::getAs));
+  types.method("ContactGeometry!Sphere!getAs", static_cast<const SimTK::ContactGeometry::Sphere & (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Sphere::getAs));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::ContactGeometry::Sphere & SimTK::ContactGeometry::Sphere::updAs(SimTK::ContactGeometry &) (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:908:16
-  types.method("SimTK!ContactGeometry!Sphere!updAs", static_cast<SimTK::ContactGeometry::Sphere & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Sphere::updAs));
+  types.method("ContactGeometry!Sphere!updAs", static_cast<SimTK::ContactGeometry::Sphere & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Sphere::updAs));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactGeometryTypeId SimTK::ContactGeometry::Sphere::classTypeId() (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:912:30
-  types.method("SimTK!ContactGeometry!Sphere!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::Sphere::classTypeId));
+  types.method("ContactGeometry!Sphere!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::Sphere::classTypeId));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("int SimTK::ContactGeometry::Sphere::classTypeId() (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:912:30
-  types.method("SimTK!ContactGeometry!Sphere!classTypeId", reinterpret_cast<int (*)() >(&SimTK::ContactGeometry::Sphere::classTypeId));
+  types.method("ContactGeometry!Sphere!classTypeId", reinterpret_cast<int (*)() >(&SimTK::ContactGeometry::Sphere::classTypeId));
   CLEAR_DEBUG_MSG();
   #endif
 
@@ -1275,28 +1275,28 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("bool SimTK::ContactGeometry::Ellipsoid::isInstance(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:1034:13
-  types.method("SimTK!ContactGeometry!Ellipsoid!isInstance", static_cast<bool (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Ellipsoid::isInstance));
+  types.method("ContactGeometry!Ellipsoid!isInstance", static_cast<bool (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Ellipsoid::isInstance));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::ContactGeometry::Ellipsoid & SimTK::ContactGeometry::Ellipsoid::getAs(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:1037:25
-  types.method("SimTK!ContactGeometry!Ellipsoid!getAs", static_cast<const SimTK::ContactGeometry::Ellipsoid & (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Ellipsoid::getAs));
+  types.method("ContactGeometry!Ellipsoid!getAs", static_cast<const SimTK::ContactGeometry::Ellipsoid & (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Ellipsoid::getAs));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::ContactGeometry::Ellipsoid & SimTK::ContactGeometry::Ellipsoid::updAs(SimTK::ContactGeometry &) (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:1040:19
-  types.method("SimTK!ContactGeometry!Ellipsoid!updAs", static_cast<SimTK::ContactGeometry::Ellipsoid & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Ellipsoid::updAs));
+  types.method("ContactGeometry!Ellipsoid!updAs", static_cast<SimTK::ContactGeometry::Ellipsoid & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Ellipsoid::updAs));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactGeometryTypeId SimTK::ContactGeometry::Ellipsoid::classTypeId() (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:1044:30
-  types.method("SimTK!ContactGeometry!Ellipsoid!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::Ellipsoid::classTypeId));
+  types.method("ContactGeometry!Ellipsoid!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::Ellipsoid::classTypeId));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("int SimTK::ContactGeometry::Ellipsoid::classTypeId() (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:1044:30
-  types.method("SimTK!ContactGeometry!Ellipsoid!classTypeId", reinterpret_cast<int (*)() >(&SimTK::ContactGeometry::Ellipsoid::classTypeId));
+  types.method("ContactGeometry!Ellipsoid!classTypeId", reinterpret_cast<int (*)() >(&SimTK::ContactGeometry::Ellipsoid::classTypeId));
   CLEAR_DEBUG_MSG();
   #endif
 
@@ -1326,28 +1326,28 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("bool SimTK::ContactGeometry::SmoothHeightMap::isInstance(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:1083:13
-  types.method("SimTK!ContactGeometry!SmoothHeightMap!isInstance", static_cast<bool (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::SmoothHeightMap::isInstance));
+  types.method("ContactGeometry!SmoothHeightMap!isInstance", static_cast<bool (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::SmoothHeightMap::isInstance));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::ContactGeometry::SmoothHeightMap & SimTK::ContactGeometry::SmoothHeightMap::getAs(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:1086:31
-  types.method("SimTK!ContactGeometry!SmoothHeightMap!getAs", static_cast<const SimTK::ContactGeometry::SmoothHeightMap & (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::SmoothHeightMap::getAs));
+  types.method("ContactGeometry!SmoothHeightMap!getAs", static_cast<const SimTK::ContactGeometry::SmoothHeightMap & (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::SmoothHeightMap::getAs));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::ContactGeometry::SmoothHeightMap & SimTK::ContactGeometry::SmoothHeightMap::updAs(SimTK::ContactGeometry &) (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:1089:25
-  types.method("SimTK!ContactGeometry!SmoothHeightMap!updAs", static_cast<SimTK::ContactGeometry::SmoothHeightMap & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::SmoothHeightMap::updAs));
+  types.method("ContactGeometry!SmoothHeightMap!updAs", static_cast<SimTK::ContactGeometry::SmoothHeightMap & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::SmoothHeightMap::updAs));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactGeometryTypeId SimTK::ContactGeometry::SmoothHeightMap::classTypeId() (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:1093:30
-  types.method("SimTK!ContactGeometry!SmoothHeightMap!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::SmoothHeightMap::classTypeId));
+  types.method("ContactGeometry!SmoothHeightMap!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::SmoothHeightMap::classTypeId));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("int SimTK::ContactGeometry::SmoothHeightMap::classTypeId() (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:1093:30
-  types.method("SimTK!ContactGeometry!SmoothHeightMap!classTypeId", reinterpret_cast<int (*)() >(&SimTK::ContactGeometry::SmoothHeightMap::classTypeId));
+  types.method("ContactGeometry!SmoothHeightMap!classTypeId", reinterpret_cast<int (*)() >(&SimTK::ContactGeometry::SmoothHeightMap::classTypeId));
   CLEAR_DEBUG_MSG();
   #endif
 
@@ -1418,28 +1418,28 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("bool SimTK::ContactGeometry::Brick::isInstance(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:1122:13
-  types.method("SimTK!ContactGeometry!Brick!isInstance", static_cast<bool (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Brick::isInstance));
+  types.method("ContactGeometry!Brick!isInstance", static_cast<bool (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Brick::isInstance));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::ContactGeometry::Brick & SimTK::ContactGeometry::Brick::getAs(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:1125:21
-  types.method("SimTK!ContactGeometry!Brick!getAs", static_cast<const SimTK::ContactGeometry::Brick & (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Brick::getAs));
+  types.method("ContactGeometry!Brick!getAs", static_cast<const SimTK::ContactGeometry::Brick & (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Brick::getAs));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::ContactGeometry::Brick & SimTK::ContactGeometry::Brick::updAs(SimTK::ContactGeometry &) (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:1128:15
-  types.method("SimTK!ContactGeometry!Brick!updAs", static_cast<SimTK::ContactGeometry::Brick & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Brick::updAs));
+  types.method("ContactGeometry!Brick!updAs", static_cast<SimTK::ContactGeometry::Brick & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Brick::updAs));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactGeometryTypeId SimTK::ContactGeometry::Brick::classTypeId() (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:1132:30
-  types.method("SimTK!ContactGeometry!Brick!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::Brick::classTypeId));
+  types.method("ContactGeometry!Brick!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::Brick::classTypeId));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("int SimTK::ContactGeometry::Brick::classTypeId() (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:1132:30
-  types.method("SimTK!ContactGeometry!Brick!classTypeId", reinterpret_cast<int (*)() >(&SimTK::ContactGeometry::Brick::classTypeId));
+  types.method("ContactGeometry!Brick!classTypeId", reinterpret_cast<int (*)() >(&SimTK::ContactGeometry::Brick::classTypeId));
   CLEAR_DEBUG_MSG();
   #endif
 
@@ -1572,28 +1572,28 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("bool SimTK::ContactGeometry::TriangleMesh::isInstance(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:1317:13
-  types.method("SimTK!ContactGeometry!TriangleMesh!isInstance", static_cast<bool (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::TriangleMesh::isInstance));
+  types.method("ContactGeometry!TriangleMesh!isInstance", static_cast<bool (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::TriangleMesh::isInstance));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::ContactGeometry::TriangleMesh & SimTK::ContactGeometry::TriangleMesh::getAs(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:1320:28
-  types.method("SimTK!ContactGeometry!TriangleMesh!getAs", static_cast<const SimTK::ContactGeometry::TriangleMesh & (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::TriangleMesh::getAs));
+  types.method("ContactGeometry!TriangleMesh!getAs", static_cast<const SimTK::ContactGeometry::TriangleMesh & (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::TriangleMesh::getAs));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::ContactGeometry::TriangleMesh & SimTK::ContactGeometry::TriangleMesh::updAs(SimTK::ContactGeometry &) (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:1323:22
-  types.method("SimTK!ContactGeometry!TriangleMesh!updAs", static_cast<SimTK::ContactGeometry::TriangleMesh & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::TriangleMesh::updAs));
+  types.method("ContactGeometry!TriangleMesh!updAs", static_cast<SimTK::ContactGeometry::TriangleMesh & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::TriangleMesh::updAs));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactGeometryTypeId SimTK::ContactGeometry::TriangleMesh::classTypeId() (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:1327:30
-  types.method("SimTK!ContactGeometry!TriangleMesh!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::TriangleMesh::classTypeId));
+  types.method("ContactGeometry!TriangleMesh!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::TriangleMesh::classTypeId));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("int SimTK::ContactGeometry::TriangleMesh::classTypeId() (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:1327:30
-  types.method("SimTK!ContactGeometry!TriangleMesh!classTypeId", reinterpret_cast<int (*)() >(&SimTK::ContactGeometry::TriangleMesh::classTypeId));
+  types.method("ContactGeometry!TriangleMesh!classTypeId", reinterpret_cast<int (*)() >(&SimTK::ContactGeometry::TriangleMesh::classTypeId));
   CLEAR_DEBUG_MSG();
   #endif
 
@@ -1672,28 +1672,28 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
 
   DEBUG_MSG("bool SimTK::ContactGeometry::Torus::isInstance(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:1386:13
-  types.method("SimTK!ContactGeometry!Torus!isInstance", static_cast<bool (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Torus::isInstance));
+  types.method("ContactGeometry!Torus!isInstance", static_cast<bool (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Torus::isInstance));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::ContactGeometry::Torus & SimTK::ContactGeometry::Torus::getAs(const SimTK::ContactGeometry &) (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:1389:21
-  types.method("SimTK!ContactGeometry!Torus!getAs", static_cast<const SimTK::ContactGeometry::Torus & (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Torus::getAs));
+  types.method("ContactGeometry!Torus!getAs", static_cast<const SimTK::ContactGeometry::Torus & (*)(const SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Torus::getAs));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::ContactGeometry::Torus & SimTK::ContactGeometry::Torus::updAs(SimTK::ContactGeometry &) (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:1392:15
-  types.method("SimTK!ContactGeometry!Torus!updAs", static_cast<SimTK::ContactGeometry::Torus & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Torus::updAs));
+  types.method("ContactGeometry!Torus!updAs", static_cast<SimTK::ContactGeometry::Torus & (*)(SimTK::ContactGeometry &) >(&SimTK::ContactGeometry::Torus::updAs));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactGeometryTypeId SimTK::ContactGeometry::Torus::classTypeId() (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:1396:30
-  types.method("SimTK!ContactGeometry!Torus!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::Torus::classTypeId));
+  types.method("ContactGeometry!Torus!classTypeId", static_cast<SimTK::ContactGeometryTypeId (*)() >(&SimTK::ContactGeometry::Torus::classTypeId));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("int SimTK::ContactGeometry::Torus::classTypeId() (" __HERE__ ")");
   // defined in simmath/internal/ContactGeometry.h:1396:30
-  types.method("SimTK!ContactGeometry!Torus!classTypeId", reinterpret_cast<int (*)() >(&SimTK::ContactGeometry::Torus::classTypeId));
+  types.method("ContactGeometry!Torus!classTypeId", reinterpret_cast<int (*)() >(&SimTK::ContactGeometry::Torus::classTypeId));
   CLEAR_DEBUG_MSG();
   #endif
 
@@ -2162,17 +2162,17 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   // use julia `intersect`
   // DEBUG_MSG("bool SimTK::ContactSurface::cliquesIntersect(const SimTK::Array_<SimTK::ContactCliqueId,short> &, const SimTK::Array_<SimTK::ContactCliqueId,short> &) (" __HERE__ ")");
   // // defined in simbody/internal/ContactSurface.h:433:13
-  // t50.method("SimTK!ContactSurface!cliquesIntersect", static_cast<bool (*)(const SimTK::Array_<SimTK::ContactCliqueId,short> &, const SimTK::Array_<SimTK::ContactCliqueId,short> &) >(&SimTK::ContactSurface::cliquesIntersect));
+  // t50.method("ContactSurface!cliquesIntersect", static_cast<bool (*)(const SimTK::Array_<SimTK::ContactCliqueId,short> &, const SimTK::Array_<SimTK::ContactCliqueId,short> &) >(&SimTK::ContactSurface::cliquesIntersect));
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactCliqueId SimTK::ContactSurface::createNewContactClique() (" __HERE__ ")");
   // defined in simbody/internal/ContactSurface.h:456:24
-  types.method("SimTK!ContactSurface!createNewContactClique", static_cast<SimTK::ContactCliqueId (*)() >(&SimTK::ContactSurface::createNewContactClique));
+  types.method("ContactSurface!createNewContactClique", static_cast<SimTK::ContactCliqueId (*)() >(&SimTK::ContactSurface::createNewContactClique));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("SimTK::ContactCliqueId SimTK::ContactSurface::createNewContactClique() (" __HERE__ ")");
   // defined in simbody/internal/ContactSurface.h:456:24
-  types.method("SimTK!ContactSurface!createNewContactClique", reinterpret_cast<int (*)() >(&SimTK::ContactSurface::createNewContactClique));
+  types.method("ContactSurface!createNewContactClique", reinterpret_cast<int (*)() >(&SimTK::ContactSurface::createNewContactClique));
   CLEAR_DEBUG_MSG();
   #endif
 

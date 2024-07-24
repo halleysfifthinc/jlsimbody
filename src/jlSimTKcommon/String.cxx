@@ -10,7 +10,7 @@ void define_SimTKcommon_String(jlcxx::Module& types, const ArrayWrapper& array_w
 
   DEBUG_MSG("type SimTK::String (" __HERE__ ")");
   // defined in SimTKcommon/internal/String.h:62:7
-  auto t2 = types.add_type<SimTK::String>("SimTK!String", jlcxx::julia_base_type<std::string>());
+  auto t2 = types.add_type<SimTK::String>("SimTKString", jlcxx::julia_base_type<std::string>());
   t2.template constructor<>();
   CLEAR_DEBUG_MSG();
 
