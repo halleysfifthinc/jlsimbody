@@ -176,6 +176,18 @@ set(CXX_FILES
   src/jlSimTKcommon/DecorationGenerator.cxx
   src/jlsimmath/Geo.cxx
   src/jlsimmath/Contact_related.cxx
+  src/jlsimmath/Timestepper_and_Integrators.cxx
+  src/jlsimmath/CPodesIntegrator.cxx
+  src/jlsimmath/ExplicitEulerIntegrator.cxx
+  src/jlsimmath/Integrator.cxx
+  src/jlsimmath/RungeKutta2Integrator.cxx
+  src/jlsimmath/RungeKutta3Integrator.cxx
+  src/jlsimmath/RungeKuttaFeldbergIntegrator.cxx
+  src/jlsimmath/RungeKuttaMersonIntegrator.cxx
+  src/jlsimmath/SemiExplicitEuler2Integrator.cxx
+  src/jlsimmath/SemiExplicitEulerIntegrator.cxx
+  src/jlsimmath/TimeStepper.cxx
+  src/jlsimmath/VerletIntegrator.cxx
   src/jlsimbody/Body.cxx
   src/jlsimbody/SimbodyMatterSubsystem.cxx
   src/jlsimbody/DecorationSubsystem.cxx
@@ -213,6 +225,7 @@ set(HEADER_FILES
   include/jlSimTKcommon/Vec.h
   include/jlsimmath/Geo.h
   include/jlsimmath/Contact_related.h
+  include/jlsimmath/Timestepper_and_Integrators.h
   include/jlsimbody/Assembler_and_related.h
   include/jlsimbody/Body.h
   include/jlsimbody/CableTrackerSubsystem.h

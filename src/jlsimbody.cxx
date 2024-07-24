@@ -35,6 +35,7 @@
 #include "jlsimbody/ForceSubsystems.h"
 #include "jlsimbody/MultibodySystem.h"
 #include "jlsimbody/Assembler_and_related.h"
+#include "jlsimmath/Timestepper_and_Integrators.h"
 
 using namespace jlsimbody;
 
@@ -121,4 +122,5 @@ JLCXX_MODULE define_julia_module(jlcxx::Module& types){
   define_simbody_ForceSubsystems(types, array_wrapper);
   define_simbody_MultibodySystem(types, multibod);
   define_simbody_Assembler_and_related(types, array_wrapper);
+  define_simmath_Timestepper_and_Integrators(types);
 }
