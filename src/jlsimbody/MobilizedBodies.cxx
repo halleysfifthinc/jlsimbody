@@ -3003,7 +3003,6 @@ void define_simbody_MobilizedBodies(jlcxx::Module& types, const ArrayWrapper & a
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::MobilizedBody::Slider & SimTK::MobilizedBody::Slider::setDefaultQ(SimTK::Real) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::MobilizedBody::Slider & SimTK::MobilizedBody::Slider::setDefaultQ(SimTK::Real)
   // defined in simbody/internal/MobilizedBody_Slider.h:91:13
   t22.method("setDefaultQ", static_cast<SimTK::MobilizedBody::Slider & (SimTK::MobilizedBody::Slider::*)(SimTK::Real) >(&SimTK::MobilizedBody::Slider::setDefaultQ));
   CLEAR_DEBUG_MSG();
@@ -3024,10 +3023,9 @@ void define_simbody_MobilizedBodies(jlcxx::Module& types, const ArrayWrapper & a
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Real SimTK::MobilizedBody::Slider::getQDotDot(const SimTK::State &) (" __HERE__ ")");
-  // defined in simbody/i  // signature to use in the veto list: SimTK::Real SimTK::MobilizedBody::Screw::getDefaultPitch()
-
-  // signature to use in the veto list: SimTK::MobilizedBody::Screw & SimTK::MobilizedBody::Screw::setDefaultQ(SimTK::Real)
-
+  // defined in simbody/internal/MobilizedBody_Slider.h:96:10
+  t22.method("getQDotDot", static_cast<SimTK::Real (SimTK::MobilizedBody::Slider::*)(const SimTK::State &)  const>(&SimTK::MobilizedBody::Slider::getQDotDot));
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Real SimTK::MobilizedBody::Slider::getU(const SimTK::State &) (" __HERE__ ")");
   // defined in simbody/internal/MobilizedBody_Slider.h:97:10
@@ -3139,6 +3137,7 @@ void define_simbody_MobilizedBodies(jlcxx::Module& types, const ArrayWrapper & a
   // defined in simbody/internal/MobilizedBody_SphericalCoords.h:102:5
   t23.constructor<SimTK::MobilizedBody &, const SimTK::Transform &, const SimTK::Body &, const SimTK::Transform &, SimTK::Real, bool, SimTK::Real, bool, SimTK::CoordinateAxis, bool, SimTK::MobilizedBody::Direction>(
     jlcxx::arg("parent"), jlcxx::arg("X_PF"), jlcxx::arg("bodyInfo"), jlcxx::arg("X_BM"), jlcxx::arg("azimuthOffset"), jlcxx::arg("azimuthNegated"), jlcxx::arg("zenithOffset"), jlcxx::arg("zenithNegated"), jlcxx::arg("radialAxis"), jlcxx::arg("radialNegated"), jlcxx::arg("direction") = SimTK::MobilizedBody::Forward);
+  CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::MobilizedBody::SphericalCoords & SimTK::MobilizedBody::SphericalCoords::addBodyDecoration(const SimTK::Transform &, const SimTK::DecorativeGeometry &) (" __HERE__ ")");
   // defined in simbody/internal/MobilizedBody_SphericalCoords.h:109:22

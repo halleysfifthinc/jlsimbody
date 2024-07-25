@@ -1779,7 +1779,8 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
   // contacttracker.method("getContactGeometryTypeIds", reinterpret_cast<const std::pair<int,int> & (SimTK::ContactTracker::*)()  const>(&SimTK::ContactTracker::getContactGeometryTypeIds));
   contacttracker.method("getContactGeometryTypeIds", [](const SimTK::ContactTracker& self) {
     return std::make_tuple((int)self.getContactGeometryTypeIds().first, (int)self.getContactGeometryTypeIds().second);
-  })
+  });
+  CLEAR_DEBUG_MSG();
   #endif
 
   DEBUG_MSG("bool SimTK::ContactTracker::trackContact(const SimTK::Contact &, const SimTK::Transform &, const SimTK::ContactGeometry &, const SimTK::Transform &, const SimTK::ContactGeometry &, SimTK::Real, SimTK::Contact &) (" __HERE__ ")");
@@ -2158,11 +2159,13 @@ void define_simmath_Contact_related(jlcxx::Module& types, const ArrayWrapper& ar
     *arr = cliques;
     return arr;
   });
+  CLEAR_DEBUG_MSG();
 
   // use julia `intersect`
   // DEBUG_MSG("bool SimTK::ContactSurface::cliquesIntersect(const SimTK::Array_<SimTK::ContactCliqueId,short> &, const SimTK::Array_<SimTK::ContactCliqueId,short> &) (" __HERE__ ")");
   // // defined in simbody/internal/ContactSurface.h:433:13
   // t50.method("ContactSurface!cliquesIntersect", static_cast<bool (*)(const SimTK::Array_<SimTK::ContactCliqueId,short> &, const SimTK::Array_<SimTK::ContactCliqueId,short> &) >(&SimTK::ContactSurface::cliquesIntersect));
+  // CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactCliqueId SimTK::ContactSurface::createNewContactClique() (" __HERE__ ")");
