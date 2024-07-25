@@ -188,6 +188,7 @@ set(CXX_FILES
   src/jlsimmath/SemiExplicitEulerIntegrator.cxx
   src/jlsimmath/TimeStepper.cxx
   src/jlsimmath/VerletIntegrator.cxx
+  src/jlsimmath/Optimizers.cxx
   src/jlsimbody/Body.cxx
   src/jlsimbody/SimbodyMatterSubsystem.cxx
   src/jlsimbody/DecorationSubsystem.cxx
@@ -226,6 +227,7 @@ set(HEADER_FILES
   include/jlsimmath/Geo.h
   include/jlsimmath/Contact_related.h
   include/jlsimmath/Timestepper_and_Integrators.h
+  include/jlsimmath/Optimizers.h
   include/jlsimbody/Assembler_and_related.h
   include/jlsimbody/Body.h
   include/jlsimbody/CableTrackerSubsystem.h
