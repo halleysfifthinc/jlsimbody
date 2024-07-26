@@ -1,6 +1,5 @@
-/build
+build/
+products/
 /out
 /wrapit
-/scripts/build/
-/scripts/products/
 CMakeUserPresets.json
