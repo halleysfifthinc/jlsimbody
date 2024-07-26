@@ -37,6 +37,8 @@ void define_SimTKcommon_Function(jlcxx::Module& types, const ArrayWrapper & arra
 
   auto spline = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SplineFunction", t0.dt());
 
+  auto splinefitter = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>>>("SplineFitter");
+
   /**********************************************************************/
   /* Wrappers for the methods of class SimTK::Function_
    */
@@ -212,6 +214,13 @@ void define_SimTKcommon_Function(jlcxx::Module& types, const ArrayWrapper & arra
   /* End of SimTK::Function_::Polynomial class method wrappers
    **********************************************************************/
 
+  types.method("findRoots!Vec3!Vec2complex", static_cast<void (*)(const SimTK::Vec3 &, SimTK::Vec<2,std::complex<double>> &)>(&SimTK::PolynomialRootFinder::findRoots));
+  types.method("findRoots!Vec3complex!Vec2complex", static_cast<void (*)(const SimTK::Vec<3,std::complex<double>> &, SimTK::Vec<2,std::complex<double>> &)>(&SimTK::PolynomialRootFinder::findRoots));
+  types.method("findRoots!Vec4!Vec3complex", static_cast<void (*)(const SimTK::Vec4 &, SimTK::Vec<3,std::complex<double>> &)>(&SimTK::PolynomialRootFinder::findRoots));
+  types.method("findRoots!Vec4complex!Vec3complex", static_cast<void (*)(const SimTK::Vec<4,std::complex<double>> &, SimTK::Vec<3,std::complex<double>> &)>(&SimTK::PolynomialRootFinder::findRoots));
+  types.method("findRoots!Vector!Vector_complex", static_cast<void (*)(const SimTK::Vector &, SimTK::Vector_<std::complex<double>> &)>(&SimTK::PolynomialRootFinder::findRoots));
+  types.method("findRoots!Vector_complex!Vector_complex", static_cast<void (*)(const SimTK::Vector_<std::complex<double>> &, SimTK::Vector_<std::complex<double>> &)>(&SimTK::PolynomialRootFinder::findRoots));
+
   /**********************************************************************/
   /* Wrappers for the methods of class SimTK::Function_::Sinusoid
    */
@@ -346,6 +355,35 @@ void define_SimTKcommon_Function(jlcxx::Module& types, const ArrayWrapper & arra
     SimTK::Spline_<SimTK::Vec<1>>,
     SimTK::Spline_<SimTK::Vec<3>>
     >(spline_decl_methods);
+
+  auto splinefitter_decl_methods = []<typename T> (jlcxx::TypeWrapper<SimTK::SplineFitter<T>> wrapped){
+    typedef SimTK::SplineFitter<T> WrappedType;
+
+    wrapped.method("getSpline", static_cast<const SimTK::Spline_<T>& (WrappedType::*)()>(&WrappedType::getSpline));
+    wrapped.method("getSmoothingParameter", static_cast<SimTK::Real (WrappedType::*)() >(&WrappedType::getSmoothingParameter));
+    wrapped.method("getMeanSquaredError", static_cast<SimTK::Real (WrappedType::*)() >(&WrappedType::getMeanSquaredError));
+    wrapped.method("getDegreesOfFreedom", static_cast<SimTK::Real (WrappedType::*)() >(&WrappedType::getDegreesOfFreedom));
+  };
+  splinefitter.apply<
+    SimTK::SplineFitter<double>,
+    SimTK::SplineFitter<SimTK::Vec<1>>,
+    SimTK::SplineFitter<SimTK::Vec<3>>
+    >(splinefitter_decl_methods);
+
+  types.method("SplineFitter_double!fitFromGCV", &SimTK::SplineFitter<double>::fitFromGCV);
+  types.method("SplineFitter_double!fitFromErrorVariance", &SimTK::SplineFitter<double>::fitFromErrorVariance);
+  types.method("SplineFitter_double!fitFromDOF", &SimTK::SplineFitter<double>::fitFromDOF);
+  types.method("SplineFitter_double!fitForSmoothingParameter", &SimTK::SplineFitter<double>::fitForSmoothingParameter);
+
+  types.method("SplineFitter_Vec1!fitFromGCV", &SimTK::SplineFitter<SimTK::Vec<1>>::fitFromGCV);
+  types.method("SplineFitter_Vec1!fitFromErrorVariance", &SimTK::SplineFitter<SimTK::Vec<1>>::fitFromErrorVariance);
+  types.method("SplineFitter_Vec1!fitFromDOF", &SimTK::SplineFitter<SimTK::Vec<1>>::fitFromDOF);
+  types.method("SplineFitter_Vec1!fitForSmoothingParameter", &SimTK::SplineFitter<SimTK::Vec<1>>::fitForSmoothingParameter);
+
+  types.method("SplineFitter_Vec3!fitFromGCV", &SimTK::SplineFitter<SimTK::Vec<3>>::fitFromGCV);
+  types.method("SplineFitter_Vec3!fitFromErrorVariance", &SimTK::SplineFitter<SimTK::Vec<3>>::fitFromErrorVariance);
+  types.method("SplineFitter_Vec3!fitFromDOF", &SimTK::SplineFitter<SimTK::Vec<3>>::fitFromDOF);
+  types.method("SplineFitter_Vec3!fitForSmoothingParameter", &SimTK::SplineFitter<SimTK::Vec<3>>::fitForSmoothingParameter);
 
   array_wrapper.template apply<const SimTK::Function *>();
 

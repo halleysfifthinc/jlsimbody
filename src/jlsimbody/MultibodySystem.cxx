@@ -169,6 +169,34 @@ void define_simbody_MultibodySystem(jlcxx::Module& types, jlcxx::TypeWrapper<Sim
   /* End of SimTK::MultibodySystem class method wrappers
    **********************************************************************/
 
+  types.method("minimizeEnergy", static_cast<void (*)(const SimTK::MultibodySystem &, SimTK::State &, SimTK::Real)>(&SimTK::LocalEnergyMinimizer::minimizeEnergy));
+
+  types.method("findBestFit",
+    reinterpret_cast<SimTK::Real (*)(
+      const SimTK::MultibodySystem &, SimTK::State &, const SimTK::Array_<int> &,
+      const SimTK::Array_<SimTK::Array_<SimTK::Vec3>> &, const SimTK::Array_<SimTK::Array_<SimTK::Vec3>> &,
+      SimTK::Real)>(
+        static_cast<SimTK::Real (*)(
+          const SimTK::MultibodySystem &, SimTK::State &, const SimTK::Array_<SimTK::MobilizedBodyIndex> &,
+          const SimTK::Array_<SimTK::Array_<SimTK::Vec3>> &, const SimTK::Array_<SimTK::Array_<SimTK::Vec3>> &,
+          SimTK::Real)>(&SimTK::ObservedPointFitter::findBestFit)
+      ),
+    jlcxx::arg("system"), jlcxx::arg("state"), jlcxx::arg("bodyIxs"),
+    jlcxx::arg("stations"), jlcxx::arg("targetLocations"), jlcxx::arg("tolerance")=0.001);
+
+  types.method("findBestFit!weights",
+    reinterpret_cast<SimTK::Real (*)(
+      const SimTK::MultibodySystem &, SimTK::State &, const SimTK::Array_<int> &,
+      const SimTK::Array_<SimTK::Array_<SimTK::Vec3>> &, const SimTK::Array_<SimTK::Array_<SimTK::Vec3>> &,
+      SimTK::Real)>(
+        static_cast<SimTK::Real (*)(
+          const SimTK::MultibodySystem &, SimTK::State &, const SimTK::Array_<SimTK::MobilizedBodyIndex> &,
+          const SimTK::Array_<SimTK::Array_<SimTK::Vec3>> &, const SimTK::Array_<SimTK::Array_<SimTK::Vec3>> &,
+          const SimTK::Array_<SimTK::Array_<SimTK::Real>> &, SimTK::Real)>(&SimTK::ObservedPointFitter::findBestFit)
+      ),
+    jlcxx::arg("system"), jlcxx::arg("state"), jlcxx::arg("bodyIxs"), jlcxx::arg("stations"),
+    jlcxx::arg("targetLocations"), jlcxx::arg("weights"), jlcxx::arg("tolerance")=0.001);
+
 }
 
 }

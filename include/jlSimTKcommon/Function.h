@@ -2,7 +2,9 @@
 #define _JLSIMTKCOMMON_FUNCTION_H
 
 #include "SimTKcommon/internal/Function.h"
+#include "SimTKcommon/internal/PolynomialRootFinder.h"
 #include "simmath/internal/Spline.h"
+#include "simmath/internal/SplineFitter.h"
 
 #include "jlSimTKcommon/Array.h"
 

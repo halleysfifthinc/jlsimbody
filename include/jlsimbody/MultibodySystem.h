@@ -11,6 +11,8 @@
 #include "simbody/internal/DecorationSubsystem.h"
 #include "simbody/internal/GeneralContactSubsystem.h"
 #include "simbody/internal/MultibodySystem.h"
+#include "simbody/internal/LocalEnergyMinimizer.h"
+#include "simbody/internal/ObservedPointFitter.h"
 
 namespace jlcxx {
   template<> struct IsMirroredType<SimTK::MultibodySystem> : std::false_type { };
