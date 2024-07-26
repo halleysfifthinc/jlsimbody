@@ -38,6 +38,7 @@
 #include "jlsimmath/Timestepper_and_Integrators.h"
 #include "jlsimmath/Optimizers.h"
 #include "jlsimbody/TextDataEventReporter.h"
+#include "jlsimbody/Constraints.h"
 
 using namespace jlsimbody;
 
@@ -120,8 +121,21 @@ JLCXX_MODULE define_julia_module(jlcxx::Module& types){
   multibod.template constructor<>();
   CLEAR_DEBUG_MSG();
 
+  DEBUG_MSG("type SimTK::SimbodyMatterSubtree (" __HERE__ ")");
+  // defined in simbody/internal/SimbodyMatterSubtree.h:109:28
+  auto subtree = types.add_type<SimTK::SimbodyMatterSubtree>("SimbodyMatterSubtree");
+  subtree.template constructor<>();
+  CLEAR_DEBUG_MSG();
+
+  DEBUG_MSG("type SimTK::SimbodyMatterSubtreeResults (" __HERE__ ")");
+  // defined in simbody/internal/SimbodyMatterSubtree.h:242:28
+  auto stresults = types.add_type<SimTK::SimbodyMatterSubtreeResults>("SimbodyMatterSubtreeResults");
+  stresults.template constructor<>();
+  CLEAR_DEBUG_MSG();
+
   define_simbody_MobilizedBodies(types, array_wrapper);
-  define_simbody_SimbodyMatterSubsystem(types, mattersubsys, array_wrapper);
+  define_jlsimbody_Constraints(types);
+  define_simbody_SimbodyMatterSubsystem(types, mattersubsys, subtree, stresults, array_wrapper);
   define_simbody_DecorationSubsystem(types);
   define_simbody_ContactTrackerSubsystem(types);
   define_simbody_CableTrackerSubsystem(types);

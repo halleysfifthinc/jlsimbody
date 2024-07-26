@@ -9,28 +9,17 @@
 
 namespace jlsimbody{
 
-void define_simbody_SimbodyMatterSubsystem(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::SimbodyMatterSubsystem> & mattersubsys, const ArrayWrapper & array_wrapper){
-
-  DEBUG_MSG("type SimTK::Constraint (" __HERE__ ")");
-  // defined in simbody/internal/Constraint.h:66:28
-  auto t18 = types.add_type<SimTK::Constraint>("Constraint");
-  t18.template constructor<>();
-  CLEAR_DEBUG_MSG();
+void define_simbody_SimbodyMatterSubsystem(
+  jlcxx::Module& types,
+  jlcxx::TypeWrapper<SimTK::SimbodyMatterSubsystem> & mattersubsys,
+  jlcxx::TypeWrapper<SimTK::SimbodyMatterSubtree> & subtree,
+  jlcxx::TypeWrapper<SimTK::SimbodyMatterSubtreeResults> & stresults,
+  const ArrayWrapper & array_wrapper){
 
   DEBUG_MSG("type SimTK::UnilateralContact (" __HERE__ ")");
   // defined in simbody/internal/ConditionalConstraint.h:120:28
   auto t21 = types.add_type<SimTK::UnilateralContact>("UnilateralContact");
   CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("type SimTK::SimbodyMatterSubtree (" __HERE__ ")");
-  // defined in simbody/internal/SimbodyMatterSubtree.h:109:28
-  auto t28 = types.add_type<SimTK::SimbodyMatterSubtree>("SimbodyMatterSubtree");
-  t28.template constructor<>();
-
-  DEBUG_MSG("type SimTK::SimbodyMatterSubtreeResults (" __HERE__ ")");
-  // defined in simbody/internal/SimbodyMatterSubtree.h:242:28
-  auto t30 = types.add_type<SimTK::SimbodyMatterSubtreeResults>("SimbodyMatterSubtreeResults");
-  t30.template constructor<>();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   wrap_SimTK_UniqueIndexType<SimTK::ConstraintIndex>(types, "ConstraintIndex");
@@ -50,381 +39,6 @@ void define_simbody_SimbodyMatterSubsystem(jlcxx::Module& types, jlcxx::TypeWrap
     SimTK::ConstrainedQIndex>;
   jlcxx::for_each_parameter_type<array_types>(array_wrapper);
   #endif
-
-  /**********************************************************************/
-  /* Wrappers for the methods of class SimTK::Constraint
-   */
-
-  DEBUG_MSG("void SimTK::Constraint::disable(SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Constraint::disable(SimTK::State &)
-  // defined in simbody/internal/Constraint.h:79:6
-  t18.method("disable", static_cast<void (SimTK::Constraint::*)(SimTK::State &)  const>(&SimTK::Constraint::disable));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("void SimTK::Constraint::enable(SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Constraint::enable(SimTK::State &)
-  // defined in simbody/internal/Constraint.h:87:6
-  t18.method("enable", static_cast<void (SimTK::Constraint::*)(SimTK::State &)  const>(&SimTK::Constraint::enable));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("bool SimTK::Constraint::isDisabled(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::Constraint::isDisabled(const SimTK::State &)
-  // defined in simbody/internal/Constraint.h:90:6
-  t18.method("isDisabled", static_cast<bool (SimTK::Constraint::*)(const SimTK::State &)  const>(&SimTK::Constraint::isDisabled));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("bool SimTK::Constraint::isDisabledByDefault() (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::Constraint::isDisabledByDefault()
-  // defined in simbody/internal/Constraint.h:94:6
-  t18.method("isDisabledByDefault", static_cast<bool (SimTK::Constraint::*)()  const>(&SimTK::Constraint::isDisabledByDefault));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("void SimTK::Constraint::setDisabledByDefault(bool) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Constraint::setDisabledByDefault(bool)
-  // defined in simbody/internal/Constraint.h:100:6
-  t18.method("setDisabledByDefault", static_cast<void (SimTK::Constraint::*)(bool) >(&SimTK::Constraint::setDisabledByDefault));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("const SimTK::SimbodyMatterSubsystem & SimTK::Constraint::getMatterSubsystem() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::SimbodyMatterSubsystem & SimTK::Constraint::getMatterSubsystem()
-  // defined in simbody/internal/Constraint.h:111:31
-  t18.method("getMatterSubsystem", static_cast<const SimTK::SimbodyMatterSubsystem & (SimTK::Constraint::*)()  const>(&SimTK::Constraint::getMatterSubsystem));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("SimTK::SimbodyMatterSubsystem & SimTK::Constraint::updMatterSubsystem() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::SimbodyMatterSubsystem & SimTK::Constraint::updMatterSubsystem()
-  // defined in simbody/internal/Constraint.h:118:25
-  t18.method("updMatterSubsystem", static_cast<SimTK::SimbodyMatterSubsystem & (SimTK::Constraint::*)() >(&SimTK::Constraint::updMatterSubsystem));
-  CLEAR_DEBUG_MSG();
-
-  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
-  DEBUG_MSG("SimTK::ConstraintIndex SimTK::Constraint::getConstraintIndex() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::ConstraintIndex SimTK::Constraint::getConstraintIndex()
-  // defined in simbody/internal/Constraint.h:126:17
-  t18.method("getConstraintIndex", static_cast<SimTK::ConstraintIndex (SimTK::Constraint::*)()  const>(&SimTK::Constraint::getConstraintIndex));
-  CLEAR_DEBUG_MSG();
-  #else
-  DEBUG_MSG("int SimTK::Constraint::getConstraintIndex() (" __HERE__ ")");
-  // defined in simbody/internal/Constraint.h:126:17
-  t18.method("getConstraintIndex", reinterpret_cast<int (SimTK::Constraint::*)()  const>(&SimTK::Constraint::getConstraintIndex));
-  CLEAR_DEBUG_MSG();
-  #endif
-
-  DEBUG_MSG("bool SimTK::Constraint::isInSubsystem() (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::Constraint::isInSubsystem()
-  // defined in simbody/internal/Constraint.h:129:6
-  t18.method("isInSubsystem", static_cast<bool (SimTK::Constraint::*)()  const>(&SimTK::Constraint::isInSubsystem));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("bool SimTK::Constraint::isInSameSubsystem(const SimTK::MobilizedBody &) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::Constraint::isInSameSubsystem(const SimTK::MobilizedBody &)
-  // defined in simbody/internal/Constraint.h:133:6
-  t18.method("isInSameSubsystem", static_cast<bool (SimTK::Constraint::*)(const SimTK::MobilizedBody &)  const>(&SimTK::Constraint::isInSameSubsystem));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("int SimTK::Constraint::getNumConstrainedBodies() (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::Constraint::getNumConstrainedBodies()
-  // defined in simbody/internal/Constraint.h:142:5
-  t18.method("getNumConstrainedBodies", static_cast<int (SimTK::Constraint::*)()  const>(&SimTK::Constraint::getNumConstrainedBodies));
-  CLEAR_DEBUG_MSG();
-
-  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
-  DEBUG_MSG("const SimTK::MobilizedBody & SimTK::Constraint::getMobilizedBodyFromConstrainedBody(SimTK::ConstrainedBodyIndex) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::MobilizedBody & SimTK::Constraint::getMobilizedBodyFromConstrainedBody(SimTK::ConstrainedBodyIndex)
-  // defined in simbody/internal/Constraint.h:148:22
-  t18.method("getMobilizedBodyFromConstrainedBody", static_cast<const SimTK::MobilizedBody & (SimTK::Constraint::*)(SimTK::ConstrainedBodyIndex)  const>(&SimTK::Constraint::getMobilizedBodyFromConstrainedBody));
-  CLEAR_DEBUG_MSG();
-  #else
-  DEBUG_MSG("const SimTK::MobilizedBody & SimTK::Constraint::getMobilizedBodyFromConstrainedBody(int) (" __HERE__ ")");
-  // defined in simbody/internal/Constraint.h:148:22
-  t18.method("getMobilizedBodyFromConstrainedBody", reinterpret_cast<const SimTK::MobilizedBody & (SimTK::Constraint::*)(int)  const>(&SimTK::Constraint::getMobilizedBodyFromConstrainedBody));
-  CLEAR_DEBUG_MSG();
-  #endif
-
-  DEBUG_MSG("const SimTK::MobilizedBody & SimTK::Constraint::getAncestorMobilizedBody() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::MobilizedBody & SimTK::Constraint::getAncestorMobilizedBody()
-  // defined in simbody/internal/Constraint.h:155:22
-  t18.method("getAncestorMobilizedBody", static_cast<const SimTK::MobilizedBody & (SimTK::Constraint::*)()  const>(&SimTK::Constraint::getAncestorMobilizedBody));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("int SimTK::Constraint::getNumConstrainedMobilizers() (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::Constraint::getNumConstrainedMobilizers()
-  // defined in simbody/internal/Constraint.h:163:5
-  t18.method("getNumConstrainedMobilizers", static_cast<int (SimTK::Constraint::*)()  const>(&SimTK::Constraint::getNumConstrainedMobilizers));
-  CLEAR_DEBUG_MSG();
-
-  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
-  DEBUG_MSG("const SimTK::MobilizedBody & SimTK::Constraint::getMobilizedBodyFromConstrainedMobilizer(SimTK::ConstrainedMobilizerIndex) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::MobilizedBody & SimTK::Constraint::getMobilizedBodyFromConstrainedMobilizer(SimTK::ConstrainedMobilizerIndex)
-  // defined in simbody/internal/Constraint.h:169:22
-  t18.method("getMobilizedBodyFromConstrainedMobilizer", static_cast<const SimTK::MobilizedBody & (SimTK::Constraint::*)(SimTK::ConstrainedMobilizerIndex)  const>(&SimTK::Constraint::getMobilizedBodyFromConstrainedMobilizer));
-  CLEAR_DEBUG_MSG();
-  #else
-  DEBUG_MSG("const SimTK::MobilizedBody & SimTK::Constraint::getMobilizedBodyFromConstrainedMobilizer(int) (" __HERE__ ")");
-  // defined in simbody/internal/Constraint.h:169:22
-  t18.method("getMobilizedBodyFromConstrainedMobilizer", reinterpret_cast<const SimTK::MobilizedBody & (SimTK::Constraint::*)(int)  const>(&SimTK::Constraint::getMobilizedBodyFromConstrainedMobilizer));
-  CLEAR_DEBUG_MSG();
-  #endif
-
-  // DEBUG_MSG("const SimTK::SimbodyMatterSubtree & SimTK::Constraint::getSubtree() (" __HERE__ ")");
-  // // signature to use in the veto list: const SimTK::SimbodyMatterSubtree & SimTK::Constraint::getSubtree()
-  // // defined in simbody/internal/Constraint.h:174:29
-  // t18.method("getSubtree", static_cast<const SimTK::SimbodyMatterSubtree & (SimTK::Constraint::*)()  const>(&SimTK::Constraint::getSubtree));
-
-  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
-  DEBUG_MSG("int SimTK::Constraint::getNumConstrainedQ(const SimTK::State &, SimTK::ConstrainedMobilizerIndex) (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::Constraint::getNumConstrainedQ(const SimTK::State &, SimTK::ConstrainedMobilizerIndex)
-  // defined in simbody/internal/Constraint.h:185:5
-  t18.method("getNumConstrainedQ", static_cast<int (SimTK::Constraint::*)(const SimTK::State &, SimTK::ConstrainedMobilizerIndex)  const>(&SimTK::Constraint::getNumConstrainedQ));
-  CLEAR_DEBUG_MSG();
-  #else
-  DEBUG_MSG("int SimTK::Constraint::getNumConstrainedQ(const SimTK::State &, int) (" __HERE__ ")");
-  // defined in simbody/internal/Constraint.h:185:5
-  t18.method("getNumConstrainedQ", reinterpret_cast<int (SimTK::Constraint::*)(const SimTK::State &, int)  const>(
-    static_cast<int (SimTK::Constraint::*)(const SimTK::State &, SimTK::ConstrainedMobilizerIndex)  const>(&SimTK::Constraint::getNumConstrainedQ)
-  ));
-  CLEAR_DEBUG_MSG();
-  #endif
-
-  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
-  DEBUG_MSG("int SimTK::Constraint::getNumConstrainedU(const SimTK::State &, SimTK::ConstrainedMobilizerIndex) (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::Constraint::getNumConstrainedU(const SimTK::State &, SimTK::ConstrainedMobilizerIndex)
-  // defined in simbody/internal/Constraint.h:190:5
-  t18.method("getNumConstrainedU", static_cast<int (SimTK::Constraint::*)(const SimTK::State &, SimTK::ConstrainedMobilizerIndex)  const>(&SimTK::Constraint::getNumConstrainedU));
-  CLEAR_DEBUG_MSG();
-  #else
-  DEBUG_MSG("int SimTK::Constraint::getNumConstrainedU(const SimTK::State &, int) (" __HERE__ ")");
-  // defined in simbody/internal/Constraint.h:190:5
-  t18.method("getNumConstrainedU", reinterpret_cast<int (SimTK::Constraint::*)(const SimTK::State &, int)  const>(
-    static_cast<int (SimTK::Constraint::*)(const SimTK::State &, SimTK::ConstrainedMobilizerIndex)  const>(&SimTK::Constraint::getNumConstrainedU)
-  ));
-  CLEAR_DEBUG_MSG();
-  #endif
-
-  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
-  DEBUG_MSG("SimTK::ConstrainedUIndex SimTK::Constraint::getConstrainedUIndex(const SimTK::State &, SimTK::ConstrainedMobilizerIndex, SimTK::MobilizerUIndex) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::ConstrainedUIndex SimTK::Constraint::getConstrainedUIndex(const SimTK::State &, SimTK::ConstrainedMobilizerIndex, SimTK::MobilizerUIndex)
-  // defined in simbody/internal/Constraint.h:198:19
-  t18.method("getConstrainedUIndex", static_cast<SimTK::ConstrainedUIndex (SimTK::Constraint::*)(const SimTK::State &, SimTK::ConstrainedMobilizerIndex, SimTK::MobilizerUIndex)  const>(&SimTK::Constraint::getConstrainedUIndex));
-  CLEAR_DEBUG_MSG();
-  #else
-  DEBUG_MSG("int SimTK::Constraint::getConstrainedUIndex(const SimTK::State &, int, int) (" __HERE__ ")");
-  // defined in simbody/internal/Constraint.h:198:19
-  t18.method("getConstrainedUIndex", reinterpret_cast<int (SimTK::Constraint::*)(const SimTK::State &, int, int)  const>(&SimTK::Constraint::getConstrainedUIndex));
-  CLEAR_DEBUG_MSG();
-  #endif
-
-  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
-  DEBUG_MSG("SimTK::ConstrainedQIndex SimTK::Constraint::getConstrainedQIndex(const SimTK::State &, SimTK::ConstrainedMobilizerIndex, SimTK::MobilizerQIndex) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::ConstrainedQIndex SimTK::Constraint::getConstrainedQIndex(const SimTK::State &, SimTK::ConstrainedMobilizerIndex, SimTK::MobilizerQIndex)
-  // defined in simbody/internal/Constraint.h:206:19
-  t18.method("getConstrainedQIndex", static_cast<SimTK::ConstrainedQIndex (SimTK::Constraint::*)(const SimTK::State &, SimTK::ConstrainedMobilizerIndex, SimTK::MobilizerQIndex)  const>(&SimTK::Constraint::getConstrainedQIndex));
-  CLEAR_DEBUG_MSG();
-  #else
-  DEBUG_MSG("int SimTK::Constraint::getConstrainedQIndex(const SimTK::State &, int, int) (" __HERE__ ")");
-  // defined in simbody/internal/Constraint.h:206:19
-  t18.method("getConstrainedQIndex", reinterpret_cast<int (SimTK::Constraint::*)(const SimTK::State &, int, int)  const>(&SimTK::Constraint::getConstrainedQIndex));
-  CLEAR_DEBUG_MSG();
-  #endif
-
-  DEBUG_MSG("int SimTK::Constraint::getNumConstrainedQ(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::Constraint::getNumConstrainedQ(const SimTK::State &)
-  // defined in simbody/internal/Constraint.h:211:5
-  t18.method("getNumConstrainedQ", static_cast<int (SimTK::Constraint::*)(const SimTK::State &)  const>(&SimTK::Constraint::getNumConstrainedQ));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("int SimTK::Constraint::getNumConstrainedU(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::Constraint::getNumConstrainedU(const SimTK::State &)
-  // defined in simbody/internal/Constraint.h:217:5
-  t18.method("getNumConstrainedU", static_cast<int (SimTK::Constraint::*)(const SimTK::State &)  const>(&SimTK::Constraint::getNumConstrainedU));
-  CLEAR_DEBUG_MSG();
-
-  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
-  DEBUG_MSG("SimTK::QIndex SimTK::Constraint::getQIndexOfConstrainedQ(const SimTK::State &, SimTK::ConstrainedQIndex) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::QIndex SimTK::Constraint::getQIndexOfConstrainedQ(const SimTK::State &, SimTK::ConstrainedQIndex)
-  // defined in simbody/internal/Constraint.h:221:8
-  t18.method("getQIndexOfConstrainedQ", static_cast<SimTK::QIndex (SimTK::Constraint::*)(const SimTK::State &, SimTK::ConstrainedQIndex)  const>(&SimTK::Constraint::getQIndexOfConstrainedQ));
-  CLEAR_DEBUG_MSG();
-  #else
-  DEBUG_MSG("int SimTK::Constraint::getQIndexOfConstrainedQ(const SimTK::State &, int) (" __HERE__ ")");
-  // defined in simbody/internal/Constraint.h:221:8
-  t18.method("getQIndexOfConstrainedQ", reinterpret_cast<int (SimTK::Constraint::*)(const SimTK::State &, int)  const>(&SimTK::Constraint::getQIndexOfConstrainedQ));
-  CLEAR_DEBUG_MSG();
-  #endif
-
-  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
-  DEBUG_MSG("SimTK::UIndex SimTK::Constraint::getUIndexOfConstrainedU(const SimTK::State &, SimTK::ConstrainedUIndex) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::UIndex SimTK::Constraint::getUIndexOfConstrainedU(const SimTK::State &, SimTK::ConstrainedUIndex)
-  // defined in simbody/internal/Constraint.h:225:8
-  t18.method("getUIndexOfConstrainedU", static_cast<SimTK::UIndex (SimTK::Constraint::*)(const SimTK::State &, SimTK::ConstrainedUIndex)  const>(&SimTK::Constraint::getUIndexOfConstrainedU));
-  CLEAR_DEBUG_MSG();
-  #else
-  DEBUG_MSG("int SimTK::Constraint::getUIndexOfConstrainedU(const SimTK::State &, int) (" __HERE__ ")");
-  // defined in simbody/internal/Constraint.h:225:8
-  t18.method("getUIndexOfConstrainedU", reinterpret_cast<int (SimTK::Constraint::*)(const SimTK::State &, int)  const>(&SimTK::Constraint::getUIndexOfConstrainedU));
-  CLEAR_DEBUG_MSG();
-  #endif
-
-  DEBUG_MSG("void SimTK::Constraint::getNumConstraintEquationsInUse(const SimTK::State &, int &, int &, int &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Constraint::getNumConstraintEquationsInUse(const SimTK::State &, int &, int &, int &)
-  // defined in simbody/internal/Constraint.h:241:6
-  t18.method("getNumConstraintEquationsInUse", static_cast<void (SimTK::Constraint::*)(const SimTK::State &, int &, int &, int &)  const>(&SimTK::Constraint::getNumConstraintEquationsInUse));
-  CLEAR_DEBUG_MSG();
-
-  #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
-  DEBUG_MSG("void SimTK::Constraint::getIndexOfMultipliersInUse(const SimTK::State &, SimTK::MultiplierIndex &, SimTK::MultiplierIndex &, SimTK::MultiplierIndex &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Constraint::getIndexOfMultipliersInUse(const SimTK::State &, SimTK::MultiplierIndex &, SimTK::MultiplierIndex &, SimTK::MultiplierIndex &)
-  // defined in simbody/internal/Constraint.h:266:6
-  t18.method("getIndexOfMultipliersInUse", static_cast<void (SimTK::Constraint::*)(const SimTK::State &, SimTK::MultiplierIndex &, SimTK::MultiplierIndex &, SimTK::MultiplierIndex &)  const>(&SimTK::Constraint::getIndexOfMultipliersInUse));
-  CLEAR_DEBUG_MSG();
-  #else
-  DEBUG_MSG("void SimTK::Constraint::getIndexOfMultipliersInUse(const SimTK::State &, int &, int &, int &) (" __HERE__ ")");
-  // defined in simbody/internal/Constraint.h:266:6
-  t18.method("getIndexOfMultipliersInUse", reinterpret_cast<void (SimTK::Constraint::*)(const SimTK::State &, int &, int &, int &)  const>(&SimTK::Constraint::getIndexOfMultipliersInUse));
-  CLEAR_DEBUG_MSG();
-  #endif
-
-  DEBUG_MSG("void SimTK::Constraint::setMyPartInConstraintSpaceVector(const SimTK::State &, const SimTK::Vector &, SimTK::Vector &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Constraint::setMyPartInConstraintSpaceVector(const SimTK::State &, const SimTK::Vector &, SimTK::Vector &)
-  // defined in simbody/internal/Constraint.h:292:6
-  t18.method("setMyPartInConstraintSpaceVector", static_cast<void (SimTK::Constraint::*)(const SimTK::State &, const SimTK::Vector &, SimTK::Vector &)  const>(&SimTK::Constraint::setMyPartInConstraintSpaceVector));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("void SimTK::Constraint::getMyPartFromConstraintSpaceVector(const SimTK::State &, const SimTK::Vector &, SimTK::Vector &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Constraint::getMyPartFromConstraintSpaceVector(const SimTK::State &, const SimTK::Vector &, SimTK::Vector &)
-  // defined in simbody/internal/Constraint.h:313:6
-  t18.method("getMyPartFromConstraintSpaceVector", static_cast<void (SimTK::Constraint::*)(const SimTK::State &, const SimTK::Vector &, SimTK::Vector &)  const>(&SimTK::Constraint::getMyPartFromConstraintSpaceVector));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("SimTK::Vector SimTK::Constraint::getPositionErrorsAsVector(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Vector SimTK::Constraint::getPositionErrorsAsVector(const SimTK::State &)
-  // defined in simbody/internal/Constraint.h:320:8
-  t18.method("getPositionErrorsAsVector", static_cast<SimTK::Vector (SimTK::Constraint::*)(const SimTK::State &)  const>(&SimTK::Constraint::getPositionErrorsAsVector));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("SimTK::Vector SimTK::Constraint::calcPositionErrorFromQ(const SimTK::State &, const SimTK::Vector &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Vector SimTK::Constraint::calcPositionErrorFromQ(const SimTK::State &, const SimTK::Vector &)
-  // defined in simbody/internal/Constraint.h:321:8
-  t18.method("calcPositionErrorFromQ", static_cast<SimTK::Vector (SimTK::Constraint::*)(const SimTK::State &, const SimTK::Vector &)  const>(&SimTK::Constraint::calcPositionErrorFromQ));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("SimTK::Matrix SimTK::Constraint::calcPositionConstraintMatrixP(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Matrix SimTK::Constraint::calcPositionConstraintMatrixP(const SimTK::State &)
-  // defined in simbody/internal/Constraint.h:324:8
-  t18.method("calcPositionConstraintMatrixP", static_cast<SimTK::Matrix (SimTK::Constraint::*)(const SimTK::State &)  const>(&SimTK::Constraint::calcPositionConstraintMatrixP));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("SimTK::Matrix SimTK::Constraint::calcPositionConstraintMatrixPt(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Matrix SimTK::Constraint::calcPositionConstraintMatrixPt(const SimTK::State &)
-  // defined in simbody/internal/Constraint.h:325:8
-  t18.method("calcPositionConstraintMatrixPt", static_cast<SimTK::Matrix (SimTK::Constraint::*)(const SimTK::State &)  const>(&SimTK::Constraint::calcPositionConstraintMatrixPt));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("SimTK::Matrix SimTK::Constraint::calcPositionConstraintMatrixPNInv(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Matrix SimTK::Constraint::calcPositionConstraintMatrixPNInv(const SimTK::State &)
-  // defined in simbody/internal/Constraint.h:328:8
-  t18.method("calcPositionConstraintMatrixPNInv", static_cast<SimTK::Matrix (SimTK::Constraint::*)(const SimTK::State &)  const>(&SimTK::Constraint::calcPositionConstraintMatrixPNInv));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("void SimTK::Constraint::calcConstraintForcesFromMultipliers(const SimTK::State &, const SimTK::Vector &, SimTK::Vector_<SimTK::SpatialVec> &, SimTK::Vector &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Constraint::calcConstraintForcesFromMultipliers(const SimTK::State &, const SimTK::Vector &, SimTK::Vector_<SimTK::SpatialVec> &, SimTK::Vector &)
-  // defined in simbody/internal/Constraint.h:345:6
-  t18.method("calcConstraintForcesFromMultipliers", static_cast<void (SimTK::Constraint::*)(const SimTK::State &, const SimTK::Vector &, SimTK::Vector_<SimTK::SpatialVec> &, SimTK::Vector &)  const>(&SimTK::Constraint::calcConstraintForcesFromMultipliers));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("SimTK::Vector SimTK::Constraint::getVelocityErrorsAsVector(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Vector SimTK::Constraint::getVelocityErrorsAsVector(const SimTK::State &)
-  // defined in simbody/internal/Constraint.h:353:8
-  t18.method("getVelocityErrorsAsVector", static_cast<SimTK::Vector (SimTK::Constraint::*)(const SimTK::State &)  const>(&SimTK::Constraint::getVelocityErrorsAsVector));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("SimTK::Vector SimTK::Constraint::calcVelocityErrorFromU(const SimTK::State &, const SimTK::Vector &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Vector SimTK::Constraint::calcVelocityErrorFromU(const SimTK::State &, const SimTK::Vector &)
-  // defined in simbody/internal/Constraint.h:354:8
-  t18.method("calcVelocityErrorFromU", static_cast<SimTK::Vector (SimTK::Constraint::*)(const SimTK::State &, const SimTK::Vector &)  const>(&SimTK::Constraint::calcVelocityErrorFromU));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("SimTK::Matrix SimTK::Constraint::calcVelocityConstraintMatrixV(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Matrix SimTK::Constraint::calcVelocityConstraintMatrixV(const SimTK::State &)
-  // defined in simbody/internal/Constraint.h:359:8
-  t18.method("calcVelocityConstraintMatrixV", static_cast<SimTK::Matrix (SimTK::Constraint::*)(const SimTK::State &)  const>(&SimTK::Constraint::calcVelocityConstraintMatrixV));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("SimTK::Matrix SimTK::Constraint::calcVelocityConstraintMatrixVt(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Matrix SimTK::Constraint::calcVelocityConstraintMatrixVt(const SimTK::State &)
-  // defined in simbody/internal/Constraint.h:360:8
-  t18.method("calcVelocityConstraintMatrixVt", static_cast<SimTK::Matrix (SimTK::Constraint::*)(const SimTK::State &)  const>(&SimTK::Constraint::calcVelocityConstraintMatrixVt));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("SimTK::Vector SimTK::Constraint::getAccelerationErrorsAsVector(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Vector SimTK::Constraint::getAccelerationErrorsAsVector(const SimTK::State &)
-  // defined in simbody/internal/Constraint.h:369:8
-  t18.method("getAccelerationErrorsAsVector", static_cast<SimTK::Vector (SimTK::Constraint::*)(const SimTK::State &)  const>(&SimTK::Constraint::getAccelerationErrorsAsVector));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("SimTK::Vector SimTK::Constraint::calcAccelerationErrorFromUDot(const SimTK::State &, const SimTK::Vector &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Vector SimTK::Constraint::calcAccelerationErrorFromUDot(const SimTK::State &, const SimTK::Vector &)
-  // defined in simbody/internal/Constraint.h:370:8
-  t18.method("calcAccelerationErrorFromUDot", static_cast<SimTK::Vector (SimTK::Constraint::*)(const SimTK::State &, const SimTK::Vector &)  const>(&SimTK::Constraint::calcAccelerationErrorFromUDot));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("SimTK::Vector SimTK::Constraint::getMultipliersAsVector(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Vector SimTK::Constraint::getMultipliersAsVector(const SimTK::State &)
-  // defined in simbody/internal/Constraint.h:376:8
-  t18.method("getMultipliersAsVector", static_cast<SimTK::Vector (SimTK::Constraint::*)(const SimTK::State &)  const>(&SimTK::Constraint::getMultipliersAsVector));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("void SimTK::Constraint::getConstraintForcesAsVectors(const SimTK::State &, SimTK::Vector_<SimTK::SpatialVec> &, SimTK::Vector &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Constraint::getConstraintForcesAsVectors(const SimTK::State &, SimTK::Vector_<SimTK::SpatialVec> &, SimTK::Vector &)
-  // defined in simbody/internal/Constraint.h:390:6
-  t18.method("getConstraintForcesAsVectors", static_cast<void (SimTK::Constraint::*)(const SimTK::State &, SimTK::Vector_<SimTK::SpatialVec> &, SimTK::Vector &)  const>(&SimTK::Constraint::getConstraintForcesAsVectors));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("SimTK::Vector_<SimTK::SpatialVec> SimTK::Constraint::getConstrainedBodyForcesAsVector(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Vector_<SimTK::SpatialVec> SimTK::Constraint::getConstrainedBodyForcesAsVector(const SimTK::State &)
-  // defined in simbody/internal/Constraint.h:397:21
-  t18.method("getConstrainedBodyForcesAsVector", static_cast<SimTK::Vector_<SimTK::SpatialVec> (SimTK::Constraint::*)(const SimTK::State &)  const>(&SimTK::Constraint::getConstrainedBodyForcesAsVector));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("SimTK::Vector SimTK::Constraint::getConstrainedMobilityForcesAsVector(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Vector SimTK::Constraint::getConstrainedMobilityForcesAsVector(const SimTK::State &)
-  // defined in simbody/internal/Constraint.h:406:8
-  t18.method("getConstrainedMobilityForcesAsVector", static_cast<SimTK::Vector (SimTK::Constraint::*)(const SimTK::State &)  const>(&SimTK::Constraint::getConstrainedMobilityForcesAsVector));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("SimTK::Real SimTK::Constraint::calcPower(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Real SimTK::Constraint::calcPower(const SimTK::State &)
-  // defined in simbody/internal/Constraint.h:436:6
-  t18.method("calcPower", static_cast<SimTK::Real (SimTK::Constraint::*)(const SimTK::State &)  const>(&SimTK::Constraint::calcPower));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("SimTK::Matrix SimTK::Constraint::calcAccelerationConstraintMatrixA(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Matrix SimTK::Constraint::calcAccelerationConstraintMatrixA(const SimTK::State &)
-  // defined in simbody/internal/Constraint.h:440:8
-  t18.method("calcAccelerationConstraintMatrixA", static_cast<SimTK::Matrix (SimTK::Constraint::*)(const SimTK::State &)  const>(&SimTK::Constraint::calcAccelerationConstraintMatrixA));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("SimTK::Matrix SimTK::Constraint::calcAccelerationConstraintMatrixAt(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Matrix SimTK::Constraint::calcAccelerationConstraintMatrixAt(const SimTK::State &)
-  // defined in simbody/internal/Constraint.h:441:8
-  t18.method("calcAccelerationConstraintMatrixAt", static_cast<SimTK::Matrix (SimTK::Constraint::*)(const SimTK::State &)  const>(&SimTK::Constraint::calcAccelerationConstraintMatrixAt));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("void SimTK::Constraint::setIsConditional(bool) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Constraint::setIsConditional(bool)
-  // defined in simbody/internal/Constraint.h:447:6
-  t18.method("setIsConditional", static_cast<void (SimTK::Constraint::*)(bool) >(&SimTK::Constraint::setIsConditional));
-  CLEAR_DEBUG_MSG();
-
-  DEBUG_MSG("bool SimTK::Constraint::isConditional() (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::Constraint::isConditional()
-  // defined in simbody/internal/Constraint.h:449:6
-  t18.method("isConditional", static_cast<bool (SimTK::Constraint::*)()  const>(&SimTK::Constraint::isConditional));
-  CLEAR_DEBUG_MSG();
-
-  /* End of SimTK::Constraint class method wrappers
-   **********************************************************************/
-
 
   /**********************************************************************/
   /* Wrappers for the methods of class SimTK::UnilateralContact
@@ -1993,23 +1607,23 @@ void define_simbody_SimbodyMatterSubsystem(jlcxx::Module& types, jlcxx::TypeWrap
 
   DEBUG_MSG("void SimTK::SimbodyMatterSubtree::SimbodyMatterSubtree(const SimTK::SimbodyMatterSubtree &) (" __HERE__ ")");
   // defined in simbody/internal/SimbodyMatterSubtree.h:112:5
-  t28.constructor<const SimTK::SimbodyMatterSubtree &>();
+  subtree.constructor<const SimTK::SimbodyMatterSubtree &>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::SimbodyMatterSubtree::SimbodyMatterSubtree(const SimTK::SimbodyMatterSubsystem &) (" __HERE__ ")");
   // defined in simbody/internal/SimbodyMatterSubtree.h:116:14
-  t28.constructor<const SimTK::SimbodyMatterSubsystem &>();
+  subtree.constructor<const SimTK::SimbodyMatterSubsystem &>();
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::SimbodyMatterSubtree::SimbodyMatterSubtree(const SimTK::SimbodyMatterSubsystem &, const SimTK::Array_<SimTK::MobilizedBodyIndex> &) (" __HERE__ ")");
   // defined in simbody/internal/SimbodyMatterSubtree.h:117:5
-  t28.constructor<const SimTK::SimbodyMatterSubsystem &, const SimTK::Array_<SimTK::MobilizedBodyIndex> &>();
+  subtree.constructor<const SimTK::SimbodyMatterSubsystem &, const SimTK::Array_<SimTK::MobilizedBodyIndex> &>();
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("void SimTK::SimbodyMatterSubtree::SimbodyMatterSubtree(const SimTK::SimbodyMatterSubsystem &, const SimTK::Array_<int> &) (" __HERE__ ")");
   // defined in simbody/internal/SimbodyMatterSubtree.h:117:5
-  t28.constructor([] (const SimTK::SimbodyMatterSubsystem & system, const SimTK::Array_<int> & terminalBodies) -> SimTK::SimbodyMatterSubtree* {
+  subtree.constructor([] (const SimTK::SimbodyMatterSubsystem & system, const SimTK::Array_<int> & terminalBodies) -> SimTK::SimbodyMatterSubtree* {
     return new SimTK::SimbodyMatterSubtree(system, reinterpret_cast<const SimTK::Array_<SimTK::MobilizedBodyIndex> &>(terminalBodies));
   });
   CLEAR_DEBUG_MSG();
@@ -2018,63 +1632,63 @@ void define_simbody_SimbodyMatterSubsystem(jlcxx::Module& types, jlcxx::TypeWrap
   DEBUG_MSG("SimTK::SimbodyMatterSubtree & SimTK::SimbodyMatterSubtree::operator=(const SimTK::SimbodyMatterSubtree &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::SimbodyMatterSubtree & SimTK::SimbodyMatterSubtree::operator=(const SimTK::SimbodyMatterSubtree &)
   // defined in simbody/internal/SimbodyMatterSubtree.h:113:27
-  t28.method("set!", static_cast<SimTK::SimbodyMatterSubtree & (SimTK::SimbodyMatterSubtree::*)(const SimTK::SimbodyMatterSubtree &) >(&SimTK::SimbodyMatterSubtree::operator=));
+  subtree.method("set!", static_cast<SimTK::SimbodyMatterSubtree & (SimTK::SimbodyMatterSubtree::*)(const SimTK::SimbodyMatterSubtree &) >(&SimTK::SimbodyMatterSubtree::operator=));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::SimbodyMatterSubtree::setSimbodyMatterSubsystem(const SimTK::SimbodyMatterSubsystem &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::SimbodyMatterSubtree::setSimbodyMatterSubsystem(const SimTK::SimbodyMatterSubsystem &)
   // defined in simbody/internal/SimbodyMatterSubtree.h:120:10
-  t28.method("setSimbodyMatterSubsystem", static_cast<void (SimTK::SimbodyMatterSubtree::*)(const SimTK::SimbodyMatterSubsystem &) >(&SimTK::SimbodyMatterSubtree::setSimbodyMatterSubsystem));
+  subtree.method("setSimbodyMatterSubsystem", static_cast<void (SimTK::SimbodyMatterSubtree::*)(const SimTK::SimbodyMatterSubsystem &) >(&SimTK::SimbodyMatterSubtree::setSimbodyMatterSubsystem));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::SimbodyMatterSubsystem & SimTK::SimbodyMatterSubtree::getSimbodyMatterSubsystem() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::SimbodyMatterSubsystem & SimTK::SimbodyMatterSubtree::getSimbodyMatterSubsystem()
   // defined in simbody/internal/SimbodyMatterSubtree.h:121:35
-  t28.method("getSimbodyMatterSubsystem", static_cast<const SimTK::SimbodyMatterSubsystem & (SimTK::SimbodyMatterSubtree::*)()  const>(&SimTK::SimbodyMatterSubtree::getSimbodyMatterSubsystem));
+  subtree.method("getSimbodyMatterSubsystem", static_cast<const SimTK::SimbodyMatterSubsystem & (SimTK::SimbodyMatterSubtree::*)()  const>(&SimTK::SimbodyMatterSubtree::getSimbodyMatterSubsystem));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::SimbodyMatterSubtree::clear() (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::SimbodyMatterSubtree::clear()
   // defined in simbody/internal/SimbodyMatterSubtree.h:125:10
-  t28.method("clear", static_cast<void (SimTK::SimbodyMatterSubtree::*)() >(&SimTK::SimbodyMatterSubtree::clear));
+  subtree.method("clear", static_cast<void (SimTK::SimbodyMatterSubtree::*)() >(&SimTK::SimbodyMatterSubtree::clear));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::SimbodyMatterSubtree & SimTK::SimbodyMatterSubtree::addTerminalBody(SimTK::MobilizedBodyIndex) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::SimbodyMatterSubtree & SimTK::SimbodyMatterSubtree::addTerminalBody(SimTK::MobilizedBodyIndex)
   // defined in simbody/internal/SimbodyMatterSubtree.h:127:27
-  t28.method("addTerminalBody", static_cast<SimTK::SimbodyMatterSubtree & (SimTK::SimbodyMatterSubtree::*)(SimTK::MobilizedBodyIndex) >(&SimTK::SimbodyMatterSubtree::addTerminalBody));
+  subtree.method("addTerminalBody", static_cast<SimTK::SimbodyMatterSubtree & (SimTK::SimbodyMatterSubtree::*)(SimTK::MobilizedBodyIndex) >(&SimTK::SimbodyMatterSubtree::addTerminalBody));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("SimTK::SimbodyMatterSubtree & SimTK::SimbodyMatterSubtree::addTerminalBody(int) (" __HERE__ ")");
   // defined in simbody/internal/SimbodyMatterSubtree.h:127:27
-  t28.method("addTerminalBody", reinterpret_cast<SimTK::SimbodyMatterSubtree & (SimTK::SimbodyMatterSubtree::*)(int) >(&SimTK::SimbodyMatterSubtree::addTerminalBody));
+  subtree.method("addTerminalBody", reinterpret_cast<SimTK::SimbodyMatterSubtree & (SimTK::SimbodyMatterSubtree::*)(int) >(&SimTK::SimbodyMatterSubtree::addTerminalBody));
   CLEAR_DEBUG_MSG();
   #endif
 
   DEBUG_MSG("void SimTK::SimbodyMatterSubtree::realizeTopology() (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::SimbodyMatterSubtree::realizeTopology()
   // defined in simbody/internal/SimbodyMatterSubtree.h:129:10
-  t28.method("realizeTopology", static_cast<void (SimTK::SimbodyMatterSubtree::*)() >(&SimTK::SimbodyMatterSubtree::realizeTopology));
+  subtree.method("realizeTopology", static_cast<void (SimTK::SimbodyMatterSubtree::*)() >(&SimTK::SimbodyMatterSubtree::realizeTopology));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("int SimTK::SimbodyMatterSubtree::getNumSubtreeBodies() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::SimbodyMatterSubtree::getNumSubtreeBodies()
   // defined in simbody/internal/SimbodyMatterSubtree.h:131:9
-  t28.method("getNumSubtreeBodies", static_cast<int (SimTK::SimbodyMatterSubtree::*)()  const>(&SimTK::SimbodyMatterSubtree::getNumSubtreeBodies));
+  subtree.method("getNumSubtreeBodies", static_cast<int (SimTK::SimbodyMatterSubtree::*)()  const>(&SimTK::SimbodyMatterSubtree::getNumSubtreeBodies));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::MobilizedBodyIndex SimTK::SimbodyMatterSubtree::getAncestorMobilizedBodyIndex() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::MobilizedBodyIndex SimTK::SimbodyMatterSubtree::getAncestorMobilizedBodyIndex()
   // defined in simbody/internal/SimbodyMatterSubtree.h:132:24
-  t28.method("getAncestorMobilizedBodyIndex", static_cast<SimTK::MobilizedBodyIndex (SimTK::SimbodyMatterSubtree::*)()  const>(&SimTK::SimbodyMatterSubtree::getAncestorMobilizedBodyIndex));
+  subtree.method("getAncestorMobilizedBodyIndex", static_cast<SimTK::MobilizedBodyIndex (SimTK::SimbodyMatterSubtree::*)()  const>(&SimTK::SimbodyMatterSubtree::getAncestorMobilizedBodyIndex));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("int SimTK::SimbodyMatterSubtree::getAncestorMobilizedBodyIndex() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::SimbodyMatterSubtree::getAncestorMobilizedBodyIndex()
   // defined in simbody/internal/SimbodyMatterSubtree.h:132:24
-  t28.method("getAncestorMobilizedBodyIndex", reinterpret_cast<int (SimTK::SimbodyMatterSubtree::*)()  const>(&SimTK::SimbodyMatterSubtree::getAncestorMobilizedBodyIndex));
+  subtree.method("getAncestorMobilizedBodyIndex", reinterpret_cast<int (SimTK::SimbodyMatterSubtree::*)()  const>(&SimTK::SimbodyMatterSubtree::getAncestorMobilizedBodyIndex));
   CLEAR_DEBUG_MSG();
   #endif
 
@@ -2082,13 +1696,13 @@ void define_simbody_SimbodyMatterSubsystem(jlcxx::Module& types, jlcxx::TypeWrap
   DEBUG_MSG("const SimTK::Array_<SimTK::MobilizedBodyIndex> & SimTK::SimbodyMatterSubtree::getTerminalBodies() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Array_<SimTK::MobilizedBodyIndex> & SimTK::SimbodyMatterSubtree::getTerminalBodies()
   // defined in simbody/internal/SimbodyMatterSubtree.h:136:39
-  t28.method("getTerminalBodies", static_cast<const SimTK::Array_<SimTK::MobilizedBodyIndex> & (SimTK::SimbodyMatterSubtree::*)()  const>(&SimTK::SimbodyMatterSubtree::getTerminalBodies));
+  subtree.method("getTerminalBodies", static_cast<const SimTK::Array_<SimTK::MobilizedBodyIndex> & (SimTK::SimbodyMatterSubtree::*)()  const>(&SimTK::SimbodyMatterSubtree::getTerminalBodies));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("const SimTK::Array_<int> & SimTK::SimbodyMatterSubtree::getTerminalBodies() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Array_<int> & SimTK::SimbodyMatterSubtree::getTerminalBodies()
   // defined in simbody/internal/SimbodyMatterSubtree.h:136:39
-  t28.method("getTerminalBodies", reinterpret_cast<const SimTK::Array_<int> & (SimTK::SimbodyMatterSubtree::*)()  const>(&SimTK::SimbodyMatterSubtree::getTerminalBodies));
+  subtree.method("getTerminalBodies", reinterpret_cast<const SimTK::Array_<int> & (SimTK::SimbodyMatterSubtree::*)()  const>(&SimTK::SimbodyMatterSubtree::getTerminalBodies));
   CLEAR_DEBUG_MSG();
   #endif
 
@@ -2096,13 +1710,13 @@ void define_simbody_SimbodyMatterSubsystem(jlcxx::Module& types, jlcxx::TypeWrap
   DEBUG_MSG("const SimTK::Array_<SimTK::MobilizedBodyIndex> & SimTK::SimbodyMatterSubtree::getAllBodies() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Array_<SimTK::MobilizedBodyIndex> & SimTK::SimbodyMatterSubtree::getAllBodies()
   // defined in simbody/internal/SimbodyMatterSubtree.h:140:39
-  t28.method("getAllBodies", static_cast<const SimTK::Array_<SimTK::MobilizedBodyIndex> & (SimTK::SimbodyMatterSubtree::*)()  const>(&SimTK::SimbodyMatterSubtree::getAllBodies));
+  subtree.method("getAllBodies", static_cast<const SimTK::Array_<SimTK::MobilizedBodyIndex> & (SimTK::SimbodyMatterSubtree::*)()  const>(&SimTK::SimbodyMatterSubtree::getAllBodies));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("const SimTK::Array_<int> & SimTK::SimbodyMatterSubtree::getAllBodies() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Array_<int> & SimTK::SimbodyMatterSubtree::getAllBodies()
   // defined in simbody/internal/SimbodyMatterSubtree.h:140:39
-  t28.method("getAllBodies", reinterpret_cast<const SimTK::Array_<int> & (SimTK::SimbodyMatterSubtree::*)()  const>(&SimTK::SimbodyMatterSubtree::getAllBodies));
+  subtree.method("getAllBodies", reinterpret_cast<const SimTK::Array_<int> & (SimTK::SimbodyMatterSubtree::*)()  const>(&SimTK::SimbodyMatterSubtree::getAllBodies));
   CLEAR_DEBUG_MSG();
   #endif
 
@@ -2110,13 +1724,13 @@ void define_simbody_SimbodyMatterSubsystem(jlcxx::Module& types, jlcxx::TypeWrap
   DEBUG_MSG("SimTK::SubtreeBodyIndex SimTK::SimbodyMatterSubtree::getParentSubtreeBodyIndex(SimTK::SubtreeBodyIndex) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::SubtreeBodyIndex SimTK::SimbodyMatterSubtree::getParentSubtreeBodyIndex(SimTK::SubtreeBodyIndex)
   // defined in simbody/internal/SimbodyMatterSubtree.h:143:22
-  t28.method("getParentSubtreeBodyIndex", static_cast<SimTK::SubtreeBodyIndex (SimTK::SimbodyMatterSubtree::*)(SimTK::SubtreeBodyIndex)  const>(&SimTK::SimbodyMatterSubtree::getParentSubtreeBodyIndex));
+  subtree.method("getParentSubtreeBodyIndex", static_cast<SimTK::SubtreeBodyIndex (SimTK::SimbodyMatterSubtree::*)(SimTK::SubtreeBodyIndex)  const>(&SimTK::SimbodyMatterSubtree::getParentSubtreeBodyIndex));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("int SimTK::SimbodyMatterSubtree::getParentSubtreeBodyIndex(int) (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::SimbodyMatterSubtree::getParentSubtreeBodyIndex(int)
   // defined in simbody/internal/SimbodyMatterSubtree.h:143:22
-  t28.method("getParentSubtreeBodyIndex", reinterpret_cast<int (SimTK::SimbodyMatterSubtree::*)(int)  const>(&SimTK::SimbodyMatterSubtree::getParentSubtreeBodyIndex));
+  subtree.method("getParentSubtreeBodyIndex", reinterpret_cast<int (SimTK::SimbodyMatterSubtree::*)(int)  const>(&SimTK::SimbodyMatterSubtree::getParentSubtreeBodyIndex));
   CLEAR_DEBUG_MSG();
   #endif
 
@@ -2124,115 +1738,115 @@ void define_simbody_SimbodyMatterSubsystem(jlcxx::Module& types, jlcxx::TypeWrap
   DEBUG_MSG("const SimTK::Array_<SimTK::SubtreeBodyIndex> & SimTK::SimbodyMatterSubtree::getChildSubtreeBodyIndices(SimTK::SubtreeBodyIndex) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Array_<SimTK::SubtreeBodyIndex> & SimTK::SimbodyMatterSubtree::getChildSubtreeBodyIndices(SimTK::SubtreeBodyIndex)
   // defined in simbody/internal/SimbodyMatterSubtree.h:145:9
-  t28.method("getChildSubtreeBodyIndices", static_cast<const SimTK::Array_<SimTK::SubtreeBodyIndex> & (SimTK::SimbodyMatterSubtree::*)(SimTK::SubtreeBodyIndex)  const>(&SimTK::SimbodyMatterSubtree::getChildSubtreeBodyIndices));
+  subtree.method("getChildSubtreeBodyIndices", static_cast<const SimTK::Array_<SimTK::SubtreeBodyIndex> & (SimTK::SimbodyMatterSubtree::*)(SimTK::SubtreeBodyIndex)  const>(&SimTK::SimbodyMatterSubtree::getChildSubtreeBodyIndices));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("const SimTK::Array_<int> & SimTK::SimbodyMatterSubtree::getChildSubtreeBodyIndices(int) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Array_<int> & SimTK::SimbodyMatterSubtree::getChildSubtreeBodyIndices(int)
   // defined in simbody/internal/SimbodyMatterSubtree.h:145:9
-  t28.method("getChildSubtreeBodyIndices", reinterpret_cast<const SimTK::Array_<int> & (SimTK::SimbodyMatterSubtree::*)(int)  const>(&SimTK::SimbodyMatterSubtree::getChildSubtreeBodyIndices));
+  subtree.method("getChildSubtreeBodyIndices", reinterpret_cast<const SimTK::Array_<int> & (SimTK::SimbodyMatterSubtree::*)(int)  const>(&SimTK::SimbodyMatterSubtree::getChildSubtreeBodyIndices));
   CLEAR_DEBUG_MSG();
   #endif
 
   DEBUG_MSG("void SimTK::SimbodyMatterSubtree::initializeSubtreeResults(const SimTK::State &, SimTK::SimbodyMatterSubtreeResults &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::SimbodyMatterSubtree::initializeSubtreeResults(const SimTK::State &, SimTK::SimbodyMatterSubtreeResults &)
   // defined in simbody/internal/SimbodyMatterSubtree.h:152:10
-  t28.method("initializeSubtreeResults", static_cast<void (SimTK::SimbodyMatterSubtree::*)(const SimTK::State &, SimTK::SimbodyMatterSubtreeResults &)  const>(&SimTK::SimbodyMatterSubtree::initializeSubtreeResults));
+  subtree.method("initializeSubtreeResults", static_cast<void (SimTK::SimbodyMatterSubtree::*)(const SimTK::State &, SimTK::SimbodyMatterSubtreeResults &)  const>(&SimTK::SimbodyMatterSubtree::initializeSubtreeResults));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::SimbodyMatterSubtree::isCompatibleSubtreeResults(const SimTK::SimbodyMatterSubtreeResults &) (" __HERE__ ")");
   // signature to use in the veto list: bool SimTK::SimbodyMatterSubtree::isCompatibleSubtreeResults(const SimTK::SimbodyMatterSubtreeResults &)
   // defined in simbody/internal/SimbodyMatterSubtree.h:158:10
-  t28.method("isCompatibleSubtreeResults", static_cast<bool (SimTK::SimbodyMatterSubtree::*)(const SimTK::SimbodyMatterSubtreeResults &)  const>(&SimTK::SimbodyMatterSubtree::isCompatibleSubtreeResults));
+  subtree.method("isCompatibleSubtreeResults", static_cast<bool (SimTK::SimbodyMatterSubtree::*)(const SimTK::SimbodyMatterSubtreeResults &)  const>(&SimTK::SimbodyMatterSubtree::isCompatibleSubtreeResults));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::SimbodyMatterSubtree::copyPositionsFromState(const SimTK::State &, SimTK::SimbodyMatterSubtreeResults &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::SimbodyMatterSubtree::copyPositionsFromState(const SimTK::State &, SimTK::SimbodyMatterSubtreeResults &)
   // defined in simbody/internal/SimbodyMatterSubtree.h:167:10
-  t28.method("copyPositionsFromState", static_cast<void (SimTK::SimbodyMatterSubtree::*)(const SimTK::State &, SimTK::SimbodyMatterSubtreeResults &)  const>(&SimTK::SimbodyMatterSubtree::copyPositionsFromState));
+  subtree.method("copyPositionsFromState", static_cast<void (SimTK::SimbodyMatterSubtree::*)(const SimTK::State &, SimTK::SimbodyMatterSubtreeResults &)  const>(&SimTK::SimbodyMatterSubtree::copyPositionsFromState));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::SimbodyMatterSubtree::calcPositionsFromSubtreeQ(const SimTK::State &, const SimTK::Vector &, SimTK::SimbodyMatterSubtreeResults &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::SimbodyMatterSubtree::calcPositionsFromSubtreeQ(const SimTK::State &, const SimTK::Vector &, SimTK::SimbodyMatterSubtreeResults &)
   // defined in simbody/internal/SimbodyMatterSubtree.h:172:10
-  t28.method("calcPositionsFromSubtreeQ", static_cast<void (SimTK::SimbodyMatterSubtree::*)(const SimTK::State &, const SimTK::Vector &, SimTK::SimbodyMatterSubtreeResults &)  const>(&SimTK::SimbodyMatterSubtree::calcPositionsFromSubtreeQ));
+  subtree.method("calcPositionsFromSubtreeQ", static_cast<void (SimTK::SimbodyMatterSubtree::*)(const SimTK::State &, const SimTK::Vector &, SimTK::SimbodyMatterSubtreeResults &)  const>(&SimTK::SimbodyMatterSubtree::calcPositionsFromSubtreeQ));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::SimbodyMatterSubtree::perturbPositions(const SimTK::State &, SimTK::SubtreeQIndex, SimTK::Real, SimTK::SimbodyMatterSubtreeResults &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::SimbodyMatterSubtree::perturbPositions(const SimTK::State &, SimTK::SubtreeQIndex, SimTK::Real, SimTK::SimbodyMatterSubtreeResults &)
   // defined in simbody/internal/SimbodyMatterSubtree.h:176:10
-  t28.method("perturbPositions", static_cast<void (SimTK::SimbodyMatterSubtree::*)(const SimTK::State &, SimTK::SubtreeQIndex, SimTK::Real, SimTK::SimbodyMatterSubtreeResults &)  const>(&SimTK::SimbodyMatterSubtree::perturbPositions));
+  subtree.method("perturbPositions", static_cast<void (SimTK::SimbodyMatterSubtree::*)(const SimTK::State &, SimTK::SubtreeQIndex, SimTK::Real, SimTK::SimbodyMatterSubtreeResults &)  const>(&SimTK::SimbodyMatterSubtree::perturbPositions));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("void SimTK::SimbodyMatterSubtree::perturbPositions(const SimTK::State &, int, SimTK::Real, SimTK::SimbodyMatterSubtreeResults &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::SimbodyMatterSubtree::perturbPositions(const SimTK::State &, int, SimTK::Real, SimTK::SimbodyMatterSubtreeResults &)
   // defined in simbody/internal/SimbodyMatterSubtree.h:176:10
-  t28.method("perturbPositions", reinterpret_cast<void (SimTK::SimbodyMatterSubtree::*)(const SimTK::State &, int, SimTK::Real, SimTK::SimbodyMatterSubtreeResults &)  const>(&SimTK::SimbodyMatterSubtree::perturbPositions));
+  subtree.method("perturbPositions", reinterpret_cast<void (SimTK::SimbodyMatterSubtree::*)(const SimTK::State &, int, SimTK::Real, SimTK::SimbodyMatterSubtreeResults &)  const>(&SimTK::SimbodyMatterSubtree::perturbPositions));
   CLEAR_DEBUG_MSG();
   #endif
 
   DEBUG_MSG("void SimTK::SimbodyMatterSubtree::copyVelocitiesFromState(const SimTK::State &, SimTK::SimbodyMatterSubtreeResults &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::SimbodyMatterSubtree::copyVelocitiesFromState(const SimTK::State &, SimTK::SimbodyMatterSubtreeResults &)
   // defined in simbody/internal/SimbodyMatterSubtree.h:186:10
-  t28.method("copyVelocitiesFromState", static_cast<void (SimTK::SimbodyMatterSubtree::*)(const SimTK::State &, SimTK::SimbodyMatterSubtreeResults &)  const>(&SimTK::SimbodyMatterSubtree::copyVelocitiesFromState));
+  subtree.method("copyVelocitiesFromState", static_cast<void (SimTK::SimbodyMatterSubtree::*)(const SimTK::State &, SimTK::SimbodyMatterSubtreeResults &)  const>(&SimTK::SimbodyMatterSubtree::copyVelocitiesFromState));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::SimbodyMatterSubtree::calcVelocitiesFromSubtreeU(const SimTK::State &, const SimTK::Vector &, SimTK::SimbodyMatterSubtreeResults &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::SimbodyMatterSubtree::calcVelocitiesFromSubtreeU(const SimTK::State &, const SimTK::Vector &, SimTK::SimbodyMatterSubtreeResults &)
   // defined in simbody/internal/SimbodyMatterSubtree.h:191:10
-  t28.method("calcVelocitiesFromSubtreeU", static_cast<void (SimTK::SimbodyMatterSubtree::*)(const SimTK::State &, const SimTK::Vector &, SimTK::SimbodyMatterSubtreeResults &)  const>(&SimTK::SimbodyMatterSubtree::calcVelocitiesFromSubtreeU));
+  subtree.method("calcVelocitiesFromSubtreeU", static_cast<void (SimTK::SimbodyMatterSubtree::*)(const SimTK::State &, const SimTK::Vector &, SimTK::SimbodyMatterSubtreeResults &)  const>(&SimTK::SimbodyMatterSubtree::calcVelocitiesFromSubtreeU));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::SimbodyMatterSubtree::calcVelocitiesFromZeroU(const SimTK::State &, SimTK::SimbodyMatterSubtreeResults &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::SimbodyMatterSubtree::calcVelocitiesFromZeroU(const SimTK::State &, SimTK::SimbodyMatterSubtreeResults &)
   // defined in simbody/internal/SimbodyMatterSubtree.h:196:10
-  t28.method("calcVelocitiesFromZeroU", static_cast<void (SimTK::SimbodyMatterSubtree::*)(const SimTK::State &, SimTK::SimbodyMatterSubtreeResults &)  const>(&SimTK::SimbodyMatterSubtree::calcVelocitiesFromZeroU));
+  subtree.method("calcVelocitiesFromZeroU", static_cast<void (SimTK::SimbodyMatterSubtree::*)(const SimTK::State &, SimTK::SimbodyMatterSubtreeResults &)  const>(&SimTK::SimbodyMatterSubtree::calcVelocitiesFromZeroU));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::SimbodyMatterSubtree::perturbVelocities(const SimTK::State &, SimTK::SubtreeUIndex, SimTK::Real, SimTK::SimbodyMatterSubtreeResults &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::SimbodyMatterSubtree::perturbVelocities(const SimTK::State &, SimTK::SubtreeUIndex, SimTK::Real, SimTK::SimbodyMatterSubtreeResults &)
   // defined in simbody/internal/SimbodyMatterSubtree.h:200:10
-  t28.method("perturbVelocities", static_cast<void (SimTK::SimbodyMatterSubtree::*)(const SimTK::State &, SimTK::SubtreeUIndex, SimTK::Real, SimTK::SimbodyMatterSubtreeResults &)  const>(&SimTK::SimbodyMatterSubtree::perturbVelocities));
+  subtree.method("perturbVelocities", static_cast<void (SimTK::SimbodyMatterSubtree::*)(const SimTK::State &, SimTK::SubtreeUIndex, SimTK::Real, SimTK::SimbodyMatterSubtreeResults &)  const>(&SimTK::SimbodyMatterSubtree::perturbVelocities));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("void SimTK::SimbodyMatterSubtree::perturbVelocities(const SimTK::State &, int, SimTK::Real, SimTK::SimbodyMatterSubtreeResults &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::SimbodyMatterSubtree::perturbVelocities(const SimTK::State &, int, SimTK::Real, SimTK::SimbodyMatterSubtreeResults &)
   // defined in simbody/internal/SimbodyMatterSubtree.h:200:10
-  t28.method("perturbVelocities", reinterpret_cast<void (SimTK::SimbodyMatterSubtree::*)(const SimTK::State &, int, SimTK::Real, SimTK::SimbodyMatterSubtreeResults &)  const>(&SimTK::SimbodyMatterSubtree::perturbVelocities));
+  subtree.method("perturbVelocities", reinterpret_cast<void (SimTK::SimbodyMatterSubtree::*)(const SimTK::State &, int, SimTK::Real, SimTK::SimbodyMatterSubtreeResults &)  const>(&SimTK::SimbodyMatterSubtree::perturbVelocities));
   CLEAR_DEBUG_MSG();
   #endif
 
   DEBUG_MSG("void SimTK::SimbodyMatterSubtree::copyAccelerationsFromState(const SimTK::State &, SimTK::SimbodyMatterSubtreeResults &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::SimbodyMatterSubtree::copyAccelerationsFromState(const SimTK::State &, SimTK::SimbodyMatterSubtreeResults &)
   // defined in simbody/internal/SimbodyMatterSubtree.h:210:10
-  t28.method("copyAccelerationsFromState", static_cast<void (SimTK::SimbodyMatterSubtree::*)(const SimTK::State &, SimTK::SimbodyMatterSubtreeResults &)  const>(&SimTK::SimbodyMatterSubtree::copyAccelerationsFromState));
+  subtree.method("copyAccelerationsFromState", static_cast<void (SimTK::SimbodyMatterSubtree::*)(const SimTK::State &, SimTK::SimbodyMatterSubtreeResults &)  const>(&SimTK::SimbodyMatterSubtree::copyAccelerationsFromState));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::SimbodyMatterSubtree::calcAccelerationsFromSubtreeUDot(const SimTK::State &, const SimTK::Vector &, SimTK::SimbodyMatterSubtreeResults &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::SimbodyMatterSubtree::calcAccelerationsFromSubtreeUDot(const SimTK::State &, const SimTK::Vector &, SimTK::SimbodyMatterSubtreeResults &)
   // defined in simbody/internal/SimbodyMatterSubtree.h:215:10
-  t28.method("calcAccelerationsFromSubtreeUDot", static_cast<void (SimTK::SimbodyMatterSubtree::*)(const SimTK::State &, const SimTK::Vector &, SimTK::SimbodyMatterSubtreeResults &)  const>(&SimTK::SimbodyMatterSubtree::calcAccelerationsFromSubtreeUDot));
+  subtree.method("calcAccelerationsFromSubtreeUDot", static_cast<void (SimTK::SimbodyMatterSubtree::*)(const SimTK::State &, const SimTK::Vector &, SimTK::SimbodyMatterSubtreeResults &)  const>(&SimTK::SimbodyMatterSubtree::calcAccelerationsFromSubtreeUDot));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::SimbodyMatterSubtree::calcAccelerationsFromZeroUDot(const SimTK::State &, SimTK::SimbodyMatterSubtreeResults &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::SimbodyMatterSubtree::calcAccelerationsFromZeroUDot(const SimTK::State &, SimTK::SimbodyMatterSubtreeResults &)
   // defined in simbody/internal/SimbodyMatterSubtree.h:221:10
-  t28.method("calcAccelerationsFromZeroUDot", static_cast<void (SimTK::SimbodyMatterSubtree::*)(const SimTK::State &, SimTK::SimbodyMatterSubtreeResults &)  const>(&SimTK::SimbodyMatterSubtree::calcAccelerationsFromZeroUDot));
+  subtree.method("calcAccelerationsFromZeroUDot", static_cast<void (SimTK::SimbodyMatterSubtree::*)(const SimTK::State &, SimTK::SimbodyMatterSubtreeResults &)  const>(&SimTK::SimbodyMatterSubtree::calcAccelerationsFromZeroUDot));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::SimbodyMatterSubtree::perturbAccelerations(const SimTK::State &, SimTK::SubtreeUIndex, SimTK::Real, SimTK::SimbodyMatterSubtreeResults &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::SimbodyMatterSubtree::perturbAccelerations(const SimTK::State &, SimTK::SubtreeUIndex, SimTK::Real, SimTK::SimbodyMatterSubtreeResults &)
   // defined in simbody/internal/SimbodyMatterSubtree.h:225:10
-  t28.method("perturbAccelerations", static_cast<void (SimTK::SimbodyMatterSubtree::*)(const SimTK::State &, SimTK::SubtreeUIndex, SimTK::Real, SimTK::SimbodyMatterSubtreeResults &)  const>(&SimTK::SimbodyMatterSubtree::perturbAccelerations));
+  subtree.method("perturbAccelerations", static_cast<void (SimTK::SimbodyMatterSubtree::*)(const SimTK::State &, SimTK::SubtreeUIndex, SimTK::Real, SimTK::SimbodyMatterSubtreeResults &)  const>(&SimTK::SimbodyMatterSubtree::perturbAccelerations));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("void SimTK::SimbodyMatterSubtree::perturbAccelerations(const SimTK::State &, int, SimTK::Real, SimTK::SimbodyMatterSubtreeResults &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::SimbodyMatterSubtree::perturbAccelerations(const SimTK::State &, int, SimTK::Real, SimTK::SimbodyMatterSubtreeResults &)
   // defined in simbody/internal/SimbodyMatterSubtree.h:225:10
-  t28.method("perturbAccelerations", reinterpret_cast<void (SimTK::SimbodyMatterSubtree::*)(const SimTK::State &, int, SimTK::Real, SimTK::SimbodyMatterSubtreeResults &)  const>(&SimTK::SimbodyMatterSubtree::perturbAccelerations));
+  subtree.method("perturbAccelerations", reinterpret_cast<void (SimTK::SimbodyMatterSubtree::*)(const SimTK::State &, int, SimTK::Real, SimTK::SimbodyMatterSubtreeResults &)  const>(&SimTK::SimbodyMatterSubtree::perturbAccelerations));
   CLEAR_DEBUG_MSG();
   #endif
 
@@ -2247,128 +1861,128 @@ void define_simbody_SimbodyMatterSubsystem(jlcxx::Module& types, jlcxx::TypeWrap
 
   DEBUG_MSG("void SimTK::SimbodyMatterSubtreeResults::SimbodyMatterSubtreeResults(const SimTK::SimbodyMatterSubtreeResults &) (" __HERE__ ")");
   // defined in simbody/internal/SimbodyMatterSubtree.h:245:5
-  t30.constructor<const SimTK::SimbodyMatterSubtreeResults &>();
+  stresults.constructor<const SimTK::SimbodyMatterSubtreeResults &>();
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::SimbodyMatterSubtreeResults & SimTK::SimbodyMatterSubtreeResults::operator=(const SimTK::SimbodyMatterSubtreeResults &) (" __HERE__ ")");
   // signature to use in the veto list: SimTK::SimbodyMatterSubtreeResults & SimTK::SimbodyMatterSubtreeResults::operator=(const SimTK::SimbodyMatterSubtreeResults &)
   // defined in simbody/internal/SimbodyMatterSubtree.h:246:34
-  t30.method("set!", static_cast<SimTK::SimbodyMatterSubtreeResults & (SimTK::SimbodyMatterSubtreeResults::*)(const SimTK::SimbodyMatterSubtreeResults &) >(&SimTK::SimbodyMatterSubtreeResults::operator=));
+  stresults.method("set!", static_cast<SimTK::SimbodyMatterSubtreeResults & (SimTK::SimbodyMatterSubtreeResults::*)(const SimTK::SimbodyMatterSubtreeResults &) >(&SimTK::SimbodyMatterSubtreeResults::operator=));
   CLEAR_DEBUG_MSG();
 
   // DEBUG_MSG("void SimTK::SimbodyMatterSubtreeResults::clear() (" __HERE__ ")");
   // // signature to use in the veto list: void SimTK::SimbodyMatterSubtreeResults::clear()
   // // defined in simbody/internal/SimbodyMatterSubtree.h:249:10
-  // t30.method("clear", static_cast<void (SimTK::SimbodyMatterSubtreeResults::*)() >(&SimTK::SimbodyMatterSubtreeResults::clear));
+  // stresults.method("clear", static_cast<void (SimTK::SimbodyMatterSubtreeResults::*)() >(&SimTK::SimbodyMatterSubtreeResults::clear));
   // CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::SimbodyMatterSubtreeResults::reallocateBodies(int) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::SimbodyMatterSubtreeResults::reallocateBodies(int)
   // defined in simbody/internal/SimbodyMatterSubtree.h:251:10
-  t30.method("reallocateBodies", static_cast<void (SimTK::SimbodyMatterSubtreeResults::*)(int) >(&SimTK::SimbodyMatterSubtreeResults::reallocateBodies));
+  stresults.method("reallocateBodies", static_cast<void (SimTK::SimbodyMatterSubtreeResults::*)(int) >(&SimTK::SimbodyMatterSubtreeResults::reallocateBodies));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::SimbodyMatterSubtreeResults::addMobilities(SimTK::SubtreeBodyIndex, SimTK::QIndex, int, SimTK::UIndex, int) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::SimbodyMatterSubtreeResults::addMobilities(SimTK::SubtreeBodyIndex, SimTK::QIndex, int, SimTK::UIndex, int)
   // defined in simbody/internal/SimbodyMatterSubtree.h:252:10
-  t30.method("addMobilities", static_cast<void (SimTK::SimbodyMatterSubtreeResults::*)(SimTK::SubtreeBodyIndex, SimTK::QIndex, int, SimTK::UIndex, int) >(&SimTK::SimbodyMatterSubtreeResults::addMobilities));
+  stresults.method("addMobilities", static_cast<void (SimTK::SimbodyMatterSubtreeResults::*)(SimTK::SubtreeBodyIndex, SimTK::QIndex, int, SimTK::UIndex, int) >(&SimTK::SimbodyMatterSubtreeResults::addMobilities));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("void SimTK::SimbodyMatterSubtreeResults::addMobilities(int, int, int, int, int) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::SimbodyMatterSubtreeResults::addMobilities(int, int, int, int, int)
   // defined in simbody/internal/SimbodyMatterSubtree.h:252:10
-  t30.method("addMobilities", reinterpret_cast<void (SimTK::SimbodyMatterSubtreeResults::*)(int, int, int, int, int) >(&SimTK::SimbodyMatterSubtreeResults::addMobilities));
+  stresults.method("addMobilities", reinterpret_cast<void (SimTK::SimbodyMatterSubtreeResults::*)(int, int, int, int, int) >(&SimTK::SimbodyMatterSubtreeResults::addMobilities));
   CLEAR_DEBUG_MSG();
   #endif
 
   DEBUG_MSG("void SimTK::SimbodyMatterSubtreeResults::realizeModel(const SimTK::Vector &, const SimTK::Vector &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::SimbodyMatterSubtreeResults::realizeModel(const SimTK::Vector &, const SimTK::Vector &)
   // defined in simbody/internal/SimbodyMatterSubtree.h:253:10
-  t30.method("realizeModel", static_cast<void (SimTK::SimbodyMatterSubtreeResults::*)(const SimTK::Vector &, const SimTK::Vector &) >(&SimTK::SimbodyMatterSubtreeResults::realizeModel));
+  stresults.method("realizeModel", static_cast<void (SimTK::SimbodyMatterSubtreeResults::*)(const SimTK::Vector &, const SimTK::Vector &) >(&SimTK::SimbodyMatterSubtreeResults::realizeModel));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Stage SimTK::SimbodyMatterSubtreeResults::getStage() (" __HERE__ ")");
   // signature to use in the veto list: SimTK::Stage SimTK::SimbodyMatterSubtreeResults::getStage()
   // defined in simbody/internal/SimbodyMatterSubtree.h:255:11
-  t30.method("getStage", static_cast<SimTK::Stage (SimTK::SimbodyMatterSubtreeResults::*)()  const>(&SimTK::SimbodyMatterSubtreeResults::getStage));
+  stresults.method("getStage", static_cast<SimTK::Stage (SimTK::SimbodyMatterSubtreeResults::*)()  const>(&SimTK::SimbodyMatterSubtreeResults::getStage));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("int SimTK::SimbodyMatterSubtreeResults::getNumSubtreeBodies() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::SimbodyMatterSubtreeResults::getNumSubtreeBodies()
   // defined in simbody/internal/SimbodyMatterSubtree.h:257:9
-  t30.method("getNumSubtreeBodies", static_cast<int (SimTK::SimbodyMatterSubtreeResults::*)()  const>(&SimTK::SimbodyMatterSubtreeResults::getNumSubtreeBodies));
+  stresults.method("getNumSubtreeBodies", static_cast<int (SimTK::SimbodyMatterSubtreeResults::*)()  const>(&SimTK::SimbodyMatterSubtreeResults::getNumSubtreeBodies));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("int SimTK::SimbodyMatterSubtreeResults::getNumSubtreeQs() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::SimbodyMatterSubtreeResults::getNumSubtreeQs()
   // defined in simbody/internal/SimbodyMatterSubtree.h:258:9
-  t30.method("getNumSubtreeQs", static_cast<int (SimTK::SimbodyMatterSubtreeResults::*)()  const>(&SimTK::SimbodyMatterSubtreeResults::getNumSubtreeQs));
+  stresults.method("getNumSubtreeQs", static_cast<int (SimTK::SimbodyMatterSubtreeResults::*)()  const>(&SimTK::SimbodyMatterSubtreeResults::getNumSubtreeQs));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("int SimTK::SimbodyMatterSubtreeResults::getNumSubtreeUs() (" __HERE__ ")");
   // signature to use in the veto list: int SimTK::SimbodyMatterSubtreeResults::getNumSubtreeUs()
   // defined in simbody/internal/SimbodyMatterSubtree.h:259:9
-  t30.method("getNumSubtreeUs", static_cast<int (SimTK::SimbodyMatterSubtreeResults::*)()  const>(&SimTK::SimbodyMatterSubtreeResults::getNumSubtreeUs));
+  stresults.method("getNumSubtreeUs", static_cast<int (SimTK::SimbodyMatterSubtreeResults::*)()  const>(&SimTK::SimbodyMatterSubtreeResults::getNumSubtreeUs));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Vector & SimTK::SimbodyMatterSubtreeResults::getSubtreeQ() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Vector & SimTK::SimbodyMatterSubtreeResults::getSubtreeQ()
   // defined in simbody/internal/SimbodyMatterSubtree.h:261:23
-  t30.method("getSubtreeQ", static_cast<const SimTK::Vector & (SimTK::SimbodyMatterSubtreeResults::*)()  const>(&SimTK::SimbodyMatterSubtreeResults::getSubtreeQ));
+  stresults.method("getSubtreeQ", static_cast<const SimTK::Vector & (SimTK::SimbodyMatterSubtreeResults::*)()  const>(&SimTK::SimbodyMatterSubtreeResults::getSubtreeQ));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::Transform & SimTK::SimbodyMatterSubtreeResults::getSubtreeBodyTransform(SimTK::SubtreeBodyIndex) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Transform & SimTK::SimbodyMatterSubtreeResults::getSubtreeBodyTransform(SimTK::SubtreeBodyIndex)
   // defined in simbody/internal/SimbodyMatterSubtree.h:262:23
-  t30.method("getSubtreeBodyTransform", static_cast<const SimTK::Transform & (SimTK::SimbodyMatterSubtreeResults::*)(SimTK::SubtreeBodyIndex)  const>(&SimTK::SimbodyMatterSubtreeResults::getSubtreeBodyTransform));
+  stresults.method("getSubtreeBodyTransform", static_cast<const SimTK::Transform & (SimTK::SimbodyMatterSubtreeResults::*)(SimTK::SubtreeBodyIndex)  const>(&SimTK::SimbodyMatterSubtreeResults::getSubtreeBodyTransform));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("const SimTK::Transform & SimTK::SimbodyMatterSubtreeResults::getSubtreeBodyTransform(int) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Transform & SimTK::SimbodyMatterSubtreeResults::getSubtreeBodyTransform(int)
   // defined in simbody/internal/SimbodyMatterSubtree.h:262:23
-  t30.method("getSubtreeBodyTransform", reinterpret_cast<const SimTK::Transform & (SimTK::SimbodyMatterSubtreeResults::*)(int)  const>(&SimTK::SimbodyMatterSubtreeResults::getSubtreeBodyTransform));
+  stresults.method("getSubtreeBodyTransform", reinterpret_cast<const SimTK::Transform & (SimTK::SimbodyMatterSubtreeResults::*)(int)  const>(&SimTK::SimbodyMatterSubtreeResults::getSubtreeBodyTransform));
   CLEAR_DEBUG_MSG();
   #endif
 
   DEBUG_MSG("const SimTK::Vector & SimTK::SimbodyMatterSubtreeResults::getSubtreeU() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Vector & SimTK::SimbodyMatterSubtreeResults::getSubtreeU()
   // defined in simbody/internal/SimbodyMatterSubtree.h:264:23
-  t30.method("getSubtreeU", static_cast<const SimTK::Vector & (SimTK::SimbodyMatterSubtreeResults::*)()  const>(&SimTK::SimbodyMatterSubtreeResults::getSubtreeU));
+  stresults.method("getSubtreeU", static_cast<const SimTK::Vector & (SimTK::SimbodyMatterSubtreeResults::*)()  const>(&SimTK::SimbodyMatterSubtreeResults::getSubtreeU));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::SpatialVec & SimTK::SimbodyMatterSubtreeResults::getSubtreeBodyVelocity(SimTK::SubtreeBodyIndex) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::SpatialVec & SimTK::SimbodyMatterSubtreeResults::getSubtreeBodyVelocity(SimTK::SubtreeBodyIndex)
   // defined in simbody/internal/SimbodyMatterSubtree.h:265:23
-  t30.method("getSubtreeBodyVelocity", static_cast<const SimTK::SpatialVec & (SimTK::SimbodyMatterSubtreeResults::*)(SimTK::SubtreeBodyIndex)  const>(&SimTK::SimbodyMatterSubtreeResults::getSubtreeBodyVelocity));
+  stresults.method("getSubtreeBodyVelocity", static_cast<const SimTK::SpatialVec & (SimTK::SimbodyMatterSubtreeResults::*)(SimTK::SubtreeBodyIndex)  const>(&SimTK::SimbodyMatterSubtreeResults::getSubtreeBodyVelocity));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("const SimTK::SpatialVec & SimTK::SimbodyMatterSubtreeResults::getSubtreeBodyVelocity(int) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::SpatialVec & SimTK::SimbodyMatterSubtreeResults::getSubtreeBodyVelocity(int)
   // defined in simbody/internal/SimbodyMatterSubtree.h:265:23
-  t30.method("getSubtreeBodyVelocity", reinterpret_cast<const SimTK::SpatialVec & (SimTK::SimbodyMatterSubtreeResults::*)(int)  const>(&SimTK::SimbodyMatterSubtreeResults::getSubtreeBodyVelocity));
+  stresults.method("getSubtreeBodyVelocity", reinterpret_cast<const SimTK::SpatialVec & (SimTK::SimbodyMatterSubtreeResults::*)(int)  const>(&SimTK::SimbodyMatterSubtreeResults::getSubtreeBodyVelocity));
   CLEAR_DEBUG_MSG();
   #endif
 
   DEBUG_MSG("const SimTK::Vector & SimTK::SimbodyMatterSubtreeResults::getSubtreeUDot() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Vector & SimTK::SimbodyMatterSubtreeResults::getSubtreeUDot()
   // defined in simbody/internal/SimbodyMatterSubtree.h:267:23
-  t30.method("getSubtreeUDot", static_cast<const SimTK::Vector & (SimTK::SimbodyMatterSubtreeResults::*)()  const>(&SimTK::SimbodyMatterSubtreeResults::getSubtreeUDot));
+  stresults.method("getSubtreeUDot", static_cast<const SimTK::Vector & (SimTK::SimbodyMatterSubtreeResults::*)()  const>(&SimTK::SimbodyMatterSubtreeResults::getSubtreeUDot));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::SpatialVec & SimTK::SimbodyMatterSubtreeResults::getSubtreeBodyAcceleration(SimTK::SubtreeBodyIndex) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::SpatialVec & SimTK::SimbodyMatterSubtreeResults::getSubtreeBodyAcceleration(SimTK::SubtreeBodyIndex)
   // defined in simbody/internal/SimbodyMatterSubtree.h:268:23
-  t30.method("getSubtreeBodyAcceleration", static_cast<const SimTK::SpatialVec & (SimTK::SimbodyMatterSubtreeResults::*)(SimTK::SubtreeBodyIndex)  const>(&SimTK::SimbodyMatterSubtreeResults::getSubtreeBodyAcceleration));
+  stresults.method("getSubtreeBodyAcceleration", static_cast<const SimTK::SpatialVec & (SimTK::SimbodyMatterSubtreeResults::*)(SimTK::SubtreeBodyIndex)  const>(&SimTK::SimbodyMatterSubtreeResults::getSubtreeBodyAcceleration));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("const SimTK::SpatialVec & SimTK::SimbodyMatterSubtreeResults::getSubtreeBodyAcceleration(int) (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::SpatialVec & SimTK::SimbodyMatterSubtreeResults::getSubtreeBodyAcceleration(int)
   // defined in simbody/internal/SimbodyMatterSubtree.h:268:23
-  t30.method("getSubtreeBodyAcceleration", reinterpret_cast<const SimTK::SpatialVec & (SimTK::SimbodyMatterSubtreeResults::*)(int)  const>(&SimTK::SimbodyMatterSubtreeResults::getSubtreeBodyAcceleration));
+  stresults.method("getSubtreeBodyAcceleration", reinterpret_cast<const SimTK::SpatialVec & (SimTK::SimbodyMatterSubtreeResults::*)(int)  const>(&SimTK::SimbodyMatterSubtreeResults::getSubtreeBodyAcceleration));
   CLEAR_DEBUG_MSG();
   #endif
 
@@ -2376,13 +1990,13 @@ void define_simbody_SimbodyMatterSubsystem(jlcxx::Module& types, jlcxx::TypeWrap
   DEBUG_MSG("const SimTK::Array_<SimTK::QIndex> & SimTK::SimbodyMatterSubtreeResults::getQSubset() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Array_<SimTK::QIndex> & SimTK::SimbodyMatterSubtreeResults::getQSubset()
   // defined in simbody/internal/SimbodyMatterSubtree.h:271:27
-  t30.method("getQSubset", static_cast<const SimTK::Array_<SimTK::QIndex> & (SimTK::SimbodyMatterSubtreeResults::*)()  const>(&SimTK::SimbodyMatterSubtreeResults::getQSubset));
+  stresults.method("getQSubset", static_cast<const SimTK::Array_<SimTK::QIndex> & (SimTK::SimbodyMatterSubtreeResults::*)()  const>(&SimTK::SimbodyMatterSubtreeResults::getQSubset));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("const SimTK::Array_<SimTK::QIndex> & SimTK::SimbodyMatterSubtreeResults::getQSubset() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Array_<SimTK::QIndex> & SimTK::SimbodyMatterSubtreeResults::getQSubset()
   // defined in simbody/internal/SimbodyMatterSubtree.h:271:27
-  t30.method("getQSubset", reinterpret_cast<const SimTK::Array_<int> & (SimTK::SimbodyMatterSubtreeResults::*)()  const>(&SimTK::SimbodyMatterSubtreeResults::getQSubset));
+  stresults.method("getQSubset", reinterpret_cast<const SimTK::Array_<int> & (SimTK::SimbodyMatterSubtreeResults::*)()  const>(&SimTK::SimbodyMatterSubtreeResults::getQSubset));
   CLEAR_DEBUG_MSG();
   #endif
 
@@ -2390,13 +2004,13 @@ void define_simbody_SimbodyMatterSubsystem(jlcxx::Module& types, jlcxx::TypeWrap
   DEBUG_MSG("const SimTK::Array_<SimTK::UIndex> & SimTK::SimbodyMatterSubtreeResults::getUSubset() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Array_<SimTK::UIndex> & SimTK::SimbodyMatterSubtreeResults::getUSubset()
   // defined in simbody/internal/SimbodyMatterSubtree.h:272:27
-  t30.method("getUSubset", static_cast<const SimTK::Array_<SimTK::UIndex> & (SimTK::SimbodyMatterSubtreeResults::*)()  const>(&SimTK::SimbodyMatterSubtreeResults::getUSubset));
+  stresults.method("getUSubset", static_cast<const SimTK::Array_<SimTK::UIndex> & (SimTK::SimbodyMatterSubtreeResults::*)()  const>(&SimTK::SimbodyMatterSubtreeResults::getUSubset));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("const SimTK::Array_<int> & SimTK::SimbodyMatterSubtreeResults::getUSubset() (" __HERE__ ")");
   // signature to use in the veto list: const SimTK::Array_<int> & SimTK::SimbodyMatterSubtreeResults::getUSubset()
   // defined in simbody/internal/SimbodyMatterSubtree.h:272:27
-  t30.method("getUSubset", reinterpret_cast<const SimTK::Array_<int> & (SimTK::SimbodyMatterSubtreeResults::*)()  const>(&SimTK::SimbodyMatterSubtreeResults::getUSubset));
+  stresults.method("getUSubset", reinterpret_cast<const SimTK::Array_<int> & (SimTK::SimbodyMatterSubtreeResults::*)()  const>(&SimTK::SimbodyMatterSubtreeResults::getUSubset));
   CLEAR_DEBUG_MSG();
   #endif
 
@@ -2404,13 +2018,13 @@ void define_simbody_SimbodyMatterSubsystem(jlcxx::Module& types, jlcxx::TypeWrap
   DEBUG_MSG("void SimTK::SimbodyMatterSubtreeResults::findSubtreeBodyQ(SimTK::SubtreeBodyIndex, SimTK::SubtreeQIndex &, int &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::SimbodyMatterSubtreeResults::findSubtreeBodyQ(SimTK::SubtreeBodyIndex, SimTK::SubtreeQIndex &, int &)
   // defined in simbody/internal/SimbodyMatterSubtree.h:274:10
-  t30.method("findSubtreeBodyQ", static_cast<void (SimTK::SimbodyMatterSubtreeResults::*)(SimTK::SubtreeBodyIndex, SimTK::SubtreeQIndex &, int &)  const>(&SimTK::SimbodyMatterSubtreeResults::findSubtreeBodyQ));
+  stresults.method("findSubtreeBodyQ", static_cast<void (SimTK::SimbodyMatterSubtreeResults::*)(SimTK::SubtreeBodyIndex, SimTK::SubtreeQIndex &, int &)  const>(&SimTK::SimbodyMatterSubtreeResults::findSubtreeBodyQ));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("void SimTK::SimbodyMatterSubtreeResults::findSubtreeBodyQ(int, int &, int &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::SimbodyMatterSubtreeResults::findSubtreeBodyQ(int, int &, int &)
   // defined in simbody/internal/SimbodyMatterSubtree.h:274:10
-  t30.method("findSubtreeBodyQ", reinterpret_cast<void (SimTK::SimbodyMatterSubtreeResults::*)(int, int &, int &)  const>(&SimTK::SimbodyMatterSubtreeResults::findSubtreeBodyQ));
+  stresults.method("findSubtreeBodyQ", reinterpret_cast<void (SimTK::SimbodyMatterSubtreeResults::*)(int, int &, int &)  const>(&SimTK::SimbodyMatterSubtreeResults::findSubtreeBodyQ));
   CLEAR_DEBUG_MSG();
   #endif
 
@@ -2418,13 +2032,13 @@ void define_simbody_SimbodyMatterSubsystem(jlcxx::Module& types, jlcxx::TypeWrap
   DEBUG_MSG("void SimTK::SimbodyMatterSubtreeResults::findSubtreeBodyU(SimTK::SubtreeBodyIndex, SimTK::SubtreeUIndex &, int &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::SimbodyMatterSubtreeResults::findSubtreeBodyU(SimTK::SubtreeBodyIndex, SimTK::SubtreeUIndex &, int &)
   // defined in simbody/internal/SimbodyMatterSubtree.h:275:10
-  t30.method("findSubtreeBodyU", static_cast<void (SimTK::SimbodyMatterSubtreeResults::*)(SimTK::SubtreeBodyIndex, SimTK::SubtreeUIndex &, int &)  const>(&SimTK::SimbodyMatterSubtreeResults::findSubtreeBodyU));
+  stresults.method("findSubtreeBodyU", static_cast<void (SimTK::SimbodyMatterSubtreeResults::*)(SimTK::SubtreeBodyIndex, SimTK::SubtreeUIndex &, int &)  const>(&SimTK::SimbodyMatterSubtreeResults::findSubtreeBodyU));
   CLEAR_DEBUG_MSG();
   #else
   DEBUG_MSG("void SimTK::SimbodyMatterSubtreeResults::findSubtreeBodyU(int, int &, int &) (" __HERE__ ")");
   // signature to use in the veto list: void SimTK::SimbodyMatterSubtreeResults::findSubtreeBodyU(int, int &, int &)
   // defined in simbody/internal/SimbodyMatterSubtree.h:275:10
-  t30.method("findSubtreeBodyU", reinterpret_cast<void (SimTK::SimbodyMatterSubtreeResults::*)(int, int &, int &)  const>(&SimTK::SimbodyMatterSubtreeResults::findSubtreeBodyU));
+  stresults.method("findSubtreeBodyU", reinterpret_cast<void (SimTK::SimbodyMatterSubtreeResults::*)(int, int &, int &)  const>(&SimTK::SimbodyMatterSubtreeResults::findSubtreeBodyU));
   CLEAR_DEBUG_MSG();
   #endif
 

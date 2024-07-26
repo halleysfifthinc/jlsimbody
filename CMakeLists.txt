@@ -200,6 +200,27 @@ set(CXX_FILES
   src/jlsimbody/MobilizedBodies.cxx
   src/jlsimbody/TextDataEventReporter.cxx
   src/jlsimbody/TextDataEventReporter_JuliaUserFunction.cxx
+  src/jlsimbody/constraints/Constraint_Ball.cxx
+  src/jlsimbody/constraints/Constraint_ConstantAcceleration.cxx
+  src/jlsimbody/constraints/Constraint_ConstantAngle.cxx
+  src/jlsimbody/constraints/Constraint_ConstantCoordinate.cxx
+  src/jlsimbody/constraints/Constraint_ConstantOrientation.cxx
+  src/jlsimbody/constraints/Constraint_ConstantSpeed.cxx
+  src/jlsimbody/constraints/Constraint_CoordinateCoupler.cxx
+  src/jlsimbody/constraints/Constraint_Custom.cxx
+  src/jlsimbody/constraints/Constraint_LineOnLineContact.cxx
+  src/jlsimbody/constraints/Constraint_NoSlip1D.cxx
+  src/jlsimbody/constraints/Constraint_PointInPlane.cxx
+  src/jlsimbody/constraints/Constraint_PointOnLine.cxx
+  src/jlsimbody/constraints/Constraint_PointOnPlaneContact.cxx
+  src/jlsimbody/constraints/Constraint_PrescribedMotion.cxx
+  src/jlsimbody/constraints/Constraint_Rod.cxx
+  src/jlsimbody/constraints/Constraint_SpeedCoupler.cxx
+  src/jlsimbody/constraints/Constraint_SphereOnPlaneContact.cxx
+  src/jlsimbody/constraints/Constraint_SphereOnSphereContact.cxx
+  src/jlsimbody/constraints/Constraint_Weld.cxx
+  src/jlsimbody/constraints/Constraint.cxx
+  src/jlsimbody/Constraints.cxx
   src/jlsimbody/Assembler_and_related.cxx
   src/jlsimbody.cxx)
 
@@ -241,6 +262,7 @@ set(HEADER_FILES
   include/jlsimbody/MobilizedBodies.h
   include/jlsimbody/SimbodyMatterSubsystem.h
   include/jlsimbody/TextDataEventReporter.h
+  include/jlsimbody/Constraints.h
 )
 
 list(SORT CXX_FILES)

@@ -55,7 +55,12 @@ namespace jlcxx {
 }
 
 namespace jlsimbody{
-  JLSIMBODY_NO_EXPORT void define_simbody_SimbodyMatterSubsystem(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::SimbodyMatterSubsystem> &, const ArrayWrapper & array_wrapper);
+  JLSIMBODY_NO_EXPORT void define_simbody_SimbodyMatterSubsystem(
+    jlcxx::Module& types,
+    jlcxx::TypeWrapper<SimTK::SimbodyMatterSubsystem> & mattersubsys,
+    jlcxx::TypeWrapper<SimTK::SimbodyMatterSubtree> & subtree,
+    jlcxx::TypeWrapper<SimTK::SimbodyMatterSubtreeResults> & stresults,
+    const ArrayWrapper & array_wrapper);
 }
 
 #endif // _JLSIMBODY_SIMBODYMATTERSUBSYSTEM_H
