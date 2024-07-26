@@ -14,16 +14,6 @@
 #include "simmath/VerletIntegrator.h"
 
 namespace jlsimbody {
-
-    struct Wrapper{
-    Wrapper(jlcxx::Module& module): module_(module) {};
-    virtual ~Wrapper() {};
-    virtual void add_methods() const = 0;
-
-    protected:
-    jlcxx::Module& module_;
-    };
-
     JLSIMBODY_NO_EXPORT void define_simmath_Timestepper_and_Integrators(jlcxx::Module&);
 }
 

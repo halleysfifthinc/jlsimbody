@@ -37,10 +37,15 @@
 #include "jlsimbody/Assembler_and_related.h"
 #include "jlsimmath/Timestepper_and_Integrators.h"
 #include "jlsimmath/Optimizers.h"
+#include "jlsimbody/TextDataEventReporter.h"
 
 using namespace jlsimbody;
 
 JLCXX_MODULE define_julia_module(jlcxx::Module& types){
+
+  JuliaRealUserFunction::m_simbody_mod = types.julia_module();
+  JuliaVectorUserFunction::m_simbody_mod = types.julia_module();
+
   DEBUG_MSG("type SimTK::SimTKArrayView (" __HERE__ ")");
   // defined in SimTKcommon/internal/Array.h:845:35
   auto arrview = types.add_type<jlcxx::Parametric<jlcxx::TypeVar<1>,jlcxx::TypeVar<2>>,
@@ -94,6 +99,7 @@ JLCXX_MODULE define_julia_module(jlcxx::Module& types){
   abs_meas.template constructor<>();
 
   define_SimTKcommon_SystemSubsystem(types);
+  define_simbody_TextDataEventReporter_JuliaUserFunctions(types);
   define_SimTKcommon_Measure(types, abs_meas, array_wrapper);
   define_SimTKcommon_Function(types, array_wrapper);
 

@@ -14,6 +14,17 @@ namespace jlcxx {
   extern template void create_if_not_exists<std::vector<int>>();
 }
 
+namespace jlsimbody {
+    struct Wrapper{
+    Wrapper(jlcxx::Module& module): module_(module) {};
+    virtual ~Wrapper() {};
+    virtual void add_methods() const = 0;
+
+    protected:
+    jlcxx::Module& module_;
+    };
+}
+
 #ifdef VERBOSE_IMPORT
     namespace jlsimbody {
         static int r = 0;

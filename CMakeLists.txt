@@ -198,6 +198,8 @@ set(CXX_FILES
   src/jlsimbody/ForceSubsystems.cxx
   src/jlsimbody/MultibodySystem.cxx
   src/jlsimbody/MobilizedBodies.cxx
+  src/jlsimbody/TextDataEventReporter.cxx
+  src/jlsimbody/TextDataEventReporter_JuliaUserFunction.cxx
   src/jlsimbody/Assembler_and_related.cxx
   src/jlsimbody.cxx)
 
@@ -238,6 +240,7 @@ set(HEADER_FILES
   include/jlsimbody/MultibodySystem.h
   include/jlsimbody/MobilizedBodies.h
   include/jlsimbody/SimbodyMatterSubsystem.h
+  include/jlsimbody/TextDataEventReporter.h
 )
 
 list(SORT CXX_FILES)
