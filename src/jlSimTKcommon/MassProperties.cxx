@@ -85,6 +85,7 @@ void define_SimTKcommon_MassProperties(jlcxx::Module& types, const ArrayWrapper&
   types.method("-", static_cast<SimTK::Inertia_<double> (*)(const SimTK::Inertia_<double> &, const SimTK::Inertia_<double> &) >(&SimTK::operator-));
 
   types.method("*", static_cast<SimTK::Inertia_<double> (*)(const SimTK::Inertia_<double> &, const double &) >(&SimTK::operator*));
+  types.method("*", static_cast<SimTK::Inertia_<double> (*)(const double &, const SimTK::Inertia_<double> &) >(&SimTK::operator*));
   types.method("*", static_cast<SimTK::Vec<3,double> (*)(const SimTK::Inertia_<double> &, const SimTK::Vec<3,double> &) >(&SimTK::operator*));
   types.method("/", static_cast<SimTK::Inertia_<double> (*)(const SimTK::Inertia_<double> &, const double &) >(&SimTK::operator/));
   types.unset_override_module();

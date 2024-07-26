@@ -177,6 +177,7 @@ void define_SimTKcommon_Vec(jlcxx::Module& types, jlcxx::TypeWrapper<jlcxx::Para
   using array_types = jlcxx::ParameterList<SimTK::Vec<2,double>, SimTK::Vec<3,double>, const SimTK::Vec<3,double> *>;
   jlcxx::for_each_parameter_type<array_types>(array_wrapper);
   array_wrapper.template apply<SimTK::Vec<3,double>, int>();
+  array_wrapper.template apply<SimTK::Array_<SimTK::Vec<3,double>>>();
 
 }
 
