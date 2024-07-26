@@ -121,6 +121,7 @@ void define_SimTKcommon_Measure(jlcxx::Module& types, jlcxx::TypeWrapper<SimTK::
   // DEBUG_MSG("void SimTK::AbstractMeasure::AbstractMeasure(SimTK::AbstractMeasure::Implementation *) (" __HERE__ ")");
   // // defined in SimTKcommon/internal/Measure.h:164:14
   // abs_meas.constructor<SimTK::AbstractMeasure::Implementation *>();
+  // CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::AbstractMeasure::AbstractMeasure(const SimTK::AbstractMeasure &) (" __HERE__ ")");
   // defined in SimTKcommon/internal/Measure.h:174:5

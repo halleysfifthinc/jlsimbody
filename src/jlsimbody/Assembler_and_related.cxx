@@ -53,7 +53,7 @@ void define_simbody_Assembler_and_related(jlcxx::Module& types, const ArrayWrapp
   #endif
 
   study.constructor<SimTK::Study &>();
-  study.constructor<SimTK::System &>();
+  // study.constructor<SimTK::System &>();
 
   study.method("set!", static_cast<SimTK::Study & (SimTK::Study::*)(const SimTK::Study &) >(&SimTK::Study::operator=));
 

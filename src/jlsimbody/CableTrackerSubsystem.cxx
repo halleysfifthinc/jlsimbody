@@ -181,10 +181,10 @@ void define_simbody_CableTrackerSubsystem(jlcxx::Module& types){
    */
 
 
-  DEBUG_MSG("void SimTK::CableObstacle::CableObstacle(SimTK::CablePath &) (" __HERE__ ")");
-  // defined in simbody/internal/CablePath.h:219:10
-  t6.constructor<SimTK::CablePath &>();
-  CLEAR_DEBUG_MSG();
+  // DEBUG_MSG("void SimTK::CableObstacle::CableObstacle(SimTK::CablePath &) (" __HERE__ ")");
+  // // defined in simbody/internal/CablePath.h:219:10
+  // t6.constructor<SimTK::CablePath &>();
+  // CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::CableObstacle::CableObstacle(const SimTK::CableObstacle &) (" __HERE__ ")");
   // defined in simbody/internal/CablePath.h:222:1

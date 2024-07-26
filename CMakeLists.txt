@@ -318,6 +318,7 @@ endif()
 
 set(linker_is_mold "$<STREQUAL:${CMAKE_LINKER_TYPE},MOLD>")
 target_link_options(jlsimbody PRIVATE
+  $<${gen_jlsimbody_is_dev}:-Wl,--no-undefined;-Wl,--warn-unresolved-symbols>
   --for-linker=--compress-debug-sections=$<IF:${linker_is_mold},zstd,zlib> # GNU ld doesn't support zstd
   --for-linker=-flto
   --for-linker=--gc-sections
