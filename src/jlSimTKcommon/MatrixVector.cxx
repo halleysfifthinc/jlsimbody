@@ -47,13 +47,11 @@ void define_SimTKcommon_MatrixVector(jlcxx::Module& types){
     });
 
     DEBUG_MSG("const ELT & SimTK::Vector_::get(int) (" __HERE__ ")");
-    // signature to use in the veto list: const ELT & SimTK::Vector_::get(int)
     // defined in SimTKcommon/internal/Vector_.h:197:16
     wrapped.method("cppgetindex", static_cast<ELT & (WrappedType::*)(int) >(&WrappedType::operator[]));
     CLEAR_DEBUG_MSG();
 
     DEBUG_MSG("void SimTK::Vector_::set(int, const ELT &) (" __HERE__ ")");
-    // signature to use in the veto list: void SimTK::Vector_::set(int, const ELT &)
     // defined in SimTKcommon/internal/Vector_.h:199:10
     wrapped.method("cppsetindex!", static_cast<void (WrappedType::*)(int, const ELT &) >(&WrappedType::set));
     CLEAR_DEBUG_MSG();
@@ -155,13 +153,11 @@ void define_SimTKcommon_MatrixVector(jlcxx::Module& types){
     });
 
     DEBUG_MSG("const ELT & SimTK::Matrix_::get(int, int) (" __HERE__ ")");
-    // signature to use in the veto list: const ELT & SimTK::Matrix_::get(int, int)
     // defined in SimTKcommon/internal/Matrix_.h:141:16
     wrapped.method("cppgetindex", static_cast<ELT & (WrappedType::*)(int, int) >(&WrappedType::operator()));
     CLEAR_DEBUG_MSG();
 
     DEBUG_MSG("void SimTK::Matrix_::set(int, int, const ELT &) (" __HERE__ ")");
-    // signature to use in the veto list: void SimTK::Matrix_::set(int, int, const ELT &)
     // defined in SimTKcommon/internal/Matrix_.h:143:16
     wrapped.method("cppsetindex!", static_cast<void (WrappedType::*)(int, int, const ELT &) >(&WrappedType::set));
     CLEAR_DEBUG_MSG();

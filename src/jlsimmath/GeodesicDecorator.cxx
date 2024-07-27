@@ -22,7 +22,6 @@ void define_simmath_DecoratorGenerators(jlcxx::Module& types){
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::GeodesicDecorator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::GeodesicDecorator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &)
   // defined in simmath/internal/Geodesic.h:279:18
   t1.method("generateDecorations", static_cast<void (SimTK::GeodesicDecorator::*)(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &) >(&SimTK::GeodesicDecorator::generateDecorations));
   CLEAR_DEBUG_MSG();
@@ -42,7 +41,6 @@ void define_simmath_DecoratorGenerators(jlcxx::Module& types){
   t34.constructor<const SimTK::Vector &, const SimTK::Vec3 &, const SimTK::Vec3 &, const SimTK::Vec3 &>();
 
   DEBUG_MSG("void SimTK::PathDecorator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::PathDecorator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &)
   // defined in simmath/internal/ContactGeometry.h:1506:18
   t34.method("generateDecorations", static_cast<void (SimTK::PathDecorator::*)(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &) >(&SimTK::PathDecorator::generateDecorations));
 
@@ -60,7 +58,6 @@ void define_simmath_DecoratorGenerators(jlcxx::Module& types){
   t35.constructor<const SimTK::Plane &, const SimTK::Vec3 &>();
 
   DEBUG_MSG("void SimTK::PlaneDecorator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::PlaneDecorator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &)
   // defined in simmath/internal/ContactGeometry.h:1546:18
   t35.method("generateDecorations", static_cast<void (SimTK::PlaneDecorator::*)(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &) >(&SimTK::PlaneDecorator::generateDecorations));
 

@@ -59,38 +59,32 @@ void define_SimTKcommon_String(jlcxx::Module& types, const ArrayWrapper& array_w
 
   types.set_override_module(jl_base_module);
   DEBUG_MSG("int SimTK::String::length() (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::String::length()
   // defined in SimTKcommon/internal/String.h:110:5
   t2.method("length", static_cast<int (SimTK::String::*)()  const>(&SimTK::String::length));
   CLEAR_DEBUG_MSG();
   types.unset_override_module();
 
   DEBUG_MSG("int SimTK::String::size() (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::String::size()
   // defined in SimTKcommon/internal/String.h:106:5
   t2.method("size", static_cast<int (SimTK::String::*)()  const>(&SimTK::String::size));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::String & SimTK::String::toUpper() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::String & SimTK::String::toUpper()
   // defined in SimTKcommon/internal/String.h:276:34
   t2.method("toUpper", static_cast<SimTK::String & (SimTK::String::*)() >(&SimTK::String::toUpper));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::String & SimTK::String::toLower() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::String & SimTK::String::toLower()
   // defined in SimTKcommon/internal/String.h:279:34
   t2.method("toLower", static_cast<SimTK::String & (SimTK::String::*)() >(&SimTK::String::toLower));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::String & SimTK::String::trimWhiteSpace() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::String & SimTK::String::trimWhiteSpace()
   // defined in SimTKcommon/internal/String.h:283:34
   t2.method("trimWhiteSpace", static_cast<SimTK::String & (SimTK::String::*)() >(&SimTK::String::trimWhiteSpace));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::String & SimTK::String::replaceAllChar(char, char) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::String & SimTK::String::replaceAllChar(char, char)
   // defined in SimTKcommon/internal/String.h:286:34
   t2.method("replaceAllChar", static_cast<SimTK::String & (SimTK::String::*)(char, char) >(&SimTK::String::replaceAllChar));
   CLEAR_DEBUG_MSG();

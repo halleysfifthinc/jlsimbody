@@ -27,7 +27,6 @@ void define_SimTKcommon_DecorationGenerator(jlcxx::Module& types){
    */
 
   DEBUG_MSG("void SimTK::DecorationGenerator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::DecorationGenerator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &)
   // defined in SimTKcommon/internal/DecorationGenerator.h:52:18
   t0.method("generateDecorations", static_cast<void (SimTK::DecorationGenerator::*)(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &) >(&SimTK::DecorationGenerator::generateDecorations));
   CLEAR_DEBUG_MSG();
@@ -45,7 +44,6 @@ void define_SimTKcommon_DecorationGenerator(jlcxx::Module& types){
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::GeodesicDecorator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::GeodesicDecorator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &)
   // defined in simmath/internal/Geodesic.h:279:18
   t1.method("generateDecorations", static_cast<void (SimTK::GeodesicDecorator::*)(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &) >(&SimTK::GeodesicDecorator::generateDecorations));
   CLEAR_DEBUG_MSG();
@@ -65,7 +63,6 @@ void define_SimTKcommon_DecorationGenerator(jlcxx::Module& types){
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::PathDecorator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::PathDecorator::generateDecorations(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &)
   // defined in simmath/internal/ContactGeometry.h:1506:18
   t2.method("generateDecorations", static_cast<void (SimTK::PathDecorator::*)(const SimTK::State &, SimTK::Array_<SimTK::DecorativeGeometry> &) >(&SimTK::PathDecorator::generateDecorations));
   CLEAR_DEBUG_MSG();

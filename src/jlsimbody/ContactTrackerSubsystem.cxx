@@ -38,32 +38,27 @@ void define_simbody_ContactTrackerSubsystem(jlcxx::Module& types){
    */
 
   DEBUG_MSG("void SimTK::ContactSnapshot::clear() (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::ContactSnapshot::clear()
   // defined in simbody/internal/ContactTrackerSubsystem.h:319:6
   t1.method("clear", static_cast<void (SimTK::ContactSnapshot::*)() >(&SimTK::ContactSnapshot::clear));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::ContactSnapshot::setTimestamp(SimTK::Real) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::ContactSnapshot::setTimestamp(SimTK::Real)
   // defined in simbody/internal/ContactTrackerSubsystem.h:327:6
   t1.method("setTimestamp", static_cast<void (SimTK::ContactSnapshot::*)(SimTK::Real) >(&SimTK::ContactSnapshot::setTimestamp));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Real SimTK::ContactSnapshot::getTimestamp() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Real SimTK::ContactSnapshot::getTimestamp()
   // defined in simbody/internal/ContactTrackerSubsystem.h:329:6
   t1.method("getTimestamp", static_cast<SimTK::Real (SimTK::ContactSnapshot::*)()  const>(&SimTK::ContactSnapshot::getTimestamp));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::ContactSnapshot::adoptContact(SimTK::Contact &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::ContactSnapshot::adoptContact(SimTK::Contact &)
   // defined in simbody/internal/ContactTrackerSubsystem.h:336:6
   t1.method("adoptContact", static_cast<void (SimTK::ContactSnapshot::*)(SimTK::Contact &) >(&SimTK::ContactSnapshot::adoptContact));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("bool SimTK::ContactSnapshot::hasContact(SimTK::ContactId) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::ContactSnapshot::hasContact(SimTK::ContactId)
   // defined in simbody/internal/ContactTrackerSubsystem.h:355:6
   t1.method("hasContact", static_cast<bool (SimTK::ContactSnapshot::*)(SimTK::ContactId)  const>(&SimTK::ContactSnapshot::hasContact));
   CLEAR_DEBUG_MSG();
@@ -78,7 +73,6 @@ void define_simbody_ContactTrackerSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("bool SimTK::ContactSnapshot::hasContact(SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::ContactSnapshot::hasContact(SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex)
   // defined in simbody/internal/ContactTrackerSubsystem.h:359:6
   t1.method("hasContact", static_cast<bool (SimTK::ContactSnapshot::*)(SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex)  const>(&SimTK::ContactSnapshot::hasContact));
   CLEAR_DEBUG_MSG();
@@ -92,20 +86,17 @@ void define_simbody_ContactTrackerSubsystem(jlcxx::Module& types){
   #endif
 
   DEBUG_MSG("int SimTK::ContactSnapshot::getNumContacts() (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::ContactSnapshot::getNumContacts()
   // defined in simbody/internal/ContactTrackerSubsystem.h:365:5
   t1.method("getNumContacts", static_cast<int (SimTK::ContactSnapshot::*)()  const>(&SimTK::ContactSnapshot::getNumContacts));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Contact & SimTK::ContactSnapshot::getContact(int) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Contact & SimTK::ContactSnapshot::getContact(int)
   // defined in simbody/internal/ContactTrackerSubsystem.h:370:16
   t1.method("getContact", static_cast<const SimTK::Contact & (SimTK::ContactSnapshot::*)(int)  const>(&SimTK::ContactSnapshot::getContact));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::Contact & SimTK::ContactSnapshot::getContactById(SimTK::ContactId) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Contact & SimTK::ContactSnapshot::getContactById(SimTK::ContactId)
   // defined in simbody/internal/ContactTrackerSubsystem.h:374:16
   t1.method("getContactById", static_cast<const SimTK::Contact & (SimTK::ContactSnapshot::*)(SimTK::ContactId)  const>(&SimTK::ContactSnapshot::getContactById));
   CLEAR_DEBUG_MSG();
@@ -118,7 +109,6 @@ void define_simbody_ContactTrackerSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactId SimTK::ContactSnapshot::getContactIdForSurfacePair(SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::ContactId SimTK::ContactSnapshot::getContactIdForSurfacePair(SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex)
   // defined in simbody/internal/ContactTrackerSubsystem.h:381:11
   t1.method("getContactIdForSurfacePair", static_cast<SimTK::ContactId (SimTK::ContactSnapshot::*)(SimTK::ContactSurfaceIndex, SimTK::ContactSurfaceIndex)  const>(&SimTK::ContactSnapshot::getContactIdForSurfacePair));
   CLEAR_DEBUG_MSG();
@@ -143,26 +133,22 @@ void define_simbody_ContactTrackerSubsystem(jlcxx::Module& types){
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::ContactSnapshot & SimTK::ContactTrackerSubsystem::getActiveContacts(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::ContactSnapshot & SimTK::ContactTrackerSubsystem::getActiveContacts(const SimTK::State &)
   // defined in simbody/internal/ContactTrackerSubsystem.h:168:24
   t0.method("getActiveContacts", static_cast<const SimTK::ContactSnapshot & (SimTK::ContactTrackerSubsystem::*)(const SimTK::State &)  const>(&SimTK::ContactTrackerSubsystem::getActiveContacts));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::ContactSnapshot & SimTK::ContactTrackerSubsystem::getPredictedContacts(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::ContactSnapshot & SimTK::ContactTrackerSubsystem::getPredictedContacts(const SimTK::State &)
   // defined in simbody/internal/ContactTrackerSubsystem.h:178:24
   t0.method("getPredictedContacts", static_cast<const SimTK::ContactSnapshot & (SimTK::ContactTrackerSubsystem::*)(const SimTK::State &)  const>(&SimTK::ContactTrackerSubsystem::getPredictedContacts));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("int SimTK::ContactTrackerSubsystem::getNumSurfaces() (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::ContactTrackerSubsystem::getNumSurfaces()
   // defined in simbody/internal/ContactTrackerSubsystem.h:192:5
   t0.method("getNumSurfaces", static_cast<int (SimTK::ContactTrackerSubsystem::*)()  const>(&SimTK::ContactTrackerSubsystem::getNumSurfaces));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactSurfaceIndex SimTK::ContactTrackerSubsystem::getContactSurfaceIndex(SimTK::MobilizedBodyIndex, int) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::ContactSurfaceIndex SimTK::ContactTrackerSubsystem::getContactSurfaceIndex(SimTK::MobilizedBodyIndex, int)
   // defined in simbody/internal/ContactTrackerSubsystem.h:205:21
   t0.method("getContactSurfaceIndex", static_cast<SimTK::ContactSurfaceIndex (SimTK::ContactTrackerSubsystem::*)(SimTK::MobilizedBodyIndex, int)  const>(&SimTK::ContactTrackerSubsystem::getContactSurfaceIndex));
   CLEAR_DEBUG_MSG();
@@ -175,7 +161,6 @@ void define_simbody_ContactTrackerSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::MobilizedBody & SimTK::ContactTrackerSubsystem::getMobilizedBody(SimTK::ContactSurfaceIndex) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::MobilizedBody & SimTK::ContactTrackerSubsystem::getMobilizedBody(SimTK::ContactSurfaceIndex)
   // defined in simbody/internal/ContactTrackerSubsystem.h:209:22
   t0.method("getMobilizedBody", static_cast<const SimTK::MobilizedBody & (SimTK::ContactTrackerSubsystem::*)(SimTK::ContactSurfaceIndex)  const>(&SimTK::ContactTrackerSubsystem::getMobilizedBody));
   CLEAR_DEBUG_MSG();
@@ -188,7 +173,6 @@ void define_simbody_ContactTrackerSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::ContactSurface & SimTK::ContactTrackerSubsystem::getContactSurface(SimTK::ContactSurfaceIndex) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::ContactSurface & SimTK::ContactTrackerSubsystem::getContactSurface(SimTK::ContactSurfaceIndex)
   // defined in simbody/internal/ContactTrackerSubsystem.h:213:23
   t0.method("getContactSurface", static_cast<const SimTK::ContactSurface & (SimTK::ContactTrackerSubsystem::*)(SimTK::ContactSurfaceIndex)  const>(&SimTK::ContactTrackerSubsystem::getContactSurface));
   CLEAR_DEBUG_MSG();
@@ -201,7 +185,6 @@ void define_simbody_ContactTrackerSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::Transform & SimTK::ContactTrackerSubsystem::getContactSurfaceTransform(SimTK::ContactSurfaceIndex) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Transform & SimTK::ContactTrackerSubsystem::getContactSurfaceTransform(SimTK::ContactSurfaceIndex)
   // defined in simbody/internal/ContactTrackerSubsystem.h:217:18
   t0.method("getContactSurfaceTransform", static_cast<const SimTK::Transform & (SimTK::ContactTrackerSubsystem::*)(SimTK::ContactSurfaceIndex)  const>(&SimTK::ContactTrackerSubsystem::getContactSurfaceTransform));
   CLEAR_DEBUG_MSG();
@@ -213,14 +196,12 @@ void define_simbody_ContactTrackerSubsystem(jlcxx::Module& types){
   #endif
 
   DEBUG_MSG("void SimTK::ContactTrackerSubsystem::adoptContactTracker(SimTK::ContactTracker *) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::ContactTrackerSubsystem::adoptContactTracker(SimTK::ContactTracker *)
   // defined in simbody/internal/ContactTrackerSubsystem.h:230:6
   t0.method("adoptContactTracker", static_cast<void (SimTK::ContactTrackerSubsystem::*)(SimTK::ContactTracker *) >(&SimTK::ContactTrackerSubsystem::adoptContactTracker));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("bool SimTK::ContactTrackerSubsystem::hasContactTracker(SimTK::ContactGeometryTypeId, SimTK::ContactGeometryTypeId) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::ContactTrackerSubsystem::hasContactTracker(SimTK::ContactGeometryTypeId, SimTK::ContactGeometryTypeId)
   // defined in simbody/internal/ContactTrackerSubsystem.h:235:6
   t0.method("hasContactTracker", static_cast<bool (SimTK::ContactTrackerSubsystem::*)(SimTK::ContactGeometryTypeId, SimTK::ContactGeometryTypeId)  const>(&SimTK::ContactTrackerSubsystem::hasContactTracker));
   CLEAR_DEBUG_MSG();
@@ -233,7 +214,6 @@ void define_simbody_ContactTrackerSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::ContactTracker & SimTK::ContactTrackerSubsystem::getContactTracker(SimTK::ContactGeometryTypeId, SimTK::ContactGeometryTypeId, bool &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::ContactTracker & SimTK::ContactTrackerSubsystem::getContactTracker(SimTK::ContactGeometryTypeId, SimTK::ContactGeometryTypeId, bool &)
   // defined in simbody/internal/ContactTrackerSubsystem.h:243:23
   t0.method("getContactTracker", static_cast<const SimTK::ContactTracker & (SimTK::ContactTrackerSubsystem::*)(SimTK::ContactGeometryTypeId, SimTK::ContactGeometryTypeId, bool &)  const>(&SimTK::ContactTrackerSubsystem::getContactTracker));
   CLEAR_DEBUG_MSG();
@@ -245,43 +225,36 @@ void define_simbody_ContactTrackerSubsystem(jlcxx::Module& types){
   #endif
 
   DEBUG_MSG("const SimTK::ContactSnapshot & SimTK::ContactTrackerSubsystem::getPreviousActiveContacts(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::ContactSnapshot & SimTK::ContactTrackerSubsystem::getPreviousActiveContacts(const SimTK::State &)
   // defined in simbody/internal/ContactTrackerSubsystem.h:255:24
   t0.method("getPreviousActiveContacts", static_cast<const SimTK::ContactSnapshot & (SimTK::ContactTrackerSubsystem::*)(const SimTK::State &)  const>(&SimTK::ContactTrackerSubsystem::getPreviousActiveContacts));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::ContactSnapshot & SimTK::ContactTrackerSubsystem::getPreviousPredictedContacts(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::ContactSnapshot & SimTK::ContactTrackerSubsystem::getPreviousPredictedContacts(const SimTK::State &)
   // defined in simbody/internal/ContactTrackerSubsystem.h:260:24
   t0.method("getPreviousPredictedContacts", static_cast<const SimTK::ContactSnapshot & (SimTK::ContactTrackerSubsystem::*)(const SimTK::State &)  const>(&SimTK::ContactTrackerSubsystem::getPreviousPredictedContacts));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::ContactTrackerSubsystem::realizeActiveContacts(const SimTK::State &, bool, SimTK::Real &) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::ContactTrackerSubsystem::realizeActiveContacts(const SimTK::State &, bool, SimTK::Real &)
   // defined in simbody/internal/ContactTrackerSubsystem.h:268:6
   t0.method("realizeActiveContacts", static_cast<bool (SimTK::ContactTrackerSubsystem::*)(const SimTK::State &, bool, SimTK::Real &)  const>(&SimTK::ContactTrackerSubsystem::realizeActiveContacts));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::ContactTrackerSubsystem::realizePredictedContacts(const SimTK::State &, bool, SimTK::Real &) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::ContactTrackerSubsystem::realizePredictedContacts(const SimTK::State &, bool, SimTK::Real &)
   // defined in simbody/internal/ContactTrackerSubsystem.h:275:6
   t0.method("realizePredictedContacts", static_cast<bool (SimTK::ContactTrackerSubsystem::*)(const SimTK::State &, bool, SimTK::Real &)  const>(&SimTK::ContactTrackerSubsystem::realizePredictedContacts));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::ContactTrackerSubsystem::isInstanceOf(const SimTK::Subsystem &) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::ContactTrackerSubsystem::isInstanceOf(const SimTK::Subsystem &)
   // defined in simbody/internal/ContactTrackerSubsystem.h:284:1
   types.method("ContactTrackerSubsystem!isInstanceOf", static_cast<bool (*)(const SimTK::Subsystem &) >(&SimTK::ContactTrackerSubsystem::isInstanceOf));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::ContactTrackerSubsystem & SimTK::ContactTrackerSubsystem::downcast(const SimTK::Subsystem &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::ContactTrackerSubsystem & SimTK::ContactTrackerSubsystem::downcast(const SimTK::Subsystem &)
   // defined in simbody/internal/ContactTrackerSubsystem.h:284:1
   types.method("ContactTrackerSubsystem!downcast", static_cast<const SimTK::ContactTrackerSubsystem & (*)(const SimTK::Subsystem &) >(&SimTK::ContactTrackerSubsystem::downcast));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::ContactTrackerSubsystem & SimTK::ContactTrackerSubsystem::updDowncast(SimTK::Subsystem &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::ContactTrackerSubsystem & SimTK::ContactTrackerSubsystem::updDowncast(SimTK::Subsystem &)
   // defined in simbody/internal/ContactTrackerSubsystem.h:284:1
   types.method("ContactTrackerSubsystem!updDowncast", static_cast<SimTK::ContactTrackerSubsystem & (*)(SimTK::Subsystem &) >(&SimTK::ContactTrackerSubsystem::updDowncast));
   CLEAR_DEBUG_MSG();
@@ -302,7 +275,6 @@ void define_simbody_ContactTrackerSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactSetIndex SimTK::GeneralContactSubsystem::createContactSet() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::ContactSetIndex SimTK::GeneralContactSubsystem::createContactSet()
   // defined in simbody/internal/GeneralContactSubsystem.h:65:21
   t12.method("createContactSet", static_cast<SimTK::ContactSetIndex (SimTK::GeneralContactSubsystem::*)() >(&SimTK::GeneralContactSubsystem::createContactSet));
   CLEAR_DEBUG_MSG();
@@ -314,14 +286,12 @@ void define_simbody_ContactTrackerSubsystem(jlcxx::Module& types){
   #endif
 
   DEBUG_MSG("int SimTK::GeneralContactSubsystem::getNumContactSets() (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::GeneralContactSubsystem::getNumContactSets()
   // defined in simbody/internal/GeneralContactSubsystem.h:69:9
   t12.method("getNumContactSets", static_cast<int (SimTK::GeneralContactSubsystem::*)()  const>(&SimTK::GeneralContactSubsystem::getNumContactSets));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::GeneralContactSubsystem::addBody(SimTK::ContactSetIndex, const SimTK::MobilizedBody &, const SimTK::ContactGeometry &, SimTK::Transform) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::GeneralContactSubsystem::addBody(SimTK::ContactSetIndex, const SimTK::MobilizedBody &, const SimTK::ContactGeometry &, SimTK::Transform)
   // defined in simbody/internal/GeneralContactSubsystem.h:78:10
   t12.method("addBody", static_cast<void (SimTK::GeneralContactSubsystem::*)(SimTK::ContactSetIndex, const SimTK::MobilizedBody &, const SimTK::ContactGeometry &, SimTK::Transform) >(&SimTK::GeneralContactSubsystem::addBody));
   CLEAR_DEBUG_MSG();
@@ -334,7 +304,6 @@ void define_simbody_ContactTrackerSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("int SimTK::GeneralContactSubsystem::getNumBodies(SimTK::ContactSetIndex) (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::GeneralContactSubsystem::getNumBodies(SimTK::ContactSetIndex)
   // defined in simbody/internal/GeneralContactSubsystem.h:82:9
   t12.method("getNumBodies", static_cast<int (SimTK::GeneralContactSubsystem::*)(SimTK::ContactSetIndex)  const>(&SimTK::GeneralContactSubsystem::getNumBodies));
   CLEAR_DEBUG_MSG();
@@ -347,7 +316,6 @@ void define_simbody_ContactTrackerSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::MobilizedBody & SimTK::GeneralContactSubsystem::getBody(SimTK::ContactSetIndex, SimTK::ContactSurfaceIndex) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::MobilizedBody & SimTK::GeneralContactSubsystem::getBody(SimTK::ContactSetIndex, SimTK::ContactSurfaceIndex)
   // defined in simbody/internal/GeneralContactSubsystem.h:89:26
   t12.method("getBody", static_cast<const SimTK::MobilizedBody & (SimTK::GeneralContactSubsystem::*)(SimTK::ContactSetIndex, SimTK::ContactSurfaceIndex)  const>(&SimTK::GeneralContactSubsystem::getBody));
   CLEAR_DEBUG_MSG();
@@ -360,7 +328,6 @@ void define_simbody_ContactTrackerSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::ContactGeometry & SimTK::GeneralContactSubsystem::getBodyGeometry(SimTK::ContactSetIndex, SimTK::ContactSurfaceIndex) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::ContactGeometry & SimTK::GeneralContactSubsystem::getBodyGeometry(SimTK::ContactSetIndex, SimTK::ContactSurfaceIndex)
   // defined in simbody/internal/GeneralContactSubsystem.h:96:28
   t12.method("getBodyGeometry", static_cast<const SimTK::ContactGeometry & (SimTK::GeneralContactSubsystem::*)(SimTK::ContactSetIndex, SimTK::ContactSurfaceIndex)  const>(&SimTK::GeneralContactSubsystem::getBodyGeometry));
   CLEAR_DEBUG_MSG();
@@ -373,7 +340,6 @@ void define_simbody_ContactTrackerSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ContactGeometry & SimTK::GeneralContactSubsystem::updBodyGeometry(SimTK::ContactSetIndex, SimTK::ContactSurfaceIndex) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::ContactGeometry & SimTK::GeneralContactSubsystem::updBodyGeometry(SimTK::ContactSetIndex, SimTK::ContactSurfaceIndex)
   // defined in simbody/internal/GeneralContactSubsystem.h:103:22
   t12.method("updBodyGeometry", static_cast<SimTK::ContactGeometry & (SimTK::GeneralContactSubsystem::*)(SimTK::ContactSetIndex, SimTK::ContactSurfaceIndex) >(&SimTK::GeneralContactSubsystem::updBodyGeometry));
   CLEAR_DEBUG_MSG();
@@ -386,7 +352,6 @@ void define_simbody_ContactTrackerSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::Transform & SimTK::GeneralContactSubsystem::getBodyTransform(SimTK::ContactSetIndex, SimTK::ContactSurfaceIndex) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Transform & SimTK::GeneralContactSubsystem::getBodyTransform(SimTK::ContactSetIndex, SimTK::ContactSurfaceIndex)
   // defined in simbody/internal/GeneralContactSubsystem.h:110:22
   t12.method("getBodyTransform", static_cast<const SimTK::Transform & (SimTK::GeneralContactSubsystem::*)(SimTK::ContactSetIndex, SimTK::ContactSurfaceIndex)  const>(&SimTK::GeneralContactSubsystem::getBodyTransform));
   CLEAR_DEBUG_MSG();
@@ -399,7 +364,6 @@ void define_simbody_ContactTrackerSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::Transform & SimTK::GeneralContactSubsystem::updBodyTransform(SimTK::ContactSetIndex, SimTK::ContactSurfaceIndex) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Transform & SimTK::GeneralContactSubsystem::updBodyTransform(SimTK::ContactSetIndex, SimTK::ContactSurfaceIndex)
   // defined in simbody/internal/GeneralContactSubsystem.h:117:16
   t12.method("updBodyTransform", static_cast<SimTK::Transform & (SimTK::GeneralContactSubsystem::*)(SimTK::ContactSetIndex, SimTK::ContactSurfaceIndex) >(&SimTK::GeneralContactSubsystem::updBodyTransform));
   CLEAR_DEBUG_MSG();
@@ -412,7 +376,6 @@ void define_simbody_ContactTrackerSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::Array_<SimTK::Contact> & SimTK::GeneralContactSubsystem::getContacts(const SimTK::State &, SimTK::ContactSetIndex) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Array_<SimTK::Contact> & SimTK::GeneralContactSubsystem::getContacts(const SimTK::State &, SimTK::ContactSetIndex)
   // defined in simbody/internal/GeneralContactSubsystem.h:124:28
   t12.method("getContacts", static_cast<const SimTK::Array_<SimTK::Contact> & (SimTK::GeneralContactSubsystem::*)(const SimTK::State &, SimTK::ContactSetIndex)  const>(&SimTK::GeneralContactSubsystem::getContacts));
   CLEAR_DEBUG_MSG();
@@ -424,19 +387,16 @@ void define_simbody_ContactTrackerSubsystem(jlcxx::Module& types){
   #endif
 
   DEBUG_MSG("bool SimTK::GeneralContactSubsystem::isInstanceOf(const SimTK::Subsystem &) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::GeneralContactSubsystem::isInstanceOf(const SimTK::Subsystem &)
   // defined in simbody/internal/GeneralContactSubsystem.h:125:5
   types.method("GeneralContactSubsystem!isInstanceOf", static_cast<bool (*)(const SimTK::Subsystem &) >(&SimTK::GeneralContactSubsystem::isInstanceOf));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::GeneralContactSubsystem & SimTK::GeneralContactSubsystem::downcast(const SimTK::Subsystem &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::GeneralContactSubsystem & SimTK::GeneralContactSubsystem::downcast(const SimTK::Subsystem &)
   // defined in simbody/internal/GeneralContactSubsystem.h:125:5
   types.method("GeneralContactSubsystem!downcast", static_cast<const SimTK::GeneralContactSubsystem & (*)(const SimTK::Subsystem &) >(&SimTK::GeneralContactSubsystem::downcast));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::GeneralContactSubsystem & SimTK::GeneralContactSubsystem::updDowncast(SimTK::Subsystem &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::GeneralContactSubsystem & SimTK::GeneralContactSubsystem::updDowncast(SimTK::Subsystem &)
   // defined in simbody/internal/GeneralContactSubsystem.h:125:5
   types.method("GeneralContactSubsystem!updDowncast", static_cast<SimTK::GeneralContactSubsystem & (*)(SimTK::Subsystem &) >(&SimTK::GeneralContactSubsystem::updDowncast));
   CLEAR_DEBUG_MSG();

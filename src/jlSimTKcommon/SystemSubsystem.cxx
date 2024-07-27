@@ -74,14 +74,12 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Subsystem & SimTK::Subsystem::operator=(const SimTK::Subsystem &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Subsystem & SimTK::Subsystem::operator=(const SimTK::Subsystem &)
   // defined in SimTKcommon/internal/Subsystem.h:70:12
   t0.method("set!", static_cast<SimTK::Subsystem & (SimTK::Subsystem::*)(const SimTK::Subsystem &) >(&SimTK::Subsystem::operator=));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::QIndex SimTK::Subsystem::allocateQ(SimTK::State &, const SimTK::Vector &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::QIndex SimTK::Subsystem::allocateQ(SimTK::State &, const SimTK::Vector &)
   // defined in SimTKcommon/internal/Subsystem.h:88:8
   t0.method("allocateQ", static_cast<SimTK::QIndex (SimTK::Subsystem::*)(SimTK::State &, const SimTK::Vector &)  const>(&SimTK::Subsystem::allocateQ));
   CLEAR_DEBUG_MSG();
@@ -94,7 +92,6 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::UIndex SimTK::Subsystem::allocateU(SimTK::State &, const SimTK::Vector &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::UIndex SimTK::Subsystem::allocateU(SimTK::State &, const SimTK::Vector &)
   // defined in SimTKcommon/internal/Subsystem.h:90:8
   t0.method("allocateU", static_cast<SimTK::UIndex (SimTK::Subsystem::*)(SimTK::State &, const SimTK::Vector &)  const>(&SimTK::Subsystem::allocateU));
   CLEAR_DEBUG_MSG();
@@ -107,7 +104,6 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::ZIndex SimTK::Subsystem::allocateZ(SimTK::State &, const SimTK::Vector &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::ZIndex SimTK::Subsystem::allocateZ(SimTK::State &, const SimTK::Vector &)
   // defined in SimTKcommon/internal/Subsystem.h:92:8
   t0.method("allocateZ", static_cast<SimTK::ZIndex (SimTK::Subsystem::*)(SimTK::State &, const SimTK::Vector &)  const>(&SimTK::Subsystem::allocateZ));
   CLEAR_DEBUG_MSG();
@@ -120,7 +116,6 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::DiscreteVariableIndex SimTK::Subsystem::allocateDiscreteVariable(SimTK::State &, SimTK::Stage, SimTK::AbstractValue *) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::DiscreteVariableIndex SimTK::Subsystem::allocateDiscreteVariable(SimTK::State &, SimTK::Stage, SimTK::AbstractValue *)
   // defined in SimTKcommon/internal/Subsystem.h:96:1
   t0.method("allocateDiscreteVariable", static_cast<SimTK::DiscreteVariableIndex (SimTK::Subsystem::*)(SimTK::State &, SimTK::Stage, SimTK::AbstractValue *)  const>(&SimTK::Subsystem::allocateDiscreteVariable));
   CLEAR_DEBUG_MSG();
@@ -133,7 +128,6 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::DiscreteVariableIndex SimTK::Subsystem::allocateAutoUpdateDiscreteVariable(SimTK::State &, SimTK::Stage, SimTK::AbstractValue *, SimTK::Stage) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::DiscreteVariableIndex SimTK::Subsystem::allocateAutoUpdateDiscreteVariable(SimTK::State &, SimTK::Stage, SimTK::AbstractValue *, SimTK::Stage)
   // defined in SimTKcommon/internal/Subsystem.h:98:23
   t0.method("allocateAutoUpdateDiscreteVariable", static_cast<SimTK::DiscreteVariableIndex (SimTK::Subsystem::*)(SimTK::State &, SimTK::Stage, SimTK::AbstractValue *, SimTK::Stage)  const>(&SimTK::Subsystem::allocateAutoUpdateDiscreteVariable));
   CLEAR_DEBUG_MSG();
@@ -146,7 +140,6 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::CacheEntryIndex SimTK::Subsystem::allocateCacheEntry(const SimTK::State &, SimTK::Stage, SimTK::Stage, SimTK::AbstractValue *) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::CacheEntryIndex SimTK::Subsystem::allocateCacheEntry(const SimTK::State &, SimTK::Stage, SimTK::Stage, SimTK::AbstractValue *)
   // defined in SimTKcommon/internal/Subsystem.h:102:17
   t0.method("allocateCacheEntry", static_cast<SimTK::CacheEntryIndex (SimTK::Subsystem::*)(const SimTK::State &, SimTK::Stage, SimTK::Stage, SimTK::AbstractValue *)  const>(&SimTK::Subsystem::allocateCacheEntry));
   CLEAR_DEBUG_MSG();
@@ -161,7 +154,6 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::CacheEntryIndex SimTK::Subsystem::allocateCacheEntry(const SimTK::State &, SimTK::Stage, SimTK::AbstractValue *) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::CacheEntryIndex SimTK::Subsystem::allocateCacheEntry(const SimTK::State &, SimTK::Stage, SimTK::AbstractValue *)
   // defined in SimTKcommon/internal/Subsystem.h:107:17
   t0.method("allocateCacheEntry", static_cast<SimTK::CacheEntryIndex (SimTK::Subsystem::*)(const SimTK::State &, SimTK::Stage, SimTK::AbstractValue *)  const>(&SimTK::Subsystem::allocateCacheEntry));
   CLEAR_DEBUG_MSG();
@@ -176,7 +168,6 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::CacheEntryIndex SimTK::Subsystem::allocateLazyCacheEntry(const SimTK::State &, SimTK::Stage, SimTK::AbstractValue *) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::CacheEntryIndex SimTK::Subsystem::allocateLazyCacheEntry(const SimTK::State &, SimTK::Stage, SimTK::AbstractValue *)
   // defined in SimTKcommon/internal/Subsystem.h:110:17
   t0.method("allocateLazyCacheEntry", static_cast<SimTK::CacheEntryIndex (SimTK::Subsystem::*)(const SimTK::State &, SimTK::Stage, SimTK::AbstractValue *)  const>(&SimTK::Subsystem::allocateLazyCacheEntry));
   CLEAR_DEBUG_MSG();
@@ -189,7 +180,6 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::QErrIndex SimTK::Subsystem::allocateQErr(const SimTK::State &, int) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::QErrIndex SimTK::Subsystem::allocateQErr(const SimTK::State &, int)
   // defined in SimTKcommon/internal/Subsystem.h:114:11
   t0.method("allocateQErr", static_cast<SimTK::QErrIndex (SimTK::Subsystem::*)(const SimTK::State &, int)  const>(&SimTK::Subsystem::allocateQErr));
   CLEAR_DEBUG_MSG();
@@ -202,7 +192,6 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::UErrIndex SimTK::Subsystem::allocateUErr(const SimTK::State &, int) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::UErrIndex SimTK::Subsystem::allocateUErr(const SimTK::State &, int)
   // defined in SimTKcommon/internal/Subsystem.h:116:11
   t0.method("allocateUErr", static_cast<SimTK::UErrIndex (SimTK::Subsystem::*)(const SimTK::State &, int)  const>(&SimTK::Subsystem::allocateUErr));
   CLEAR_DEBUG_MSG();
@@ -215,7 +204,6 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::UDotErrIndex SimTK::Subsystem::allocateUDotErr(const SimTK::State &, int) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::UDotErrIndex SimTK::Subsystem::allocateUDotErr(const SimTK::State &, int)
   // defined in SimTKcommon/internal/Subsystem.h:118:14
   t0.method("allocateUDotErr", static_cast<SimTK::UDotErrIndex (SimTK::Subsystem::*)(const SimTK::State &, int)  const>(&SimTK::Subsystem::allocateUDotErr));
   CLEAR_DEBUG_MSG();
@@ -228,7 +216,6 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::EventTriggerByStageIndex SimTK::Subsystem::allocateEventTriggersByStage(const SimTK::State &, SimTK::Stage, int) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::EventTriggerByStageIndex SimTK::Subsystem::allocateEventTriggersByStage(const SimTK::State &, SimTK::Stage, int)
   // defined in SimTKcommon/internal/Subsystem.h:121:1
   t0.method("allocateEventTriggersByStage", static_cast<SimTK::EventTriggerByStageIndex (SimTK::Subsystem::*)(const SimTK::State &, SimTK::Stage, int)  const>(&SimTK::Subsystem::allocateEventTriggersByStage));
   CLEAR_DEBUG_MSG();
@@ -240,176 +227,147 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
   #endif
 
   DEBUG_MSG("const SimTK::Vector & SimTK::Subsystem::getQ(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::getQ(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:124:15
   t0.method("getQ", static_cast<const SimTK::Vector & (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::getQ));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Vector & SimTK::Subsystem::getU(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::getU(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:126:15
   t0.method("getU", static_cast<const SimTK::Vector & (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::getU));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Vector & SimTK::Subsystem::getZ(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::getZ(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:128:15
   t0.method("getZ", static_cast<const SimTK::Vector & (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::getZ));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Vector & SimTK::Subsystem::getUWeights(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::getUWeights(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:130:15
   t0.method("getUWeights", static_cast<const SimTK::Vector & (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::getUWeights));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Vector & SimTK::Subsystem::getZWeights(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::getZWeights(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:132:15
   t0.method("getZWeights", static_cast<const SimTK::Vector & (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::getZWeights));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Vector & SimTK::Subsystem::updQ(SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::updQ(SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:135:9
   t0.method("updQ", static_cast<SimTK::Vector & (SimTK::Subsystem::*)(SimTK::State &)  const>(&SimTK::Subsystem::updQ));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Vector & SimTK::Subsystem::updU(SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::updU(SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:136:9
   t0.method("updU", static_cast<SimTK::Vector & (SimTK::Subsystem::*)(SimTK::State &)  const>(&SimTK::Subsystem::updU));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Vector & SimTK::Subsystem::updZ(SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::updZ(SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:137:9
   t0.method("updZ", static_cast<SimTK::Vector & (SimTK::Subsystem::*)(SimTK::State &)  const>(&SimTK::Subsystem::updZ));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Vector & SimTK::Subsystem::getQDot(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::getQDot(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:139:15
   t0.method("getQDot", static_cast<const SimTK::Vector & (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::getQDot));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Vector & SimTK::Subsystem::getUDot(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::getUDot(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:141:15
   t0.method("getUDot", static_cast<const SimTK::Vector & (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::getUDot));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Vector & SimTK::Subsystem::getZDot(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::getZDot(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:143:15
   t0.method("getZDot", static_cast<const SimTK::Vector & (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::getZDot));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Vector & SimTK::Subsystem::getQDotDot(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::getQDotDot(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:145:15
   t0.method("getQDotDot", static_cast<const SimTK::Vector & (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::getQDotDot));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Vector & SimTK::Subsystem::updQDot(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::updQDot(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:148:9
   t0.method("updQDot", static_cast<SimTK::Vector & (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::updQDot));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Vector & SimTK::Subsystem::updUDot(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::updUDot(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:150:9
   t0.method("updUDot", static_cast<SimTK::Vector & (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::updUDot));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Vector & SimTK::Subsystem::updZDot(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::updZDot(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:152:9
   t0.method("updZDot", static_cast<SimTK::Vector & (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::updZDot));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Vector & SimTK::Subsystem::updQDotDot(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::updQDotDot(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:154:9
   t0.method("updQDotDot", static_cast<SimTK::Vector & (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::updQDotDot));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Vector & SimTK::Subsystem::getQErr(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::getQErr(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:157:15
   t0.method("getQErr", static_cast<const SimTK::Vector & (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::getQErr));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Vector & SimTK::Subsystem::getUErr(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::getUErr(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:159:15
   t0.method("getUErr", static_cast<const SimTK::Vector & (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::getUErr));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Vector & SimTK::Subsystem::getQErrWeights(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::getQErrWeights(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:161:15
   t0.method("getQErrWeights", static_cast<const SimTK::Vector & (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::getQErrWeights));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Vector & SimTK::Subsystem::getUErrWeights(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::getUErrWeights(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:163:15
   t0.method("getUErrWeights", static_cast<const SimTK::Vector & (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::getUErrWeights));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Vector & SimTK::Subsystem::getUDotErr(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::getUDotErr(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:166:15
   t0.method("getUDotErr", static_cast<const SimTK::Vector & (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::getUDotErr));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Vector & SimTK::Subsystem::getMultipliers(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::getMultipliers(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:168:15
   t0.method("getMultipliers", static_cast<const SimTK::Vector & (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::getMultipliers));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Vector & SimTK::Subsystem::getEventTriggersByStage(const SimTK::State &, SimTK::Stage) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Vector & SimTK::Subsystem::getEventTriggersByStage(const SimTK::State &, SimTK::Stage)
   // defined in SimTKcommon/internal/Subsystem.h:170:15
   t0.method("getEventTriggersByStage", static_cast<const SimTK::Vector & (SimTK::Subsystem::*)(const SimTK::State &, SimTK::Stage)  const>(&SimTK::Subsystem::getEventTriggersByStage));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Vector & SimTK::Subsystem::updQErr(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::updQErr(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:173:9
   t0.method("updQErr", static_cast<SimTK::Vector & (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::updQErr));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Vector & SimTK::Subsystem::updUErr(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::updUErr(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:175:9
   t0.method("updUErr", static_cast<SimTK::Vector & (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::updUErr));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Vector & SimTK::Subsystem::updUDotErr(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::updUDotErr(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:177:9
   t0.method("updUDotErr", static_cast<SimTK::Vector & (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::updUDotErr));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Vector & SimTK::Subsystem::updMultipliers(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::updMultipliers(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:179:9
   t0.method("updMultipliers", static_cast<SimTK::Vector & (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::updMultipliers));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Vector & SimTK::Subsystem::updEventTriggersByStage(const SimTK::State &, SimTK::Stage) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Vector & SimTK::Subsystem::updEventTriggersByStage(const SimTK::State &, SimTK::Stage)
   // defined in SimTKcommon/internal/Subsystem.h:181:9
   t0.method("updEventTriggersByStage", static_cast<SimTK::Vector & (SimTK::Subsystem::*)(const SimTK::State &, SimTK::Stage)  const>(&SimTK::Subsystem::updEventTriggersByStage));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::SystemQIndex SimTK::Subsystem::getQStart(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::SystemQIndex SimTK::Subsystem::getQStart(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:184:14
   t0.method("getQStart", static_cast<SimTK::SystemQIndex (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::getQStart));
   CLEAR_DEBUG_MSG();
@@ -421,14 +379,12 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
   #endif
 
   DEBUG_MSG("int SimTK::Subsystem::getNQ(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::Subsystem::getNQ(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:186:5
   t0.method("getNQ", static_cast<int (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::getNQ));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::SystemUIndex SimTK::Subsystem::getUStart(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::SystemUIndex SimTK::Subsystem::getUStart(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:189:14
   t0.method("getUStart", static_cast<SimTK::SystemUIndex (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::getUStart));
   CLEAR_DEBUG_MSG();
@@ -440,14 +396,12 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
   #endif
 
   DEBUG_MSG("int SimTK::Subsystem::getNU(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::Subsystem::getNU(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:191:5
   t0.method("getNU", static_cast<int (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::getNU));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::SystemZIndex SimTK::Subsystem::getZStart(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::SystemZIndex SimTK::Subsystem::getZStart(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:194:14
   t0.method("getZStart", static_cast<SimTK::SystemZIndex (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::getZStart));
   CLEAR_DEBUG_MSG();
@@ -459,14 +413,12 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
   #endif
 
   DEBUG_MSG("int SimTK::Subsystem::getNZ(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::Subsystem::getNZ(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:196:5
   t0.method("getNZ", static_cast<int (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::getNZ));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::SystemQErrIndex SimTK::Subsystem::getQErrStart(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::SystemQErrIndex SimTK::Subsystem::getQErrStart(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:199:17
   t0.method("getQErrStart", static_cast<SimTK::SystemQErrIndex (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::getQErrStart));
   CLEAR_DEBUG_MSG();
@@ -478,14 +430,12 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
   #endif
 
   DEBUG_MSG("int SimTK::Subsystem::getNQErr(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::Subsystem::getNQErr(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:201:5
   t0.method("getNQErr", static_cast<int (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::getNQErr));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::SystemUErrIndex SimTK::Subsystem::getUErrStart(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::SystemUErrIndex SimTK::Subsystem::getUErrStart(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:204:17
   t0.method("getUErrStart", static_cast<SimTK::SystemUErrIndex (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::getUErrStart));
   CLEAR_DEBUG_MSG();
@@ -497,14 +447,12 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
   #endif
 
   DEBUG_MSG("int SimTK::Subsystem::getNUErr(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::Subsystem::getNUErr(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:206:5
   t0.method("getNUErr", static_cast<int (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::getNUErr));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::SystemUDotErrIndex SimTK::Subsystem::getUDotErrStart(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::SystemUDotErrIndex SimTK::Subsystem::getUDotErrStart(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:209:20
   t0.method("getUDotErrStart", static_cast<SimTK::SystemUDotErrIndex (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::getUDotErrStart));
   CLEAR_DEBUG_MSG();
@@ -516,14 +464,12 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
   #endif
 
   DEBUG_MSG("int SimTK::Subsystem::getNUDotErr(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::Subsystem::getNUDotErr(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:211:5
   t0.method("getNUDotErr", static_cast<int (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::getNUDotErr));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::SystemMultiplierIndex SimTK::Subsystem::getMultipliersStart(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::SystemMultiplierIndex SimTK::Subsystem::getMultipliersStart(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:214:23
   t0.method("getMultipliersStart", static_cast<SimTK::SystemMultiplierIndex (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::getMultipliersStart));
   CLEAR_DEBUG_MSG();
@@ -535,14 +481,12 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
   #endif
 
   DEBUG_MSG("int SimTK::Subsystem::getNMultipliers(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::Subsystem::getNMultipliers(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:216:5
   t0.method("getNMultipliers", static_cast<int (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::getNMultipliers));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::SystemEventTriggerByStageIndex SimTK::Subsystem::getEventTriggerStartByStage(const SimTK::State &, SimTK::Stage) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::SystemEventTriggerByStageIndex SimTK::Subsystem::getEventTriggerStartByStage(const SimTK::State &, SimTK::Stage)
   // defined in SimTKcommon/internal/Subsystem.h:219:32
   t0.method("getEventTriggerStartByStage", static_cast<SimTK::SystemEventTriggerByStageIndex (SimTK::Subsystem::*)(const SimTK::State &, SimTK::Stage)  const>(&SimTK::Subsystem::getEventTriggerStartByStage));
   CLEAR_DEBUG_MSG();
@@ -554,44 +498,37 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
   #endif
 
   DEBUG_MSG("int SimTK::Subsystem::getNEventTriggersByStage(const SimTK::State &, SimTK::Stage) (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::Subsystem::getNEventTriggersByStage(const SimTK::State &, SimTK::Stage)
   // defined in SimTKcommon/internal/Subsystem.h:221:5
   t0.method("getNEventTriggersByStage", static_cast<int (SimTK::Subsystem::*)(const SimTK::State &, SimTK::Stage)  const>(&SimTK::Subsystem::getNEventTriggersByStage));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::Subsystem::setQ(SimTK::State &, const SimTK::Vector &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::setQ(SimTK::State &, const SimTK::Vector &)
   // defined in SimTKcommon/internal/Subsystem.h:226:6
   t0.method("setQ", static_cast<void (SimTK::Subsystem::*)(SimTK::State &, const SimTK::Vector &)  const>(&SimTK::Subsystem::setQ));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::Subsystem::setU(SimTK::State &, const SimTK::Vector &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::setU(SimTK::State &, const SimTK::Vector &)
   // defined in SimTKcommon/internal/Subsystem.h:230:6
   t0.method("setU", static_cast<void (SimTK::Subsystem::*)(SimTK::State &, const SimTK::Vector &)  const>(&SimTK::Subsystem::setU));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::Subsystem::setZ(SimTK::State &, const SimTK::Vector &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::setZ(SimTK::State &, const SimTK::Vector &)
   // defined in SimTKcommon/internal/Subsystem.h:234:6
   t0.method("setZ", static_cast<void (SimTK::Subsystem::*)(SimTK::State &, const SimTK::Vector &)  const>(&SimTK::Subsystem::setZ));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Stage SimTK::Subsystem::getStage(const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Stage SimTK::Subsystem::getStage(const SimTK::State &)
   // defined in SimTKcommon/internal/Subsystem.h:239:7
   t0.method("getStage", static_cast<SimTK::Stage (SimTK::Subsystem::*)(const SimTK::State &)  const>(&SimTK::Subsystem::getStage));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::Subsystem::advanceToStage(const SimTK::State &, SimTK::Stage) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::advanceToStage(const SimTK::State &, SimTK::Stage)
   // defined in SimTKcommon/internal/Subsystem.h:241:6
   t0.method("advanceToStage", static_cast<void (SimTK::Subsystem::*)(const SimTK::State &, SimTK::Stage)  const>(&SimTK::Subsystem::advanceToStage));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::AbstractValue & SimTK::Subsystem::getDiscreteVariable(const SimTK::State &, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::AbstractValue & SimTK::Subsystem::getDiscreteVariable(const SimTK::State &, SimTK::DiscreteVariableIndex)
   // defined in SimTKcommon/internal/Subsystem.h:245:1
   t0.method("getDiscreteVariable", static_cast<const SimTK::AbstractValue & (SimTK::Subsystem::*)(const SimTK::State &, SimTK::DiscreteVariableIndex)  const>(&SimTK::Subsystem::getDiscreteVariable));
   CLEAR_DEBUG_MSG();
@@ -604,7 +541,6 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::AbstractValue & SimTK::Subsystem::updDiscreteVariable(SimTK::State &, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::AbstractValue & SimTK::Subsystem::updDiscreteVariable(SimTK::State &, SimTK::DiscreteVariableIndex)
   // defined in SimTKcommon/internal/Subsystem.h:247:16
   t0.method("updDiscreteVariable", static_cast<SimTK::AbstractValue & (SimTK::Subsystem::*)(SimTK::State &, SimTK::DiscreteVariableIndex)  const>(&SimTK::Subsystem::updDiscreteVariable));
   CLEAR_DEBUG_MSG();
@@ -617,7 +553,6 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::AbstractValue & SimTK::Subsystem::getCacheEntry(const SimTK::State &, SimTK::CacheEntryIndex) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::AbstractValue & SimTK::Subsystem::getCacheEntry(const SimTK::State &, SimTK::CacheEntryIndex)
   // defined in SimTKcommon/internal/Subsystem.h:249:22
   t0.method("getCacheEntry", static_cast<const SimTK::AbstractValue & (SimTK::Subsystem::*)(const SimTK::State &, SimTK::CacheEntryIndex)  const>(&SimTK::Subsystem::getCacheEntry));
   CLEAR_DEBUG_MSG();
@@ -630,7 +565,6 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::AbstractValue & SimTK::Subsystem::updCacheEntry(const SimTK::State &, SimTK::CacheEntryIndex) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::AbstractValue & SimTK::Subsystem::updCacheEntry(const SimTK::State &, SimTK::CacheEntryIndex)
   // defined in SimTKcommon/internal/Subsystem.h:251:16
   t0.method("updCacheEntry", static_cast<SimTK::AbstractValue & (SimTK::Subsystem::*)(const SimTK::State &, SimTK::CacheEntryIndex)  const>(&SimTK::Subsystem::updCacheEntry));
   CLEAR_DEBUG_MSG();
@@ -643,7 +577,6 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::Real SimTK::Subsystem::getDiscreteVarLastUpdateTime(const SimTK::State &, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Real SimTK::Subsystem::getDiscreteVarLastUpdateTime(const SimTK::State &, SimTK::DiscreteVariableIndex)
   // defined in SimTKcommon/internal/Subsystem.h:253:6
   t0.method("getDiscreteVarLastUpdateTime", static_cast<SimTK::Real (SimTK::Subsystem::*)(const SimTK::State &, SimTK::DiscreteVariableIndex)  const>(&SimTK::Subsystem::getDiscreteVarLastUpdateTime));
   CLEAR_DEBUG_MSG();
@@ -656,7 +589,6 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::CacheEntryIndex SimTK::Subsystem::getDiscreteVarUpdateIndex(const SimTK::State &, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::CacheEntryIndex SimTK::Subsystem::getDiscreteVarUpdateIndex(const SimTK::State &, SimTK::DiscreteVariableIndex)
   // defined in SimTKcommon/internal/Subsystem.h:256:1
   t0.method("getDiscreteVarUpdateIndex", static_cast<SimTK::CacheEntryIndex (SimTK::Subsystem::*)(const SimTK::State &, SimTK::DiscreteVariableIndex)  const>(&SimTK::Subsystem::getDiscreteVarUpdateIndex));
   CLEAR_DEBUG_MSG();
@@ -669,7 +601,6 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::AbstractValue & SimTK::Subsystem::getDiscreteVarUpdateValue(const SimTK::State &, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::AbstractValue & SimTK::Subsystem::getDiscreteVarUpdateValue(const SimTK::State &, SimTK::DiscreteVariableIndex)
   // defined in SimTKcommon/internal/Subsystem.h:259:1
   t0.method("getDiscreteVarUpdateValue", static_cast<const SimTK::AbstractValue & (SimTK::Subsystem::*)(const SimTK::State &, SimTK::DiscreteVariableIndex)  const>(&SimTK::Subsystem::getDiscreteVarUpdateValue));
   CLEAR_DEBUG_MSG();
@@ -682,7 +613,6 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::AbstractValue & SimTK::Subsystem::updDiscreteVarUpdateValue(const SimTK::State &, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::AbstractValue & SimTK::Subsystem::updDiscreteVarUpdateValue(const SimTK::State &, SimTK::DiscreteVariableIndex)
   // defined in SimTKcommon/internal/Subsystem.h:262:1
   t0.method("updDiscreteVarUpdateValue", static_cast<SimTK::AbstractValue & (SimTK::Subsystem::*)(const SimTK::State &, SimTK::DiscreteVariableIndex)  const>(&SimTK::Subsystem::updDiscreteVarUpdateValue));
   CLEAR_DEBUG_MSG();
@@ -695,7 +625,6 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("bool SimTK::Subsystem::isDiscreteVarUpdateValueRealized(const SimTK::State &, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::Subsystem::isDiscreteVarUpdateValueRealized(const SimTK::State &, SimTK::DiscreteVariableIndex)
   // defined in SimTKcommon/internal/Subsystem.h:264:6
   t0.method("isDiscreteVarUpdateValueRealized", static_cast<bool (SimTK::Subsystem::*)(const SimTK::State &, SimTK::DiscreteVariableIndex)  const>(&SimTK::Subsystem::isDiscreteVarUpdateValueRealized));
   CLEAR_DEBUG_MSG();
@@ -708,7 +637,6 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::Subsystem::markDiscreteVarUpdateValueRealized(const SimTK::State &, SimTK::DiscreteVariableIndex) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::markDiscreteVarUpdateValueRealized(const SimTK::State &, SimTK::DiscreteVariableIndex)
   // defined in SimTKcommon/internal/Subsystem.h:267:6
   t0.method("markDiscreteVarUpdateValueRealized", static_cast<void (SimTK::Subsystem::*)(const SimTK::State &, SimTK::DiscreteVariableIndex)  const>(&SimTK::Subsystem::markDiscreteVarUpdateValueRealized));
   CLEAR_DEBUG_MSG();
@@ -721,7 +649,6 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("bool SimTK::Subsystem::isCacheValueRealized(const SimTK::State &, SimTK::CacheEntryIndex) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::Subsystem::isCacheValueRealized(const SimTK::State &, SimTK::CacheEntryIndex)
   // defined in SimTKcommon/internal/Subsystem.h:271:6
   t0.method("isCacheValueRealized", static_cast<bool (SimTK::Subsystem::*)(const SimTK::State &, SimTK::CacheEntryIndex)  const>(&SimTK::Subsystem::isCacheValueRealized));
   CLEAR_DEBUG_MSG();
@@ -734,7 +661,6 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::Subsystem::markCacheValueRealized(const SimTK::State &, SimTK::CacheEntryIndex) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::markCacheValueRealized(const SimTK::State &, SimTK::CacheEntryIndex)
   // defined in SimTKcommon/internal/Subsystem.h:273:6
   t0.method("markCacheValueRealized", static_cast<void (SimTK::Subsystem::*)(const SimTK::State &, SimTK::CacheEntryIndex)  const>(&SimTK::Subsystem::markCacheValueRealized));
   CLEAR_DEBUG_MSG();
@@ -747,7 +673,6 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::Subsystem::markCacheValueNotRealized(const SimTK::State &, SimTK::CacheEntryIndex) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::markCacheValueNotRealized(const SimTK::State &, SimTK::CacheEntryIndex)
   // defined in SimTKcommon/internal/Subsystem.h:275:6
   t0.method("markCacheValueNotRealized", static_cast<void (SimTK::Subsystem::*)(const SimTK::State &, SimTK::CacheEntryIndex)  const>(&SimTK::Subsystem::markCacheValueNotRealized));
   CLEAR_DEBUG_MSG();
@@ -759,44 +684,37 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
   #endif
 
   DEBUG_MSG("const SimTK::String & SimTK::Subsystem::getName() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::String & SimTK::Subsystem::getName()
   // defined in SimTKcommon/internal/Subsystem.h:288:22
   t0.method("getName", static_cast<const SimTK::String & (SimTK::Subsystem::*)()  const>(&SimTK::Subsystem::getName));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::String & SimTK::Subsystem::getVersion() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::String & SimTK::Subsystem::getVersion()
   // defined in SimTKcommon/internal/Subsystem.h:291:22
   t0.method("getVersion", static_cast<const SimTK::String & (SimTK::Subsystem::*)()  const>(&SimTK::Subsystem::getVersion));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::Subsystem::isInSystem() (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::Subsystem::isInSystem()
   // defined in SimTKcommon/internal/Subsystem.h:294:13
   t0.method("isInSystem", static_cast<bool (SimTK::Subsystem::*)()  const>(&SimTK::Subsystem::isInSystem));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::Subsystem::isInSameSystem(const SimTK::Subsystem &) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::Subsystem::isInSameSystem(const SimTK::Subsystem &)
   // defined in SimTKcommon/internal/Subsystem.h:298:13
   t0.method("isInSameSystem", static_cast<bool (SimTK::Subsystem::*)(const SimTK::Subsystem &)  const>(&SimTK::Subsystem::isInSameSystem));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::System & SimTK::Subsystem::getSystem() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::System & SimTK::Subsystem::getSystem()
   // defined in SimTKcommon/internal/Subsystem.h:303:22
   t0.method("getSystem", static_cast<const SimTK::System & (SimTK::Subsystem::*)()  const>(&SimTK::Subsystem::getSystem));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::System & SimTK::Subsystem::updSystem() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::System & SimTK::Subsystem::updSystem()
   // defined in SimTKcommon/internal/Subsystem.h:307:16
   t0.method("updSystem", static_cast<SimTK::System & (SimTK::Subsystem::*)() >(&SimTK::Subsystem::updSystem));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::Subsystem::setSystem(SimTK::System &, SimTK::SubsystemIndex) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::setSystem(SimTK::System &, SimTK::SubsystemIndex)
   // defined in SimTKcommon/internal/Subsystem.h:310:13
   t0.method("setSystem", static_cast<void (SimTK::Subsystem::*)(SimTK::System &, SimTK::SubsystemIndex) >(&SimTK::Subsystem::setSystem));
   CLEAR_DEBUG_MSG();
@@ -809,7 +727,6 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::SubsystemIndex SimTK::Subsystem::getMySubsystemIndex() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::SubsystemIndex SimTK::Subsystem::getMySubsystemIndex()
   // defined in SimTKcommon/internal/Subsystem.h:314:23
   t0.method("getMySubsystemIndex", static_cast<SimTK::SubsystemIndex (SimTK::Subsystem::*)()  const>(&SimTK::Subsystem::getMySubsystemIndex));
   CLEAR_DEBUG_MSG();
@@ -821,38 +738,32 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
   #endif
 
   // DEBUG_MSG("bool SimTK::Subsystem::isEmptyHandle() (" __HERE__ ")");
-  // // signature to use in the veto list: bool SimTK::Subsystem::isEmptyHandle()
   // // defined in SimTKcommon/internal/Subsystem.h:317:13
   // t0.method("isEmptyHandle", static_cast<bool (SimTK::Subsystem::*)()  const>(&SimTK::Subsystem::isEmptyHandle));
   // CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::Subsystem::isSameSubsystem(const SimTK::Subsystem &) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::Subsystem::isSameSubsystem(const SimTK::Subsystem &)
   // defined in SimTKcommon/internal/Subsystem.h:322:13
   t0.method("isSameSubsystem", static_cast<bool (SimTK::Subsystem::*)(const SimTK::Subsystem &)  const>(&SimTK::Subsystem::isSameSubsystem));
   CLEAR_DEBUG_MSG();
 
   // DEBUG_MSG("bool SimTK::Subsystem::isOwnerHandle() (" __HERE__ ")");
-  // // signature to use in the veto list: bool SimTK::Subsystem::isOwnerHandle()
   // // defined in SimTKcommon/internal/Subsystem.h:328:13
   // t0.method("isOwnerHandle", static_cast<bool (SimTK::Subsystem::*)()  const>(&SimTK::Subsystem::isOwnerHandle));
   // CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::Subsystem::subsystemTopologyHasBeenRealized() (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::Subsystem::subsystemTopologyHasBeenRealized()
   // defined in SimTKcommon/internal/Subsystem.h:333:13
   t0.method("subsystemTopologyHasBeenRealized", static_cast<bool (SimTK::Subsystem::*)()  const>(&SimTK::Subsystem::subsystemTopologyHasBeenRealized));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::Subsystem::invalidateSubsystemTopologyCache() (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Subsystem::invalidateSubsystemTopologyCache()
   // defined in SimTKcommon/internal/Subsystem.h:342:13
   t0.method("invalidateSubsystemTopologyCache", static_cast<void (SimTK::Subsystem::*)()  const>(&SimTK::Subsystem::invalidateSubsystemTopologyCache));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::MeasureIndex SimTK::Subsystem::adoptMeasure(SimTK::AbstractMeasure &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::MeasureIndex SimTK::Subsystem::adoptMeasure(SimTK::AbstractMeasure &)
   // defined in SimTKcommon/internal/Subsystem.h:346:21
   t0.method("adoptMeasure", static_cast<SimTK::MeasureIndex (SimTK::Subsystem::*)(SimTK::AbstractMeasure &) >(&SimTK::Subsystem::adoptMeasure));
   CLEAR_DEBUG_MSG();
@@ -865,7 +776,6 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::AbstractMeasure SimTK::Subsystem::getMeasure(SimTK::MeasureIndex) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::AbstractMeasure SimTK::Subsystem::getMeasure(SimTK::MeasureIndex)
   // defined in SimTKcommon/internal/Subsystem.h:347:24
   t0.method("getMeasure", static_cast<SimTK::AbstractMeasure (SimTK::Subsystem::*)(SimTK::MeasureIndex)  const>(&SimTK::Subsystem::getMeasure));
   CLEAR_DEBUG_MSG();
@@ -877,17 +787,14 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
   #endif
 
   // DEBUG_MSG("const SimTK::Subsystem::Guts & SimTK::Subsystem::getSubsystemGuts() (" __HERE__ ")");
-  // // signature to use in the veto list: const SimTK::Subsystem::Guts & SimTK::Subsystem::getSubsystemGuts()
   // // defined in SimTKcommon/internal/Subsystem.h:353:24
   // t0.method("getSubsystemGuts", static_cast<const SimTK::Subsystem::Guts & (SimTK::Subsystem::*)()  const>(&SimTK::Subsystem::getSubsystemGuts));
 
   // DEBUG_MSG("SimTK::Subsystem::Guts & SimTK::Subsystem::updSubsystemGuts() (" __HERE__ ")");
-  // // signature to use in the veto list: SimTK::Subsystem::Guts & SimTK::Subsystem::updSubsystemGuts()
   // // defined in SimTKcommon/internal/Subsystem.h:354:24
   // t0.method("updSubsystemGuts", static_cast<SimTK::Subsystem::Guts & (SimTK::Subsystem::*)() >(&SimTK::Subsystem::updSubsystemGuts));
 
   // DEBUG_MSG("void SimTK::Subsystem::adoptSubsystemGuts(SimTK::Subsystem::Guts *) (" __HERE__ ")");
-  // // signature to use in the veto list: void SimTK::Subsystem::adoptSubsystemGuts(SimTK::Subsystem::Guts *)
   // // defined in SimTKcommon/internal/Subsystem.h:359:6
   // t0.method("adoptSubsystemGuts", static_cast<void (SimTK::Subsystem::*)(SimTK::Subsystem::Guts *) >(&SimTK::Subsystem::adoptSubsystemGuts));
 
@@ -896,7 +803,6 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
   // t0.constructor<SimTK::Subsystem::Guts *>();
 
   // DEBUG_MSG("bool SimTK::Subsystem::hasGuts() (" __HERE__ ")");
-  // // signature to use in the veto list: bool SimTK::Subsystem::hasGuts()
   // // defined in SimTKcommon/internal/Subsystem.h:362:6
   // t0.method("hasGuts", static_cast<bool (SimTK::Subsystem::*)()  const>(&SimTK::Subsystem::hasGuts));
   // CLEAR_DEBUG_MSG();
@@ -910,173 +816,145 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
    */
 
   DEBUG_MSG("SimTK::System & SimTK::System::setUpDirection(const SimTK::CoordinateDirection &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::System & SimTK::System::setUpDirection(const SimTK::CoordinateDirection &)
   // defined in SimTKcommon/internal/System.h:125:9
   t22.method("setUpDirection", static_cast<SimTK::System & (SimTK::System::*)(const SimTK::CoordinateDirection &) >(&SimTK::System::setUpDirection));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::System & SimTK::System::setUseUniformBackground(bool) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::System & SimTK::System::setUseUniformBackground(bool)
   // defined in SimTKcommon/internal/System.h:134:9
   t22.method("setUseUniformBackground", static_cast<SimTK::System & (SimTK::System::*)(bool) >(&SimTK::System::setUseUniformBackground));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::System & SimTK::System::setDefaultTimeScale(SimTK::Real) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::System & SimTK::System::setDefaultTimeScale(SimTK::Real)
   // defined in SimTKcommon/internal/System.h:149:9
   t22.method("setDefaultTimeScale", static_cast<SimTK::System & (SimTK::System::*)(SimTK::Real) >(&SimTK::System::setDefaultTimeScale));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::System & SimTK::System::setDefaultLengthScale(SimTK::Real) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::System & SimTK::System::setDefaultLengthScale(SimTK::Real)
   // defined in SimTKcommon/internal/System.h:158:9
   t22.method("setDefaultLengthScale", static_cast<SimTK::System & (SimTK::System::*)(SimTK::Real) >(&SimTK::System::setDefaultLengthScale));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::System::setHasTimeAdvancedEvents(bool) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::System::setHasTimeAdvancedEvents(bool)
   // defined in SimTKcommon/internal/System.h:165:6
   t22.method("setHasTimeAdvancedEvents", static_cast<void (SimTK::System::*)(bool) >(&SimTK::System::setHasTimeAdvancedEvents));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::CoordinateDirection SimTK::System::getUpDirection() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::CoordinateDirection SimTK::System::getUpDirection()
   // defined in SimTKcommon/internal/System.h:168:21
   t22.method("getUpDirection", static_cast<SimTK::CoordinateDirection (SimTK::System::*)()  const>(&SimTK::System::getUpDirection));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::System::getUseUniformBackground() (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::System::getUseUniformBackground()
   // defined in SimTKcommon/internal/System.h:171:6
   t22.method("getUseUniformBackground", static_cast<bool (SimTK::System::*)()  const>(&SimTK::System::getUseUniformBackground));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Real SimTK::System::getDefaultTimeScale() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Real SimTK::System::getDefaultTimeScale()
   // defined in SimTKcommon/internal/System.h:174:6
   t22.method("getDefaultTimeScale", static_cast<SimTK::Real (SimTK::System::*)()  const>(&SimTK::System::getDefaultTimeScale));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Real SimTK::System::getDefaultLengthScale() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Real SimTK::System::getDefaultLengthScale()
   // defined in SimTKcommon/internal/System.h:177:6
   t22.method("getDefaultLengthScale", static_cast<SimTK::Real (SimTK::System::*)()  const>(&SimTK::System::getDefaultLengthScale));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::System::hasTimeAdvancedEvents() (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::System::hasTimeAdvancedEvents()
   // defined in SimTKcommon/internal/System.h:180:6
   t22.method("hasTimeAdvancedEvents", static_cast<bool (SimTK::System::*)()  const>(&SimTK::System::hasTimeAdvancedEvents));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::System::addEventHandler(SimTK::ScheduledEventHandler *) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::System::addEventHandler(SimTK::ScheduledEventHandler *)
   // defined in SimTKcommon/internal/System.h:193:13
   t22.method("addEventHandler", static_cast<void (SimTK::System::*)(SimTK::ScheduledEventHandler *) >(&SimTK::System::addEventHandler));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::System::addEventHandler(SimTK::TriggeredEventHandler *) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::System::addEventHandler(SimTK::TriggeredEventHandler *)
   // defined in SimTKcommon/internal/System.h:196:13
   t22.method("addEventHandler", static_cast<void (SimTK::System::*)(SimTK::TriggeredEventHandler *) >(&SimTK::System::addEventHandler));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::System::addEventReporter(SimTK::ScheduledEventReporter *) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::System::addEventReporter(SimTK::ScheduledEventReporter *)
   // defined in SimTKcommon/internal/System.h:199:13
   t22.method("addEventReporter", static_cast<void (SimTK::System::*)(SimTK::ScheduledEventReporter *)  const>(&SimTK::System::addEventReporter));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::System::addEventReporter(SimTK::TriggeredEventReporter *) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::System::addEventReporter(SimTK::TriggeredEventReporter *)
   // defined in SimTKcommon/internal/System.h:202:13
   t22.method("addEventReporter", static_cast<void (SimTK::System::*)(SimTK::TriggeredEventReporter *)  const>(&SimTK::System::addEventReporter));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::State & SimTK::System::realizeTopology() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::State & SimTK::System::realizeTopology()
   // defined in SimTKcommon/internal/System.h:235:14
   t22.method("realizeTopology", static_cast<const SimTK::State & (SimTK::System::*)()  const>(&SimTK::System::realizeTopology));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::State & SimTK::System::getDefaultState() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::State & SimTK::System::getDefaultState()
   // defined in SimTKcommon/internal/System.h:251:14
   t22.method("getDefaultState", static_cast<const SimTK::State & (SimTK::System::*)()  const>(&SimTK::System::getDefaultState));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::State & SimTK::System::updDefaultState() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::State & SimTK::System::updDefaultState()
   // defined in SimTKcommon/internal/System.h:254:14
   t22.method("updDefaultState", static_cast<SimTK::State & (SimTK::System::*)() >(&SimTK::System::updDefaultState));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::System::realizeModel(SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::System::realizeModel(SimTK::State &)
   // defined in SimTKcommon/internal/System.h:274:6
   t22.method("realizeModel", static_cast<void (SimTK::System::*)(SimTK::State &)  const>(&SimTK::System::realizeModel));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::System::realize(const SimTK::State &, SimTK::Stage) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::System::realize(const SimTK::State &, SimTK::Stage)
   // defined in SimTKcommon/internal/System.h:283:6
   t22.method("realize", static_cast<void (SimTK::System::*)(const SimTK::State &, SimTK::Stage)  const>(&SimTK::System::realize));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::System::project(SimTK::State &, SimTK::Real) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::System::project(SimTK::State &, SimTK::Real)
   // defined in SimTKcommon/internal/System.h:368:6
   t22.method("project", static_cast<void (SimTK::System::*)(SimTK::State &, SimTK::Real)  const>(&SimTK::System::project),
     jlcxx::arg("sys"), jlcxx::arg("state"), jlcxx::arg("accuracy")=(SimTK::Real)-1);
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::System::projectQ(SimTK::State &, SimTK::Real) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::System::projectQ(SimTK::State &, SimTK::Real)
   // defined in SimTKcommon/internal/System.h:385:6
   t22.method("projectQ", static_cast<void (SimTK::System::*)(SimTK::State &, SimTK::Real)  const>(&SimTK::System::projectQ),
     jlcxx::arg("sys"), jlcxx::arg("state"), jlcxx::arg("accuracy")=(SimTK::Real)-1);
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::System::projectU(SimTK::State &, SimTK::Real) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::System::projectU(SimTK::State &, SimTK::Real)
   // defined in SimTKcommon/internal/System.h:404:6
   t22.method("projectU", static_cast<void (SimTK::System::*)(SimTK::State &, SimTK::Real)  const>(&SimTK::System::projectU),
     jlcxx::arg("sys"), jlcxx::arg("state"), jlcxx::arg("accuracy")=(SimTK::Real)-1);
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::System::projectQ(SimTK::State &, SimTK::Vector &, const SimTK::ProjectOptions &, SimTK::ProjectResults &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::System::projectQ(SimTK::State &, SimTK::Vector &, const SimTK::ProjectOptions &, SimTK::ProjectResults &)
   // defined in SimTKcommon/internal/System.h:441:6
   t22.method("projectQ", static_cast<void (SimTK::System::*)(SimTK::State &, SimTK::Vector &, const SimTK::ProjectOptions &, SimTK::ProjectResults &)  const>(&SimTK::System::projectQ));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::System::projectU(SimTK::State &, SimTK::Vector &, const SimTK::ProjectOptions &, SimTK::ProjectResults &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::System::projectU(SimTK::State &, SimTK::Vector &, const SimTK::ProjectOptions &, SimTK::ProjectResults &)
   // defined in SimTKcommon/internal/System.h:467:6
   t22.method("projectU", static_cast<void (SimTK::System::*)(SimTK::State &, SimTK::Vector &, const SimTK::ProjectOptions &, SimTK::ProjectResults &)  const>(&SimTK::System::projectU));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::System::prescribe(SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::System::prescribe(SimTK::State &)
   // defined in SimTKcommon/internal/System.h:488:6
   t22.method("prescribe", static_cast<void (SimTK::System::*)(SimTK::State &)  const>(&SimTK::System::prescribe));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::System::prescribeQ(SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::System::prescribeQ(SimTK::State &)
   // defined in SimTKcommon/internal/System.h:513:6
   t22.method("prescribeQ", static_cast<bool (SimTK::System::*)(SimTK::State &)  const>(&SimTK::System::prescribeQ));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::System::prescribeU(SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::System::prescribeU(SimTK::State &)
   // defined in SimTKcommon/internal/System.h:530:6
   t22.method("prescribeU", static_cast<bool (SimTK::System::*)(SimTK::State &)  const>(&SimTK::System::prescribeU));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::System::getFreeQIndex(const SimTK::State &, SimTK::Array_<SimTK::SystemQIndex> &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::System::getFreeQIndex(const SimTK::State &, SimTK::Array_<SimTK::SystemQIndex> &)
   // defined in SimTKcommon/internal/System.h:537:6
   t22.method("getFreeQIndex", static_cast<void (SimTK::System::*)(const SimTK::State &, SimTK::Array_<SimTK::SystemQIndex> &)  const>(&SimTK::System::getFreeQIndex));
   CLEAR_DEBUG_MSG();
@@ -1089,7 +967,6 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::System::getFreeUIndex(const SimTK::State &, SimTK::Array_<SimTK::SystemUIndex> &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::System::getFreeUIndex(const SimTK::State &, SimTK::Array_<SimTK::SystemUIndex> &)
   // defined in SimTKcommon/internal/System.h:544:6
   t22.method("getFreeUIndex", static_cast<void (SimTK::System::*)(const SimTK::State &, SimTK::Array_<SimTK::SystemUIndex> &)  const>(&SimTK::System::getFreeUIndex));
   CLEAR_DEBUG_MSG();
@@ -1102,7 +979,6 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::System::handleEvents(SimTK::State &, SimTK::Event::Cause, const SimTK::Array_<SimTK::EventId> &, const SimTK::HandleEventsOptions &, SimTK::HandleEventsResults &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::System::handleEvents(SimTK::State &, SimTK::Event::Cause, const SimTK::Array_<SimTK::EventId> &, const SimTK::HandleEventsOptions &, SimTK::HandleEventsResults &)
   // defined in SimTKcommon/internal/System.h:587:6
   t22.method("handleEvents", static_cast<void (SimTK::System::*)(SimTK::State &, SimTK::Event::Cause, const SimTK::Array_<SimTK::EventId> &, const SimTK::HandleEventsOptions &, SimTK::HandleEventsResults &)  const>(&SimTK::System::handleEvents));
   CLEAR_DEBUG_MSG();
@@ -1115,7 +991,6 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::System::reportEvents(const SimTK::State &, SimTK::Event::Cause, const SimTK::Array_<SimTK::EventId> &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::System::reportEvents(const SimTK::State &, SimTK::Event::Cause, const SimTK::Array_<SimTK::EventId> &)
   // defined in SimTKcommon/internal/System.h:596:6
   t22.method("reportEvents", static_cast<void (SimTK::System::*)(const SimTK::State &, SimTK::Event::Cause, const SimTK::Array_<SimTK::EventId> &)  const>(&SimTK::System::reportEvents));
   CLEAR_DEBUG_MSG();
@@ -1127,14 +1002,12 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
   #endif
 
   DEBUG_MSG("void SimTK::System::calcEventTriggerInfo(const SimTK::State &, SimTK::Array_<SimTK::EventTriggerInfo> &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::System::calcEventTriggerInfo(const SimTK::State &, SimTK::Array_<SimTK::EventTriggerInfo> &)
   // defined in SimTKcommon/internal/System.h:608:6
   t22.method("calcEventTriggerInfo", static_cast<void (SimTK::System::*)(const SimTK::State &, SimTK::Array_<SimTK::EventTriggerInfo> &)  const>(&SimTK::System::calcEventTriggerInfo));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::System::calcTimeOfNextScheduledEvent(const SimTK::State &, SimTK::Real &, SimTK::Array_<SimTK::EventId> &, bool) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::System::calcTimeOfNextScheduledEvent(const SimTK::State &, SimTK::Real &, SimTK::Array_<SimTK::EventId> &, bool)
   // defined in SimTKcommon/internal/System.h:616:6
   t22.method("calcTimeOfNextScheduledEvent", static_cast<void (SimTK::System::*)(const SimTK::State &, SimTK::Real &, SimTK::Array_<SimTK::EventId> &, bool)  const>(&SimTK::System::calcTimeOfNextScheduledEvent));
   CLEAR_DEBUG_MSG();
@@ -1147,7 +1020,6 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::System::calcTimeOfNextScheduledReport(const SimTK::State &, SimTK::Real &, SimTK::Array_<SimTK::EventId> &, bool) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::System::calcTimeOfNextScheduledReport(const SimTK::State &, SimTK::Real &, SimTK::Array_<SimTK::EventId> &, bool)
   // defined in SimTKcommon/internal/System.h:624:6
   t22.method("calcTimeOfNextScheduledReport", static_cast<void (SimTK::System::*)(const SimTK::State &, SimTK::Real &, SimTK::Array_<SimTK::EventId> &, bool)  const>(&SimTK::System::calcTimeOfNextScheduledReport));
   CLEAR_DEBUG_MSG();
@@ -1159,121 +1031,101 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
   #endif
 
   DEBUG_MSG("void SimTK::System::multiplyByN(const SimTK::State &, const SimTK::Vector &, SimTK::Vector &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::System::multiplyByN(const SimTK::State &, const SimTK::Vector &, SimTK::Vector &)
   // defined in SimTKcommon/internal/System.h:685:6
   t22.method("multiplyByN", static_cast<void (SimTK::System::*)(const SimTK::State &, const SimTK::Vector &, SimTK::Vector &)  const>(&SimTK::System::multiplyByN));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::System::multiplyByNTranspose(const SimTK::State &, const SimTK::Vector &, SimTK::Vector &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::System::multiplyByNTranspose(const SimTK::State &, const SimTK::Vector &, SimTK::Vector &)
   // defined in SimTKcommon/internal/System.h:688:6
   t22.method("multiplyByNTranspose", static_cast<void (SimTK::System::*)(const SimTK::State &, const SimTK::Vector &, SimTK::Vector &)  const>(&SimTK::System::multiplyByNTranspose));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::System::multiplyByNPInv(const SimTK::State &, const SimTK::Vector &, SimTK::Vector &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::System::multiplyByNPInv(const SimTK::State &, const SimTK::Vector &, SimTK::Vector &)
   // defined in SimTKcommon/internal/System.h:691:6
   t22.method("multiplyByNPInv", static_cast<void (SimTK::System::*)(const SimTK::State &, const SimTK::Vector &, SimTK::Vector &)  const>(&SimTK::System::multiplyByNPInv));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::System::multiplyByNPInvTranspose(const SimTK::State &, const SimTK::Vector &, SimTK::Vector &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::System::multiplyByNPInvTranspose(const SimTK::State &, const SimTK::Vector &, SimTK::Vector &)
   // defined in SimTKcommon/internal/System.h:694:6
   t22.method("multiplyByNPInvTranspose", static_cast<void (SimTK::System::*)(const SimTK::State &, const SimTK::Vector &, SimTK::Vector &)  const>(&SimTK::System::multiplyByNPInvTranspose));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::System::resetAllCountersToZero() (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::System::resetAllCountersToZero()
   // defined in SimTKcommon/internal/System.h:709:6
   t22.method("resetAllCountersToZero", static_cast<void (SimTK::System::*)() >(&SimTK::System::resetAllCountersToZero));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("int SimTK::System::getNumRealizationsOfThisStage(SimTK::Stage) (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::System::getNumRealizationsOfThisStage(SimTK::Stage)
   // defined in SimTKcommon/internal/System.h:716:5
   t22.method("getNumRealizationsOfThisStage", static_cast<int (SimTK::System::*)(SimTK::Stage)  const>(&SimTK::System::getNumRealizationsOfThisStage));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("int SimTK::System::getNumRealizeCalls() (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::System::getNumRealizeCalls()
   // defined in SimTKcommon/internal/System.h:721:5
   t22.method("getNumRealizeCalls", static_cast<int (SimTK::System::*)()  const>(&SimTK::System::getNumRealizeCalls));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("int SimTK::System::getNumPrescribeQCalls() (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::System::getNumPrescribeQCalls()
   // defined in SimTKcommon/internal/System.h:726:5
   t22.method("getNumPrescribeQCalls", static_cast<int (SimTK::System::*)()  const>(&SimTK::System::getNumPrescribeQCalls));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("int SimTK::System::getNumPrescribeUCalls() (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::System::getNumPrescribeUCalls()
   // defined in SimTKcommon/internal/System.h:728:5
   t22.method("getNumPrescribeUCalls", static_cast<int (SimTK::System::*)()  const>(&SimTK::System::getNumPrescribeUCalls));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("int SimTK::System::getNumProjectQCalls() (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::System::getNumProjectQCalls()
   // defined in SimTKcommon/internal/System.h:734:5
   t22.method("getNumProjectQCalls", static_cast<int (SimTK::System::*)()  const>(&SimTK::System::getNumProjectQCalls));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("int SimTK::System::getNumFailedProjectQCalls() (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::System::getNumFailedProjectQCalls()
   // defined in SimTKcommon/internal/System.h:736:5
   t22.method("getNumFailedProjectQCalls", static_cast<int (SimTK::System::*)()  const>(&SimTK::System::getNumFailedProjectQCalls));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("int SimTK::System::getNumQProjections() (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::System::getNumQProjections()
   // defined in SimTKcommon/internal/System.h:739:5
   t22.method("getNumQProjections", static_cast<int (SimTK::System::*)()  const>(&SimTK::System::getNumQProjections));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("int SimTK::System::getNumQErrorEstimateProjections() (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::System::getNumQErrorEstimateProjections()
   // defined in SimTKcommon/internal/System.h:742:5
   t22.method("getNumQErrorEstimateProjections", static_cast<int (SimTK::System::*)()  const>(&SimTK::System::getNumQErrorEstimateProjections));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("int SimTK::System::getNumProjectUCalls() (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::System::getNumProjectUCalls()
   // defined in SimTKcommon/internal/System.h:746:5
   t22.method("getNumProjectUCalls", static_cast<int (SimTK::System::*)()  const>(&SimTK::System::getNumProjectUCalls));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("int SimTK::System::getNumFailedProjectUCalls() (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::System::getNumFailedProjectUCalls()
   // defined in SimTKcommon/internal/System.h:748:5
   t22.method("getNumFailedProjectUCalls", static_cast<int (SimTK::System::*)()  const>(&SimTK::System::getNumFailedProjectUCalls));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("int SimTK::System::getNumUProjections() (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::System::getNumUProjections()
   // defined in SimTKcommon/internal/System.h:751:5
   t22.method("getNumUProjections", static_cast<int (SimTK::System::*)()  const>(&SimTK::System::getNumUProjections));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("int SimTK::System::getNumUErrorEstimateProjections() (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::System::getNumUErrorEstimateProjections()
   // defined in SimTKcommon/internal/System.h:754:5
   t22.method("getNumUErrorEstimateProjections", static_cast<int (SimTK::System::*)()  const>(&SimTK::System::getNumUErrorEstimateProjections));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("int SimTK::System::getNumHandlerCallsThatChangedStage(SimTK::Stage) (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::System::getNumHandlerCallsThatChangedStage(SimTK::Stage)
   // defined in SimTKcommon/internal/System.h:761:5
   t22.method("getNumHandlerCallsThatChangedStage", static_cast<int (SimTK::System::*)(SimTK::Stage)  const>(&SimTK::System::getNumHandlerCallsThatChangedStage));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("int SimTK::System::getNumHandleEventCalls() (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::System::getNumHandleEventCalls()
   // defined in SimTKcommon/internal/System.h:765:5
   t22.method("getNumHandleEventCalls", static_cast<int (SimTK::System::*)()  const>(&SimTK::System::getNumHandleEventCalls));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("int SimTK::System::getNumReportEventCalls() (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::System::getNumReportEventCalls()
   // defined in SimTKcommon/internal/System.h:769:5
   t22.method("getNumReportEventCalls", static_cast<int (SimTK::System::*)()  const>(&SimTK::System::getNumReportEventCalls));
   CLEAR_DEBUG_MSG();
@@ -1285,26 +1137,22 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::System & SimTK::System::operator=(const SimTK::System &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::System & SimTK::System::operator=(const SimTK::System &)
   // defined in SimTKcommon/internal/System.h:784:9
   t22.method("set!", static_cast<SimTK::System & (SimTK::System::*)(const SimTK::System &) >(&SimTK::System::operator=));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::String & SimTK::System::getName() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::String & SimTK::System::getName()
   // defined in SimTKcommon/internal/System.h:790:15
   t22.method("getName", static_cast<const SimTK::String & (SimTK::System::*)()  const>(&SimTK::System::getName));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::String & SimTK::System::getVersion() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::String & SimTK::System::getVersion()
   // defined in SimTKcommon/internal/System.h:792:15
   t22.method("getVersion", static_cast<const SimTK::String & (SimTK::System::*)()  const>(&SimTK::System::getVersion));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::SubsystemIndex SimTK::System::adoptSubsystem(SimTK::Subsystem &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::SubsystemIndex SimTK::System::adoptSubsystem(SimTK::Subsystem &)
   // defined in SimTKcommon/internal/System.h:796:16
   t22.method("adoptSubsystem", static_cast<SimTK::SubsystemIndex (SimTK::System::*)(SimTK::Subsystem &) >(&SimTK::System::adoptSubsystem));
   CLEAR_DEBUG_MSG();
@@ -1316,14 +1164,12 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
   #endif
 
   DEBUG_MSG("int SimTK::System::getNumSubsystems() (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::System::getNumSubsystems()
   // defined in SimTKcommon/internal/System.h:799:5
   t22.method("getNumSubsystems", static_cast<int (SimTK::System::*)()  const>(&SimTK::System::getNumSubsystems));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("const SimTK::Subsystem & SimTK::System::getSubsystem(SimTK::SubsystemIndex) (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Subsystem & SimTK::System::getSubsystem(SimTK::SubsystemIndex)
   // defined in SimTKcommon/internal/System.h:801:18
   t22.method("getSubsystem", static_cast<const SimTK::Subsystem & (SimTK::System::*)(SimTK::SubsystemIndex)  const>(&SimTK::System::getSubsystem));
   CLEAR_DEBUG_MSG();
@@ -1336,7 +1182,6 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::Subsystem & SimTK::System::updSubsystem(SimTK::SubsystemIndex) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Subsystem & SimTK::System::updSubsystem(SimTK::SubsystemIndex)
   // defined in SimTKcommon/internal/System.h:803:12
   t22.method("updSubsystem", static_cast<SimTK::Subsystem & (SimTK::System::*)(SimTK::SubsystemIndex) >(&SimTK::System::updSubsystem));
   CLEAR_DEBUG_MSG();
@@ -1348,67 +1193,56 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
   #endif
 
   DEBUG_MSG("const SimTK::DefaultSystemSubsystem & SimTK::System::getDefaultSubsystem() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::DefaultSystemSubsystem & SimTK::System::getDefaultSubsystem()
   // defined in SimTKcommon/internal/System.h:806:31
   t22.method("getDefaultSubsystem", static_cast<const SimTK::DefaultSystemSubsystem & (SimTK::System::*)()  const>(&SimTK::System::getDefaultSubsystem));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::DefaultSystemSubsystem & SimTK::System::updDefaultSubsystem() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::DefaultSystemSubsystem & SimTK::System::updDefaultSubsystem()
   // defined in SimTKcommon/internal/System.h:809:25
   t22.method("updDefaultSubsystem", static_cast<SimTK::DefaultSystemSubsystem & (SimTK::System::*)() >(&SimTK::System::updDefaultSubsystem));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::System::systemTopologyHasBeenRealized() (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::System::systemTopologyHasBeenRealized()
   // defined in SimTKcommon/internal/System.h:824:6
   t22.method("systemTopologyHasBeenRealized", static_cast<bool (SimTK::System::*)()  const>(&SimTK::System::systemTopologyHasBeenRealized));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::StageVersion SimTK::System::getSystemTopologyCacheVersion() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::StageVersion SimTK::System::getSystemTopologyCacheVersion()
   // defined in SimTKcommon/internal/System.h:833:14
   t22.method("getSystemTopologyCacheVersion", static_cast<SimTK::StageVersion (SimTK::System::*)()  const>(&SimTK::System::getSystemTopologyCacheVersion));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::System::setSystemTopologyCacheVersion(SimTK::StageVersion) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::System::setSystemTopologyCacheVersion(SimTK::StageVersion)
   // defined in SimTKcommon/internal/System.h:840:6
   t22.method("setSystemTopologyCacheVersion", static_cast<void (SimTK::System::*)(SimTK::StageVersion)  const>(&SimTK::System::setSystemTopologyCacheVersion));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::System::invalidateSystemTopologyCache() (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::System::invalidateSystemTopologyCache()
   // defined in SimTKcommon/internal/System.h:851:6
   t22.method("invalidateSystemTopologyCache", static_cast<void (SimTK::System::*)()  const>(&SimTK::System::invalidateSystemTopologyCache));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::System::calcDecorativeGeometryAndAppend(const SimTK::State &, SimTK::Stage, SimTK::Array_<SimTK::DecorativeGeometry> &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::System::calcDecorativeGeometryAndAppend(const SimTK::State &, SimTK::Stage, SimTK::Array_<SimTK::DecorativeGeometry> &)
   // defined in SimTKcommon/internal/System.h:860:6
   t22.method("calcDecorativeGeometryAndAppend", static_cast<void (SimTK::System::*)(const SimTK::State &, SimTK::Stage, SimTK::Array_<SimTK::DecorativeGeometry> &)  const>(&SimTK::System::calcDecorativeGeometryAndAppend));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::System::isSameSystem(const SimTK::System &) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::System::isSameSystem(const SimTK::System &)
   // defined in SimTKcommon/internal/System.h:866:6
   t22.method("isSameSystem", static_cast<bool (SimTK::System::*)(const SimTK::System &)  const>(&SimTK::System::isSameSystem));
   CLEAR_DEBUG_MSG();
 
   // DEBUG_MSG("bool SimTK::System::hasGuts() (" __HERE__ ")");
-  // // signature to use in the veto list: bool SimTK::System::hasGuts()
   // // defined in SimTKcommon/internal/System.h:886:6
   // t22.method("hasGuts", static_cast<bool (SimTK::System::*)()  const>(&SimTK::System::hasGuts));
   // CLEAR_DEBUG_MSG();
 
   // DEBUG_MSG("bool SimTK::System::isOwnerHandle() (" __HERE__ ")");
-  // // signature to use in the veto list: bool SimTK::System::isOwnerHandle()
   // // defined in SimTKcommon/internal/System.h:889:6
   // t22.method("isOwnerHandle", static_cast<bool (SimTK::System::*)()  const>(&SimTK::System::isOwnerHandle));
   // CLEAR_DEBUG_MSG();
 
   // DEBUG_MSG("bool SimTK::System::isEmptyHandle() (" __HERE__ ")");
-  // // signature to use in the veto list: bool SimTK::System::isEmptyHandle()
   // // defined in SimTKcommon/internal/System.h:891:6
   // t22.method("isEmptyHandle", static_cast<bool (SimTK::System::*)()  const>(&SimTK::System::isEmptyHandle));
   // CLEAR_DEBUG_MSG();
@@ -1432,91 +1266,76 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::ProjectOptions & SimTK::ProjectOptions::clear() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::ProjectOptions & SimTK::ProjectOptions::clear()
   // defined in SimTKcommon/internal/System.h:992:21
   t32.method("clear", static_cast<SimTK::ProjectOptions & (SimTK::ProjectOptions::*)() >(&SimTK::ProjectOptions::clear));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::ProjectOptions & SimTK::ProjectOptions::setRequiredAccuracy(SimTK::Real) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::ProjectOptions & SimTK::ProjectOptions::setRequiredAccuracy(SimTK::Real)
   // defined in SimTKcommon/internal/System.h:999:21
   t32.method("setRequiredAccuracy", static_cast<SimTK::ProjectOptions & (SimTK::ProjectOptions::*)(SimTK::Real) >(&SimTK::ProjectOptions::setRequiredAccuracy));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::ProjectOptions & SimTK::ProjectOptions::setOvershootFactor(SimTK::Real) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::ProjectOptions & SimTK::ProjectOptions::setOvershootFactor(SimTK::Real)
   // defined in SimTKcommon/internal/System.h:1007:21
   t32.method("setOvershootFactor", static_cast<SimTK::ProjectOptions & (SimTK::ProjectOptions::*)(SimTK::Real) >(&SimTK::ProjectOptions::setOvershootFactor));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::ProjectOptions & SimTK::ProjectOptions::setProjectionLimit(SimTK::Real) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::ProjectOptions & SimTK::ProjectOptions::setProjectionLimit(SimTK::Real)
   // defined in SimTKcommon/internal/System.h:1015:21
   t32.method("setProjectionLimit", static_cast<SimTK::ProjectOptions & (SimTK::ProjectOptions::*)(SimTK::Real) >(&SimTK::ProjectOptions::setProjectionLimit));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::ProjectOptions & SimTK::ProjectOptions::clearOption(SimTK::ProjectOptions::Option) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::ProjectOptions & SimTK::ProjectOptions::clearOption(SimTK::ProjectOptions::Option)
   // defined in SimTKcommon/internal/System.h:1023:21
   t32.method("clearOption", static_cast<SimTK::ProjectOptions & (SimTK::ProjectOptions::*)(SimTK::ProjectOptions::Option) >(&SimTK::ProjectOptions::clearOption));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::ProjectOptions & SimTK::ProjectOptions::setOption(SimTK::ProjectOptions::Option) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::ProjectOptions & SimTK::ProjectOptions::setOption(SimTK::ProjectOptions::Option)
   // defined in SimTKcommon/internal/System.h:1026:21
   t32.method("setOption", static_cast<SimTK::ProjectOptions & (SimTK::ProjectOptions::*)(SimTK::ProjectOptions::Option) >(&SimTK::ProjectOptions::setOption));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Real SimTK::ProjectOptions::getRequiredAccuracy() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Real SimTK::ProjectOptions::getRequiredAccuracy()
   // defined in SimTKcommon/internal/System.h:1030:10
   t32.method("getRequiredAccuracy", static_cast<SimTK::Real (SimTK::ProjectOptions::*)()  const>(&SimTK::ProjectOptions::getRequiredAccuracy));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Real SimTK::ProjectOptions::getOvershootFactor() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Real SimTK::ProjectOptions::getOvershootFactor()
   // defined in SimTKcommon/internal/System.h:1033:10
   t32.method("getOvershootFactor", static_cast<SimTK::Real (SimTK::ProjectOptions::*)()  const>(&SimTK::ProjectOptions::getOvershootFactor));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Real SimTK::ProjectOptions::getProjectionLimit() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Real SimTK::ProjectOptions::getProjectionLimit()
   // defined in SimTKcommon/internal/System.h:1035:10
   t32.method("getProjectionLimit", static_cast<SimTK::Real (SimTK::ProjectOptions::*)()  const>(&SimTK::ProjectOptions::getProjectionLimit));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::ProjectOptions::isOptionSet(SimTK::ProjectOptions::Option) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::ProjectOptions::isOptionSet(SimTK::ProjectOptions::Option)
   // defined in SimTKcommon/internal/System.h:1037:10
   t32.method("isOptionSet", static_cast<bool (SimTK::ProjectOptions::*)(SimTK::ProjectOptions::Option)  const>(&SimTK::ProjectOptions::isOptionSet));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::ProjectOptions & SimTK::ProjectOptions::operator|=(const SimTK::ProjectOptions &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::ProjectOptions & SimTK::ProjectOptions::operator|=(const SimTK::ProjectOptions &)
   // defined in SimTKcommon/internal/System.h:1043:21
   t32.method("bwor!", static_cast<SimTK::ProjectOptions & (SimTK::ProjectOptions::*)(const SimTK::ProjectOptions &) >(&SimTK::ProjectOptions::operator|=));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::ProjectOptions & SimTK::ProjectOptions::operator&=(const SimTK::ProjectOptions &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::ProjectOptions & SimTK::ProjectOptions::operator&=(const SimTK::ProjectOptions &)
   // defined in SimTKcommon/internal/System.h:1045:21
   t32.method("bwand!", static_cast<SimTK::ProjectOptions & (SimTK::ProjectOptions::*)(const SimTK::ProjectOptions &) >(&SimTK::ProjectOptions::operator&=));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::ProjectOptions & SimTK::ProjectOptions::operator-=(const SimTK::ProjectOptions &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::ProjectOptions & SimTK::ProjectOptions::operator-=(const SimTK::ProjectOptions &)
   // defined in SimTKcommon/internal/System.h:1047:21
   t32.method("sub!", static_cast<SimTK::ProjectOptions & (SimTK::ProjectOptions::*)(const SimTK::ProjectOptions &) >(&SimTK::ProjectOptions::operator-=));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::ProjectOptions & SimTK::ProjectOptions::operator|=(SimTK::ProjectOptions::Option) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::ProjectOptions & SimTK::ProjectOptions::operator|=(SimTK::ProjectOptions::Option)
   // defined in SimTKcommon/internal/System.h:1050:21
   t32.method("bwor!", static_cast<SimTK::ProjectOptions & (SimTK::ProjectOptions::*)(SimTK::ProjectOptions::Option) >(&SimTK::ProjectOptions::operator|=));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::ProjectOptions & SimTK::ProjectOptions::operator-=(SimTK::ProjectOptions::Option) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::ProjectOptions & SimTK::ProjectOptions::operator-=(SimTK::ProjectOptions::Option)
   // defined in SimTKcommon/internal/System.h:1051:21
   t32.method("sub!", static_cast<SimTK::ProjectOptions & (SimTK::ProjectOptions::*)(SimTK::ProjectOptions::Option) >(&SimTK::ProjectOptions::operator-=));
   CLEAR_DEBUG_MSG();
@@ -1530,91 +1349,76 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
    */
 
   DEBUG_MSG("SimTK::ProjectResults & SimTK::ProjectResults::clear() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::ProjectResults & SimTK::ProjectResults::clear()
   // defined in SimTKcommon/internal/System.h:1089:21
   t33.method("clear", static_cast<SimTK::ProjectResults & (SimTK::ProjectResults::*)() >(&SimTK::ProjectResults::clear));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::ProjectResults::isValid() (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::ProjectResults::isValid()
   // defined in SimTKcommon/internal/System.h:1097:13
   t33.method("isValid", static_cast<bool (SimTK::ProjectResults::*)()  const>(&SimTK::ProjectResults::isValid));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::ProjectResults::Status SimTK::ProjectResults::getExitStatus() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::ProjectResults::Status SimTK::ProjectResults::getExitStatus()
   // defined in SimTKcommon/internal/System.h:1098:13
   t33.method("getExitStatus", static_cast<SimTK::ProjectResults::Status (SimTK::ProjectResults::*)()  const>(&SimTK::ProjectResults::getExitStatus));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::ProjectResults::getAnyChangeMade() (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::ProjectResults::getAnyChangeMade()
   // defined in SimTKcommon/internal/System.h:1100:10
   t33.method("getAnyChangeMade", static_cast<bool (SimTK::ProjectResults::*)()  const>(&SimTK::ProjectResults::getAnyChangeMade));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("int SimTK::ProjectResults::getNumIterations() (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::ProjectResults::getNumIterations()
   // defined in SimTKcommon/internal/System.h:1101:10
   t33.method("getNumIterations", static_cast<int (SimTK::ProjectResults::*)()  const>(&SimTK::ProjectResults::getNumIterations));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Real SimTK::ProjectResults::getNormOnEntrance() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Real SimTK::ProjectResults::getNormOnEntrance()
   // defined in SimTKcommon/internal/System.h:1102:10
   t33.method("getNormOnEntrance", static_cast<SimTK::Real (SimTK::ProjectResults::*)()  const>(&SimTK::ProjectResults::getNormOnEntrance));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Real SimTK::ProjectResults::getNormOnExit() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Real SimTK::ProjectResults::getNormOnExit()
   // defined in SimTKcommon/internal/System.h:1103:10
   t33.method("getNormOnExit", static_cast<SimTK::Real (SimTK::ProjectResults::*)()  const>(&SimTK::ProjectResults::getNormOnExit));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("int SimTK::ProjectResults::getWorstErrorOnEntrance() (" __HERE__ ")");
-  // signature to use in the veto list: int SimTK::ProjectResults::getWorstErrorOnEntrance()
   // defined in SimTKcommon/internal/System.h:1104:10
   t33.method("getWorstErrorOnEntrance", static_cast<int (SimTK::ProjectResults::*)()  const>(&SimTK::ProjectResults::getWorstErrorOnEntrance));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::ProjectResults::getProjectionLimitExceeded() (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::ProjectResults::getProjectionLimitExceeded()
   // defined in SimTKcommon/internal/System.h:1106:10
   t33.method("getProjectionLimitExceeded", static_cast<bool (SimTK::ProjectResults::*)()  const>(&SimTK::ProjectResults::getProjectionLimitExceeded));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::ProjectResults & SimTK::ProjectResults::setExitStatus(SimTK::ProjectResults::Status) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::ProjectResults & SimTK::ProjectResults::setExitStatus(SimTK::ProjectResults::Status)
   // defined in SimTKcommon/internal/System.h:1109:21
   t33.method("setExitStatus", static_cast<SimTK::ProjectResults & (SimTK::ProjectResults::*)(SimTK::ProjectResults::Status) >(&SimTK::ProjectResults::setExitStatus));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::ProjectResults & SimTK::ProjectResults::setAnyChangeMade(bool) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::ProjectResults & SimTK::ProjectResults::setAnyChangeMade(bool)
   // defined in SimTKcommon/internal/System.h:1111:21
   t33.method("setAnyChangeMade", static_cast<SimTK::ProjectResults & (SimTK::ProjectResults::*)(bool) >(&SimTK::ProjectResults::setAnyChangeMade));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::ProjectResults & SimTK::ProjectResults::setProjectionLimitExceeded(bool) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::ProjectResults & SimTK::ProjectResults::setProjectionLimitExceeded(bool)
   // defined in SimTKcommon/internal/System.h:1113:21
   t33.method("setProjectionLimitExceeded", static_cast<SimTK::ProjectResults & (SimTK::ProjectResults::*)(bool) >(&SimTK::ProjectResults::setProjectionLimitExceeded));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::ProjectResults & SimTK::ProjectResults::setNumIterations(int) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::ProjectResults & SimTK::ProjectResults::setNumIterations(int)
   // defined in SimTKcommon/internal/System.h:1115:21
   t33.method("setNumIterations", static_cast<SimTK::ProjectResults & (SimTK::ProjectResults::*)(int) >(&SimTK::ProjectResults::setNumIterations));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::ProjectResults & SimTK::ProjectResults::setNormOnEntrance(SimTK::Real, int) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::ProjectResults & SimTK::ProjectResults::setNormOnEntrance(SimTK::Real, int)
   // defined in SimTKcommon/internal/System.h:1117:21
   t33.method("setNormOnEntrance", static_cast<SimTK::ProjectResults & (SimTK::ProjectResults::*)(SimTK::Real, int) >(&SimTK::ProjectResults::setNormOnEntrance));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::ProjectResults & SimTK::ProjectResults::setNormOnExit(SimTK::Real) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::ProjectResults & SimTK::ProjectResults::setNormOnExit(SimTK::Real)
   // defined in SimTKcommon/internal/System.h:1119:21
   t33.method("setNormOnExit", static_cast<SimTK::ProjectResults & (SimTK::ProjectResults::*)(SimTK::Real) >(&SimTK::ProjectResults::setNormOnExit));
   CLEAR_DEBUG_MSG();
@@ -1634,32 +1438,27 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::DefaultSystemSubsystem::addEventHandler(SimTK::ScheduledEventHandler *) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::DefaultSystemSubsystem::addEventHandler(SimTK::ScheduledEventHandler *)
   // defined in SimTKcommon/internal/System.h:913:10
   t37.method("addEventHandler", static_cast<void (SimTK::DefaultSystemSubsystem::*)(SimTK::ScheduledEventHandler *) >(&SimTK::DefaultSystemSubsystem::addEventHandler));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::DefaultSystemSubsystem::addEventHandler(SimTK::TriggeredEventHandler *) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::DefaultSystemSubsystem::addEventHandler(SimTK::TriggeredEventHandler *)
   // defined in SimTKcommon/internal/System.h:914:10
   t37.method("addEventHandler", static_cast<void (SimTK::DefaultSystemSubsystem::*)(SimTK::TriggeredEventHandler *) >(&SimTK::DefaultSystemSubsystem::addEventHandler));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::DefaultSystemSubsystem::addEventReporter(SimTK::ScheduledEventReporter *) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::DefaultSystemSubsystem::addEventReporter(SimTK::ScheduledEventReporter *)
   // defined in SimTKcommon/internal/System.h:915:10
   t37.method("addEventReporter", static_cast<void (SimTK::DefaultSystemSubsystem::*)(SimTK::ScheduledEventReporter *)  const>(&SimTK::DefaultSystemSubsystem::addEventReporter));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::DefaultSystemSubsystem::addEventReporter(SimTK::TriggeredEventReporter *) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::DefaultSystemSubsystem::addEventReporter(SimTK::TriggeredEventReporter *)
   // defined in SimTKcommon/internal/System.h:916:10
   t37.method("addEventReporter", static_cast<void (SimTK::DefaultSystemSubsystem::*)(SimTK::TriggeredEventReporter *)  const>(&SimTK::DefaultSystemSubsystem::addEventReporter));
   CLEAR_DEBUG_MSG();
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("SimTK::EventId SimTK::DefaultSystemSubsystem::createEventId(SimTK::SubsystemIndex, const SimTK::State &) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::EventId SimTK::DefaultSystemSubsystem::createEventId(SimTK::SubsystemIndex, const SimTK::State &)
   // defined in SimTKcommon/internal/System.h:917:13
   t37.method("createEventId", static_cast<SimTK::EventId (SimTK::DefaultSystemSubsystem::*)(SimTK::SubsystemIndex, const SimTK::State &)  const>(&SimTK::DefaultSystemSubsystem::createEventId));
   CLEAR_DEBUG_MSG();
@@ -1672,7 +1471,6 @@ void define_SimTKcommon_SystemSubsystem(jlcxx::Module& types){
 
   #ifdef JLSIMBODY_USE_SIMTK_UNIQUEINDEX_TYPES
   DEBUG_MSG("void SimTK::DefaultSystemSubsystem::findSubsystemEventIds(SimTK::SubsystemIndex, const SimTK::State &, const SimTK::Array_<SimTK::EventId> &, SimTK::Array_<SimTK::EventId> &) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::DefaultSystemSubsystem::findSubsystemEventIds(SimTK::SubsystemIndex, const SimTK::State &, const SimTK::Array_<SimTK::EventId> &, SimTK::Array_<SimTK::EventId> &)
   // defined in SimTKcommon/internal/System.h:918:10
   t37.method("findSubsystemEventIds", static_cast<void (SimTK::DefaultSystemSubsystem::*)(SimTK::SubsystemIndex, const SimTK::State &, const SimTK::Array_<SimTK::EventId> &, SimTK::Array_<SimTK::EventId> &)  const>(&SimTK::DefaultSystemSubsystem::findSubsystemEventIds));
   CLEAR_DEBUG_MSG();

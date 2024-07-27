@@ -56,80 +56,67 @@ void define_SimTKcommon_Stage(jlcxx::Module& types){
 
   types.set_override_module(jl_base_module);
   DEBUG_MSG("bool SimTK::Stage::operator==(SimTK::Stage::Level) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::Stage::operator==(SimTK::Stage::Level)
   // defined in SimTKcommon/internal/Stage.h:107:10
   t0.method("==", static_cast<bool (SimTK::Stage::*)(SimTK::Stage::Level)  const>(&SimTK::Stage::operator==));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::Stage::operator<(SimTK::Stage::Level) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::Stage::operator<(SimTK::Stage::Level)
   // defined in SimTKcommon/internal/Stage.h:109:10
   t0.method("<", static_cast<bool (SimTK::Stage::*)(SimTK::Stage::Level)  const>(&SimTK::Stage::operator<));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::Stage::operator==(SimTK::Stage) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::Stage::operator==(SimTK::Stage)
   // defined in SimTKcommon/internal/Stage.h:113:10
   t0.method("==", static_cast<bool (SimTK::Stage::*)(SimTK::Stage)  const>(&SimTK::Stage::operator==));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::Stage::operator<(SimTK::Stage) (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::Stage::operator<(SimTK::Stage)
   // defined in SimTKcommon/internal/Stage.h:115:10
   t0.method("<", static_cast<bool (SimTK::Stage::*)(SimTK::Stage)  const>(&SimTK::Stage::operator<));
   CLEAR_DEBUG_MSG();
   types.unset_override_module();
 
   DEBUG_MSG("const SimTK::Stage & SimTK::Stage::operator++() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Stage & SimTK::Stage::operator++()
   // defined in SimTKcommon/internal/Stage.h:121:18
   t0.method("inc!", static_cast<const SimTK::Stage & (SimTK::Stage::*)() >(&SimTK::Stage::operator++));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("const SimTK::Stage & SimTK::Stage::operator--() (" __HERE__ ")");
-  // signature to use in the veto list: const SimTK::Stage & SimTK::Stage::operator--()
   // defined in SimTKcommon/internal/Stage.h:123:18
   t0.method("dec!", static_cast<const SimTK::Stage & (SimTK::Stage::*)() >(&SimTK::Stage::operator--));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Stage SimTK::Stage::operator++(int) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Stage SimTK::Stage::operator++(int)
   // defined in SimTKcommon/internal/Stage.h:126:11
   t0.method("inc!", static_cast<SimTK::Stage (SimTK::Stage::*)(int) >(&SimTK::Stage::operator++));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Stage SimTK::Stage::operator--(int) (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Stage SimTK::Stage::operator--(int)
   // defined in SimTKcommon/internal/Stage.h:128:11
   t0.method("dec!", static_cast<SimTK::Stage (SimTK::Stage::*)(int) >(&SimTK::Stage::operator--));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Stage SimTK::Stage::next() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Stage SimTK::Stage::next()
   // defined in SimTKcommon/internal/Stage.h:134:11
   t0.method("next", static_cast<SimTK::Stage (SimTK::Stage::*)()  const>(&SimTK::Stage::next));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::Stage SimTK::Stage::prev() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::Stage SimTK::Stage::prev()
   // defined in SimTKcommon/internal/Stage.h:139:11
   t0.method("prev", static_cast<SimTK::Stage (SimTK::Stage::*)()  const>(&SimTK::Stage::prev));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("SimTK::String SimTK::Stage::getName() (" __HERE__ ")");
-  // signature to use in the veto list: SimTK::String SimTK::Stage::getName()
   // defined in SimTKcommon/internal/Stage.h:144:12
   t0.method("getName", static_cast<SimTK::String (SimTK::Stage::*)()  const>(&SimTK::Stage::getName));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("void SimTK::Stage::invalidate(SimTK::Stage) (" __HERE__ ")");
-  // signature to use in the veto list: void SimTK::Stage::invalidate(SimTK::Stage)
   // defined in SimTKcommon/internal/Stage.h:163:10
   t0.method("invalidate", static_cast<void (SimTK::Stage::*)(SimTK::Stage) >(&SimTK::Stage::invalidate));
   CLEAR_DEBUG_MSG();
 
   DEBUG_MSG("bool SimTK::Stage::isInRuntimeRange() (" __HERE__ ")");
-  // signature to use in the veto list: bool SimTK::Stage::isInRuntimeRange()
   // defined in SimTKcommon/internal/Stage.h:171:10
   t0.method("isInRuntimeRange", static_cast<bool (SimTK::Stage::*)()  const>(&SimTK::Stage::isInRuntimeRange));
   CLEAR_DEBUG_MSG();

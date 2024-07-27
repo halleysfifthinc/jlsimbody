@@ -148,13 +148,11 @@ void define_SimTKcommon_Mat(jlcxx::Module& types){
     //   wrapping would need to be iterated to be complete? Messy; utility vs Julia-side implentation not clear
 
     DEBUG_MSG("void SimTK::Mat::setToNaN() (" __HERE__ ")");
-    // signature to use in the veto list: void SimTK::Mat::setToNaN()
     // defined in SimTKcommon/internal/Mat.h:904:10
     wrapped.method("setToNaN", static_cast<void (WrappedType::*)() >(&WrappedType::setToNaN));
     CLEAR_DEBUG_MSG();
 
     DEBUG_MSG("void SimTK::Mat::setToZero() (" __HERE__ ")");
-    // signature to use in the veto list: void SimTK::Mat::setToZero()
     // defined in SimTKcommon/internal/Mat.h:909:10
     wrapped.method("setToZero", static_cast<void (WrappedType::*)() >(&WrappedType::setToZero));
     CLEAR_DEBUG_MSG();
