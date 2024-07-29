@@ -40,6 +40,15 @@
                 },
                 {
                     "text": "set substitute-path jlsimbody/ ${workspaceFolder}/"
+                },
+                {
+                    "text": "skip -gfi /usr/include/c++/*/*/*"
+                },
+                {
+                    "text": "skip -gfi /usr/include/c++/*/*"
+                },
+                {
+                    "text": "skip -gfi /usr/include/c++/*"
                 }
             ]
         }
