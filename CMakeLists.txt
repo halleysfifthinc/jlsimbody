@@ -174,6 +174,17 @@ set(CXX_FILES
   src/jlSimTKcommon/String.cxx
   src/jlSimTKcommon/Function.cxx
   src/jlSimTKcommon/DecorationGenerator.cxx
+  src/jlSimTKcommon/xml/Xml_attribute_iterator.cxx
+  src/jlSimTKcommon/xml/Xml_Attribute.cxx
+  src/jlSimTKcommon/xml/Xml_Comment.cxx
+  src/jlSimTKcommon/xml/Xml_Document.cxx
+  src/jlSimTKcommon/xml/Xml_element_iterator.cxx
+  src/jlSimTKcommon/xml/Xml_Element.cxx
+  src/jlSimTKcommon/xml/Xml_node_iterator.cxx
+  src/jlSimTKcommon/xml/Xml_Node.cxx
+  src/jlSimTKcommon/xml/Xml_Text.cxx
+  src/jlSimTKcommon/xml/Xml_Unknown.cxx
+  src/jlSimTKcommon/Xml.cxx
   src/jlsimmath/Geo.cxx
   src/jlsimmath/Contact_related.cxx
   src/jlsimmath/Timestepper_and_Integrators.cxx
@@ -247,6 +258,7 @@ set(HEADER_FILES
   include/jlSimTKcommon/Transform.h
   include/jlSimTKcommon/UnitVec.h
   include/jlSimTKcommon/Vec.h
+  include/jlSimTKcommon/Xml.h
   include/jlsimmath/Geo.h
   include/jlsimmath/Contact_related.h
   include/jlsimmath/Timestepper_and_Integrators.h

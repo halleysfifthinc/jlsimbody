@@ -20,6 +20,7 @@
 #include "jlSimTKcommon/Measure.h"
 #include "jlSimTKcommon/SystemSubsystem.h"
 #include "jlSimTKcommon/Function.h"
+#include "jlSimTKcommon/Xml.h"
 
 #include "jlsimmath/Geo.h"
 #include "jlSimTKcommon/DecorationGenerator.h"
@@ -71,6 +72,7 @@ JLCXX_MODULE define_julia_module(jlcxx::Module& types){
   CLEAR_DEBUG_MSG();
 
   define_SimTKcommon_String(types, array_wrapper);
+  define_SimTKcommon_Xml(types, array_wrapper);
   define_SimTKcommon_Row(types);
 
   // defined in SimTKcommon/internal/Vec.h:184:7
