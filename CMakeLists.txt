@@ -321,11 +321,13 @@ set_target_properties(jlsimbody PROPERTIES
 
 set(gen_jlsimbody_is_dev "$<BOOL:${JLSIMBODY_DEV}>")
 set(is_clang "$<CXX_COMPILER_ID:Clang>")
+set(is_gcc "$<CXX_COMPILER_ID:GNU>")
 
 target_compile_options(jlsimbody
   PRIVATE
     -fdata-sections
-    -no-canonical-prefixes
+    -fno-omit-frame-pointer
+    $<${is_gcc}:-no-canonical-prefixes>
     -gno-record-gcc-switches
     -fno-record-gcc-switches
     -ffile-prefix-map=${CMAKE_CURRENT_SOURCE_DIR}=jlsimbody
@@ -352,13 +354,13 @@ endif()
 
 set(linker_is_mold "$<STREQUAL:${CMAKE_LINKER_TYPE},MOLD>")
 target_link_options(jlsimbody PRIVATE
-  $<${gen_jlsimbody_is_dev}:-Wl,--no-undefined;-Wl,--warn-unresolved-symbols>
-  --for-linker=--compress-debug-sections=$<IF:${linker_is_mold},zstd,zlib> # GNU ld doesn't support zstd
-  --for-linker=-flto
-  --for-linker=--gc-sections
-  $<$<AND:${is_clang},${linker_is_mold}>:--for-linker=--icf=safe> # --icf not recognized by GNU ld; icf=safe needs an LLVM compiler
-  # $<${gen_jlsimbody_is_dev}:--for-linker=--print-gc-sections>
-  # $<$<AND:${gen_jlsimbody_is_dev},${is_clang},${linker_is_mold}>:--for-linker=--print-icf-sections> # --icf not recognized by GNU ld
+  $<${gen_jlsimbody_is_dev}:LINKER:--no-undefined;LINKER:--warn-unresolved-symbols>
+  LINKER:--compress-debug-sections=$<IF:${linker_is_mold},zstd,zlib> # GNU ld doesn't support zstd
+  LINKER:-flto
+  LINKER:--gc-sections
+  $<$<AND:${is_clang},${linker_is_mold}>:LINKER:--icf=safe> # --icf not recognized by GNU ld; icf=safe needs an LLVM compiler
+  # $<${gen_jlsimbody_is_dev}:LINKER:--print-gc-sections>
+  # $<$<AND:${gen_jlsimbody_is_dev},${is_clang},${linker_is_mold}>:LINKER:--print-icf-sections> # --icf not recognized by GNU ld
 )
 
 include(GNUInstallDirs)
