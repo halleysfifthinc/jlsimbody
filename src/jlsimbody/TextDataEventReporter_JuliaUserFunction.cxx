@@ -19,6 +19,8 @@ struct TextDataEventReporter_JuliaRealUserFunction: public Wrapper {
     auto& t = *type_;
 
     t.constructor<jl_function_t*>();
+
+    t.method("evaluate", static_cast<SimTK::Real (jlsimbody::JuliaRealUserFunction::*)(const SimTK::System &, const SimTK::State &)>(&jlsimbody::JuliaRealUserFunction::evaluate));
   }
 
 private:
@@ -44,6 +46,7 @@ struct TextDataEventReporter_JuliaVectorUserFunction: public Wrapper {
     auto& t = *type_;
 
     t.constructor<jl_function_t*>();
+    t.method("evaluate", static_cast<SimTK::Vector (jlsimbody::JuliaVectorUserFunction::*)(const SimTK::System &, const SimTK::State &)>(&jlsimbody::JuliaVectorUserFunction::evaluate));
   }
 
 private:
