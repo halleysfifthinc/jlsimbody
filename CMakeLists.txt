@@ -355,7 +355,7 @@ endif()
 set(linker_is_mold "$<STREQUAL:${CMAKE_LINKER_TYPE},MOLD>")
 target_link_options(jlsimbody PRIVATE
   $<${gen_jlsimbody_is_dev}:LINKER:--no-undefined;LINKER:--warn-unresolved-symbols>
-  LINKER:--compress-debug-sections=$<IF:${linker_is_mold},zstd,zlib> # GNU ld doesn't support zstd
+  LINKER:--compress-debug-sections=zlib
   LINKER:-flto
   LINKER:--gc-sections
   $<$<AND:${is_clang},${linker_is_mold}>:LINKER:--icf=safe> # --icf not recognized by GNU ld; icf=safe needs an LLVM compiler
