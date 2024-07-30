@@ -109,18 +109,18 @@ void define_SimTKcommon_Orientations(jlcxx::Module& types, WrappedVec& vec, cons
   t4.method("updInvert", static_cast<InverseRotation & (Rotation::*)()>(&Rotation::updInvert));
 
   // t4.method("x", static_cast<const typename Rotation::ColType & (Rotation::*)() const>(&Rotation::x));
-  t4.method("x", [] (const Rotation & r) -> SimTK::UnitVec3* {
-    return new SimTK::UnitVec3(r.x());
+  t4.method("x", [] (const Rotation & r) -> SimTK::UnitVec3 {
+    return SimTK::UnitVec3(r.x());
   });
 
   // t4.method("y", static_cast<const typename Rotation::ColType & (Rotation::*)() const>(&Rotation::y));
-  t4.method("y", [] (const Rotation & r) -> SimTK::UnitVec3* {
-    return new SimTK::UnitVec3(r.y());
+  t4.method("y", [] (const Rotation & r) -> SimTK::UnitVec3 {
+    return SimTK::UnitVec3(r.y());
   });
 
   // t4.method("z", static_cast<const typename Rotation::ColType & (Rotation::*)() const>(&Rotation::z));
-  t4.method("z", [] (const Rotation & r) -> SimTK::UnitVec3* {
-    return new SimTK::UnitVec3(r.z());
+  t4.method("z", [] (const Rotation & r) -> SimTK::UnitVec3 {
+    return SimTK::UnitVec3(r.z());
   });
 
   // t4.method("getAxisUnitVec", static_cast<const typename Rotation::ColType & (Rotation::*)(SimTK::CoordinateAxis) const>(&Rotation::getAxisUnitVec));
@@ -195,18 +195,18 @@ void define_SimTKcommon_Orientations(jlcxx::Module& types, WrappedVec& vec, cons
   t5.method("updInvert", static_cast<Rotation & (InverseRotation::*)()>(&InverseRotation::updInvert));
 
   // t5.method("x", static_cast<const typename InverseRotation::ColType & (InverseRotation::*)() const>(&InverseRotation::x));
-  t5.method("x", [] (const InverseRotation & r) -> SimTK::UnitVec3* {
-    return new SimTK::UnitVec3(r.x());
+  t5.method("x", [] (const InverseRotation & r) -> SimTK::UnitVec3 {
+    return SimTK::UnitVec3(r.x());
   });
 
   // t5.method("y", static_cast<const typename InverseRotation::ColType & (InverseRotation::*)() const>(&InverseRotation::y));
-  t5.method("y", [] (const InverseRotation & r) -> SimTK::UnitVec3* {
-    return new SimTK::UnitVec3(r.y());
+  t5.method("y", [] (const InverseRotation & r) -> SimTK::UnitVec3 {
+    return SimTK::UnitVec3(r.y());
   });
 
   // t5.method("z", static_cast<const typename InverseRotation::ColType & (InverseRotation::*)() const>(&InverseRotation::z));
-  t5.method("z", [] (const InverseRotation & r) -> SimTK::UnitVec3* {
-    return new SimTK::UnitVec3(r.z());
+  t5.method("z", [] (const InverseRotation & r) -> SimTK::UnitVec3 {
+    return SimTK::UnitVec3(r.z());
   });
 
   // t5.method("getAxisUnitVec", static_cast<const typename InverseRotation::ColType & (InverseRotation::*)(SimTK::CoordinateAxis) const>(&InverseRotation::getAxisUnitVec));
@@ -222,6 +222,20 @@ void define_SimTKcommon_Orientations(jlcxx::Module& types, WrappedVec& vec, cons
 
   /* End of SimTK::InverseRotation_ class method wrappers
    **********************************************************************/
+
+  types.set_override_module(jl_base_module);
+  types.method("*", static_cast<SimTK::UnitVec3 (*)(const Rotation &, const SimTK::UnitVec3 &)>(&SimTK::operator*));
+  types.method("*", static_cast<SimTK::UnitVec3 (*)(const InverseRotation &, const SimTK::UnitVec3 &)>(&SimTK::operator*));
+  types.method("*", static_cast<Rotation (*)(const Rotation &, const Rotation &)>(&SimTK::operator*));
+  types.method("*", static_cast<Rotation (*)(const Rotation &, const InverseRotation &)>(&SimTK::operator*));
+  types.method("*", static_cast<Rotation (*)(const InverseRotation &, const Rotation &)>(&SimTK::operator*));
+  types.method("*", static_cast<Rotation (*)(const InverseRotation &, const InverseRotation &)>(&SimTK::operator*));
+
+  types.method("/", static_cast<Rotation (*)(const Rotation &, const Rotation &)>(&SimTK::operator/));
+  types.method("/", static_cast<Rotation (*)(const Rotation &, const InverseRotation &)>(&SimTK::operator/));
+  types.method("/", static_cast<Rotation (*)(const InverseRotation &, const Rotation &)>(&SimTK::operator/));
+  types.method("/", static_cast<Rotation (*)(const InverseRotation &, const InverseRotation &)>(&SimTK::operator/));
+  types.unset_override_module();
 
   array_wrapper.template apply<SimTK::Rotation_<double>>();
   array_wrapper.template apply<SimTK::Rotation_<double>, int>();

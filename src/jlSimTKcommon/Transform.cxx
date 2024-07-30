@@ -88,7 +88,7 @@ void define_SimTKcommon_Transform(jlcxx::Module& types, const ArrayWrapper& arra
   t1.method("RInv", static_cast<const SimTK::InverseRotation_<double> & (Transform::*)() const>(&Transform::RInv));
   t1.method("updRInv!", static_cast<SimTK::InverseRotation_<double> & (Transform::*)() >(&Transform::updRInv));
 
-  t1.method("P", static_cast<const SimTK::Vec<3,double> & (Transform::*)() const>(&Transform::p));
+  t1.method("p", static_cast<const SimTK::Vec<3,double> & (Transform::*)() const>(&Transform::p));
   t1.method("updP!", static_cast<SimTK::Vec<3,double> & (Transform::*)() >(&Transform::updP));
 
   t1.method("pInv", static_cast<SimTK::Vec<3,double> (Transform::*)() const>(&Transform::pInv));

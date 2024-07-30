@@ -309,20 +309,20 @@ void define_SimTKcommon_CoordinateAxis(jlcxx::Module& types){
   CLEAR_DEBUG_MSG();
   types.unset_override_module();
 
-  // DEBUG_MSG("Adding SimTK!XAxis methods to provide access to the global variable SimTK::XAxis (" __HERE__ ")");
-  // // defined in SimTKcommon/internal/CoordinateAxis.h:206:72
-  // types.method("SimTK!XAxis", []()-> const SimTK::CoordinateAxis::XCoordinateAxis& { return SimTK::XAxis; });
-  // CLEAR_DEBUG_MSG();
+  DEBUG_MSG("Adding XAxis methods to provide access to the global variable SimTK::XAxis (" __HERE__ ")");
+  // defined in SimTKcommon/internal/CoordinateAxis.h:206:72
+  types.method("XAxis", []()-> const SimTK::CoordinateAxis::XCoordinateAxis& { return SimTK::XAxis; });
+  CLEAR_DEBUG_MSG();
 
-  // DEBUG_MSG("Adding SimTK!YAxis methods to provide access to the global variable SimTK::YAxis (" __HERE__ ")");
-  // // defined in SimTKcommon/internal/CoordinateAxis.h:209:72
-  // types.method("SimTK!YAxis", []()-> const SimTK::CoordinateAxis::YCoordinateAxis& { return SimTK::YAxis; });
-  // CLEAR_DEBUG_MSG();
+  DEBUG_MSG("Adding YAxis methods to provide access to the global variable SimTK::YAxis (" __HERE__ ")");
+  // defined in SimTKcommon/internal/CoordinateAxis.h:209:72
+  types.method("YAxis", []()-> const SimTK::CoordinateAxis::YCoordinateAxis& { return SimTK::YAxis; });
+  CLEAR_DEBUG_MSG();
 
-  // DEBUG_MSG("Adding SimTK!ZAxis methods to provide access to the global variable SimTK::ZAxis (" __HERE__ ")");
-  // // defined in SimTKcommon/internal/CoordinateAxis.h:212:72
-  // types.method("SimTK!ZAxis", []()-> const SimTK::CoordinateAxis::ZCoordinateAxis& { return SimTK::ZAxis; });
-  // CLEAR_DEBUG_MSG();
+  DEBUG_MSG("Adding ZAxis methods to provide access to the global variable SimTK::ZAxis (" __HERE__ ")");
+  // defined in SimTKcommon/internal/CoordinateAxis.h:212:72
+  types.method("ZAxis", []()-> const SimTK::CoordinateAxis::ZCoordinateAxis& { return SimTK::ZAxis; });
+  CLEAR_DEBUG_MSG();
 
   // DEBUG_MSG("Adding SimTK!NegXAxis methods to provide access to the global variable SimTK::NegXAxis (" __HERE__ ")");
   // // defined in SimTKcommon/internal/CoordinateAxis.h:350:5
