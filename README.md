@@ -22,3 +22,8 @@ jlsimbody = "/home/user/jlsimbody/out/build/${presetName}"
 
 When you no longer wish to use a locally built jlsimbody in Julia, run `cmake --build --preset=${presetName} --target unoverride` to remove those lines from `~/.julia/artifacts/Overrides.toml`.
 
+## Developing
+
+### Compilation timing
+
+If compiling with Clang and `-DJLSIMBODY_DEV=ON`, Clang will output trace compilation time and output `.json` files for each compiled source file. Slow compilation can be inspected in [Perfetto](https://perfetto.dev/). A file with all traces is generated in `CMAKE_CURRENT_BINARY_DIR` named `trace-$<EPOCH>.json`.

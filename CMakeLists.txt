@@ -379,6 +379,15 @@ if(NOT DEFINED ENV{bb_full_target})
     BYPRODUCTS ${CMAKE_CURRENT_BINARY_DIR}/jlsimbody_override
     VERBATIM)
 
+  if(${CMAKE_CXX_COMPILER_ID} MATCHES "Clang" AND JLSIMBODY_DEV)
+    string(TIMESTAMP COMBINED_TRACES_FILENAME "trace-%s.json")
+    add_custom_command(TARGET jlsimbody POST_BUILD
+      COMMAND python ${CMAKE_CURRENT_SOURCE_DIR}/scripts/combine_traces.py ${CMAKE_CURRENT_BINARY_DIR}/${COMBINED_TRACES_FILENAME} "$<PATH:NORMAL_PATH,$<LIST:TRANSFORM,$<TARGET_OBJECTS:jlsimbody>,REPLACE,\.(o|pch)$,.json>>"
+      BYPRODUCTS ${CMAKE_CURRENT_BINARY_DIR}/${COMBINED_TRACES_FILENAME}
+      COMMAND_EXPAND_LISTS
+      VERBATIM)
+  endif()
+
   add_custom_target(override
     COMMAND ${JULIA_EXECUTABLE} --startup-file=no --project=@. ${CMAKE_CURRENT_SOURCE_DIR}/scripts/override.jl ${CMAKE_CURRENT_BINARY_DIR} override
     VERBATIM)
