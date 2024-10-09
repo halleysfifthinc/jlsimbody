@@ -132,7 +132,7 @@ FetchContent_Declare(Simbody
   GIT_REPOSITORY https://github.com/halleysfifthinc/simbody
   GIT_TAG 672da64c7224900fdf962578ac723a10a4e1fd21
   GIT_SHALLOW TRUE
-  PATCH_COMMAND ${Patch_EXECUTABLE} -p1 --forward --posix --silent < ${CMAKE_CURRENT_SOURCE_DIR}/patches/current_dir.patch || true
+  PATCH_COMMAND ${Patch_EXECUTABLE} -p1 --forward --posix --silent < ${CMAKE_CURRENT_SOURCE_DIR}/cmake/simbody.patch || true
   SYSTEM
   FIND_PACKAGE_ARGS 3.8 HINTS ${SIMBODY_JLL_PREFIX_PATH}
   )
